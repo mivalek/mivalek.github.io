@@ -1,0 +1,450 @@
+---
+title: 'USMR Lecture 2'
+subtitle: '<b>The groundwork</b>'
+author: "<subtitle>Milan Valá&#353;ek</subtitle>"
+output:
+  revealjs::revealjs_presentation:
+    # theme: moon # moon, night
+    css: ../css/moon2.css
+    highlight: zenburn #zenburn, monochrome
+    center: true
+    transition: fade
+    background_transition: fade
+# output: beamer_presentation
+# header-includes:
+#    - \usetheme[progressbar=frametitle]{metropolis}
+---
+
+```{r, setup, include=F}
+knitr::opts_chunk$set(comment=NULL, collapse=T, strip.white=F)
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+# Introductory Stuff {data-background="pics/intro2.jpg" data-transition="fade"}
+
+## Briefly about me {data-background="pics/about_me2.jpg" data-background-transition="fade" data-transition-speed="slow" data-transition-speed="slow"}
+
+- PhD Psychology, University of Edinburgh
+- Psychometrician, Royal College of Surgeons of Edinburgh (stats, coding in `R`)
+- Teaching post-doc in statistics in `R`, University of Edinburgh
+- Senior teaching co-ordinator, University of Edinburgh
+
+## Office hours
+
+- Not compulsory but I'd encourage you to make use of them
+- Flexible - send me a meeting request individually or as a group at https://doodle.com/mvalasek
+- Questions can be
+    - About the course
+    - Conceptual
+    - Coding issues
+    - About slides
+    - About lab exercises
+    - Generally about stats
+
+## Arrest this man, he talks in maths {data-background="pics/karma2.jpg" data-transition="fade"}
+
+- There will be numbers, there will be maths
+- Maths (and logic) is the language of computers, statistics, science, and -- it seems -- the universe
+- We will focus on developing a conceptual understanding and intuition
+- We won't discuss anything that is beyond your capability to understand
+- It won't be a walk in the park though so do put in the hours
+
+## If you find yourself struggling
+
+- Go back to where you last felt on top of things and take it from there
+- **Come** talk to us
+- **Ask** questions during the lectures
+- Make use of the discussion forum on LEARN
+- Take a deep breath, go for a walk, **you'll be fine**!
+
+# Overview of Weeks 2-5
+
+## Lectures
+
+- Conceptual basis for statistical analysis
+    - Logic & sets, probability, independence, sampling, variables, descriptive statistics
+    - Functions, basic data visualisation, sampling distribution, Central Limit Theorem
+    - Hypotheses, probability distributions, significance testing
+    
+- Basic statistical tests
+    - *z*-test, *t*-test, *\(\chi\)^2^* test, correlation, *F*-test
+    
+    
+## Labs
+
+- Fundamentals of `R`
+    - Commands, objects, functions, data structures
+    - Working with data: indexing, subsetting, transformations
+- Exploring and visualising data
+    - Descriptive statistics, plots
+- Basic statistical tests in `R`
+
+## Before we start
+
+- All clear regarding research questions/design and measurement?
+
+## Today
+
+- Logic, sets, probability
+    - Probability theory is the basis for all of statistics
+    - Sits on a foundation of logic and set theory
+    - Not the focus of this course but we need to talk about these topics a little
+- Sampling & independence
+- Variables
+    - Descriptive statistics
+
+
+# That's logic, innit! {data-background="pics/logic2.jpg" data-transition="fade"}
+
+## Logic
+
+- Informally, a discipline concerned with truth value of statements, relationships between objects, and inference based on them
+- There are several systems of logic but we will only discuss [Boolean](https://en.wikipedia.org/wiki/Boolean_algebra) logic, in which a statement can be exclusively either `TRUE` (1) or `FALSE` (0)
+- The basis of all maths and computing
+- If you want to be able to code, you need to understand at least the basics
+- *Note.* The following is a **strictly informal** treatment of logic. Instead of using formal notation, I will use the `R` notation 
+ 
+## Logic -- truth value (1)
+
+- Statement is a meaningful utterance about objects in the world and their relationships.
+    - <i>e.g.,</i> *"Today is Wednesday."* or *"Two is qual to five."*
+ 
+- Based on the nature of the relationships and the premises, a statement can either be `TRUE` (1) or `FALSE` (0)
+- Premises don't have to be *"true"* in the sense of corresponding to our experience of reality. We can assess the truth value of a statement even if it's based on outlandish premises
+
+## Logic -- truth value (2)
+
+1) *All rivers are laughter*
+2) *All laughter takes a chance*
+
+    Therefore
+
+3)  *All rivers take a chance*
+
+- The conclusion is a valid inference based on the premises and so is `TRUE`, even though it sounds like New Age "wisdom"
+
+```{r, size="normalsize",}
+# R-ish for "equals" or "is" is ==, not = !
+weekdays(Sys.Date()) == "Wednesday"
+
+2 == 5
+
+# object orange has the value "apple" (premise)
+orange <- "apple"
+orange == "apple"
+```
+
+## Logic -- Boolean operators (1)
+- Logical operators express relationships between objects (equality, `==`, is an example)
+- There are lots of them but we will focus on four *Boolean operators*:
+  - NOT (`!`)
+  - AND (`&` in `R`)
+  - OR (`|`)
+  - exclusive OR, XOR (the `xor()` function in `R`)
+
+## Logic -- Boolean operators (2)
+- They are quite intuitive except for the OR/XOR distinction
+- A statement linking two objects statements with OR is `TRUE` if **either** of the partial statement is `TRUE` **or both of them** are `TRUE`
+- XOR returns `TRUE` **if and only if one of the statements** is `TRUE`
+
+## Logic in `R`
+- *Note.* `%in%` is a membership operator in `R` -- `a %in% A` means "element `a` is in the object `A`"; Its result is `TRUE`/`FLASE`
+ 
+```{r}
+A <- 1:5 # A contains numbers from 1 to 5
+B <- c(-1, 3, 5, 7) # B contains numbers -1, 3, 5, and 7
+
+1 %in% A
+
+1 %in% B
+```
+ 
+- If the thing to the left of `%in%` is an object containing several elements, the results will be one logical value per element (<i>i.e.,</i> `%in%` is *vectorised*)
+ 
+```{r}
+A %in% B
+```
+
+## Logic -- NOT (`!`)
+
+- The simplest operator
+- Negates the subsequent statement, <i>i.e.,</i> turns `TRUE` to `FALSE` and <i>vice versa</i>
+- if `A == B` is `FALSE`, `!(A == B)` or `A != B` will be `TRUE`
+
+```{r}
+a <- TRUE
+!a
+
+!(1 %in% A)
+```
+
+## Logic -- AND (`&`)
+
+![Truth table of A AND B](pics/and.png)
+
+```{r}
+1 %in% A & 5 %in% B # 1 is in A AND 5 is in B
+```
+
+`!(A & B)` is equivalent to `xor(A, B) | (!A & !B)`
+
+## Logic -- OR (`|`)
+
+![Truth table of A OR B](pics/or.png)
+
+```{r}
+-30 %in% A | 5 %in% B # first FALSE, second TRUE
+```
+
+`!(A | B)` is equivalent to `(!A & !B)`
+
+## Logic -- XOR (`xor()`)
+
+![Truth table of A XOR B](pics/xor.png)
+
+```{r}
+xor(5 %in% A, -1 %in% B) # both TRUE
+```
+
+`!xor(A, B)` is equivalent to `(A & B) | (!A & !B)`
+
+
+# Get set . . . {data-background="pics/sets2.jpg" data-transition="fade"}
+
+## Sets (1)
+
+- Set theory sits on a foundation of logic and forms the basis for all maths
+- Set is a well-defined group of objects/elements: we can tell which elements belong to which set
+- You can think of our two groups `A` and `B` from before as sets
+
+![](pics/sets1.png)
+
+## Sets (2)
+
+- *Subset* of set `A` is a set that **only contains elements that are also in** `A` 
+- Sets `C` and `D` are equal if and only if `C` is a subset of `D` AND `D` is a subset of `C`
+- Subset of a set `A` that is *not equal* to `A` is called **proper subset**
+
+## Set operations
+
+- You can think of elements of a set as statements about the elements' membership of a given set
+    - 1 is in `A`
+    - 3 is in `A`
+    - 3 is in `B`...
+- Just like you can perform logical operations on statements, you can perform set operations on sets
+- Logical and set operations are analogous of each other
+- *Note.* I'll keep using the notation introduced above instead of standard [set notation](https://www.cs.sfu.ca/~ggbaker/zju/math/set-oper.html)
+
+## Set intersection
+
+- Intersection of sets `A` and `B` consists of elements that are present in **both** of these sets
+- Analogous to `A & B`
+
+![](pics/set_intersect.png)
+
+- Intersection of two sets that do not share elements is an *empty set* -- &empty;
+
+## Set union
+
+- Union of sets `A` and `B` consists of all elements that are present in **either** of these sets
+- Analogous to `A | B`
+
+![](pics/set_union.png)
+
+\ 
+
+## Set difference
+
+- Difference between sets `B` and `A` consists of all elements that are in `B` **but not in** `A`
+- Analogous to `B & !A`
+
+![](pics/set_BnotA.png)
+
+- *Question:* What is the difference of `C` and `D` such that `C` is equal to `D`?
+
+
+## Set complement
+
+- Complement of set `A` consists of all elements that are **in the universal set but not in** `A`
+- Analogous to `!A`
+
+![](pics/set_notA.png){height=400px}
+
+## Union of differences
+
+- Not an operation in its own right but a combination of union and difference
+- *Question:* Which logical operation is analogous to the union of `A` -- `B` and `B` -- `A`?
+
+![](pics/set_xor.png)
+
+> - `xor(A, B)` or `(A & !B) | (B & !A)`
+
+
+# Probability matters (p < .001) {data-background="pics/probability2.jpeg" data-transition="fade"}
+
+## Probability
+
+- System of attributing chance to events
+- Based on a foundation of logic and set theory
+- Informs all of statistics
+- Main approaches: [frequentist](https://en.wikipedia.org/wiki/Frequentist_probability) and [Bayesian](https://en.wikipedia.org/wiki/Bayesian_probability)
+- We focus on the frequentist approach but be aware that Bayesian statistics has been gaining a lot of traction in recent years
+
+## It's a tricky business
+
+- Unlike things we've talked about, probability is not intuitive
+- We didn't evolve to solve probabilistic problems analytically but to adopt heuristics
+- The whole field started as a result of this counter-intuitive nature
+    - One Antoine Gombaud, Chevalier de Méré noticed that when he bet on rolling **at least 1 double-six in 24 rolls of two dice**, he lost more often than when he bet on rolling **at least 1 six in 4 rolls of a single die** and was puzzled by it and challenged mathematicians to explain why
+    - Blaise Pascal and Pierre de Fermat took up the challenge and, between themselves, laid the groundwork of modern probability theory
+    
+## Two goats and a car
+
+- Another great historical example is the [Monty Hall problem](https://en.wikipedia.org/wiki/Monty_Hall_problem)
+- Originally posed and solved in the 70s ([Selvin, 1975](https://www.jstor.org/stable/2683689)), it gained prominence in 1990, when it appeared in [Marilyn vos Savant](https://en.wikipedia.org/wiki/Marilyn_vos_Savant)'s column in Parade magazine
+- The correct answer provoked a massive outcry ([transcript](http://marilynvossavant.com/game-show-problem/))
+- The problem:
+
+  > Suppose you're on a game show, and you're given the choice of three doors. Behind one door is a car, behind the others, goats. You pick a door, say #1, and the host, who knows what's behind the doors, opens another door, say #3, which has a goat. He says to you, *"Do you want to pick door #2?"* Is it to your advantage to switch your choice of doors?
+
+## Definition
+
+<br>
+
+If there are *$a$* ways in which *$X$* can occur and *$b$* ways in which *$X$* can fail to occur, then the probability of *$X$* occurring is *$P(X) = a/(a+b)$*
+
+## Jargon
+
+- Let's say we're flipping a fair coin 10 times
+- **Outcome** is the possible result; either heads (H) or tails (T)
+- **Event** is a set of outcomes, <i>e.g.,</i> H H T H T T H H T H
+- **Simple event** is a single unit of an event
+- **Experiemnt** is the process generating simple events and producing outcome; flipping a coin
+- **Sample space** is the set of all possible outcomes; all combinations of Hs and Ts of size 10
+
+## The wolrd is a set
+
+- You can conceptualise the whole world as a set
+- Every single point in this set is a simple event that can possibly occur
+- Somewhere in this set is a tiny sample space of outcomes of a 3 coin toss experiment
+
+<img style="float: right" src="pics/sample_space.png" height=100px>
+
+<!-- ![](pics/sample_space.png){height=100px} -->
+
+## \ {data-background="pics/sample_space.png" data-background-size="90%" data-transition="fade"}
+
+## \ {data-background="pics/event.png" data-background-size="90%" data-transition="fade"}
+
+## \ {data-background="pics/simple_event.png" data-background-size="90%" data-transition="fade"}
+
+
+## Basic calculation
+
+- Given definition above, since there are 3 ways we can get exactly one T and 5 ways we can get some other number of Ts, the probability of getting exactly one T if we flip a fair coin three times is *P(A) = 3 / (3 + 5)*
+
+![](pics/p_A.png)
+
+
+## Basic calculation
+
+- Similarly, there is only one way of getting HHT (simple event *a*) when flipping a fair coin three times -- and therefore seven ways this can fail to occur -- so the probability of this happening is *P(a) = 1 / 8*
+
+![](pics/p_smallA.png)
+
+## Basic calculation
+
+> - OK, your turn, what is the probability of a subset of *A* that does not include *a*?
+> - *P(A & !a) = P(A) &minus; P(a)*
+> - *P(A & !a) = .375 &minus; .125 = .250*
+
+![](pics/p_Anota.png)
+
+## Conditional probability
+
+- Conditional probability *P(A|B)* is the probability of *A* occurring **given that B occurred**
+- Here, it's the probability of getting exactly 1 T in 3 flips of a fair coin **given** H on the first flip
+- *Note.* '|' is conditional probability, not the 'OR' operation
+
+![](pics/p_AgivenB1.png){height="380px"}
+
+## Conditional probability
+
+- To calculate *P(A|B)*, we need to know the probability of *A*, the probability of *B*, and the probability of *B given A*
+- *$P(A|B) = \frac{P(B|A)\times P(A)}{P(B)}$*
+- *$P(A|B) = \frac{2/3\times 3/8}{1/2}$*
+
+![](pics/p_AgivenB1.png){height="380px"}
+
+## Conditional probability
+
+- To calculate *P(A|B)*, we need to know the probability of *A*, the probability of *B*, and the probability of *B given A*
+- *$P(A|B) = \frac{P(B|A)\times P(A)}{P(B)}$*
+- *$P(A|B) = \frac{2/3\times 3/8}{1/2}$*
+
+![](pics/p_AgivenB2.png){height="380px"}
+
+## Independence
+
+- In probability theory, two events are said to be *independent* if the occurrence of one does not influence the probability of the other
+- We saw that *P(A)* = .375 but *P(A|B)* = .5
+- Likewise *P(B)* = .5 but *P(B|A)* = .667
+- That means that *A* and *B* are dependent events
+- Example of independent events would be getting H on first flip and getting T on second
+
+## Joint probability
+
+- If *A* and *B* are two distinct events, joint probability of *A* and *B* is the probability that *A* will occur NAD *B* will occur
+- For **independent** events, *P(A & B) = P(A) &times; P(B)*
+- For **dependent** events, *P(A & B) = P(A) &times; P(B|A)*
+
+![](pics/p_AandB.png)
+
+## Probability of union
+
+- This is the probability of *A* occurring OR *B* occurring.
+- But we need to be careful not to count their intersection twice!
+- *P(A OR B) = P(A) + P(B) &minus; P(A & B)*
+
+![](pics/p_AorB1.png)
+
+## Probability of union
+
+- We know that *A* and *B* are dependent, and therefore \ \ \ \ <br>*P(A & B) = P(A) &times; P(B|A)*
+- *P(A OR B) = 3/8 + 1/2 &minus; (3/8 &times; 1/2)*
+- *P(A OR B) = 5/8 = .625*
+
+![](pics/p_AorB1.png)
+
+## Probability of union
+
+- We know that *A* and *B* are dependent, and therefore \ \ \ \ <br>*P(A & B) = P(A) &times; P(B|A)*
+- *P(A OR B) = 3/8 + 1/2 &minus; (3/8 &times; 1/2)*
+- *P(A OR B) = 5/8 = .625*
+
+![](pics/p_AorB.png)
+
+## Take-home message
+
+- Probability builds on set theory builds on logic
+- Basic logical and set operations are analogous
+    - NOT : set complement
+    - AND : set intersection
+    - OR : set union
+    - XOR : union of differences
+- Logic behind probability calculations
+- What we mean when we say events are (in)dependent
+- How conditional probability expresses the influence one event has on another
+
+## \ {data-background="../gif/rain.gif"}
+
+```{r, echo=FALSE}
+# htmltools::includeHTML("../css/timer.html")
+htmltools::includeHTML("../css/clock.html")
+```
+
+# <b>And that's all for today!</b><br><subtitle>See you in the labs :)</subtitle>

@@ -1,0 +1,848 @@
+% File: l7.Rnw
+% Time-stamp: <>
+% $Id$
+%
+% Author: Martin Corley
+
+\documentclass[compress,11pt,aspectratio=1610]{beamer}
+\usetheme{Luebeck}
+\usecolortheme{crane}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{luebeck-numbers}
+
+%
+\usepackage{nbeamer}
+\usepackage{centeredimage}
+%\usepackage{mathptmx,helvet,courier}
+%\usepackage{cmbright}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+%\usepackage{colortbl}
+\usepackage{url}
+\urlstyle{same}
+%\usepackage{multimedia}
+\newcommand*{\ars}[1]{\atright{\mbox{\tiny #1}}\\}
+%\renewcommand{\term}[1]{\textbf{\textcolor{red!50!black}{#1}}}
+\renewcommand{\term}[1]{\textbf{\usebeamercolor[fg]{titlelike}{#1}}}
+\newcommand*{\spc}[1][1em]{\vspace*{#1}\par}
+\usepackage{xspace}
+\renewenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
+\newcommand{\R}[1]{\colorbox{shadecolor}{\texttt{\hlstd{\small #1}}}} % R code, requires knitr defs
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+
+<<setup, include=FALSE>>=
+require(knitr)
+# this bit makes the tildes lower
+.hook_source = knit_hooks$get('source')
+knit_hooks$set(source = function(x, options) {
+  txt = .hook_source(x, options)
+  # extend the default source hook
+  gsub('~', '\\\\textasciitilde{}', txt)
+})
+#
+knit_hooks$set(par=function(before, options, envir){
+if (before && options$fig.show!='none') par(mar=c(5.1,4.1,2.1,2.1))
+}, crop=hook_pdfcrop)
+#
+opts_chunk$set(fig.path='img/auto-',fig.align='center',fig.show='hide',size='scriptsize',warning=FALSE,tidy=TRUE,tidy.opts=list(keep.blank.line=FALSE, width.cutoff=70),fig.width=5,fig.height=4.15,par=TRUE)
+# set everything to handlable numbers of digits (reclaim screen space!)
+options(replace.assign=TRUE,width=70,digits=2)
+#options(mar=c(5.1,4.1,1.1,2.1),cex=2,cex.text=2)
+source('R/preamble.R') # useful functions
+set.seed(271271)
+@ 
+
+
+\title[USMR~7]{The General Linear Model}
+\subtitle{Multiple Regression and Model Criticism}
+\author{Martin Corley}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Today}
+\tableofcontents[part=1]
+\tableofcontents[part=2]
+\tableofcontents[part=3]
+\end{frame}
+
+\part[Recap]{A Linear Model}
+
+\frame[plain]{\partpage}
+
+\section[Model]{The Model}
+\subsection[Recap]{Recap from Last Week}
+
+\begin{frame}[fragile]
+  \frametitle{A Word-Naming Experiment}
+<<getdata>>=
+load(url('https://is.gd/refnet'))
+ls()
+summary(naming)
+@ 
+\begin{itemize}
+\item \R{RT} = naming-aloud times (for 240 words)
+\item \R{length} in characters
+\item \R{freq} in wpm
+\item \R{pos}: \R{N}oun, \R{V}erb, or \R{A}djective
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Several Equations To Start With}
+\begin{alertblock}{A General Model of Observed Data}
+\centering{
+  $\text{outcome}_i=(\text{model})+\text{error}_i$ \\[.5em]
+  $\widehat{\text{outcomes}}=(\text{model})$}
+\end{alertblock}
+\spc\pause
+
+\begin{block}{Linear Model}
+\centering{$\hat{y_i}={b_0}\visible<1-3>{\cdot\textcolor<2->{red}{1}} +
+  b_1\cdot\textcolor<2->{blue}{x_i}$\\
+\visible<3->{\texttt{y \textasciitilde{}
+    \visible<3>{\textcolor{red}{1} +}
+    \visible<3->{\textcolor{blue}{x}}}}\\
+\visible<5->{\texttt{RT \textasciitilde{} \textcolor{blue}{log(freq+1)}}}%
+}
+
+\end{block}
+
+\begin{itemize}
+\item<6-> we want estimates of $b_0$ (\term{intercept}) and $b_1$ (\term{slope})
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}<2>[t,fragile]
+  \frametitle{Begin By Inspecting the Data}
+\begin{overprint}
+  \onslide<1| handout:0>
+<<plotme1>>=
+with(naming, plot(RT ~ freq))
+@ 
+\cimage[.6\linewidth]{img/auto-plotme1-1}
+\onslide<2| handout:1>
+<<plotme2>>=
+with(naming, plot(RT ~ log(freq+1)))
+@ 
+\cimage[.6\linewidth]{img/auto-plotme2-1}
+\end{overprint}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{A Simple Linear Model}
+<<doit0,eval=F>>=
+model <- lm (RT ~ log(freq+1), data=naming)
+summary(model)
+@ 
+<<doit1,echo=F>>=
+model <- lm (RT ~ log(freq+1), data=naming)
+.pp(summary(model),l=list(c(2:3),-3))
+@ 
+  \begin{itemize}
+  \item $R^2$ and $F$ are basic indicators of how `good' a model is
+  \item part of R's output when summarising an \R{lm} object
+\item we'll revisit adjusted $R^2$ later
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{A Simple Linear Model}
+<<doit2,eval=F>>=
+summary(model)
+@ 
+<<doit3,echo=F>>=
+.pp(summary(model),l=list(c(2:12),0))
+@   
+\begin{itemize}
+\item glancing at \R{Residuals} gives an indication of whether they
+  are roughly symmetrically distributed
+\item the \R{Coefficients} give you the model
+\item the \R{Estimate} for \R{(intercept)} is $b_0$
+\item the \R{Estimate} for \R{log(freq + 1)} is $b_1$, the \term{slope}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Coefficients}
+<<sumlm99,echo=F>>=
+.pp(summary(model),l=list(c(10:12)))
+@   
+\begin{itemize}
+\item \emph{independently} of whether the model fit is `good',
+  coefficients can tell us about our data
+\spc
+\item here, the \R{(Intercept)} $b_0$ isn't that useful
+  \begin{itemize}
+  \item[\ra] it takes
+    \Sexpr{.rround(coef(model)[1],0)}ms to name `zero-frequency words'
+  \end{itemize}
+\spc
+  \pause
+\item but the slope $b_1$ of \R{log(freq + 1)} is quite informative
+  \begin{itemize}
+  \item[\ra] words are named \Sexpr{.rround(-coef(model)[2],0)}ms
+    faster per unit increase
+    
+\item this is a significant finding
+  
+\item calculated from the estimated coefficient and its
+  \R{Std.\@ Error}, using the $t$ distribution
+  \end{itemize}
+\end{itemize}
+\end{frame}  
+
+
+\subsection[Interpreting]{What The Model Means}
+
+\begin{frame}[fragile]
+  \frametitle{Visualising the Model}
+<<abline>>=
+with(naming,plot(RT ~ log(freq+1)))
+abline(model,col='red',lwd=2)
+@ 
+\cimage[.7\linewidth]{img/auto-abline-1}
+\atright{\hyperlink{cont}{\beamerskipbutton{skip digression}}}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Digression: R and Objects}
+  \begin{itemize}
+  \item in \R{R}, \emph{everything} is an \term{object} (a `thing' with a name)
+    \begin{itemize}
+    \item vectors, matrices, dataframes
+    \item<2-> functions, \ldots{}
+    \end{itemize}
+\pause[3]
+  \item \emph{functions} can take into account what kind of object they're acting on
+  \end{itemize}
+<<objects>>=
+x <- 1:5 # numbers 1-5
+y <- gl(5,1) # factor with 5 levels
+summary(x)
+summary(y)
+@   
+  
+\end{frame}
+
+\begin{frame}[fragile]{Digressing Further: abline()}
+<<abl,include=F>>=
+with(naming,plot(RT ~ log(freq+1)))
+abline(v=4,col='blue')
+with(naming,plot(RT ~ log(freq+1)))
+abline(v=4,col='blue')
+abline(a=400,b=50,col='green') # intercept, slope
+with(naming,plot(RT ~ log(freq+1)))
+abline(v=4,col='blue')
+abline(a=400,b=50,col='green') # intercept, slope
+abline(model,col='red',lwd=2)
+@   
+<<ab1,eval=F>>=
+abline(v=4,col='blue')
+@ 
+\pause[2]
+<<ab2,eval=F>>=
+abline(a=400,b=50,col='green') # intercept, slope
+@ 
+\pause[3]
+<<ab3,eval=F>>=
+abline(model,col='red',lwd=2)
+@ 
+\begin{overprint}
+  \onslide<1| handout:0>
+\cimage[.5\linewidth]{img/auto-abl-1}
+  \onslide<2| handout:0>
+\cimage[.5\linewidth]{img/auto-abl-2}  
+  \onslide<3| handout:1>
+\cimage[.5\linewidth]{img/auto-abl-3}  
+\end{overprint}
+\end{frame}
+
+\begin{frame}[fragile,label=cont]
+\frametitle{Visualisation (using \texttt{predict()})}
+<<niceplot0,echo=F>>=
+nf <- sort(log(naming$freq + 1))
+y <- predict(model,list(freq=exp(nf)),interval='c')
+with(naming,plot(RT~log(freq+1)))
+matlines(nf,y,col=c('red','blue','blue'),lwd=c(2,1,1),lty=c(1,2,2))
+@ 
+\cimage[.5\linewidth]{img/auto-niceplot0-1}
+\begin{center}
+{\small (confidence intervals for the \emph{model})}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Visualisation (using \texttt{predict()})}
+<<niceplot1,echo=F>>=
+nf <- sort(log(naming$freq + 1))
+y <- predict(model,list(freq=exp(nf)),interval='p')
+with(naming,plot(RT~log(freq+1)))
+matlines(nf,y,col=c('red','blue','blue'),lwd=c(2,1,1),lty=c(1,2,2))
+@ 
+\cimage[.5\linewidth]{img/auto-niceplot1-1}
+\begin{center}
+{\small (confidence intervals for \emph{predicted observations})}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,shrink=5]
+  \frametitle{Scaling of Predictors}
+
+  \begin{itemize}
+  \item `words of zero frequency' may not be very meaningful
+  \item can \term{rescale} predictor to make interpretation more useful
+  \item can also be used to ameliorate collinearity
+  \end{itemize}
+<<scaled,eval=F>>=
+model.S <- lm(RT ~ I(log (freq+1) - mean(log(freq+1))), data=naming)
+summary(model.S)
+@ 
+\pause
+<<scaled1,echo=F>>=
+lf <- scale(log(naming$freq+1),scale=F)
+model.S <- lm(RT ~ I(lf), data=naming)
+.pp(summary(model.S),0,-10)
+rm(lf)
+@ 
+
+\begin{itemize}
+  \item slope unchanged
+\item \Sexpr{.rround(coef(model.S)[1],0)}ms corresponds to words of mean log frequency
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Scaling of Predictors}
+  
+  \begin{itemize}
+  \item \emph{linear} scaling of predictors doesn't change model fit
+  \end{itemize}
+
+<<sc>>=
+summary(model)$r.squared
+summary(model.S)$r.squared
+summary(lm(RT ~ I(5 * log(freq + 1)), data=naming))$r.squared
+@ 
+
+\begin{itemize}
+\item \emph{non-linear} scaling---like \R{log()} above---changes fit 
+\end{itemize}
+
+<<sc2>>=
+summary(lm(RT ~ freq, data=naming))$r.squared
+@ 
+
+\end{frame}
+
+\part{Multiple Regression}
+
+\frame[plain]{\partpage}
+
+\section[Multiple]{Multiple Regression}
+
+\subsection[Predictors]{Adding Predictors}
+
+\begin{frame}[fragile]
+  \frametitle{Multiple Regression}
+  \begin{overprint}
+    
+    \onslide<1| handout:0>
+
+<<tryscat0,echo=F,message=F>>=
+require(scatterplot3d)
+s3d <- with(naming,scatterplot3d(log(freq+1),length,RT,pch=16,highlight.3d=TRUE,type="p",main="Naming Time by Log Frequency and Word Length"))
+@  
+
+\cimage[.6\linewidth]{img/auto-tryscat0-1}
+
+\onslide<2| handout:1>
+
+<<tryscat1,echo=F>>=
+s3d <- with(naming,scatterplot3d(log(freq+1),length,RT,pch=16,highlight.3d=TRUE,type="p",main="Naming Time by Log Frequency and Word Length"))
+s3d$plane3d(coef(model)[1],coef(model)[2],0)
+@ 
+
+\cimage[.55\linewidth]{img/auto-tryscat1-1}
+\end{overprint}
+
+\pause[2]
+\begin{itemize}
+\item so far, have accounted for one predictor
+\item adding predictors increases the dimensionality of the model
+\end{itemize}
+
+  
+\end{frame}
+
+%\section{Multiple Regression}
+%\subsection{Intro}
+
+\begin{frame}[fragile]{Adding Predictors}
+
+\begin{itemize}
+\item in multiple regression, $R^2$ measures the fit of the entire model
+\item sum of individual $R^2$s \emph{if predictors not correlated}
+\item interpretation more tricky if predictors correlated
+\end{itemize}
+
+\begin{block}{Specific Model for Multiple Regression}
+\[y_i=b_0+b_1x_{1i}+b_2x_{2i}+ \ldots{} +b_nx_{ni}+\epsilon_i\]
+\end{block}
+\spc\pause
+\begin{itemize}
+\item does word length have an effect on naming time (over and above frequency)?
+\end{itemize}
+<<aiq>>=
+model2 <- lm(RT ~ log(freq+1) + length,data=naming)
+@ 
+\end{frame}
+
+\begin{frame}[fragile]{Comparing Models}
+  \begin{itemize}
+  \item $R^2$ for \R{model} was \Sexpr{.rround(summary(model)$r.squared,3,drop.zero=T)}
+  \item $R^2$ for the new \R{model2} is
+    \Sexpr{.rround(summary(model2)$r.squared,3,drop.zero=T)} (from \R{summary(model2)})
+  \item does this mean that \R{model2} is better?
+\spc\pause
+  \item \emph{any} predictor will improve $R^2$ (chance associations
+    guarantee this)
+  \end{itemize}
+<<chr2,eval=F>>=
+model3 <- lm(RT ~ log(freq+1) + runif(240),data = naming)
+# add purely random predictor
+summary(model3)
+@ 
+<<chr22,echo=F>>=
+model3 <- lm(RT ~ log(freq+1) + runif(240),data = naming)
+.pp(summary(model3),l=list(0,18,0))
+@ 
+
+\begin{itemize}
+\item \term{adjusted $R^2$} controls for additional predictors
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comparing Models}
+
+<<F1,eval=F>>=
+summary(model) # without length
+@   
+<<F2,echo=F>>=
+.pp(summary(model),l=list(0,18,0))
+@ 
+<<F3,eval=F>>= 
+summary(model2) # with length
+@ 
+<<F4,echo=F>>=
+.pp(summary(model2),l=list(0,19,0))
+@ 
+
+\begin{itemize}
+\item each model improves over \emph{chance}, but do they successively
+  improve over \emph{each other}?
+\end{itemize}
+
+\end{frame}
+  
+\begin{frame}[fragile,shrink=5]{Comparing Models}
+
+<<a>>=
+anova(model2)
+@ 
+
+\pause
+\begin{itemize}
+\item[NB] \emph{order} of predictors matters\ldots
+\end{itemize}
+
+<<a2>>=
+model2b <- lm(RT~length+log(freq+1),data=naming)
+@ 
+<<a3,eval=F>>=
+anova(model2b)
+@ 
+<<a4,echo=F>>=
+.pp(anova(model2b),l=list(0,c(4:7),0))
+@ 
+\end{frame}
+
+\subsection[I vs.\@ III]{Type 1 vs.\@ Type 3 Sums of Squares}
+
+\begin{frame}<1| handout:1-2>[label=type1]{Type I vs.\@ Type 3 SS}
+  \begin{itemize}
+  \item order matters because R, by default, uses \term{Type~I} sums of squares
+    \begin{itemize}
+    \item calculate the improvement to the model caused by each
+      successive predictor \emph{in turn}
+    \end{itemize}
+   \item compare to \term{Type~III} sums of squares
+     \begin{itemize}
+     \item calculate the improvement to the model caused by each
+       predictor \emph{taking all other predictors into account}
+       \item default for, e.g., SPSS
+     \end{itemize}
+     \spc\pause
+   \item huge debate about which is `better'
+   \item good arguments for  Type~I
+
+   \item (nobody likes Type~II)
+   \item most important: be aware of the consequence\ldots
+
+     \item<2-| alert@2> predictors should be entered into models in a
+       theoretically-motivated order
+     \end{itemize}
+   \end{frame}
+
+     \begin{frame}
+       \frametitle{Type 1 vs.\@ Type 3 SS}
+\begin{columns}
+  \column{.49\linewidth}
+\centering{\term{Type I}}\spc[.2em]
+\begin{overprint}
+\onslide<1| handout:0>
+\cimage[.8\linewidth]{img/type0-0}
+\onslide<2| handout:0>
+\cimage[.8\linewidth]{img/type1-1}
+\onslide<3| handout:0>
+\cimage[.8\linewidth]{img/type1-2}
+\onslide<4| handout:1>
+\cimage[.8\linewidth]{img/type1-3}
+\end{overprint}
+  \column{.49\linewidth}
+\centering{\term{Type III}}\spc[.2em]
+\begin{overprint}
+  \onslide<1| handout:0>
+\cimage[.8\linewidth]{img/type0-0}
+\onslide<2| handout:0>
+\cimage[.8\linewidth]{img/type3-1}
+\onslide<3| handout:0>
+\cimage[.8\linewidth]{img/type3-2}
+\onslide<4| handout:1>
+\cimage[.8\linewidth]{img/type3-3}
+\end{overprint}
+\end{columns}  
+\end{frame}
+
+
+   
+   
+ \againframe<2| handout:0>{type1}
+   
+   
+ \begin{frame}[fragile]{Type III SS}
+   \begin{itemize}
+   \item can easily get Type III-like output
+  \end{itemize}
+<<type3>>=
+drop1(model2,test='F')
+@   
+
+\end{frame}
+
+\subsection[Interpreting]{Interpreting Multiple Regression}
+
+\begin{frame}[fragile]
+  \frametitle{The Two-Predictor Model}
+<<sum2,eval=F>>=
+summary(model2)
+@ 
+<<sum2b,echo=F>>=
+.pp(summary(model2),l=list(0,c(9:19)))
+@ 
+\begin{itemize}
+\item RT \emph{decreases} by \Sexpr{.rround(-coef(model2)[2],0)}ms for every
+  additional unit of log frequency
+\item RT \emph{increases} by \Sexpr{.rround(coef(model2)[3],0)}ms for
+  every character of length
+\item model accounts for
+  \Sexpr{.rround(summary(model2)$r.squared*100,0)}\% of the
+  variance
+%$
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{The Two-Predictor Model}
+<<d3,echo=F>>=
+s3d <- with(naming,scatterplot3d(log(freq+1),length,RT,pch=16,highlight.3d=TRUE,type="p",main="Naming Time by Log Frequency and Word Length"))
+s3d$plane3d(model2)
+@ 
+<<d3b,eval=F>>=
+library(scatterplot3d)
+s3d <- with(naming,scatterplot(log(freq +1),length,RT))
+s3d$plane3d(model2)
+@ 
+\cimage[.6\linewidth]{img/auto-d3-1}  
+\end{frame}
+
+\part{Model Criticism}
+\frame[plain]{\partpage}
+
+\section[Assumptions]{Assumptions of Linear Models}
+
+\subsection[Checking]{Checking Assumptions}
+
+\begin{frame}
+  \frametitle{Assumptions of Linear Models}
+\begin{block}{Required}
+  \begin{itemize}
+  \item \term{linearity} of relationships(!)
+  \item for the \emph{residuals}:
+    \begin{itemize}
+    \item \term{normality}
+    \item \term{homogeneity of variance}
+    \item \term{independence}
+    \end{itemize}
+  \end{itemize}
+\end{block}  
+\spc[.5em]
+\pause[2]
+\begin{block}{Desirable}
+  \begin{itemize}
+  \item uncorrelated predictors (no collinearity)
+  \item no `bad' (overly influential) observations
+  \end{itemize}
+\end{block}
+  
+  
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Linearity}
+
+<<l1>>=
+plot(model2, which=1)
+@ 
+\cimage[.5\linewidth]{img/auto-l1-1}
+
+\begin{itemize}
+
+\item plotting fitted values $\hat{y_i}$ against residuals
+  $\epsilon_i$
+\item the `average residual' is roughly zero across $\hat{y_i}$, so
+  relationship is likely to be linear 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Normality of Residuals}
+
+
+\begin{itemize}
+\item simple assessments are often useful
+\end{itemize}
+<<histn>>=
+hist( residuals(model2), main='', breaks=20)
+@   
+\cimage[.6\linewidth]{img/auto-histn-1}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Normality of Residuals}
+
+<<residn>>=
+plot(density(residuals(model2)),main='')
+@ 
+\cimage[.6\linewidth]{img/auto-residn-1}  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Checking Assumptions}
+\framesubtitle{normality of residuals}
+\begin{itemize}
+\item a useful way to check \emph{any} distribution is a QQ~plot
+\end{itemize}
+<<qq>>=
+plot(model2, which =2)
+@ 
+\cimage[.55\linewidth]{img/auto-qq-1}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Homogeneity of Variance}
+<<hom1>>=
+plot(model2, which=3)
+@ 
+\cimage[.5\linewidth]{img/auto-hom1-1}
+\begin{itemize}
+\item shows $\sqrt{|\epsilon_i|}$ as a function of $\hat{y_i}$
+ \item horizontal line suggests that variance is matched across $\hat{y_i}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Independence}
+\begin{itemize}
+\item no easy way to check \term{independence} of residuals
+\item in part, because it depends on the \emph{source} of the observations
+\spc
+\pause
+\item one determinant might be a \emph{person} observed multiple times
+\item e.g., my naming times might tend to be slower than yours
+\item[\ra] repeated measures \ra{} $\ldots$ \ra{} mixed models
+\end{itemize}
+\pause[3]
+\spc
+\atright{but meanwhile\ldots}\spc
+\atright{\hyperlink{cooks}{\beamerskipbutton{skip collinearity}}}
+\end{frame}
+
+\subsection[Desirables]{Checking Desirables}
+
+\begin{frame}[fragile]
+  \frametitle{Desirables}
+\framesubtitle{collinearity}
+\begin{itemize}
+\item correlated predictors widen the confidence interval (i.e., raise
+  the SE of the coefficient)
+\item we can estimate how much using a calculation of \term{variance
+    inflation factor (VIF)}
+\item calculated from $R^2$s of models using predictors to predict
+  each other
+\end{itemize}
+
+<<vif>>=
+library(car)
+vif(model2)
+@ 
+
+\begin{itemize}
+\item $\sqrt{\text{VIF}}$ tells you how much the SE has been inflated
+\item $\sqrt{\Sexpr{.rround(vif(model2)[1],1)}}=\Sexpr{.rround(sqrt(vif(model2)[1]),1)}$: no
+  problem here!
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile,label=cook]
+  \frametitle{Identifying `Bad' Observations}
+  
+<<makedata,echo=F>>=
+my.df <- data.frame(x = rnorm(12,15,6))
+my.df$y <- my.df$x * 1.5 + rnorm(12,0,3)
+pl.me <- function () {
+    plot(my.df,xlab='predictor',ylab='observation',xlim=c(0,40),ylim=c(0,60),axes=F,type='n')
+    axis(1,labels=F)
+    axis(2,labels=F)
+    box()
+    abline(lm(y~x,data=my.df),col='red',lwd=2)
+    points(my.df)
+    }
+pl.me()
+o <- data.frame(x=mean(my.df$x),y=(mean(my.df$y)+25))
+n.df <- rbind(my.df,o)
+points(o,col='blue',pch=16,cex=2)
+abline(lm(y~x,data=n.df),col='blue',lwd=2,lty=2)
+lines(c(o[1],o[1]),c(o[2],mean(my.df$y)),lwd=1,lty=2,col='blue')
+
+@ 
+\cimage[.5\linewidth]{img/auto-makedata-1}
+\begin{itemize}
+\item \term{outliers} affect the intercept only
+\item the \term{studentised residual} is the difference between the
+  observation and the regression without that observation
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Identifying `Bad' Observations}
+<<make2,echo=F>>=
+pl.me()
+m <- lm(y~x,data=my.df)
+o <- data.frame(x=38,y=38*coef(m)[2]+coef(m)[1]-7)
+n.df <- rbind(my.df,o)
+points(o,col='blue',pch=16,cex=2)
+abline(lm(y~x,data=n.df),col='blue',lwd=2,lty=2)
+lines(c(o[1],o[1]),c(o[2],38*coef(m)[2]+coef(m)[1]),lwd=1,lty=2,col='blue')
+
+@ 
+\cimage[.5\linewidth]{img/auto-make2-1} 
+\begin{itemize}
+\item observations with high \term{leverage} are inconsistent with other
+  data, but may not be distorting the model
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Identifying `Bad' Observations}
+<<make3,echo=F>>=
+pl.me()
+m <- lm(y~x,data=my.df)
+o <- data.frame(x=38,y=38*coef(m)[2]+coef(m)[1]-25)
+n.df <- rbind(my.df,o)
+points(o,col='blue',pch=16,cex=2)
+abline(lm(y~x,data=n.df),col='blue',lwd=2,lty=2)
+lines(c(o[1],o[1]),c(o[2],38*coef(m)[2]+coef(m)[1]),lwd=1,lty=2,col='blue')
+@ 
+\cimage[.5\linewidth]{img/auto-make3-1}
+\begin{itemize}
+\item what we care about most are observations with high
+  \term{influence} (outliers with high leverage)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile,shrink=5]
+  \frametitle{Desirables}
+  \framesubtitle{identifying `bad' observations}
+  \begin{itemize}
+  \item one way of identifying observations with high influence is
+    using \term{Cook's distance}
+  \item Cook's distances over 1 are worth looking at
+  \end{itemize}
+<<cookme>>=
+plot(model2, which=4)
+@ 
+\cimage[.55\linewidth]{img/auto-cookme-1}
+\end{frame}
+
+\begin{frame}[fragile]{Assumptions Violated}
+  \framesubtitle{if we didn't that reaction times scaled with
+    \emph{log} frequency\ldots}
+  
+<<bad,eval=F>>=
+model2.B <- lm(RT ~ freq + length,data=naming)
+summary(model2.B)
+@   
+<<bad2,echo=F>>=
+model2.B <- lm(RT ~ freq + length,data=naming)
+.pp(summary(model2.B),l=list(0,c(5:20)))
+@   
+
+\end{frame}
+
+\begin{frame}[fragile]{Assumptions Violated}
+
+<<plots>>=
+par(mfrow=c(2,2))
+plot(model2.B,which=c(1:4))
+@   
+  
+\cimage[.65\linewidth]{img/auto-plots-1}
+\end{frame}
+
+
+
+
+
+\end{document}
