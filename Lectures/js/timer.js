@@ -1,5 +1,6 @@
 
-function startTimer(){
+function startTimer(lecture){
+  var msg = ["Settle down please", "Let's get on with it", "Onwards!", "And now for something completely different"]
   var current_time = Date.parse(new Date());
   var deadline = new Date(current_time + 10*60*1000);
 
@@ -20,7 +21,7 @@ function startTimer(){
   }
       if (t < 0) {
           clearInterval(x);
-          document.getElementById("timer").innerHTML = "Settle down please";
+          document.getElementById("timer").innerHTML = msg[lecture - 1];
       }
   }, 1000);
 }

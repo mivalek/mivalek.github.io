@@ -502,6 +502,13 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Teaching post-doc in statistics in <code>R</code>, University of Edinburgh</li>
 <li>Senior teaching co-ordinator, University of Edinburgh</li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Promise there won’t be pictures on every slides!</li>
+<li>This one is to try to convince that – despite what CV suggests – I do have a bit of a life</li>
+</ul>
+</aside>
 </section><section id="office-hours" class="slide level2">
 <h2>Office hours</h2>
 <ul>
@@ -517,6 +524,12 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Generally about stats</li>
 </ul></li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>There are links on some of the slides, use them!</li>
+</ul>
+</aside>
 </section><section id="arrest-this-man-he-talks-in-maths" class="slide level2" data-background="pics/karma2.jpg">
 <h2>Arrest this man, he talks in maths</h2>
 <ul>
@@ -535,6 +548,15 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Make use of the discussion forum on LEARN</li>
 <li>Take a deep breath, go for a walk, <strong>you’ll be fine</strong>!</li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Don’t be shy to interrupt, just raise hand, ask questions</li>
+<li>Chances are you’re not the only one who is wondering about the same thing</li>
+<li>but it SHOULD be you who asks!</li>
+<li>if you’re intimidated by the lecturers’ academic seniority or stunning good looks – or the hilarious sense of humour – maybe talk to one of our tutors</li>
+</ul>
+</aside>
 </section></section>
 <section><section id="overview-of-weeks-2-5" class="titleslide slide level1" data-background="pics/overview2.jpg"><h1>Overview of Weeks 2-5</h1></section><section id="lectures" class="slide level2">
 <h2>Lectures</h2>
@@ -543,13 +565,20 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <ul>
 <li>Logic &amp; sets, probability, independence, sampling, variables, descriptive statistics</li>
 <li>Functions, basic data visualisation, sampling distribution, Central Limit Theorem</li>
-<li>Hypotheses, probability distributions, significance testing</li>
+<li>Models, hypotheses, probability distributions, significance testing</li>
 </ul></li>
 <li>Basic statistical tests
 <ul>
 <li><em>z</em>-test, <em>t</em>-test, <em><span class="math inline">\(\chi\)</span><sup>2</sup></em> test, correlation, <em>F</em>-test</li>
 </ul></li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Slides available online</li>
+<li>use chrome to print/save as PDF</li>
+</ul>
+</aside>
 </section><section id="labs" class="slide level2">
 <h2>Labs</h2>
 <ul>
@@ -564,6 +593,13 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </ul></li>
 <li>Basic statistical tests in <code>R</code></li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Strongly encourage you to come to labs</li>
+<li>Some degree of disjointedness between lectures and labs is unavoidable as we need to cover both theoretical issues and programming</li>
+</ul>
+</aside>
 </section><section id="before-we-start" class="slide level2">
 <h2>Before we start</h2>
 <ul>
@@ -594,6 +630,12 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>If you want to be able to code, you need to understand at least the basics</li>
 <li><em>Note.</em> The following is a <strong>strictly informal</strong> treatment of logic. Instead of using formal notation, I will use the <code>R</code> notation</li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Text in monospace on a brown background is <code>R</code> code: to get used to what it looks like</li>
+</ul>
+</aside>
 </section><section id="logic-truth-value-1" class="slide level2">
 <h2>Logic – truth value (1)</h2>
 <ul>
@@ -612,9 +654,13 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <p>Therefore</p></li>
 <li><p><em>All rivers take a chance</em></p></li>
 </ol>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
 <ul>
 <li>The conclusion is a valid inference based on the premises and so is <code>TRUE</code>, even though it sounds like New Age “wisdom”</li>
+<li>R implements this</li>
 </ul>
+</aside>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># R-ish for &quot;equals&quot; or &quot;is&quot; is ==, not = !</span>
 <span class="kw">weekdays</span>(<span class="kw">Sys.Date</span>()) <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span>
 [<span class="dv">1</span>] <span class="ot">FALSE</span>
@@ -674,6 +720,12 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 
 <span class="op">!</span>(<span class="dv">1</span> <span class="op">%in%</span><span class="st"> </span>A)
 [<span class="dv">1</span>] <span class="ot">FALSE</span></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>What is negation of “larger than”?</li>
+</ul>
+</aside>
 </section><section id="logic-and" class="slide level2">
 <h2>Logic – AND (<code>&amp;</code>)</h2>
 <p><img src="pics/and.png" alt="Truth table of A AND B" /></p>
@@ -692,6 +744,13 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xor</span>(<span class="dv">5</span> <span class="op">%in%</span><span class="st"> </span>A, <span class="op">-</span><span class="dv">1</span> <span class="op">%in%</span><span class="st"> </span>B) <span class="co"># both TRUE</span>
 [<span class="dv">1</span>] <span class="ot">FALSE</span></code></pre></div>
 <p><code>!xor(A, B)</code> is equivalent to <code>(A &amp; B) | (!A &amp; !B)</code></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>These operations are especially important for programming</li>
+<li>Is all of this crystal clear? Please ask if not…</li>
+</ul>
+</aside>
 </section></section>
 <section><section id="get-set-.-.-." class="titleslide slide level1" data-background="pics/sets2.jpg" data-transition="fade"><h1>Get set . . .</h1></section><section id="sets-1" class="slide level2">
 <h2>Sets (1)</h2>
@@ -749,6 +808,12 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <ul>
 <li><em>Question:</em> What is the difference of <code>C</code> and <code>D</code> such that <code>C</code> is equal to <code>D</code>?</li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>ANSWER: an empty set – set theory equivalent of zero</li>
+</ul>
+</aside>
 </section><section id="set-complement" class="slide level2">
 <h2>Set complement</h2>
 <ul>
@@ -766,6 +831,13 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <ul>
 <li class="fragment"><code>xor(A, B)</code> or <code>(A &amp; !B) | (B &amp; !A)</code></li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>All clear?</li>
+<li>We’re heading into probability so you need to understand sets</li>
+</ul>
+</aside>
 </section></section>
 <section><section id="probability-matters-p-.001" class="titleslide slide level1" data-background="pics/probability2.jpeg" data-transition="fade"><h1>Probability matters (p &lt; .001)</h1></section><section id="probability" class="slide level2">
 <h2>Probability</h2>
@@ -787,6 +859,12 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li>Blaise Pascal and Pierre de Fermat took up the challenge and, between themselves, laid the groundwork of modern probability theory</li>
 </ul></li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>RE Méré – Boy must he have gambled a lot to notice that!</li>
+</ul>
+</aside>
 </section><section id="two-goats-and-a-car" class="slide level2">
 <h2>Two goats and a car</h2>
 <ul>
@@ -798,10 +876,24 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <blockquote>
 <p>Suppose you’re on a game show, and you’re given the choice of three doors. Behind one door is a car, behind the others, goats. You pick a door, say #1, and the host, who knows what’s behind the doors, opens another door, say #3, which has a goat. He says to you, <em>“Do you want to pick door #2?”</em> Is it to your advantage to switch your choice of doors?</p>
 </blockquote>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>vos Savant is quite a fascinating person</li>
+<li>Check out the transcripts – they’d be funny if they weren’t outrageous in how condescending the men are!</li>
+<li>What do you think? Should you switch? Does it matter at all?</li>
+</ul>
+</aside>
 </section><section id="definition" class="slide level2">
 <h2>Definition</h2>
 <p><br></p>
 <p>If there are <em><span class="math inline">\(a\)</span></em> ways in which <em><span class="math inline">\(X\)</span></em> can occur and <em><span class="math inline">\(b\)</span></em> ways in which <em><span class="math inline">\(X\)</span></em> can fail to occur, then the probability of <em><span class="math inline">\(X\)</span></em> occurring is <em><span class="math inline">\(P(X) = a/(a+b)\)</span></em></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>So what’s the probability of rolling a 1 on a six-sided die?</li>
+</ul>
+</aside>
 </section><section id="jargon" class="slide level2">
 <h2>Jargon</h2>
 <ul>
@@ -820,6 +912,12 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li>Somewhere in this set is a tiny sample space of outcomes of a 3 coin toss experiment</li>
 </ul>
 <p><img style="float: right" src="pics/sample_space.png" height=100px></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>look, there’s the tiny corner; let’s zoom in on it</li>
+</ul>
+</aside>
 </section><section id="section" class="slide level2" data-background="pics/sample_space.png" data-background-size="90%" data-transition="fade">
 <h2> </h2>
 </section><section id="section-1" class="slide level2" data-background="pics/event.png" data-background-size="90%" data-transition="fade">
@@ -868,8 +966,22 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li><em><span class="math inline">\(P(A|B) = \frac{P(B\ \&amp;\ A)}{P(B)} = \frac{P(B|A)\times P(A)}{P(B)} = \frac{2/3\times 3/8}{1/2}\)</span></em></li>
 </ul>
 <p><img src="pics/p_AgivenB2.png" height="380" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>We want to know the prob of the intersection but only with respect to B, not to entire sample space</li>
+<li>is this crystal clear?</li>
+</ul>
+</aside>
 </section><section id="what-is-all-this-good-for" class="slide level2">
 <h2>What is all this good for?!</h2>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>I see some eyes are beginning to glaze over</li>
+<li>you might be wondering what’s the point… Let’s see how this applies in the very real world</li>
+</ul>
+</aside>
 </section><section id="conditional-probability-in-action" class="slide level2" data-background="pics/chlam2.jpg">
 <h2>Conditional probability in action</h2>
 <ul>
@@ -881,12 +993,25 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li class="fragment">How certain are you that you indeed have a chlamydia infection?</li>
 <li class="fragment">Let’s geek out about it!</li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Yes, that <em>IS</em> chlamydia in the background</li>
+</ul>
+</aside>
 </section><section id="conditional-probability-in-action-1" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
 <li>The prevalence of chlamydia in Scotland is 421 per 100k but it’s much higher in people under 25 at 1,516 per 100k (<a href="http://www.hps.scot.nhs.uk/documents/ewr/pdf2016/1639.pdf" target="_blank">source</a>)</li>
 </ul>
 <p><img src="pics/chlam_set.png" height="450" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>From the picture, you can already probably intuit that it’s not 92%</li>
+<li>that’s why sets and visualisations are useful</li>
+</ul>
+</aside>
 </section><section id="conditional-probability-in-action-2" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
@@ -899,10 +1024,30 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <ul>
 <li>Applying the conditional probability formula, we can see that, for an <strong>average person</strong> younger than 25 living in Scotland, the probability of actually having a chlamydia infection given a positive <strong>routine</strong> test is <strong>45.6%</strong></li>
 </ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>IMPORTANT - usually, when you get tested, it’s not screening and you are usually not from general population!</li>
+<li>There are reasons why people get tested</li>
+</ul>
+</aside>
 </section><section id="thats-what-all-this-is-good-for" class="slide level2">
-<h2>That’s what all this is good for!</h2>
+<h2>That’s what all this is good for!<br><subtitle> </subtitle></h2>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>I hope I’ve convinced you, that understanding probability is useful</li>
+</ul>
+</aside>
 </section><section id="thats-what-all-this-is-good-for-for-chlamydia-.-.-." class="slide level2" data-background="pics/chlam2.jpg">
 <h2>That’s what all this is good for!<br><subtitle>For chlamydia . . .</subtitle></h2>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Let’s go back to probability</li>
+<li>Only a few more things to cover and then we’ll break for tea</li>
+</ul>
+</aside>
 </section><section id="independence" class="slide level2">
 <h2>Independence</h2>
 <ul>
@@ -920,6 +1065,12 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li>For <strong>dependent</strong> events, <em><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></em></li>
 </ul>
 <p><img src="pics/p_AandB.png" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>This time we’re interested in p of the intersection with respect to the entire sample space</li>
+</ul>
+</aside>
 </section><section id="probability-of-union" class="slide level2">
 <h2>Probability of union</h2>
 <ul>
@@ -944,6 +1095,13 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li><em><span class="math inline">\(P(A\ OR\ B) = 5/8 = .625\)</span></em></li>
 </ul>
 <p><img src="pics/p_AorB.png" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>In case you’re wondering, no, it doesn’t matter if we add P(B) and the p of the bit of A or the other way around</li>
+<li>Is all of this clear as a highland loch?</li>
+</ul>
+</aside>
 </section><section id="take-home-message" class="slide level2">
 <h2>Take-home message</h2>
 <ul>
@@ -957,7 +1115,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </ul></li>
 <li>Logic behind probability calculations</li>
 <li>What we mean when we say events are (in)dependent</li>
-<li>How conditional probability expresses the influence one event has on another</li>
+<li>How conditional probability expresses the influence one event has on another <br> </li>
 </ul>
 </section><section id="take-home-message-1" class="slide level2" data-background="pics/chlam2.jpg">
 <h2>Take-home message</h2>
@@ -980,13 +1138,144 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <h2> </h2>
 <script src="../js/timer.js"></script>
 <time>
-<section id="timer" onclick="startTimer()">
-10 : 00
+<section id="timer" onclick="startTimer(1)">
+10:00
 </section>
 <p></time></p>
 </section></section>
-<section><section id="sampling" class="titleslide slide level1" data-background="pics/sampling2.jpg"><h1>Sampling</h1></section></section>
-<section><section id="variables" class="titleslide slide level1" data-background="pics/var2.jpg"><h1>Variables</h1></section></section>
+<section><section id="sampling" class="titleslide slide level1" data-background="pics/samp2.jpg"><h1>Sampling</h1></section><section id="why-sample" class="slide level2">
+<h2>Why sample?</h2>
+<ul>
+<li>We want to say something about the world</li>
+<li>We want to empirically assess that which we’re commenting on</li>
+<li>Unfortunately, we don’t have access to every single instance of that thing</li>
+<li>So we look at <em>some instances</em>, take measurements, quantify relationships of interest and make <em>inferences</em> about other, unobserved instances</li>
+</ul>
+</section><section id="words.-beautiful-words.-the-best-words." class="slide level2">
+<h2>Words. Beautiful words.<br>The best words.</h2>
+<ul>
+<li><strong>Population</strong> – all possible observations in the sample space</li>
+<li><strong>Sample</strong> – a subset of the population we actually collected data from</li>
+<li><strong>Parameter</strong> – a property of interest in the population</li>
+<li><strong>Statistic</strong> – a quantified expression of the property of interest in the sample</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>We use the statistic derived from the sample to make inferences about the population parameter</li>
+</ul>
+</aside>
+</section><section id="random-draw" class="slide level2">
+<h2>Random draw</h2>
+<ul>
+<li>When taking a sample from the population, we assume the process by which we sample is <em>random</em></li>
+<li>Every member of the population has the same probability of getting selected</li>
+<li>That does <strong>not</strong> mean that every value has the same chance of being selected!</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>If I open a bag of Celebrations chocolates and randomly pick one, I may get any of the 8 treats</li>
+<li>If I “sample” one from the same box the morning after the party, I’m virtually guaranteed to get a Caramel or a Bounty</li>
+<li>Why is this? Let’s see…</li>
+</ul>
+</aside>
+</section><section id="sampling-from-a-finite-population" class="slide level2">
+<h2>Sampling from a finite population</h2>
+<ul>
+<li>There are two kinds of sampling: with replacement and without replacement</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># population - ten integers from 1 to 10</span>
+pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+
+<span class="co"># sampling WITH replacement</span>
+<span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
+ [<span class="dv">1</span>]  <span class="dv">8</span>  <span class="dv">9</span>  <span class="dv">5</span>  <span class="dv">2</span> <span class="dv">10</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">10</span>  <span class="dv">5</span>  <span class="dv">3</span>
+
+<span class="co"># sampling WITHOUT replacement</span>
+<span class="kw">sample</span>(pop, <span class="dv">10</span>)
+ [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">8</span>  <span class="dv">6</span>  <span class="dv">9</span>  <span class="dv">1</span>  <span class="dv">7</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">3</span></code></pre></div>
+</section><section id="sampling-with-replacement" class="slide level2">
+<h2>Sampling <strong>with</strong> replacement</h2>
+<ul>
+<li>Let’s say our box of CeleBraTiONs contains 10 of each of the 8 chocolates</li>
+<li>Pick a chocolate at random, record which one it is, put it back, repeat</li>
+<li>What’s the probability of picking a Malteaser on the first draw? On the second?</li>
+</ul>
+<ul>
+<li class="fragment"><em><span class="math inline">\(P(malt1) = 10/80\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(P(malt2) = 10/80\)</span></em></li>
+<li class="fragment">When sampling from a finite population with replacement, is any given draw influenced by the previous draws?</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+What do we call this property?
+</aside>
+</section><section id="sampling-without-replacement" class="slide level2">
+<h2>Sampling <strong>without</strong> replacement</h2>
+<ul>
+<li>Now pick a chocolate – it’s a Malteaser! – keep it, and pass the box on</li>
+<li>What’s the probability of picking a Malteaser on the first draw? On the second?</li>
+</ul>
+<ul>
+<li class="fragment"><em><span class="math inline">\(P(malt1) = 10/80 = .125\)</span></em></li>
+<li class="fragment"><em><span class="math inline">\(P(malt2) = 9/79 = .114\)</span></em></li>
+<li class="fragment">When sampling from a finite population without replacement, individual draws are <em>not independent</em>!</li>
+</ul>
+</section><section id="sampling-in-practice" class="slide level2">
+<h2>Sampling in practice</h2>
+<ul>
+<li>When picking a sample, we <em>assume that the population is infinite</em></li>
+<li>Even though we sample without replacement, the individual draws are essentially independent</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<p>All clear?</p>
+In the remainder of this course, we will focus on how we draw inferences about population parameters from statistics calculated using samples
+</aside>
+</section></section>
+<section><section id="variables" class="titleslide slide level1" data-background="pics/var2.jpg"><h1>Variables</h1></section><section id="more-lingo" class="slide level2">
+<h2>More lingo</h2>
+<ul>
+<li>When we collect a sample, it is because we want to measure certain <strong>attributes</strong> (<i>e.g.,</i> age)</li>
+<li>We collect one – or several – observations of the given attribute from each member of the sample</li>
+<li><strong>Doamin</strong> is a set of all possible values an observation of a given attribute can take (0 - <a href="https://en.wikipedia.org/wiki/Jeanne_Calment">122+</a> years)</li>
+<li><strong>Variable</strong> is set of attributes in which the observations vary across a domain</li>
+<li>Something that’s a variable in one sample may not be a variable in another sample (first language in a sample of monolingual native English speakers is a <em>constant</em>, not a variable)</li>
+</ul>
+</section><section id="types-of-variables" class="slide level2">
+<h2>Types of variables</h2>
+<ul>
+<li>Several important ones:
+<ul>
+<li><strong>Continuous</strong> – can take <em>any</em> value within the range of its domain (<i>e.g.,</i> age)</li>
+<li><strong>Discrete</strong> – can take a specific set of values but not the values between these (<i>e.g.,</i> number of rooms in a hotel)</li>
+<li><strong>Binomial</strong> – special case of discrete variable; can only take two values, usually 0 and 1 (<i>e.g.,</i> pass/fail outcome of a test)</li>
+</ul></li>
+</ul>
+</section><section id="levels-of-measurement" class="slide level2">
+<h2>Levels of measurement</h2>
+<ul>
+<li><strong>Nominal</strong> – categories with no relative ordering (<i>e.g.,</i> study programme )</li>
+<li><strong>Ordinal</strong> – categories that can be meaningfully ordered (<i>e.g.,</i> lecture quality ranking)</li>
+<li><strong>Interval</strong> – values are ordered and <em>equidistant</em>; no absolute zero point (<i>e.g.,</i> IQ)</li>
+<li><strong>Ratio</strong> – like interval just with an absolute zero (<i>e.g.,</i> age)</li>
+</ul>
+</section><section id="variables-in-r" class="slide level2">
+<h2>Variables in <code>R</code></h2>
+<ul>
+<li><code>R</code> has no way of knowing what level of measurement or type of variable is inside a vector</li>
+<li>It can guess, but it’s <em>much</em> better if you tell it</li>
+<li><code>logical</code> values (<code>TRUE/FALSE</code>) can only be binomial and nominal</li>
+<li><code>character</code> values can only be nominal/ordinal and cannot be continuous</li>
+<li><code>numeric</code> values can represent any level of measurement and any type of variable</li>
+<li>read more <a href="">here</a> <strong>LINK TO SaviouR OR LAB SHEET</strong></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+All clear?
+</aside>
+</section></section>
 <section><section id="descriptive-statistics" class="titleslide slide level1" data-background="pics/desc2.jpg"><h1>Descriptive statistics</h1></section></section>
 <section><section id="see-you-in-the-labs" class="titleslide slide level1" data-background="pics/end2.jpg"><h1> <br><br><br><subtitle>See you in the labs :)</subtitle></h1></section></section>
     </div>
