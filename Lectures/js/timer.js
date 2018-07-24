@@ -15,7 +15,7 @@ function startTimer(lecture){
   var t = deadline - now;
   var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((t % (1000 * 60)) / 1000);
-  document.getElementById("timer").innerHTML = minutes.pad(2) + " : " + seconds.pad(2);
+  document.getElementById("timer").innerHTML = minutes.pad(2) + ":" + seconds.pad(2);
       if (t < 60000) {
           document.getElementById("timer").style.color = "#ffa733";
   }

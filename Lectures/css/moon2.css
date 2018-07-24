@@ -2,31 +2,31 @@
  * Solarized Dark theme for reveal.js.
  * Author: Achim Staebler
  */
-@import url(lib/font/league-gothic/league-gothic.css);
+@import url(../css/lib/font/league-gothic/league-gothic.css);
 
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: url(fonts/Lato.ttf) format('truetype');
+  src: url(../css/fonts/Lato.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  src: url(fonts/LatoBold.ttf) format('truetype');
+  src: url(../css/fonts/LatoBold.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 400;
-  src: url(fonts/LatoItalic.ttf) format('truetype');
+  src: url(../css/fonts/LatoItalic.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 700;
-  src: url(fonts/LatoBoldItalic.ttf) format('truetype');
+  src: url(../css/fonts/LatoBoldItalic.ttf) format('truetype');
 }
 
 
@@ -308,6 +308,7 @@ body {
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
+/* replace the below if going back to old arrows
 .reveal .controls .navigate-left,
 .reveal .controls .navigate-left.enabled {
   border-right-color: #ff8000; }
@@ -334,7 +335,10 @@ body {
   border-bottom-color: #ff5500; }
 
 .reveal .controls .navigate-down.enabled:hover {
-  border-top-color: #ff5500; }
+  border-top-color: #ff5500; }*/
+
+.reveal .controls {
+  color: #ff8000; }
 
 /*********************************************
  * PROGRESS BAR

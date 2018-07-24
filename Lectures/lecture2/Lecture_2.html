@@ -1138,7 +1138,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <h2> </h2>
 <script src="../js/timer.js"></script>
 <time>
-<section id="timer" onclick="startTimer(1)">
+<section id="timer" onclick="startTimer(1); this.onclick=null" ;>
 10:00
 </section>
 <p></time></p>
@@ -1190,11 +1190,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>]  <span class="dv">8</span>  <span class="dv">9</span>  <span class="dv">5</span>  <span class="dv">2</span> <span class="dv">10</span>  <span class="dv">9</span> <span class="dv">10</span> <span class="dv">10</span>  <span class="dv">5</span>  <span class="dv">3</span>
+ [<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">5</span>  <span class="dv">8</span>  <span class="dv">5</span>  <span class="dv">2</span>  <span class="dv">8</span>  <span class="dv">9</span>  <span class="dv">8</span>  <span class="dv">5</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">8</span>  <span class="dv">6</span>  <span class="dv">9</span>  <span class="dv">1</span>  <span class="dv">7</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">3</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">5</span>  <span class="dv">9</span>  <span class="dv">2</span>  <span class="dv">8</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">7</span> <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">1</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
