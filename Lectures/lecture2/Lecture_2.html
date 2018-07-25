@@ -1161,11 +1161,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">6</span> <span class="dv">5</span>
+[<span class="dv">1</span>]  <span class="dv">6</span> <span class="dv">10</span>  <span class="dv">8</span>  <span class="dv">1</span>  <span class="dv">5</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">6</span> <span class="dv">5</span> <span class="dv">8</span> <span class="dv">7</span> <span class="dv">2</span></code></pre></div>
+[<span class="dv">1</span>] <span class="dv">8</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">3</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1185,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>]  <span class="dv">2</span> <span class="dv">10</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">9</span>  <span class="dv">3</span>  <span class="dv">2</span>  <span class="dv">7</span>  <span class="dv">1</span>
+ [<span class="dv">1</span>]  <span class="dv">3</span>  <span class="dv">9</span>  <span class="dv">3</span>  <span class="dv">7</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">7</span>  <span class="dv">1</span>  <span class="dv">7</span>  <span class="dv">4</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">6</span>  <span class="dv">9</span> <span class="dv">10</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">1</span>  <span class="dv">5</span>  <span class="dv">4</span>  <span class="dv">2</span>  <span class="dv">3</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">4</span>  <span class="dv">8</span>  <span class="dv">6</span> <span class="dv">10</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">1</span>  <span class="dv">9</span>  <span class="dv">5</span>  <span class="dv">7</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1427,7 +1427,7 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">4</span>
+ [<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">3</span>
 Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
 [<span class="dv">1</span>] <span class="dv">3</span>
@@ -1625,7 +1625,7 @@ ss <span class="op">/</span><span class="st"> </span>(<span class="kw">length</s
 </ul>
 </section><section id="dispersion-standard-deviation-1" class="slide level2">
 <h2>Dispersion: <strong>Standard deviation</strong></h2>
-<p><br> <em><span class="math display">\[s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}}\]</span></em></p>
+<p><br> <span class="math display">\[s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}}\]</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="kw">var</span>(data<span class="op">$</span>age))
 [<span class="dv">1</span>] <span class="fl">3.577709</span>
 <span class="kw">sd</span>(data<span class="op">$</span>age)
@@ -1639,7 +1639,7 @@ ss <span class="op">/</span><span class="st"> </span>(<span class="kw">length</s
 [<span class="dv">1</span>] <span class="fl">0.3577709</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
-All clear?
+Any questions?
 </aside>
 </section><section id="take-home-message-1" class="slide level2">
 <h2>Take-home message</h2>
@@ -1705,6 +1705,7 @@ All clear?
         dependencies: [
           { src: 'Lecture_2_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
           { src: 'Lecture_2_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: 'Lecture_2_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
           { src: 'Lecture_2_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
         ]
       });
