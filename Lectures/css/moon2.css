@@ -135,6 +135,9 @@ body {
   color: #eee8d5;
   font-style: italic; }
 
+.reveal m {
+  color: #eee8d5; }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {
