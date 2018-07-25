@@ -887,7 +887,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="definition" class="slide level2">
 <h2>Definition</h2>
 <p><br></p>
-<p>If there are <em><span class="math inline">\(a\)</span></em> ways in which <em><span class="math inline">\(X\)</span></em> can occur and <em><span class="math inline">\(b\)</span></em> ways in which <em><span class="math inline">\(X\)</span></em> can fail to occur, then the probability of <em><span class="math inline">\(X\)</span></em> occurring is <em><span class="math inline">\(P(X) = a/(a+b)\)</span></em></p>
+<p>If there are <m><span class="math inline">\(a\)</span></m> ways in which <m><span class="math inline">\(X\)</span></m> can occur and <m><span class="math inline">\(b\)</span></m> ways in which <m><span class="math inline">\(X\)</span></m> can fail to occur, then the probability of <m><span class="math inline">\(X\)</span></m> occurring is <m><span class="math inline">\(P(X) = a/(a+b)\)</span></m></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -927,27 +927,27 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="basic-calculation" class="slide level2">
 <h2>Basic calculation</h2>
 <ul>
-<li>Given definition above, since there are 3 ways we can get exactly one T and 5 ways we can get some other number of Ts, the probability of getting exactly one T if we flip a fair coin three times is <em><span class="math inline">\(P(A) = 3 / (3 + 5)\)</span></em></li>
+<li>Given definition above, since there are 3 ways we can get exactly one T and 5 ways we can get some other number of Ts, the probability of getting exactly one T if we flip a fair coin three times is <m><span class="math inline">\(P(A) = 3 / (3 + 5)\)</span></m></li>
 </ul>
 <p><img src="pics/p_A.png" /></p>
 </section><section id="basic-calculation-1" class="slide level2">
 <h2>Basic calculation</h2>
 <ul>
-<li>Similarly, there is only one way of getting HHT (simple event <em><span class="math inline">\(a\)</span></em>) when flipping a fair coin three times – and therefore seven ways this can fail to occur – so the probability of this happening is <em><span class="math inline">\(P(a) = 1 / 8\)</span></em></li>
+<li>Similarly, there is only one way of getting HHT (simple event <m><span class="math inline">\(a\)</span></m>) when flipping a fair coin three times – and therefore seven ways this can fail to occur – so the probability of this happening is <m><span class="math inline">\(P(a) = 1 / 8\)</span></m></li>
 </ul>
 <p><img src="pics/p_smallA.png" /></p>
 </section><section id="basic-calculation-2" class="slide level2">
 <h2>Basic calculation</h2>
 <ul>
-<li class="fragment">OK, your turn, what is the probability of a subset of <em><span class="math inline">\(A\)</span></em> that does not include <em><span class="math inline">\(a\)</span></em>?</li>
-<li class="fragment"><em><span class="math inline">\(P(A\ \&amp;\ !a) = P(A) - P(a)\)</span></em></li>
-<li class="fragment"><em><span class="math inline">\(P(A\ \&amp;\ !a) = .375 - .125 = .250\)</span></em></li>
+<li class="fragment">OK, your turn, what is the probability of a subset of <m><span class="math inline">\(A\)</span></m> that does not include <m><span class="math inline">\(a\)</span></m>?</li>
+<li class="fragment"><m><span class="math inline">\(P(A\ \&amp;\ !a) = P(A) - P(a)\)</span></m></li>
+<li class="fragment"><m><span class="math inline">\(P(A\ \&amp;\ !a) = .375 - .125 = .250\)</span></m></li>
 </ul>
 <p><img src="pics/p_Anota.png" /></p>
 </section><section id="conditional-probability" class="slide level2">
 <h2>Conditional probability</h2>
 <ul>
-<li>Conditional probability <em><span class="math inline">\(P(A|B)\)</span></em> is the probability of <em><span class="math inline">\(A\)</span></em> occurring <strong>given that <span class="math inline">\(B\)</span> occurred</strong></li>
+<li>Conditional probability <m><span class="math inline">\(P(A|B)\)</span></m> is the probability of <m><span class="math inline">\(A\)</span></m> occurring <strong>given that <span class="math inline">\(B\)</span> occurred</strong></li>
 <li>Here, it’s the probability of getting exactly 1 T in 3 flips of a fair coin <strong>given</strong> H on the first flip</li>
 <li><em>Note.</em> ‘|’ is conditional probability, not the ‘OR’ operation</li>
 </ul>
@@ -955,15 +955,15 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="conditional-probability-1" class="slide level2">
 <h2>Conditional probability</h2>
 <ul>
-<li>To calculate <em><span class="math inline">\(P(A|B)\)</span></em> applying the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes’ theorem</a>, we need to know the probability of <em><span class="math inline">\(A\)</span></em>, the probability of <em><span class="math inline">\(B\)</span></em>, and the probability of <em><span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span></em></li>
-<li><em><span class="math inline">\(P(A|B) = \frac{P(B\ \&amp;\ A)}{P(B)} = \frac{P(B|A)\times P(A)}{P(B)} = \frac{2/3\times 3/8}{1/2}\)</span></em></li>
+<li>To calculate <m><span class="math inline">\(P(A|B)\)</span></m> applying the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes’ theorem</a>, we need to know the probability of <m><span class="math inline">\(A\)</span></m>, the probability of <m><span class="math inline">\(B\)</span></m>, and the probability of <m><span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span></m></li>
+<li><m><span class="math inline">\(P(A|B) = \frac{P(B\ \&amp;\ A)}{P(B)} = \frac{P(B|A)\times P(A)}{P(B)} = \frac{2/3\times 3/8}{1/2}\)</span></m></li>
 </ul>
 <p><img src="pics/p_AgivenB1.png" height="380" /></p>
 </section><section id="conditional-probability-2" class="slide level2">
 <h2>Conditional probability</h2>
 <ul>
-<li>To calculate <em><span class="math inline">\(P(A|B)\)</span></em> applying the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes’ theorem</a>, we need to know the probability of <em><span class="math inline">\(A\)</span></em>, the probability of <em><span class="math inline">\(B\)</span></em>, and the probability of <em><span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span></em></li>
-<li><em><span class="math inline">\(P(A|B) = \frac{P(B\ \&amp;\ A)}{P(B)} = \frac{P(B|A)\times P(A)}{P(B)} = \frac{2/3\times 3/8}{1/2}\)</span></em></li>
+<li>To calculate <m><span class="math inline">\(P(A|B)\)</span></m> applying the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes’ theorem</a>, we need to know the probability of <m><span class="math inline">\(A\)</span></m>, the probability of <m><span class="math inline">\(B\)</span></m>, and the probability of <m><span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span></m></li>
+<li><m><span class="math inline">\(P(A|B) = \frac{P(B\ \&amp;\ A)}{P(B)} = \frac{P(B|A)\times P(A)}{P(B)} = \frac{2/3\times 3/8}{1/2}\)</span></m></li>
 </ul>
 <p><img src="pics/p_AgivenB2.png" height="380" /></p>
 <!-- speaker notes -->
@@ -1018,7 +1018,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li>Let’s put some numbers on it: from what we know, we can create a contingency table of C. infection and test results</li>
 </ul>
 <p><img src="pics/chlam_tab.png" height="250" /></p>
-<p><br> <em><span class="math inline">\(P(chlam|pos) = \frac{P(pos|chlam) \times P(chlam)}{P(pos)}\)</span></em> <em><span class="math inline">\(P(chlam|pos) = \frac{sensitivity \times prevalence}{P(pos)}\)</span></em> <em><span class="math inline">\(P(chlam|pos) \approx \frac{.92 \times .015}{.031}\)</span></em></p>
+<p><br> <m><span class="math inline">\(P(chlam|pos) = \frac{P(pos|chlam) \times P(chlam)}{P(pos)}\)</span></m> <m><span class="math inline">\(P(chlam|pos) = \frac{sensitivity \times prevalence}{P(pos)}\)</span></m> <m><span class="math inline">\(P(chlam|pos) \approx \frac{.92 \times .015}{.031}\)</span></m></p>
 </section><section id="conditional-probability-in-action-3" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
@@ -1052,17 +1052,17 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <h2>Independence</h2>
 <ul>
 <li>In probability theory, two events are said to be <em>independent</em> if the occurrence of one does not influence the probability of the other</li>
-<li>We saw that <em><span class="math inline">\(P(chlam) \approx .015\)</span></em> but <em><span class="math inline">\(P(chlam|pos) \approx .46\)</span></em></li>
-<li>Likewise, <em><span class="math inline">\(P(pos) \approx .031\)</span></em> but <em><span class="math inline">\(P(pos|chlam) = .92\)</span></em></li>
+<li>We saw that <m><span class="math inline">\(P(chlam) \approx .015\)</span></m> but <m><span class="math inline">\(P(chlam|pos) \approx .46\)</span></m></li>
+<li>Likewise, <m><span class="math inline">\(P(pos) \approx .031\)</span></m> but <m><span class="math inline">\(P(pos|chlam) = .92\)</span></m></li>
 <li>That means that having chlamydia and testing positive for it are dependent events</li>
 <li>Example of independent events would be getting H on first flip and getting T on second</li>
 </ul>
 </section><section id="joint-probability" class="slide level2">
 <h2>Joint probability</h2>
 <ul>
-<li>If <em><span class="math inline">\(A\)</span></em> and <em><span class="math inline">\(B\)</span></em> are two distinct events, joint probability of <em><span class="math inline">\(A\)</span></em> and <em><span class="math inline">\(B\)</span></em> is the probability that <em><span class="math inline">\(A\)</span></em> will occur NAD <em><span class="math inline">\(B\)</span></em> will occur</li>
-<li>For <strong>independent</strong> events, <em><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B)\)</span></em></li>
-<li>For <strong>dependent</strong> events, <em><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></em></li>
+<li>If <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> are two distinct events, joint probability of <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> is the probability that <m><span class="math inline">\(A\)</span></m> will occur NAD <m><span class="math inline">\(B\)</span></m> will occur</li>
+<li>For <strong>independent</strong> events, <m><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B)\)</span></m></li>
+<li>For <strong>dependent</strong> events, <m><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></m></li>
 </ul>
 <p><img src="pics/p_AandB.png" /></p>
 <!-- speaker notes -->
@@ -1074,25 +1074,25 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="probability-of-union" class="slide level2">
 <h2>Probability of union</h2>
 <ul>
-<li>This is the probability of <em><span class="math inline">\(A\)</span></em> occurring OR <em><span class="math inline">\(B\)</span></em> occurring.</li>
+<li>This is the probability of <m><span class="math inline">\(A\)</span></m> occurring OR <m><span class="math inline">\(B\)</span></m> occurring.</li>
 <li>But we need to be careful not to count their intersection twice!</li>
-<li><em><span class="math inline">\(P(A\ OR\ B) = P(A) + P(B) - P(A\ \&amp;\ B)\)</span></em></li>
+<li><m><span class="math inline">\(P(A\ OR\ B) = P(A) + P(B) - P(A\ \&amp;\ B)\)</span></m></li>
 </ul>
 <p><img src="pics/p_AorB1.png" /></p>
 </section><section id="probability-of-union-1" class="slide level2">
 <h2>Probability of union</h2>
 <ul>
-<li>We know that <em><span class="math inline">\(A\)</span></em> and <em><span class="math inline">\(B\)</span></em> are dependent, and therefore     <br><em><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></em></li>
-<li><em><span class="math inline">\(P(A\ OR\ B) = 3/8 + 1/2 - (3/8 \times 1/2)\)</span></em></li>
-<li><em><span class="math inline">\(P(A\ OR\ B) = 5/8 = .625\)</span></em></li>
+<li>We know that <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> are dependent, and therefore     <br><m><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></m></li>
+<li><m><span class="math inline">\(P(A\ OR\ B) = 3/8 + 1/2 - (3/8 \times 1/2)\)</span></m></li>
+<li><m><span class="math inline">\(P(A\ OR\ B) = 5/8 = .625\)</span></m></li>
 </ul>
 <p><img src="pics/p_AorB1.png" /></p>
 </section><section id="probability-of-union-2" class="slide level2">
 <h2>Probability of union</h2>
 <ul>
-<li>We know that <em><span class="math inline">\(A\)</span></em> and <em><span class="math inline">\(B\)</span></em> are dependent, and therefore     <br><em><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></em></li>
-<li><em><span class="math inline">\(P(A\ OR\ B) = 3/8 + 1/2 - (3/8 \times 1/2)\)</span></em></li>
-<li><em><span class="math inline">\(P(A\ OR\ B) = 5/8 = .625\)</span></em></li>
+<li>We know that <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> are dependent, and therefore     <br><m><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></m></li>
+<li><m><span class="math inline">\(P(A\ OR\ B) = 3/8 + 1/2 - (3/8 \times 1/2)\)</span></m></li>
+<li><m><span class="math inline">\(P(A\ OR\ B) = 5/8 = .625\)</span></m></li>
 </ul>
 <p><img src="pics/p_AorB.png" /></p>
 <!-- speaker notes -->
@@ -1161,11 +1161,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>]  <span class="dv">6</span> <span class="dv">10</span>  <span class="dv">8</span>  <span class="dv">1</span>  <span class="dv">5</span>
+[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">8</span> <span class="dv">9</span> <span class="dv">1</span> <span class="dv">2</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">8</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">3</span></code></pre></div>
+[<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">5</span> <span class="dv">2</span> <span class="dv">9</span> <span class="dv">1</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1185,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>]  <span class="dv">3</span>  <span class="dv">9</span>  <span class="dv">3</span>  <span class="dv">7</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">7</span>  <span class="dv">1</span>  <span class="dv">7</span>  <span class="dv">4</span>
+ [<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">2</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">8</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">2</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">4</span>  <span class="dv">8</span>  <span class="dv">6</span> <span class="dv">10</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">1</span>  <span class="dv">9</span>  <span class="dv">5</span>  <span class="dv">7</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">9</span>  <span class="dv">5</span>  <span class="dv">1</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">8</span>  <span class="dv">3</span>  <span class="dv">2</span>  <span class="dv">7</span>  <span class="dv">6</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1198,8 +1198,8 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 <li>What’s the probability of picking a Malteaser on the first draw? On the second?</li>
 </ul>
 <ul>
-<li class="fragment"><em><span class="math inline">\(P(malt1) = 10/80\)</span></em></li>
-<li class="fragment"><em><span class="math inline">\(P(malt2) = 10/80\)</span></em></li>
+<li class="fragment"><m><span class="math inline">\(P(malt1) = 10/80\)</span></m></li>
+<li class="fragment"><m><span class="math inline">\(P(malt2) = 10/80\)</span></m></li>
 <li class="fragment">When sampling from a finite population with replacement, is any given draw influenced by the previous draws?</li>
 </ul>
 <!-- speaker notes -->
@@ -1213,8 +1213,8 @@ What do we call this property?
 <li>What’s the probability of picking a Malteaser on the first draw? On the second?</li>
 </ul>
 <ul>
-<li class="fragment"><em><span class="math inline">\(P(malt1) = 10/80 = .125\)</span></em></li>
-<li class="fragment"><em><span class="math inline">\(P(malt2) = 9/79 = .114\)</span></em></li>
+<li class="fragment"><m><span class="math inline">\(P(malt1) = 10/80 = .125\)</span></m></li>
+<li class="fragment"><m><span class="math inline">\(P(malt2) = 9/79 = .114\)</span></m></li>
 <li class="fragment">When sampling from a finite population without replacement, individual draws are <em>not independent</em>!</li>
 </ul>
 </section><section id="sampling-in-practice" class="slide level2">
@@ -1402,8 +1402,8 @@ OR 2nd quartile, 5th decile, 50th percentile…
 <ul>
 <li>Then, find the midpoint
 <ul>
-<li>Odd number of values: <em><span class="math inline">\(\frac{N + 1}{2}\)</span></em></li>
-<li>Even number of values: <em><span class="math inline">\(\frac{N/2 + (N / 2 + 1)}{2}\)</span></em></li>
+<li>Odd number of values: <m><span class="math inline">\(\frac{N + 1}{2}\)</span></m></li>
+<li>Even number of values: <m><span class="math inline">\(\frac{N/2 + (N / 2 + 1)}{2}\)</span></m></li>
 </ul></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># N/2</span>
@@ -1427,7 +1427,7 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">3</span>
+ [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span>
 Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
 [<span class="dv">1</span>] <span class="dv">3</span>
@@ -1442,10 +1442,10 @@ Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span
 <ul>
 <li>What most people mean by <em>average</em>
 <ul>
-<li>population mean <em><span class="math inline">\(\mu\)</span></em></li>
-<li>sample mean <em><span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^N x_i}{N}\)</span></em></li>
+<li>population mean <m><span class="math inline">\(\mu\)</span></m></li>
+<li>sample mean <m><span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^N x_i}{N}\)</span></m></li>
 </ul></li>
-<li>If there are <em>N</em> observations of variable <em>x</em> in our sample, <em><span class="math inline">\(\sum_{i=1}^N x_i = x_1+x_2+x_3+\cdots +x_N\)</span></em></li>
+<li>If there are <em>N</em> observations of variable <em>x</em> in our sample, <m><span class="math inline">\(\sum_{i=1}^N x_i = x_1+x_2+x_3+\cdots +x_N\)</span></m></li>
 <li>Requires at least interval-level data</li>
 </ul>
 <p><br><br><small> <sup>*</sup> Other means are available (<a href="https://en.wikipedia.org/wiki/Geometric_mean">geometric</a>, <a href="https://en.wikipedia.org/wiki/Harmonic_mean">harmonic</a>)</small></p>
@@ -1562,7 +1562,7 @@ quartiles[<span class="dv">3</span>] <span class="op">-</span><span class="st"> 
 <ul>
 <li>Distance from every single value in the data from some convenient point</li>
 <li>Mean is a convenient point</li>
-<li><em><span class="math inline">\(x_i - \bar{x}\)</span></em>, where <em><span class="math inline">\(x_i\)</span></em> is every single data point</li>
+<li><m><span class="math inline">\(x_i - \bar{x}\)</span></m>, where <m><span class="math inline">\(x_i\)</span></m> is every single data point</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># minus is a vectorised operation in R</span>
 data<span class="op">$</span>age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>age)
@@ -1594,10 +1594,10 @@ data<span class="op">$</span>age <span class="op">-</span><span class="st"> </sp
 </section><section id="dispersion-variance-1" class="slide level2">
 <h2>Dispersion: <strong>Variance</strong></h2>
 <ul>
-<li>population variance <em><span class="math inline">\(\sigma^2 = \frac{\sum_{i=1}^N (x_i - \mu)^2}{N}\)</span></em></li>
-<li>sample variance, <em><span class="math inline">\(s^2 = \frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}\)</span></em>
+<li>population variance <m><span class="math inline">\(\sigma^2 = \frac{\sum_{i=1}^N (x_i - \mu)^2}{N}\)</span></m></li>
+<li>sample variance, <m><span class="math inline">\(s^2 = \frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}\)</span></m>
 <ul>
-<li>reason for the <em><span class="math inline">\(N - 1\)</span></em> is quite technical (see <a href="https://en.wikipedia.org/wiki/Bessel%27s_correction">Bessel’s correction</a>)</li>
+<li>reason for the <m><span class="math inline">\(N - 1\)</span></m> is quite technical (see <a href="https://en.wikipedia.org/wiki/Bessel%27s_correction">Bessel’s correction</a>)</li>
 </ul></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># deviations</span>
@@ -1618,20 +1618,24 @@ ss <span class="op">/</span><span class="st"> </span>(<span class="kw">length</s
 <li>Variance is a good measure of dispersion and is widely used</li>
 <li>One minor inconvenience – measured in <em>squared units</em>
 <ul>
-<li>if age is measured in years, <em><span class="math inline">\(s^2_{age}\)</span></em> is expressed in years<sup>2</sup>, whatever those are</li>
+<li>if age is measured in years, <m><span class="math inline">\(s^2_{age}\)</span></m> is expressed in years<sup>2</sup>, whatever those are</li>
 </ul></li>
 <li>Taking the square root of variance gives us a measure of spread in the original units</li>
-<li>This is the standard deviation, <em><span class="math inline">\(\sigma\)</span></em> for population and <em><span class="math inline">\(s\)</span></em> (or <em><span class="math inline">\(SD\)</span></em>) for sample)</li>
+<li>This is the standard deviation
+<ul>
+<li><m><span class="math inline">\(\sigma\)</span></m> for population</li>
+<li><m><span class="math inline">\(s\)</span></m> (or <m><span class="math inline">\(SD\)</span></m>) for sample</li>
+</ul></li>
 </ul>
 </section><section id="dispersion-standard-deviation-1" class="slide level2">
 <h2>Dispersion: <strong>Standard deviation</strong></h2>
-<p><br> <span class="math display">\[s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}}\]</span></p>
+<p><br><m> <span class="math display">\[s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}}\]</span> </m></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="kw">var</span>(data<span class="op">$</span>age))
 [<span class="dv">1</span>] <span class="fl">3.577709</span>
 <span class="kw">sd</span>(data<span class="op">$</span>age)
 [<span class="dv">1</span>] <span class="fl">3.577709</span></code></pre></div>
 <ul>
-<li>If we measured age in decades, <em><span class="math inline">\(s_{ageD}\)</span></em> would be <strong>proportional</strong> to <em><span class="math inline">\(s_{age}\)</span></em></li>
+<li>If we measured age in decades, <m><span class="math inline">\(s_{ageD}\)</span></m> would be <strong>proportional</strong> to <m><span class="math inline">\(s_{age}\)</span></m></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(ageD &lt;-<span class="st"> </span>data<span class="op">$</span>age <span class="op">/</span><span class="st"> </span><span class="dv">10</span>)
 [<span class="dv">1</span>] <span class="fl">2.3</span> <span class="fl">2.5</span> <span class="fl">3.3</span> <span class="fl">2.6</span> <span class="fl">2.5</span> <span class="fl">2.4</span>
@@ -1705,7 +1709,6 @@ Any questions?
         dependencies: [
           { src: 'Lecture_2_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
           { src: 'Lecture_2_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
-          { src: 'Lecture_2_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
           { src: 'Lecture_2_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
         ]
       });
