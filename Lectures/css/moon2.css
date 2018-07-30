@@ -138,6 +138,9 @@ body {
 .reveal m {
   color: #eee8d5; }
 
+.reveal invisible {
+  color: #002b36; }
+
 .reveal ol,
 .reveal dl,
 .reveal ul {

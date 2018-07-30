@@ -587,7 +587,7 @@ sd
 <span class="cf">function</span> (x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) 
 <span class="kw">sqrt</span>(<span class="kw">var</span>(<span class="cf">if</span> (<span class="kw">is.vector</span>(x) <span class="op">||</span><span class="st"> </span><span class="kw">is.factor</span>(x)) x <span class="cf">else</span> <span class="kw">as.double</span>(x), 
     <span class="dt">na.rm =</span> na.rm))
-<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x00000000061226b8</span><span class="op">&gt;</span>
+<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x000000000bcf3a78</span><span class="op">&gt;</span>
 <span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>stats<span class="op">&gt;</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -644,75 +644,64 @@ Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class
 </section><section id="visualising-functions-1" class="slide level2" data-transition="fade-in none-out">
 <h2>Visualising functions</h2>
 <ul>
-<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m><br />
-</li>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m><br><br></li>
 </ul>
-<section>
-<img src="pics/null_plot.png"/>
-</section>
-</section><section id="visualising-functions-2" class="slide level2" data-transition="none">
+<p><img src="pics/null_plot.png" width="500px"></p>
+</section><section id="visualising-functions-2" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
-<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m><br />
-</li>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span><br><br></li>
 </ul>
-<section data-gif="repeat">
-<img src="pics/f_x/draw_plot.gif"/>
-</section>
+<p><img width="500px" src="pics/f_x/draw_plot.gif" /></p>
 </section><section id="visualising-functions-3" class="slide level2" data-transition="none">
 <h2>Visualising functions</h2>
 <ul>
-<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
-<li>Let’s plot x = [1, 5, -10, 15.6, -19]</li>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Plot x = [1, 5, −10, 15.6, −19]</li>
 </ul>
-<section>
-<img src="pics/empty_plot.png"/>
-</section>
-</section><section id="visualising-functions-4" class="slide level2" data-transition="none">
+<p><img src="pics/empty_plot.png" width="500px"></p>
+</section><section id="visualising-functions-4" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
-<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
-<li>Let’s plot x = [<strong>1</strong>, 5, –10, 15.6, –19]</li>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Plot x = [<strong>1</strong>, 5, −10, 15.6, −19]</li>
 </ul>
-<section data-gif="repeat">
-<img src="pics/f_x/pt1.gif"/>
-</section>
-</section><section id="visualising-functions-5" class="slide level2" data-transition="none">
+<p><img width="500px" src="pics/f_x/pt1.gif" /></p>
+</section><section id="visualising-functions-5" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
-<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
-<li>Let’s plot x = [1, <strong>5</strong>, –10, 15.6, –19]</li>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Plot x = [1, <strong>5</strong>, −10, 15.6, −19]</li>
 </ul>
-<section data-gif="repeat">
-<img src="pics/f_x/pt2.gif"/>
-</section>
-</section><section id="visualising-functions-6" class="slide level2" data-transition="none">
+<p><img width="500px" src="pics/f_x/pt2.gif" /></p>
+</section><section id="visualising-functions-6" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
-<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
-<li>Let’s plot x = [1, 5, <strong>–10</strong>, 15.6, –19]</li>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Plot x = [1, 5, <strong>−10</strong>, 15.6, −19]</li>
 </ul>
-<section data-gif="repeat">
-<img src="pics/f_x/pt3.gif">
-</section>
-</section><section id="visualising-functions-7" class="slide level2" data-transition="none">
+<p><img width="500px" src="pics/f_x/pt3.gif" /></p>
+</section><section id="visualising-functions-7" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
-<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
-<li>Let’s plot x = [1, 5, –10, <strong>15.6</strong>, –19]</li>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Plot x = [1, 5, −10, <strong>15.6</strong>, −19]</li>
 </ul>
-<section data-gif="repeat">
-<img src="pics/f_x/pt4.gif"/>
-</section>
-</section><section id="visualising-functions-8" class="slide level2" data-transition="none">
+<p><img width="500px" src="pics/f_x/pt4.gif" /></p>
+</section><section id="visualising-functions-8" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
-<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
-<li>Let’s plot x = [1, 5, –10, 15.6, <strong>–19</strong>]</li>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Plot x = [1, 5, −10, 15.6, <strong>−19</strong>]</li>
 </ul>
-<section data-gif="repeat">
-<img src="pics/f_x/pt5.gif"/>
-</section>
+<p><img width="500px" src="pics/f_x/pt5.gif" /></p>
+</section><section id="visualising-functions-9" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Plot x = [1, 5, −10, 15.6, −19]</li>
+</ul>
+<p><img width="500px" src="pics/f_x/fun1.gif" /></p>
 </section></section>
 <section><section id="worth-a-thousand-words" class="titleslide slide level1" data-background="pics/viz2.jpg"><h1>Worth a thousand words</h1></section></section>
 <section><section id="the-shape-of-things" class="titleslide slide level1" data-background="pics/chlam2.jpg"><h1>The shape of things</h1></section></section>
@@ -731,11 +720,9 @@ Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class
 <section>
 <img src="pics/clt_plot.png">
 </section>
-</section><section id="clt-in-action-1" class="slide level2" data.transition="none">
+</section><section id="clt-in-action-1" class="slide level2" data.transition="none" data-gif="repeat">
 <h2>CLT in action</h2>
-<section data-gif="repeat">
-<img src="pics/clt.gif">
-</section>
+<p><img src="pics/clt2.gif"></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 Any questions?
