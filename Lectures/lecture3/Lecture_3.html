@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Milan Valášek" />
+  <title>USMR Lecture 3</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Lecture_3_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; } /* Keyword */
+code > span.dt { color: #dfdfbf; } /* DataType */
+code > span.dv { color: #dcdccc; } /* DecVal */
+code > span.bn { color: #dca3a3; } /* BaseN */
+code > span.fl { color: #c0bed1; } /* Float */
+code > span.ch { color: #dca3a3; } /* Char */
+code > span.st { color: #cc9393; } /* String */
+code > span.co { color: #7f9f7f; } /* Comment */
+code > span.ot { color: #efef8f; } /* Other */
+code > span.al { color: #ffcfaf; } /* Alert */
+code > span.fu { color: #efef8f; } /* Function */
+code > span.er { color: #c3bf9f; } /* Error */
+code > span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+code > span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code > span.sc { color: #dca3a3; } /* SpecialChar */
+code > span.vs { color: #cc9393; } /* VerbatimString */
+code > span.ss { color: #cc9393; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #f0dfaf; } /* ControlFlow */
+code > span.op { color: #f0efd0; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #7f9f7f; } /* Documentation */
+code > span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+</style>
+
+<link rel="stylesheet" href="Lecture_3_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="..\css\moon2.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">USMR Lecture 3</h1>
+  <h1 class="subtitle"><b>Putting FUN in functions</b></h1>
+    <h2 class="author"><subtitle>Milan Valášek</subtitle></h2>
+</section>
+
+<section id="before-we-start" class="slide level2">
+<h2>Before we start</h2>
+<script src="../js/gif.js"></script>
+<ul>
+<li>Any questions about last week’s matters?</li>
+</ul>
+</section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<ul>
+<li>Functions</li>
+<li>Basic data visualisation</li>
+<li>Distributions</li>
+<li>Sampling distribution</li>
+<li>Central Limit Theorem</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Slides available online</li>
+<li>use chrome to print/save as PDF</li>
+</ul>
+</aside>
+</section>
+<section><section id="fun-in-function" class="titleslide slide level1" data-background="pics/fun2.jpg"><h1>Fun in <code>function()</code></h1></section><section id="functions" class="slide level2">
+<h2>Functions</h2>
+<ul>
+<li>Informally, function a process that takes some input and turns it into a unique output</li>
+<li>Individual inpults are called <strong>parameters</strong> <br>   <br>   <br>   <br>   <br>   <br>  </li>
+</ul>
+</section><section id="play-time" class="slide level2" data-background="pics/play2.jpg">
+<h2>Play time!</h2>
+<ul>
+<li class="fragment">You just invented the <em>identity</em> function!</li>
+<li class="fragment"><span class="math inline">\(f(x) = x\)</span></li>
+</ul>
+</section><section id="functions-1" class="slide level2">
+<h2>Functions</h2>
+<ul>
+<li>Informally, function a process that takes some input and turns it into a unique output</li>
+<li>Individual inpults are called <strong>parameters</strong></li>
+<li>The pocess itself is the <strong>definition</strong> of a function</li>
+</ul>
+<ul>
+<li class="fragment"><span class="math inline">\(f(x) = x^2\)</span></li>
+<li class="fragment"><span class="math inline">\(f(2) = 4\)</span></li>
+<li class="fragment"><span class="math inline">\(f(5) = 25\)</span></li>
+<li class="fragment"><span class="math inline">\(f(0) = 0\)</span></li>
+<li class="fragment"><span class="math inline">\(f(1) = 1\)</span></li>
+</ul>
+</section><section id="functions-in-the-real-world" class="slide level2">
+<h2>Functions in the real world</h2>
+<ul>
+<li>It’s not <em>“just maths”</em> (nothing ever is)</li>
+<li>Everyday operations can be seen as functions of some arguments</li>
+<li>Who’s taller? Me or Martin?</li>
+</ul>
+<ul>
+<li class="fragment">Measure my height</li>
+<li class="fragment">Measure Martin’s height</li>
+<li class="fragment">Compare the two</li>
+<li class="fragment">If not equal, return name of taller person</li>
+<li class="fragment">Else return <em>“both are the same height”</em></li>
+<li class="fragment"><span class="math inline">\(taller(Martin, Milan) = Martin\)</span></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+This is probably not how we do this but it’s a good illustration
+</aside>
+</section><section id="functions-in-r" class="slide level2">
+<h2>Functions in <code>R</code></h2>
+<ul>
+<li>Functions are ubiquitous in <code>R</code> (and any other programming language)</li>
+<li>Basically the same as mathematical functions but can be much more complex</li>
+<li>Also take arguments, have definitions, and return output</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># define f as function of argument x</span>
+f &lt;-<span class="st"> </span><span class="cf">function</span>(x) {x<span class="op">*</span>x}
+<span class="co"># works</span>
+<span class="kw">f</span>(<span class="dv">2</span>)
+[<span class="dv">1</span>] <span class="dv">4</span>
+<span class="kw">f</span>(<span class="dv">100</span>)
+[<span class="dv">1</span>] <span class="dv">10000</span></code></pre></div>
+</section><section id="functions-in-r-1" class="slide level2">
+<h2>Functions in <code>R</code></h2>
+<ul>
+<li>Every operation is a function – <code>&lt;-</code>, <code>+</code>, <code>sum()</code>, <code>sd()</code></li>
+<li>If the function was built in <code>R</code> you can see its definition</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># see the code inside the sd() function</span>
+sd
+<span class="cf">function</span> (x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) 
+<span class="kw">sqrt</span>(<span class="kw">var</span>(<span class="cf">if</span> (<span class="kw">is.vector</span>(x) <span class="op">||</span><span class="st"> </span><span class="kw">is.factor</span>(x)) x <span class="cf">else</span> <span class="kw">as.double</span>(x), 
+    <span class="dt">na.rm =</span> na.rm))
+<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x00000000061226b8</span><span class="op">&gt;</span>
+<span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>stats<span class="op">&gt;</span></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>You don’t need to understand the code</li>
+<li>Just understand that the functions aren’t magic</li>
+<li>They just apply some procedure to some arguments to produce some output</li>
+</ul>
+</aside>
+</section><section id="functions-brake" class="slide level2">
+<h2>Functions brake</h2>
+<ul>
+<li>Functions are not all-powerful</li>
+<li>They need the right kind an number of arguments
+<ul>
+<li>kitten<sup>2</sup> means nothing</li>
+<li><span class="math inline">\(taller(Martin)\)</span> doesn’t give enough arguments</li>
+</ul></li>
+<li>Output of some arguments might not be defined
+<ul>
+<li>Division by zero</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># wrong kind of argument</span>
+<span class="kw">f</span>(<span class="st">&quot;Milan&quot;</span>)
+Error <span class="cf">in</span> x <span class="op">*</span><span class="st"> </span>x<span class="op">:</span><span class="st"> </span>non<span class="op">-</span>numeric argument to binary operator
+<span class="co"># incorrect number of arguments</span>
+<span class="kw">sd</span>()
+Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class="op">:</span><span class="st"> </span>argument <span class="st">&quot;x&quot;</span> is missing, with no default</code></pre></div>
+</section><section id="all-sorts" class="slide level2">
+<h2>All sorts</h2>
+<ul>
+<li>Functions range from vey simple to <em>huge</em></li>
+<li>They can look intimidating but they all do the same thing:
+<ul>
+<li>Take <strong>arguments</strong></li>
+<li>Apply some defined <strong>operation</strong> to them</li>
+<li>Return <strong>output</strong></li>
+</ul></li>
+</ul>
+<p><br><m><span class="math display">\[g(x, \mu, \sigma) = \frac{e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}}{\sigma\sqrt{2\pi}}\]</span></m></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>All clear?</li>
+</ul>
+</aside>
+</section><section id="visualising-functions" class="slide level2">
+<h2>Visualising functions</h2>
+<ul>
+<li>Function parameters and output can be visualised as perpendicular axes in space</li>
+<li>Because our world has 4 dimensions (3 spatial + time), visualising functions with more than 3 varying parameters is tricky (even 3 is a bit of a stretch)</li>
+</ul>
+</section><section id="visualising-functions-1" class="slide level2" data-transition="fade-in none-out">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m><br />
+</li>
+</ul>
+<section>
+<img src="pics/null_plot.png"/>
+</section>
+</section><section id="visualising-functions-2" class="slide level2" data-transition="none">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m><br />
+</li>
+</ul>
+<section data-gif="repeat">
+<img src="pics/f_x/draw_plot.gif"/>
+</section>
+</section><section id="visualising-functions-3" class="slide level2" data-transition="none">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Let’s plot x = [1, 5, -10, 15.6, -19]</li>
+</ul>
+<section>
+<img src="pics/empty_plot.png"/>
+</section>
+</section><section id="visualising-functions-4" class="slide level2" data-transition="none">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Let’s plot x = [<strong>1</strong>, 5, –10, 15.6, –19]</li>
+</ul>
+<section data-gif="repeat">
+<img src="pics/f_x/pt1.gif"/>
+</section>
+</section><section id="visualising-functions-5" class="slide level2" data-transition="none">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Let’s plot x = [1, <strong>5</strong>, –10, 15.6, –19]</li>
+</ul>
+<section data-gif="repeat">
+<img src="pics/f_x/pt2.gif"/>
+</section>
+</section><section id="visualising-functions-6" class="slide level2" data-transition="none">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Let’s plot x = [1, 5, <strong>–10</strong>, 15.6, –19]</li>
+</ul>
+<section data-gif="repeat">
+<img src="pics/f_x/pt3.gif">
+</section>
+</section><section id="visualising-functions-7" class="slide level2" data-transition="none">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Let’s plot x = [1, 5, –10, <strong>15.6</strong>, –19]</li>
+</ul>
+<section data-gif="repeat">
+<img src="pics/f_x/pt4.gif"/>
+</section>
+</section><section id="visualising-functions-8" class="slide level2" data-transition="none">
+<h2>Visualising functions</h2>
+<ul>
+<li>Let’s start simple: <m><span class="math inline">\(f(x) = x\)</span></m></li>
+<li>Let’s plot x = [1, 5, –10, 15.6, <strong>–19</strong>]</li>
+</ul>
+<section data-gif="repeat">
+<img src="pics/f_x/pt5.gif"/>
+</section>
+</section></section>
+<section><section id="worth-a-thousand-words" class="titleslide slide level1" data-background="pics/viz2.jpg"><h1>Worth a thousand words</h1></section></section>
+<section><section id="the-shape-of-things" class="titleslide slide level1" data-background="pics/chlam2.jpg"><h1>The shape of things</h1></section></section>
+<section><section id="take-10" class="titleslide slide level1" data-background="pics/ten2.jpg"><h1>Take 10</h1></section><section id="section" class="slide level2" data-background="../gif/tide.gif">
+<h2> </h2>
+<script src="../js/timer.js"></script>
+<time>
+<section id="timer" onclick="startTimer(1); this.onclick=null" ;>
+10:00
+</section>
+<p></time></p>
+</section></section>
+<section><section id="going-meta" class="titleslide slide level1" data-background="pics/meta2.jpg"><h1>Going meta</h1></section></section>
+<section><section id="clt-no-scrubs" class="titleslide slide level1" data-background="pics/tlc2.jpg"><h1><b>CLT: </b>No scrubs</h1></section><section id="clt-in-action" class="slide level2" data-transition="fade-in none-out">
+<h2>CLT in action</h2>
+<section>
+<img src="pics/clt_plot.png">
+</section>
+</section><section id="clt-in-action-1" class="slide level2" data.transition="none">
+<h2>CLT in action</h2>
+<section data-gif="repeat">
+<img src="pics/clt.gif">
+</section>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+Any questions?
+</aside>
+</section><section id="take-home-message" class="slide level2">
+<h2>Take-home message</h2>
+</section></section>
+<section><section id="see-you-in-the-labs" class="titleslide slide level1" data-background="pics/end2.jpg"><h1> <br><br><br><subtitle>See you in the labs :)</subtitle></h1></section></section>
+    </div>
+  </div>
+
+  <script src="Lecture_3_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="Lecture_3_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
