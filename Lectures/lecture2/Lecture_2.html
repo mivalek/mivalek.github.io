@@ -663,7 +663,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </aside>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># R-ish for &quot;equals&quot; or &quot;is&quot; is ==, not = !</span>
 <span class="kw">weekdays</span>(<span class="kw">Sys.Date</span>()) <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span>
-[<span class="dv">1</span>] <span class="ot">FALSE</span>
+[<span class="dv">1</span>] <span class="ot">TRUE</span>
 
 <span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span>
 [<span class="dv">1</span>] <span class="ot">FALSE</span>
@@ -1161,11 +1161,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>]  <span class="dv">5</span>  <span class="dv">1</span>  <span class="dv">3</span> <span class="dv">10</span>  <span class="dv">2</span>
+[<span class="dv">1</span>]  <span class="dv">8</span>  <span class="dv">3</span> <span class="dv">10</span>  <span class="dv">7</span>  <span class="dv">5</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>]  <span class="dv">3</span>  <span class="dv">1</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">9</span></code></pre></div>
+[<span class="dv">1</span>]  <span class="dv">1</span> <span class="dv">10</span>  <span class="dv">9</span>  <span class="dv">2</span>  <span class="dv">6</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1185,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>] <span class="dv">6</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">8</span> <span class="dv">1</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">6</span>
+ [<span class="dv">1</span>]  <span class="dv">5</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">7</span>  <span class="dv">6</span>  <span class="dv">5</span> <span class="dv">10</span>  <span class="dv">3</span>  <span class="dv">6</span>  <span class="dv">3</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">7</span>  <span class="dv">1</span>  <span class="dv">8</span>  <span class="dv">4</span>  <span class="dv">2</span>  <span class="dv">6</span>  <span class="dv">3</span>  <span class="dv">9</span>  <span class="dv">5</span> <span class="dv">10</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">8</span>  <span class="dv">1</span>  <span class="dv">3</span>  <span class="dv">5</span>  <span class="dv">4</span>  <span class="dv">9</span> <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">7</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1427,10 +1427,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span>
-Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>
+ [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">2</span>
+Levels<span class="op">:</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
-[<span class="dv">1</span>] <span class="fl">2.5</span>
+[<span class="dv">1</span>] <span class="dv">2</span>
 <span class="co"># of limited use with ordered categories</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))
 [<span class="dv">1</span>] <span class="fl">1.5</span>
@@ -1438,7 +1438,7 @@ Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>eye_col)))
 [<span class="dv">1</span>] <span class="dv">2</span></code></pre></div>
 </section><section id="central-tendency-arithmetic-mean" class="slide level2">
-<h2>Central tendency: (Arithmetic)<sup>*</sup> <strong>Mean</strong></h2>
+<h2>Central tendency: (Arithmetic)<small><sup>*</sup></small> <strong>Mean</strong></h2>
 <ul>
 <li>What most people mean by <em>average</em>
 <ul>
