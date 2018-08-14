@@ -587,7 +587,7 @@ sd
 <span class="cf">function</span> (x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) 
 <span class="kw">sqrt</span>(<span class="kw">var</span>(<span class="cf">if</span> (<span class="kw">is.vector</span>(x) <span class="op">||</span><span class="st"> </span><span class="kw">is.factor</span>(x)) x <span class="cf">else</span> <span class="kw">as.double</span>(x), 
     <span class="dt">na.rm =</span> na.rm))
-<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x000000000bd24b30</span><span class="op">&gt;</span>
+<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x0000000009718370</span><span class="op">&gt;</span>
 <span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>stats<span class="op">&gt;</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -849,6 +849,86 @@ Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class
 </section></section>
 <section><section id="worth-a-thousand-words" class="titleslide slide level1" data-background="pics/viz2.jpg"><h1>Worth a thousand words</h1></section><section id="visualising-data" class="slide level2">
 <h2>Visualising data</h2>
+<ul>
+<li>Graphics can help you get a feel for your data before analysis</li>
+<li>Help communicate results of analysis</li>
+<li>Good graphics are both clear and have a high information density</li>
+<li>There are myriad ways to visualise data – picking an appropriate way is crucial</li>
+</ul>
+</section><section id="data" class="slide level2">
+<h2>Data</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1234</span>)
+data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="co"># create data set</span>
+  <span class="dt">id =</span> <span class="kw">factor</span>(<span class="dv">1001</span><span class="op">:</span><span class="dv">1100</span>), <span class="dt">age =</span> <span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">24</span>, <span class="fl">1.5</span>)),
+  <span class="dt">eye_col =</span> <span class="kw">factor</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;green&quot;</span>),
+                          <span class="dv">100</span>, <span class="dt">replace =</span> T)),
+  <span class="dt">dpt =</span> <span class="kw">factor</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;psy&quot;</span>, <span class="st">&quot;cog&quot;</span>, <span class="st">&quot;lel&quot;</span>), <span class="dv">100</span>, <span class="dt">replace =</span> T)),
+  <span class="dt">degree =</span> <span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dv">100</span>, <span class="dt">replace =</span> T),
+                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2:1&quot;</span>, <span class="st">&quot;2:2&quot;</span>)),
+  <span class="dt">mark =</span> <span class="kw">round</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">68</span>, <span class="dv">9</span>)))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(data)
+    id age eye_col dpt degree mark
+<span class="dv">1</span> <span class="dv">1001</span>  <span class="dv">22</span>   brown cog    <span class="dv">2</span><span class="op">:</span><span class="dv">1</span>   <span class="dv">72</span>
+<span class="dv">2</span> <span class="dv">1002</span>  <span class="dv">24</span>   brown lel      <span class="dv">1</span>   <span class="dv">78</span>
+<span class="dv">3</span> <span class="dv">1003</span>  <span class="dv">26</span>    blue cog    <span class="dv">2</span><span class="op">:</span><span class="dv">1</span>   <span class="dv">72</span>
+<span class="dv">4</span> <span class="dv">1004</span>  <span class="dv">20</span>   green cog    <span class="dv">2</span><span class="op">:</span><span class="dv">1</span>   <span class="dv">74</span>
+<span class="dv">5</span> <span class="dv">1005</span>  <span class="dv">25</span>   brown lel      <span class="dv">1</span>   <span class="dv">58</span>
+<span class="dv">6</span> <span class="dv">1006</span>  <span class="dv">25</span>   green cog      <span class="dv">1</span>   <span class="dv">65</span></code></pre></div>
+</section><section id="one-categorical-variable" class="slide level2">
+<h2>One categorical variable</h2>
+<ul>
+<li>The only thing that can be visualised are the counts/relative proportions of individual levels of categorical variables</li>
+<li>A good way of doing this is the <strong>bar chart</strong>
+<ul>
+<li>Individual bars represent <em>levels</em> of the variable</li>
+<li>Height of a given bar represent <em>number of observations</em> (or proportion) of a given level</li>
+</ul></li>
+</ul>
+</section><section id="bar-chart" class="slide level2">
+<h2>Bar chart</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data<span class="op">$</span>dpt, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>),
+     <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-8-1.png" width="480" /></p>
+</section><section id="bar-chart-1" class="slide level2">
+<h2>Bar chart</h2>
+<ul>
+<li>Same goes for both <em>nominal</em> and <em>ordinal</em> variables</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">prop.table</span>(<span class="kw">table</span>(data<span class="op">$</span>degree)) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="co"># for percentages</span>
+        <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;%&quot;</span>)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-10-1.png" width="480" /></p>
+</section><section id="one-continuous-variable" class="slide level2">
+<h2>One continuous variable</h2>
+<ul>
+<li>There are several ways of visualising continuous variables</li>
+<li>The two most widely used for a single variable are
+<ul>
+<li><strong>Histograms</strong> – look similar to barplots; continuous variable is <em>binned</em> into adjacent categories</li>
+<li><strong>Boxplots</strong> (AKA box-and-whiskers plots) – based on <a href="https://mivalek.github.io/Lectures/lecture2/Lecture_2.html#/central-tendency-median-1" target="_blank">median</a> and <a href="https://mivalek.github.io/Lectures/lecture2/Lecture_2.html#/dispersion-iqr" target="_blank">IQR</a></li>
+</ul></li>
+</ul>
+</section><section id="histogram" class="slide level2">
+<h2>Histogram</h2>
+<ul>
+<li>By default <code>R</code> will try to give you a reasonable number of bins (and thereby the bin width)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data<span class="op">$</span>mark, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /></p>
+</section><section id="histogram-1" class="slide level2">
+<h2>Histogram</h2>
+<ul>
+<li>You can change the number of bins manually using the <code>break =</code> argument</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data<span class="op">$</span>mark, <span class="dt">breaks =</span> <span class="dv">20</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-12-1.png" width="768" /></p>
+</section><section id="boxplot" class="slide level2">
+<h2>Boxplot</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(data<span class="op">$</span>mark)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-14-1.png" width="480" /></p>
+</section><section id="boxplot-1" class="slide level2">
+<h2>Boxplot</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(data<span class="op">$</span>mark)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-16-1.png" width="480" /></p>
 </section></section>
 <section><section id="the-shape-of-things" class="titleslide slide level1" data-background="pics/chlam2.jpg"><h1>The shape of things</h1></section></section>
 <section><section id="take-10" class="titleslide slide level1" data-background="pics/hands2.jpg"><h1>Take 10</h1></section><section id="section" class="slide level2" data-background="../gif/tide.gif">
@@ -861,12 +941,12 @@ Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class
 <p></time></p>
 </section></section>
 <section><section id="going-meta" class="titleslide slide level1" data-background="pics/meta2.jpg"><h1>Going meta</h1></section></section>
-<section><section id="clt-no-scrubs" class="titleslide slide level1" data-background="pics/tlc2.jpg"><h1><b>CLT: </b>No scrubs</h1></section><section id="clt-in-action-data-transitionfade-in-none-out-data-gifrepeat" class="slide level2">
-<h2>CLT in action {data-transition=“fade-in none-out”, data-gif=“repeat”}</h2>
+<section><section id="clt-no-scrubs" class="titleslide slide level1" data-background="pics/tlc2.jpg"><h1><b>CLT: </b>No scrubs</h1></section><section id="clt-in-action" class="slide level2" data-transition="fade-in none-out">
+<h2>CLT in action</h2>
 <section>
 <img src="pics/clt_plot.png">
 </section>
-</section><section id="clt-in-action" class="slide level2" data.transition="none" data-gif="repeat">
+</section><section id="clt-in-action-1" class="slide level2" data.transition="none-in fade- out" data-gif="repeat">
 <h2>CLT in action</h2>
 <p><img data-src="pics/clt2.gif"></p>
 <!-- speaker notes -->
