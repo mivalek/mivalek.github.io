@@ -587,7 +587,7 @@ sd
 <span class="cf">function</span> (x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) 
 <span class="kw">sqrt</span>(<span class="kw">var</span>(<span class="cf">if</span> (<span class="kw">is.vector</span>(x) <span class="op">||</span><span class="st"> </span><span class="kw">is.factor</span>(x)) x <span class="cf">else</span> <span class="kw">as.double</span>(x), 
     <span class="dt">na.rm =</span> na.rm))
-<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x0000000009718370</span><span class="op">&gt;</span>
+<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x0000000009426ac0</span><span class="op">&gt;</span>
 <span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>stats<span class="op">&gt;</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -603,7 +603,7 @@ sd
 <li>Functions are not all-powerful</li>
 <li>They need the right kind and number of arguments
 <ul>
-<li>kitten<sup>2</sup> means nothing</li>
+<li>kitten<small><sup>2</sup></small> means nothing</li>
 <li><span class="math inline">\(taller(Martin)\)</span> doesn’t give enough arguments</li>
 </ul></li>
 <li>Output of some arguments might not be defined
@@ -617,6 +617,8 @@ Error <span class="cf">in</span> x <span class="op">*</span><span class="st"> </
 <span class="co"># incorrect number of arguments</span>
 <span class="kw">sd</span>()
 Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class="op">:</span><span class="st"> </span>argument <span class="st">&quot;x&quot;</span> is missing, with no default</code></pre></div>
+</section><section id="section" class="slide level2" data-background="pics/kitten2.jpg">
+<h2> </h2>
 </section><section id="all-sorts" class="slide level2">
 <h2>All sorts</h2>
 <ul>
@@ -886,6 +888,9 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 </ul>
 </section><section id="bar-chart" class="slide level2">
 <h2>Bar chart</h2>
+<ul>
+<li>Basic <code>plot()</code> will try to guess which type of plot you want based on the data provided</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data<span class="op">$</span>dpt, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>),
      <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>)</code></pre></div>
 <p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-8-1.png" width="480" /></p>
@@ -929,9 +934,94 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <h2>Boxplot</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(data<span class="op">$</span>mark)</code></pre></div>
 <p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-16-1.png" width="480" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Any points outwith the whiskers are considered outliers</li>
+<li>visualising a single variable is mainly for the benefit of the analyst to get a feel for the data</li>
+</ul>
+</aside>
+</section><section id="visualising-relationships" class="slide level2">
+<h2>Visualising relationships</h2>
+<ul>
+<li>We collect data because we think that things are related to each other</li>
+<li>Retential relationships can be gauged by plotting variables of interest on different axes</li>
+<li>Visualisations get trickier with more than 2-3 variables (blame our 3D space)</li>
+</ul>
+</section><section id="two-categorical-variables" class="slide level2">
+<h2>Two categorical variables</h2>
+<ul>
+<li><strong>Mosaic plots</strong> are useful for visualising proportions</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first x-axis, then y-axis</span>
+<span class="kw">plot</span>(data<span class="op">$</span>dpt, data<span class="op">$</span>eye_col,
+     <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Eye colour&quot;</span>)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-18-1.png" width="480" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Width of the segments is proportional to categories of x-axis variable</li>
+<li>That’s the difference between mosaic plots and stacked barcharts</li>
+</ul>
+</aside>
+</section><section id="two-categorical-variables-1" class="slide level2">
+<h2>Two categorical variables</h2>
+<ul>
+<li>Barplots are also good (<code>beside = T</code> unstacks the bars)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># when using barplot() a contingency table must be provided</span>
+<span class="kw">barplot</span>(<span class="kw">table</span>(data<span class="op">$</span>eye_col, data<span class="op">$</span>dpt), <span class="dt">beside =</span> T,
+        <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>, <span class="dt">legend.text =</span> T)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-20-1.png" width="480" /></p>
+</section><section id="categorical-1-continuous-var" class="slide level2">
+<h2>1 categorical, 1 continuous var</h2>
+<ul>
+<li>Overlaid histograms are an option (base <code>R</code> code is clunky)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># col = needs to be specified</span>
+<span class="kw">hist</span>(data<span class="op">$</span>mark[data<span class="op">$</span>dpt <span class="op">==</span><span class="st"> &quot;cog&quot;</span>], <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">col =</span> ...)
+<span class="kw">hist</span>(data<span class="op">$</span>mark[data<span class="op">$</span>dpt <span class="op">==</span><span class="st"> &quot;lel&quot;</span>], <span class="dt">add =</span> T, <span class="dt">col =</span> ...)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-22-1.png" width="480" /></p>
+</section><section id="categorical-1-continuous-var-1" class="slide level2">
+<h2>1 categorical, 1 continuous var</h2>
+<ul>
+<li>Boxplots provide more information and are less busy</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data<span class="op">$</span>dpt, data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-23-1.png" width="480" /></p>
+</section><section id="categorical-1-continuous-var-2" class="slide level2">
+<h2>2 categorical, 1 continuous var</h2>
+<ul>
+<li>Use colour for levels of 2<small><sup>nd</sup></small> variable (<a href="group_boxplot.R" target="_blank">full code</a>)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># pick 3 colours, legend and x axis require a bit of effort</span>
+<span class="kw">boxplot</span>(data<span class="op">$</span>mark <span class="op">~</span><span class="st"> </span>data<span class="op">$</span>eye_col <span class="op">+</span><span class="st"> </span>data<span class="op">$</span>dpt, <span class="dt">col =</span> <span class="kw">c</span>(..., ..., ...),
+        <span class="dt">xlab =</span> <span class="kw">expression</span>(Eye<span class="op">~</span>colour <span class="op">%x%</span><span class="st"> </span>Department), <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-25-1.png" width="480" /></p>
+</section><section id="two-continuous-variables" class="slide level2">
+<h2>Two continuous variables</h2>
+<ul>
+<li>Best way to visualise a relationship between 2 continuous variables is with a <strong>scatter plot</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># jitter moves the points around a little, try without</span>
+<span class="kw">plot</span>(<span class="kw">jitter</span>(data<span class="op">$</span>age), data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>)
+<span class="kw">abline</span>(<span class="kw">lm</span>(mark <span class="op">~</span><span class="st"> </span>age, data)) <span class="co"># line of best fit</span></code></pre></div>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-27-1.png" width="480" /></p>
+</section><section id="scatter-plot" class="slide level2">
+<h2>Scatter plot</h2>
+<ul>
+<li>It is useful to learn to recognise types of relationships</li>
+</ul>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-28-1.png" width="576" /></p>
+</section><section id="continuous-1-categorical-var" class="slide level2">
+<h2>2 continuous, 1 categorical var</h2>
+<ul>
+<li>Scatter plots can also be colour-coded (<a href="group_scatter.R" target="_blank">full code</a>)</li>
+</ul>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-29-1.png" width="576" /></p>
 </section></section>
 <section><section id="the-shape-of-things" class="titleslide slide level1" data-background="pics/chlam2.jpg"><h1>The shape of things</h1></section></section>
-<section><section id="take-10" class="titleslide slide level1" data-background="pics/hands2.jpg"><h1>Take 10</h1></section><section id="section" class="slide level2" data-background="../gif/tide.gif">
+<section><section id="take-10" class="titleslide slide level1" data-background="pics/hands2.jpg"><h1>Take 10</h1></section><section id="section-1" class="slide level2" data-background="../gif/tide.gif">
 <h2> </h2>
 <script src="../js/timer.js"></script>
 <time>
@@ -943,9 +1033,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <section><section id="going-meta" class="titleslide slide level1" data-background="pics/meta2.jpg"><h1>Going meta</h1></section></section>
 <section><section id="clt-no-scrubs" class="titleslide slide level1" data-background="pics/tlc2.jpg"><h1><b>CLT: </b>No scrubs</h1></section><section id="clt-in-action" class="slide level2" data-transition="fade-in none-out">
 <h2>CLT in action</h2>
-<section>
-<img src="pics/clt_plot.png">
-</section>
+<p><img src="pics/clt_plot.png"></p>
 </section><section id="clt-in-action-1" class="slide level2" data.transition="none-in fade- out" data-gif="repeat">
 <h2>CLT in action</h2>
 <p><img data-src="pics/clt2.gif"></p>
