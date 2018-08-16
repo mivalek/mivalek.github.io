@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Milan Valášek" />
+  <title>The logic behind the logit</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="UCL_logreg_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="UCL_logreg_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="..\css\moon2.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title"><b>The logic behind the logit</b></h1>
+  <h1 class="subtitle"><subtitle>Job talk mini-lecture</subtitle></h1>
+    <h2 class="author"><subtitle>Milan Valášek</subtitle></h2>
+</section>
+
+<section id="the-task" class="slide level2">
+<h2>The task</h2>
+<ul>
+<li>Why logistic regression</li>
+<li>What it’s about</li>
+<li>Linear regression in fancy clothes</li>
+<li>Generalised linear model</li>
+<li>Focus on conceptual understanding</li>
+</ul>
+<script src="../js/gif.js"></script>
+</section>
+<section><section id="the-problem" class="titleslide slide level1" data-background="pics/chess2.jpg"><h1>The problem</h1></section><section id="recap-on-regression" class="slide level2">
+<h2>Recap on regression</h2>
+<ul>
+<li>Linear regression (AKA <em>linear model</em>) is a technique for drawing the best-fitting line through some data</li>
+<li>Outcome variable is assumed to be continuous</li>
+<li>Model residuals should be normally distributed</li>
+</ul>
+</section><section id="binary-data" class="slide level2">
+<h2>Binary data</h2>
+<ul>
+<li>Sometimes, outcomes are binary
+<ul>
+<li>Pass/fail an exam</li>
+<li>Get/not get a job</li>
+<li>Vote for candidate A versus candidate B</li>
+</ul></li>
+<li>How do we model these kinds of data?</li>
+</ul>
+</section><section id="linear-model-binary-data" class="slide level2">
+<h2>Linear model, binary data</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\hat{Pref} = 0.5 + 0.26\times Extraversion\)</span></li>
+</ul>
+<p><img width="500px" src="pref.png"></p>
+</section><section id="linear-model-binary-data-1" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Linear model, binary data</h2>
+<ul>
+<li><span class="math inline">\(\hat{Pref} = 0.5 + 0.26\times Extraversion\)</span></li>
+</ul>
+<p><img width="500px" data-src="pref.gif" /></p>
+</section><section id="is-it-a-problem" class="slide level2">
+<h2>Is it a problem?</h2>
+<p><img src="UCL_logreg_files/figure-revealjs/unnamed-chunk-2-1.png" width="768" /></p>
+</section><section id="is-it-a-problem-1" class="slide level2">
+<h2>Is it a problem?</h2>
+<br><br><br><br>
+<h1>
+<b>Yes!</b>
+</h1>
+<p><br><br><br><br><br><br></p>
+</section></section>
+<section><section id="the-solution" class="titleslide slide level1" data-background="pics/solution2.jpg"><h1>The solution</h1></section><section id="probability-space" class="slide level2">
+<h2>Probability space</h2>
+<ul>
+<li>Let’s see the proportion of people who prefer cats at different levels of Extraversion</li>
+</ul>
+<p><img width="500px" src="prop.png"></p>
+</section><section id="probability-space-1" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Probability space</h2>
+<ul>
+<li>We can fit a line through these proportions capturing the relationship</li>
+</ul>
+<p><img width="500px" data-src="prop.gif" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Probability space solves the 1st problem – interpolation of impossible values</li>
+</ul>
+</aside>
+</section><section id="odds-space" class="slide level2">
+<h2>Odds space</h2>
+<ul>
+<li>Odds are similar to probabilities but:
+<ul>
+<li>Instead of dividing successes by <strong>all posible</strong> event, we divide by <strong>failures</strong></li>
+<li>The smallest possible odds are 0, just like with probability</li>
+<li>Unlike probability, there is <strong>no upper bound</strong> to odds</li>
+</ul></li>
+</ul>
+</section><section id="odds-space-1" class="slide level2">
+<h2>Odds space</h2>
+<ul>
+<li>See what happens with our line of best fit when we redraw it in odds space</li>
+</ul>
+<p><img width="500px" src="p_to_odds.png"></p>
+</section><section id="odds-space-2" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Odds space</h2>
+<ul>
+<li>See what happens with our line of best fit when we redraw it in odds space</li>
+</ul>
+<p><img width="500px" data-src="logit.gif" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Probability space solves the 2nd problem – extrapolation of impossible values <strong>above</strong>
+<ul>
+<li>extrapolation of impossible values <strong>below</strong></li>
+</ul></li>
+</ul>
+</aside>
+</section><section id="log-odds-space" class="slide level2" data-transition="none">
+<h2>Log-odds space</h2>
+<ul>
+<li>finally, we can take the natural logarithm of odds, stretching the plotting space even further</li>
+</ul>
+<p><img width="500px" src="odds_to_logodds.png"></p>
+</section><section id="odds-space-3" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Odds space</h2>
+<ul>
+<li>finally, we can take the natural logarithm of odds, stretching the plotting space even further</li>
+</ul>
+<p><img width="500px" data-src="logit2.gif" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>same line, just stretching space!</li>
+<li>Probability space solves the 3nd problem – extrapolation of impossible values <strong>below</strong></li>
+<li>interpreting coefficients is a bit of a pain but it’s worth it</li>
+</ul>
+</aside>
+</section><section id="done" class="slide level2">
+<h2>Done!</h2>
+<ul>
+<li>We started with 0s and 1s – no good line to fit</li>
+<li>Turning 0s and 1s to <em>probability</em> revealed an <em>S</em>-shaped curve fitting the data</li>
+<li>Transforming the space from <em>probability</em> to <em>log-odds</em> turned the sigmoid curve into a straight line</li>
+</ul>
+</section><section id="done-1" class="slide level2">
+<h2>Done!</h2>
+<p><br></p>
+<p><strong>Linear regression:</strong></p>
+<p><m><span class="math display">\[y = b_0 + b_1X_1 + \cdots + b_nX_n + \epsilon\]</span></m></p>
+<p><br></p>
+<p><strong>Logistic regression:</strong></p>
+<p><m><span class="math display">\[ln(ODDS(y = 1)) = b_0 + b_1X_1 + \cdots + b_nX_n + \epsilon\]</span></m></p>
+</section></section>
+<section><section id="the-bigger-picture" class="titleslide slide level1" data-background="pics/bigger2.jpg"><h1>The bigger picture</h1></section><section id="link-function" class="slide level2">
+<h2>Link function</h2>
+<ul>
+<li>Logistic regression <em>maps the linear predictor</em>, <m><span class="math inline">\(b_o + b_1X_1 + \cdots + b_nX_n\)</span></m> – let’s call it <strong><m><span class="math inline">\(X\beta\)</span></m></strong> – onto the <em>log-odds transformation</em> of the outcome variable</li>
+<li>The process of mapping <m><span class="math inline">\(X\beta\)</span></m> onto the outcome variable is called the <strong>link function</strong></li>
+<li>In logistic regression, the link function is the <em>logit function</em>, <m><span class="math inline">\(ln(\frac{P(y = 1)}{1 - P(y = 1)})\)</span></m></li>
+</ul>
+</section><section id="generalised-linear-model" class="slide level2">
+<h2>Generalised linear model</h2>
+<ul>
+<li>There are different link functions that can be used to <em>generalise</em> the linear model <m><span class="math inline">\(y = X\beta + \epsilon\)</span></m> to different kinds of outcome variables</li>
+<li>Importantly:
+<ul>
+<li><em>logit function</em> for binomial data (logistic regression)</li>
+<li><em>log function</em> – <m><span class="math inline">\(ln(y) = X\beta + \epsilon\)</span></m> – for count data (Poisson regression)</li>
+<li><em>identity function</em> – <m><span class="math inline">\(y = X\beta + \epsilon\)</span></m> – for continuous data (linear regression)</li>
+</ul></li>
+</ul>
+</section><section id="logistic-regression-summary" class="slide level2">
+<h2>Logistic regression summary</h2>
+<ul>
+<li>It <em>is</em> linear regression on transformed outcome</li>
+<li>It is used for binary outcome variable</li>
+<li>Link function is the logit</li>
+<li>Member of the generalised linear model family</li>
+</ul>
+</section><section id="next" class="slide level2">
+<h2>Next…</h2>
+<ul>
+<li>Worked example</li>
+<li>Interpreting logistic regression coefficients</li>
+<li>Model assessment</li>
+<li>Visualisation</li>
+</ul>
+</section></section>
+<section><section id="section" class="titleslide slide level1" data-background="pics/end2.jpg"><h1></h1></section></section>
+    </div>
+  </div>
+
+  <script src="UCL_logreg_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="UCL_logreg_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'UCL_logreg_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
