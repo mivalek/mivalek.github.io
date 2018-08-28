@@ -1060,7 +1060,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="joint-probability" class="slide level2">
 <h2>Joint probability</h2>
 <ul>
-<li>If <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> are two distinct events, joint probability of <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> is the probability that <m><span class="math inline">\(A\)</span></m> will occur NAD <m><span class="math inline">\(B\)</span></m> will occur</li>
+<li>If <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> are two distinct events, joint probability of <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> is the probability that <m><span class="math inline">\(A\)</span></m> will occur AND <m><span class="math inline">\(B\)</span></m> will occur</li>
 <li>For <strong>independent</strong> events, <m><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B)\)</span></m></li>
 <li>For <strong>dependent</strong> events, <m><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></m></li>
 </ul>
@@ -1083,7 +1083,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <h2>Probability of union</h2>
 <ul>
 <li>We know that <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> are dependent, and therefore     <br><m><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></m></li>
-<li><m><span class="math inline">\(P(A\ OR\ B) = 3/8 + 1/2 - (3/8 \times 1/2)\)</span></m></li>
+<li><m><span class="math inline">\(P(A\ OR\ B) = 3/8 + 1/2 - (3/8 \times 2/3)\)</span></m></li>
 <li><m><span class="math inline">\(P(A\ OR\ B) = 5/8 = .625\)</span></m></li>
 </ul>
 <p><img src="pics/p_AorB1.png" height="380" /></p>
@@ -1091,7 +1091,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <h2>Probability of union</h2>
 <ul>
 <li>We know that <m><span class="math inline">\(A\)</span></m> and <m><span class="math inline">\(B\)</span></m> are dependent, and therefore     <br><m><span class="math inline">\(P(A\ \&amp;\ B) = P(A) \times P(B|A)\)</span></m></li>
-<li><m><span class="math inline">\(P(A\ OR\ B) = 3/8 + 1/2 - (3/8 \times 1/2)\)</span></m></li>
+<li><m><span class="math inline">\(P(A\ OR\ B) = 3/8 + 1/2 - (3/8 \times 2/3)\)</span></m></li>
 <li><m><span class="math inline">\(P(A\ OR\ B) = 5/8 = .625\)</span></m></li>
 </ul>
 <p><img src="pics/p_AorB.png" height="380" /></p>
@@ -1161,11 +1161,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">5</span>
+[<span class="dv">1</span>]  <span class="dv">3</span>  <span class="dv">8</span> <span class="dv">10</span>  <span class="dv">1</span>  <span class="dv">7</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>]  <span class="dv">8</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">2</span>  <span class="dv">3</span></code></pre></div>
+[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">3</span> <span class="dv">7</span> <span class="dv">1</span> <span class="dv">9</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1185,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">1</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">3</span>
+ [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">8</span> <span class="dv">10</span>  <span class="dv">1</span>  <span class="dv">9</span>  <span class="dv">7</span> <span class="dv">10</span>  <span class="dv">1</span>  <span class="dv">6</span>  <span class="dv">8</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">3</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">5</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">9</span>  <span class="dv">2</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">5</span>  <span class="dv">3</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">9</span>  <span class="dv">8</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1264,7 +1264,7 @@ In the remainder of this course, we will focus on how we draw inferences about p
 <li><code>logical</code> values (<code>TRUE/FALSE</code>) can only be binomial and nominal</li>
 <li><code>character</code> values can only be nominal/ordinal and cannot be continuous</li>
 <li><code>numeric</code> values can represent any level of measurement and any type of variable</li>
-<li>read more <a href="">here</a> <strong>LINK TO SaviouR OR LAB SHEET</strong></li>
+<li>read more <a href="https://mivalek.github.io/resources/saviouR.html#it&#39;s_elementary,_my_dear_watson">here</a></li>
 </ul>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -1427,10 +1427,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">3</span>
+ [<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span>
 Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
-[<span class="dv">1</span>] <span class="dv">3</span>
+[<span class="dv">1</span>] <span class="fl">1.5</span>
 <span class="co"># of limited use with ordered categories</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))
 [<span class="dv">1</span>] <span class="fl">1.5</span>
