@@ -1004,7 +1004,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <ul>
 <li>The prevalence of chlamydia in Scotland is 421 per 100k but it’s much higher in people under 25 at 1,516 per 100k (<a href="http://www.hps.scot.nhs.uk/documents/ewr/pdf2016/1639.pdf" target="_blank">source</a>)</li>
 </ul>
-<p><img src="pics/chlam_set.png" height="450" /></p>
+<p><img src="pics/chlam_set.png" height="400" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1161,11 +1161,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">6</span> <span class="dv">2</span>
+[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">5</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>]  <span class="dv">2</span> <span class="dv">10</span>  <span class="dv">8</span>  <span class="dv">9</span>  <span class="dv">7</span></code></pre></div>
+[<span class="dv">1</span>]  <span class="dv">8</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">2</span>  <span class="dv">3</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1185,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>]  <span class="dv">9</span>  <span class="dv">5</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">2</span> <span class="dv">10</span>  <span class="dv">9</span>  <span class="dv">6</span>  <span class="dv">9</span>  <span class="dv">2</span>
+ [<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">4</span> <span class="dv">6</span> <span class="dv">1</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">3</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">4</span>  <span class="dv">7</span>  <span class="dv">3</span> <span class="dv">10</span>  <span class="dv">9</span>  <span class="dv">5</span>  <span class="dv">8</span>  <span class="dv">2</span>  <span class="dv">1</span>  <span class="dv">6</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">3</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">5</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">6</span>  <span class="dv">9</span>  <span class="dv">2</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1427,10 +1427,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span>
+ [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">3</span>
 Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
-[<span class="dv">1</span>] <span class="dv">2</span>
+[<span class="dv">1</span>] <span class="dv">3</span>
 <span class="co"># of limited use with ordered categories</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))
 [<span class="dv">1</span>] <span class="fl">1.5</span>
@@ -1500,8 +1500,7 @@ age
 <span class="co"># new age</span>
 <span class="kw">mean</span>(age) <span class="co"># also, doesn&#39;t exist in sample!</span>
 [<span class="dv">1</span>] <span class="fl">34.33333</span>
-<span class="co"># median isn&#39;t affected</span>
-<span class="kw">median</span>(data<span class="op">$</span>age)
+<span class="kw">median</span>(data<span class="op">$</span>age) <span class="co"># median isn&#39;t affected</span>
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="kw">median</span>(age)
 [<span class="dv">1</span>] <span class="dv">25</span></code></pre></div>
