@@ -412,7 +412,7 @@ calc.mean &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<sp
 <span class="co"># you can look inside, just like with any other object</span>
 calc.mean</code></pre></div>
 <pre><code>## function(x) {sum(x)/length(x)}
-## &lt;bytecode: 0x0000000009d24ce8&gt;</code></pre>
+## &lt;bytecode: 0x0000000009a057d8&gt;</code></pre>
 <p> </p>
 <p>Let this be your mantra: <strong>“If I want to keep it for later, I need to put it in an object so that is doesn’t go off.”</strong></p>
 <p> </p>
@@ -469,17 +469,17 @@ a</code></pre></div>
 <p>This has interesting implications. First, is you have a logical vector of many <code>TRUE</code>s and <code>FALSE</code>s, you can quickly count the number of <code>TRUE</code>s by just taking the sum of the vector:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># consider vector of 50 logicals</span>
 x</code></pre></div>
-<pre><code>##  [1]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE
-## [12] FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE
-## [23]  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE
-## [34] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE
-## [45] FALSE FALSE  TRUE  TRUE FALSE  TRUE</code></pre>
+<pre><code>##  [1]  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE FALSE
+## [12]  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE
+## [23]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE
+## [34]  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+## [45] FALSE  TRUE FALSE FALSE  TRUE  TRUE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># number of TRUEs</span>
 <span class="kw">sum</span>(x)</code></pre></div>
-<pre><code>## [1] 29</code></pre>
+<pre><code>## [1] 30</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># number of FALSEs is 50 minus number of TRUEs</span>
 <span class="kw">length</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(x)</code></pre></div>
-<pre><code>## [1] 21</code></pre>
+<pre><code>## [1] 20</code></pre>
 <p>Second, you can perform all sorts of arithmetic operations on logicals:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># TRUE/FALSE can be shortened to T/F</span>
 T <span class="op">+</span><span class="st"> </span>T</code></pre></div>
@@ -604,7 +604,7 @@ y</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(y)</code></pre></div>
 <p><img src="saviouR_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p>Even though our new object <code>y</code> only includes <code>0</code>s, the <code>levels</code> attribute still tells <code>R</code> that this is a factor of (at least <em>potentially</em>) two levels: <code>&quot;0&quot;</code> and <code>&quot;1&quot;</code> and so <code>plot()</code> leaves a room for the <code>1</code>s.</p>
-<p>The last consequence is directly related to this. Since the levels of an object of class <code>factor</code> are stored as its attributes, any additional values put inside the objects will be invalid and turned into <code>NA</code>s (<code>R</code> will warn us of this). In other words, you <strong>cannot add integers smaller than 1 or larger than the number of levels</strong> to an object of class <code>factor</code>:</p>
+<p>The last consequence is directly related to this. Since the levels of an object of class <code>factor</code> are stored as its attributes, any additional values put inside the objects will be invalid and turned into <code>NA</code>s (<code>R</code> will warn us of this). In other words, you <strong>can only add those values that are among the ones produced by <code>levels()</code></strong> to an object of class <code>factor</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># try adding invalid values -4 and 3 to the end of vector x</span>
 x[<span class="dv">31</span><span class="op">:</span><span class="dv">32</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">3</span>)</code></pre></div>
 <pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 31:32, value = c(-4, 3)): invalid factor
@@ -705,21 +705,21 @@ x</code></pre></div>
 <li><p><em>matrices</em> arrange elements in a square/rectangle, <em>i.e.,</em> a two-dimensional arrangement of <em>rows</em> and <em>columns</em>. They can also only accommodate elements of the same class and cannot store attributes of elements. That means, <em>you can’t use them to store (ordered) factors</em>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># a matrix</span>
 <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ncol =</span> <span class="dv">5</span>) <span class="co"># must be square/rectangular</span></code></pre></div>
-<pre><code>##           [,1]      [,2]       [,3]      [,4]         [,5]
-## [1,] 0.1754636 1.5501083  0.4212240 0.1448770  0.267095942
-## [2,] 2.2055376 1.1029038 -0.1069694 0.0727374  1.864061402
-## [3,] 1.5152488 3.5733306  1.3504708 2.6610512  1.315057359
-## [4,] 1.2892696 0.4284787  1.0654245 2.2220184 -0.001529705</code></pre>
+<pre><code>##           [,1]       [,2]      [,3]     [,4]       [,5]
+## [1,] 1.1567767  1.9641274 2.2693010 1.062991 -0.1241066
+## [2,] 0.1435369  0.9420612 2.3062937 0.407809  0.2619170
+## [3,] 0.6684308  1.4533861 0.9997705 0.610204  0.5355563
+## [4,] 1.4685273 -0.5623653 1.0445462 1.376601  2.0203129</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># not suitable for factors</span>
 x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rbinom</span>(<span class="dv">10</span>, <span class="dv">1</span>, .<span class="dv">5</span>))
 x</code></pre></div>
-<pre><code>##  [1] 0 0 0 1 1 1 0 0 0 0
+<pre><code>##  [1] 0 0 0 0 0 1 0 1 1 1
 ## Levels: 0 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># not factors any more!</span>
 <span class="kw">matrix</span>(x, <span class="dt">ncol =</span> <span class="dv">5</span>)</code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,] &quot;0&quot;  &quot;0&quot;  &quot;1&quot;  &quot;0&quot;  &quot;0&quot; 
-## [2,] &quot;0&quot;  &quot;1&quot;  &quot;1&quot;  &quot;0&quot;  &quot;0&quot;</code></pre>
+## [1,] &quot;0&quot;  &quot;0&quot;  &quot;0&quot;  &quot;0&quot;  &quot;1&quot; 
+## [2,] &quot;0&quot;  &quot;0&quot;  &quot;1&quot;  &quot;1&quot;  &quot;1&quot;</code></pre>
 <p> </p></li>
 <li><p><em>lists</em> arrange elements in a collection of vectors or other data structures. Different vectors/structures can be of different lengths and contain elements of different classes. Elements of lists and, by extension, data frames can be accessed using the <code>$</code> operator, provided we gave them names.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># a list</span>
@@ -734,11 +734,11 @@ my_list &lt;-<span class="st"> </span><span class="kw">list</span>(
 
 my_list</code></pre></div>
 <pre><code>## $A
-##          [,1]      [,2]       [,3]      [,4]       [,5]
-## [1,] 2.808212 1.5433061  0.4596091 3.1708654 -0.6773008
-## [2,] 2.575319 0.7037717 -1.3581444 0.1581666  2.0513128
-## [3,] 2.049162 0.1013215  2.6506110 1.9371416  0.6303049
-## [4,] 1.440146 1.9880260  1.4528589 2.0866593  0.2199371
+##             [,1]     [,2]      [,3]     [,4]     [,5]
+## [1,] -0.02899778 1.151726 0.9955185 1.001247 1.123871
+## [2,]  1.24130052 1.524815 1.9258743 1.034563 2.057456
+## [3,]  0.32962175 0.870179 1.3327565 1.250425 1.180549
+## [4,]  1.48930141 1.912091 1.6151927 1.648689 2.326943
 ## 
 ## $B
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;
@@ -801,22 +801,22 @@ x[<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>
 <p>Remember that some structures can contain as their elements other structures. For example asking for the first element of <code>my_list</code> will return:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_list[<span class="dv">1</span>]</code></pre></div>
 <pre><code>## $A
-##          [,1]      [,2]       [,3]      [,4]       [,5]
-## [1,] 2.808212 1.5433061  0.4596091 3.1708654 -0.6773008
-## [2,] 2.575319 0.7037717 -1.3581444 0.1581666  2.0513128
-## [3,] 2.049162 0.1013215  2.6506110 1.9371416  0.6303049
-## [4,] 1.440146 1.9880260  1.4528589 2.0866593  0.2199371</code></pre>
+##             [,1]     [,2]      [,3]     [,4]     [,5]
+## [1,] -0.02899778 1.151726 0.9955185 1.001247 1.123871
+## [2,]  1.24130052 1.524815 1.9258743 1.034563 2.057456
+## [3,]  0.32962175 0.870179 1.3327565 1.250425 1.180549
+## [4,]  1.48930141 1.912091 1.6151927 1.648689 2.326943</code></pre>
 <p> </p>
 <p>The <code>$A</code> at the top of the output indicates that we have accessed the element <code>A</code> of <code>my_list</code> but not really accessed the matrix itself. Thus, at this stage, we wouldn’t be able to ask for it’s elements. To access the matrix contained in <code>my_list$A</code>, we need to write either exactly that, or use double brackets:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_list[[<span class="dv">1</span>]]</code></pre></div>
-<pre><code>##          [,1]      [,2]       [,3]      [,4]       [,5]
-## [1,] 2.808212 1.5433061  0.4596091 3.1708654 -0.6773008
-## [2,] 2.575319 0.7037717 -1.3581444 0.1581666  2.0513128
-## [3,] 2.049162 0.1013215  2.6506110 1.9371416  0.6303049
-## [4,] 1.440146 1.9880260  1.4528589 2.0866593  0.2199371</code></pre>
+<pre><code>##             [,1]     [,2]      [,3]     [,4]     [,5]
+## [1,] -0.02899778 1.151726 0.9955185 1.001247 1.123871
+## [2,]  1.24130052 1.524815 1.9258743 1.034563 2.057456
+## [3,]  0.32962175 0.870179 1.3327565 1.250425 1.180549
+## [4,]  1.48930141 1.912091 1.6151927 1.648689 2.326943</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># with the $A now gone from output, we can access the matrix itself</span>
 my_list[[<span class="dv">1</span>]][<span class="dv">1</span>]</code></pre></div>
-<pre><code>## [1] 2.808212</code></pre>
+<pre><code>## [1] -0.02899778</code></pre>
 <p> </p>
 <p>As discussed above, some data structures are dimensionless (vectors, lists), while others are arranged in <em>n</em>-dimensional rectangles (where <em>n</em> &gt; 1). When indexing/subsetting elements of dimensional structures, we need to provide coordinates of the elements for each dimension. This is done by providing <em>n</em> numbers or vectors in the <code>[]</code>s separated by a comma.</p>
 <p>A matrix, for instance has 2 dimensions, rows and columns. The first number/vector in the <code>[]</code>s represents rows and the second columns. Leaving either position blank will return all rows/columns:</p>
@@ -855,20 +855,20 @@ mat[<span class="dv">1</span>, ] <span class="co"># first row</span></code></pre
                 <span class="dt">score =</span> <span class="kw">rnorm</span>(<span class="dv">6</span>, <span class="dv">100</span>, <span class="dv">20</span>))
 df</code></pre></div>
 <pre><code>##   id     group     score
-## 1  A   Control 110.93822
-## 2  B   Control 113.02675
-## 3  C   Control 124.92726
-## 4  D Treatment  83.78734
-## 5  E Treatment 107.67257
-## 6  F Treatment 101.68281</code></pre>
+## 1  A   Control 118.30509
+## 2  B   Control 125.87896
+## 3  C   Control  53.90958
+## 4  D Treatment 133.67045
+## 5  E Treatment 102.53817
+## 6  F Treatment 111.34231</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[<span class="dv">1</span>, ] <span class="co"># first row</span></code></pre></div>
 <pre><code>##   id   group    score
-## 1  A Control 110.9382</code></pre>
+## 1  A Control 118.3051</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</code></pre></div>
-<pre><code>##   id     score
-## 4  D  83.78734
-## 5  E 107.67257
-## 6  F 101.68281</code></pre>
+<pre><code>##   id    score
+## 4  D 133.6704
+## 5  E 102.5382
+## 6  F 111.3423</code></pre>
 <p> </p>
 <!-- This `[row, column]` system can be extended to multiple dimensions. As we said above, arrays can have *n* dimensions and so we need *n* positions in the `[]`s to ask for elements: -->
 <!-- ```{r} -->
@@ -926,19 +926,19 @@ mat_logic</code></pre></div>
 ## [5,]  TRUE FALSE  TRUE
 ## [6,]  TRUE FALSE  TRUE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[mat_logic]</code></pre></div>
-<pre><code>## [1] &quot;D&quot;         &quot;E&quot;         &quot;F&quot;         &quot; 83.78734&quot; &quot;107.67257&quot; &quot;101.68281&quot;</code></pre>
+<pre><code>## [1] &quot;D&quot;         &quot;E&quot;         &quot;F&quot;         &quot;133.67045&quot; &quot;102.53817&quot; &quot;111.34231&quot;</code></pre>
 <p> </p>
 <p>Notice, however, that the output is a vector so two things happened: first, the rectangular structure has been erased and second, since vectors can only contain elements of the same class (see above), the numbers got converted into character strings (hence the <code>&quot;&quot;</code>s). Nevertheless, this method of subsetting using logical matrices can be useful for replacing several values in different rows and columns with another value:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># replace with NAs</span>
 df[mat_logic] &lt;-<span class="st"> </span><span class="ot">NA</span>
 df</code></pre></div>
-<pre><code>##     id     group    score
-## 1    A   Control 110.9382
-## 2    B   Control 113.0268
-## 3    C   Control 124.9273
-## 4 &lt;NA&gt; Treatment       NA
-## 5 &lt;NA&gt; Treatment       NA
-## 6 &lt;NA&gt; Treatment       NA</code></pre>
+<pre><code>##     id     group     score
+## 1    A   Control 118.30509
+## 2    B   Control 125.87896
+## 3    C   Control  53.90958
+## 4 &lt;NA&gt; Treatment        NA
+## 5 &lt;NA&gt; Treatment        NA
+## 6 &lt;NA&gt; Treatment        NA</code></pre>
 <p> </p>
 <p>To use a different example, take the function <code>lower.tri()</code>. It can be used to subset a matrix in order to get the lower triangle (with or without the diagonal). Consider matrix <code>mat2</code> which has <code>&quot;L&quot;</code>s in its lower triangle, <code>&quot;U&quot;</code>s in its upper triangle, and <code>&quot;D&quot;</code>s on the diagonal:</p>
 <pre><code>##      [,1] [,2] [,3] [,4]
@@ -1054,8 +1054,8 @@ mat_logic</code></pre></div>
 ## [6,] FALSE TRUE FALSE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[<span class="op">!</span>mat_logic]</code></pre></div>
 <pre><code>##  [1] &quot;A&quot;         &quot;B&quot;         &quot;C&quot;         &quot;Control&quot;   &quot;Control&quot;  
-##  [6] &quot;Control&quot;   &quot;Treatment&quot; &quot;Treatment&quot; &quot;Treatment&quot; &quot;110.9382&quot; 
-## [11] &quot;113.0268&quot;  &quot;124.9273&quot;</code></pre>
+##  [6] &quot;Control&quot;   &quot;Treatment&quot; &quot;Treatment&quot; &quot;Treatment&quot; &quot;118.30509&quot;
+## [11] &quot;125.87896&quot; &quot; 53.90958&quot;</code></pre>
 <p> </p>
 <p><strong>Bear in mind that all data cleaning and transforming ultimately boils down to using either or both of these two ways of subsetting elements!</strong></p>
 </div>
@@ -1085,29 +1085,29 @@ mat[..., <span class="dv">1</span>]
 <span class="co"># 2. comparison</span>
 mat[ , <span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span>...</code></pre></div>
 <p>Let’s consider matrix <code>mat</code>:</p>
-<pre><code>##            [,1]       [,2]       [,3]         [,4]       [,5]       [,6]
-## [1,]  0.8281906 -1.5996201 -1.8824521  0.629753178 -0.1966794  0.2640005
-## [2,]  0.5225909  1.2732941  0.2769971  0.252871659  0.9993710  0.9427048
-## [3,]  2.4322500  2.0728425 -1.2655921  0.364355075  0.7098306  1.4491379
-## [4,] -1.1825225 -0.9877929  0.4680982 -0.008578266 -0.2091530 -0.6414504
-## [5,] -0.7723088 -0.3505080 -0.8206450 -1.179700800  1.5695693 -0.3966733</code></pre>
+<pre><code>##            [,1]        [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] -0.6112542 -0.01742920 -0.5529373 -0.4981059 -1.0391458 -0.7287290
+## [2,]  0.1039312  0.34878391  0.9543797  1.3075571 -0.1741269 -0.1985031
+## [3,]  2.4322500 -0.08962998 -0.8534926  0.2307777  1.0808634  1.5590538
+## [4,]  0.7135428  0.78263570 -0.4057469  0.1477772 -0.7258886 -0.3941848
+## [5,]  0.1330136 -0.08989620  0.9695277  0.9149179  0.1263356 -1.2034913</code></pre>
 <p> </p>
 <p>and think of the command in terms of the expected outcome of its constituent elements. The logical operator ‘<code>&gt;</code>’ <em>returns a logical vector</em> corresponding to the answer to the question “is the value to the left of the operator larger than that to the right of the operator?” The answer can only be <code>TRUE</code> or <code>FALSE</code>. So <code>mat[ , 1] &gt; 2</code> will return:</p>
 <pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
 <p><strong>There is no way of knowing that these values correspond to the 1<sup>st</sup> column of <code>mat</code> just from the output alone.</strong> That information has been lost.</p>
 <p>This means that, if we type <code>mat[mat[ , 1] &gt; 2, ]</code>, we are passing a vector of <code>T/F</code>s to the row position of the <code>[]</code>s. The logical vector itself contains no information about it coming from a comparison of the 1<sup>st</sup> row of <code>mat</code> to the value of <code>2</code>. So <code>R</code> can only understand the command as <code>mat[c(FALSE, FALSE, TRUE, FALSE, FALSE), ]</code> and will try to recycle the vector <code>FALSE, FALSE, TRUE, FALSE, FALSE</code> for <strong>every column</strong> of <code>mat</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[mat[ , <span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>, ]</code></pre></div>
-<pre><code>## [1]  2.4322500  2.0728425 -1.2655921  0.3643551  0.7098306  1.4491379</code></pre>
+<pre><code>## [1]  2.43225000 -0.08962998 -0.85349258  0.23077771  1.08086341  1.55905375</code></pre>
 <p> </p>
 <p>If you want to only extract values from <code>mat[ , 1]</code> that correspond to the <code>TRUE</code>s, you must tell <code>R</code> that, hence the apparent (but not actual) repetition in <code>mat[mat[ , 1] &gt; 2, 1]</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[mat[ , <span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">1</span>] &lt;-<span class="st"> </span><span class="ot">NA</span>
 mat</code></pre></div>
-<pre><code>##            [,1]       [,2]       [,3]         [,4]       [,5]       [,6]
-## [1,]  0.8281906 -1.5996201 -1.8824521  0.629753178 -0.1966794  0.2640005
-## [2,]  0.5225909  1.2732941  0.2769971  0.252871659  0.9993710  0.9427048
-## [3,]         NA  2.0728425 -1.2655921  0.364355075  0.7098306  1.4491379
-## [4,] -1.1825225 -0.9877929  0.4680982 -0.008578266 -0.2091530 -0.6414504
-## [5,] -0.7723088 -0.3505080 -0.8206450 -1.179700800  1.5695693 -0.3966733</code></pre>
+<pre><code>##            [,1]        [,2]       [,3]       [,4]       [,5]       [,6]
+## [1,] -0.6112542 -0.01742920 -0.5529373 -0.4981059 -1.0391458 -0.7287290
+## [2,]  0.1039312  0.34878391  0.9543797  1.3075571 -0.1741269 -0.1985031
+## [3,]         NA -0.08962998 -0.8534926  0.2307777  1.0808634  1.5590538
+## [4,]  0.7135428  0.78263570 -0.4057469  0.1477772 -0.7258886 -0.3941848
+## [5,]  0.1330136 -0.08989620  0.9695277  0.9149179  0.1263356 -1.2034913</code></pre>
 <p> </p>
 <p>This feature might strike some as redundant but it is actually the only sensible way. The fact that <code>R</code> is not trying to guess what columns of the data you are requesting from the syntax of the code used for subsetting the rows (and <em>vice versa</em>) means, that you can subset matrix <strong>A</strong> based on some comparison of matrix <strong>B</strong> (provided they are the same size). Or, you can replace values of <code>mat[</code> <code>,</code> <code>3]</code> based on some condition concerning <code>mat[</code> <code>,</code> <code>2]</code>. That can be very handy!</p>
 <p>It may take some time to get the hang of this but we cannot overstate the importance of knowing what the expected outcome of your commands is.</p>
@@ -1248,40 +1248,40 @@ df<span class="op">$</span>IQ[(df<span class="op">$</span>IQ <span class="op">&l
 <pre><code>## [1] &quot;df_1 &lt;- as.data.frame(matrix(rnorm(100 * 1, 0, 1), ncol = i))&quot;</code></pre>
 <p>Right, so the first command created a character string that looks like a command. Let’s break it down even further:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</code></pre></div>
-<pre><code>##   [1]  0.02680493  0.61484385 -0.49585249  1.13602765 -0.93593882
-##   [6] -0.33567216  0.24000281  0.85834993 -0.21356785  0.58009461
-##  [11] -0.13310918  0.04174961 -1.24053403 -0.13408719 -0.42159674
-##  [16] -1.36611958 -0.86191615  0.18075980 -0.39476690  0.70441657
-##  [21] -1.89480091  0.30641880 -1.77001472 -0.78366456 -1.47423296
-##  [26] -1.53621533 -0.13865936 -0.39702129  1.41778446 -1.44465251
-##  [31] -0.40668813  0.90509719  0.71891709 -0.23818480 -2.36264910
-##  [36] -0.16328354 -1.35902696 -0.14680368  0.61752072 -1.47846806
-##  [41]  0.93019412  0.30061558 -0.91233442  0.07096788 -0.53413136
-##  [46] -0.94712538 -0.35089639 -1.17013628  1.16289522 -0.23434865
-##  [51]  0.69393304 -1.26764852  0.11139589  0.34098868  0.16157676
-##  [56] -1.67036741  0.25689438  1.23153182  0.59126048  0.22709023
-##  [61] -0.69400833  0.27196680 -0.15228933 -1.62896859 -0.21209766
-##  [66]  0.36802056  1.59731655 -1.02494396  1.04538893 -0.09270653
-##  [71] -0.70768250  0.14763743 -1.64494501 -0.95448445  0.44217277
-##  [76] -0.54575634 -0.63132774 -0.87895134  0.33731562  0.25662677
-##  [81]  0.03542097  0.54333493  1.53405351  1.64433737  1.02499473
-##  [86] -2.53209296  0.40856489  1.15167697  1.13844575  0.33248897
-##  [91]  0.57388716  0.14035826 -1.31456820 -0.04796126 -0.46505048
-##  [96] -0.57535242 -1.58954004 -0.03002091 -0.02619851  0.15362948</code></pre>
+<pre><code>##   [1]  0.20954001  0.32389622 -0.37283508  0.06269738 -0.43944237
+##   [6] -0.02971048  0.33167523  0.87613630  0.12066443  1.22960802
+##  [11]  0.03880961 -0.36142638  1.69867485 -0.46379760  1.05567907
+##  [16]  0.40706833  0.25091917  0.34659071 -0.56301006 -0.31952032
+##  [21]  0.78593787  1.95669880  0.14824351  1.56030885 -0.98926565
+##  [26] -0.80915244  0.08945734 -1.62738799 -1.05697179 -1.75220222
+##  [31] -0.29391196 -0.13252925  0.13654792  0.24136139  0.08615494
+##  [36]  1.11004042 -0.70139385 -0.35972937 -0.88680865 -1.63218801
+##  [41] -0.41301727 -0.53387524  0.94790194  0.71916129 -0.16331570
+##  [46]  1.34491080  1.44300060  0.33820727 -0.19126662  0.53843328
+##  [51] -1.23718066 -0.02473555 -0.97911969  0.29637348 -0.66693251
+##  [56]  0.29288841  0.18427546 -0.44233334 -0.28808903 -1.34834318
+##  [61]  1.71051339 -2.18397948 -0.27129820 -1.58630719  0.39201312
+##  [66] -0.71061021 -0.55363487 -0.90701430 -2.97942625  0.69433419
+##  [71] -0.55669372  0.42582168 -0.03448993 -1.12345523 -0.81422757
+##  [76]  0.21169668 -0.86538853  0.42856097  1.59318164  1.37067953
+##  [81] -0.90282830  0.25127218  1.18658370 -0.49531115 -0.05869356
+##  [86] -1.01300326 -1.60729983  0.85693928 -1.07644969  1.45898747
+##  [91] -0.04104904  0.55746811  0.10122818  0.54807689 -0.25196015
+##  [96]  1.65730231  0.80990206 -0.67484874 -1.80270986 -1.93369359</code></pre>
 <p>OK, this is easy. The first bit generates <span class="math inline">\(100 \times i\)</span> random numbers with a mean of zero and a standard deviation of <em>i</em>. Let’s move one layer out:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># printout truncated to first 10 lines</span>
 <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">ncol =</span> i)</code></pre></div>
-<pre><code>##               [,1]
-##   [1,] -0.34898918
-##   [2,]  1.53373921
-##   [3,] -0.40653974
-##   [4,] -0.02847745
-##   [5,]  0.09127341
-##   [6,] -1.28749582
-##   [7,]  0.51723113
-##   [8,]  0.19016250
-##   [9,] -0.10086128
-##  [10,]  2.18402724
+<pre><code>##                [,1]
+##   [1,]  0.592449112
+##   [2,]  0.408159854
+##   [3,] -2.272998915
+##   [4,]  0.427715149
+##   [5,] -0.720533341
+##   [6,]  1.273581166
+##   [7,] -1.332828102
+##   [8,]  0.550537343
+##   [9,] -0.451407689
+##  [10,] -1.078032764
 ##  [ reached getOption(&quot;max.print&quot;) -- omitted 90 rows ]</code></pre>
 <p>This command put those numbers into a <code>matrix</code> with 100 rows and <em>i</em> columns. Next:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">ncol =</span> i))</code></pre></div>
@@ -1299,16 +1299,16 @@ df<span class="op">$</span>IQ[(df<span class="op">$</span>IQ <span class="op">&l
 <span class="co"># printout truncated</span>
 df_<span class="dv">1</span></code></pre></div>
 <pre><code>##               V1
-## 1   -0.100336065
-## 2   -0.362538563
-## 3   -1.642885124
-## 4   -1.531129000
-## 5   -2.463162433
-## 6   -0.065663716
-## 7    2.170539987
-## 8   -0.047354833
-## 9   -0.734980797
-## 10   0.536743789
+## 1   -0.093052543
+## 2   -1.000687541
+## 3    1.218611659
+## 4   -0.094683601
+## 5    0.758951880
+## 6   -0.383428923
+## 7    1.122102965
+## 8   -0.404385411
+## 9    1.567832259
+## 10  -0.156694971
 ##  [ reached getOption(&quot;max.print&quot;) -- omitted 90 rows ]</code></pre>
 <p>So what the entire loop does is create 10 data frames named <code>df_1</code> to <code>df_10</code>, each containing 100 rows and a different number of columns (1 for <code>df_1</code>, 6 for <code>df_6</code> <em>etc.</em>) with random numbers. Moreover, each <code>data.frame</code> contains random numbers with different standard deviations.</p>
 <p>And so, just like that, with a single line of code we can create 10 (or more!) different <code>R</code> objects with different properties. Cool, isn’t it? Hope this example demonstrates how, using systematic reverse-engineering, you can come to understand even a daunting-looking code with functions you haven’t seen before.</p>
