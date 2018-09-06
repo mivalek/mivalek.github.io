@@ -982,29 +982,29 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li>you might be wondering what’s the point… Let’s see how this applies in the very real world</li>
 </ul>
 </aside>
-</section><section id="conditional-probability-in-action" class="slide level2" data-background="pics/chlam2.jpg">
+</section><section id="conditional-probability-in-action" class="slide level2" data-background="pics/hpv2.jpg">
 <h2>Conditional probability in action</h2>
 <ul>
-<li>Suppose you get your routine sexual health check-up and the chlamydia test comes back positive</li>
-<li>You are told that the test is 92% <em>sensitive</em> (if you have chlamydia the test will detect it 92% of the time)</li>
-<li>You find <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2861009/" target="_blank">this paper</a> that reports that the <em>specificity</em> of urine test for <i>C. trachomatis</i> is 98.3% (if you <em>don’t</em> have chlamydia, the test will still come back positive 1.7% of the time)</li>
+<li>Suppose Hermione goes to <a href="https://www.nhslothian.scot.nhs.uk/GoingToHospital/Locations/Pages/Chalmers.aspx" target="_blank">Chalmers</a> to get her routine sexual health check-up and the HPV test comes back positive</li>
+<li>She is told that the test is 92% <em>sensitive</em> (if she has HPV the test will detect it 92% of the time)</li>
+<li>She finds a paper that reports that the <em>specificity</em> of the test is 98.3% (if she <em>doesn’t</em> have HPV, the test will still come back positive 1.7% of the time)</li>
 </ul>
 <ul>
-<li class="fragment">How certain are you that you indeed have a chlamydia infection?</li>
+<li class="fragment">How certain should Hermione be that she indeed has hogwarts?</li>
 <li class="fragment">Let’s geek out about it!</li>
 </ul>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
-<li>Yes, that <em>IS</em> chlamydia in the background</li>
+<li>Yes, that <em>IS</em> HPV in the background</li>
 </ul>
 </aside>
 </section><section id="conditional-probability-in-action-1" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
-<li>The prevalence of chlamydia in Scotland is 421 per 100k but it’s much higher in people under 25 at 1,516 per 100k (<a href="http://www.hps.scot.nhs.uk/documents/ewr/pdf2016/1639.pdf" target="_blank">source</a>)</li>
+<li>The prevalence of hogwarts in the Wizarding wolrd is 421 per 100k but it’s much higher in people under 25 at 1,516 per 100k</li>
 </ul>
-<p><img src="pics/chlam_set.png" height="400" /></p>
+<p><img src="pics/hpv_set.png" height="400" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1015,14 +1015,14 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="conditional-probability-in-action-2" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
-<li>Let’s put some numbers on it: from what we know, we can create a contingency table of C. infection and test results</li>
+<li>Let’s put some numbers on it: from our data, we can create a contingency table of HPV infection and test results</li>
 </ul>
-<p><img src="pics/chlam_tab.png" height="250" /></p>
-<p><br> <m><span class="math inline">\(P(chlam|pos) = \frac{P(pos|chlam) \times P(chlam)}{P(pos)}\)</span></m> <m><span class="math inline">\(P(chlam|pos) = \frac{sensitivity \times prevalence}{P(pos)}\)</span></m> <m><span class="math inline">\(P(chlam|pos) \approx \frac{.92 \times .015}{.031}\)</span></m></p>
+<p><img src="pics/hpv_tab.png" height="250" /></p>
+<p><br> <m><span class="math inline">\(P(HPV|pos) = \frac{P(pos|HPV) \times P(HPV)}{P(pos)}\)</span></m> <m><span class="math inline">\(P(HPV|pos) = \frac{sensitivity \times prevalence}{P(pos)}\)</span></m> <m><span class="math inline">\(P(HPV|pos) \approx \frac{.92 \times .015}{.031}\)</span></m></p>
 </section><section id="conditional-probability-in-action-3" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
-<li>Applying the conditional probability formula, we can see that, for an <strong>average person</strong> younger than 25 living in Scotland, the probability of actually having a chlamydia infection given a positive <strong>routine</strong> test is <strong>45.6%</strong></li>
+<li>Applying the conditional probability formula, we can see that, for an <strong>average wizard</strong> younger than 25, the probability of actually having a HPV infection given a positive <strong>routine</strong> test is <strong>45.6%</strong></li>
 </ul>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -1039,8 +1039,8 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li>I hope I’ve convinced you, that understanding probability is useful</li>
 </ul>
 </aside>
-</section><section id="thats-what-all-this-is-good-for-for-chlamydia-.-.-." class="slide level2" data-background="pics/chlam2.jpg">
-<h2>That’s what all this is good for!<br><subtitle>For chlamydia . . .</subtitle></h2>
+</section><section id="thats-what-all-this-is-good-for-for-hogwarts-.-.-." class="slide level2" data-background="pics/hpv2.jpg">
+<h2>That’s what all this is good for!<br><subtitle>For hogwarts . . .</subtitle></h2>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1052,9 +1052,9 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <h2>Independence</h2>
 <ul>
 <li>In probability theory, two events are said to be <em>independent</em> if the occurrence of one does not influence the probability of the other</li>
-<li>We saw that <m><span class="math inline">\(P(chlam) \approx .015\)</span></m> but <m><span class="math inline">\(P(chlam|pos) \approx .46\)</span></m></li>
-<li>Likewise, <m><span class="math inline">\(P(pos) \approx .031\)</span></m> but <m><span class="math inline">\(P(pos|chlam) = .92\)</span></m></li>
-<li>That means that having chlamydia and testing positive for it are dependent events</li>
+<li>We saw that <m><span class="math inline">\(P(HPV) \approx .015\)</span></m> but <m><span class="math inline">\(P(HPV|pos) \approx .46\)</span></m></li>
+<li>Likewise, <m><span class="math inline">\(P(pos) \approx .031\)</span></m> but <m><span class="math inline">\(P(pos|HPV) = .92\)</span></m></li>
+<li>That means that having HPV and testing positive for it are dependent events</li>
 <li>Example of independent events would be getting H on first flip and getting T on second</li>
 </ul>
 </section><section id="joint-probability" class="slide level2">
@@ -1161,11 +1161,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>]  <span class="dv">1</span> <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">5</span>  <span class="dv">8</span>
+[<span class="dv">1</span>] <span class="dv">9</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">7</span> <span class="dv">1</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">1</span></code></pre></div>
+[<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">7</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">9</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1185,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">1</span>  <span class="dv">4</span>  <span class="dv">9</span> <span class="dv">10</span>  <span class="dv">7</span>  <span class="dv">1</span>  <span class="dv">9</span>  <span class="dv">9</span>  <span class="dv">7</span>
+ [<span class="dv">1</span>]  <span class="dv">2</span> <span class="dv">10</span>  <span class="dv">7</span>  <span class="dv">9</span>  <span class="dv">8</span>  <span class="dv">6</span>  <span class="dv">9</span>  <span class="dv">6</span>  <span class="dv">5</span> <span class="dv">10</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">6</span>  <span class="dv">3</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">8</span>  <span class="dv">1</span>  <span class="dv">7</span>  <span class="dv">9</span>  <span class="dv">5</span>  <span class="dv">2</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">4</span>  <span class="dv">1</span>  <span class="dv">7</span> <span class="dv">10</span>  <span class="dv">2</span>  <span class="dv">9</span>  <span class="dv">5</span>  <span class="dv">8</span>  <span class="dv">3</span>  <span class="dv">6</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1427,7 +1427,7 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">2</span>
+ [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">4</span>
 Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
 [<span class="dv">1</span>] <span class="dv">2</span>
@@ -1656,7 +1656,7 @@ Any questions?
 <li><em>variance</em> and <em>standard deviation</em> relate to <em>mean</em></li>
 <li><em>SD</em> in cm = 100 × <em>SD</em> in m <br> </li>
 </ul>
-</section><section id="take-home-message-2" class="slide level2" data-background="pics/chlam2.jpg">
+</section><section id="take-home-message-2" class="slide level2" data-background="pics/hpv2.jpg">
 <h2>Take-home message</h2>
 <ul>
 <li>Relationship between <em>population</em> and <em>sample</em></li>
@@ -1667,7 +1667,7 @@ Any questions?
 <li>There are several measures, each with pros and cons</li>
 <li><em>variance</em> and <em>standard deviation</em> relate to <em>mean</em></li>
 <li><em>SD</em> in cm = 100 × <em>SD</em> in m</li>
-<li><strong>Play safe!</strong></li>
+<li><strong>Use that patronus Hermione!</strong></li>
 </ul>
 </section></section>
 <section><section id="see-you-in-the-labs" class="titleslide slide level1" data-background="pics/end2.jpg"><h1> <br><br><br><subtitle>See you in the labs :)</subtitle></h1></section></section>
