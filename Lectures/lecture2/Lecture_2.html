@@ -985,7 +985,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="conditional-probability-in-action" class="slide level2" data-background="pics/hpv2.jpg">
 <h2>Conditional probability in action</h2>
 <ul>
-<li>Suppose Hermione goes to <a href="https://www.nhslothian.scot.nhs.uk/GoingToHospital/Locations/Pages/Chalmers.aspx" target="_blank">Chalmers</a> to get her routine ‘magica health’ check-up and the HPV test comes back positive</li>
+<li>Suppose Hermione goes to <a href="https://www.nhslothian.scot.nhs.uk/GoingToHospital/Locations/Pages/Chalmers.aspx" target="_blank">Chalmers</a> to get her free NHS-covered routine ‘magica health’ check-up and the HPV test comes back positive</li>
 <li>She is told that the test is 92% <em>sensitive</em> (if she has HPV the test will detect it 92% of the time)</li>
 <li>She finds a paper that reports that the <em>specificity</em> of the test is 98.3% (if she <em>doesn’t</em> have HPV, the test will still come back positive 1.7% of the time)</li>
 </ul>
@@ -1161,11 +1161,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">5</span>  <span class="dv">4</span>
+[<span class="dv">1</span>]  <span class="dv">9</span>  <span class="dv">3</span> <span class="dv">10</span>  <span class="dv">8</span>  <span class="dv">4</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">8</span></code></pre></div>
+[<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">3</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1185,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>]  <span class="dv">8</span>  <span class="dv">4</span>  <span class="dv">9</span>  <span class="dv">4</span>  <span class="dv">1</span> <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">5</span>  <span class="dv">7</span>  <span class="dv">7</span>
+ [<span class="dv">1</span>]  <span class="dv">1</span> <span class="dv">10</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">5</span>  <span class="dv">5</span>  <span class="dv">4</span>  <span class="dv">3</span>  <span class="dv">2</span>  <span class="dv">5</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">4</span>  <span class="dv">2</span>  <span class="dv">9</span>  <span class="dv">1</span>  <span class="dv">8</span> <span class="dv">10</span>  <span class="dv">3</span>  <span class="dv">7</span>  <span class="dv">6</span>  <span class="dv">5</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">6</span>  <span class="dv">8</span>  <span class="dv">5</span>  <span class="dv">7</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">9</span>  <span class="dv">1</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1427,10 +1427,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">4</span>
-Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
+ [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">3</span>
+Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
-[<span class="dv">1</span>] <span class="fl">2.5</span>
+[<span class="dv">1</span>] <span class="fl">1.5</span>
 <span class="co"># of limited use with ordered categories</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))
 [<span class="dv">1</span>] <span class="fl">1.5</span>
