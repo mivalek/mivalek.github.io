@@ -985,12 +985,12 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="conditional-probability-in-action" class="slide level2" data-background="pics/hpv2.jpg">
 <h2>Conditional probability in action</h2>
 <ul>
-<li>Suppose Hermione goes to <a href="https://www.nhslothian.scot.nhs.uk/GoingToHospital/Locations/Pages/Chalmers.aspx" target="_blank">Chalmers</a> to get her free NHS-covered routine ‘magica health’ check-up and the HPV test comes back positive</li>
-<li>She is told that the test is 92% <em>sensitive</em> (if she has HPV the test will detect it 92% of the time)</li>
-<li>She finds a paper that reports that the <em>specificity</em> of the test is 98.3% (if she <em>doesn’t</em> have HPV, the test will still come back positive 1.7% of the time)</li>
+<li>Suppose Tom Riddle goes to get his free WHS-covered routine magica health check-up and the test for Haripotricidal Voldemortitis (HPV) comes back positive</li>
+<li>He is told that the test is 92% <em>sensitive</em> (if he has HPV the test will detect it 92% of the time)</li>
+<li>He finds a paper that reports that the <em>specificity</em> of the test is 98.3% (if he <em>doesn’t</em> have HPV, the test will still come back positive 1.7% of the time)</li>
 </ul>
 <ul>
-<li class="fragment">How certain should Hermione be that she indeed has hogwarts?</li>
+<li class="fragment">How certain should Tom be that he is indeed riddled with HPV?</li>
 <li class="fragment">Let’s geek out about it!</li>
 </ul>
 <!-- speaker notes -->
@@ -1002,7 +1002,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="conditional-probability-in-action-1" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
-<li>The prevalence of hogwarts in the Wizarding wolrd is 421 per 100k but it’s much higher in people under 25 at 1,516 per 100k</li>
+<li>The prevalence of HPV in the Wizarding wolrd is 421 per 100k but it’s much higher in house Slytherin at 1,516 per 100k</li>
 </ul>
 <p><img src="pics/hpv_set.png" height="400" /></p>
 <!-- speaker notes -->
@@ -1022,7 +1022,7 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 </section><section id="conditional-probability-in-action-3" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
-<li>Applying the conditional probability formula, we can see that, for an <strong>average wizard</strong> younger than 25, the probability of actually having a HPV infection given a positive <strong>routine</strong> test is <strong>45.6%</strong></li>
+<li>Applying the conditional probability formula, we can see that, for an <strong>average wizard</strong> affiliated with Slytherin, the probability of actually having a HPV infection given a positive <strong>routine</strong> test is <strong>45.6%</strong></li>
 </ul>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -1039,8 +1039,8 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li>I hope I’ve convinced you, that understanding probability is useful</li>
 </ul>
 </aside>
-</section><section id="thats-what-all-this-is-good-for-for-hogwarts-.-.-." class="slide level2" data-background="pics/hpv2.jpg">
-<h2>That’s what all this is good for!<br><subtitle>For hogwarts . . .</subtitle></h2>
+</section><section id="thats-what-all-this-is-good-for-for-hpv-.-.-." class="slide level2" data-background="pics/hpv2.jpg">
+<h2>That’s what all this is good for!<br><subtitle>For HPV . . .</subtitle></h2>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1161,11 +1161,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>]  <span class="dv">9</span>  <span class="dv">3</span> <span class="dv">10</span>  <span class="dv">8</span>  <span class="dv">4</span>
+[<span class="dv">1</span>]  <span class="dv">3</span>  <span class="dv">9</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">1</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">4</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">3</span></code></pre></div>
+[<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">1</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1185,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>]  <span class="dv">1</span> <span class="dv">10</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">5</span>  <span class="dv">5</span>  <span class="dv">4</span>  <span class="dv">3</span>  <span class="dv">2</span>  <span class="dv">5</span>
+ [<span class="dv">1</span>]  <span class="dv">6</span>  <span class="dv">1</span>  <span class="dv">9</span>  <span class="dv">3</span>  <span class="dv">5</span>  <span class="dv">2</span>  <span class="dv">1</span>  <span class="dv">8</span>  <span class="dv">1</span> <span class="dv">10</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>]  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">6</span>  <span class="dv">8</span>  <span class="dv">5</span>  <span class="dv">7</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">9</span>  <span class="dv">1</span></code></pre></div>
+ [<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">1</span>  <span class="dv">3</span>  <span class="dv">6</span>  <span class="dv">8</span>  <span class="dv">9</span>  <span class="dv">4</span>  <span class="dv">7</span>  <span class="dv">2</span>  <span class="dv">5</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1427,10 +1427,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">3</span>
-Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>
+ [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">4</span>
+Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
-[<span class="dv">1</span>] <span class="fl">1.5</span>
+[<span class="dv">1</span>] <span class="dv">3</span>
 <span class="co"># of limited use with ordered categories</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))
 [<span class="dv">1</span>] <span class="fl">1.5</span>
@@ -1667,7 +1667,7 @@ Any questions?
 <li>There are several measures, each with pros and cons</li>
 <li><em>variance</em> and <em>standard deviation</em> relate to <em>mean</em></li>
 <li><em>SD</em> in cm = 100 × <em>SD</em> in m</li>
-<li><strong>Use that patronus Hermione!</strong></li>
+<li><strong>Use that patronus Tom!</strong></li>
 </ul>
 </section></section>
 <section><section id="see-you-in-the-labs" class="titleslide slide level1" data-background="pics/end2.jpg"><h1> <br><br><br><subtitle>See you in the labs :)</subtitle></h1></section></section>
