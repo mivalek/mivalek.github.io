@@ -990,15 +990,9 @@ B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</sp
 <li>He finds a paper that reports that the <em>specificity</em> of the test is 98.3% (if he <em>doesn’t</em> have HPV, the test will still come back positive 1.7% of the time)</li>
 </ul>
 <ul>
-<li class="fragment">How certain should Tom be that he is indeed riddled with HPV?</li>
+<li class="fragment">How certain should Tom be that he is riddled?</li>
 <li class="fragment">Let’s geek out about it!</li>
 </ul>
-<!-- speaker notes -->
-<aside class="notes" data-markdown>
-<ul>
-<li>Yes, that <em>IS</em> HPV in the background</li>
-</ul>
-</aside>
 </section><section id="conditional-probability-in-action-1" class="slide level2">
 <h2>Conditional probability in action</h2>
 <ul>
@@ -1161,11 +1155,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 
 <span class="co"># pick 5 of them at random</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>]  <span class="dv">3</span>  <span class="dv">9</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">1</span>
+[<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">6</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">9</span>
 
 <span class="co"># different result each time</span>
 <span class="kw">sample</span>(pop, <span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">1</span></code></pre></div>
+[<span class="dv">1</span>] <span class="dv">9</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">8</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1185,11 +1179,11 @@ pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</s
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sampling WITH replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)
- [<span class="dv">1</span>]  <span class="dv">6</span>  <span class="dv">1</span>  <span class="dv">9</span>  <span class="dv">3</span>  <span class="dv">5</span>  <span class="dv">2</span>  <span class="dv">1</span>  <span class="dv">8</span>  <span class="dv">1</span> <span class="dv">10</span>
+ [<span class="dv">1</span>] <span class="dv">9</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">5</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">9</span>
 
 <span class="co"># sampling WITHOUT replacement</span>
 <span class="kw">sample</span>(pop, <span class="dv">10</span>)
- [<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">1</span>  <span class="dv">3</span>  <span class="dv">6</span>  <span class="dv">8</span>  <span class="dv">9</span>  <span class="dv">4</span>  <span class="dv">7</span>  <span class="dv">2</span>  <span class="dv">5</span></code></pre></div>
+ [<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">8</span>  <span class="dv">2</span>  <span class="dv">3</span>  <span class="dv">9</span> <span class="dv">10</span>  <span class="dv">7</span>  <span class="dv">6</span></code></pre></div>
 </section><section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
 <ul>
@@ -1427,10 +1421,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 [<span class="dv">1</span>] <span class="dv">25</span>
 <span class="co"># ordinal data must be converted to numeric for median()</span>
 (x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))
- [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">4</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">1</span> <span class="dv">4</span>
+ [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">1</span>
 Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))
-[<span class="dv">1</span>] <span class="dv">3</span>
+[<span class="dv">1</span>] <span class="fl">2.5</span>
 <span class="co"># of limited use with ordered categories</span>
 (<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))
 [<span class="dv">1</span>] <span class="fl">1.5</span>
@@ -1654,20 +1648,7 @@ Any questions?
 <li>Dispersion describes how much the values are <em>spread</em></li>
 <li>There are several measures, each with pros and cons</li>
 <li><em>variance</em> and <em>standard deviation</em> relate to <em>mean</em></li>
-<li><em>SD</em> in cm = 100 × <em>SD</em> in m <br> </li>
-</ul>
-</section><section id="take-home-message-2" class="slide level2" data-background="pics/hpv2.jpg">
-<h2>Take-home message</h2>
-<ul>
-<li>Relationship between <em>population</em> and <em>sample</em></li>
-<li>What <strong>random</strong> sampling <em>with</em> and <em>without</em> replacement is</li>
-<li>Difference between <em>types</em> of variables and <em>levels of measurement</em></li>
-<li>Central tendency describes the <em>average</em> value</li>
-<li>Dispersion describes how much the values are <em>spread</em></li>
-<li>There are several measures, each with pros and cons</li>
-<li><em>variance</em> and <em>standard deviation</em> relate to <em>mean</em></li>
 <li><em>SD</em> in cm = 100 × <em>SD</em> in m</li>
-<li><strong>Use that patronus Tom!</strong></li>
 </ul>
 </section></section>
 <section><section id="see-you-in-the-labs" class="titleslide slide level1" data-background="pics/end2.jpg"><h1> <br><br><br><subtitle>See you in the labs :)</subtitle></h1></section></section>
