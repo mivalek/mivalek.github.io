@@ -504,6 +504,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="today" class="slide level2">
 <h2>Today</h2>
 <ul>
+<li>Catch-up: measures of dispersion</li>
 <li>Functions</li>
 <li>Basic data visualisation</li>
 <li>Distributions</li>
@@ -518,13 +519,162 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </ul>
 </aside>
 </section>
-<section><section id="fun-in-function" class="titleslide slide level1" data-background="pics/fun2.jpg"><h1>Fun in <code>function()</code></h1></section><section id="functions" class="slide level2">
+<section><section id="catch-up" class="titleslide slide level1"><h1>Catch-up</h1></section><section id="dispersion" class="slide level2">
+<h2>Dispersion</h2>
+<ul>
+<li>Mode, median, and mean tell us about the central point in our data</li>
+<li>They don’t tell us how spread the data are around this point</li>
+<li>That is what measures of dispersion (spread) do
+<ul>
+<li>Range</li>
+<li>Inter-quartile range</li>
+<li>Deviation</li>
+<li>Variance</li>
+<li>Standard deviation</li>
+</ul></li>
+</ul>
+</section><section id="dispersion-range" class="slide level2">
+<h2>Dispersion: <strong>Range</strong></h2>
+<ul>
+<li>Distance between smallest and largest value in sample</li>
+<li><em>Drawback:</em> Extremely sensitive to outliers</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># range() gives minimum and maximum</span>
+<span class="kw">range</span>(data<span class="op">$</span>age)
+[<span class="dv">1</span>] <span class="dv">23</span> <span class="dv">33</span>
+<span class="co"># get the distance</span>
+<span class="kw">max</span>(data<span class="op">$</span>age) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(data<span class="op">$</span>age)
+[<span class="dv">1</span>] <span class="dv">10</span></code></pre></div>
+</section><section id="dispersion-iqr" class="slide level2">
+<h2>Dispersion: <strong>IQR</strong></h2>
+<ul>
+<li>Inter-quartile range - distance between 1<small><sup>st</sup></small> and 3<small><sup>rd</sup></small> quartile</li>
+<li><em>Drawback:</em> Ignores half of the data</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get quartiles (quantiles with n = 4)</span>
+<span class="co"># cut data into lower 25%, 50%, 75%, 100%</span>
+(quartiles &lt;-<span class="st"> </span><span class="kw">quantile</span>(age, <span class="kw">c</span>(.<span class="dv">25</span>, .<span class="dv">5</span>, .<span class="dv">75</span>, <span class="dv">1</span>)))
+  <span class="dv">25</span><span class="op">%   50%</span><span class="st">   </span><span class="dv">75</span><span class="op">%  100%</span><span class="st"> </span>
+<span class="fl">24.25</span> <span class="fl">25.00</span> <span class="fl">25.75</span> <span class="fl">83.00</span> 
+<span class="co"># IQR = 3rd - 1st quaritle</span>
+<span class="co"># don&#39;t worry about the &quot;75%&quot;, it&#39;s just a leftover label</span>
+quartiles[<span class="dv">3</span>] <span class="op">-</span><span class="st"> </span>quartiles[<span class="dv">1</span>]
+<span class="dv">75</span>% 
+<span class="fl">1.5</span> 
+<span class="co"># built-in R function</span>
+<span class="kw">IQR</span>(data<span class="op">$</span>age)
+[<span class="dv">1</span>] <span class="fl">1.5</span></code></pre></div>
+<ul>
+<li>Other quantiles can be used for different inter-<em>quantile</em> ranges</li>
+</ul>
+</section><section id="dispersion-deviation" class="slide level2">
+<h2>Dispersion: <strong>Deviation</strong></h2>
+<ul>
+<li>Distance from every single value in the data from some convenient point</li>
+<li>Mean is a convenient point</li>
+<li><m><span class="math inline">\(x_i - \bar{x}\)</span></m>, where <m><span class="math inline">\(x_i\)</span></m> is every single data point</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># minus is a vectorised operation in R</span>
+data<span class="op">$</span>age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>age)
+[<span class="dv">1</span>] <span class="op">-</span><span class="dv">3</span> <span class="op">-</span><span class="dv">1</span>  <span class="dv">7</span>  <span class="dv">0</span> <span class="op">-</span><span class="dv">1</span> <span class="op">-</span><span class="dv">2</span></code></pre></div>
+</section><section id="dispersion-deviation-1" class="slide level2">
+<h2>Dispersion: <strong>Deviation</strong></h2>
+<ul>
+<li>There are as many deviations as data points</li>
+<li>To get a single measure of spread, how about we add them all up?</li>
+</ul>
+<ul>
+<li class="fragment"><em>Problem:</em> More data points = more points to add up</li>
+<li class="fragment"><em>BIG problem:</em> They always add up to zero</li>
+</ul>
+</section><section id="dispersion-variance" class="slide level2">
+<h2>Dispersion: <strong>Variance</strong></h2>
+<ul>
+<li>How do we get around the <em>BIG problem</em> (deviations adding up to 0)?</li>
+</ul>
+<ul>
+<li class="fragment">By taking the square of the deviations</li>
+<li class="fragment">The sum of these is called the <em><strong>S</strong>um of <strong>S</strong>quares</em></li>
+</ul>
+<!-- keep the empty line there! -->
+<ul>
+<li class="fragment">We can get around the <em>problem</em> by dividing the sum of squares by <em>N</em></li>
+<li class="fragment">This is the <strong>variance</strong></li>
+</ul>
+</section><section id="dispersion-variance-1" class="slide level2">
+<h2>Dispersion: <strong>Variance</strong></h2>
+<ul>
+<li>population variance <m><span class="math inline">\(\sigma^2 = \frac{\sum_{i=1}^N (x_i - \mu)^2}{N}\)</span></m></li>
+<li>sample variance, <m><span class="math inline">\(s^2 = \frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}\)</span></m>
+<ul>
+<li>reason for the <m><span class="math inline">\(N - 1\)</span></m> is quite technical (see <a href="https://en.wikipedia.org/wiki/Bessel%27s_correction">Bessel’s correction</a>)</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># deviations</span>
+(dev &lt;-<span class="st"> </span>data<span class="op">$</span>age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>age))
+[<span class="dv">1</span>] <span class="op">-</span><span class="dv">3</span> <span class="op">-</span><span class="dv">1</span>  <span class="dv">7</span>  <span class="dv">0</span> <span class="op">-</span><span class="dv">1</span> <span class="op">-</span><span class="dv">2</span>
+<span class="co"># sums of squares</span>
+(ss &lt;-<span class="st"> </span><span class="kw">sum</span>(dev<span class="op">^</span><span class="dv">2</span>))
+[<span class="dv">1</span>] <span class="dv">64</span>
+<span class="co"># variance</span>
+ss <span class="op">/</span><span class="st"> </span>(<span class="kw">length</span>(data<span class="op">$</span>age) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)
+[<span class="dv">1</span>] <span class="fl">12.8</span>
+<span class="co"># in-built function</span>
+<span class="kw">var</span>(data<span class="op">$</span>age)
+[<span class="dv">1</span>] <span class="fl">12.8</span></code></pre></div>
+</section><section id="dispersion-standard-deviation" class="slide level2">
+<h2>Dispersion: <strong>Standard deviation</strong></h2>
+<ul>
+<li>Variance is a good measure of dispersion and is widely used</li>
+<li>One minor inconvenience – measured in <em>squared units</em>
+<ul>
+<li>if age is measured in years, <m><span class="math inline">\(s^2_{age}\)</span></m> is expressed in years<small><sup>2</sup></small>, whatever those are</li>
+</ul></li>
+<li>Taking the square root of variance gives us a measure of spread in the original units</li>
+<li>This is the standard deviation
+<ul>
+<li><m><span class="math inline">\(\sigma\)</span></m> for population</li>
+<li><m><span class="math inline">\(s\)</span></m> (or <m><span class="math inline">\(SD\)</span></m>) for sample</li>
+</ul></li>
+</ul>
+</section><section id="dispersion-standard-deviation-1" class="slide level2">
+<h2>Dispersion: <strong>Standard deviation</strong></h2>
+<p><br><m> <span class="math display">\[s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}}\]</span> </m></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="kw">var</span>(data<span class="op">$</span>age))
+[<span class="dv">1</span>] <span class="fl">3.577709</span>
+<span class="kw">sd</span>(data<span class="op">$</span>age)
+[<span class="dv">1</span>] <span class="fl">3.577709</span></code></pre></div>
+<ul>
+<li>If we measured age in decades, <m><span class="math inline">\(s_{ageD}\)</span></m> would be <strong>proportional</strong> to <m><span class="math inline">\(s_{age}\)</span></m></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(ageD &lt;-<span class="st"> </span>data<span class="op">$</span>age <span class="op">/</span><span class="st"> </span><span class="dv">10</span>)
+[<span class="dv">1</span>] <span class="fl">2.3</span> <span class="fl">2.5</span> <span class="fl">3.3</span> <span class="fl">2.6</span> <span class="fl">2.5</span> <span class="fl">2.4</span>
+<span class="kw">sd</span>(ageD)
+[<span class="dv">1</span>] <span class="fl">0.3577709</span></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+Any questions?
+</aside>
+</section><section id="take-home-message" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li>Relationship between <em>population</em> and <em>sample</em></li>
+<li>What <strong>random</strong> sampling <em>with</em> and <em>without</em> replacement is</li>
+<li>Difference between <em>types</em> of variables and <em>levels of measurement</em></li>
+<li>Central tendency describes the <em>average</em> value</li>
+<li>Dispersion describes how much the values are <em>spread</em></li>
+<li>There are several measures, each with pros and cons</li>
+<li><em>variance</em> and <em>standard deviation</em> relate to <em>mean</em></li>
+<li><em>SD</em> in cm = 100 × <em>SD</em> in m</li>
+</ul>
+</section></section>
+<section><section id="fun-in-function" class="titleslide slide level1" data-background="../pics/fun2.jpg"><h1>Fun in <code>function()</code></h1></section><section id="functions" class="slide level2">
 <h2>Functions</h2>
 <ul>
 <li>Informally, function is a process that takes some input and turns it into a single output</li>
 <li>Individual inputs are called <strong>parameters</strong> <br>   <br>   <br>   <br>   <br>   <br>  </li>
 </ul>
-</section><section id="play-time" class="slide level2" data-background="pics/play2.jpg">
+</section><section id="play-time" class="slide level2" data-background="../pics/play2.jpg">
 <h2>Play time!</h2>
 <ul>
 <li class="fragment">You just invented the <em>identity</em> function!</li>
@@ -588,7 +738,7 @@ sd
 <span class="cf">function</span> (x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) 
 <span class="kw">sqrt</span>(<span class="kw">var</span>(<span class="cf">if</span> (<span class="kw">is.vector</span>(x) <span class="op">||</span><span class="st"> </span><span class="kw">is.factor</span>(x)) x <span class="cf">else</span> <span class="kw">as.double</span>(x), 
     <span class="dt">na.rm =</span> na.rm))
-<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x000000000be22680</span><span class="op">&gt;</span>
+<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x0000000005d99f50</span><span class="op">&gt;</span>
 <span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>stats<span class="op">&gt;</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -618,7 +768,7 @@ Error <span class="cf">in</span> x <span class="op">*</span><span class="st"> </
 <span class="co"># incorrect number of arguments</span>
 <span class="kw">sd</span>()
 Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class="op">:</span><span class="st"> </span>argument <span class="st">&quot;x&quot;</span> is missing, with no default</code></pre></div>
-</section><section id="section" class="slide level2" data-background="pics/kitten2.jpg">
+</section><section id="section" class="slide level2" data-background="../pics/kitten2.jpg">
 <h2> </h2>
 </section><section id="all-sorts" class="slide level2">
 <h2>All sorts</h2>
@@ -649,170 +799,170 @@ Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m><br><br></li>
 </ul>
-<p><img src="pics/null_plot.png" width="500px"></p>
+<p><img src="../pics/null_plot.png" width="500px"></p>
 </section><section id="visualising-functions-2" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span><br><br></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/draw_plot.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/draw_plot.gif" /></p>
 </section><section id="visualising-functions-3" class="slide level2" data-transition="none">
 <h2>Visualising functions</h2>
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
 <li>Plot x = [1, 5, −10, 15.6, −19]</li>
 </ul>
-<p><img src="pics/empty_plot.png" width="500px"></p>
+<p><img src="../pics/empty_plot.png" width="500px"></p>
 </section><section id="visualising-functions-4" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
 <li>Plot x = [<strong>1</strong>, 5, −10, 15.6, −19]</li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/pt1.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/pt1.gif" /></p>
 </section><section id="visualising-functions-5" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
 <li>Plot x = [1, <strong>5</strong>, −10, 15.6, −19]</li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/pt2.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/pt2.gif" /></p>
 </section><section id="visualising-functions-6" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
 <li>Plot x = [1, 5, <strong>−10</strong>, 15.6, −19]</li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/pt3.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/pt3.gif" /></p>
 </section><section id="visualising-functions-7" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
 <li>Plot x = [1, 5, −10, <strong>15.6</strong>, −19]</li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/pt4.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/pt4.gif" /></p>
 </section><section id="visualising-functions-8" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
 <li>Plot x = [1, 5, −10, 15.6, <strong>−19</strong>]</li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/pt5.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/pt5.gif" /></p>
 </section><section id="visualising-functions-9" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising functions</h2>
 <ul>
 <li>Let’s start simple – <m><span class="math inline">\(f(x) = x\)</span></m></li>
 <li>Plot x = [1, 5, −10, 15.6, −19]</li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/fun1.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/fun1.gif" /></p>
 </section><section id="visualising-maths-operations" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = x^2\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/empty_plot.png"></p>
+<p><img width="500px" src="../pics/empty_plot.png"></p>
 </section><section id="visualising-maths-operations-1" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = x^2\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/fun2.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/fun2.gif" /></p>
 </section><section id="visualising-maths-operations-2" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = (x + 15)^2\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/f_x/x_2.png"></p>
+<p><img width="500px" src="../pics/f_x/x_2.png"></p>
 </section><section id="visualising-maths-operations-3" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = (x + 15)^2\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/x_plus15_sq.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/x_plus15_sq.gif" /></p>
 </section><section id="visualising-maths-operations-4" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = (x - 5)^2\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/f_x/x_plus15_sq.png"></p>
+<p><img width="500px" src="../pics/f_x/x_plus15_sq.png"></p>
 </section><section id="visualising-maths-operations-5" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = (x - 5)^2\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/x_minus5_sq.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/x_minus5_sq.gif" /></p>
 </section><section id="visualising-maths-operations-6" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/f_x/x_minus5_sq.png"></p>
+<p><img width="500px" src="../pics/f_x/x_minus5_sq.png"></p>
 </section><section id="visualising-maths-operations-7" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/minus_x.gif" /></p>
+<p><img width="500px" data-src="../pics/f_x/minus_x.gif" /></p>
 </section><section id="visualising-maths-operations-8" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)\times 3\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/minus_x.png"></p>
+<p><img width="500px" data-src="../pics/f_x/minus_x.png"></p>
 </section><section id="visualising-maths-operations-9" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)\times 3\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/f_x/x_times3.gif" /></p>
+<p><img width="500px" src="../pics/f_x/x_times3.gif" /></p>
 </section><section id="visualising-maths-operations-10" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)/10\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/x_times3.png"></p>
+<p><img width="500px" data-src="../pics/f_x/x_times3.png"></p>
 </section><section id="visualising-maths-operations-11" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)/10\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/f_x/x_div10.gif" /></p>
+<p><img width="500px" src="../pics/f_x/x_div10.gif" /></p>
 </section><section id="visualising-maths-operations-12" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)/10 -10\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/x_div10.png"></p>
+<p><img width="500px" data-src="../pics/f_x/x_div10.png"></p>
 </section><section id="visualising-maths-operations-13" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)/10 -10\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/f_x/x_minus10.gif" /></p>
+<p><img width="500px" src="../pics/f_x/x_minus10.gif" /></p>
 </section><section id="visualising-maths-operations-14" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)/10 + 5\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/x_minus10.png"></p>
+<p><img width="500px" data-src="../pics/f_x/x_minus10.png"></p>
 </section><section id="visualising-maths-operations-15" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = -((x-5)^2)/10 + 5\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/f_x/x_plus5.gif" /></p>
+<p><img width="500px" src="../pics/f_x/x_plus5.gif" /></p>
 </section><section id="visualising-maths-operations-16" class="slide level2" data-transition="none">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = |-((x-5)^2)/10 + 5|\]</span></m></li>
 </ul>
-<p><img width="500px" data-src="pics/f_x/x_plus5.png"></p>
+<p><img width="500px" data-src="../pics/f_x/x_plus5.png"></p>
 </section><section id="visualising-maths-operations-17" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Visualising maths operations</h2>
 <ul>
 <li>OK, now for something different: <m><span class="math display">\[f(x) = |-((x-5)^2)/10 + 5|\]</span></m></li>
 </ul>
-<p><img width="500px" src="pics/f_x/abs_x.gif" /></p>
+<p><img width="500px" src="../pics/f_x/abs_x.gif" /></p>
 </section><section id="linear-function" class="slide level2">
 <h2>Linear function</h2>
 <ul>
@@ -826,19 +976,19 @@ Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class
 </section><section id="linear-function-intercept" class="slide level2" data-transition="none">
 <h2>Linear function – Intercept</h2>
 <p><m><span class="math display">\[f(x, b_0, b_1) = b_0 + b_1\times x\]</span></m></p>
-<p><img width="500px" data-src="pics/f_x/int1.png"></p>
+<p><img width="500px" data-src="../pics/f_x/int1.png"></p>
 </section><section id="linear-function-intercept-1" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Linear function – Intercept</h2>
 <p><m><span class="math display">\[f(x, b_0, b_1) = b_0 + b_1\times x\]</span></m></p>
-<p><img width="500px" src="pics/f_x/int.gif" /></p>
+<p><img width="500px" src="../pics/f_x/int.gif" /></p>
 </section><section id="linear-function-slope" class="slide level2" data-transition="none">
 <h2>Linear function – Slope</h2>
 <p><m><span class="math display">\[f(x, b_0, b_1) = b_0 + b_1\times x\]</span></m></p>
-<p><img width="500px" data-src="pics/f_x/slope1.png"></p>
+<p><img width="500px" data-src="../pics/f_x/slope1.png"></p>
 </section><section id="linear-function-slope-1" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Linear function – Slope</h2>
 <p><m><span class="math display">\[f(x, b_0, b_1) = b_0 + b_1\times x\]</span></m></p>
-<p><img width="500px" src="pics/f_x/slope.gif" /></p>
+<p><img width="500px" src="../pics/f_x/slope.gif" /></p>
 </section><section id="linear-function-1" class="slide level2">
 <h2>Linear function</h2>
 <p><em>Remember:</em> Every single<small><sup>*</sup></small> straight line is a function of <strong>x</strong> characterised by the <strong>intercept</strong> (<span class="math inline">\(b_0\)</span>) and the <strong>slope</strong> (<span class="math inline">\(b_1\)</span>)</p>
@@ -850,7 +1000,7 @@ Error <span class="cf">in</span> <span class="kw">is.vector</span>(x)<span class
 </ul>
 </aside>
 </section></section>
-<section><section id="worth-a-thousand-words" class="titleslide slide level1" data-background="pics/viz2.jpg"><h1>Worth a thousand words</h1></section><section id="visualising-data" class="slide level2">
+<section><section id="worth-a-thousand-words" class="titleslide slide level1" data-background="../pics/viz2.jpg"><h1>Worth a thousand words</h1></section><section id="visualising-data" class="slide level2">
 <h2>Visualising data</h2>
 <ul>
 <li>Graphics can help you get a feel for your data before analysis</li>
@@ -894,7 +1044,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data<span class="op">$</span>dpt, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>),
      <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-8-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-14-1.png" width="480" /></p>
 </section><section id="bar-chart-1" class="slide level2">
 <h2>Bar chart</h2>
 <ul>
@@ -902,7 +1052,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">prop.table</span>(<span class="kw">table</span>(data<span class="op">$</span>degree)) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="co"># for percentages</span>
         <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;%&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-10-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-16-1.png" width="480" /></p>
 </section><section id="one-continuous-variable" class="slide level2">
 <h2>One continuous variable</h2>
 <ul>
@@ -919,22 +1069,22 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <li>By default <code>R</code> will try to give you a reasonable number of bins (and thereby the bin width)</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data<span class="op">$</span>mark, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-17-1.png" width="768" /></p>
 </section><section id="histogram-1" class="slide level2">
 <h2>Histogram</h2>
 <ul>
 <li>You can change the number of bins manually using the <code>breaks =</code> argument</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data<span class="op">$</span>mark, <span class="dt">breaks =</span> <span class="dv">20</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-12-1.png" width="768" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" /></p>
 </section><section id="box-plot" class="slide level2">
 <h2>Box plot</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-14-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-20-1.png" width="480" /></p>
 </section><section id="box-plot-1" class="slide level2">
 <h2>Box plot</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-16-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-22-1.png" width="480" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -957,7 +1107,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first x-axis, then y-axis</span>
 <span class="kw">plot</span>(data<span class="op">$</span>dpt, data<span class="op">$</span>eye_col,
      <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Eye colour&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-18-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-24-1.png" width="480" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -973,7 +1123,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># when using barplot() a contingency table must be provided</span>
 <span class="kw">barplot</span>(<span class="kw">table</span>(data<span class="op">$</span>eye_col, data<span class="op">$</span>dpt), <span class="dt">beside =</span> T,
         <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>, <span class="dt">legend.text =</span> T)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-20-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-26-1.png" width="480" /></p>
 </section><section id="categorical-1-continuous-var" class="slide level2">
 <h2>1 categorical, 1 continuous var</h2>
 <ul>
@@ -982,14 +1132,14 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># col = needs to be specified</span>
 <span class="kw">hist</span>(data<span class="op">$</span>mark[data<span class="op">$</span>dpt <span class="op">==</span><span class="st"> &quot;cog&quot;</span>], <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">col =</span> ...)
 <span class="kw">hist</span>(data<span class="op">$</span>mark[data<span class="op">$</span>dpt <span class="op">==</span><span class="st"> &quot;lel&quot;</span>], <span class="dt">add =</span> T, <span class="dt">col =</span> ...)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-22-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-28-1.png" width="480" /></p>
 </section><section id="categorical-1-continuous-var-1" class="slide level2">
 <h2>1 categorical, 1 continuous var</h2>
 <ul>
 <li>Box plots provide more information and are less busy</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data<span class="op">$</span>dpt, data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-23-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-29-1.png" width="480" /></p>
 </section><section id="categorical-1-continuous-var-2" class="slide level2">
 <h2>2 categorical, 1 continuous var</h2>
 <ul>
@@ -998,7 +1148,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># pick 3 colours, legend and x axis require a bit of effort</span>
 <span class="kw">boxplot</span>(data<span class="op">$</span>mark <span class="op">~</span><span class="st"> </span>data<span class="op">$</span>eye_col <span class="op">+</span><span class="st"> </span>data<span class="op">$</span>dpt, <span class="dt">col =</span> <span class="kw">c</span>(..., ..., ...),
         <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-25-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-31-1.png" width="480" /></p>
 </section><section id="two-continuous-variables" class="slide level2">
 <h2>Two continuous variables</h2>
 <ul>
@@ -1007,25 +1157,25 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># jitter moves the points around a little, try without</span>
 <span class="kw">plot</span>(<span class="kw">jitter</span>(data<span class="op">$</span>age), data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>)
 <span class="kw">abline</span>(<span class="kw">lm</span>(mark <span class="op">~</span><span class="st"> </span>age, data)) <span class="co"># line of best fit</span></code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-27-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-33-1.png" width="480" /></p>
 </section><section id="scatter-plot" class="slide level2">
 <h2>Scatter plot</h2>
 <ul>
 <li>It is useful to learn to recognise types of relationships</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-28-1.png" width="576" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-34-1.png" width="576" /></p>
 </section><section id="continuous-1-categorical-var" class="slide level2">
 <h2>2 continuous, 1 categorical var</h2>
 <ul>
 <li>Scatter plots can also be colour-coded (<a href="group_scatter.R" target="_blank">full code</a>)</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-29-1.png" width="576" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-35-1.png" width="576" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 Any questions?
 </aside>
 </section></section>
-<section><section id="take-10" class="titleslide slide level1" data-background="pics/hands2.jpg"><h1>Take 10</h1></section><section id="section-1" class="slide level2" data-background="../gif/tide.gif">
+<section><section id="take-10" class="titleslide slide level1" data-background="../pics/hands2.jpg"><h1>Take 10</h1></section><section id="section-1" class="slide level2" data-background="../gif/tide.gif">
 <h2> </h2>
 <script src="../js/timer.js"></script>
 <time>
@@ -1034,7 +1184,7 @@ Any questions?
 </section>
 <p></time></p>
 </section></section>
-<section><section id="the-shape-of-things" class="titleslide slide level1" data-background="pics/chlam2.jpg"><h1>The shape of things</h1></section><section id="distribution" class="slide level2">
+<section><section id="the-shape-of-things" class="titleslide slide level1" data-background="../pics/chlam2.jpg"><h1>The shape of things</h1></section><section id="distribution" class="slide level2">
 <h2>Distribution</h2>
 <ul>
 <li>Numerically speaking, the number of observations per each value of a variable</li>
@@ -1055,7 +1205,7 @@ result
 <span class="dv">157</span> <span class="dv">168</span> <span class="dv">158</span> <span class="dv">192</span> <span class="dv">164</span> <span class="dv">161</span> 
 
 <span class="kw">barplot</span>(<span class="kw">table</span>(result))</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-30-1.png" width="480" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-36-1.png" width="480" /></p>
 </section><section id="the-uniform-distribution" class="slide level2">
 <h2>The uniform distribution</h2>
 <ul>
@@ -1068,7 +1218,7 @@ result
 <ul>
 <li>In smaller samples, the fluctuations are more pronounced, in large samples, they become negligible</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-31-1.png" width="576" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-37-1.png" width="576" /></p>
 </section><section id="fluctuations-1" class="slide level2">
 <h2>Fluctuations</h2>
 <ul>
@@ -1091,7 +1241,7 @@ result
   <span class="dv">0</span>   <span class="dv">8</span>  <span class="dv">46</span> <span class="dv">109</span> <span class="dv">210</span> <span class="dv">233</span> <span class="dv">220</span> <span class="dv">120</span>  <span class="dv">41</span>  <span class="dv">12</span>   <span class="dv">1</span> 
 
 <span class="kw">barplot</span>(<span class="kw">table</span>(result))</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-32-1.png" width="528" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-38-1.png" width="528" /></p>
 </section><section id="binomial-distribution" class="slide level2">
 <h2>Binomial distribution</h2>
 <ul>
@@ -1116,7 +1266,7 @@ result
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">7</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="co"># go big or go home</span>
 <span class="kw">hist</span>(x, <span class="dt">breaks =</span> br, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, .<span class="dv">4</span>), <span class="dt">freq =</span> F)</code></pre></div>
-<p><img width="420px" data-src="pics/hist_dens.png"></p>
+<p><img width="420px" data-src="../pics/hist_dens.png"></p>
 <p><small> </small></p>
 </section><section id="normal-distribution-2" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Normal distribution</h2>
@@ -1125,7 +1275,7 @@ result
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span><span class="op">^</span><span class="dv">7</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="co"># go big or go home</span>
 <span class="kw">hist</span>(x, <span class="dt">breaks =</span> br, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, .<span class="dv">4</span>), <span class="dt">freq =</span> F)</code></pre></div>
-<p><img width="420px" src="pics/hist_dens.gif" /></p>
+<p><img width="420px" src="../pics/hist_dens.gif" /></p>
 <p><small> </small></p>
 </section><section id="normal-distribution-3" class="slide level2" data-transition="none">
 <h2>Normal distribution</h2>
@@ -1133,7 +1283,7 @@ result
 <li>This is the normal (Gaussian) <em>probability density function</em></li>
 <li>It takes some real numbers, some mean, and some <em>SD</em> and returns the probability with which values around these numbers will be observed<small><sup>*</sup></small></li>
 </ul>
-<p><img width="420px" data-src="pics/hist_dens2.png"></p>
+<p><img width="420px" data-src="../pics/hist_dens2.png"></p>
 <p><small> <sup>*</sup> Substantial caveats! For more info, see <a href="https://en.wikipedia.org/wiki/Probability_density_function" target="_blank">here</a></small></p>
 </section><section id="normal-distribution-4" class="slide level2">
 <h2>Normal distribution</h2>
@@ -1154,49 +1304,49 @@ result
 <li>Not every symmetrical bell-shaped distribution is normal</li>
 <li>It’s also about the proportions – The proportion of observations that falls within a given interval is fixed</li>
 </ul>
-<p><img width="800px" height="500px" src="pics/norm1.png" /></p>
+<p><img width="800px" height="500px" src="../pics/norm1.png" /></p>
 </section><section id="normal-distribution-6" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Normal distribution</h2>
 <ul>
 <li>Peak/centre of the distribution is its mean (also mode and median)</li>
 <li>Changing mean (<strong>centering</strong>) shifts the curve left/right</li>
 </ul>
-<p><img width="800px" height="500px" src="pics/norm.gif" /></p>
+<p><img width="800px" height="500px" src="../pics/norm.gif" /></p>
 </section><section id="normal-distribution-7" class="slide level2" data-transition="fade" data-gif="repeat">
 <h2>Normal distribution</h2>
 <ul>
 <li>Peak/centre of the distribution is its mean (also mode and median)</li>
 <li>Changing mean (<strong>centering</strong>) shifts the curve left/right</li>
 </ul>
-<p><img width="800px" height="500px" src="pics/mean1.gif" /></p>
+<p><img width="800px" height="500px" src="../pics/mean1.gif" /></p>
 </section><section id="normal-distribution-8" class="slide level2" data-transition="fade" data-gif="repeat">
 <h2>Normal distribution</h2>
 <ul>
 <li>Peak/centre of the distribution is its mean (also mode and median)</li>
 <li>Changing mean (<strong>centering</strong>) shifts the curve left/right</li>
 </ul>
-<p><img width="800px" height="500px" src="pics/mean2.gif" /></p>
+<p><img width="800px" height="500px" src="../pics/mean2.gif" /></p>
 </section><section id="normal-distribution-9" class="slide level2" data-transition="fade">
 <h2>Normal distribution</h2>
 <ul>
 <li>Standard deviation determines the steepness of the curve (small <em>SD</em> = steep curve)</li>
 <li>Changing <em>SD</em> is also known as <strong>scaling</strong></li>
 </ul>
-<p><img width="800px" height="500px" src="pics/sigma1.png" /></p>
+<p><img width="800px" height="500px" src="../pics/sigma1.png" /></p>
 </section><section id="normal-distribution-10" class="slide level2" data-transition="fade" data-gif="repeat">
 <h2>Normal distribution</h2>
 <ul>
 <li>Standard deviation determines the steepness of the curve (small <em>SD</em> = steep curve)</li>
 <li>Changing <em>SD</em> is also known as <strong>scaling</strong></li>
 </ul>
-<p><img width="800px" height="500px" src="pics/sigma1.gif" /></p>
+<p><img width="800px" height="500px" src="../pics/sigma1.gif" /></p>
 </section><section id="normal-distribution-11" class="slide level2" data-transition="fade" data-gif="repeat">
 <h2>Normal distribution</h2>
 <ul>
 <li>Standard deviation determines the steepness of the curve (small <em>SD</em> = steep curve)</li>
 <li>Changing <em>SD</em> is also known as <strong>scaling</strong></li>
 </ul>
-<p><img width="800px" height="500px" src="pics/sigma2.gif" /></p>
+<p><img width="800px" height="500px" src="../pics/sigma2.gif" /></p>
 </section><section id="area-below-the-normal-curve" class="slide level2">
 <h2>Area below the normal curve</h2>
 <ul>
@@ -1214,7 +1364,7 @@ result
 <li>Say we want to know the number of <em>SD</em>s from the mean beyond which lie the outer 5% of the distribution</li>
 <li>Since the normal curve is symmetrical, we need to know the cut-off point for the bottom 2.5%</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-37-1.png" width="768" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-43-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="dt">p =</span> .<span class="dv">025</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
 [<span class="dv">1</span>] <span class="op">-</span><span class="fl">1.959964</span></code></pre></div>
 </section><section id="area-below-the-normal-curve-2" class="slide level2">
@@ -1250,7 +1400,7 @@ Is it clear why the substitution is valid?
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mark_z &lt;-<span class="st"> </span><span class="kw">with</span>(data, (mark <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(mark)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(mark))
 <span class="kw">hist</span>(mark_z, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-40-1.png" width="384" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-46-1.png" width="384" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the scale() function does the same</span>
 mark_z &lt;-<span class="st"> </span><span class="kw">scale</span>(data<span class="op">$</span>mark)</code></pre></div>
 <!-- speaker notes -->
@@ -1270,7 +1420,7 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 </ul></li>
 </ul>
 </section></section>
-<section><section id="departures-from-normality" class="titleslide slide level1" data-background="pics/depart2.jpg"><h1>Departures from normality</h1></section><section id="three-ways-to-non-normality" class="slide level2">
+<section><section id="departures-from-normality" class="titleslide slide level1" data-background="../pics/depart2.jpg"><h1>Departures from normality</h1></section><section id="three-ways-to-non-normality" class="slide level2">
 <h2>Three ways to non-normality</h2>
 <ul>
 <li>To recap, the normal distribution is:
@@ -1292,7 +1442,7 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 <ul>
 <li>Easy to spot – does the distribution have more than one peak?</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-42-1.png" width="768" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-48-1.png" width="768" /></p>
 </section><section id="skew" class="slide level2">
 <h2>Skew</h2>
 <ul>
@@ -1307,7 +1457,7 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 <ul>
 <li>All three distributions have mean = 0 and <em>SD</em> = 1</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-43-1.png" width="960" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-49-1.png" width="960" /></p>
 </section><section id="kurtosis" class="slide level2">
 <h2>Kurtosis</h2>
 <ul>
@@ -1322,7 +1472,7 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 <ul>
 <li>All three distributions have mean = 0 and <em>SD</em> = 1</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-44-1.png" width="960" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" /></p>
 </section><section id="kurtosis-vs-sd" class="slide level2">
 <h2>Kurtosis vs <em>SD</em></h2>
 <ul>
@@ -1336,16 +1486,16 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(x, <span class="dt">main =</span> <span class="st">&quot;Normal&quot;</span>)
 <span class="kw">qqline</span>(x, <span class="dt">col =</span> <span class="st">&quot;#ffa733&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-45-1.png" width="432" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-51-1.png" width="432" /></p>
 </section><section id="q-q-plot-1" class="slide level2">
 <h2>Q-Q plot</h2>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-46-1.png" width="768" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-52-1.png" width="768" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 Any questions?
 </aside>
 </section></section>
-<section><section id="going-meta" class="titleslide slide level1" data-background="pics/meta2.jpg"><h1>Going meta</h1></section><section id="sampling-from-distributions" class="slide level2">
+<section><section id="going-meta" class="titleslide slide level1" data-background="../pics/meta2.jpg"><h1>Going meta</h1></section><section id="sampling-from-distributions" class="slide level2">
 <h2>Sampling from distributions</h2>
 <ul>
 <li>Collecting data on some variable amounts to randomly<small><sup>*</sup></small> sampling from the distribution that underlies the variable</li>
@@ -1394,7 +1544,7 @@ Any questions?
 <span class="kw">mean</span>(sample1); <span class="kw">mean</span>(sample2)
 [<span class="dv">1</span>] <span class="fl">99.46963</span>
 [<span class="dv">1</span>] <span class="fl">98.85646</span></code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-50-1.png" width="768" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-56-1.png" width="768" /></p>
 </section><section id="sampling-distribution" class="slide level2">
 <h2>Sampling distribution</h2>
 <ul>
@@ -1413,7 +1563,7 @@ Any questions?
 [<span class="dv">1</span>] <span class="fl">99.99304</span>
 <span class="kw">hist</span>(samp_means, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Sample mean&quot;</span>, <span class="dt">breaks =</span> <span class="dv">50</span>);
 <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">mean</span>(samp_means), <span class="dt">col =</span> <span class="st">&quot;#ffa733&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-51-1.png" width="768" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-57-1.png" width="768" /></p>
 </section><section id="standard-error" class="slide level2">
 <h2>Standard error</h2>
 <ul>
@@ -1446,13 +1596,13 @@ Any questions?
 <ul>
 <li>As the estimate of <em>SE</em> is calculated using <em>N</em>, there’s a relationship between the two</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-55-1.png" width="768" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-61-1.png" width="768" /></p>
 </section><section id="standard-error-3" class="slide level2">
 <h2>Standard error</h2>
 <ul>
 <li>That is why <i><strong>larger samples are more accurate</strong></i>!</li>
 </ul>
-<p><img src="pics/samp_dist.png", height="500px"></p>
+<p><img src="../pics/samp_dist.png", height="500px"></p>
 </section><section id="standard-error-4" class="slide level2">
 <h2>Standard Error</h2>
 <ul>
@@ -1465,7 +1615,7 @@ Any questions?
 Any questions?
 </aside>
 </section></section>
-<section><section id="clt-no-scrubs" class="titleslide slide level1" data-background="pics/tlc2.jpg"><h1><b>CLT: </b>No scrubs</h1></section><section id="central-limit-theorem" class="slide level2">
+<section><section id="clt-no-scrubs" class="titleslide slide level1" data-background="../pics/tlc2.jpg"><h1><b>CLT: </b>No scrubs</h1></section><section id="central-limit-theorem" class="slide level2">
 <h2>Central Limit theorem</h2>
 <ul>
 <li>We mentioned that the sampling distribution of the mean is <em>approximately normal</em></li>
@@ -1477,10 +1627,10 @@ Any questions?
 </ul>
 </section><section id="clt-in-action" class="slide level2" data-transition="fade-in none-out">
 <h2>CLT in action</h2>
-<p><img src="pics/clt_plot.png"></p>
+<p><img src="../pics/clt_plot.png"></p>
 </section><section id="clt-in-action-1" class="slide level2" data.transition="none-in fade-out" data-gif="repeat">
 <h2>CLT in action</h2>
-<p><img data-src="pics/clt2.gif"></p>
+<p><img data-src="../pics/clt2.gif"></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 Any questions?
@@ -1490,12 +1640,12 @@ Any questions?
 <ul>
 <li>As <em>N</em> gets larger, the sampling distribution of <span class="math inline">\(\bar{x}\)</span> tends towards a normal distribution with <strong>mean = <span class="math inline">\(\mu\)</span></strong> and <strong><span class="math inline">\(SD = \frac{\sigma}{\sqrt{N}}\)</span></strong></li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-56-1.png" width="624" /></p>
+<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-62-1.png" width="624" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 All clear?
 </aside>
-</section><section id="take-home-message" class="slide level2">
+</section><section id="take-home-message-1" class="slide level2">
 <h2>Take-home message</h2>
 <ul>
 <li>Functions are sequences of operations that for every input produce at most one output</li>
@@ -1507,7 +1657,7 @@ All clear?
 <li><m><span class="math inline">\(b_1\)</span></m> is the <strong>slope</strong></li>
 </ul></li>
 </ul>
-</section><section id="take-home-message-1" class="slide level2">
+</section><section id="take-home-message-2" class="slide level2">
 <h2>Take-home message</h2>
 <ul>
 <li><em>Distribution</em> is the number of observations per each value of a variable</li>
@@ -1522,7 +1672,7 @@ All clear?
 <li>Allows calculating the probability of drawing an arbitrary range of values</li>
 </ul></li>
 </ul>
-</section><section id="take-home-message-2" class="slide level2">
+</section><section id="take-home-message-3" class="slide level2">
 <h2>Take-home message</h2>
 <ul>
 <li>Normal distribution is <strong>continuous</strong>, <strong>unimodal</strong>, <strong>symmetrical</strong>, and <strong>bell-shaped</strong></li>
@@ -1533,7 +1683,7 @@ All clear?
 <li>Kurtosis (lepto-/platykurtic)</li>
 </ul></li>
 </ul>
-</section><section id="take-home-message-3" class="slide level2">
+</section><section id="take-home-message-4" class="slide level2">
 <h2>Take-home message</h2>
 <ul>
 <li>Parameters of random samples differ from parameters of a population</li>
@@ -1545,7 +1695,7 @@ All clear?
 <li>The larger the sample, the more precise the estimate</li>
 </ul></li>
 </ul>
-</section><section id="take-home-message-4" class="slide level2">
+</section><section id="take-home-message-5" class="slide level2">
 <h2>Take-home message</h2>
 <ul>
 <li><strong>Central Limit Theorem</strong>
@@ -1561,7 +1711,7 @@ All clear?
 All clear?
 </aside>
 </section></section>
-<section><section id="see-you-in-the-labs" class="titleslide slide level1" data-background="pics/end2.jpg"><h1> <br><br><br><subtitle>See you in the labs :)</subtitle></h1></section></section>
+<section><section id="see-you-in-the-labs" class="titleslide slide level1" data-background="../pics/end2.jpg"><h1> <br><br><br><subtitle>See you in the labs :)</subtitle></h1></section></section>
     </div>
   </div>
 
