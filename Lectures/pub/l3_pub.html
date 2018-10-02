@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="Lecture_3_files/reveal.js-3.3.0.1/css/reveal.css"/>
+  <link rel="stylesheet" href="l3_pub_files/reveal.js-3.3.0.1/css/reveal.css"/>
 
 
 <style type="text/css">
@@ -50,7 +50,7 @@ code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
 code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
 </style>
 
-<link rel="stylesheet" href="Lecture_3_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="l3_pub_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
 
 
   <!-- some tweaks to reveal css -->
@@ -482,7 +482,7 @@ style.innerHTML = style_script;
 document.getElementsByTagName('head')[0].appendChild(style);
 </script>
 
-    <link href="Lecture_3_files/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="l3_pub_files/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 <body>
   <div class="reveal">
@@ -738,7 +738,7 @@ sd
 <span class="cf">function</span> (x, <span class="dt">na.rm =</span> <span class="ot">FALSE</span>) 
 <span class="kw">sqrt</span>(<span class="kw">var</span>(<span class="cf">if</span> (<span class="kw">is.vector</span>(x) <span class="op">||</span><span class="st"> </span><span class="kw">is.factor</span>(x)) x <span class="cf">else</span> <span class="kw">as.double</span>(x), 
     <span class="dt">na.rm =</span> na.rm))
-<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x000000000bb67938</span><span class="op">&gt;</span>
+<span class="op">&lt;</span>bytecode<span class="op">:</span><span class="st"> </span><span class="dv">0x000000000bb438f8</span><span class="op">&gt;</span>
 <span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span>namespace<span class="op">:</span>stats<span class="op">&gt;</span></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -1044,7 +1044,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data<span class="op">$</span>dpt, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">40</span>),
      <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-14-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-14-1.png" width="480" /></p>
 </section><section id="bar-chart-1" class="slide level2">
 <h2>Bar chart</h2>
 <ul>
@@ -1052,7 +1052,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">prop.table</span>(<span class="kw">table</span>(data<span class="op">$</span>degree)) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="co"># for percentages</span>
         <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;%&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-16-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-16-1.png" width="480" /></p>
 </section><section id="one-continuous-variable" class="slide level2">
 <h2>One continuous variable</h2>
 <ul>
@@ -1069,22 +1069,22 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <li>By default <code>R</code> will try to give you a reasonable number of bins (and thereby the bin width)</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data<span class="op">$</span>mark, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-17-1.png" width="768" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-17-1.png" width="768" /></p>
 </section><section id="histogram-1" class="slide level2">
 <h2>Histogram</h2>
 <ul>
 <li>You can change the number of bins manually using the <code>breaks =</code> argument</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(data<span class="op">$</span>mark, <span class="dt">breaks =</span> <span class="dv">20</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" /></p>
 </section><section id="box-plot" class="slide level2">
 <h2>Box plot</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-20-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-20-1.png" width="480" /></p>
 </section><section id="box-plot-1" class="slide level2">
 <h2>Box plot</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-22-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-22-1.png" width="480" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1107,7 +1107,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># first x-axis, then y-axis</span>
 <span class="kw">plot</span>(data<span class="op">$</span>dpt, data<span class="op">$</span>eye_col,
      <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Eye colour&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-24-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-24-1.png" width="480" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1123,7 +1123,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># when using barplot() a contingency table must be provided</span>
 <span class="kw">barplot</span>(<span class="kw">table</span>(data<span class="op">$</span>eye_col, data<span class="op">$</span>dpt), <span class="dt">beside =</span> T,
         <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Count&quot;</span>, <span class="dt">legend.text =</span> T)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-26-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-26-1.png" width="480" /></p>
 </section><section id="categorical-1-continuous-var" class="slide level2">
 <h2>1 categorical, 1 continuous var</h2>
 <ul>
@@ -1132,14 +1132,14 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># col = needs to be specified</span>
 <span class="kw">hist</span>(data<span class="op">$</span>mark[data<span class="op">$</span>dpt <span class="op">==</span><span class="st"> &quot;cog&quot;</span>], <span class="dt">xlab =</span> <span class="st">&quot;Mark&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">col =</span> ...)
 <span class="kw">hist</span>(data<span class="op">$</span>mark[data<span class="op">$</span>dpt <span class="op">==</span><span class="st"> &quot;lel&quot;</span>], <span class="dt">add =</span> T, <span class="dt">col =</span> ...)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-28-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-28-1.png" width="480" /></p>
 </section><section id="categorical-1-continuous-var-1" class="slide level2">
 <h2>1 categorical, 1 continuous var</h2>
 <ul>
 <li>Box plots provide more information and are less busy</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(data<span class="op">$</span>dpt, data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-29-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-29-1.png" width="480" /></p>
 </section><section id="categorical-1-continuous-var-2" class="slide level2">
 <h2>2 categorical, 1 continuous var</h2>
 <ul>
@@ -1148,7 +1148,7 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># pick 3 colours, legend and x axis require a bit of effort</span>
 <span class="kw">boxplot</span>(data<span class="op">$</span>mark <span class="op">~</span><span class="st"> </span>data<span class="op">$</span>eye_col <span class="op">+</span><span class="st"> </span>data<span class="op">$</span>dpt, <span class="dt">col =</span> <span class="kw">c</span>(..., ..., ...),
         <span class="dt">xlab =</span> <span class="st">&quot;Department&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-31-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-31-1.png" width="480" /></p>
 </section><section id="two-continuous-variables" class="slide level2">
 <h2>Two continuous variables</h2>
 <ul>
@@ -1157,32 +1157,23 @@ data &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span cla
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># jitter moves the points around a little, try without</span>
 <span class="kw">plot</span>(<span class="kw">jitter</span>(data<span class="op">$</span>age), data<span class="op">$</span>mark, <span class="dt">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Mark&quot;</span>, <span class="dt">pch =</span> <span class="dv">20</span>)
 <span class="kw">abline</span>(<span class="kw">lm</span>(mark <span class="op">~</span><span class="st"> </span>age, data)) <span class="co"># line of best fit</span></code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-33-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-33-1.png" width="480" /></p>
 </section><section id="scatter-plot" class="slide level2">
 <h2>Scatter plot</h2>
 <ul>
 <li>It is useful to learn to recognise types of relationships</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-34-1.png" width="576" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-34-1.png" width="576" /></p>
 </section><section id="continuous-1-categorical-var" class="slide level2">
 <h2>2 continuous, 1 categorical var</h2>
 <ul>
 <li>Scatter plots can also be colour-coded (<a href="group_scatter.R" target="_blank">full code</a>)</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-35-1.png" width="576" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-35-1.png" width="576" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 Any questions?
 </aside>
-</section></section>
-<section><section id="take-10" class="titleslide slide level1" data-background="../pics/hands2.jpg"><h1>Take 10</h1></section><section id="section-1" class="slide level2" data-background="../gif/tide.gif">
-<h2> </h2>
-<script src="../js/timer.js"></script>
-<time>
-<section id="timer" onclick="startTimer(1); this.onclick=null" ;>
-10:00
-</section>
-<p></time></p>
 </section></section>
 <section><section id="the-shape-of-things" class="titleslide slide level1" data-background="../pics/chlam2.jpg"><h1>The shape of things</h1></section><section id="distribution" class="slide level2">
 <h2>Distribution</h2>
@@ -1205,7 +1196,7 @@ result
 <span class="dv">157</span> <span class="dv">168</span> <span class="dv">158</span> <span class="dv">192</span> <span class="dv">164</span> <span class="dv">161</span> 
 
 <span class="kw">barplot</span>(<span class="kw">table</span>(result))</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-36-1.png" width="480" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-36-1.png" width="480" /></p>
 </section><section id="the-uniform-distribution" class="slide level2">
 <h2>The uniform distribution</h2>
 <ul>
@@ -1218,7 +1209,7 @@ result
 <ul>
 <li>In smaller samples, the fluctuations are more pronounced, in large samples, they become negligible</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-37-1.png" width="576" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-37-1.png" width="576" /></p>
 </section><section id="fluctuations-1" class="slide level2">
 <h2>Fluctuations</h2>
 <ul>
@@ -1241,7 +1232,7 @@ result
   <span class="dv">0</span>   <span class="dv">8</span>  <span class="dv">46</span> <span class="dv">109</span> <span class="dv">210</span> <span class="dv">233</span> <span class="dv">220</span> <span class="dv">120</span>  <span class="dv">41</span>  <span class="dv">12</span>   <span class="dv">1</span> 
 
 <span class="kw">barplot</span>(<span class="kw">table</span>(result))</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-38-1.png" width="528" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-38-1.png" width="528" /></p>
 </section><section id="binomial-distribution" class="slide level2">
 <h2>Binomial distribution</h2>
 <ul>
@@ -1364,7 +1355,7 @@ result
 <li>Say we want to know the number of <em>SD</em>s from the mean beyond which lie the outer 5% of the distribution</li>
 <li>Since the normal curve is symmetrical, we need to know the cut-off point for the bottom 2.5%</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-43-1.png" width="768" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-43-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="dt">p =</span> .<span class="dv">025</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
 [<span class="dv">1</span>] <span class="op">-</span><span class="fl">1.959964</span></code></pre></div>
 </section><section id="area-below-the-normal-curve-2" class="slide level2">
@@ -1400,7 +1391,7 @@ Is it clear why the substitution is valid?
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mark_z &lt;-<span class="st"> </span><span class="kw">with</span>(data, (mark <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(mark)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(mark))
 <span class="kw">hist</span>(mark_z, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-46-1.png" width="384" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-46-1.png" width="384" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the scale() function does the same</span>
 mark_z &lt;-<span class="st"> </span><span class="kw">scale</span>(data<span class="op">$</span>mark)</code></pre></div>
 <!-- speaker notes -->
@@ -1442,7 +1433,7 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 <ul>
 <li>Easy to spot – does the distribution have more than one peak?</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-48-1.png" width="768" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-48-1.png" width="768" /></p>
 </section><section id="skew" class="slide level2">
 <h2>Skew</h2>
 <ul>
@@ -1457,7 +1448,7 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 <ul>
 <li>All three distributions have mean = 0 and <em>SD</em> = 1</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-49-1.png" width="960" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-49-1.png" width="960" /></p>
 </section><section id="kurtosis" class="slide level2">
 <h2>Kurtosis</h2>
 <ul>
@@ -1472,7 +1463,7 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 <ul>
 <li>All three distributions have mean = 0 and <em>SD</em> = 1</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" /></p>
 </section><section id="kurtosis-vs-sd" class="slide level2">
 <h2>Kurtosis vs <em>SD</em></h2>
 <ul>
@@ -1486,10 +1477,10 @@ In other words, we’re <em>centering</em> data around 0 and <em>scaling</em> by
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(x, <span class="dt">main =</span> <span class="st">&quot;Normal&quot;</span>)
 <span class="kw">qqline</span>(x, <span class="dt">col =</span> <span class="st">&quot;#ffa733&quot;</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-51-1.png" width="432" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-51-1.png" width="432" /></p>
 </section><section id="q-q-plot-1" class="slide level2">
 <h2>Q-Q plot</h2>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-52-1.png" width="768" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-52-1.png" width="768" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 Any questions?
@@ -1544,7 +1535,7 @@ Any questions?
 <span class="kw">mean</span>(sample1); <span class="kw">mean</span>(sample2)
 [<span class="dv">1</span>] <span class="fl">99.46963</span>
 [<span class="dv">1</span>] <span class="fl">98.85646</span></code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-56-1.png" width="768" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-56-1.png" width="768" /></p>
 </section><section id="sampling-distribution" class="slide level2">
 <h2>Sampling distribution</h2>
 <ul>
@@ -1563,7 +1554,7 @@ Any questions?
 [<span class="dv">1</span>] <span class="fl">99.99304</span>
 <span class="kw">hist</span>(samp_means, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Sample mean&quot;</span>, <span class="dt">breaks =</span> <span class="dv">50</span>);
 <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">mean</span>(samp_means), <span class="dt">col =</span> <span class="st">&quot;#ffa733&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-57-1.png" width="768" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-57-1.png" width="768" /></p>
 </section><section id="standard-error" class="slide level2">
 <h2>Standard error</h2>
 <ul>
@@ -1596,7 +1587,7 @@ Any questions?
 <ul>
 <li>As the estimate of <em>SE</em> is calculated using <em>N</em>, there’s a relationship between the two</li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-61-1.png" width="768" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-61-1.png" width="768" /></p>
 </section><section id="standard-error-3" class="slide level2">
 <h2>Standard error</h2>
 <ul>
@@ -1640,7 +1631,7 @@ Any questions?
 <ul>
 <li>As <em>N</em> gets larger, the sampling distribution of <span class="math inline">\(\bar{x}\)</span> tends towards a normal distribution with <strong>mean = <span class="math inline">\(\mu\)</span></strong> and <strong><span class="math inline">\(SD = \frac{\sigma}{\sqrt{N}}\)</span></strong></li>
 </ul>
-<p><img src="Lecture_3_files/figure-revealjs/unnamed-chunk-62-1.png" width="624" /></p>
+<p><img src="l3_pub_files/figure-revealjs/unnamed-chunk-62-1.png" width="624" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 All clear?
@@ -1711,12 +1702,12 @@ All clear?
 All clear?
 </aside>
 </section></section>
-<section><section id="see-you-in-the-labs" class="titleslide slide level1" data-background="../pics/end2.jpg"><h1> <br><br><br><subtitle>See you in the labs :)</subtitle></h1></section></section>
+<section><section id="section-1" class="titleslide slide level1" data-background="../pics/end2.jpg"><h1> </h1></section></section>
     </div>
   </div>
 
-  <script src="Lecture_3_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
-  <script src="Lecture_3_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+  <script src="l3_pub_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="l3_pub_files/reveal.js-3.3.0.1/js/reveal.js"></script>
 
   <script>
 
@@ -1747,9 +1738,8 @@ All clear?
 
         // Optional reveal.js plugins
         dependencies: [
-          { src: 'Lecture_3_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
-          { src: 'Lecture_3_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
-          { src: 'Lecture_3_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+          { src: 'l3_pub_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: 'l3_pub_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
         ]
       });
     </script>
