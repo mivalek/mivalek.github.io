@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Milan Valášek" />
+  <title>USMR Lecture 4</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="l4_pub_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; } /* Keyword */
+code > span.dt { color: #dfdfbf; } /* DataType */
+code > span.dv { color: #dcdccc; } /* DecVal */
+code > span.bn { color: #dca3a3; } /* BaseN */
+code > span.fl { color: #c0bed1; } /* Float */
+code > span.ch { color: #dca3a3; } /* Char */
+code > span.st { color: #cc9393; } /* String */
+code > span.co { color: #7f9f7f; } /* Comment */
+code > span.ot { color: #efef8f; } /* Other */
+code > span.al { color: #ffcfaf; } /* Alert */
+code > span.fu { color: #efef8f; } /* Function */
+code > span.er { color: #c3bf9f; } /* Error */
+code > span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+code > span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code > span.sc { color: #dca3a3; } /* SpecialChar */
+code > span.vs { color: #cc9393; } /* VerbatimString */
+code > span.ss { color: #cc9393; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #f0dfaf; } /* ControlFlow */
+code > span.op { color: #f0efd0; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #7f9f7f; } /* Documentation */
+code > span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+</style>
+
+<link rel="stylesheet" href="l4_pub_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="..\css\moon2.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="l4_pub_files/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">USMR Lecture 4</h1>
+  <h1 class="subtitle"><b>What stats is all about</b></h1>
+    <h2 class="author"><subtitle>Milan Valášek</subtitle></h2>
+</section>
+
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<ul>
+<li>Statistical models</li>
+<li>Hypotheses</li>
+<li>More probability distributions</li>
+<li>Null hypothesis significance testing</li>
+</ul>
+</section>
+<section><section id="modelling-the-world" class="titleslide slide level1" data-background="../pics/globe2.jpg"><h1>Modelling the world</h1></section><section id="what-are-models" class="slide level2">
+<h2>What are models?</h2>
+<ul>
+<li><em>Representations</em> of reality</li>
+<li><em>Abstractions</em> – They focus on specific aspects and disregard others</li>
+<li><em>Generalisations</em> – They often aim to describe not just one instance of a category but the relevant features of the category itself</li>
+</ul>
+</section><section id="statistical-models" class="slide level2">
+<h2>Statistical models</h2>
+<ul>
+<li>In essence they are mathematical model – express relationships between variables using equations</li>
+<li>Make use of <em>assumptions</em> in order to generalise from sample to population</li>
+<li>Quantify the <em>uncertainty</em> related to random sampling from populations</li>
+<li>There is always a discrepancy between what the model predicts and the data
+<ul>
+<li>If a model fits the data perfectly, it is a bad model</li>
+</ul></li>
+</ul>
+</section><section id="models-as-best-guesses" class="slide level2">
+<h2>Models as best guesses</h2>
+<ul>
+<li>You can think of statistical models as <em>best guesses</em> given certain amount of information available</li>
+<li>If you have a sample of a normally distributed variable, what is the best guess about the value of a random draw from the same population <em>in the absence of any other information</em>?
+<ul class="fragment">
+<ul>
+<li><strong>The mean</strong>
+</ul></li>
+</ul></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>In other words, if you are my sample and I know each one of your ages, what’s the best guess I can make about the age of a random person from the same population?</li>
+<li>Why mean? highest probability density!</li>
+</ul>
+</aside>
+</section><section id="models-as-best-guesses-1" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Models as best guesses</h2>
+<ul>
+<li><em>Example</em> – Data on active vocabulary size from 100 people</br></br></li>
+</ul>
+<p><img width="420px" src="../pics/hist.gif" /></p>
+</section><section id="models-as-best-guesses-2" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Models as best guesses</h2>
+<ul>
+<li><em>Example</em> – Data on active vocabulary size from 100 people</li>
+<li>The simplest model for a continuous variable is the mean</li>
+</ul>
+<p><img width="420px" src="../pics/hist2.gif" /></p>
+</section><section id="modeling-relationships" class="slide level2">
+<h2>Modeling relationships</h2>
+<ul>
+<li>Though basic descriptive statistics are models, they’re not very good because they are <em>naïve</em> – they don’t make use of any additional information</li>
+<li>Often, we want to model relationships between things, <i>e.g.</i> outcome on the one hand and experimental manipulation/independent variable on the other
+<ul>
+<li>What is the best guess I can make about the value of the <em>outcome</em>, if I know something about the <em>predictor</em>?</li>
+</ul></li>
+<li>All the tests that include at least one continuous variable that we will talk about model this kind of a relationship as a line – this is the <strong>linear model</strong></li>
+</ul>
+</section><section id="the-linear-model" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>The Linear Model</h2>
+<ul>
+<li><em>Example</em> – Say we add age data from the same participants   </br></br></br></br></br></br></li>
+</ul>
+<p><img width="420px" src="../pics/scat.gif" /></p>
+</section><section id="the-linear-model-1" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>The Linear Model</h2>
+<ul>
+<li><em>Example</em> – Say we add age data from the same participants   </li>
+<li>We can disregard any information in age predictive of active vocab</br></br></br></br></li>
+</ul>
+<p><img width="420px" src="../pics/scat2.gif" /></p>
+</section><section id="the-linear-model-2" class="slide level2" data-transition="none">
+<h2>The Linear Model</h2>
+<ul>
+<li><em>Example</em> – Say we add age data from the same participants   </li>
+<li>We can disregard any information in age predictive of active vocab</li>
+<li>We know that a <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/linear-function" target="_blank">linear function</a> has a <em>slope</em> and <em>intercept</em> – so does a linear model
+<li class="fragment">
+<em>Mean is a linear model</em><span class="fragment">: <span class="math inline">\(\widehat{vocab} = \bar{vocab} + 0\times age\)</span></span>
+</li></li>
+</ul>
+<p><img width="420px" src="../pics/null_mod.png" /></p>
+</section><section id="the-linear-model-3" class="slide level2" data-transition="none">
+<h2>The Linear Model</h2>
+<ul>
+<li class="fragment">Mean is the simplest model (AKA the <strong>null model</strong>) – it’s not very good</li>
+<li class="fragment">Can we do any better?</li>
+<li class="fragment">There’s clearly a relationship between age and vocab so let’s make use of it</br></br></li>
+</ul>
+<p><img width="420px" src="../pics/null_mod.png" /></p>
+</section><section id="the-linear-model-4" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>The Linear Model</h2>
+<ul>
+<li>Mean is the simplest model (AKA the <strong>null model</strong>) – it’s not very good</li>
+<li>Can we do any better?</li>
+<li>There’s clearly a relationship between age and vocab so let’s make use of it <m><span class="math inline">\(\widehat{vocab} = 224 + 168.38\times age - 0.38\times age^2\)</span></m></li>
+</ul>
+<p><img width="420px" src="../pics/scat3.gif" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Don’t worry about how to get these numbers and how to interpret them for now</li>
+<li>Martin will cover that in future lectures</li>
+<li>Right now, it’s important to understand what we can model one variable as a function other variables</li>
+</ul>
+</aside>
+</section><section id="the-linear-model-5" class="slide level2" data-transition="none">
+<h2>The Linear Model</h2>
+<ul>
+<li>Some models capture (<em>fit</em>) the data better than others</li>
+<li>Perfect fit is <strong>not desirable</strong>
+<ul>
+<li>Models with perfect fit do not generalise</li>
+<li>They have no predictive utility</li>
+</ul></li>
+<li>All non-perfectly fitting models have <em>residuals</em></br></br></li>
+</ul>
+<p><img width="420px" src="../pics/lin_mod.png" /></p>
+</section><section id="the-linear-model-6" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>The Linear Model</h2>
+<ul>
+<li>Some models capture (<em>fit</em>) the data better than others</li>
+<li>Perfect fit is <strong>not desirable</strong>
+<ul>
+<li>Models with perfect fit do not generalise</li>
+<li>They have no predictive utility</li>
+</ul></li>
+<li>All non-perfectly fitting models have <em>residuals</em></br></br></li>
+</ul>
+<p><img width="420px" src="../pics/scat4.gif" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+Residuals are sometimes incorrectly referred to as error
+</aside>
+</section><section id="some-vocab" class="slide level2">
+<h2>Some vocab</h2>
+<ul>
+<li><strong>Outcome</strong> is the variable we are modelling (AKA dependent variable in experimental setting)</li>
+<li><strong>Predictors</strong> are variables we are using to model the outcome (AKA independent variable)</li>
+<li><strong>Prediction</strong> is the value of outcome produced by the model
+<ul>
+<li><em>prediction = model</em></li>
+<li><m><span class="math inline">\(\widehat{vocab} = 224 + 168.38\times age - 0.38\times age^2\)</span></m></li>
+<li>for age of 20 years (240 months): <m><span class="math inline">\(18286 = 224 + 168.38\times 240 - 0.38\times 240^2\)</span></m></li>
+</ul></li>
+</ul>
+</section><section id="some-vocab-1" class="slide level2">
+<h2>Some vocab</h2>
+<ul>
+<li><strong>Observation</strong> is the actual observed value in the data
+<ul>
+<li><em>observation = model + residual</em></li>
+<li><m><span class="math inline">\(vocab = 224 + 168.38\times age - 0.38\times age^2 + \varepsilon\)</span></m></li>
+</ul></li>
+<li><strong>Residual</strong> is then the difference between what the model predicts and what we observe
+<ul>
+<li><m><span class="math inline">\(\varepsilon = \hat{y} - y\)</span></m></li>
+</ul></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Is this clear?</li>
+</ul>
+</aside>
+</section><section id="accuracygeneralisability-trade-off" class="slide level2" data-transition="none-in dafe-out">
+<h2>Accuracy/generalisability trade-off</h2>
+<ul>
+<li>We want a good fit (small residuals) but not at all costs (too many parameters)</li>
+<li>The more specific a model is to particular data, the less well it generalises</li>
+<li>There is a trade-off between how well a model fits the data and how parsimonious it is (<i>i.e.</i>, how many parameters it includes)</br></br></li>
+</ul>
+</section><section id="accuracygeneralisability-trade-off-1" class="slide level2" data-transition="fade-in none-out">
+<h2>Accuracy/generalisability trade-off</h2>
+<ul>
+<li>Three parameters: one for intercept and two for slope</li>
+</ul>
+<p><img width="420px" src="../pics/error.png" /></p>
+</section><section id="accuracygeneralisability-trade-off-2" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Accuracy/generalisability trade-off</h2>
+<ul>
+<li><em>Many</em> parameters!                 </li>
+</ul>
+<p><img width="420px" src="../pics/scat5.gif" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Fits the data better but is it worth the extra parameters?</li>
+<li>Is it going to generalise to a different sample?</li>
+</ul>
+</aside>
+</section><section id="take-home-message" class="slide level2">
+<h2> Take-home message</h2>
+<ul>
+<li><strong>Models</strong> are generalisable abstractions that describe and predict behaviour of things in the world and relationships between them</li>
+<li><strong>Linear models</strong> use the linear function – basically drawing a line through a scatter plot – to predict <em>outcome</em> using <em>predictors</em></li>
+<li>Even simple models, <i>e.g.,</i> mean can be seen as linear models (slope = 0)</li>
+<li>Models with a <strong>perfect fit</strong> are useless</li>
+<li>More complex models will always fit better, this is not always good</li>
+</ul>
+<p><span class="fragment"><em>“All models are wrong but some are useful”</em> ~ <a href="https://en.wikipedia.org/wiki/George_E._P._Box" target="_blank">George Box</a></span></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+Any questions?
+</aside>
+</section></section>
+<section><section id="what-if" class="titleslide slide level1" data-background="../pics/hypo2.jpg"><h1>What if?</h1></section><section id="research-hypotheses" class="slide level2">
+<h2>Research hypotheses</h2>
+<ul>
+<li>Statement about something in the world
+<ul>
+<li>Shape of the population distribution of a variable</li>
+<li>Population parameters (<i>e.g.,</i> central tendency)</li>
+<li>Relationships between things – variables in population</li>
+</ul></li>
+<li>Must be testable – it must be possible for the data to either support or disconfirm a hypothesis</li>
+<li>Should be about a single thing</li>
+</ul>
+</section><section id="research-hypotheses-1" class="slide level2">
+<h2>Research hypotheses</h2>
+<p><strong>Good hypothesis:</strong> <em>“The recent observed rising trend in global temperatures on Earth is primarily driven by human-produced greenhouse gas emissions.”</em></p>
+<p><strong>Bad hypothesis:</strong> <em>“Homoeopathic products can cure people, but sometimes they make them worse before they make them better, and the effect is only apparent subjectively with respect to some vague ‘holistic’ notions rather than a specific well-defined and testable set of criteria.”</em></p>
+<p>Also bad: <em>“Vocabulary size depends on age or education.”</em></p>
+</section><section id="operationalisation" class="slide level2">
+<h2>Operationalisation</h2>
+<ul>
+<li>To be able to formulate a hypothesis in statistical terms, we first need to get from the conceptual level to the level of measurement</li>
+<li><strong>Operationalisation</strong> is the process of defining variables in terms of how they are measured
+<ul>
+<li>The <em>concept</em> of intelligence can be operationalised as total score on <a href="https://en.wikipedia.org/wiki/Raven%27s_Progressive_Matrices" target="_blank">Raven’s Progressive Matrices</a></li>
+<li>The <em>concept</em> of vowel backness is operationalised as the second <a href="https://en.wikipedia.org/wiki/Formant" target="_blank">formant</a> of the voice (F2)</li>
+</ul></li>
+</ul>
+</section><section id="model-formulation" class="slide level2">
+<h2>Model formulation</h2>
+<ul>
+<li>Once we know what specific question we are asking and how it maps onto measurable quantities, we can formulate the statistical model</li>
+<li>We operationalise vocabulary size as the estimate based on the number of words generated in a verbal fluency test and age as age in months</li>
+<li>We predict that vocab size depends on age and that this relationship is not linear
+<ul>
+<li><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \beta_2 \times age^2_{mon} + \epsilon\)</span></m></li>
+</ul></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Beta_0 is the intercept and it is not terribly important</li>
+<li>can serve for model sanity check</li>
+</ul>
+</aside>
+</section><section id="statistical-hypotheses" class="slide level2">
+<h2>Statistical hypotheses</h2>
+<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \beta_2 \times age^2_{mon} + \epsilon\)</span></m></br></br></p>
+<ul>
+<li>From the model formulation, we can derive two hypotheses:
+<ul>
+<li><em>Some</em> relationship – <m><span class="math inline">\(H_a: \beta_1 \ne 0\)</span>  OR  <span class="math inline">\(\beta_2 \ne 0\)</span></m></li>
+<li>Not linear – <m><span class="math inline">\(H_b: \beta_2 \ne 0\)</span></m></li>
+</ul></li>
+</ul>
+</section><section id="statistical-hypotheses-1" class="slide level2">
+<h2>Statistical hypotheses</h2>
+<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \beta_2 \times age^2_{mon} + \epsilon\)</span></m></br></br></p>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-2-1.png" width="768" /></p>
+</section><section id="the-null-hypothesis" class="slide level2">
+<h2>The null hypothesis</h2>
+<ul>
+<li>Testing the claim there is <em>some</em> sort of relationship is difficult</li>
+<li>A way around this is to negate the hypothesis (there <em>are</em> other approaches)</li>
+<li>This negation (or <em>complementary</em> hypothesis) is know as the <strong>null hypothesis</strong>
+<ul>
+<li><m><span class="math inline">\(H: x \ne 0\)</span></m></li>
+<li><m><span class="math inline">\(H_0: x = 0\)</span></m></li>
+</ul></li>
+</ul>
+</section><section id="the-null-hypothesis-1" class="slide level2">
+<h2>The null hypothesis</h2>
+<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \beta_2 \times age^2_{mon} + \epsilon\)</span></m></br></br></p>
+<ul>
+<li>Some relationship – <m><span class="math inline">\(H_a: \beta_1 \ne 0\)</span>  OR  <span class="math inline">\(\beta_2 \ne 0\)</span></m></li>
+<li>Independence – <m><span class="math inline">\(H_{0a}: \beta_1 = 0\)</span>  AND  <span class="math inline">\(\beta_2 = 0\)</span></m></br></br></li>
+<li>Non-linearity – <m><span class="math inline">\(H_b: \beta_2 \ne 0\)</span></m></li>
+<li>Linearity – <m><span class="math inline">\(H_{0b}: \beta_2 = 0\)</span></m></br></br></li>
+<li>We don’t test the research hypothesis, we test the <strong>null hypothesis</strong></li>
+<li>The null doesn’t have to be about zero but often is!</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<p>This is the “negative testing” Martin mentioned last time! - We don’t test that something is the case, we test that the opposite isn’t the case</p>
+all clear?
+</aside>
+</section></section>
+<section><section id="testing-the-null" class="titleslide slide level1" data-background="../pics/test2.jpg"><h1>Testing the null</h1></section><section id="its-all-greek-to-me" class="slide level2">
+<h2>It’s all Greek to me!</h2>
+<ul>
+<li>Noticed how we used <m><span class="math inline">\(\beta\)</span></m>s in the model but <m><span class="math inline">\(b\)</span></m>s in the equation for the linear function?
+<ul>
+<li>Any idea why?</li>
+<li>Think back to the <m><span class="math inline">\(\mu\)</span></m> – <m><span class="math inline">\(\bar{x}\)</span></m> or the <m><span class="math inline">\(\sigma\)</span></m> – <m><span class="math inline">\(s\)</span></m> distinction</li>
+</ul></li>
+</ul>
+</section><section id="from-sample-to-population" class="slide level2">
+<h2>From sample to population</h2>
+<ul>
+<li><span class="math inline">\(\beta\)</span>s refer to the <strong>population parameters</strong> – the characteristics of the relationship between age and vocab <em>in the population</em></li>
+<li>We can’t directly measure the <span class="math inline">\(\beta\)</span>s</li>
+<li><span class="math inline">\(b\)</span>s are the model parameters <em>based on our sample</em></li>
+<li>We <em>can</em> fit a model to our sample and get the <span class="math inline">\(b\)</span>s</li>
+<li>We don’t much care about the sample, we want to know about the population parameters!</li>
+</ul>
+</section><section id="the-problem-with-samples" class="slide level2">
+<h2>The problem with samples</h2>
+<ul>
+<li>Even if there’s no relationship in the population (<span class="math inline">\(\beta = 0\)</span>), we can get a non-zero <span class="math inline">\(b\)</span> for age</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># simulate population for age</span>
+age &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">2</span>)
+<span class="co"># simulate population for IQ with NO RELATIONSHIP to age</span>
+iq &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">6</span>, <span class="dv">100</span>, <span class="dv">15</span>)
+mod_pop &lt;-<span class="st"> </span><span class="kw">lm</span>(iq <span class="op">~</span><span class="st"> </span>age)
+<span class="kw">coef</span>(mod_pop) <span class="co"># see that there&#39;s really no relationship</span>
+  (Intercept)           age 
+<span class="fl">100.039644700</span>  <span class="op">-</span><span class="fl">0.005829138</span> </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">6</span>, <span class="dv">20</span>) <span class="co"># sample 20 numbers 1 - 1 million</span>
+<span class="kw">coef</span>(<span class="kw">lm</span>(iq[sample] <span class="op">~</span><span class="st"> </span>age[sample])) <span class="co"># see the relationship in the sample</span>
+(Intercept) age[sample] 
+  <span class="fl">63.124858</span>    <span class="fl">3.940927</span> </code></pre></div>
+</section><section id="the-problem-with-samples-1" class="slide level2">
+<h2>The problem with samples</h2>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-5-1.png" width="768" /></p>
+</section><section id="the-problem-with-samples-2" class="slide level2">
+<h2>The problem with samples</h2>
+<ul>
+<li>We simulated a population where there’s no relationship between age and IQ</li>
+<li>The model fitted to the sample says that IQ goes up by almost 4 points per year</li>
+<li>We need some way of making inferences about the true value of <strong>unobservable</strong> <span class="math inline">\(\beta\)</span> from the <strong>observed</strong> <span class="math inline">\(b\)</span></li>
+<li>One way is using <strong>Null hypothesis significance testing</strong> (NHST)</li>
+</ul>
+</section><section id="nhst" class="slide level2">
+<h2>NHST</h2>
+<ul>
+<li>Approach to testing scientific hypotheses created in 1940 by <a href="https://en.wikipedia.org/wiki/Everett_Franklin_Lindquist" target="_blank">Everett Lindquist</a></li>
+<li>Based on two separate approaches developed in the 1920s
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Ronald_Fisher" target="_blank">Ronald Fisher</a>’s tests of significance (null hypothesis, <em>p</em>-value)</li>
+<li><a href="https://en.wikipedia.org/wiki/Jerzy_Neyman" target="_blank">Jerzy Neyman</a> and <a href="https://en.wikipedia.org/wiki/Egon_Pearson" target="_blank">Egon Pearson</a>’s tests of statistical hypotheses (effect size, statistical power)</li>
+</ul></li>
+<li>Heavily criticised from its inception but gained prominence nonetheless</li>
+<li>There are alternatives (estimation statistics, Bayesian statistics)</li>
+</ul>
+</section><section id="nhst-1" class="slide level2">
+<h2>NHST</h2>
+<ol>
+<li>Formulate a research hypothesis</li>
+<li>Formulate the null hypothesis</li>
+<li>Choose appropriate test statistic</li>
+<li>Define the probability distribution of the test statistic under the null hypothesis</li>
+<li>Gather and analyse (<em>enough</em>) data – calculate sample test statistic</li>
+<li>Get the probability of the value you got under the null hypothesis</li>
+<li>If the observed value is <em>likely under the null</em>, <strong>retain the null</strong></li>
+<li>If it is <em>unlikely under the null</em>, <strong>reject the null</strong> in favour of research hypothesis, celebrate!</li>
+</ol>
+</section><section id="hypotheses" class="slide level2">
+<h2>Hypotheses</h2>
+<ul>
+<li>Model: <m><span class="math inline">\(IQ = \beta_0 + \beta_1 \times age + \epsilon\)</span></m></li>
+<li>Research hypothesis:
+<ul>
+<li><em>There is a relationship between age and IQ</em></li>
+<li><span class="math inline">\(H: \beta_1 \ne 0\)</span></li>
+</ul></li>
+<li>Null hypothesis:
+<ul>
+<li><em>There is no relationship between age and IQ</em></li>
+<li><span class="math inline">\(H_0: \beta_1 = 0\)</span></li>
+</ul></li>
+</ul>
+</section><section id="test-statistic-and-its-distribution" class="slide level2">
+<h2>Test statistic and its distribution</h2>
+<p><em>[coming up]</em> (but it’s the <em>t</em>-statistic and the <em>t</em>-distribution, respectively)</p>
+</section><section id="data-and-analysis" class="slide level2">
+<h2>Data and analysis</h2>
+<ul>
+<li>We tested 20 imaginary people (definitely <em>not</em> enough!)</li>
+<li>We fit the linear model and found the value of <span class="math inline">\(b_1 = 3.94\)</span></li>
+<li>The value of associated test statistic is <em>[coming up shortly]</em> (but it’s <span class="math inline">\(t = 1.755\)</span>)</li>
+</ul>
+</section><section id="probability-of-the-observed-statistic" class="slide level2">
+<h2>Probability of the observed statistic</h2>
+<p><em>[coming up shortly]</em> (but it’s <span class="math inline">\(p = .096\)</span>)</p>
+</section><section id="decision" class="slide level2">
+<h2>Decision</h2>
+<ul>
+<li>The observed value of the test statistic based on <span class="math inline">\(b_1 = 3.94\)</span> and a sample of 20 is relatively <em>likey</em> in a world where <span class="math inline">\(\beta_1 = 0\)</span></li>
+<li>We <strong>retain</strong> the null hypothesis and say that <strong>we found no evidence</strong> of a relationship</li>
+</ul>
+</section><section id="take-home-message-1" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li><strong>Hypotheses</strong> should be clearly formulated, <em>testable</em>, and <em>operationalised</em></li>
+<li><strong>Statistical hypotheses</strong> are statements about values of some parameters</li>
+<li><strong>Null hypothesis</strong> (usually, parameter is equal to 0) is the one we test (in NHST framework)</li>
+<li>We can only observe <em>samples</em>, but we are interested in <em>populations</em></li>
+<li>Due to sampling error, we can find a relationship in sample even if none exists in population</li>
+<li><strong>NHST</strong> is one way of deciding if sample result holds in population – understanding it is crucial!</li>
+</ul>
+</section></section>
+<section><section id="plus-ca-change" class="titleslide slide level1" data-background="../pics/dist2.jpg"><h1>Plus ça change…</h1></section><section id="different-shapes-same-principle" class="slide level2">
+<h2>Different shapes, same principle</h2>
+<ul>
+<li>We already encountered the <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/rolling-a-die" target="_blank">uniform</a>, <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/flipping-coins" target="_blank">binomial</a>, and <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/normal-distribution" target="_blank">normal</a> distributions</li>
+<li>There are many more (see this <a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html" target="_blank">nerdtastic web page</a>)</li>
+<li>Of particular interest are the <m><span class="math inline">\(\chi^2\)</span></m>-distribution, Student’s <em>t</em>-distribution, and <em>F</em>-distribution families</li>
+<li>There are important differences between the normal distribution on the one hand and these others on the other</li>
+<li>Main principle behind how we make use of them is the same!</li>
+</ul>
+</section><section id="differences" class="slide level2">
+<h2>Differences</h2>
+<ul>
+<li>We talked about how the basic shape of the normal distribution <em>doesn’t change</em> with changing parameters</li>
+<li>The proportions stay the same – the scaled (standardised) distributions are all <strong>identical</strong></li>
+</ul>
+<p><img width="700px" src="../pics/std_norm.png" /></p>
+</section><section id="differences-1" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Differences</h2>
+<ul>
+<li>We talked about how the basic shape of the normal distribution <em>doesn’t change</em> with changing parameters</li>
+<li>The proportions stay the same – the scaled (standardised) distributions are all <strong>identical</strong></li>
+</ul>
+<p><img width="700px" src="../pics/std_norm.gif" /></p>
+</section><section id="differences-2" class="slide level2" data-transition="none" data-gif="repeat">
+<h2>Differences</h2>
+<ul>
+<li>We talked about how the basic shape of the normal distribution <em>doesn’t change</em> with changing parameters</li>
+<li>The proportions stay the same – the scaled (standardised) distributions are all <strong>identical</strong></li>
+<li>This is <strong>not</strong> the case with the <m><span class="math inline">\(\chi^2\)</span></m>-, <em>t</em>-, and <em>F</em>-distribution families
+<ul>
+<li>Changing parameters result in genuinely different shapes with different probabilities for any given interval</li>
+</ul></li>
+<li>They are not defined by <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> but by <a href="https://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)" target="_blank">degrees of freedom</a>
+<ul>
+<li>Number of values that are free to vary given a certain value of some parameter</li>
+<li>If the mean of three numbers is, say, 10, two of them can be anything</li>
+</ul></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+The +-1.96 cut-off for outer 5% applies to all standardised normal distributions
+</aside>
+</section><section id="similarities" class="slide level2">
+<h2>Similarities</h2>
+<ul>
+<li>Just like the normal distribution, the individual distributions have algebraic descriptions
+<ul>
+<li>We know what the <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/normal-distribution-3" target="_blank">probability density function</a> of each one is given number of degrees of freedom</li>
+</ul></li>
+<li>This allows us to know what the probability of an arbitrary interval of values for any of the distributions</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="fl">1.959964</span>) <span class="co"># 97.5% of data is less or equal in a standard normal</span>
+[<span class="dv">1</span>] <span class="fl">0.975</span>
+<span class="kw">pt</span>(<span class="fl">1.959964</span>, <span class="dv">2</span>) <span class="co"># t with 2 dfs - 90.55%</span>
+[<span class="dv">1</span>] <span class="fl">0.9054688</span>
+<span class="kw">pt</span>(<span class="fl">1.959964</span>, <span class="dv">10</span>) <span class="co"># t with 10 dfs -  96.1%</span>
+[<span class="dv">1</span>] <span class="fl">0.9607795</span>
+<span class="kw">pf</span>(<span class="fl">1.959964</span>, <span class="dv">4</span>, <span class="dv">20</span>) <span class="co"># F with 4 and 20 dfs - 86%</span>
+[<span class="dv">1</span>] <span class="fl">0.8602845</span></code></pre></div>
+</section><section id="recap-on-normal-distribution" class="slide level2">
+<h2>Recap on normal distribution</h2>
+<ul>
+<li>Describes variables that result from interactions of many factors with small effects each</li>
+<li>CLT states that the sampling distribution of the mean (and some other parameters) is normal
+<ul>
+<li><m><span class="math inline">\(\bar{x}\)</span></m> is an approximately normally distributed variable with mean of <m><span class="math inline">\(\mu\)</span></m> and <em>SD</em> equal to the standard error</li>
+<li>Standard error is calculated as population <em>SD</em> over square root of sample size, <m><span class="math inline">\(SE = \sigma / \sqrt{n}\)</span></m></li>
+<li>In practice, we don’t know the value of <span class="math inline">\(\sigma\)</span>, we estimate it from sample <m><span class="math inline">\(s\)</span></m></li>
+</ul></li>
+</ul>
+</section><section id="chi2-distribution" class="slide level2">
+<h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
+<ul>
+<li>Described independently by <a href="https://en.wikipedia.org/wiki/Friedrich_Robert_Helmert" target="_blank">Friedrich Robert Helmert</a> (1985-6) and <a href="https://en.wikipedia.org/wiki/Karl_Pearson" target="_blank">Karl Pearson</a> (1900)</li>
+<li>Pearson was interested in assessing model fit</li>
+<li>Helmert wanted to know the sampling distribution of the variance
+<ul>
+<li><m><span class="math inline">\(s^2 = \frac{\sum\limits_{i=1}^N{(x_i - \bar{x})^2}}{N-1}\)</span></m></li>
+<li>Denominator just scales the variable so doesn’t change the distribution</li>
+<li>Boils down to “what is the sampling distribution of <em>sum of squares</em>?”</li>
+</ul></li>
+</ul>
+</section><section id="chi2-distribution-1" class="slide level2">
+<h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
+<ul>
+<li><span class="math inline">\(\chi^2\)</span>-distribution with <span class="math inline">\(N\)</span> <em>df</em> describes the sampling distribution of sum of squares of a sample of size <span class="math inline">\(N\)</span></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 10^6 draws from std. normal distribution</span>
+xmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">scale</span>(<span class="kw">rnorm</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">6</span>)), <span class="dt">ncol =</span> <span class="dv">10</span>)
+
+<span class="co"># since N = 1 we don&#39;t need to sum anything,</span>
+<span class="co"># we just square each &quot;sample&quot;</span>
+ss &lt;-<span class="st"> </span>xmat[ , <span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>  <span class="co"># sample size = 1 (single column of xmat)</span>
+ss_<span class="dv">1</span> &lt;-<span class="st"> </span>ss[ss <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>]
+<span class="kw">hist</span>(ss_<span class="dv">1</span>, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">freq =</span> F, <span class="dt">main =</span> <span class="st">&quot;N = 1&quot;</span>,
+     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">xlab =</span> <span class="st">&quot;Sum of squares&quot;</span>)
+
+<span class="co"># x coordinates of line</span>
+x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> <span class="dv">100</span>)
+<span class="co"># chi^2 distribution with N df</span>
+<span class="kw">lines</span>(x_coord, <span class="kw">dchisq</span>(x_coord, <span class="dv">1</span>), <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+</section><section id="chi2-distribution-2" class="slide level2">
+<h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" /></p>
+</section><section id="chi2-distribution-3" class="slide level2">
+<h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
+<ul>
+<li>Nothing special about 1<sup><small>st</small></sup> column</li>
+</ul>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
+</section><section id="chi2-distribution-4" class="slide level2">
+<h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
+<ul>
+<li>The shape of the distribution changes dramatically as a function of <em>df</em></li>
+</ul>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" /></p>
+</section><section id="chi2-distribution-5" class="slide level2">
+<h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /></p>
+</section><section id="chi2-distribution-6" class="slide level2">
+<h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
+<p></br> <strong>Why is this useful?</strong></br></br></p>
+<ul>
+<li>Many statistical procedures rely on the fact that <span class="math inline">\(\sigma^2\)</span> / <span class="math inline">\(SD\)</span><small><sup>*</sup></small> / sums of squares of independent variables follow the <m><span class="math inline">\(\chi^2\)</span></m>-distribution</li>
+<li>Think of the mean as a model
+<ul>
+<li><span class="math inline">\(SD\)</span> (spread of data around the mean) can be seen as a measure of how well the model fits the data</li>
+</ul></li>
+</ul>
+<p></br><small><sup>*</sup>This is only true if the variable we’re sampling from is normally distributed with a variance of <span class="math inline">\(\sigma^2\)</span></small></p>
+</section><section id="chi2-distribution-7" class="slide level2">
+<h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
+<p></br> <strong>Why is this useful?</strong></br></br></p>
+<ul>
+<li>If <span class="math inline">\(SD\)</span> is large, the mean doesn’t really describe much of the data very accurately</li>
+<li>The larger the <span class="math inline">\(SD\)</span>, the higher value of <m><span class="math inline">\(\chi^2\)</span></m>, and the worse the fit of the model</li>
+<li>This principle generalises to <em>other kinds of models</em> (including the linear model)
+<ul>
+<li><m><span class="math inline">\(\chi^2\)</span></m>-distribution helps us quantify how well (badly) our model fits the data</li>
+<li>This is <strong>very useful</strong></li>
+</ul></li>
+</ul>
+</section><section id="students-t--distribution" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<ul>
+<li>First described by <a href="https://en.wikipedia.org/wiki/William_Sealy_Gosset" target="_blank">William Sealy Gosset</a> in the early 1900s
+<ul>
+<li>Interested in inferring from small samples</li>
+</ul></li>
+</ul>
+<p></br> <strong>The task</strong></br></br></p>
+<ul>
+<li>How do we know the probability of getting some <m><span class="math inline">\(\bar{x}\)</span></m> if true mean <m><span class="math inline">\(\mu\)</span></m> is 0?</li>
+<li>We can standardise the distribution of <m><span class="math inline">\(\bar{x}\)</span></m> by centring around <m><span class="math inline">\(\mu\)</span></m> and scaling it by <m><span class="math inline">\(SE\)</span></m></li>
+<li><m><span class="math inline">\(\frac{\bar{x} - \mu}{SE} = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}}\)</span></m> follows a standard normal distribution and so we know the probability above any given value of <m><span class="math inline">\(\bar{x}\)</span></m></li>
+</ul>
+</section><section id="students-t--distribution-1" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<p></br> <strong>The problem</strong></br></br></p>
+<ul>
+<li>We don’t know <m><span class="math inline">\(\sigma\)</span></m>!</li>
+<li>We can only estimate std. error as <m><span class="math inline">\(\widehat{SE} = s / \sqrt{n}\)</span></m></li>
+<li><m><span class="math inline">\(\widehat{SE}\)</span></m> is <em>not</em> a single number, it is a variable that follows a <m><span class="math inline">\(\chi^2\)</span></m>-distribution with <span class="math inline">\(n-1\)</span> degrees of freedom</li>
+<li>Once we scale by <m><span class="math inline">\(\widehat{SE}\)</span></m> instead of <m><span class="math inline">\(SE\)</span></m>, the variable is no longer standard normal</li>
+</ul>
+</section><section id="students-t--distribution-2" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<p></br> <strong>The solution</strong></br></br></p>
+<ul>
+<li>Luckily, the Student’s <em>t</em>-distributed with <span class="math inline">\(n-1\)</span> degrees of freedom <strong>is</strong> the distribution a normal variable divided by a <m><span class="math inline">\(\chi^2\)</span></m> variable</li>
+<li>Doesn’t only apply to <m><span class="math inline">\(\bar{x}\)</span></m> but also to <m><span class="math inline">\(b\)</span>s</m> (and some other parameters)</li>
+<li>Especially useful when <span class="math inline">\(n\)</span> is small</li>
+</ul>
+</section><section id="students-t--distribution-3" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<p></br> <strong>The demonstration</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">4</span> <span class="co"># set n</span>
+<span class="co"># 10^5 samples from std. normal distribution of size n = 4</span>
+xmat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">scale</span>(<span class="kw">rnorm</span>(n<span class="op">*</span><span class="dv">10</span><span class="op">^</span><span class="dv">5</span>)), <span class="dt">ncol =</span> n)
+x_bar &lt;-<span class="st"> </span><span class="kw">apply</span>(xmat, <span class="dv">1</span>, mean) <span class="co"># sample means</span>
+sd_x &lt;-<span class="st"> </span><span class="kw">apply</span>(xmat, <span class="dv">1</span>, sd) <span class="co"># sample SDs</span>
+t_stat &lt;-<span class="st"> </span>x_bar<span class="op">/</span>(sd_x<span class="op">/</span><span class="kw">sqrt</span>(n)) <span class="co"># t-statistic</span>
+t_stat2 &lt;-<span class="st"> </span>t_stat[<span class="kw">abs</span>(t_stat) <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span>] <span class="co"># only values between -5 and 5</span>
+<span class="kw">hist</span>(t_stat2, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">freq =</span> F, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">dnorm</span>(<span class="dv">0</span>)), <span class="dt">xlab =</span> <span class="st">&quot;t-statistic&quot;</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;N(0,1)&quot;</span>, <span class="st">&quot;t(3)&quot;</span>),
+       <span class="dt">lty =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">col =</span> colors[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)], <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)
+<span class="co"># x coordinates of lines</span>
+x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dt">length.out =</span> <span class="dv">100</span>)
+ <span class="co"># standard normal distribution</span>
+<span class="kw">lines</span>(x_coord, <span class="kw">dnorm</span>(x_coord), <span class="dt">col =</span> colors[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)
+<span class="co"># t(n-1) distribution</span>
+<span class="kw">lines</span>(x_coord, <span class="kw">dt</span>(x_coord, n<span class="op">-</span><span class="dv">1</span>), <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+</section><section id="students-t--distribution-4" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" /></p>
+</section><section id="students-t--distribution-5" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(t_stat, .<span class="dv">025</span>) <span class="co"># empirical cutoff for bottom 2.5%</span>
+     <span class="fl">2.5</span>% 
+<span class="op">-</span><span class="fl">3.146718</span> 
+<span class="kw">qnorm</span>(.<span class="dv">025</span>) <span class="co"># theoretical cutoff for bottom 2.5% - std normal</span>
+[<span class="dv">1</span>] <span class="op">-</span><span class="fl">1.959964</span>
+<span class="kw">qt</span>(.<span class="dv">025</span>, n<span class="op">-</span><span class="dv">1</span>) <span class="co"># theoretical cutoff for bottom 2.5% - t(n-1)</span>
+[<span class="dv">1</span>] <span class="op">-</span><span class="fl">3.182446</span>
+
+<span class="co"># if we use t-distribution to find cutoffs it&#39;s close enough</span>
+<span class="kw">sum</span>(t_stat <span class="op">&lt;=</span><span class="st"> </span><span class="kw">qt</span>(.<span class="dv">025</span>, n<span class="op">-</span><span class="dv">1</span>))<span class="op">/</span><span class="kw">length</span>(t_stat)
+[<span class="dv">1</span>] <span class="fl">0.02448</span>
+<span class="co"># if we use the normal, we&#39;ll be mniles away</span>
+<span class="kw">sum</span>(t_stat <span class="op">&lt;=</span><span class="st"> </span><span class="kw">qnorm</span>(.<span class="dv">025</span>))<span class="op">/</span><span class="kw">length</span>(t_stat)
+[<span class="dv">1</span>] <span class="fl">0.07128</span></code></pre></div>
+</section><section id="students-t--distribution-6" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<ul>
+<li>As <span class="math inline">\(n\)</span> gets bigger:
+<ul>
+<li>The distribution of <m><span class="math inline">\(\bar{x}\)</span></m> approaches normal</li>
+<li><m><span class="math inline">\(\widehat{SE}\)</span></m> approaches <m><span class="math inline">\(SE\)</span></m></li>
+<li>Number of <em>df</em> gets bigger</li>
+<li>Therefore <m><span class="math inline">\(\frac{\bar{x} - \mu}{\widehat{SE}}\)</span></m> approaches standard normal</li>
+</ul></li>
+<li>As the number of <em>df</em> tends to infinity, <em>t</em>-distribution approaches…?</li>
+</ul>
+</section><section id="students-t--distribution-7" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<ul>
+<li>As the number of <em>df</em> tends to infinity, <em>t</em>-distribution approaches normal</li>
+</ul>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-15-1.png" width="768" /></p>
+</section><section id="students-t--distribution-8" class="slide level2">
+<h2>Student’s <em>t</em> -distribution</h2>
+<p></br> <strong>Why is this useful?</strong></br></br></p>
+<ul>
+<li>Often we want to know if a sample statistic comes from a population with a given <span class="math inline">\(\mu\)</span></li>
+<li>However, we don’t know the <span class="math inline">\(\sigma\)</span> of this population, we can only estimate is as <span class="math inline">\(\widehat{SE}\)</span> of the <em>sampling distribution</em> of the statistic</li>
+<li><em>t</em>-distribution allows us to quantify the probability of the given sample statistic <strong>or a more extreme one</strong> if the true population parameter has some other value</li>
+</ul>
+</section><section id="f--distribution" class="slide level2">
+<h2><em>F</em> -distribution</h2>
+<ul>
+<li>Developed by <a href="https://en.wikipedia.org/wiki/George_W._Snedecor" target="_blank">George Waddel Snedecor</a> and named in honour of Ronald Fisher</li>
+<li>Describes the distribution of a variable arising from a ration of two independent <m><span class="math inline">\(\chi^2\)</span></m>-distributed variables <em>scaled by their respective dfs</em>
+<ul>
+<li>For that reason, it is characterised by <em>two</em> numbers of degrees of freedom (one for each constituent variable)</li>
+</ul></li>
+<li>Widely used in Analysis of variance (<strong>ANOVA</strong>) and for <em>comparing two models</em></li>
+</ul>
+</section><section id="f--distribution-1" class="slide level2">
+<h2><em>F</em> -distribution</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df1 &lt;-<span class="st"> </span><span class="dv">30</span>; df2 &lt;-<span class="st"> </span><span class="dv">12</span>
+var1 &lt;-<span class="st"> </span><span class="kw">rchisq</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">5</span>, df1) <span class="co"># 10^5 random chi^2 with df = df1</span>
+var2 &lt;-<span class="st"> </span><span class="kw">rchisq</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">5</span>, df2)
+
+x &lt;-<span class="st"> </span>(var1<span class="op">/</span>df1)<span class="op">/</span>(var2<span class="op">/</span>df2)
+x &lt;-<span class="st"> </span>x[x<span class="op">&lt;=</span><span class="dv">10</span>]
+
+<span class="kw">hist</span>(x, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">freq =</span> F, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,
+     <span class="dt">xlab =</span> <span class="kw">expression</span>(<span class="kw">frac</span>(var1<span class="op">/</span>df1, var2<span class="op">/</span>df2))
+
+<span class="co"># x coordinates of line</span>
+x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dt">length.out =</span> <span class="dv">200</span>)
+ <span class="co"># F-distribution with df1 and df2 degrees of freedom</span>
+<span class="kw">lines</span>(x_coord, <span class="kw">df</span>(x_coord, df1, df2), <span class="dt">col =</span> colors[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre></div>
+</section><section id="f--distribution-2" class="slide level2">
+<h2><em>F</em> -distribution</h2>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-17-1.png" width="768" /></p>
+</section><section id="f--distribution-3" class="slide level2">
+<h2><em>F</em> -distribution</h2>
+<ul>
+<li>Just like with <m><span class="math inline">\(\chi^2\)</span></m>-distribution, the shape of the <em>F</em>-distribution changes a lot</li>
+</ul>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" /></p>
+</section><section id="f--distribution-4" class="slide level2">
+<h2><em>F</em> -distribution</h2>
+<p></br> <strong>Why is this useful?</strong></br></br></p>
+<ul>
+<li>Since <m><span class="math inline">\(\chi^2\)</span></m>-distribution is used to assess the fit of a model to data, we can use the ratio of two <m><span class="math inline">\(\chi^2\)</span></m>-distributed statistics to compare the fit of two competing models</li>
+<li>Doing statistics <strong>always includes model comparison</strong>, just sometimes <em>implicitly</em>
+<ul>
+<li>Is a particular linear model a good fit?</li>
+<li>Yes, if it fits better than the null (intercept-only) model, <i>i.e.,</i> the mean</li>
+</ul></li>
+</ul>
+</section><section id="take-home-message-2" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li>There are many well-described probability distributions</li>
+<li>They differ in shapes and are specified by differing numbers and kinds of parameters but the <strong>principle is the same</strong></li>
+<li>They all allow us to <em>quantify the probability of an arbitraty interval</em> of values under given distribution</li>
+<li>The probability of an interval, <i>e.g.,</i> <span class="math inline">\([3,\infty)\)</span> will be different under different distributions</li>
+<li><m><span class="math inline">\(\chi^2\)</span></m>-distribution describes the distribution of sums of squares and the sampling distribution of <em>SD</em> of samples from a normally distributed population
+<ul>
+<li>Useful for assessing <strong>goodness of fit</strong> of a model</li>
+</ul></li>
+</ul>
+</section><section id="take-home-message-3" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li><em>t</em>-distribution is the ratio of a random normal variable and an independent <m><span class="math inline">\(\chi^2\)</span></m> variable
+<ul>
+<li>Useful for testing whether a statistic comes from a sampling distribution with a given <span class="math inline">\(\mu\)</span> when <span class="math inline">\(\sigma\)</span> is unknown.</li>
+<li>Does <span class="math inline">\(b\)</span> come from a sampling distribution of <span class="math inline">\(\beta = 0\)</span>, <i>i.e.,</i> is there a <strong>relationship between two variables</strong>?</li>
+<li>Does our sample mean <span class="math inline">\(\bar{x}\)</span> come from a sampling distribution where <span class="math inline">\(\mu\)</span> is, say, 100?</li>
+<li>Is the difference between <span class="math inline">\(\bar{x}_1\)</span> and <span class="math inline">\(\bar{x}_2\)</span> from a distribution with <span class="math inline">\(\mu = 0\)</span>, <i>i.e.,</i> is there a <strong>difference between two groups</strong>?</li>
+</ul></li>
+<li><em>F</em>-distribution is the ratio of two <em>scaled</em> <m><span class="math inline">\(\chi^2\)</span></m> variables
+<ul>
+<li>Useful for <strong>comparing two competing models</strong></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="retain-or-reject-that-is-the-question" class="titleslide slide level1" data-background="../pics/hamlet2.jpg"><h1>Retain or Reject<br>that is the question</h1></section><section id="putting-it-all-together" class="slide level2">
+<h2>Putting it all together</h2>
+<ul>
+<li>let’s revisit our IQ and age example</li>
+</ul>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-19-1.png" width="768" /></p>
+</section><section id="hypotheses-1" class="slide level2">
+<h2>Hypotheses</h2>
+<ul>
+<li>Model: <m><span class="math inline">\(IQ = \beta_0 + \beta_1 \times age + \epsilon\)</span></m></li>
+<li>Research hypothesis:
+<ul>
+<li><em>There is a relationship between age and IQ</em></li>
+<li><span class="math inline">\(H: \beta_1 \ne 0\)</span></li>
+</ul></li>
+<li>Null hypothesis:
+<ul>
+<li><em>There is no relationship between age and IQ</em></li>
+<li><span class="math inline">\(H_0: \beta_1 = 0\)</span></li>
+</ul></li>
+</ul>
+</section><section id="test-statistic-and-its-distribution-1" class="slide level2">
+<h2>Test statistic and its distribution</h2>
+<ul>
+<li>We want to know if the <span class="math inline">\(b_1 = 3.941\)</span> we found is <strong>likely</strong> to come from a sampling distribution where <span class="math inline">\(\beta_1 = 0\)</span> (this is the null)</li>
+<li><span class="math inline">\(\beta_1 = 0\)</span> is thus the <strong>expected</strong> <span class="math inline">\(\mu\)</span> of the sampling distribution</li>
+<li><span class="math inline">\(b_1 - \beta_1\)</span> is the <em>distance between observed and expected</em> <m><span class="math inline">\(b_1\)</span></m></li>
+<li>If we knew the <em>SE</em> of this sampling distribution, we could use it to scale the distance to get a standard normal distribution – <span class="math inline">\(\frac{b_1 - \beta_1}{SE_b}\)</span></li>
+<li>We can estimate <m><span class="math inline">\(\widehat{SE}_b=\sqrt{\frac{\sum_{i=1}^n\varepsilon_i^2}{(n-2)\sum_{i=1}^n(x_i-\bar{x})^2}}\)</span></m></li>
+</ul>
+</section><section id="test-statistic-and-its-distribution-2" class="slide level2">
+<h2>Test statistic and its distribution</h2>
+<ul>
+<li>We can then standardise the distance between observed and expected <span class="math inline">\(b_1\)</span> as <span class="math inline">\(\frac{b_1 - \beta_1}{\widehat{SE}_b}\)</span></li>
+<li>Since we expect that <span class="math inline">\(\beta_1 = 0\)</span>, the statistic of interest is <span class="math inline">\(b_1/\widehat{SE}_b\)</span></li>
+<li>Relying on <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/central-limit-theorem" target="_blank">CLT</a>, we can assume that <span class="math inline">\(b_1\)</span> is from a normal distribution</li>
+<li><span class="math inline">\(\widehat{SE}\)</span> is a <m><span class="math inline">\(\chi^2\)</span></m>-distributed variable with <span class="math inline">\(df = n-2\)</span></li>
+<li>This means that <span class="math inline">\(b_1/\widehat{SE}_b\)</span> follows a <em>t</em>-distribution with <span class="math inline">\(df = n-2\)</span></li>
+</ul>
+</section><section id="data-and-analysis-1" class="slide level2">
+<h2>Data and analysis</h2>
+<ul>
+<li>We tested 20 imaginary people (definitely <em>not</em> enough!)</li>
+<li>We fit the linear model and found the value of <span class="math inline">\(b_1 = 3.94\)</span></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(iq[sample] <span class="op">~</span><span class="st"> </span>age[sample])
+<span class="kw">coef</span>(m1)
+(Intercept) age[sample] 
+  <span class="fl">63.124858</span>    <span class="fl">3.940927</span> </code></pre></div>
+</section><section id="observed-statistic" class="slide level2">
+<h2>Observed statistic</h2>
+<ul>
+<li>The value of associated test statistic is <span class="math inline">\(t = \frac{b_1}{\widehat{SE}_b} \approx \frac{3.941}{2.245} \approx 1.755\)</span></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(ss_resid &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="kw">resid</span>(m1)<span class="op">^</span><span class="dv">2</span>)) <span class="co"># sum(epsilon^2)</span>
+[<span class="dv">1</span>] <span class="fl">4599.261</span>
+(n &lt;-<span class="st"> </span><span class="kw">length</span>(sample)) <span class="co"># sample size</span>
+[<span class="dv">1</span>] <span class="dv">20</span>
+<span class="co"># sum of sqares of age</span>
+(ss_age &lt;-<span class="st"> </span><span class="kw">sum</span>((age[sample] <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(age[sample]))<span class="op">^</span><span class="dv">2</span>))
+[<span class="dv">1</span>] <span class="fl">50.69264</span>
+(se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(ss_resid<span class="op">/</span>((n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span>ss_age))) <span class="co"># estimated SE of b_1</span>
+[<span class="dv">1</span>] <span class="fl">2.245098</span>
+
+(t &lt;-<span class="st"> </span><span class="kw">coef</span>(m1)[<span class="dv">2</span>]<span class="op">/</span>se) <span class="co"># t-statistic</span>
+age[sample] 
+   <span class="fl">1.755347</span> </code></pre></div>
+</section><section id="probability-of-the-observed-statistic-1" class="slide level2">
+<h2>Probability of the observed statistic</h2>
+<ul>
+<li>Given that we know our <em>t</em>-value comes from a <em>t</em>-distribution with <span class="math inline">\(df = 18\)</span>, we know that the probability of getting <span class="math inline">\(|t| \geq 1.755\)</span> is <span class="math inline">\(.096\)</span>, <strong>if the true <em>t</em>-value is zero</strong>, <i>i.e.,</i> if <span class="math inline">\(\beta_1 = 0\)</span></li>
+<li><em>t</em>-value can be either positive or negative because <span class="math inline">\(b_1\)</span> can be non-zero in two directions</li>
+<li>We are therefore looking at both tails of the <em>t</em>-distribution</li>
+<li>This is known as a <strong>two-tailed test</strong> of significance</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># double the probability of t &gt;= 3.941</span>
+<span class="kw">pt</span>(t, n<span class="op">-</span><span class="dv">2</span>, <span class="dt">lower.tail =</span> F) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>
+age[sample] 
+ <span class="fl">0.09620383</span> </code></pre></div>
+</section><section id="probability-of-the-observed-statistic-2" class="slide level2">
+<h2>Probability of the observed statistic</h2>
+<ul>
+<li>Two-tailed test that <span class="math inline">\(t \leq -1.755\)</span> <em>OR</em> <span class="math inline">\(t \geq 1.755\)</span></li>
+</ul>
+<p><img src="l4_pub_files/figure-revealjs/unnamed-chunk-23-1.png" width="768" /></p>
+</section><section id="decision-1" class="slide level2">
+<h2>Decision</h2>
+<ul>
+<li>Conventionally, we require the probability of a statistics under <span class="math inline">\(H_0\)</span> to be less than 5% to consider the result unlikely enough to reject the null
+<ul>
+<li>Other conventional <strong>levels of significance</strong> are <span class="math inline">\(p &lt; .01\)</span> and <span class="math inline">\(p &lt; .001\)</span></li>
+</ul></li>
+<li>The <em>p</em>-value is the probability of getting a result <strong>at least as extreme</strong> as the observed one <strong>if the null is true</strong></li>
+<li>The observed <em>t</em>-value based on <span class="math inline">\(b_1 = 3.94\)</span> and a sample of 20 is relatively <em>likey</em> (<span class="math inline">\(p &gt; .05\)</span>) in a world where <span class="math inline">\(\beta_1 = 0\)</span></li>
+<li>We <strong>retain</strong> the null hypothesis and say that <strong>we found no evidence</strong> of a relationship between age and IQ</li>
+</ul>
+</section><section id="sanity-check" class="slide level2">
+<h2>Sanity check</h2>
+<ul>
+<li>We don’t have to do the calculations by hand!</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m1)<span class="op">$</span>coefficients
+             Estimate Std. Error  t value   <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)
+(Intercept) <span class="fl">63.124858</span>  <span class="fl">22.939236</span> <span class="fl">2.751829</span> <span class="fl">0.01312103</span>
+age[sample]  <span class="fl">3.940927</span>   <span class="fl">2.245098</span> <span class="fl">1.755347</span> <span class="fl">0.09620383</span>
+
+<span class="co"># b_1 = 3.940927</span>
+<span class="co"># se = 2.245098</span>
+<span class="co"># t-value = 1.755347</span>
+<span class="co"># p-value = 0.09620383</span></code></pre></div>
+</section><section id="take-home-message-4" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li><strong>NHST</strong> is a flawed but widely-used framework</li>
+<li>Statistical hypotheses are statements about values of population parameters</li>
+<li>We fit statistical models to data to derive <strong>estimates of these parameters</strong> based on samples</li>
+<li>We test whether the observed value of the estimate is <strong>likely</strong> to come from the sampling distribution of the population parameter <strong>in a world where <span class="math inline">\(H_0\)</span> is true</strong></li>
+<li>To get the likelihood, we need a test statistic and it’s characteristic distribution</li>
+</ul>
+</section><section id="take-home-message-5" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li><em>p</em>-value is the probability of observing a value of test statistic <strong>at least as extreme</strong> (far away from bulk of the distribution) as the one in the sample, <strong>if the null hypothesis is true</strong></li>
+<li><em>p</em>-value is the tail area of the distribution of the test statistic bounded by its observed value
+<ul>
+<li><strong>One-tailed</strong> <em>p</em>-values are one-directional</li>
+<li><strong>two-tailed</strong> <em>p</em>-values look at <m><span class="math inline">\(P(|statistic| \geq observed\ value)\)</span></m></li>
+</ul></li>
+</ul>
+</section><section id="take-home-message-6" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li>Conventional criteria for statistical significance are <m><span class="math inline">\(p &lt; .05\)</span></m>, <m><span class="math inline">\(p &lt; .01\)</span></m>, and <m><span class="math inline">\(p &lt; .001\)</span></m></li>
+<li>If the obtained <em>p</em>-value is smaller than .05, we consider the result statistically significant and <strong>reject the null hypothesis</strong></li>
+<li>If <span class="math inline">\(p \geq .05\)</span>, we <strong>retain the null</strong> because the result is not statistically significant</li>
+<li>Statistical significance is a technical term – it is not related to <strong>practical</strong> significance</li>
+<li>The entire process is <strong>the same for all statistical tests</strong> we will talk about</li>
+</ul>
+</section><section id="one-more-time-with-feeling" class="slide level2">
+<h2>One more time (with feeling)</h2>
+<p><strong>The <em>p</em>-value denotes the probability that we get the result we observed <em>or a more extreme one</em> even if, in reality, <em>the null hypothesis is true</em></strong></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+All clear?
+</aside>
+</section></section>
+<section><section id="section" class="titleslide slide level1" data-background="../pics/end2.jpg"><h1> </subtitle></h1></section></section>
+    </div>
+  </div>
+
+  <script src="l4_pub_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="l4_pub_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+
+
+        chalkboard: {
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'l4_pub_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: 'l4_pub_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
