@@ -606,7 +606,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <ul>
 <li>Mean is the simplest model (AKA the <strong>null model</strong>) – it’s not very good</li>
 <li>Can we do any better?</li>
-<li>There’s clearly a relationship between age and vocab so let’s make use of it <m><span class="math inline">\(\widehat{vocab} = 224 + 168.38\times age - 0.38\times age^2\)</span></m></li>
+<li>There’s clearly a relationship between age and vocab so let’s make use of it <m><span class="math inline">\(\widehat{vocab} = 1201.64 + 75.11\times age\)</span></m></br></br></li>
 </ul>
 <p><img width="420px" src="../pics/scat3.gif" /></p>
 <!-- speaker notes -->
@@ -626,7 +626,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Models with perfect fit do not generalise</li>
 <li>They have no predictive utility</li>
 </ul></li>
-<li>All non-perfectly fitting models have <em>residuals</em></br></br></li>
+<li>All non-perfectly fitting models have <em>residuals</em></br><small></br></br></small></li>
 </ul>
 <p><img width="420px" src="../pics/lin_mod.png" /></p>
 </section><section id="the-linear-model-6" class="slide level2" data-transition="none" data-gif="repeat">
@@ -638,7 +638,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Models with perfect fit do not generalise</li>
 <li>They have no predictive utility</li>
 </ul></li>
-<li>All non-perfectly fitting models have <em>residuals</em></br></br></li>
+<li>All non-perfectly fitting models have <em>residuals</em></br><small></br></br></small></li>
 </ul>
 <p><img width="420px" src="../pics/scat4.gif" /></p>
 <!-- speaker notes -->
@@ -653,8 +653,8 @@ Residuals are sometimes incorrectly referred to as error
 <li><strong>Prediction</strong> is the value of outcome produced by the model
 <ul>
 <li><em>prediction = model</em></li>
-<li><m><span class="math inline">\(\widehat{vocab} = 224 + 168.38\times age - 0.38\times age^2\)</span></m></li>
-<li>for age of 20 years (240 months): <m><span class="math inline">\(18286 = 224 + 168.38\times 240 - 0.38\times 240^2\)</span></m></li>
+<li><m><span class="math inline">\(\widehat{vocab} = 1201.64 + 75.11\times age\)</span></m></li>
+<li>for age of 20 years (240 months): <m><span class="math inline">\(19228 = 1201.64 + 75.11\times 240\)</span></m></li>
 </ul></li>
 </ul>
 </section><section id="some-vocab-1" class="slide level2">
@@ -663,7 +663,7 @@ Residuals are sometimes incorrectly referred to as error
 <li><strong>Observation</strong> is the actual observed value in the data
 <ul>
 <li><em>observation = model + residual</em></li>
-<li><m><span class="math inline">\(vocab = 224 + 168.38\times age - 0.38\times age^2 + \varepsilon\)</span></m></li>
+<li><m><span class="math inline">\(vocab = 1201.64 + 75.11\times age + \varepsilon\)</span></m></li>
 </ul></li>
 <li><strong>Residual</strong> is then the difference between what the model predicts and what we observe
 <ul>
@@ -686,13 +686,13 @@ Residuals are sometimes incorrectly referred to as error
 </section><section id="accuracygeneralisability-trade-off-1" class="slide level2" data-transition="fade-in none-out">
 <h2>Accuracy/generalisability trade-off</h2>
 <ul>
-<li>Three parameters: one for intercept and two for slope</li>
+<li>Two parameters: one for intercept and one for slope</li>
 </ul>
 <p><img width="420px" src="../pics/error.png" /></p>
 </section><section id="accuracygeneralisability-trade-off-2" class="slide level2" data-transition="none" data-gif="repeat">
 <h2>Accuracy/generalisability trade-off</h2>
 <ul>
-<li><em>Many</em> parameters!                 </li>
+<li><em>Many</em> parameters!                </li>
 </ul>
 <p><img width="420px" src="../pics/scat5.gif" /></p>
 <!-- speaker notes -->
@@ -749,9 +749,9 @@ Any questions?
 <ul>
 <li>Once we know what specific question we are asking and how it maps onto measurable quantities, we can formulate the statistical model</li>
 <li>We operationalise vocabulary size as the estimate based on the number of words generated in a verbal fluency test and age as age in months</li>
-<li>We predict that vocab size depends on age and that this relationship is not linear
+<li>We predict that vocab size depends on age
 <ul>
-<li><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \beta_2 \times age^2_{mon} + \epsilon\)</span></m></li>
+<li><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \epsilon\)</span></m></li>
 </ul></li>
 </ul>
 <!-- speaker notes -->
@@ -763,17 +763,16 @@ Any questions?
 </aside>
 </section><section id="statistical-hypotheses" class="slide level2">
 <h2>Statistical hypotheses</h2>
-<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \beta_2 \times age^2_{mon} + \epsilon\)</span></m></br></br></p>
+<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \epsilon\)</span></m></br></br></p>
 <ul>
-<li>From the model formulation, we can derive two hypotheses:
+<li>From the model formulation, we can derive the following hypothesis:
 <ul>
-<li><em>Some</em> relationship – <m><span class="math inline">\(H_a: \beta_1 \ne 0\)</span>  OR  <span class="math inline">\(\beta_2 \ne 0\)</span></m></li>
-<li>Not linear – <m><span class="math inline">\(H_b: \beta_2 \ne 0\)</span></m></li>
+<li><em>Some</em> relationship – <m><span class="math inline">\(H_a: \beta_1 \ne 0\)</span></m></li>
 </ul></li>
 </ul>
 </section><section id="statistical-hypotheses-1" class="slide level2">
 <h2>Statistical hypotheses</h2>
-<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \beta_2 \times age^2_{mon} + \epsilon\)</span></m></br></br></p>
+<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \epsilon\)</span></m></br></br></p>
 <p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-2-1.png" width="768" /></p>
 </section><section id="the-null-hypothesis" class="slide level2">
 <h2>The null hypothesis</h2>
@@ -788,18 +787,16 @@ Any questions?
 </ul>
 </section><section id="the-null-hypothesis-1" class="slide level2">
 <h2>The null hypothesis</h2>
-<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \beta_2 \times age^2_{mon} + \epsilon\)</span></m></br></br></p>
+<p></br><m><span class="math inline">\(vocab = \beta_0 + \beta_1 \times age_{mon} + \epsilon\)</span></m></br></br></p>
 <ul>
-<li>Some relationship – <m><span class="math inline">\(H_a: \beta_1 \ne 0\)</span>  OR  <span class="math inline">\(\beta_2 \ne 0\)</span></m></li>
-<li>Independence – <m><span class="math inline">\(H_{0a}: \beta_1 = 0\)</span>  AND  <span class="math inline">\(\beta_2 = 0\)</span></m></br></br></li>
-<li>Non-linearity – <m><span class="math inline">\(H_b: \beta_2 \ne 0\)</span></m></li>
-<li>Linearity – <m><span class="math inline">\(H_{0b}: \beta_2 = 0\)</span></m></br></br></li>
+<li>Some relationship – <m><span class="math inline">\(H_a: \beta_1 \ne 0\)</span></m></li>
+<li>Independence – <m><span class="math inline">\(H_{0a}: \beta_1 = 0\)</span></m></br></br></li>
 <li>We don’t test the research hypothesis, we test the <strong>null hypothesis</strong></li>
 <li>The null doesn’t have to be about zero but often is!</li>
 </ul>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
-<p>This is the “negative testing” Martin mentioned last time! - We don’t test that something is the case, we test that the opposite isn’t the case</p>
+<p>This is the “negative testing” Martin mentioned in Lect 1! - We don’t test that something is the case, we test that the opposite isn’t the case</p>
 all clear?
 </aside>
 </section></section>
@@ -824,6 +821,7 @@ all clear?
 </section><section id="the-problem-with-samples" class="slide level2">
 <h2>The problem with samples</h2>
 <ul>
+<li>Let’s simulate <em>some data on age and IQ</em></li>
 <li>Even if there’s no relationship in the population (<span class="math inline">\(\beta = 0\)</span>), we can get a non-zero <span class="math inline">\(b\)</span> for age</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># simulate population for age</span>
@@ -888,23 +886,83 @@ mod_pop &lt;-<span class="st"> </span><span class="kw">lm</span>(iq <span class=
 <li><span class="math inline">\(H_0: \beta_1 = 0\)</span></li>
 </ul></li>
 </ul>
-</section><section id="test-statistic-and-its-distribution" class="slide level2">
-<h2>Test statistic and its distribution</h2>
-<p><em>[coming up]</em> (but it’s the <em>t</em>-statistic and the <em>t</em>-distribution, respectively)</p>
 </section><section id="data-and-analysis" class="slide level2">
 <h2>Data and analysis</h2>
 <ul>
 <li>We tested 20 imaginary people (definitely <em>not</em> enough!)</li>
 <li>We fit the linear model and found the value of <span class="math inline">\(b_1 = 3.94\)</span></li>
-<li>The value of associated test statistic is <em>[coming up shortly]</em> (but it’s <span class="math inline">\(t = 1.755\)</span>)</li>
+</ul>
+</section><section id="test-statistic-and-its-distribution" class="slide level2">
+<h2>Test statistic and its distribution</h2>
+<ul>
+<li>We want to know how far our <strong>observed</strong> <span class="math inline">\(b_1\)</span> is from the one <strong>expected</strong> under <span class="math inline">\(H_0\)</span>, <i>i.e.,</i> <span class="math inline">\(3.941 - 0\)</span></li>
+<li>To assess the probability of this value, we need to know its sampling distribution</li>
+<li>As discussed last time, sampling distribution is the distribution of some statistic based on all possible samples of a given size</li>
+<li>In practice, we can’t repeat our study thousands of times to get the sampling distribution</li>
+<li>We can simulate though!</li>
+</ul>
+</section><section id="test-statistic-and-its-distribution-1" class="slide level2" data-transition="fade-in none-out">
+<h2>Test statistic and its distribution</h2>
+<p><img width="800px" src="../pics/b_samp.png" /></p>
+</section><section id="test-statistic-and-its-distribution-2" class="slide level2" data-transition="none-in fade-out" data-gif="repeat">
+<h2>Test statistic and its distribution</h2>
+<p><img width="800px" src="../pics/b_samp2.gif" /></p>
+</section><section id="test-statistic-and-its-distribution-3" class="slide level2">
+<h2>Test statistic and its distribution</h2>
+<ul>
+<li>With the benefit of knowing the sampling distribution, we have access to the <em>SE</em> of our <span class="math inline">\(b_1\)</span></li>
+</ul>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" /></p>
+</section><section id="test-statistic-and-its-distribution-4" class="slide level2">
+<h2>Test statistic and its distribution</h2>
+<ul>
+<li>We can now <em>standardise</em> our difference between observed and expected slope by dividing (scaling) it by <em>SE</em></li>
+<li>Let’s call this standardised test statistic <em>z</em></li>
+<li><m><span class="math inline">\(z = \frac{b_1 - \beta_1}{SE} = \frac{b_1 - 0}{SE} = \frac{3.941}{2.129} = 1.851\)</span></m></li>
+<li>This statistic tells us the distance between observed and expected values of the slope parameter in <strong>standard units</strong> (independent of measurement units of age)</li>
 </ul>
 </section><section id="probability-of-the-observed-statistic" class="slide level2">
 <h2>Probability of the observed statistic</h2>
-<p><em>[coming up shortly]</em> (but it’s <span class="math inline">\(p = .096\)</span>)</p>
+<ul>
+<li>We can assess the probability of getting the observed value <em>or a more extreme value</em> of <em>z</em> if <em>z</em> is from our null hypothesis sampling distribution</li>
+<li>If we are looking only at one tail of the distribution, this is called a <strong>one-tailed test</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z_dist &lt;-<span class="st"> </span><span class="kw">scale</span>(b, F) <span class="co"># b/SE</span>
+<span class="kw">sum</span>(z_dist <span class="op">&gt;=</span><span class="st"> </span><span class="fl">1.851</span>)<span class="op">/</span><span class="kw">length</span>(z_dist) <span class="co"># 1-tailed test</span>
+[<span class="dv">1</span>] <span class="fl">0.0335</span></code></pre></div>
+</section><section id="probability-of-the-observed-statistic-1" class="slide level2">
+<h2>Probability of the observed statistic</h2>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
+</section><section id="probability-of-the-observed-statistic-2" class="slide level2">
+<h2>Probability of the observed statistic</h2>
+<ul>
+<li>Usually, we are interested in non-directional hypotheses – we don’t care if the relationship is positive or negative</li>
+<li>We are therefore looking at both tails of the distribution – a <strong>two-tailed test</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z_dist &lt;-<span class="st"> </span><span class="kw">scale</span>(b) <span class="co"># b/SE</span>
+<span class="kw">sum</span>(<span class="kw">abs</span>(z_dist) <span class="op">&gt;=</span><span class="st"> </span><span class="fl">1.851</span>)<span class="op">/</span><span class="kw">length</span>(z_dist) <span class="co"># 2-tailed test</span>
+[<span class="dv">1</span>] <span class="fl">0.066</span></code></pre></div>
+</section><section id="probability-of-the-observed-statistic-3" class="slide level2">
+<h2>Probability of the observed statistic</h2>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /></p>
+</section><section id="probability-of-the-observed-statistic-4" class="slide level2">
+<h2>Probability of the observed statistic</h2>
+<ul>
+<li>We can also rely on <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/central-limit-theorem" target="_blank">CLT</a> and assume the sampling distribution of <em>z</em> is <em>standard normal</em> (<span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># pnorm(x, lower tail = F) gives probability of x or larger</span>
+<span class="kw">pnorm</span>(<span class="fl">1.851</span>, <span class="dt">lower.tail =</span> F) <span class="co"># 1-tailed test</span>
+[<span class="dv">1</span>] <span class="fl">0.03208478</span>
+<span class="kw">pnorm</span>(<span class="fl">1.851</span>, <span class="dt">lower.tail =</span> F) <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="co"># 2-taild test</span>
+[<span class="dv">1</span>] <span class="fl">0.06416955</span></code></pre></div>
 </section><section id="decision" class="slide level2">
 <h2>Decision</h2>
 <ul>
-<li>The observed value of the test statistic based on <span class="math inline">\(b_1 = 3.94\)</span> and a sample of 20 is relatively <em>likey</em> in a world where <span class="math inline">\(\beta_1 = 0\)</span></li>
+<li>Conventionally, we require the probability of a statistic under <span class="math inline">\(H_0\)</span> to be less than 5% to consider the result unlikely enough to reject the null
+<ul>
+<li>Other conventional <strong>levels of significance</strong> are <span class="math inline">\(p &lt; .01\)</span> and <span class="math inline">\(p &lt; .001\)</span></li>
+</ul></li>
+<li>The observed value of the test statistic based on <span class="math inline">\(b_1 = 3.94\)</span> and a sample of 20 is relatively <em>likey</em> <strong>in a world where</strong> <b><span class="math inline">\(\beta_1 = 0\)</span></b> (<span class="math inline">\(p = .066\)</span> under a 2-tailed test)</li>
 <li>We <strong>retain</strong> the null hypothesis and say that <strong>we found no evidence</strong> of a relationship</li>
 </ul>
 </section><section id="take-home-message-1" class="slide level2">
@@ -1030,22 +1088,22 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="d
 <span class="kw">lines</span>(x_coord, <span class="kw">dchisq</span>(x_coord, <span class="dv">1</span>), <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
 </section><section id="chi2-distribution-2" class="slide level2">
 <h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-15-1.png" width="768" /></p>
 </section><section id="chi2-distribution-3" class="slide level2">
 <h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
 <ul>
 <li>Nothing special about 1<sup><small>st</small></sup> column</li>
 </ul>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-16-1.png" width="768" /></p>
 </section><section id="chi2-distribution-4" class="slide level2">
 <h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
 <ul>
 <li>The shape of the distribution changes dramatically as a function of <em>df</em></li>
 </ul>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" /></p>
 </section><section id="chi2-distribution-5" class="slide level2">
 <h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-11-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" /></p>
 </section><section id="chi2-distribution-6" class="slide level2">
 <h2><m><span class="math inline">\(\chi^2\)</span></m>-distribution</h2>
 <p></br> <strong>Why is this useful?</strong></br></br></p>
@@ -1080,7 +1138,7 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="d
 <p></br> <strong>The task</strong></br></br></p>
 <ul>
 <li>How do we know the probability of getting some <m><span class="math inline">\(\bar{x}\)</span></m> if true mean <m><span class="math inline">\(\mu\)</span></m> is 0?</li>
-<li>We can standardise the distribution of <m><span class="math inline">\(\bar{x}\)</span></m> by centring around <m><span class="math inline">\(\mu\)</span></m> and scaling it by <m><span class="math inline">\(SE\)</span></m></li>
+<li>We can standardise the distribution of <m><span class="math inline">\(\bar{x}\)</span></m> by centring around <m><span class="math inline">\(\mu\)</span></m> and scaling it by <m><span class="math inline">\(SE\)</span></m> (our <em>z</em>-statistic from earlier on)</li>
 <li><m><span class="math inline">\(\frac{\bar{x} - \mu}{SE} = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}}\)</span></m> follows a standard normal distribution and so we know the probability above any given value of <m><span class="math inline">\(\bar{x}\)</span></m></li>
 </ul>
 </section><section id="students-t--distribution-1" class="slide level2">
@@ -1122,12 +1180,12 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="o
 <span class="kw">lines</span>(x_coord, <span class="kw">dt</span>(x_coord, n<span class="op">-</span><span class="dv">1</span>), <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
 </section><section id="students-t--distribution-4" class="slide level2">
 <h2>Student’s <em>t</em> -distribution</h2>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-20-1.png" width="768" /></p>
 </section><section id="students-t--distribution-5" class="slide level2">
 <h2>Student’s <em>t</em> -distribution</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(t_stat, .<span class="dv">025</span>) <span class="co"># empirical cutoff for bottom 2.5%</span>
      <span class="fl">2.5</span>% 
-<span class="op">-</span><span class="fl">3.146718</span> 
+<span class="op">-</span><span class="fl">3.175507</span> 
 <span class="kw">qnorm</span>(.<span class="dv">025</span>) <span class="co"># theoretical cutoff for bottom 2.5% - std normal</span>
 [<span class="dv">1</span>] <span class="op">-</span><span class="fl">1.959964</span>
 <span class="kw">qt</span>(.<span class="dv">025</span>, n<span class="op">-</span><span class="dv">1</span>) <span class="co"># theoretical cutoff for bottom 2.5% - t(n-1)</span>
@@ -1135,10 +1193,10 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="o
 
 <span class="co"># if we use t-distribution to find cutoffs it&#39;s close enough</span>
 <span class="kw">sum</span>(t_stat <span class="op">&lt;=</span><span class="st"> </span><span class="kw">qt</span>(.<span class="dv">025</span>, n<span class="op">-</span><span class="dv">1</span>))<span class="op">/</span><span class="kw">length</span>(t_stat)
-[<span class="dv">1</span>] <span class="fl">0.02448</span>
+[<span class="dv">1</span>] <span class="fl">0.0249</span>
 <span class="co"># if we use the normal, we&#39;ll be mniles away</span>
 <span class="kw">sum</span>(t_stat <span class="op">&lt;=</span><span class="st"> </span><span class="kw">qnorm</span>(.<span class="dv">025</span>))<span class="op">/</span><span class="kw">length</span>(t_stat)
-[<span class="dv">1</span>] <span class="fl">0.07128</span></code></pre></div>
+[<span class="dv">1</span>] <span class="fl">0.07168</span></code></pre></div>
 </section><section id="students-t--distribution-6" class="slide level2">
 <h2>Student’s <em>t</em> -distribution</h2>
 <ul>
@@ -1156,7 +1214,7 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="o
 <ul>
 <li>As the number of <em>df</em> tends to infinity, <em>t</em>-distribution approaches normal</li>
 </ul>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-15-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-22-1.png" width="768" /></p>
 </section><section id="students-t--distribution-8" class="slide level2">
 <h2>Student’s <em>t</em> -distribution</h2>
 <p></br> <strong>Why is this useful?</strong></br></br></p>
@@ -1193,13 +1251,13 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="d
 <span class="kw">lines</span>(x_coord, <span class="kw">df</span>(x_coord, df1, df2), <span class="dt">col =</span> colors[<span class="dv">1</span>], <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre></div>
 </section><section id="f--distribution-2" class="slide level2">
 <h2><em>F</em> -distribution</h2>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-17-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-24-1.png" width="768" /></p>
 </section><section id="f--distribution-3" class="slide level2">
 <h2><em>F</em> -distribution</h2>
 <ul>
 <li>Just like with <m><span class="math inline">\(\chi^2\)</span></m>-distribution, the shape of the <em>F</em>-distribution changes a lot</li>
 </ul>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-25-1.png" width="768" /></p>
 </section><section id="f--distribution-4" class="slide level2">
 <h2><em>F</em> -distribution</h2>
 <p></br> <strong>Why is this useful?</strong></br></br></p>
@@ -1244,7 +1302,7 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="d
 <ul>
 <li>let’s revisit our IQ and age example</li>
 </ul>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-19-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-26-1.png" width="768" /></p>
 </section><section id="hypotheses-1" class="slide level2">
 <h2>Hypotheses</h2>
 <ul>
@@ -1260,7 +1318,7 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="d
 <li><span class="math inline">\(H_0: \beta_1 = 0\)</span></li>
 </ul></li>
 </ul>
-</section><section id="test-statistic-and-its-distribution-1" class="slide level2">
+</section><section id="test-statistic-and-its-distribution-5" class="slide level2">
 <h2>Test statistic and its distribution</h2>
 <ul>
 <li>We want to know if the <span class="math inline">\(b_1 = 3.941\)</span> we found is <strong>likely</strong> to come from a sampling distribution where <span class="math inline">\(\beta_1 = 0\)</span> (this is the null)</li>
@@ -1269,7 +1327,7 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="d
 <li>If we knew the <em>SE</em> of this sampling distribution, we could use it to scale the distance to get a standard normal distribution – <span class="math inline">\(\frac{b_1 - \beta_1}{SE_b}\)</span></li>
 <li>We can estimate <m><span class="math inline">\(\widehat{SE}_b=\sqrt{\frac{\sum_{i=1}^n\varepsilon_i^2}{(n-2)\sum_{i=1}^n(x_i-\bar{x})^2}}\)</span></m></li>
 </ul>
-</section><section id="test-statistic-and-its-distribution-2" class="slide level2">
+</section><section id="test-statistic-and-its-distribution-6" class="slide level2">
 <h2>Test statistic and its distribution</h2>
 <ul>
 <li>We can then standardise the distance between observed and expected <span class="math inline">\(b_1\)</span> as <span class="math inline">\(\frac{b_1 - \beta_1}{\widehat{SE}_b}\)</span></li>
@@ -1306,7 +1364,7 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="d
 (t &lt;-<span class="st"> </span><span class="kw">coef</span>(m1)[<span class="dv">2</span>]<span class="op">/</span>se) <span class="co"># t-statistic</span>
 age[sample] 
    <span class="fl">1.755347</span> </code></pre></div>
-</section><section id="probability-of-the-observed-statistic-1" class="slide level2">
+</section><section id="probability-of-the-observed-statistic-5" class="slide level2">
 <h2>Probability of the observed statistic</h2>
 <ul>
 <li>Given that we know our <em>t</em>-value comes from a <em>t</em>-distribution with <span class="math inline">\(df = 18\)</span>, we know that the probability of getting <span class="math inline">\(|t| \geq 1.755\)</span> is <span class="math inline">\(.096\)</span>, <strong>if the true <em>t</em>-value is zero</strong>, <i>i.e.,</i> if <span class="math inline">\(\beta_1 = 0\)</span></li>
@@ -1318,16 +1376,16 @@ age[sample]
 <span class="kw">pt</span>(t, n<span class="op">-</span><span class="dv">2</span>, <span class="dt">lower.tail =</span> F) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>
 age[sample] 
  <span class="fl">0.09620383</span> </code></pre></div>
-</section><section id="probability-of-the-observed-statistic-2" class="slide level2">
+</section><section id="probability-of-the-observed-statistic-6" class="slide level2">
 <h2>Probability of the observed statistic</h2>
 <ul>
 <li>Two-tailed test that <span class="math inline">\(t \leq -1.755\)</span> <em>OR</em> <span class="math inline">\(t \geq 1.755\)</span></li>
 </ul>
-<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-23-1.png" width="768" /></p>
+<p><img src="Lecture_4_files/figure-revealjs/unnamed-chunk-30-1.png" width="768" /></p>
 </section><section id="decision-1" class="slide level2">
 <h2>Decision</h2>
 <ul>
-<li>Conventionally, we require the probability of a statistics under <span class="math inline">\(H_0\)</span> to be less than 5% to consider the result unlikely enough to reject the null
+<li>Conventionally, we require the probability of a statistic under <span class="math inline">\(H_0\)</span> to be less than 5% to consider the result unlikely enough to reject the null
 <ul>
 <li>Other conventional <strong>levels of significance</strong> are <span class="math inline">\(p &lt; .01\)</span> and <span class="math inline">\(p &lt; .001\)</span></li>
 </ul></li>
