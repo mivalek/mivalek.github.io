@@ -520,7 +520,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </section><section id="statistical-models" class="slide level2">
 <h2>Statistical models</h2>
 <ul>
-<li>In essence they are mathematical model – express relationships between variables using equations</li>
+<li>In essence they are mathematical models – express relationships between variables using equations</li>
 <li>Make use of <em>assumptions</em> in order to generalise from sample to population</li>
 <li>Quantify the <em>uncertainty</em> related to random sampling from populations</li>
 <li>There is always a discrepancy between what the model predicts and the data
@@ -958,11 +958,11 @@ mod_pop &lt;-<span class="st"> </span><span class="kw">lm</span>(iq <span class=
 </section><section id="decision" class="slide level2">
 <h2>Decision</h2>
 <ul>
-<li>Conventionally, we require the probability of a statistic under <span class="math inline">\(H_0\)</span> to be less than 5% to consider the result unlikely enough to reject the null
+<li>Conventionally, we require the probability of the tail of the distribution above the statistic under <span class="math inline">\(H_0\)</span> to be less than 5% to consider the result unlikely enough to reject the null
 <ul>
 <li>Other conventional <strong>levels of significance</strong> are <span class="math inline">\(p &lt; .01\)</span> and <span class="math inline">\(p &lt; .001\)</span></li>
 </ul></li>
-<li>The observed value of the test statistic based on <span class="math inline">\(b_1 = 3.94\)</span> and a sample of 20 is relatively <em>likey</em> <strong>in a world where</strong> <b><span class="math inline">\(\beta_1 = 0\)</span></b> (<span class="math inline">\(p = .066\)</span> under a 2-tailed test)</li>
+<li>The observed or larger value of the test statistic based on <span class="math inline">\(b_1 = 3.94\)</span> and a sample of 20 is relatively <em>likey</em> <strong>in a world where</strong> <b><span class="math inline">\(\beta_1 = 0\)</span></b> (<span class="math inline">\(p = .066\)</span> under a 2-tailed test)</li>
 <li>We <strong>retain</strong> the null hypothesis and say that <strong>we found no evidence</strong> of a relationship</li>
 </ul>
 </section><section id="take-home-message-1" class="slide level2">
@@ -972,7 +972,7 @@ mod_pop &lt;-<span class="st"> </span><span class="kw">lm</span>(iq <span class=
 <li><strong>Statistical hypotheses</strong> are statements about values of some parameters</li>
 <li><strong>Null hypothesis</strong> (usually, parameter is equal to 0) is the one we test (in NHST framework)</li>
 <li>We can only observe <em>samples</em>, but we are interested in <em>populations</em></li>
-<li>Due to sampling error, we can find a relationship in sample even if none exists in population</li>
+<li>Due to sampling error, we can find a relationship in sample even if one doesn’t exist in population</li>
 <li><strong>NHST</strong> is one way of deciding if sample result holds in population – understanding it is crucial!</li>
 </ul>
 </section></section>
@@ -1185,7 +1185,7 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="o
 <span class="co"># if we use t-distribution to find cutoffs it&#39;s close enough</span>
 <span class="kw">sum</span>(t_stat <span class="op">&lt;=</span><span class="st"> </span><span class="kw">qt</span>(.<span class="dv">025</span>, n<span class="op">-</span><span class="dv">1</span>))<span class="op">/</span><span class="kw">length</span>(t_stat)
 [<span class="dv">1</span>] <span class="fl">0.0249</span>
-<span class="co"># if we use the normal, we&#39;ll be mniles away</span>
+<span class="co"># if we use the normal, we&#39;ll be miles away</span>
 <span class="kw">sum</span>(t_stat <span class="op">&lt;=</span><span class="st"> </span><span class="kw">qnorm</span>(.<span class="dv">025</span>))<span class="op">/</span><span class="kw">length</span>(t_stat)
 [<span class="dv">1</span>] <span class="fl">0.07168</span></code></pre></div>
 </section><section id="students-t--distribution-6" class="slide level2">
@@ -1361,7 +1361,7 @@ age[sample]
 <li>Given that we know our <em>t</em>-value comes from a <em>t</em>-distribution with <span class="math inline">\(df = 18\)</span>, we know that the probability of getting <span class="math inline">\(|t| \geq 1.755\)</span> is <span class="math inline">\(.096\)</span>, <strong>if the true <em>t</em>-value is zero</strong>, <i>i.e.,</i> if <span class="math inline">\(\beta_1 = 0\)</span></li>
 <li><em>t</em>-value can be either positive or negative because <span class="math inline">\(b_1\)</span> can be non-zero in two directions</li>
 <li>We are therefore looking at both tails of the <em>t</em>-distribution</li>
-<li>This is known as a <strong>two-tailed test</strong> of significance</li>
+<li>This is a <strong>two-tailed test</strong> of significance</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># double the probability of t &gt;= 3.941</span>
 <span class="kw">pt</span>(t, n<span class="op">-</span><span class="dv">2</span>, <span class="dt">lower.tail =</span> F) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>
@@ -1376,7 +1376,7 @@ age[sample]
 </section><section id="decision-1" class="slide level2">
 <h2>Decision</h2>
 <ul>
-<li>Conventionally, we require the probability of a statistic under <span class="math inline">\(H_0\)</span> to be less than 5% to consider the result unlikely enough to reject the null
+<li>Conventionally, we require the probability of the tail of the distribution above the statistic under <span class="math inline">\(H_0\)</span> to be less than 5% to consider the result unlikely enough to reject the null
 <ul>
 <li>Other conventional <strong>levels of significance</strong> are <span class="math inline">\(p &lt; .01\)</span> and <span class="math inline">\(p &lt; .001\)</span></li>
 </ul></li>
@@ -1389,10 +1389,9 @@ age[sample]
 <ul>
 <li>We don’t have to do the calculations by hand!</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m1)<span class="op">$</span>coefficients
-             Estimate Std. Error  t value   <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)
-(Intercept) <span class="fl">63.124858</span>  <span class="fl">22.939236</span> <span class="fl">2.751829</span> <span class="fl">0.01312103</span>
-age[sample]  <span class="fl">3.940927</span>   <span class="fl">2.245098</span> <span class="fl">1.755347</span> <span class="fl">0.09620383</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m1)<span class="op">$</span>coefficients[<span class="dv">1</span>, ]
+   Estimate  Std. Error     t value    <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>) 
+<span class="fl">63.12485772</span> <span class="fl">22.93923564</span>  <span class="fl">2.75182917</span>  <span class="fl">0.01312103</span> 
 
 <span class="co"># b_1 = 3.940927</span>
 <span class="co"># se = 2.245098</span>
@@ -1405,7 +1404,7 @@ age[sample]  <span class="fl">3.940927</span>   <span class="fl">2.245098</span>
 <li>Statistical hypotheses are statements about values of population parameters</li>
 <li>We fit statistical models to data to derive <strong>estimates of these parameters</strong> based on samples</li>
 <li>We test whether the observed value of the estimate is <strong>likely</strong> to come from the sampling distribution of the population parameter <strong>in a world where <span class="math inline">\(H_0\)</span> is true</strong></li>
-<li>To get the likelihood, we need a test statistic and it’s characteristic distribution</li>
+<li>To get the likelihood, we need a test statistic and its characteristic distribution</li>
 </ul>
 </section><section id="take-home-message-5" class="slide level2">
 <h2>Take-home message</h2>
@@ -1414,7 +1413,7 @@ age[sample]  <span class="fl">3.940927</span>   <span class="fl">2.245098</span>
 <li><em>p</em>-value is the tail area of the distribution of the test statistic bounded by its observed value
 <ul>
 <li><strong>One-tailed</strong> <em>p</em>-values are one-directional</li>
-<li><strong>two-tailed</strong> <em>p</em>-values look at <m><span class="math inline">\(P(|statistic| \geq observed\ value)\)</span></m></li>
+<li><strong>Two-tailed</strong> <em>p</em>-values look at <m><span class="math inline">\(P(|statistic| \geq observed\ value)\)</span></m></li>
 </ul></li>
 </ul>
 </section><section id="take-home-message-6" class="slide level2">
