@@ -1154,7 +1154,7 @@ x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="d
 <h2>Student’s <em>t</em> -distribution</h2>
 <p></br> <strong>The solution</strong></br></br></p>
 <ul>
-<li>Luckily, the Student’s <em>t</em>-distributed with <span class="math inline">\(n-1\)</span> degrees of freedom <strong>is</strong> the distribution a normal variable divided by a <m><span class="math inline">\(\chi^2\)</span></m> variable</li>
+<li>Luckily, the Student’s <em>t</em>-distribution with <span class="math inline">\(n-1\)</span> degrees of freedom <strong>is</strong> the distribution a normal variable divided by a <m><span class="math inline">\(\chi^2\)</span></m> variable</li>
 <li>Doesn’t only apply to <m><span class="math inline">\(\bar{x}\)</span></m> but also to <m><span class="math inline">\(b\)</span>s</m> (and some other parameters)</li>
 <li>Especially useful when <span class="math inline">\(n\)</span> is small</li>
 </ul>
@@ -1398,9 +1398,9 @@ age[sample]
 <ul>
 <li>We don’t have to do the calculations by hand!</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m1)<span class="op">$</span>coefficients[<span class="dv">1</span>, ]
-   Estimate  Std. Error     t value    <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>) 
-<span class="fl">63.12485772</span> <span class="fl">22.93923564</span>  <span class="fl">2.75182917</span>  <span class="fl">0.01312103</span> 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m1)<span class="op">$</span>coefficients[<span class="dv">2</span>, ]
+  Estimate Std. Error    t value   <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>) 
+<span class="fl">3.94092744</span> <span class="fl">2.24509829</span> <span class="fl">1.75534740</span> <span class="fl">0.09620383</span> 
 
 <span class="co"># b_1 = 3.940927</span>
 <span class="co"># se = 2.245098</span>
