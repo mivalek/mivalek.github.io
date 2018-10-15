@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Milan Valášek" />
+  <title>USMR Lecture 5</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Lecture_5_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; } /* Keyword */
+code > span.dt { color: #dfdfbf; } /* DataType */
+code > span.dv { color: #dcdccc; } /* DecVal */
+code > span.bn { color: #dca3a3; } /* BaseN */
+code > span.fl { color: #c0bed1; } /* Float */
+code > span.ch { color: #dca3a3; } /* Char */
+code > span.st { color: #cc9393; } /* String */
+code > span.co { color: #7f9f7f; } /* Comment */
+code > span.ot { color: #efef8f; } /* Other */
+code > span.al { color: #ffcfaf; } /* Alert */
+code > span.fu { color: #efef8f; } /* Function */
+code > span.er { color: #c3bf9f; } /* Error */
+code > span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+code > span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code > span.sc { color: #dca3a3; } /* SpecialChar */
+code > span.vs { color: #cc9393; } /* VerbatimString */
+code > span.ss { color: #cc9393; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #f0dfaf; } /* ControlFlow */
+code > span.op { color: #f0efd0; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #7f9f7f; } /* Documentation */
+code > span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+</style>
+
+<link rel="stylesheet" href="Lecture_5_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="..\css\moon2.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="Lecture_5_files/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">USMR Lecture 5</h1>
+  <h1 class="subtitle"><b>Doing statistics</b></h1>
+    <h2 class="author"><subtitle>Milan Valášek</subtitle></h2>
+</section>
+
+<section id="before-we-start" class="slide level2">
+<h2>Before we start</h2>
+<script src="../js/gif.js"></script>
+<ul>
+<li>Any questions about last week’s matters?</li>
+</ul>
+</section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<ul>
+<li>Doing stats on categorical variables and testing model fit</li>
+<li>Differences in means under ideal conditions</li>
+<li>Differences in means in the real world</li>
+<li>Type I and II errors</li>
+<li>Quantifying confidence</li>
+</ul>
+</section>
+<section><section id="the-chi2-test" class="titleslide slide level1" data-background="../pics/pearson2.jpg"><h1>The <m><span class="math inline">\(\chi^2\)</span></m>-test</h1></section><section id="modelling-categorical-data" class="slide level2">
+<h2>Modelling categorical data</h2>
+<ul>
+<li>We talked about how the <a href="https://mivalek.github.io/Lectures/pub/l4_pub.html#/chi2-distribution" target="_blank"><span class="math inline">\(\chi^2\)</span>-distribution</a> is useful for assessing model fit.</li>
+<li>When working with categorical data, we can model their distributions</li>
+<li><m><span class="math inline">\(\chi^2\)</span></m>-test allows us to see how our <em>model distribution fits the data</em></li>
+<li>By extension, we can model relationships between 2 categorical variables</li>
+</ul>
+</section><section id="goodness-of-fit-test" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>Let’s look at the representation of MSc study programmes in the first USMR lecture</li>
+<li>Out of 148 attendees, there were 41 CogSci, 52 LEL, and 55 Psych students</li>
+<li>Say we’re expecting equal representation of the three programmes – this is our <span class="math inline">\(H_0\)</span></li>
+<li>Is the split above due to random statistical fluctuations or is there a systematic difference between our expectation and observation?</li>
+</ul>
+</section><section id="goodness-of-fit-test-1" class="slide level2">
+<h2>Goodness of fit test</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l1_data &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;cog&quot;</span>, <span class="st">&quot;lel&quot;</span>, <span class="st">&quot;psy&quot;</span>), <span class="kw">c</span>(<span class="dv">41</span>, <span class="dv">52</span>, <span class="dv">55</span>))
+<span class="co"># expected frequencies</span>
+exp &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">length</span>(l1_data) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(l1_data)),
+           <span class="kw">length</span>(<span class="kw">unique</span>(l1_data))) <span class="co"># there are 3 unique values</span>
+<span class="kw">names</span>(exp) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;cog&quot;</span>, <span class="st">&quot;lel&quot;</span>, <span class="st">&quot;psy&quot;</span>) <span class="co"># vectors can be named!</span>
+
+<span class="co"># see the observed distribution</span>
+<span class="kw">table</span>(l1_data)
+l1_data
+cog lel psy 
+ <span class="dv">41</span>  <span class="dv">52</span>  <span class="dv">55</span> 
+<span class="co"># and the expected one</span>
+exp
+     cog      lel      psy 
+<span class="fl">49.33333</span> <span class="fl">49.33333</span> <span class="fl">49.33333</span> </code></pre></div>
+</section><section id="goodness-of-fit-test-2" class="slide level2">
+<h2>Goodness of fit test</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)
+<span class="kw">barplot</span>(<span class="kw">table</span>(l1_data), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">60</span>),
+        <span class="dt">main =</span> <span class="st">&quot;Observed&quot;</span>, <span class="dt">col =</span> colors[<span class="dv">3</span>])
+<span class="kw">barplot</span>(exp, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">60</span>), <span class="dt">main =</span> <span class="st">&quot;Expected&quot;</span>)</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-3-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</code></pre></div>
+</section><section id="goodness-of-fit-test-3" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>We can quantify how well our uniformity model fits the data (<a href="https://mivalek.github.io/Lectures/pub/chi_barplot.R" target="_blank">code</a>)</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" /></p>
+</section><section id="goodness-of-fit-test-4" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>We do this using the sum of <strong>scaled</strong> squares (sum of squared differences over expected frequencies)</li>
+<li><m><span class="math inline">\(\chi^2 = \sum\limits_{i=1}^n{\frac{(O_i - E_i)^2}{E_i}}\)</span></m>; where <span class="math inline">\(n\)</span> is the number of categories, <span class="math inline">\(O_i\)</span> is the observed frequency and <span class="math inline">\(E_i\)</span> the expected frequency of the <span class="math inline">\(i\)</span><sup><small>th</small></sup> category</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(diffs &lt;-<span class="st"> </span><span class="kw">table</span>(l1_data) <span class="op">-</span><span class="st"> </span>exp)
+l1_data
+      cog       lel       psy 
+<span class="op">-</span><span class="fl">8.333333</span>  <span class="fl">2.666667</span>  <span class="fl">5.666667</span> 
+(squares &lt;-<span class="st"> </span>diffs<span class="op">^</span><span class="dv">2</span>)
+l1_data
+      cog       lel       psy 
+<span class="fl">69.444444</span>  <span class="fl">7.111111</span> <span class="fl">32.111111</span> 
+(chi &lt;-<span class="st"> </span><span class="kw">sum</span>(squares<span class="op">/</span>exp))
+[<span class="dv">1</span>] <span class="fl">2.202703</span></code></pre></div>
+</section><section id="goodness-of-fit-test-5" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>This is our test statistic
+<ul>
+<li>Because it’s a sum of squares (and because of its name!), we know that it follows a <m><span class="math inline">\(\chi^2\)</span></m>-distribution</li>
+</ul></li>
+<li>We need to figure out how many degrees of freedom we have
+<ul>
+<li>There are 3 categories, each one with its own frequency</li>
+<li>If we fix the number of data points to 148, the frequencies within how many categories vary freely?
+<li class="fragment">
+<m><span class="math inline">\(df = n-1\)</span></m>
+</li></li>
+</ul></li>
+</ul>
+</section><section id="goodness-of-fit-test-6" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>Before we rely on the theoretical <m><span class="math inline">\(\chi^2\)</span></m>-distribution, let’s simulate the sampling distribution of our calculated <m><span class="math inline">\(\chi^2\)</span></m>-statistic under the null</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># take 100,000 samples of 148 draws from</span>
+<span class="co"># a uniform distribution of the 3 programmes</span>
+pop &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">5</span>, <span class="kw">sample</span>(<span class="kw">names</span>(exp), <span class="dv">148</span>, <span class="dt">replace =</span> T))
+
+<span class="co"># define a function that calculates the chi^2 stat</span>
+chi_fun &lt;-<span class="st"> </span><span class="cf">function</span>(obser, expect) <span class="kw">sum</span>((<span class="kw">table</span>(obser) <span class="op">-</span><span class="st"> </span>expect)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>expect)
+
+<span class="co"># apply the function to each column of pop</span>
+chi_dist &lt;-<span class="st"> </span><span class="kw">apply</span>(pop, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw">chi_fun</span>(x, exp))</code></pre></div>
+</section><section id="goodness-of-fit-test-7" class="slide level2">
+<h2>Goodness of fit test</h2>
+<p><a href="https://mivalek.github.io/Lectures/pub/chisq_test.R" target="_blank">Full code</a></p>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" /></p>
+<ul>
+<li>We can use this distribution to get an <strong>empirical</strong> <em>p</em>-value – <span class="math inline">\(p &gt; .05\)</span> so not significant</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># empirical p-value</span>
+<span class="kw">sum</span>(chi_dist <span class="op">&gt;=</span><span class="st"> </span>chi)<span class="op">/</span><span class="kw">length</span>(chi_dist)
+[<span class="dv">1</span>] <span class="fl">0.34077</span></code></pre></div>
+</section><section id="goodness-of-fit-test-8" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>Is the <m><span class="math inline">\(\chi^2\)</span></m>-distribution with 2 <em>df</em> a good approximation?</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(chi_dist, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">22</span>, <span class="dt">by =</span> .<span class="dv">275</span>), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,
+     <span class="dt">xlab =</span> <span class="kw">expression</span>(chi<span class="op">^</span><span class="dv">2</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">12</span>), <span class="dt">freq =</span> F)
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="dt">length.out =</span> <span class="dv">500</span>)
+<span class="kw">lines</span>(x, <span class="kw">dchisq</span>(x, <span class="dv">2</span>), <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
+</section><section id="goodness-of-fit-test-9" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>Let’s use it to calculate the <em>p</em>-value then!</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-10-1.png" width="768" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get probability that chi^2 &gt;= observed value</span>
+<span class="kw">pchisq</span>(chi, <span class="dv">2</span>, <span class="dt">lower.tail =</span> F)
+[<span class="dv">1</span>] <span class="fl">0.3324216</span>
+<span class="co"># compare with empirical p-value</span>
+<span class="kw">sum</span>(chi_dist <span class="op">&gt;=</span><span class="st"> </span>chi)<span class="op">/</span><span class="kw">length</span>(chi_dist)
+[<span class="dv">1</span>] <span class="fl">0.34077</span></code></pre></div>
+</section><section id="goodness-of-fit-test-10" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>Pearson’s <span class="math inline">\(\chi^2\)</span> goodness-of-fit test showed that the <strong>distribution of study programme is not significantly different from uniform</strong>, <m><span class="math inline">\(\chi^2(2) = 2.203,\ p = .332\)</span></m></li>
+<li>Of course we can do this very quickly in <code>R</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(<span class="kw">table</span>(l1_data))
+
+    Chi<span class="op">-</span>squared test <span class="cf">for</span> given probabilities
+
+data<span class="op">:</span><span class="st">  </span><span class="kw">table</span>(l1_data)
+X<span class="op">-</span>squared =<span class="st"> </span><span class="fl">2.2027</span>, df =<span class="st"> </span><span class="dv">2</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.3324</span></code></pre></div>
+</section><section id="goodness-of-fit-test-11" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>We used the <span class="math inline">\(\chi^2\)</span> goodness-of-fit test to see if our null hypothesis model distribution (uniform) is a good fit to the observed data</li>
+<li>We can however specify <em>any</em> model distribution, <i>e.g.,</i> a 35%-40%-25% split</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" /></p>
+</section><section id="goodness-of-fit-test-12" class="slide level2">
+<h2>Goodness of fit test</h2>
+<ul>
+<li>This model distribution is not a good fit to the data</li>
+<li>The differences between observed and expected frequencies are too large, leading to a large value of the <m><span class="math inline">\(\chi^2\)</span></m>-statistic</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(<span class="kw">table</span>(l1_data), <span class="dt">p =</span> <span class="kw">c</span>(.<span class="dv">35</span>, .<span class="dv">4</span>, .<span class="dv">25</span>)) <span class="co"># p &lt; .05</span>
+
+    Chi<span class="op">-</span>squared test <span class="cf">for</span> given probabilities
+
+data<span class="op">:</span><span class="st">  </span><span class="kw">table</span>(l1_data)
+X<span class="op">-</span>squared =<span class="st"> </span><span class="fl">11.884</span>, df =<span class="st"> </span><span class="dv">2</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.002627</span></code></pre></div>
+</section><section id="test-of-independence" class="slide level2">
+<h2>Test of independence</h2>
+<ul>
+<li>Instead of specifying a model distribution, we can compare two (or more) observed distributions</li>
+<li>Let’s say in addition to Lecture 1 (Martin’s), we also have the numbers on Lecture 2 (Milan’s)</li>
+<li>Comparing the two distribution, we can assess whether there is a <em>relationship between lecturer and programme representation</em> or whether these variables are <strong>independent</strong></li>
+<li><span class="math inline">\(H_0\)</span> <em>assumes independence</em> – do we retain it or reject it?</li>
+<li><strong>Caveat:</strong> We are disregarding the fact that it’s mostly the same students attending both lectures and therefore the individual observations are <em>not statistically independent</em>
+<ul>
+<li>This makes the <m><span class="math inline">\(\chi^2\)</span></m>-test technically <strong>inappropriate</strong>!</li>
+</ul></li>
+</ul>
+</section><section id="test-of-independence-1" class="slide level2">
+<h2>Test of independence</h2>
+<ul>
+<li>Let’s simulate data for Milan’s lecture and create a contingency table</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1234</span>)
+l2_data &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">names</span>(exp), <span class="dv">115</span>, <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(.<span class="dv">33</span>, .<span class="dv">35</span>, .<span class="dv">32</span>))
+<span class="co"># create a data frame with lecturer and programme variables</span>
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">lecturer =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Martin&quot;</span>, <span class="st">&quot;Milan&quot;</span>), <span class="kw">c</span>(<span class="dv">148</span>, <span class="dv">115</span>)),
+                 <span class="dt">programme =</span> <span class="kw">c</span>(l1_data, l2_data))
+<span class="co"># contingency table</span>
+(obs &lt;-<span class="st"> </span><span class="kw">xtabs</span>(<span class="op">~</span><span class="st"> </span>lecturer <span class="op">+</span><span class="st"> </span>programme, df))
+        programme
+lecturer cog lel psy
+  Martin  <span class="dv">41</span>  <span class="dv">52</span>  <span class="dv">55</span>
+  Milan   <span class="dv">30</span>  <span class="dv">60</span>  <span class="dv">25</span></code></pre></div>
+</section><section id="test-of-independence-2" class="slide level2">
+<h2>Test of independence</h2>
+<ul>
+<li>We have a 2×3 contingency table with observed cell counts</li>
+<li>What we need now is expected cell counts</li>
+<li>Disregarding <code>programme</code> we see that 56.27% of the sample attended Martin’s lecture and 43.73% attended Milan’s (AKA <em>marginal proportions</em>)
+<ul>
+<li><strong>This is not true</strong>, obviously, that’s why the test is inappropriate!</li>
+</ul></li>
+<li>Looking at <code>programme</code> alone, the percentages of CogSci, LEL, and Psych students at the two lectures were 27%, 42.59%, and 30.42%, respectively</li>
+</ul>
+</section><section id="test-of-independence-3" class="slide level2">
+<h2>Test of independence</h2>
+<ul>
+<li>Expected counts are based on <strong>joint probabilities</strong>, calculated from these values:</li>
+</ul>
+<p><m><span class="math inline">\(P(cog\ \&amp;\  Martin) = P(cog)\times P(Martin)\)</span></m> <m><span class="math inline">\(P(cog\ \&amp;\  Martin) \approx .27\times .563 \approx .152\)</span></m></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># marginal proportions </span>
+(prop_lec &lt;-<span class="st"> </span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>lecturer)))
+
+   Martin     Milan 
+<span class="fl">0.5627376</span> <span class="fl">0.4372624</span> 
+(prop_prog &lt;-<span class="st"> </span><span class="kw">prop.table</span>(<span class="kw">table</span>(df<span class="op">$</span>programme)))
+
+      cog       lel       psy 
+<span class="fl">0.2699620</span> <span class="fl">0.4258555</span> <span class="fl">0.3041825</span> 
+<span class="co"># outer product gives us what we want</span>
+(cell_prop &lt;-<span class="st"> </span>prop_lec <span class="op">%o%</span><span class="st"> </span>prop_prog)
+        
+               cog       lel       psy
+  Martin <span class="fl">0.1519178</span> <span class="fl">0.2396449</span> <span class="fl">0.1711749</span>
+  Milan  <span class="fl">0.1180442</span> <span class="fl">0.1862106</span> <span class="fl">0.1330076</span></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+Why not conditional probabilities? Because we’re assuming independence and so joint = conditional
+</aside>
+</section><section id="test-of-independence-4" class="slide level2">
+<h2>Test of independence</h2>
+<ul>
+<li>The expected cell <em>counts</em> are just the probabilities multiplied by the sample size</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(exp &lt;-<span class="st"> </span>cell_prop <span class="op">*</span><span class="st"> </span><span class="kw">nrow</span>(df)) <span class="co"># expected cell counts</span>
+        
+              cog      lel      psy
+  Martin <span class="fl">39.95437</span> <span class="fl">63.02662</span> <span class="fl">45.01901</span>
+  Milan  <span class="fl">31.04563</span> <span class="fl">48.97338</span> <span class="fl">34.98099</span></code></pre></div>
+</section><section id="test-of-independence-5" class="slide level2">
+<h2>Test of independence</h2>
+<ul>
+<li>The <m><span class="math inline">\(\chi^2\)</span></m>-statistic formula is the same as with goodness-of-fit test, it just gets applied to each cell, not just one row: <m><span class="math inline">\(\chi^2 = \sum\limits_{i = 1}^{n_{row}}\sum\limits_{j = 1}^{n_{col}}\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\)</span></m></li>
+<li>Same principle as before applies to calculating degrees of freedom: <m><span class="math inline">\(df = (rows - 1)(cols - 1) = 2\times 1 = 2\)</span></m></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">sum</span>((obs <span class="op">-</span><span class="st"> </span>exp)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>exp)) <span class="co"># chi^2-statistic</span>
+[<span class="dv">1</span>] <span class="fl">9.53509</span>
+<span class="kw">chisq.test</span>(df<span class="op">$</span>programme, df<span class="op">$</span>lecturer)
+
+    Pearson<span class="st">&#39;s Chi-squared test</span>
+
+<span class="st">data:  df$programme and df$lecturer</span>
+<span class="st">X-squared = 9.5351, df = 2, p-value = 0.008501</span></code></pre></div>
+</section><section id="test-of-independence-6" class="slide level2">
+<h2>Test of independence</h2>
+<ul>
+<li>The <span class="math inline">\(\chi^2\)</span> test of independence showed that there is a relationship between programme representation at lectures and lecturer, <m><span class="math inline">\(\chi^2(2) = 9.54,\ p = .009\)</span></m></li>
+<li>We can thus <strong>reject</strong> the null hypothesis of independence</li>
+</ul>
+</section><section id="assumptions" class="slide level2">
+<h2>Assumptions</h2>
+<ul>
+<li>We mentioned that the test of independence was not appropriate for our scenario – it violates one of the assumptions underlying the test:
+<ul>
+<li><strong>Random sample</strong> – data are sampled from the population at random</li>
+<li><strong>Expected cell count</strong> – expected cell counts must be <em>at least 5</em> in each of the cells of the contingency table</li>
+<li><strong>Independence</strong> – observations are independent of each other (no repeated measures, no correlated observations, no paired samples)</li>
+</ul></li>
+</ul>
+</section><section id="a-few-other-uses" class="slide level2">
+<h2>A few other uses</h2>
+<ul>
+<li>Variations on the <span class="math inline">\(\chi^2\)</span>-test are used in many scenarios, <i>e.g.,</i> to:
+<ul>
+<li>Assess fit of linear models</li>
+<li>Test if observations are likely to come from a specific distribution</li>
+<li>Test if multiple variables are independent</li>
+<li>Fit of factor-analytical and structural equation models (covered on MSMR course next semester)</li>
+</ul></li>
+</ul>
+</section><section id="a-few-other-uses-1" class="slide level2">
+<h2>A few other uses</h2>
+<ul>
+<li>Independence of multiple variables
+<ul>
+<li>Is the correlation matrix significantly different from <em>identity matrix</em> (<a href="https://en.wikipedia.org/wiki/Bartlett%27s_test" target="_blank">Bartlett’s test</a>)</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># is this matrix</span>
+cormat
+       [,<span class="dv">1</span>]   [,<span class="dv">2</span>]   [,<span class="dv">3</span>]   [,<span class="dv">4</span>]
+[<span class="dv">1</span>,]  <span class="fl">1.000</span>  <span class="fl">0.194</span>  <span class="fl">0.042</span>  <span class="fl">0.138</span>
+[<span class="dv">2</span>,] <span class="op">-</span><span class="fl">0.072</span>  <span class="fl">1.000</span> <span class="op">-</span><span class="fl">0.024</span>  <span class="fl">0.263</span>
+[<span class="dv">3</span>,]  <span class="fl">0.102</span>  <span class="fl">0.001</span>  <span class="fl">1.000</span> <span class="op">-</span><span class="fl">0.006</span>
+[<span class="dv">4</span>,]  <span class="fl">0.170</span> <span class="op">-</span><span class="fl">0.058</span>  <span class="fl">0.030</span>  <span class="fl">1.000</span>
+<span class="co">#the same as this?</span>
+identity
+     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]
+[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">0</span>
+[<span class="dv">2</span>,]    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span>
+[<span class="dv">3</span>,]    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">1</span>    <span class="dv">0</span>
+[<span class="dv">4</span>,]    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">1</span></code></pre></div>
+</section></section>
+<section><section id="the-z--test" class="titleslide slide level1" data-background="../pics/zorro2.jpg"><h1>The <em>z</em> -test</h1></section><section id="known-sigma2" class="slide level2">
+<h2>Known <span class="math inline">\(\sigma^2\)</span></h2>
+<ul>
+<li>We talked about the <em>z</em>-test last time, even though we didn’t call it by that name</li>
+<li>The <em>z</em>-test requires us to <strong>know the population variance</strong> <m><span class="math inline">\(\sigma^2\)</span></m></li>
+<li>Two main uses:
+<ul>
+<li>Is the mean what we expected to be (test of location)?</li>
+<li>Is there a difference between the means of 2 groups?</li>
+</ul></li>
+</ul>
+</section><section id="test-of-location" class="slide level2">
+<h2>Test of location</h2>
+<ul>
+<li>The <a href="https://en.wikipedia.org/wiki/Ape_index" target="_blank">ape index</a> compares a person’s arm span to their height
+<ul>
+<li>Positive ape index means, that your arm span is larger then your height</li>
+<li>165 cm (5’5“) tall person with arm span of 167 cm has an ape index of +2</li>
+</ul></li>
+<li>In general population, the mean ape index is 0 and the <em>s</em> is 3.34</li>
+<li>Elite rock climbers tend to have a positive ape index</li>
+<li>Let’s visit national rock climbing competitions and measure contestants’ ape indices</li>
+</ul>
+</section><section id="section" class="slide level2" data-background="../pics/ape.jpg">
+<h2> </h2>
+<p>                <a href="https://www.youtube.com/watch?v=nJhPmvJaz7c" target="_blank">Ashima Shiraishi</a></br>                 <m>156 cm tall</br>                 Ape index +10.16 cm</m></br></br></br></br></br></br></br></br></br></br></br></br></br></p>
+</section><section id="test-of-location-1" class="slide level2">
+<h2>Test of location</h2>
+<ul>
+<li>We measured the ape index (AI) of 253 elite rock climbers and found their mean AI to be +2.87 cm</li>
+<li><span class="math inline">\(H\)</span>: Mean AI of elite rock climbers is not the same as mean population AI, <span class="math inline">\(\bar{x}_{climb} \ne \mu\)</span></li>
+<li><span class="math inline">\(H_0\)</span>: Mean AI of elite rock climbers is 0, <span class="math inline">\(\bar{x}_{climb} = \mu\)</span></li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-21-1.png" width="768" /></p>
+</section><section id="test-of-location-2" class="slide level2">
+<h2>Test of location</h2>
+<ul>
+<li>First, we need to calculate the sample mean</li>
+<li>Then we need a measure of the distance between sample mean and expected <span class="math inline">\(\mu\)</span></li>
+<li>Taking all possible sample of <em>n</em> = 253 from the population of the null hypothesis (<i>e.g.,</i> climbers <strong>are</strong> from the general population), the differences between the sample means of the individual samples and the expected <span class="math inline">\(\mu\)</span> give us the sampling distribution of <span class="math inline">\(\bar{x} - \mu\)</span></li>
+<li>The sampling distribution will approach normal (according to <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/central-limit-theorem" target="_blank">CLT</a>)</li>
+</ul>
+</section><section id="test-of-location-3" class="slide level2">
+<h2>Test of location</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">253</span>; mu &lt;-<span class="st"> </span><span class="dv">0</span>; sigma &lt;-<span class="st"> </span><span class="fl">3.34</span>
+<span class="co"># for 100,000 samples get sample mean - mu</span>
+diff &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">5</span>, <span class="kw">mean</span>(<span class="kw">rnorm</span>(n, mu, sigma)) <span class="op">-</span><span class="st"> </span>mu)
+<span class="kw">hist</span>(diff, <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">xlab =</span> <span class="kw">expression</span>(<span class="kw">bar</span>(x)<span class="op">-</span>mu),
+     <span class="dt">main =</span> <span class="kw">expression</span>(Sampling<span class="op">~</span>distribution<span class="op">~</span>under<span class="op">~</span>H[<span class="dv">0</span>]))</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-22-1.png" width="768" /></p>
+</section><section id="test-of-location-4" class="slide level2">
+<h2>Test of location</h2>
+<ul>
+<li>The <em>SD</em> of the sampling distribution is the <em>SE</em> of the difference <span class="math inline">\(\bar{x} - \mu\)</span></li>
+<li><m><span class="math inline">\(SE = \sigma /\sqrt{n}\)</span></m></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># close enough!</span>
+<span class="kw">sd</span>(diff)
+[<span class="dv">1</span>] <span class="fl">0.2101372</span>
+(se &lt;-<span class="st"> </span>sigma<span class="op">/</span><span class="kw">sqrt</span>(n))
+[<span class="dv">1</span>] <span class="fl">0.209984</span></code></pre></div>
+</section><section id="test-of-location-5" class="slide level2">
+<h2>Test of location</h2>
+<ul>
+<li>Scaling the sampling distribution by <em>SE</em> turns it into <strong>standard</strong> normal (mean 0, <em>sd</em> 1)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diff_scale &lt;-<span class="st"> </span>diff<span class="op">/</span>se
+<span class="kw">hist</span>(diff_scale, <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">xlab =</span> <span class="kw">expression</span>(<span class="kw">frac</span>(<span class="kw">bar</span>(x)<span class="op">-</span>mu, SE)),
+     <span class="dt">main =</span> <span class="kw">expression</span>(Sampling<span class="op">~</span>distribution<span class="op">~</span>under<span class="op">~</span>H[<span class="dv">0</span>]))</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-24-1.png" width="768" /></p>
+</section><section id="test-of-location-6" class="slide level2">
+<h2>Test of location</h2>
+<ul>
+<li>We can also divide our measured difference by <em>SE</em> to get the <em>z</em>-statistic
+<ul>
+<li><m><span class="math inline">\(z = \frac{\bar{x}-\mu}{SE}\)</span></m></li>
+</ul></li>
+<li>All that’s left is to find value of <em>z</em> in the sampling distribution and associated <em>p</em>-value</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(z &lt;-<span class="st"> </span>(<span class="kw">mean</span>(samp) <span class="op">-</span><span class="st"> </span>mu)<span class="op">/</span>se)
+[<span class="dv">1</span>] <span class="fl">15.41326</span>
+<span class="co"># empirical 2-tailed p-value</span>
+<span class="kw">sum</span>(<span class="kw">abs</span>(diff_scale) <span class="op">&gt;=</span><span class="st"> </span>z)<span class="op">/</span><span class="kw">length</span>(diff_scale)
+[<span class="dv">1</span>] <span class="dv">0</span>
+<span class="co"># 2-tailed p-value using std normal distribution</span>
+<span class="kw">pnorm</span>(z, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">lower.tail =</span> F) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>
+[<span class="dv">1</span>] <span class="fl">1.333109e-53</span></code></pre></div>
+</section><section id="test-of-location-7" class="slide level2">
+<h2>Test of location</h2>
+<ul>
+<li><span class="math inline">\(p = 1.44\times 10^{-42}\)</span> – result is <em>highly statistically significant</em> so we reject <span class="math inline">\(H_0\)</span></li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-26-1.png" width="768" /></p>
+</section><section id="mean-differences" class="slide level2">
+<h2>Mean differences</h2>
+<ul>
+<li>Slightly modified <em>z</em>-test can be used for comparing 2 groups on some <em>continuous</em> variable, if population variances are known</li>
+<li>AI is also predictive of performance in swimmers (Michael Phelps has the same arm span/height ratio as Ashima)</li>
+<li>Who has a larger mean AI, climbers or swimmers?</li>
+<li><span class="math inline">\(H:\)</span> There is a difference in mean AI between elite climbers and elite swimmers – <span class="math inline">\(\bar{x}_1 \ne \bar{x}_2\)</span></li>
+<li><span class="math inline">\(H_0:\)</span> Elite climbers and elite swimmers have the same mean AI – <span class="math inline">\(\bar{x}_1 = \bar{x}_2\)</span></li>
+</ul>
+</section><section id="mean-differences-1" class="slide level2">
+<h2>Mean differences</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">climb &lt;-<span class="st"> </span>samp
+<span class="co"># get 300 elite swimmers</span>
+swim &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">300</span>, <span class="fl">3.32</span>, <span class="fl">1.5</span>)</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-28-1.png" width="768" /></p>
+</section><section id="mean-differences-2" class="slide level2">
+<h2>Mean differences</h2>
+<ul>
+<li>Again, the sampling distribution of the mean differences scaled by it’s <em>SE</em> is a standard normal distribution</li>
+<li><em>z</em> statistic is used to get <em>p</em>-values</li>
+<li><m><span class="math inline">\(SE = \sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}\)</span></m></li>
+<li><m><span class="math inline">\(z = \frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{SE}\)</span></m></li>
+<li>Under <span class="math inline">\(H_0\)</span>, there is no difference between population means, so <m><span class="math inline">\(\mu_1 - \mu_2 = 0\)</span></m></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">var_climb &lt;-<span class="st"> </span><span class="fl">1.94</span><span class="op">^</span><span class="dv">2</span>
+var_swim &lt;-<span class="st"> </span><span class="fl">1.5</span><span class="op">^</span><span class="dv">2</span>
+(z &lt;-<span class="st"> </span>(<span class="kw">mean</span>(climb) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(swim))<span class="op">/</span>
+<span class="st">    </span><span class="kw">sqrt</span>(var_climb<span class="op">/</span><span class="kw">length</span>(climb) <span class="op">+</span><span class="st"> </span>var_swim<span class="op">/</span><span class="kw">length</span>(swim)))
+[<span class="dv">1</span>] <span class="op">-</span><span class="fl">1.079301</span>
+<span class="kw">pnorm</span>(<span class="kw">abs</span>(z), <span class="dt">lower.tail =</span> F) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>
+[<span class="dv">1</span>] <span class="fl">0.2804534</span></code></pre></div>
+</section><section id="mean-differences-3" class="slide level2">
+<h2>Mean differences</h2>
+<p><small><a href="https://mivalek.github.io/Lectures/pub/error_bar_plot.R" target="_blank">(Error bar plot code)</a></small></p>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-30-1.png" width="768" /></p>
+<p>We found <strong>no difference between the mean AI</strong> of elite climbers and elite swimmers, <span class="math inline">\(z = -1.08,\ p = .28\)</span>.</p>
+</section></section>
+<section><section id="students-t--test" class="titleslide slide level1" data-background="../pics/gosset2.jpg"><h1>Student’s <em>t</em> -test</h1></section><section id="unknown-sigma2" class="slide level2">
+<h2><b>Un</b>known <span class="math inline">\(\sigma^2\)</span></h2>
+<ul>
+<li>When doing a <em>z</em>-test, we were scaling the difference between expected value and observed value by <em>SE</em></li>
+<li><em>SE</em> is calculated using population variance (or <em>SD</em>)</li>
+<li>What is the problem?
+<ul>
+<li class="fragment">
+We don’t know <span class="math inline">\(\sigma^2\)</span> so we can’t calculate <em>SE</em>!
+</li>
+</ul></li>
+</ul>
+</section><section id="estimating-se" class="slide level2">
+<h2>Estimating <i>SE</i></h2>
+<ul>
+<li>We know we can estimate <em>SE</em> from <strong>sample variance</strong> as <m><span class="math inline">\(\widehat{SE} = \sqrt{\frac{s^2}{n}}\)</span></m></li>
+<li><span class="math inline">\(\widehat{SE}\)</span> will be different in every sample – it’s a variable, while <em>SE</em> is a single number</li>
+<li><span class="math inline">\(\widehat{SE}\)</span> is based on sum of squares
+<ul>
+<li>What is its distribution?
+<li class="fragment">
+<span class="math inline">\(\chi^2\)</span> with <m><span class="math inline">\(n - 1\)</span></m> degrees of freedom
+</li></li>
+</ul></li>
+</ul>
+</section><section id="estimating-se-1" class="slide level2">
+<h2>Estimating <i>SE</i></h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">263</span>
+<span class="co"># SE estimates from population of climbers with mu = 3 and sigma = 1.94</span>
+se_hat &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10</span><span class="op">^</span><span class="dv">4</span>, <span class="kw">sd</span>(<span class="kw">rnorm</span>(n, <span class="dv">3</span>, <span class="fl">1.94</span>))<span class="op">/</span><span class="kw">sqrt</span>(n))
+<span class="kw">mean</span>(se_hat) <span class="co"># mean of the sampling dist of SE hat</span>
+[<span class="dv">1</span>] <span class="fl">0.1195214</span>
+<span class="fl">1.94</span><span class="op">/</span><span class="kw">sqrt</span>(n) <span class="co"># compare to actual SE</span>
+[<span class="dv">1</span>] <span class="fl">0.1196255</span>
+<span class="kw">hist</span>(se_hat, <span class="dt">breaks =</span> <span class="dv">50</span>,
+     <span class="dt">xlab =</span> <span class="kw">expression</span>(<span class="kw">widehat</span>(<span class="kw">italic</span>(SE))), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-31-1.png" width="768" /></p>
+</section><section id="test-of-location-unknown-sigma2" class="slide level2">
+<h2>Test of location – unknown <span class="math inline">\(\sigma^2\)</span></h2>
+<ul>
+<li>When population variance (and therefore <em>SE</em>) is unknown, we can’t calculate <m><span class="math inline">\(z = \frac{\bar{x} - \mu}{SE}\)</span></m></li>
+<li>We can substitute for <em>SE</em>,   <m><span class="math inline">\(\frac{\bar{x} - \mu}{\widehat{SE}}\)</span></m></li>
+<li>What is the sampling distribution of <span class="math inline">\(\bar{x} - \mu\)</span>?
+<ul>
+<li class="fragment">
+If <span class="math inline">\(\bar{x} - \mu\)</span> is distributed normally and <span class="math inline">\(\widehat{SE}\)</span> according to <span class="math inline">\(\chi^2\)</span> with <m><span class="math inline">\(n - 1\)</span></m> degrees of freedom, what is the distribution of <m><span class="math inline">\(\frac{\bar{x} - \mu}{\widehat{SE}}\)</span></m>?
+</li>
+<li class="fragment">
+<em>t</em>-distribution with <span class="math inline">\(df = n-1\)</span>
+</li>
+</ul>
+<li class="fragment">
+This is the formula for <strong>one sample <em>t</em>-test</strong>
+</li></li>
+</ul>
+</section><section id="one-sample-t--test" class="slide level2">
+<h2>One sample <em>t</em> -test</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se_hat &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">var</span>(climb)<span class="op">/</span><span class="st"> </span>n) <span class="co"># estimated SE</span>
+t &lt;-<span class="st"> </span><span class="kw">mean</span>(climb)<span class="op">/</span>se_hat <span class="co"># t-statistic</span>
+<span class="kw">pt</span>(t, n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">lower.tail =</span> F) <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="co"># 2-tailed p-value</span>
+[<span class="dv">1</span>] <span class="fl">5.16621e-76</span></code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-33-1.png" width="768" /></p>
+</section><section id="one-sample-t--test-1" class="slide level2">
+<h2>One sample <em>t</em> -test</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(climb) <span class="co"># one-sample t-test (mu = 0 by default)</span>
+
+    One Sample t<span class="op">-</span>test
+
+data<span class="op">:</span><span class="st">  </span>climb
+t =<span class="st"> </span><span class="fl">26.473</span>, df =<span class="st"> </span><span class="dv">262</span>, p<span class="op">-</span>value <span class="op">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span>
+alternative hypothesis<span class="op">:</span><span class="st"> </span>true mean is not equal to <span class="dv">0</span>
+<span class="dv">95</span> percent confidence interval<span class="op">:</span>
+<span class="st"> </span><span class="fl">2.995807</span> <span class="fl">3.477270</span>
+sample estimates<span class="op">:</span>
+mean of x 
+ <span class="fl">3.236538</span> </code></pre></div>
+<p>A <strong>one-sample <em>t</em>-test</strong> showed that the mean ape index of elite climbers is significantly different from zero, <m><span class="math inline">\(t(262) = 26.47,\ p = 5.17\times 10^{-76}\)</span></m>.</p>
+</section><section id="mean-differences-unknown-sigma2" class="slide level2">
+<h2>Mean differences – unknown <span class="math inline">\(\sigma^2\)</span></h2>
+<ul>
+<li>Logic behind one-sample <em>t</em>-test also applies to comparing differences in means of two groups</li>
+<li>Two scenarios for comparing groups
+<ul>
+<li>Observations across groups are unrelated - **independent _t_test**</li>
+<li>Observations are related (repeated measures, pairs of siblings <i>etc.</i>) - <strong>paired samples <em>t</em>-test</strong></li>
+</ul></li>
+</ul>
+</section><section id="independent-t--test" class="slide level2">
+<h2>Independent <em>t</em> -test</h2>
+<ul>
+<li>Same idea as <em>z</em>-test for mean differences
+<ul>
+<li><span class="math inline">\(t = \frac{\bar{x}_1-\bar{x}_2}{combined\ \widehat{SE}}\)</span>   (<a href="https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test" target="_blank">actual formulae</a>)</li>
+<li><span class="math inline">\(df = n_1 + n_2 - 2\)</span></li>
+</ul></li>
+<li>Let’s look at climbers vs swimmers again</li>
+</ul>
+</section><section id="independent-t--test-1" class="slide level2">
+<h2>Independent <em>t</em> -test</h2>
+<ul>
+<li>By default, <code>R</code> calculates <a href="https://en.wikipedia.org/wiki/Welch%27s_t-test" target="_blank">Welch’s t-test</a>
+<ul>
+<li>Appropriate even if variances of the two samples are not equal</li>
+<li>Notice slightly different number of <em>df</em></li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(swim, climb)
+
+    Welch Two Sample t<span class="op">-</span>test
+
+data<span class="op">:</span><span class="st">  </span>swim and climb
+t =<span class="st"> </span><span class="fl">1.0795</span>, df =<span class="st"> </span><span class="fl">470.65</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.2809</span>
+alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
+<span class="dv">95</span> percent confidence interval<span class="op">:</span>
+<span class="st"> </span><span class="op">-</span><span class="fl">0.1307397</span>  <span class="fl">0.4495286</span>
+sample estimates<span class="op">:</span>
+mean of x mean of y 
+ <span class="fl">3.395933</span>  <span class="fl">3.236538</span> </code></pre></div>
+</section><section id="independent-t--test-2" class="slide level2">
+<h2>Independent <em>t</em> -test</h2>
+<p></br></br> <strong>Welch’s <em>t</em>-test</strong> revealed no difference between the mean ape index of elite climbers and elite swimmers, <m><span class="math inline">\(t(470.65) = 1.08,\ p = .281\)</span></m>.</p>
+</section><section id="paired-samples-t--test" class="slide level2">
+<h2>Paired samples <em>t</em> -test</h2>
+<ul>
+<li>Used in repeated measures design or when pairs of observations are matched</li>
+<li>When individual data points across two group are related, independent <em>t</em>-test is not appropriate
+<ul>
+<li>Estimated pooled variance of the two groups is larger then the variance in differences between the matched points</li>
+</ul></li>
+<li>Which is faster in a 100 m race, front crawl or butterfly stroke?
+<ul>
+<li>20 elite female swimmers completed two individual 100 m time trials using each of the styles (order was randomised)</li>
+</ul></li>
+</ul>
+</section><section id="paired-samples-t--test-1" class="slide level2">
+<h2>Paired samples <em>t</em> -test</h2>
+<ul>
+<li>Times on individual efforts are strongly related</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-36-1.png" width="768" /></p>
+</section><section id="paired-samples-t--test-2" class="slide level2">
+<h2>Paired samples <em>t</em> -test</h2>
+<ul>
+<li>Let’s try using independent <em>t</em>-test</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(b_fly, crawl)
+
+    Welch Two Sample t<span class="op">-</span>test
+
+data<span class="op">:</span><span class="st">  </span>b_fly and crawl
+t =<span class="st"> </span><span class="fl">1.9557</span>, df =<span class="st"> </span><span class="fl">37.247</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.05803</span>
+alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
+<span class="dv">95</span> percent confidence interval<span class="op">:</span>
+<span class="st"> </span><span class="op">-</span><span class="fl">0.0823304</span>  <span class="fl">4.6833950</span>
+sample estimates<span class="op">:</span>
+mean of x mean of y 
+ <span class="fl">67.07590</span>  <span class="fl">64.77537</span> </code></pre></div>
+</section><section id="paired-samples-t--test-3" class="slide level2">
+<h2>Paired samples <em>t</em> -test</h2>
+<ul>
+<li>We are interested in <strong>mean difference</strong> <span class="math inline">\(\bar{x}_D\)</span> between each swimmer’s crawl and fly efforts, not in <strong>difference in means</strong> of the two styles</li>
+<li>We want to scale by <em>SE</em> of the mean difference rather than by <em>pooled SE</em> of the groups</li>
+<li><m><span class="math inline">\(t = \frac{\bar{x}_D - \mu}{\sqrt{s^2_D/n}}\)</span></m></li>
+<li><span class="math inline">\(H_0:\mu=0\)</span></li>
+<li><span class="math inline">\(df = n-1\)</span></li>
+</ul>
+</section><section id="paired-samples-t--test-4" class="slide level2">
+<h2>Paired samples <em>t</em> -test</h2>
+<ul>
+<li>The numerator gives the same value as the one in independent <em>t</em>-test but the denominator doesn’t!</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># numerator</span>
+<span class="kw">mean</span>(b_fly <span class="op">-</span><span class="st"> </span>crawl) <span class="co"># paired</span>
+[<span class="dv">1</span>] <span class="fl">2.300532</span>
+<span class="kw">mean</span>(b_fly) <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(crawl) <span class="co"># independent</span>
+[<span class="dv">1</span>] <span class="fl">2.300532</span>
+<span class="co"># denominator</span>
+<span class="kw">sqrt</span>(<span class="kw">var</span>(b_fly)<span class="op">/</span><span class="dv">20</span> <span class="op">+</span><span class="st"> </span><span class="kw">var</span>(crawl)<span class="op">/</span><span class="dv">20</span>) <span class="co"># SE Welch</span>
+[<span class="dv">1</span>] <span class="fl">1.176293</span>
+<span class="kw">sqrt</span>(<span class="kw">var</span>(b_fly <span class="op">-</span><span class="st"> </span>crawl)<span class="op">/</span><span class="dv">20</span>) <span class="co"># SE paired</span>
+[<span class="dv">1</span>] <span class="fl">0.3594874</span></code></pre></div>
+</section><section id="paired-samples-t--test-5" class="slide level2">
+<h2>Paired samples <em>t</em> -test</h2>
+<ul>
+<li>Result of independent <em>t</em>-test (actually, Welch’s <em>t</em>-test) was <m><span class="math inline">\(t(37.247) = 1.956,\ p=.058\)</span></m></li>
+<li>Let’s see what paired <em>t</em>-test tells us</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(b_fly, crawl, <span class="dt">paired =</span> T)
+
+    Paired t<span class="op">-</span>test
+
+data<span class="op">:</span><span class="st">  </span>b_fly and crawl
+t =<span class="st"> </span><span class="fl">6.3995</span>, df =<span class="st"> </span><span class="dv">19</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">3.885e-06</span>
+alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
+<span class="dv">95</span> percent confidence interval<span class="op">:</span>
+<span class="st"> </span><span class="fl">1.548117</span> <span class="fl">3.052948</span>
+sample estimates<span class="op">:</span>
+mean of the differences 
+               <span class="fl">2.300532</span> </code></pre></div>
+</section><section id="paired-samples-t--test-6" class="slide level2">
+<h2>Paired samples <em>t</em> -test</h2>
+<p></br></br> A paired-sample <em>t</em>-test showed that athletes swam faster when using the front crawl compared to the butterfly stroke over 100 m, <m><span class="math inline">\(M_{diff} = 2.3s,\ p = 3.86\times 10^{-6}\)</span></m></p>
+</section><section id="assumptions-1" class="slide level2">
+<h2>Assumptions</h2>
+<ul>
+<li>Both <em>z</em> and <em>t</em>-test requires the <strong>numerator</strong> (<m><span class="math inline">\(\bar{x} - \mu\)</span></m>, <m><span class="math inline">\((\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)\)</span></m>, or <m><span class="math inline">\(\bar{x}_D - \mu\)</span></m>) to be normally distributed</li>
+<li>In addition, <em>t</em>-test assumes <em>SD</em> is independent of the numerator</li>
+<li>Independent <em>t</em>-test assumes both populations have equal variances (<span class="math inline">\(\sigma^2_1 = \sigma^2_2\)</span>) but Welch’s test doesn’t</li>
+<li><em>t</em>-test <strong>does not</strong> assume the data are normally distributed!
+<ul>
+<li>However, if they are, the above assumptions will be met</li>
+</ul></li>
+</ul>
+</section><section id="take-home-message" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li><m><span class="math inline">\(\chi^2\)</span></m>-test is used to
+<ul>
+<li>assess <em>model fit</em></li>
+<li>see if data come from <em>specific distribution</em></li>
+<li>test for <em>independence of two categorical variables</em></li>
+</ul></li>
+<li><em>z</em>-test is used when population variance is known (almost never)</li>
+<li><em>t</em>-test is used when population variance is <em>unknown</em>
+<ul>
+<li><strong>One sample</strong> <em>t</em>-test is used as a <em>test of location</em></li>
+<li><strong>Independent</strong> <em>t</em>-test is used for <em>comparing the means of two independent groups</em> (Welch’s test is always fine)</li>
+<li><strong>Paired samples</strong> <em>t</em>-test is used for <em>repeated measures</em> and <em>matched pairs</em> design</li>
+</ul></li>
+</ul>
+</section><section id="take-home-message-1" class="slide level2">
+<h2>Take-home message</h2>
+<p>All follow the same procedure</p>
+<ul>
+<li>Calculate test statistic</li>
+<li>Find value of test statistic in a corresponding distribution under <span class="math inline">\(H_0\)</span></li>
+<li>Calculate <em>p</em>-value that the test statistic is <strong>at least as large</strong> as the one observed, even if <span class="math inline">\(H_0\)</span> is true</li>
+</ul>
+</section></section>
+<section><section id="take-10" class="titleslide slide level1" data-background="../pics/ten2.jpg"><h1>Take 10</h1></section><section id="section-1" class="slide level2" data-background="../gif/storm.gif">
+<h2> </h2>
+<script src="../js/timer.js"></script>
+<time>
+<section id="timer" onclick="startTimer(1); this.onclick=null" ;>
+10:00
+</section>
+<p></time></p>
+</section></section>
+<section><section id="decision-errors" class="titleslide slide level1" data-background="../pics/hangover2.jpg"><h1>Decision errors</h1></section><section id="false-positives" class="slide level2">
+<h2>False positives</h2>
+<ul>
+<li>In <a href="https://mivalek.github.io/Lectures/pub/l4_pub.html#/the-problem-with-samples-1" target="_blank">last lecture</a> we saw that even if there is no relationship in the population, we can still find one in the sample</li>
+<li><em>p</em>-values tell us how likely we are to find a given or a more extreme result in a world where the null is true</li>
+<li>Sometimes, we can find a <em>statistically significant relationship</em>, even if there isn’t one in the population</li>
+<li>This is known as the <strong>type I error</strong> (AKA false positive)</li>
+</ul>
+</section><section id="type-i-error" class="slide level2">
+<h2>Type I error</h2>
+<ul>
+<li>Type I error is a situation of rejecting the null, when it is in fact true
+<ul>
+<li>Jury convicting the defendant if they are innocent</li>
+<li>Pregnancy test showing the person taking it is pregnant even if they are not</li>
+</ul></li>
+<li>There is <strong>always</strong> a chance that a significant result is due to Type I error</li>
+<li>Chance of committing Type I error is known as <b><span class="math inline">\(\alpha\)</span> level</b> of the test
+<ul>
+<li>Conventionally, we want it to be <strong>5%</strong></li>
+<li>Related but not the same as <em>p</em>-value</li>
+</ul></li>
+</ul>
+</section><section id="type-i-error-1" class="slide level2">
+<h2>Type I error</h2>
+<ul>
+<li>If <span class="math inline">\(\alpha = .05\)</span>, we can expect <em>1/20 tests to reject the null hypothesis</em> even if it’s true</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create 21 unrelated random normal variables</span>
+df_type1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">replicate</span>(<span class="dv">21</span>, <span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dv">0</span>, <span class="dv">1</span>)))
+<span class="co"># compare var 1 and each one of the 20 others with a t-test</span>
+results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<span class="op">-</span><span class="dv">1</span>, ], <span class="cf">function</span>(x) <span class="kw">t.test</span>(x, df_type1[[<span class="dv">1</span>]]))</code></pre></div>
+</section><section id="type-i-error-2" class="slide level2">
+<h2>Type I error</h2>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-41-1.png" width="768" /></p>
+</section><section id="type-i-error-3" class="slide level2">
+<h2>Type I error</h2>
+<ul>
+<li>Running repeated analyses on subsets of data <strong>inflates</strong> the chance of a significant result even if there is no relationship in the population</li>
+<li><em>That is why it is bad practice to do studies like</em> <a href="https://xkcd.com/882/" target="_blank">this one</a></li>
+</ul>
+</section><section id="false-negatives" class="slide level2">
+<h2>False negatives</h2>
+<ul>
+<li>Earlier, we saw that an independent <em>t</em>-test found no difference in times on 100 m trial between front crawl and butterfly, even though there was one</li>
+<li>When we fail to reject null if it really is false, we commit <strong>type II error</strong> (AKA false negative)
+<ul>
+<li>Jury acquitting the defendant even though they are guilty</li>
+<li>Pregnancy test coming back negative, even if the person taking it is indeed <a href="https://www.youtube.com/watch?v=EShUeudtaFg" target="_blank">pregnant</a></li>
+</ul></li>
+</ul>
+</section><section id="type-ii-error" class="slide level2">
+<h2>Type II error</h2>
+<ul>
+<li>Chance of committing Type II error is known as <b><span class="math inline">\(\beta\)</span> level</b> of the test</li>
+<li><span class="math inline">\(1 - \beta\)</span> is then the <strong>statistical power</strong> of the test
+<ul>
+<li>Conventionally, we want it to be <strong>at least 80%</strong></li>
+<li>The larger the sample size, the better higher the power</li>
+<li>The larger the true population effect, the smaller the sample size needed to detect it</li>
+<li>Different tests have different levels of power</li>
+</ul></li>
+</ul>
+</section><section id="type-i-and-ii-error" class="slide level2">
+<h2>Type I and II error</h2>
+<p></br></p>
+<table style="width:76%;">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;"><span class="math inline">\(H_0\)</span> is true</th>
+<th style="text-align: center;"><span class="math inline">\(H_0\)</span> is false</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(p \geq .05\)</span></td>
+<td style="text-align: center;">Correct retention <span class="math inline">\(1-\alpha\)</span></td>
+<td style="text-align: center;"><strong>Type I error</strong> </br><span class="math inline">\(\alpha\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(p &lt; .05\)</span></td>
+<td style="text-align: center;"><strong>Type II error</strong> </br><span class="math inline">\(\beta\)</span></td>
+<td style="text-align: center;">Statistical power <span class="math inline">\(1-\beta\)</span></td>
+</tr>
+</tbody>
+</table>
+</section><section id="type-i-and-ii-error-1" class="slide level2">
+<h2>Type I and II error</h2>
+<ul>
+<li>There is always a trade-off between <span class="math inline">\(\alpha\)</span> and power</li>
+<li>The more conservative a test (small chance of committing type I error), the less power it has to detect a true effect</li>
+<li>Statistical power can be calculated <em>a priori</em> – check out <a href="http://rpsychologist.com/d3/NHST/" target="_blank">this interactive app</a></li>
+<li><em>Always choose appropriate tests and a large enough sample to detect effect of a given size</em></li>
+</ul>
+</section><section id="what-p-value-is-not" class="slide level2">
+<h2>What <em>p</em>-value is not</h2>
+<ul>
+<li>We know that <em>p</em>-value denotes the probability that we get the <strong>result we observed or a more extreme one</strong> even if the null hypothesis is true</li>
+<li><em>p</em>-value less than .05 does <strong>not</strong>
+<ul>
+<li>Disprove <span class="math inline">\(H_0\)</span></li>
+<li>Show that there is a 5% probability that <span class="math inline">\(H_0\)</span> is true</li>
+<li>Prove research hypothesis <span class="math inline">\(H_1\)</span></li>
+<li>Calculate the probability of <span class="math inline">\(H_1\)</span> being true</li>
+<li>Calculate the probability of your decision to reject <span class="math inline">\(H_0\)</span> being a Type I error</li>
+<li>Show that repeating your experiment will give the same result 95% of the time</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="lines-anyone" class="titleslide slide level1" data-background="../pics/lines2.jpg"><h1>Lines anyone?</h1></section><section id="mean-difference-as-linear-model" class="slide level2">
+<h2>Mean difference as linear model</h2>
+<ul>
+<li>Differences between means of two (or multiple) groups can be conceptualised as linear model</li>
+<li>Simplest way is using <strong>dummy variables</strong>
+<ul>
+<li>Let’s define variable <b><span class="math inline">\(D\)</span></b> as a having the value of 0 for climbers and 1 for swimmers</li>
+</ul></li>
+<li><m><span class="math inline">\(\widehat{AI} = b_0 + b_1\times D\)</span></m></li>
+<li><m><span class="math inline">\(\widehat{AI} = 3.24 + 0.16\times D\)</span></m></li>
+<li><m><span class="math inline">\(\widehat{AI}_{climb} = 3.24 + 0.16\times 0 = 3.24\)</span></m></li>
+<li><m><span class="math inline">\(\widehat{AI}_{swim} = 3.24 + 0.16\times 1 = 3.4\)</span></m></li>
+<li><span class="math inline">\(b_1\)</span> is then <strong>the difference between the group means</strong></li>
+</ul>
+</section><section id="mean-difference-as-linear-model-1" class="slide level2">
+<h2>Mean difference as linear model</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">group =</span> <span class="kw">rep</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="kw">c</span>(<span class="kw">length</span>(climb), <span class="kw">length</span>(swim))),
+                 <span class="dt">ape_index =</span> <span class="kw">c</span>(climb, swim))
+<span class="kw">plot</span>(ape_index <span class="op">~</span><span class="st"> </span><span class="kw">jitter</span>(group, <span class="dt">amount =</span> .<span class="dv">1</span>), df, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">type =</span> <span class="st">&quot;p&quot;</span>,
+     <span class="dt">col =</span> <span class="kw">paste0</span>(colors[<span class="dv">2</span>], <span class="st">&quot;55&quot;</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span>.<span class="dv">5</span>, <span class="fl">1.5</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,
+     <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Ape index (cm)&quot;</span>)
+<span class="kw">abline</span>(<span class="kw">lm</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[<span class="dv">3</span>])
+<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="kw">c</span>(<span class="st">&quot;Climbers&quot;</span>, <span class="st">&quot;Swimmers&quot;</span>), <span class="dt">tick =</span> F, <span class="dt">cex =</span> <span class="fl">1.5</span>)</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-42-1.png" width="528" /></p>
+</section><section id="mean-difference-as-linear-model-2" class="slide level2">
+<h2>Mean difference as linear model</h2>
+<ul>
+<li>Results of our <em>t</em>-test are equivalent to those of linear regression (Martin’s block)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df, <span class="dt">var.equal =</span> T) <span class="co"># Student&#39;s t not Welch&#39;s</span>
+
+    Two Sample t<span class="op">-</span>test
+
+data<span class="op">:</span><span class="st">  </span>ape_index by group
+t =<span class="st"> </span><span class="op">-</span><span class="fl">1.102</span>, df =<span class="st"> </span><span class="dv">561</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.2709</span>
+alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
+<span class="dv">95</span> percent confidence interval<span class="op">:</span>
+<span class="st"> </span><span class="op">-</span><span class="fl">0.4434890</span>  <span class="fl">0.1247001</span>
+sample estimates<span class="op">:</span>
+mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class="cf">in</span> group <span class="dv">1</span> 
+       <span class="fl">3.236538</span>        <span class="fl">3.395933</span> </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># linear model</span>
+m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(ape_index <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>group), df) <span class="co"># swap groups around</span>
+<span class="kw">round</span>(<span class="kw">coef</span>(<span class="kw">summary</span>(m1)),<span class="dv">3</span>) <span class="co"># summary of some of the results</span>
+             Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)
+(Intercept)     <span class="fl">3.396</span>      <span class="fl">0.099</span>  <span class="fl">34.353</span>    <span class="fl">0.000</span>
+<span class="kw">I</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>group)   <span class="op">-</span><span class="fl">0.159</span>      <span class="fl">0.145</span>  <span class="op">-</span><span class="fl">1.102</span>    <span class="fl">0.271</span></code></pre></div>
+</section><section id="more-than-2-groups" class="slide level2">
+<h2>More than 2 groups</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_gen &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">group =</span> <span class="dv">2</span>, <span class="dt">ape_index =</span> <span class="kw">rnorm</span>(<span class="dv">250</span>, <span class="dv">0</span>, <span class="fl">3.34</span>))
+df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df_gen)</code></pre></div>
+<ul>
+<li>Number of dummy variables needed is <strong>one less</strong> the number of groups
+<ul>
+<li>Let’s define variable <b><span class="math inline">\(D_1\)</span></b> as having value of 1 for swimmers and 0 for everyone else</li>
+<li>Let’s add variable <b><span class="math inline">\(D_2\)</span></b> with value of 1 for general sample and 0 for everyone else</li>
+</ul></li>
+</ul>
+</section><section id="more-than-2-groups-1" class="slide level2">
+<h2>More than 2 groups</h2>
+<p></br></p>
+<pre><code>    group  ape_index D_1 D_2
+1       0  3.3222633   0   0
+2       0  3.3758678   0   0
+3       0  1.5576753   0   0
+390     1  3.0198380   1   0
+391     1  2.6463791   1   0
+392     1  4.9876503   1   0
+650     2 -0.7482664   0   1
+651     2 -2.0709030   0   1
+652     2  0.5378153   0   1</code></pre>
+</section><section id="more-than-2-groups-2" class="slide level2">
+<h2>More than 2 groups</h2>
+<p></br></p>
+<p><m><span class="math inline">\(\widehat{AI} = b_0 + b_1\times D_1 + b_2\times D_2\)</span></m> <m><span class="math inline">\(\widehat{AI} = 3.24 + 0.16\times D_1 - 2.47\times D_2\)</span></m> <m><span class="math inline">\(\widehat{AI}_{climb} = 3.24 + 0.16\times 0 - 2.47\times 0 = 3.24\)</span></m> <m><span class="math inline">\(\widehat{AI}_{swim} = 3.24 + 0.16\times 1 - 2.47\times 0 = 3.4\)</span></m> <m><span class="math inline">\(\widehat{AI}_{gen} = 3.24 + 0.16\times 0 - 2.47\times 1 = 0.77\)</span></m></p>
+</section><section id="more-than-2-groups-3" class="slide level2">
+<h2>More than 2 groups</h2>
+<ul>
+<li><span class="math inline">\(b_1\)</span> is then the difference between means of <strong>reference and first comparison</strong> group</li>
+<li><span class="math inline">\(b_2\)</span> is then the difference between means of <strong>reference and second comparison</strong> group</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-47-1.png" width="768" /></p>
+</section><section id="more-than-2-groups-4" class="slide level2">
+<h2>More than 2 groups</h2>
+<ul>
+<li><span class="math inline">\(b_1\)</span> is then the difference between means of <strong>reference and first comparison</strong> group</li>
+<li><span class="math inline">\(b_2\)</span> is then the difference between means of <strong>reference and second comparison</strong> group</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-48-1.png" width="768" /></p>
+</section></section>
+<section><section id="quantifying-confidence" class="titleslide slide level1" data-background="../pics/rosie2.jpg"><h1>Quantifying confidence</h1></section><section id="point-vs-interval-estimates" class="slide level2">
+<h2>Point vs interval estimates</h2>
+<ul>
+<li>Tests we’ve covered only give us estimates of <em>single numbers</em> representing
+<ul>
+<li>departure from expectation (<m><span class="math inline">\(\chi^2\)</span></m>)</li>
+<li>differences between means (<em>z</em> and <em>t</em>)</li>
+<li>mean difference between paired observations (<em>t</em>)</li>
+</ul></li>
+<li>There is <strong>always</strong> a degree of uncertainty around these <em>point estimates</em></li>
+<li>It is very useful to quantify this uncertainty</li>
+<li><strong>Confidence intervals</strong> are one way of achieving this</li>
+</ul>
+</section><section id="confidence-intervals" class="slide level2">
+<h2>Confidence intervals</h2>
+<ul>
+<li>Suppose we ran our study comparing ape index of climbers and swimmers on <em>all possible samples</em></li>
+<li>Each time, we would get a different point estimate (<em>t</em>) representing difference in means of the two groups</li>
+<li>The <strong>true difference</strong>, however, is always the same</li>
+<li><strong>x% confidence interval</strong> is a range of values around each point estimate where x% of these ranges <em>include the true difference</em></li>
+<li>95% CIs are used most frequently but the level is arbitrary</li>
+</ul>
+</section><section id="confidence-intervals-1" class="slide level2">
+<h2>Confidence intervals</h2>
+<ul>
+<li>For our independent <em>t</em>-test, 95% CI of the mean difference is [<span class="math inline">\(-0.44,\ 0.12\)</span>]</li>
+<li>This is the range of values true difference can take <strong>without being significantly different from the observed one</strong> (<span class="math inline">\(-0.16\)</span>)</li>
+<li>CIs that include zero <em>indicate non-significant results</em></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df[df<span class="op">$</span>group <span class="op">!=</span><span class="st"> </span><span class="dv">2</span>, ])
+
+    Welch Two Sample t<span class="op">-</span>test
+
+data<span class="op">:</span><span class="st">  </span>ape_index by group
+t =<span class="st"> </span><span class="op">-</span><span class="fl">1.0795</span>, df =<span class="st"> </span><span class="fl">470.65</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.2809</span>
+alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
+<span class="dv">95</span> percent confidence interval<span class="op">:</span>
+<span class="st"> </span><span class="op">-</span><span class="fl">0.4495286</span>  <span class="fl">0.1307397</span>
+sample estimates<span class="op">:</span>
+mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class="cf">in</span> group <span class="dv">1</span> 
+       <span class="fl">3.236538</span>        <span class="fl">3.395933</span> </code></pre></div>
+</section><section id="confidence-intervals-2" class="slide level2">
+<h2>Confidence intervals</h2>
+<ul>
+<li>Useful for plotting results <a href="https://mivalek.github.io/Lectures/pub/conf_int_plot.R" target="_blank">(full code)</a></li>
+<li>CI error bars overlapping with point estimates indicate non-significant result</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-50-1.png" width="768" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+Since error bars can represent many things (SE, SD, CI), plot caption <strong>must say what they mean</strong>!
+</aside>
+</section><section id="bootstrapping" class="slide level2">
+<h2>Bootstrapping</h2>
+<ul>
+<li>Ordinary CIs are, unsurprisingly, calculated using the <em>t</em>-statistic
+<ul>
+<li>This makes use of the fact that <em>t</em> is from a known distribution – <span class="math inline">\(t(df = n-1)\)</span></li>
+</ul></li>
+<li>If the distribution of the statistic is not known, we can use <strong>resampling</strong> methods to do inferential statistics</li>
+<li><strong>Bootstrapping</strong> is a clever resampling method that’s easy to understand</li>
+</ul>
+</section><section id="bootstrapping-1" class="slide level2">
+<h2>Bootstrapping</h2>
+<p><strong>The process</strong> </br> #. Calculate the statistic of interest #. Reshuffle your data by taking a sample of equal size <strong>with replacement</strong> #. Re-calculate the statistic and save its value #. Repeat 2. and 3. many times #. Compare the original observed statistic to the empirical sampling distribution</p>
+</section><section id="bootstrapping-2" class="slide level2">
+<h2>Bootstrapping</h2>
+<ul>
+<li>Let’s demonstrate bootstrapping on the difference in mean ape index between climbers and swimmers</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2 &lt;-<span class="st"> </span>df[df<span class="op">$</span>group <span class="op">!=</span><span class="st"> </span><span class="dv">2</span>, ]
+<span class="co"># observed statistic</span>
+obs_stat &lt;-<span class="st"> </span><span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]) <span class="op">-</span>
+<span class="st">  </span><span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
+<span class="co"># bootstrap</span>
+boot_dist &lt;-<span class="st"> </span><span class="kw">c</span>()
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>) {
+  <span class="co"># reshuffle group</span>
+  df2<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw">sample</span>(df<span class="op">$</span>group[df<span class="op">$</span>group <span class="op">!=</span><span class="st"> </span><span class="dv">2</span>], <span class="dt">replace =</span> T)
+  boot_dist &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="co"># add value to boot_dist</span>
+    boot_dist,
+    <span class="co"># calculate the statistic on the bootstrapped sample</span>
+    <span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]) <span class="op">-</span>
+<span class="st">      </span><span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))
+}</code></pre></div>
+</section><section id="bootstrapping-3" class="slide level2">
+<h2>Bootstrapping</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(boot_dist, <span class="dt">breaks =</span> <span class="dv">30</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mean difference&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> obs_stat, <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-52-1.png" width="768" /></p>
+</section><section id="bootstrapping-cis" class="slide level2">
+<h2>Bootstrapping CIs</h2>
+<ul>
+<li>There are <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)#Methods_for_bootstrap_confidence_intervals" target="_blank">several methods</a> for deriving bootstrapped CIs</li>
+<li>The simplest one (AKA <em>basic bootstrap</em>) is as follows:
+<ul>
+<li>Get the cut-off points corresponding to the middle 95% of the bootstrap distribution</li>
+<li>Calculate range as distance between these points</li>
+<li>Half of the range is the distance between the point estimate and each end of the 95% CI</li>
+</ul></li>
+<li>This leads to <strong>symmetrical</strong> CIs, other methods may produce asymmetrical CIs</li>
+</ul>
+</section><section id="bootstrapping-cis-1" class="slide level2">
+<h2>Bootstrapping CIs</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># middle 95% of boot_dist</span>
+(cutoffs &lt;-<span class="st"> </span><span class="kw">quantile</span>(boot_dist, <span class="kw">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>), <span class="dt">na.rm =</span> T))
+      <span class="fl">2.5</span><span class="op">%      97.5%</span><span class="st"> </span>
+<span class="op">-</span><span class="fl">0.2721346</span>  <span class="fl">0.2832401</span> 
+<span class="co"># distance from middle to limit of CI</span>
+(ci_dist &lt;-<span class="st"> </span><span class="kw">unname</span>(<span class="kw">diff</span>(cutoffs))<span class="op">/</span><span class="dv">2</span>)
+[<span class="dv">1</span>] <span class="fl">0.2776874</span>
+
+<span class="co"># 95% CI around observed point estimate -0.16</span>
+obs_stat <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>ci_dist
+[<span class="dv">1</span>] <span class="op">-</span><span class="fl">0.4370818</span>  <span class="fl">0.1182929</span>
+
+<span class="co"># compare to CI from t-test</span>
+<span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df[df<span class="op">$</span>group <span class="op">!=</span><span class="st"> </span><span class="dv">2</span>, ])<span class="op">$</span>conf.int
+[<span class="dv">1</span>] <span class="op">-</span><span class="fl">0.4495286</span>  <span class="fl">0.1307397</span>
+<span class="kw">attr</span>(,<span class="st">&quot;conf.level&quot;</span>)
+[<span class="dv">1</span>] <span class="fl">0.95</span></code></pre></div>
+</section><section id="take-home-message-2" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li><strong>Type I error</strong> is the false <em>positive</em>
+<ul>
+<li><span class="math inline">\(\alpha\)</span> is the probability of committing it</li>
+<li>Conventional <span class="math inline">\(\alpha\)</span> level is .05</li>
+</ul></li>
+<li><strong>Type II error</strong> is the false <em>negative</em>
+<ul>
+<li><span class="math inline">\(\beta\)</span> is its associated probability</li>
+<li>We don’t want <span class="math inline">\(beta\)</span> to be above .2</li>
+</ul></li>
+<li><strong>Statistical power</strong> (<span class="math inline">\(\beta - 1\)</span>) is the power to detect a true effect, if it exists
+<ul>
+<li>We want it to be at least 80%</li>
+<li>Related to sample size, type of data, model fitted, and true effect size</li>
+</ul></li>
+</ul>
+</section><section id="take-home-message-3" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li>Tests of location and mean differences <strong>are</strong> linear models with a <em>categorical predictor</em></li>
+<li>Easiest way to include categorical predictors is using <strong>dummy variables</strong>
+<ul>
+<li>We need one fewer dummy variables than levels of categorical predictor</li>
+<li><code>R</code> does it by default when the predictor is a <code>factor</code></li>
+</ul></li>
+<li>Intercept is the predicted mean of the <em>reference</em> category</li>
+<li>Individual <em>b</em> parameters related to dummy variables are differences in predicted means of reference and given comparison group</li>
+</ul>
+</section><section id="take-home-message-4" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li>Confidence intervals quantify the uncertainty around point estimates</li>
+<li>They give us <strong>range of values</strong> the true <em>population parameter</em> can take <strong>and still not be significantly different from the <em>observed statistic</em></strong></li>
+<li>If they contain zero (for mean differences/slopes), result is not statistically significant</li>
+<li>If CI around mean of a group overlaps with mean of another group, groups are not significantly different</li>
+</ul>
+</section><section id="take-home-message-5" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li><em>Bootstrapping</em> is a simple but powerful and elegant <strong>resampling method</strong> of doing statistics</li>
+<li><strong>Relies on data alone</strong></li>
+<li><strong>Does not make assumptions</strong> about parameter distributions</li>
+<li>It can be used to derive several types of CIs</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+All clear?
+</aside>
+</section><section id="question-time" class="slide level2" data-background="../pics/question2.jpg">
+<h2>Question time</h2>
+</section></section>
+<section><section id="thats-it-see-you-in-the-labs" class="titleslide slide level1" data-background="../gif/clap.gif"><h1><b>That’s it!</b>    <br><br><br><subtitle>   See you in the labs :)</subtitle></h1></section></section>
+    </div>
+  </div>
+
+  <script src="Lecture_5_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="Lecture_5_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+
+
+        chalkboard: {
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'Lecture_5_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'Lecture_5_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: 'Lecture_5_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
