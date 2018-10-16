@@ -509,6 +509,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Differences in means in the real world</li>
 <li>Type I and II errors</li>
 <li>Quantifying confidence</li>
+<li>Linear model revisited</li>
 </ul>
 </section>
 <section><section id="the-chi2-test" class="titleslide slide level1" data-background="../pics/pearson2.jpg"><h1>The <m><span class="math inline">\(\chi^2\)</span></m>-test</h1></section><section id="modelling-categorical-data" class="slide level2">
@@ -520,7 +521,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>By extension, we can model relationships between 2 categorical variables</li>
 </ul>
 </section><section id="goodness-of-fit-test" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>Let’s look at the representation of MSc study programmes in the first USMR lecture</li>
 <li>Out of 148 attendees, there were 41 CogSci, 52 LEL, and 55 Psych students</li>
@@ -528,7 +529,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Is the split above due to random statistical fluctuations or is there a systematic difference between our expectation and observation?</li>
 </ul>
 </section><section id="goodness-of-fit-test-1" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">l1_data &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;cog&quot;</span>, <span class="st">&quot;lel&quot;</span>, <span class="st">&quot;psy&quot;</span>), <span class="kw">c</span>(<span class="dv">41</span>, <span class="dv">52</span>, <span class="dv">55</span>))
 <span class="co"># expected frequencies</span>
 exp &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">length</span>(l1_data) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(l1_data)),
@@ -545,7 +546,7 @@ exp
      cog      lel      psy 
 <span class="fl">49.33333</span> <span class="fl">49.33333</span> <span class="fl">49.33333</span> </code></pre></div>
 </section><section id="goodness-of-fit-test-2" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)
 <span class="kw">barplot</span>(<span class="kw">table</span>(l1_data), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">60</span>),
         <span class="dt">main =</span> <span class="st">&quot;Observed&quot;</span>, <span class="dt">col =</span> colors[<span class="dv">3</span>])
@@ -553,13 +554,13 @@ exp
 <p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-3-1.png" width="768" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</code></pre></div>
 </section><section id="goodness-of-fit-test-3" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
-<li>We can quantify how well our uniformity model fits the data (<a href="https://mivalek.github.io/Lectures/pub/chi_barplot.R" target="_blank">code</a>)</li>
+<li>We can quantify how well our uniformity model fits the data <small><a href="https://mivalek.github.io/Lectures/pub/chi_barplot.R" target="_blank">(full code)</a></small></li>
 </ul>
 <p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" /></p>
 </section><section id="goodness-of-fit-test-4" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>We do this using the sum of <strong>scaled</strong> squares (sum of squared differences over expected frequencies)</li>
 <li><m><span class="math inline">\(\chi^2 = \sum\limits_{i=1}^n{\frac{(O_i - E_i)^2}{E_i}}\)</span></m>; where <span class="math inline">\(n\)</span> is the number of categories, <span class="math inline">\(O_i\)</span> is the observed frequency and <span class="math inline">\(E_i\)</span> the expected frequency of the <span class="math inline">\(i\)</span><sup><small>th</small></sup> category</li>
@@ -575,7 +576,7 @@ l1_data
 (chi &lt;-<span class="st"> </span><span class="kw">sum</span>(squares<span class="op">/</span>exp))
 [<span class="dv">1</span>] <span class="fl">2.202703</span></code></pre></div>
 </section><section id="goodness-of-fit-test-5" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>This is our test statistic
 <ul>
@@ -591,7 +592,7 @@ l1_data
 </ul></li>
 </ul>
 </section><section id="goodness-of-fit-test-6" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>Before we rely on the theoretical <m><span class="math inline">\(\chi^2\)</span></m>-distribution, let’s simulate the sampling distribution of our calculated <m><span class="math inline">\(\chi^2\)</span></m>-statistic under the null</li>
 </ul>
@@ -605,8 +606,8 @@ chi_fun &lt;-<span class="st"> </span><span class="cf">function</span>(obser, ex
 <span class="co"># apply the function to each column of pop</span>
 chi_dist &lt;-<span class="st"> </span><span class="kw">apply</span>(pop, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="kw">chi_fun</span>(x, exp))</code></pre></div>
 </section><section id="goodness-of-fit-test-7" class="slide level2">
-<h2>Goodness of fit test</h2>
-<p><a href="https://mivalek.github.io/Lectures/pub/chisq_test.R" target="_blank">Full code</a></p>
+<h2>Goodness-of-fit test</h2>
+<p><small><a href="https://mivalek.github.io/Lectures/pub/chisq_test.R" target="_blank">(full code)</a></small></p>
 <p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" /></p>
 <ul>
 <li>We can use this distribution to get an <strong>empirical</strong> <em>p</em>-value – <span class="math inline">\(p &gt; .05\)</span> so not significant</li>
@@ -615,7 +616,7 @@ chi_dist &lt;-<span class="st"> </span><span class="kw">apply</span>(pop, <span 
 <span class="kw">sum</span>(chi_dist <span class="op">&gt;=</span><span class="st"> </span>chi)<span class="op">/</span><span class="kw">length</span>(chi_dist)
 [<span class="dv">1</span>] <span class="fl">0.34077</span></code></pre></div>
 </section><section id="goodness-of-fit-test-8" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>Is the <m><span class="math inline">\(\chi^2\)</span></m>-distribution with 2 <em>df</em> a good approximation?</li>
 </ul>
@@ -625,7 +626,7 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</
 <span class="kw">lines</span>(x, <span class="kw">dchisq</span>(x, <span class="dv">2</span>), <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
 <p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" /></p>
 </section><section id="goodness-of-fit-test-9" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>Let’s use it to calculate the <em>p</em>-value then!</li>
 </ul>
@@ -637,7 +638,7 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</
 <span class="kw">sum</span>(chi_dist <span class="op">&gt;=</span><span class="st"> </span>chi)<span class="op">/</span><span class="kw">length</span>(chi_dist)
 [<span class="dv">1</span>] <span class="fl">0.34077</span></code></pre></div>
 </section><section id="goodness-of-fit-test-10" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>Pearson’s <span class="math inline">\(\chi^2\)</span> goodness-of-fit test showed that the <strong>distribution of study programme is not significantly different from uniform</strong>, <m><span class="math inline">\(\chi^2(2) = 2.203,\ p = .332\)</span></m></li>
 <li>Of course we can do this very quickly in <code>R</code></li>
@@ -649,14 +650,14 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</
 data<span class="op">:</span><span class="st">  </span><span class="kw">table</span>(l1_data)
 X<span class="op">-</span>squared =<span class="st"> </span><span class="fl">2.2027</span>, df =<span class="st"> </span><span class="dv">2</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.3324</span></code></pre></div>
 </section><section id="goodness-of-fit-test-11" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>We used the <span class="math inline">\(\chi^2\)</span> goodness-of-fit test to see if our null hypothesis model distribution (uniform) is a good fit to the observed data</li>
 <li>We can however specify <em>any</em> model distribution, <i>e.g.,</i> a 35%-40%-25% split</li>
 </ul>
 <p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-13-1.png" width="768" /></p>
 </section><section id="goodness-of-fit-test-12" class="slide level2">
-<h2>Goodness of fit test</h2>
+<h2>Goodness-of-fit test</h2>
 <ul>
 <li>This model distribution is not a good fit to the data</li>
 <li>The differences between observed and expected frequencies are too large, leading to a large value of the <m><span class="math inline">\(\chi^2\)</span></m>-statistic</li>
@@ -764,7 +765,7 @@ Why not conditional probabilities? Because we’re assuming independence and so 
 </section><section id="assumptions" class="slide level2">
 <h2>Assumptions</h2>
 <ul>
-<li>We mentioned that the test of independence was not appropriate for our scenario – it violates one of the assumptions underlying the test:
+<li>We mentioned that the test of independence was not appropriate for our scenario – it violates one of the <em>assumptions</em> underlying the test:
 <ul>
 <li><strong>Random sample</strong> – data are sampled from the population at random</li>
 <li><strong>Expected cell count</strong> – expected cell counts must be <em>at least 5</em> in each of the cells of the contingency table</li>
@@ -812,7 +813,7 @@ identity
 <li>The <em>z</em>-test requires us to <strong>know the population variance</strong> <m><span class="math inline">\(\sigma^2\)</span></m></li>
 <li>Two main uses:
 <ul>
-<li>Is the mean what we expected to be (test of location)?</li>
+<li>Is the mean what we expect it to be (test of location)?</li>
 <li>Is there a difference between the means of 2 groups?</li>
 </ul></li>
 </ul>
@@ -822,7 +823,7 @@ identity
 <li>The <a href="https://en.wikipedia.org/wiki/Ape_index" target="_blank">ape index</a> compares a person’s arm span to their height
 <ul>
 <li>Positive ape index means, that your arm span is larger then your height</li>
-<li>165 cm (5’5“) tall person with arm span of 167 cm has an ape index of +2</li>
+<li>165 cm (5′5″) tall person with arm span of 167 cm has an ape index of +2</li>
 </ul></li>
 <li>In general population, the mean ape index is 0 and the <em>s</em> is 3.34</li>
 <li>Elite rock climbers tend to have a positive ape index</li>
@@ -830,7 +831,7 @@ identity
 </ul>
 </section><section id="section" class="slide level2" data-background="../pics/ape.jpg">
 <h2> </h2>
-<p>                <a href="https://www.youtube.com/watch?v=nJhPmvJaz7c" target="_blank">Ashima Shiraishi</a></br>                 <m>156 cm tall</br>                 Ape index +10.16 cm</m></br></br></br></br></br></br></br></br></br></br></br></br></br></p>
+<p>                <a href="https://www.youtube.com/watch?v=nJhPmvJaz7c" target="_blank">Ashima Shiraishi</a></br>                 <m>156 cm tall</br>                 Ape index +10 cm</m></br></br></br></br></br></br></br></br></br></br></br></br></br></p>
 </section><section id="test-of-location-1" class="slide level2">
 <h2>Test of location</h2>
 <ul>
@@ -869,7 +870,7 @@ diff &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class
 </section><section id="test-of-location-5" class="slide level2">
 <h2>Test of location</h2>
 <ul>
-<li>Scaling the sampling distribution by <em>SE</em> turns it into <strong>standard</strong> normal (mean 0, <em>sd</em> 1)</li>
+<li>Scaling the sampling distribution by <em>SE</em> turns it into <strong>standard</strong> normal (mean = 0, <em>SD</em> = 1)</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">diff_scale &lt;-<span class="st"> </span>diff<span class="op">/</span>se
 <span class="kw">hist</span>(diff_scale, <span class="dt">breaks =</span> <span class="dv">100</span>, <span class="dt">xlab =</span> <span class="kw">expression</span>(<span class="kw">frac</span>(<span class="kw">bar</span>(x)<span class="op">-</span>mu, SE)),
@@ -884,7 +885,7 @@ diff &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class
 </ul></li>
 <li>All that’s left is to find value of <em>z</em> in the sampling distribution and associated <em>p</em>-value</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(z &lt;-<span class="st"> </span>(<span class="kw">mean</span>(samp) <span class="op">-</span><span class="st"> </span>mu)<span class="op">/</span>se)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(z &lt;-<span class="st"> </span>(<span class="kw">mean</span>(climb) <span class="op">-</span><span class="st"> </span>mu)<span class="op">/</span>se)
 [<span class="dv">1</span>] <span class="fl">15.41326</span>
 <span class="co"># empirical 2-tailed p-value</span>
 <span class="kw">sum</span>(<span class="kw">abs</span>(diff_scale) <span class="op">&gt;=</span><span class="st"> </span>z)<span class="op">/</span><span class="kw">length</span>(diff_scale)
@@ -895,7 +896,7 @@ diff &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class
 </section><section id="test-of-location-7" class="slide level2">
 <h2>Test of location</h2>
 <ul>
-<li><span class="math inline">\(p = 1.44\times 10^{-42}\)</span> – result is <em>highly statistically significant</em> so we reject <span class="math inline">\(H_0\)</span></li>
+<li><span class="math inline">\(p = 1.33\times 10^{-53}\)</span> – result is <em>highly statistically significant</em> so we reject <span class="math inline">\(H_0\)</span></li>
 </ul>
 <p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-26-1.png" width="768" /></p>
 </section><section id="mean-differences" class="slide level2">
@@ -909,14 +910,13 @@ diff &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class
 </ul>
 </section><section id="mean-differences-1" class="slide level2">
 <h2>Mean differences</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">climb &lt;-<span class="st"> </span>samp
-<span class="co"># get 300 elite swimmers</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get 300 elite swimmers</span>
 swim &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">300</span>, <span class="fl">3.32</span>, <span class="fl">1.5</span>)</code></pre></div>
 <p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-28-1.png" width="768" /></p>
 </section><section id="mean-differences-2" class="slide level2">
 <h2>Mean differences</h2>
 <ul>
-<li>Again, the sampling distribution of the mean differences scaled by it’s <em>SE</em> is a standard normal distribution</li>
+<li>Again, the sampling distribution of the mean differences scaled by its <em>SE</em> is a standard normal distribution</li>
 <li><em>z</em> statistic is used to get <em>p</em>-values</li>
 <li><m><span class="math inline">\(SE = \sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}\)</span></m></li>
 <li><m><span class="math inline">\(z = \frac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{SE}\)</span></m></li>
@@ -931,7 +931,7 @@ var_swim &lt;-<span class="st"> </span><span class="fl">1.5</span><span class="o
 [<span class="dv">1</span>] <span class="fl">0.2804534</span></code></pre></div>
 </section><section id="mean-differences-3" class="slide level2">
 <h2>Mean differences</h2>
-<p><small><a href="https://mivalek.github.io/Lectures/pub/error_bar_plot.R" target="_blank">(Error bar plot code)</a></small></p>
+<p><small><a href="https://mivalek.github.io/Lectures/pub/error_bar_plot.R" target="_blank">(full code)</a></small></p>
 <p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-30-1.png" width="768" /></p>
 <p>We found <strong>no difference between the mean AI</strong> of elite climbers and elite swimmers, <span class="math inline">\(z = -1.08,\ p = .28\)</span>.</p>
 </section></section>
@@ -951,7 +951,7 @@ We don’t know <span class="math inline">\(\sigma^2\)</span> so we can’t calc
 <h2>Estimating <i>SE</i></h2>
 <ul>
 <li>We know we can estimate <em>SE</em> from <strong>sample variance</strong> as <m><span class="math inline">\(\widehat{SE} = \sqrt{\frac{s^2}{n}}\)</span></m></li>
-<li><span class="math inline">\(\widehat{SE}\)</span> will be different in every sample – it’s a variable, while <em>SE</em> is a single number</li>
+<li><span class="math inline">\(\widehat{SE}\)</span> will be <em>different in every sample</em> – it’s a <strong>variable</strong>, while <span class="math inline">\(SE\)</span> is a <strong>single number</strong></li>
 <li><span class="math inline">\(\widehat{SE}\)</span> is based on sum of squares
 <ul>
 <li>What is its distribution?
@@ -1018,7 +1018,7 @@ mean of x
 <li>Logic behind one-sample <em>t</em>-test also applies to comparing differences in means of two groups</li>
 <li>Two scenarios for comparing groups
 <ul>
-<li>Observations across groups are unrelated - **independent _t_test**</li>
+<li>Observations across groups are unrelated - <strong>independent <em>t</em>-test</strong></li>
 <li>Observations are related (repeated measures, pairs of siblings <i>etc.</i>) - <strong>paired samples <em>t</em>-test</strong></li>
 </ul></li>
 </ul>
@@ -1249,11 +1249,11 @@ results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<s
 </section><section id="type-i-and-ii-error" class="slide level2">
 <h2>Type I and II error</h2>
 <p></br></p>
-<table style="width:76%;">
+<table style="width:90%;">
 <colgroup>
 <col style="width: 20%" />
-<col style="width: 27%" />
-<col style="width: 27%" />
+<col style="width: 34%" />
+<col style="width: 34%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1265,13 +1265,13 @@ results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<s
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(p \geq .05\)</span></td>
-<td style="text-align: center;">Correct retention <span class="math inline">\(1-\alpha\)</span></td>
-<td style="text-align: center;"><strong>Type I error</strong> </br><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: center;">Correct retention </br><m><span class="math inline">\(1-\alpha\)</span></m></td>
+<td style="text-align: center;"><strong>Type I error</strong> </br><m><span class="math inline">\(\alpha\)</span></m></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(p &lt; .05\)</span></td>
-<td style="text-align: center;"><strong>Type II error</strong> </br><span class="math inline">\(\beta\)</span></td>
-<td style="text-align: center;">Statistical power <span class="math inline">\(1-\beta\)</span></td>
+<td style="text-align: center;"><strong>Type II error</strong> </br><m><span class="math inline">\(\beta\)</span></m></td>
+<td style="text-align: center;">Statistical power </br><m><span class="math inline">\(1-\beta\)</span></m></td>
 </tr>
 </tbody>
 </table>
@@ -1297,96 +1297,6 @@ results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<s
 <li>Show that repeating your experiment will give the same result 95% of the time</li>
 </ul></li>
 </ul>
-</section></section>
-<section><section id="lines-anyone" class="titleslide slide level1" data-background="../pics/lines2.jpg"><h1>Lines anyone?</h1></section><section id="mean-difference-as-linear-model" class="slide level2">
-<h2>Mean difference as linear model</h2>
-<ul>
-<li>Differences between means of two (or multiple) groups can be conceptualised as linear model</li>
-<li>Simplest way is using <strong>dummy variables</strong>
-<ul>
-<li>Let’s define variable <b><span class="math inline">\(D\)</span></b> as a having the value of 0 for climbers and 1 for swimmers</li>
-</ul></li>
-<li><m><span class="math inline">\(\widehat{AI} = b_0 + b_1\times D\)</span></m></li>
-<li><m><span class="math inline">\(\widehat{AI} = 3.24 + 0.16\times D\)</span></m></li>
-<li><m><span class="math inline">\(\widehat{AI}_{climb} = 3.24 + 0.16\times 0 = 3.24\)</span></m></li>
-<li><m><span class="math inline">\(\widehat{AI}_{swim} = 3.24 + 0.16\times 1 = 3.4\)</span></m></li>
-<li><span class="math inline">\(b_1\)</span> is then <strong>the difference between the group means</strong></li>
-</ul>
-</section><section id="mean-difference-as-linear-model-1" class="slide level2">
-<h2>Mean difference as linear model</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">group =</span> <span class="kw">rep</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="kw">c</span>(<span class="kw">length</span>(climb), <span class="kw">length</span>(swim))),
-                 <span class="dt">ape_index =</span> <span class="kw">c</span>(climb, swim))
-<span class="kw">plot</span>(ape_index <span class="op">~</span><span class="st"> </span><span class="kw">jitter</span>(group, <span class="dt">amount =</span> .<span class="dv">1</span>), df, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">type =</span> <span class="st">&quot;p&quot;</span>,
-     <span class="dt">col =</span> <span class="kw">paste0</span>(colors[<span class="dv">2</span>], <span class="st">&quot;55&quot;</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span>.<span class="dv">5</span>, <span class="fl">1.5</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,
-     <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Ape index (cm)&quot;</span>)
-<span class="kw">abline</span>(<span class="kw">lm</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[<span class="dv">3</span>])
-<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="kw">c</span>(<span class="st">&quot;Climbers&quot;</span>, <span class="st">&quot;Swimmers&quot;</span>), <span class="dt">tick =</span> F, <span class="dt">cex =</span> <span class="fl">1.5</span>)</code></pre></div>
-<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-42-1.png" width="528" /></p>
-</section><section id="mean-difference-as-linear-model-2" class="slide level2">
-<h2>Mean difference as linear model</h2>
-<ul>
-<li>Results of our <em>t</em>-test are equivalent to those of linear regression (Martin’s block)</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df, <span class="dt">var.equal =</span> T) <span class="co"># Student&#39;s t not Welch&#39;s</span>
-
-    Two Sample t<span class="op">-</span>test
-
-data<span class="op">:</span><span class="st">  </span>ape_index by group
-t =<span class="st"> </span><span class="op">-</span><span class="fl">1.102</span>, df =<span class="st"> </span><span class="dv">561</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.2709</span>
-alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
-<span class="dv">95</span> percent confidence interval<span class="op">:</span>
-<span class="st"> </span><span class="op">-</span><span class="fl">0.4434890</span>  <span class="fl">0.1247001</span>
-sample estimates<span class="op">:</span>
-mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class="cf">in</span> group <span class="dv">1</span> 
-       <span class="fl">3.236538</span>        <span class="fl">3.395933</span> </code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># linear model</span>
-m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(ape_index <span class="op">~</span><span class="st"> </span><span class="kw">I</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>group), df) <span class="co"># swap groups around</span>
-<span class="kw">round</span>(<span class="kw">coef</span>(<span class="kw">summary</span>(m1)),<span class="dv">3</span>) <span class="co"># summary of some of the results</span>
-             Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)
-(Intercept)     <span class="fl">3.396</span>      <span class="fl">0.099</span>  <span class="fl">34.353</span>    <span class="fl">0.000</span>
-<span class="kw">I</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>group)   <span class="op">-</span><span class="fl">0.159</span>      <span class="fl">0.145</span>  <span class="op">-</span><span class="fl">1.102</span>    <span class="fl">0.271</span></code></pre></div>
-</section><section id="more-than-2-groups" class="slide level2">
-<h2>More than 2 groups</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_gen &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">group =</span> <span class="dv">2</span>, <span class="dt">ape_index =</span> <span class="kw">rnorm</span>(<span class="dv">250</span>, <span class="dv">0</span>, <span class="fl">3.34</span>))
-df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df_gen)</code></pre></div>
-<ul>
-<li>Number of dummy variables needed is <strong>one less</strong> the number of groups
-<ul>
-<li>Let’s define variable <b><span class="math inline">\(D_1\)</span></b> as having value of 1 for swimmers and 0 for everyone else</li>
-<li>Let’s add variable <b><span class="math inline">\(D_2\)</span></b> with value of 1 for general sample and 0 for everyone else</li>
-</ul></li>
-</ul>
-</section><section id="more-than-2-groups-1" class="slide level2">
-<h2>More than 2 groups</h2>
-<p></br></p>
-<pre><code>    group  ape_index D_1 D_2
-1       0  3.3222633   0   0
-2       0  3.3758678   0   0
-3       0  1.5576753   0   0
-390     1  3.0198380   1   0
-391     1  2.6463791   1   0
-392     1  4.9876503   1   0
-650     2 -0.7482664   0   1
-651     2 -2.0709030   0   1
-652     2  0.5378153   0   1</code></pre>
-</section><section id="more-than-2-groups-2" class="slide level2">
-<h2>More than 2 groups</h2>
-<p></br></p>
-<p><m><span class="math inline">\(\widehat{AI} = b_0 + b_1\times D_1 + b_2\times D_2\)</span></m> <m><span class="math inline">\(\widehat{AI} = 3.24 + 0.16\times D_1 - 2.47\times D_2\)</span></m> <m><span class="math inline">\(\widehat{AI}_{climb} = 3.24 + 0.16\times 0 - 2.47\times 0 = 3.24\)</span></m> <m><span class="math inline">\(\widehat{AI}_{swim} = 3.24 + 0.16\times 1 - 2.47\times 0 = 3.4\)</span></m> <m><span class="math inline">\(\widehat{AI}_{gen} = 3.24 + 0.16\times 0 - 2.47\times 1 = 0.77\)</span></m></p>
-</section><section id="more-than-2-groups-3" class="slide level2">
-<h2>More than 2 groups</h2>
-<ul>
-<li><span class="math inline">\(b_1\)</span> is then the difference between means of <strong>reference and first comparison</strong> group</li>
-<li><span class="math inline">\(b_2\)</span> is then the difference between means of <strong>reference and second comparison</strong> group</li>
-</ul>
-<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-47-1.png" width="768" /></p>
-</section><section id="more-than-2-groups-4" class="slide level2">
-<h2>More than 2 groups</h2>
-<ul>
-<li><span class="math inline">\(b_1\)</span> is then the difference between means of <strong>reference and first comparison</strong> group</li>
-<li><span class="math inline">\(b_2\)</span> is then the difference between means of <strong>reference and second comparison</strong> group</li>
-</ul>
-<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-48-1.png" width="768" /></p>
 </section></section>
 <section><section id="quantifying-confidence" class="titleslide slide level1" data-background="../pics/rosie2.jpg"><h1>Quantifying confidence</h1></section><section id="point-vs-interval-estimates" class="slide level2">
 <h2>Point vs interval estimates</h2>
@@ -1417,7 +1327,9 @@ df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df_gen)</code
 <li>This is the range of values true difference can take <strong>without being significantly different from the observed one</strong> (<span class="math inline">\(-0.16\)</span>)</li>
 <li>CIs that include zero <em>indicate non-significant results</em></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df[df<span class="op">$</span>group <span class="op">!=</span><span class="st"> </span><span class="dv">2</span>, ])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">group =</span> <span class="kw">rep</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="kw">c</span>(<span class="kw">length</span>(climb), <span class="kw">length</span>(swim))),
+                 <span class="dt">ape_index =</span> <span class="kw">c</span>(climb, swim))
+<span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df)
 
     Welch Two Sample t<span class="op">-</span>test
 
@@ -1432,10 +1344,10 @@ mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class
 </section><section id="confidence-intervals-2" class="slide level2">
 <h2>Confidence intervals</h2>
 <ul>
-<li>Useful for plotting results <a href="https://mivalek.github.io/Lectures/pub/conf_int_plot.R" target="_blank">(full code)</a></li>
+<li>Useful for plotting results <small><a href="https://mivalek.github.io/Lectures/pub/conf_int_plot.R" target="_blank">(full code)</a></small></li>
 <li>CI error bars overlapping with point estimates indicate non-significant result</li>
 </ul>
-<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-50-1.png" width="768" /></p>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-43-1.png" width="768" /></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 Since error bars can represent many things (SE, SD, CI), plot caption <strong>must say what they mean</strong>!
@@ -1452,63 +1364,175 @@ Since error bars can represent many things (SE, SD, CI), plot caption <strong>mu
 </ul>
 </section><section id="bootstrapping-1" class="slide level2">
 <h2>Bootstrapping</h2>
-<p><strong>The process</strong> </br> #. Calculate the statistic of interest #. Reshuffle your data by taking a sample of equal size <strong>with replacement</strong> #. Re-calculate the statistic and save its value #. Repeat 2. and 3. many times #. Compare the original observed statistic to the empirical sampling distribution</p>
-</section><section id="bootstrapping-2" class="slide level2">
-<h2>Bootstrapping</h2>
+<p></br> <strong>The process</strong> <small></br></small></p>
+<ol>
+<li>Calculate the statistic of interest</li>
+<li>Reshuffle your data by taking a sample of equal size <strong>with replacement</strong></li>
+<li>Re-calculate the statistic and save its value</li>
+<li>Repeat 2. and 3. many times</li>
+<li>Compare the original observed statistic to the empirical sampling distribution</li>
+</ol>
+</section><section id="bootstrapping-p--values" class="slide level2">
+<h2>Bootstrapping <em>p</em> -values</h2>
 <ul>
 <li>Let’s demonstrate bootstrapping on the difference in mean ape index between climbers and swimmers</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2 &lt;-<span class="st"> </span>df[df<span class="op">$</span>group <span class="op">!=</span><span class="st"> </span><span class="dv">2</span>, ]
-<span class="co"># observed statistic</span>
-obs_stat &lt;-<span class="st"> </span><span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]) <span class="op">-</span>
-<span class="st">  </span><span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># observed statistic</span>
+obs_stat &lt;-<span class="st"> </span><span class="kw">mean</span>(df<span class="op">$</span>ape_index[df<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]) <span class="op">-</span>
+<span class="st">  </span><span class="kw">mean</span>(df<span class="op">$</span>ape_index[df<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">1</span>])
 <span class="co"># bootstrap</span>
 boot_dist &lt;-<span class="st"> </span><span class="kw">c</span>()
+df2 &lt;-<span class="st"> </span>df
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>) {
-  <span class="co"># reshuffle group</span>
-  df2<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw">sample</span>(df<span class="op">$</span>group[df<span class="op">$</span>group <span class="op">!=</span><span class="st"> </span><span class="dv">2</span>], <span class="dt">replace =</span> T)
+  <span class="co"># RANDOMISE group by resampling its values</span>
+  df2<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw">sample</span>(df<span class="op">$</span>group, <span class="dt">replace =</span> T)
   boot_dist &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="co"># add value to boot_dist</span>
     boot_dist,
     <span class="co"># calculate the statistic on the bootstrapped sample</span>
     <span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]) <span class="op">-</span>
 <span class="st">      </span><span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))
 }</code></pre></div>
-</section><section id="bootstrapping-3" class="slide level2">
-<h2>Bootstrapping</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(boot_dist, <span class="dt">breaks =</span> <span class="dv">30</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mean difference&quot;</span>)
-<span class="kw">abline</span>(<span class="dt">v =</span> obs_stat, <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-52-1.png" width="768" /></p>
+</section><section id="bootstrapping-p--values-1" class="slide level2">
+<h2>Bootstrapping <em>p</em> -values</h2>
+<ul>
+<li>Now we can get the <em>p</em>-value based on the <strong>empirical</strong> sampling distribution</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">abs</span>(boot_dist) <span class="op">&gt;=</span><span class="st"> </span><span class="kw">abs</span>(obs_stat)) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(boot_dist)
+[<span class="dv">1</span>] <span class="fl">0.255</span>
+<span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df)<span class="op">$</span>p.value <span class="co"># compare to t-test</span>
+[<span class="dv">1</span>] <span class="fl">0.2808978</span></code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-46-1.png" width="768" /></p>
 </section><section id="bootstrapping-cis" class="slide level2">
 <h2>Bootstrapping CIs</h2>
 <ul>
-<li>There are <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)#Methods_for_bootstrap_confidence_intervals" target="_blank">several methods</a> for deriving bootstrapped CIs</li>
-<li>The simplest one (AKA <em>basic bootstrap</em>) is as follows:
-<ul>
-<li>Get the cut-off points corresponding to the middle 95% of the bootstrap distribution</li>
-<li>Calculate range as distance between these points</li>
-<li>Half of the range is the distance between the point estimate and each end of the 95% CI</li>
-</ul></li>
-<li>This leads to <strong>symmetrical</strong> CIs, other methods may produce asymmetrical CIs</li>
+<li>Bootstrapping can be used to obtain CIs</li>
+<li>The difference in procedure is that we <strong>don’t want to randomise</strong> the data, just resample it</li>
+<li>In our case, that means that we won’t reshuffle <code>group</code> but take sample of whole rows of <code>df</code></li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bootstrap for CI</span>
+boot_dist &lt;-<span class="st"> </span><span class="kw">c</span>()
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">1000</span>) {
+  <span class="co"># resample df - ENTIRE ROWS</span>
+  df2 &lt;-<span class="st"> </span>df[<span class="kw">sample</span>(<span class="kw">nrow</span>(df), <span class="dt">replace =</span> T), ]
+  boot_dist &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="co"># add value to boot_dist</span>
+    boot_dist,
+    <span class="co"># calculate the statistic on the bootstrapped sample</span>
+    <span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]) <span class="op">-</span>
+<span class="st">      </span><span class="kw">mean</span>(df2<span class="op">$</span>ape_index[df2<span class="op">$</span>group <span class="op">==</span><span class="st"> </span><span class="dv">1</span>]))
+}</code></pre></div>
 </section><section id="bootstrapping-cis-1" class="slide level2">
 <h2>Bootstrapping CIs</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># middle 95% of boot_dist</span>
+<ul>
+<li>The resulting empirical distribution is <strong>centred around the original observed value</strong></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(boot_dist, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mean difference&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v =</span> obs_stat, <span class="dt">col =</span> colors[<span class="dv">3</span>], <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-48-1.png" width="768" /></p>
+</section><section id="bootstrapping-cis-2" class="slide level2">
+<h2>Bootstrapping CIs</h2>
+<ul>
+<li>There are <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)#Methods_for_bootstrap_confidence_intervals" target="_blank">several methods</a> for deriving bootstrapped CIs</li>
+<li>The simplest one (AKA <em>percentile bootstrap</em>) is to simply get the cut-off points corresponding to the middle 95% of the bootstrap distribution to get the bounds of the 95% CI</li>
+<li>This leads to <strong>asymmetrical</strong> CIs, other methods may produce symmetrical CIs</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># middle 95% of boot_dist = 95% CI</span>
 (cutoffs &lt;-<span class="st"> </span><span class="kw">quantile</span>(boot_dist, <span class="kw">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>), <span class="dt">na.rm =</span> T))
       <span class="fl">2.5</span><span class="op">%      97.5%</span><span class="st"> </span>
-<span class="op">-</span><span class="fl">0.2721346</span>  <span class="fl">0.2832401</span> 
-<span class="co"># distance from middle to limit of CI</span>
-(ci_dist &lt;-<span class="st"> </span><span class="kw">unname</span>(<span class="kw">diff</span>(cutoffs))<span class="op">/</span><span class="dv">2</span>)
-[<span class="dv">1</span>] <span class="fl">0.2776874</span>
-
-<span class="co"># 95% CI around observed point estimate -0.16</span>
-obs_stat <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>ci_dist
-[<span class="dv">1</span>] <span class="op">-</span><span class="fl">0.4370818</span>  <span class="fl">0.1182929</span>
+<span class="op">-</span><span class="fl">0.4629747</span>  <span class="fl">0.1197745</span> 
 
 <span class="co"># compare to CI from t-test</span>
 <span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df[df<span class="op">$</span>group <span class="op">!=</span><span class="st"> </span><span class="dv">2</span>, ])<span class="op">$</span>conf.int
 [<span class="dv">1</span>] <span class="op">-</span><span class="fl">0.4495286</span>  <span class="fl">0.1307397</span>
 <span class="kw">attr</span>(,<span class="st">&quot;conf.level&quot;</span>)
 [<span class="dv">1</span>] <span class="fl">0.95</span></code></pre></div>
+</section></section>
+<section><section id="lines-anyone" class="titleslide slide level1" data-background="../pics/lines2.jpg"><h1>Lines anyone?</h1></section><section id="mean-difference-as-linear-model" class="slide level2">
+<h2>Mean difference as linear model</h2>
+<ul>
+<li>Differences between means of two (or multiple) groups can be conceptualised as linear model</li>
+<li>Simplest way is using <strong>dummy variables</strong>
+<ul>
+<li>Let’s define variable <b><span class="math inline">\(D\)</span></b> as a having the value of 0 for climbers and 1 for swimmers</li>
+</ul></li>
+<li><m><span class="math inline">\(\widehat{AI} = b_0 + b_1\times D\)</span></m></li>
+<li><m><span class="math inline">\(\widehat{AI} = 3.24 + 0.16\times D\)</span></m></li>
+<li><m><span class="math inline">\(\widehat{AI}_{climb} = 3.24 + 0.16\times 0 = 3.24\)</span></m></li>
+<li><m><span class="math inline">\(\widehat{AI}_{swim} = 3.24 + 0.16\times 1 = 3.4\)</span></m></li>
+<li><span class="math inline">\(b_1\)</span> is then <strong>the difference between the group means</strong></li>
+</ul>
+</section><section id="mean-difference-as-linear-model-1" class="slide level2">
+<h2>Mean difference as linear model</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(ape_index <span class="op">~</span><span class="st"> </span><span class="kw">jitter</span>(group, <span class="dt">amount =</span> .<span class="dv">1</span>), df, <span class="dt">pch =</span> <span class="dv">20</span>, <span class="dt">type =</span> <span class="st">&quot;p&quot;</span>,
+     <span class="dt">col =</span> <span class="kw">paste0</span>(colors[<span class="dv">2</span>], <span class="st">&quot;55&quot;</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span>.<span class="dv">5</span>, <span class="fl">1.5</span>), <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>,
+     <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Ape index (cm)&quot;</span>)
+<span class="kw">abline</span>(<span class="kw">lm</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df), <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> colors[<span class="dv">3</span>])
+<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="kw">c</span>(<span class="st">&quot;Climbers&quot;</span>, <span class="st">&quot;Swimmers&quot;</span>), <span class="dt">tick =</span> F, <span class="dt">cex =</span> <span class="fl">1.5</span>)</code></pre></div>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-50-1.png" width="528" /></p>
+</section><section id="mean-difference-as-linear-model-2" class="slide level2">
+<h2>Mean difference as linear model</h2>
+<ul>
+<li>Results of our <em>t</em>-test are equivalent to those of linear regression (Martin’s block)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df, <span class="dt">var.equal =</span> T) <span class="co"># Student&#39;s t not Welch&#39;s</span>
+
+    Two Sample t<span class="op">-</span>test
+
+data<span class="op">:</span><span class="st">  </span>ape_index by group
+t =<span class="st"> </span><span class="op">-</span><span class="fl">1.102</span>, df =<span class="st"> </span><span class="dv">561</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.2709</span>
+alternative hypothesis<span class="op">:</span><span class="st"> </span>true difference <span class="cf">in</span> means is not equal to <span class="dv">0</span>
+<span class="dv">95</span> percent confidence interval<span class="op">:</span>
+<span class="st"> </span><span class="op">-</span><span class="fl">0.4434890</span>  <span class="fl">0.1247001</span>
+sample estimates<span class="op">:</span>
+mean <span class="cf">in</span> group <span class="dv">0</span> mean <span class="cf">in</span> group <span class="dv">1</span> 
+       <span class="fl">3.236538</span>        <span class="fl">3.395933</span> </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># linear model</span>
+m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(ape_index <span class="op">~</span><span class="st"> </span>group, df)
+<span class="kw">round</span>(<span class="kw">coef</span>(<span class="kw">summary</span>(m1)),<span class="dv">3</span>) <span class="co"># summary of some of the results</span>
+            Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)
+(Intercept)    <span class="fl">3.237</span>      <span class="fl">0.106</span>  <span class="fl">30.655</span>    <span class="fl">0.000</span>
+group          <span class="fl">0.159</span>      <span class="fl">0.145</span>   <span class="fl">1.102</span>    <span class="fl">0.271</span></code></pre></div>
+</section><section id="more-than-2-groups" class="slide level2">
+<h2>More than 2 groups</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_gen &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">group =</span> <span class="dv">2</span>, <span class="dt">ape_index =</span> <span class="kw">rnorm</span>(<span class="dv">250</span>, <span class="dv">0</span>, <span class="fl">3.34</span>))
+df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, df_gen)</code></pre></div>
+<ul>
+<li>Number of dummy variables needed is <strong>one less</strong> the number of groups
+<ul>
+<li>Let’s define variable <b><span class="math inline">\(D_1\)</span></b> as having value of 1 for swimmers and 0 for everyone else</li>
+<li>Let’s add variable <b><span class="math inline">\(D_2\)</span></b> with value of 1 for general sample and 0 for everyone else</li>
+</ul></li>
+</ul>
+</section><section id="more-than-2-groups-1" class="slide level2">
+<h2>More than 2 groups</h2>
+<p></br></p>
+<pre><code>    group  ape_index D_1 D_2
+1       0  3.3222633   0   0
+2       0  3.3758678   0   0
+3       0  1.5576753   0   0
+390     1  3.0198380   1   0
+391     1  2.6463791   1   0
+392     1  4.9876503   1   0
+650     2  3.9600569   0   1
+651     2 -0.0129005   0   1
+652     2  4.5026731   0   1</code></pre>
+</section><section id="more-than-2-groups-2" class="slide level2">
+<h2>More than 2 groups</h2>
+<p></br></p>
+<p><m><span class="math inline">\(\widehat{AI} = b_0 + b_1\times D_1 + b_2\times D_2\)</span></m> <m><span class="math inline">\(\widehat{AI} = 3.24 + 0.16\times D_1 - 2.47\times D_2\)</span></m> <m><span class="math inline">\(\widehat{AI}_{climb} = 3.24 + 0.16\times 0 - 2.47\times 0 = 3.24\)</span></m> <m><span class="math inline">\(\widehat{AI}_{swim} = 3.24 + 0.16\times 1 - 2.47\times 0 = 3.4\)</span></m> <m><span class="math inline">\(\widehat{AI}_{gen} = 3.24 + 0.16\times 0 - 2.47\times 1 = 0.77\)</span></m></p>
+</section><section id="more-than-2-groups-3" class="slide level2">
+<h2>More than 2 groups</h2>
+<ul>
+<li><span class="math inline">\(b_1\)</span> is then the difference between means of <strong>reference and first comparison</strong> group</li>
+<li><span class="math inline">\(b_2\)</span> is then the difference between means of <strong>reference and second comparison</strong> group</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-55-1.png" width="768" /></p>
+</section><section id="more-than-2-groups-4" class="slide level2">
+<h2>More than 2 groups</h2>
+<ul>
+<li><span class="math inline">\(b_1\)</span> is then the difference between means of <strong>reference and first comparison</strong> group</li>
+<li><span class="math inline">\(b_2\)</span> is then the difference between means of <strong>reference and second comparison</strong> group</li>
+</ul>
+<p><img src="Lecture_5_files/figure-revealjs/unnamed-chunk-56-1.png" width="768" /></p>
 </section><section id="take-home-message-2" class="slide level2">
 <h2>Take-home message</h2>
 <ul>
@@ -1520,7 +1544,7 @@ obs_stat <span class="op">+</span><span class="st"> </span><span class="kw">c</s
 <li><strong>Type II error</strong> is the false <em>negative</em>
 <ul>
 <li><span class="math inline">\(\beta\)</span> is its associated probability</li>
-<li>We don’t want <span class="math inline">\(beta\)</span> to be above .2</li>
+<li>We don’t want <span class="math inline">\(\beta\)</span> to be above .2</li>
 </ul></li>
 <li><strong>Statistical power</strong> (<span class="math inline">\(\beta - 1\)</span>) is the power to detect a true effect, if it exists
 <ul>
@@ -1531,6 +1555,22 @@ obs_stat <span class="op">+</span><span class="st"> </span><span class="kw">c</s
 </section><section id="take-home-message-3" class="slide level2">
 <h2>Take-home message</h2>
 <ul>
+<li>Confidence intervals quantify the uncertainty around point estimates</li>
+<li>They give us <strong>range of values</strong> the true <em>population parameter</em> can take <strong>and still not be significantly different from the <em>observed statistic</em></strong></li>
+<li>If they contain zero (for mean differences/slopes), result is not statistically significant</li>
+<li>If CI around mean of a group overlaps with mean of another group, groups are not significantly different</li>
+</ul>
+</section><section id="take-home-message-4" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li><em>Bootstrapping</em> is a simple but powerful and elegant <strong>resampling method</strong> of doing statistics</li>
+<li><strong>Relies on data alone</strong></li>
+<li><strong>Does not make assumptions</strong> about parameter distributions</li>
+<li>It can be used to derive several types of CIs</li>
+</ul>
+</section><section id="take-home-message-5" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
 <li>Tests of location and mean differences <strong>are</strong> linear models with a <em>categorical predictor</em></li>
 <li>Easiest way to include categorical predictors is using <strong>dummy variables</strong>
 <ul>
@@ -1539,22 +1579,6 @@ obs_stat <span class="op">+</span><span class="st"> </span><span class="kw">c</s
 </ul></li>
 <li>Intercept is the predicted mean of the <em>reference</em> category</li>
 <li>Individual <em>b</em> parameters related to dummy variables are differences in predicted means of reference and given comparison group</li>
-</ul>
-</section><section id="take-home-message-4" class="slide level2">
-<h2>Take-home message</h2>
-<ul>
-<li>Confidence intervals quantify the uncertainty around point estimates</li>
-<li>They give us <strong>range of values</strong> the true <em>population parameter</em> can take <strong>and still not be significantly different from the <em>observed statistic</em></strong></li>
-<li>If they contain zero (for mean differences/slopes), result is not statistically significant</li>
-<li>If CI around mean of a group overlaps with mean of another group, groups are not significantly different</li>
-</ul>
-</section><section id="take-home-message-5" class="slide level2">
-<h2>Take-home message</h2>
-<ul>
-<li><em>Bootstrapping</em> is a simple but powerful and elegant <strong>resampling method</strong> of doing statistics</li>
-<li><strong>Relies on data alone</strong></li>
-<li><strong>Does not make assumptions</strong> about parameter distributions</li>
-<li>It can be used to derive several types of CIs</li>
 </ul>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
