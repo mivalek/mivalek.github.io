@@ -845,7 +845,7 @@ identity
 <ul>
 <li>First, we need to calculate the sample mean</li>
 <li>Then we need a measure of the distance between sample mean and expected <span class="math inline">\(\mu\)</span></li>
-<li>Taking all possible sample of <em>n</em> = 253 from the population of the null hypothesis (<i>i.e.,</i> climbers <strong>are</strong> from the general population), the differences between the sample means of the individual samples and the expected <span class="math inline">\(\mu\)</span> give us the sampling distribution of <span class="math inline">\(\bar{x} - \mu\)</span></li>
+<li>Taking all possible sample of <em>n</em> = 253 from the population of the null hypothesis (<i>e.g.,</i> climbers <strong>are</strong> from the general population), the differences between the sample means of the individual samples and the expected <span class="math inline">\(\mu\)</span> give us the sampling distribution of <span class="math inline">\(\bar{x} - \mu\)</span></li>
 <li>The sampling distribution will approach normal (according to <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/central-limit-theorem" target="_blank">CLT</a>)</li>
 </ul>
 </section><section id="test-of-location-3" class="slide level2">
@@ -1241,7 +1241,7 @@ results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<s
 <li><span class="math inline">\(1 - \beta\)</span> is then the <strong>statistical power</strong> of the test
 <ul>
 <li>Conventionally, we want it to be <strong>at least 80%</strong></li>
-<li>The larger the sample size, the better higher the power</li>
+<li>The larger the sample size, the higher the power</li>
 <li>The larger the true population effect, the smaller the sample size needed to detect it</li>
 <li>Different tests have different levels of power</li>
 </ul></li>
@@ -1266,11 +1266,11 @@ results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<s
 <tr class="odd">
 <td><span class="math inline">\(p \geq .05\)</span></td>
 <td style="text-align: center;">Correct retention </br><m><span class="math inline">\(1-\alpha\)</span></m></td>
-<td style="text-align: center;"><strong>Type I error</strong> </br><m><span class="math inline">\(\alpha\)</span></m></td>
+<td style="text-align: center;"><strong>Type II error</strong> </br><m><span class="math inline">\(\beta\)</span></m></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(p &lt; .05\)</span></td>
-<td style="text-align: center;"><strong>Type II error</strong> </br><m><span class="math inline">\(\beta\)</span></m></td>
+<td style="text-align: center;"><strong>Type I error</strong> </br><m><span class="math inline">\(\alpha\)</span></m></td>
 <td style="text-align: center;">Statistical power </br><m><span class="math inline">\(1-\beta\)</span></m></td>
 </tr>
 </tbody>

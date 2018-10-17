@@ -797,7 +797,7 @@ cormat
 [<span class="dv">2</span>,] <span class="op">-</span><span class="fl">0.072</span>  <span class="fl">1.000</span> <span class="op">-</span><span class="fl">0.024</span>  <span class="fl">0.263</span>
 [<span class="dv">3</span>,]  <span class="fl">0.102</span>  <span class="fl">0.001</span>  <span class="fl">1.000</span> <span class="op">-</span><span class="fl">0.006</span>
 [<span class="dv">4</span>,]  <span class="fl">0.170</span> <span class="op">-</span><span class="fl">0.058</span>  <span class="fl">0.030</span>  <span class="fl">1.000</span>
-<span class="co">#the same as this?</span>
+<span class="co"># the same as this?</span>
 identity
      [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]
 [<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">0</span>    <span class="dv">0</span>    <span class="dv">0</span>
@@ -1231,7 +1231,7 @@ results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<s
 <li><span class="math inline">\(1 - \beta\)</span> is then the <strong>statistical power</strong> of the test
 <ul>
 <li>Conventionally, we want it to be <strong>at least 80%</strong></li>
-<li>The larger the sample size, the better higher the power</li>
+<li>The larger the sample size, the higher the power</li>
 <li>The larger the true population effect, the smaller the sample size needed to detect it</li>
 <li>Different tests have different levels of power</li>
 </ul></li>
@@ -1256,11 +1256,11 @@ results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<s
 <tr class="odd">
 <td><span class="math inline">\(p \geq .05\)</span></td>
 <td style="text-align: center;">Correct retention </br><m><span class="math inline">\(1-\alpha\)</span></m></td>
-<td style="text-align: center;"><strong>Type I error</strong> </br><m><span class="math inline">\(\alpha\)</span></m></td>
+<td style="text-align: center;"><strong>Type II error</strong> </br><m><span class="math inline">\(\beta\)</span></m></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(p &lt; .05\)</span></td>
-<td style="text-align: center;"><strong>Type II error</strong> </br><m><span class="math inline">\(\beta\)</span></m></td>
+<td style="text-align: center;"><strong>Type I error</strong> </br><m><span class="math inline">\(\alpha\)</span></m></td>
 <td style="text-align: center;">Statistical power </br><m><span class="math inline">\(1-\beta\)</span></m></td>
 </tr>
 </tbody>
@@ -1313,7 +1313,7 @@ results &lt;-<span class="st"> </span><span class="kw">lapply</span>(df_type1[<s
 </section><section id="confidence-intervals-1" class="slide level2">
 <h2>Confidence intervals</h2>
 <ul>
-<li>For our independent <em>t</em>-test, 95% CI of the mean difference is [<span class="math inline">\(-0.44,\ 0.12\)</span>]</li>
+<li>For our independent <em>t</em>-test, 95% CI of the mean difference is [<span class="math inline">\(-0.45,\ 0.13\)</span>]</li>
 <li>This is the range of values true difference can take <strong>without being significantly different from the observed one</strong> (<span class="math inline">\(-0.16\)</span>)</li>
 <li>CIs that include zero <em>indicate non-significant results</em></li>
 </ul>
