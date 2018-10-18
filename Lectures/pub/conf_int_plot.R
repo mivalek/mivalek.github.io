@@ -15,7 +15,8 @@ df <- data.frame(group = rep(0:1, c(length(climb), length(swim))),
 
 ### get confidence intervals
 # confint() takes a linear model
-ci <- confint(lm(ape_index ~ group, df))
+ci <- rbind(confint(lm(ape_index ~ 1, df[df$group == 0, ])), # intercept only model for group 0
+            confint(lm(ape_index ~ 1, df[df$group == 1, ]))) # intercept only model for group 1
 # calculate distance of limits of CIs from their mid-points (respective group means)
 ci <- abs((ci[ , 1] - ci[ , 2])) / 2
 # get means
