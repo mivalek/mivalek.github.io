@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>FFFFFFFUUUUUUnctions</title>
+
+<script src="functions_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="functions_files/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="functions_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="functions_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="functions_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="functions_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="functions_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="functions_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="functions_files/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">FFFFFFFUUUUUUnctions</h1>
+<h3 class="subtitle"><em>What they’re about, how to use them, and how to make your own</em></h3>
+
+</div>
+
+
+<p>At this point, you’re already pretty familiar with the notion of functions in <code>R</code> and ideally you appreciate how convenient they are. However, you might still occasionally get caught off-guard by a function you haven’t encountered before or by an error message produced by a function you have used. In this explainer, we’ll first take a close look at the nature of functions in <code>R</code> and then talk about how to write your own functions.</p>
+<div id="recap-on-functions" class="section level1">
+<h1>Recap on functions</h1>
+<p>In the third <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/fun-in-function" target="_blank">USMR lecture</a>, we talked about how mathematical and computer functions are basically the same. They are just some <em>procedures</em> that take an arbitrary number of <em>arguments</em> and return a single <em>output</em> based on the specific value of the provided arguments. Before you object, yes, computer functions can and often do indeed produce structures with many values, however, for a given combination of arguments, they will only produce a single such structure!</p>
+<p>To illustrate, let’s look at the most basic functions in <code>R</code>: the assignment operator <code>&lt;-</code> and the concatenate function <code>c()</code>.</p>
+<p>Yes, <code>&lt;-</code> is a function, even though the way it’s used differs from most other functions. It takes exactly two arguments – a name of an object to the left of it and an object or a value to the right of it. the output of this function is an object with the provided name containing the values assigned:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># arg 1: name  function   arg 2: value</span>
+      x           &lt;-<span class="st">            </span><span class="dv">3</span>
+
+<span class="co"># print x</span>
+x</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># arg 1: name  function   arg 2: object + value</span>
+      y           &lt;-<span class="st">             </span>x <span class="op">+</span><span class="st"> </span><span class="dv">7</span>
+y</code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p>The <code>c()</code> function, on the other hand takes an arbitrary number of arguments, including none at all. The arguments can either be single values (<code>numeric</code>, <code>character</code>, <code>logical</code>, <code>NA</code>, <code>Nan</code>), or objects. The function then outputs <em>a single vector</em> consisting of all the arguments:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, x, <span class="dv">9</span>, y)</code></pre></div>
+<pre><code>## [1]  1  5  3  9 10</code></pre>
+</div>
+<div id="using-functions" class="section level1">
+<h1>Using functions</h1>
+<div id="the-s" class="section level2">
+<h2>The <code>()</code>s</h2>
+<p>As a general rule of thumb, the way to tell <code>R</code> that the thing we are calling is a function is to put brackets – <code>()</code> – after the name, <em>e.g.,</em> <code>data.frame()</code>, <code>rnorm()</code>, or <code>factor()</code>. The only exception to this rule are operators – functions that have a convenient <strong>infix</strong> form – such as the assignment operators (<code>&lt;-</code>, <code>=</code>), mathematical operators (<code>+</code>, <code>^</code>, <code>%%</code>, …), logical operators (<code>==</code>, <code>&gt;</code>, <code>%in%</code>, …), and a handful of others. Even the subsetting square brackets <code>[]</code> are a function! However, the infix form is just a shorthand and all of these can be used in the standard way functions are used:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span> <span class="co"># infix form</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">+</span><span class="st">`</span>(<span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># prefix form, notice the backticks</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>The above is to explain the logic behind a simple principle in <code>R</code> programming: <strong>If it is a function</strong> (used in its standard <em>prefix</em> form) <strong>then it must have</strong> <code>()</code><strong>s. If it is not a function, then it must NOT have them</strong>. If you understand this, you will never attempt to run commands like <code>as.factor[x]</code> or <code>my_data(...)</code>!</p>
+</div>
+<div id="specifying-arguments" class="section level2">
+<h2>Specifying arguments</h2>
+<p>The vast majority of functions require you to give it <em>at least</em> one argument. Arguments of a function are often named. From the point of view of a user of a function, these names are only <em>placeholders</em> for some values we want to pass to the function. In RStudio, you can type the name of a function, open the bracket and then press the Tab key to see a list of arguments the function takes. You can try it now, type, for instance, <code>sd(</code> and press the Tab key. You should see a pop-up list of two arguments – <code>x =</code> and <code>na.rm =</code> – appear.</p>
+<p>This means, that to use the <code>sd()</code> function <em>explicitly</em>, we much give it two arguments: a <code>numeric</code> vector and a single <code>logical</code> value (technically, a <code>logical</code> vector of length 1):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">52</span>, <span class="op">-</span><span class="dv">32</span>, <span class="fl">0.5433</span>, <span class="ot">NA</span>), <span class="dt">na.rm =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>The output of the function is <code>NA</code> because our vector contained an <code>NA</code> value and the <code>na.rm =</code> argument that removes the <code>NA</code>s was set to <code>FALSE</code>. Try setting it to <code>TRUE</code> (or <code>T</code> if you’re a lazy typist) and see what <code>R</code> gives you.</p>
+<p>Look what happens when we run the following command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">52</span>, <span class="op">-</span><span class="dv">32</span>, <span class="fl">0.5433</span>)) <span class="co"># no NAs this time</span></code></pre></div>
+<pre><code>## [1] 47.83839</code></pre>
+<p>We didn’t specify the value of the <code>na.rm =</code> argument but the code worked anyway. Why might that be…?</p>
+<div id="default-values-of-arguments" class="section level3">
+<h3>Default values of arguments</h3>
+<p>The reason for this behaviour is that functions can have arguments set to some value <strong>by default</strong> to facilitate the use of the functions in the most common situations by reducing the amount of typing. Look at the documentation for the <code>sd()</code> function (by running <code>?sd</code> in the console).</p>
+<p>You should see that under “<strong>Usage</strong>” it reads <code>sd(x, na.rm = FALSE)</code>. This means that, by default, the <code>na.rm =</code> argument is set to <code>FALSE</code> and if you don’t specify its value manually, the function will run with this setting. Re-visiting our example with the <code>NA</code> value, you can see that the output is as it was before:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">52</span>, <span class="op">-</span><span class="dv">32</span>, <span class="fl">0.5433</span>, <span class="ot">NA</span>))</code></pre></div>
+<pre><code>## [1] NA</code></pre>
+</div>
+<div id="argument-matching" class="section level3">
+<h3>Argument matching</h3>
+<p>I hope you noticed a tiny change in the way the first argument was specified in the line above (coding is a lot about attention to detail!) – there is no <code>x =</code> in the code.</p>
+<p>The reason why <code>R</code> is still able to understand what we meant is <em>argument matching</em>. If no names are given to the arguments, <code>R</code> assumes they are entered in the order in which they were specified when the function was created. This is the same order you can look up in the “Usage” section of the function documentation (using <code>?</code>)</p>
+<p>To give you another example, take <code>rnorm()</code> for instance. If you pull up the documentation (AKA help) of the file with <code>?rnorm</code>, you’ll see that it takes 3 arguments: <code>n =</code>, <code>mean =</code>, and <code>sd =</code>. The latter two have default values but <code>n =</code> doesn’t so we must provide its value.</p>
+<p>Setting the first argument to 10 and omitting the other 2 will generate a vector of 10 numbers drawn from a normal distribution with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma=1\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>)</code></pre></div>
+<pre><code>##  [1] -1.2070657  0.2774292  1.0844412 -2.3456977  0.4291247  0.5060559
+##  [7] -0.5747400 -0.5466319 -0.5644520 -0.8900378</code></pre>
+<p>Lets say we want to change the mean to -5 but keep standard deviation the same. Relying on argument matching, we can do:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="op">-</span><span class="dv">5</span>)</code></pre></div>
+<pre><code>##  [1] -5.477193 -5.998386 -5.776254 -4.935541 -4.040506 -5.110285 -5.511010
+##  [8] -5.911195 -5.837172 -2.584165</code></pre>
+<p>However, if we want to change the <code>sd =</code> argument to 3 but leave <code>mean =</code> set to 0, we need to let <code>R</code> know this more explicitly. There are several ways to do the same thing but they all rely on the principle that unnamed values will be interpreted in order of arguments:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">3</span>) <span class="co"># keep mean = 0</span></code></pre></div>
+<pre><code>##  [1]  0.4022647 -1.4720577 -1.3216436  1.3787683 -2.0811607 -4.3446147
+##  [7]  1.7242672 -3.0709672 -0.0454149 -2.8078458</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>, , <span class="dv">3</span>) <span class="co"># skip mean = (DON&#39;T DO THIS! it&#39;s illegible)</span></code></pre></div>
+<pre><code>##  [1]  3.3068926 -1.4267792 -2.1283201 -1.5037742 -4.8872804 -3.5028578
+##  [7] -6.5401189 -4.0229796 -0.8828816 -1.3976926</code></pre>
+<p>If the arguments are named, they can be entered in <strong>any order</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">sd =</span> <span class="dv">2</span>, <span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="op">-</span><span class="dv">100</span>)</code></pre></div>
+<pre><code>##  [1]  -97.10101 -102.13729 -101.71073 -100.56125 -101.98868 -101.93703
+##  [7] -102.21464 -102.50397 -101.04766 -100.99370</code></pre>
+<p>The important point here is that if you give a function 4 (for example) <em>unnamed</em> values separated with commas, <code>R</code> <strong>will try to match them to the first 4 arguments of the function</strong>. If the function takes fewer than arguments or if the values are not valid for the respective arguments, <code>R</code> will throw an error:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">3</span>, <span class="dv">8</span>) <span class="co"># more values than arguments</span></code></pre></div>
+<pre><code>## Error in rnorm(100, 5, -3, 8): unused argument (8)</code></pre>
+<p>That is, it will throw an error if you’re lucky. If you’re not, you might get all sorts of unexpected behaviours:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>, T, <span class="op">-</span><span class="dv">7</span>) <span class="co"># illegal values passed to arguments</span></code></pre></div>
+<pre><code>## Warning in rnorm(10, T, -7): NAs produced</code></pre>
+<pre><code>##  [1] NaN NaN NaN NaN NaN NaN NaN NaN NaN NaN</code></pre>
+</div>
+<div id="passing-vectors-as-arguments" class="section level3">
+<h3>Passing vectors as arguments</h3>
+<p>The majority of functions – and you’ve already seen quite a few of these – have at least one argument that can take multiple values. The <code>x =</code> (first) argument of <code>sample()</code> or the <code>labels =</code> argument of <code>factor()</code> are examples of these.</p>
+<p>Imagine we want to sample 10 draws with replacement from the words “elf”, “orc”, “hobbit”, and “dwarf”. Your intuition might be to write something like <code>sample(&quot;elf&quot;, &quot;orc&quot;, &quot;hobbit&quot;, &quot;dwarf&quot;, 10)</code>. That will however not work:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="st">&quot;elf&quot;</span>, <span class="st">&quot;orc&quot;</span>, <span class="st">&quot;hobbit&quot;</span>, <span class="st">&quot;dwarf&quot;</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)</code></pre></div>
+<pre><code>## Error in sample(&quot;elf&quot;, &quot;orc&quot;, &quot;hobbit&quot;, &quot;dwarf&quot;, 10, replace = T): unused arguments (&quot;dwarf&quot;, 10)</code></pre>
+<p> </p>
+<p>Take a moment to ponder why this produces an error…</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Yes, you’re right, it has to do with argument matching! <code>R</code> interprets the above command as you passing five arguments to the <code>sample()</code> function, which only takes three arguments. Moreover, the second argument <code>size =</code> must be a positive number, <code>replace =</code> must be a single logical value, and <code>prob =</code> is a vector of numbers between 0 and 1 that must add up to 1 and the vector must be of the same length as the vector passed to the first <code>x =</code> argument. As you can see, our command fails on most of these criteria.</p>
+<p>So, how do we tell <code>R</code> that we want to pass the four races of Middle-earth to the first argument of <code>sample()</code>? Well, we need to bind them into a single vector using the <code>c()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;elf&quot;</span>, <span class="st">&quot;orc&quot;</span>, <span class="st">&quot;hobbit&quot;</span>, <span class="st">&quot;dwarf&quot;</span>), <span class="dv">10</span>, T)</code></pre></div>
+<pre><code>##  [1] &quot;elf&quot;    &quot;hobbit&quot; &quot;orc&quot;    &quot;elf&quot;    &quot;elf&quot;    &quot;orc&quot;    &quot;elf&quot;   
+##  [8] &quot;elf&quot;    &quot;orc&quot;    &quot;elf&quot;</code></pre>
+<p><strong>Remember: </strong>If you want to pass a vector of values into a single argument of a function, you need to use an object in your environment containing the vector or a function that outputs a vector. The basic one is <code>c()</code> but others work too, <em>e.g.,</em> <code>sample(5:50, 10)</code> (the <code>:</code> operator returns a vector containing a complete sequence of integers between the specified values).</p>
+</div>
+<div id="passing-objects-as-arguments" class="section level3">
+<h3>Passing objects as arguments</h3>
+<p><strong>Everything in</strong> <code>R</code> <strong>is an object</strong> and thus the values passed as arguments to functions are also objects. It is completely up to you whether you want to create the object <em>ad hoc</em> for the purpose of only passing it to a function or whether you want to pass to a function an object you already have in your environment. For example, if our four races are of particular interest to us and we want to keep them for future use, we can assign them to the environment under some name:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ME_races &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;elf&quot;</span>, <span class="st">&quot;orc&quot;</span>, <span class="st">&quot;hobbit&quot;</span>, <span class="st">&quot;dwarf&quot;</span>)
+ME_races <span class="co"># here they are</span></code></pre></div>
+<pre><code>## [1] &quot;elf&quot;    &quot;orc&quot;    &quot;hobbit&quot; &quot;dwarf&quot;</code></pre>
+<p>Then, we can just use them as arguments to functions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factor</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">20</span>, T), <span class="dt">labels =</span> ME_races)</code></pre></div>
+<pre><code>##  [1] hobbit elf    dwarf  elf    elf    dwarf  dwarf  orc    elf    dwarf 
+## [11] hobbit dwarf  dwarf  dwarf  orc    orc    orc    hobbit orc    orc   
+## Levels: elf orc hobbit dwarf</code></pre>
+</div>
+</div>
+</div>
+<div id="function-output" class="section level1">
+<h1>Function output</h1>
+<div id="command-is-a-representation-of-its-output" class="section level2">
+<h2>Command is a representation of its output</h2>
+<p>Any complete command in <code>R</code>, such as the one above is merely a symbolic representation of the output it returns. Understanding this is crucial! Just like in a natural language, there are many ways to say the same thing, there are multiple ways of producing the same output in <code>R</code>. It’s not called a programming language for nothing!</p>
+<div id="one-way-street" class="section level3">
+<h3>One-way street</h3>
+<p>Another important thing to realise is that, given that there are many ways to do the same thing in <code>R</code>, there is a sort of directionality to the relationship between a command and its output. If you know what a function does, you can unambiguously tell what the output will be given specified arguments. However, once the output is produced, there is no way <code>R</code> can tell what command was used.</p>
+<p>Imagine you have three bakers making the same kind of bread: one uses the traditional kneading method, one uses the slap-and-fold technique, and one uses a mixer. If you know the recipe and the procedure they are using, you will be able to tell what they’re making. However, once you have your three loaves in front of you, you won’t be able to say which came from which baker. It’s the same thing with commands in <code>R</code>!</p>
+<p>This is the reason why some commands look like they’re repeating things beyond necessity. Take, for instance, this line:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mat[<span class="kw">lower.tri</span>(mat)] &lt;-<span class="st"> &quot;L&quot;</span></code></pre></div>
+<p>The <code>lower.tri()</code> function takes a matrix as its first argument and returns a matrix of logicals with the same dimensions as the matrix provided. Once it returns its output, <code>R</code> has no way of knowing what matrix was used to produce it and so it has no clue that it has anything to do with our matrix <code>mat</code>. That’s why, if we want to modify the lower triangle of <code>mat</code>, we do it this way.</p>
+<p>Obviously, nothing is stopping you from creating the logical matrix by means of some other approach and then use it to subset <code>mat</code> but the above solution is both more elegant and more intelligible.</p>
+</div>
+<div id="knowe-thine-output-as-thou-knowest-thyself" class="section level3">
+<h3>Knowe thine output as thou knowest thyself</h3>
+<p>Because more often than not you will be using function to create some object only so that you can feed it into another function, it is <strong>essential</strong> that you understand what you are asking <code>R</code> to do and know what result you are expecting. There should be no surprises! Read more about this topic in this <a href="https://mivalek.github.io/resources/saviouR.html#think_of_commands_in_terms_of_their_output" target="_blank">explainer</a></p>
+<p>A good way to practice is to say to yourself what the output of a command will be before you run it. For instance, the command <code>factor(sample(1:4, 20, T), labels = ME_races)</code> returns a <em>vector of class</em> <code>factor</code> <em>and length 20</em> containing randomly sampled values labelled according to the four races of Middle-earth we worked with.</p>
+</div>
+</div>
+<div id="output-is-an-object" class="section level2">
+<h2>Output is an object</h2>
+<p>Notice that in the code above we passed the <code>sample(1:4, 20, T)</code> command as the first argument of <code>factor()</code>. This works because – as we mentioned earlier – a command is merely a symbolic representation of its output and because <strong>everything in</strong> <code>R</code> <strong>is an object</strong>. This means that function output is also an object. Depending on the particular function, the output can be anything from, <em>e.g.,</em> a logical vector of length 1 through long vectors and matrices to huge data frames and complex lists of lists of lists…</p>
+<p>For instance, the <code>t.test()</code> function returns a list that contains all the information about the test you might ever need:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t_output &lt;-<span class="st"> </span><span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dt">mu =</span> <span class="dv">0</span>)
+<span class="kw">str</span>(t_output) <span class="co"># see the structure of the object</span></code></pre></div>
+<pre><code>## List of 9
+##  $ statistic  : Named num 29
+##   ..- attr(*, &quot;names&quot;)= chr &quot;t&quot;
+##  $ parameter  : Named num 99
+##   ..- attr(*, &quot;names&quot;)= chr &quot;df&quot;
+##  $ p.value    : num 3.86e-50
+##  $ conf.int   : atomic [1:2] 4.78 5.48
+##   ..- attr(*, &quot;conf.level&quot;)= num 0.95
+##  $ estimate   : Named num 5.13
+##   ..- attr(*, &quot;names&quot;)= chr &quot;mean of x&quot;
+##  $ null.value : Named num 0
+##   ..- attr(*, &quot;names&quot;)= chr &quot;mean&quot;
+##  $ alternative: chr &quot;two.sided&quot;
+##  $ method     : chr &quot;One Sample t-test&quot;
+##  $ data.name  : chr &quot;rnorm(100, 5, 2)&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;htest&quot;</code></pre>
+<p>If we want to know the <em>p</em>-value of the above test, we can simply query the list accordingly:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t_output<span class="op">$</span>p.value</code></pre></div>
+<pre><code>## [1] 3.863044e-50</code></pre>
+<p>Because the command only represents the output object, it can be accessed in the same way. Say you are running some kind of simulation study and are only interested in the <em>t</em>-statistic of the test. Instead of saving the entire output into some kind of named object in the environment, you can simply save the <em>t</em>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t_stat &lt;-<span class="st"> </span><span class="kw">t.test</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dt">mu =</span> <span class="dv">0</span>)<span class="op">$</span>statistic
+t_stat</code></pre></div>
+<pre><code>##        t 
+## 24.33835</code></pre>
+</div>
+<div id="where-does-the-output-go" class="section level2">
+<h2>Where does the output go?</h2>
+<p>Let’s go back to discussing <code>factor()</code>. There’s another important issue that sometime causes a level of consternation among novice <code>R</code> users. Imagine we have a data set and we want to designate one of its columns as a factor so that <code>R</code> knows that the column contains a categorical variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>))
+df</code></pre></div>
+<pre><code>##    id x....rnorm.10.
+## 1   1     -0.6665650
+## 2   2     -0.2386466
+## 3   3     -1.1877653
+## 4   4      0.3849353
+## 5   5      0.6665795
+## 6   6     -0.3046139
+## 7   7      1.8250111
+## 8   8      0.6705594
+## 9   9      0.9486326
+## 10 10      2.0494030</code></pre>
+<p>An intuitive way of turning <code>id</code> into a factor might be:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factor</span>(df<span class="op">$</span>id)</code></pre></div>
+<pre><code>##  [1] 1  2  3  4  5  6  7  8  9  10
+## Levels: 1 2 3 4 5 6 7 8 9 10</code></pre>
+<p>This, however, does not work:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(df<span class="op">$</span>id)</code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>The reason for this has to do with the fact that the argument-output relationship is directional. Once the object inside <code>df$id</code> is passed to <code>factor()</code>, <code>R</code> forgets about the fact that it had anything to do with <code>df</code> or one of its columns. It has therefore no way of knowing that you want to be modifying a column of a data frame. Because of that, the only place <code>factor()</code> can return the output to is the one it uses by default.</p>
+<div id="console" class="section level3">
+<h3>Console</h3>
+<p>The vast majority of functions return their output into the console. <code>factor()</code> is one of these functions. That’s why when you type in the command above, you will see the printout of the output in the console. Once it’s been returned, the output is forgotten about – <code>R</code> can’t see the console or read from it!</p>
+<p>This is why <code>factor(df$id)</code> does not turn the <code>id</code> column of <code>id</code> into a factor.</p>
+</div>
+<div id="environment" class="section level3">
+<h3>Environment</h3>
+<p>A small number of functions return a named object to the global <code>R</code> environment, where you can see, access, and work with it. The only one you will need to use for a <em>long</em> time to come (possibly ever) is the already familiar assignment operator <code>&lt;-</code>.</p>
+<p>You can use <code>&lt;-</code> to create new objects in the environment or re-assign values to already existing names. So, if you want to turn the <code>id</code> column of <code>df</code> into a factor you need to reassign some new object to <code>df$id</code>. What object? Well, the one returned by the <code>factor(...)</code> command above:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>id)</code></pre></div>
+<p>As you can see, there is no printout now because the output of <code>factor()</code> has been passed into the assignment function which directed it into the <code>df$id</code> object. Let’s make sure it really worked:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(df<span class="op">$</span>id)</code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+</div>
+<div id="graphical-device" class="section level3">
+<h3>Graphical device</h3>
+<p>Functions that create graphics return their output into something called the <em>graphical device</em>. It is basically the thing responsible for drawing stuff on the screen of your computer. You’ve already encountered some of these functions – <code>plot()</code>, <code>par()</code>, <code>lines()</code>, <code>abline()</code>.</p>
+</div>
+<div id="files" class="section level3">
+<h3>Files</h3>
+<p>Finally, there are functions that can write output into all sorts of files. For instance, if you want to save a data frame into a .csv file, you can use the <code>read.csv()</code> function.</p>
+<p> </p>
+<p> </p>
+<p>Of course, you can redirect where particular output gets sent, just like we did with <code>df$id &lt;- factor(...)</code>. For instance, you can save a plot into the global environment using assignment:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_plot &lt;-<span class="st"> </span><span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>))</code></pre></div>
+<p><img src="functions_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_plot</code></pre></div>
+<pre><code>## $breaks
+##  [1] -3.5 -3.0 -2.5 -2.0 -1.5 -1.0 -0.5  0.0  0.5  1.0  1.5  2.0  2.5  3.0
+## [15]  3.5
+## 
+## $counts
+##  [1]   1  11   9  42  93 165 190 196 149  86  43  13   1   1
+## 
+## $density
+##  [1] 0.002 0.022 0.018 0.084 0.186 0.330 0.380 0.392 0.298 0.172 0.086
+## [12] 0.026 0.002 0.002
+## 
+## $mids
+##  [1] -3.25 -2.75 -2.25 -1.75 -1.25 -0.75 -0.25  0.25  0.75  1.25  1.75
+## [12]  2.25  2.75  3.25
+## 
+## $xname
+## [1] &quot;rnorm(1000)&quot;
+## 
+## $equidist
+## [1] TRUE
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;histogram&quot;</code></pre>
+<p>Alternatively, you can export it by creating a new graphical device inside of a file:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a graphical device in  a new my_plot.png</span>
+<span class="co"># file in the working directory</span>
+<span class="kw">png</span>(<span class="st">&quot;my_plot.png&quot;</span>)
+<span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>)) <span class="co"># create plot</span>
+<span class="co"># close the graphical device</span>
+<span class="kw">dev.off</span>()</code></pre></div>
+</div>
+</div>
+</div>
+<div id="writing-functions" class="section level1">
+<h1>Writing functions</h1>
+<p>While the text above contains information that is absolutely crucial for working with <code>R</code>, this section about user-defined functions is a little bit advanced. However, the ability to write your own functions is an immensely powerful tool for data processing and analysis so you are encouraged to put some effort into understanding how functions work and how you can write your own. It’s really not difficult!</p>
+<div id="functions-are-objects-too" class="section level2">
+<h2>Functions are objects too!</h2>
+<p>It’s probably getting a bit old at this stage but <strong>everything in</strong> <code>R</code> <strong>is an object</strong>. And since functions are a subset of everything, they also are objects. They are essentially chunks of code stored into a named object that sits in some environment. User-defined functions will be located in the global environment, while functions from packages (either pre-loaded ones or those you load using <code>library()</code>) sit in the environments of their respective packages.</p>
+<p>If you want to see the code inside a function, just type it into the console without the brackets and press Enter. You might remember this chap:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lower.tri</code></pre></div>
+<pre><code>## function (x, diag = FALSE) 
+## {
+##     x &lt;- as.matrix(x)
+##     if (diag) 
+##         row(x) &gt;= col(x)
+##     else row(x) &gt; col(x)
+## }
+## &lt;bytecode: 0x000000000ba2eaa8&gt;
+## &lt;environment: namespace:base&gt;</code></pre>
+</div>
+<div id="anatomy-of-a-function" class="section level2">
+<h2>Anatomy of a function</h2>
+<p>Looking at the code above you can see the basic structure of a function: - First, it’s specified that this object is a <code>function</code> - Second, in the <code>()</code>s, there’s the specifications of the argument the function takes including any default values - As you can see <code>lower.tri()</code> takes two arguments, <code>x</code> and <code>diag</code>, the latter of which is set by default to <code>FALSE</code> - Third, there is the body of the function enveloped in a set of <em>curly braces</em> <code>{}</code> which includes the actual code that does the function’s magic - Finally, there is some meta-information including the environment in which the function lives (in this case, it’s the <code>&quot;base&quot;</code> package)</p>
+<p>Notice that the function code only works using the <code>x</code> and <code>diag</code> objects. No matter what you pass to the function’s <code>x</code> argument will – as far as the function is concerned – be called <code>x</code>. That is why <code>R</code> doesn’t know where the value passed to the arguments of functions come from!</p>
+</div>
+<div id="diy" class="section level2">
+<h2>DIY</h2>
+<p>To make your own function, all you need to do is follow the syntax above, come up with your own code, and assign the function object to a name in your global <code>R</code> environment:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_fun &lt;-<span class="st"> </span><span class="cf">function</span>(arg1, arg2, arg3, ...) {
+  some code using args
+  <span class="kw">return</span>(object to return)
+}</code></pre></div>
+<p>The <code>return()</code> function is not strictly speaking necessary but it’s good practice to be explicit about this of the many potential objects inside of the function’s environment you want to return to the global environment.</p>
+<p>Let’s start with something simple. Let’s write a function that takes as its only argument a person’s name and returns a greeting:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hello &lt;-<span class="st"> </span><span class="cf">function</span>(name) {
+  out &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Hello &quot;</span>, name, <span class="st">&quot;!&quot;</span>)
+  <span class="kw">return</span>(out)
+}</code></pre></div>
+<p>So, we created a named object <code>hello</code> and assigned it a function of one argument <code>name =</code>. Inside the <code>{}</code>s, there is code that creates and object <code>out</code> with a character string created from pasting together <code>&quot;Hello &quot;</code>, whatever gets passed to the <code>name =</code> argument, and an exclamation point. Finally, this <code>out</code> gets returned into the global environment.</p>
+<p>Let’s see if it works:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hello</span>(<span class="st">&quot;Tim&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;Hello Tim!&quot;</code></pre>
+<p>Nice! Not extremely useful but nice…</p>
+<p>Let’s create a handier function. One thing that is sometimes done when cleaning data is removing outlying values. Wouldn’t it be useful to have a function that does it for us? (Aye, it would!)</p>
+<p>In lecture 3, we talked about how <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/box-plot-1" target="_blank">box plots</a> can be used to identify outliers. Let’s demonstrate this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
+x[<span class="dv">82</span>] &lt;-<span class="st"> </span><span class="fl">15.82</span> <span class="co"># add a large number</span>
+<span class="kw">boxplot</span>(x)</code></pre></div>
+<p><img src="functions_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>OK, as the boxplot clearly shows, there’s a few outlying values in the <code>x</code> variable. As you now surely know, <strong>everything in</strong> <code>R</code> <strong>is an object</strong> and so we can look at the object returned by <code>boxplot()</code> to see if we can use it to identify which element in <code>x</code> is the culprits:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bxplt &lt;-<span class="st"> </span><span class="kw">boxplot</span>(x)</code></pre></div>
+<p><img src="functions_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(bxplt)</code></pre></div>
+<pre><code>## List of 6
+##  $ stats: num [1:5, 1] -2.191 -0.486 0.127 0.712 2.309
+##  $ n    : num 100
+##  $ conf : num [1:2, 1] -0.0626 0.3158
+##  $ out  : num [1:3] -2.86 15.82 2.69
+##  $ group: num [1:3] 1 1 1
+##  $ names: chr &quot;1&quot;</code></pre>
+<p>The <code>str()</code> function shows us the structure of the <code>boxplot()</code> output object. On inspection, you can see that the <code>$out</code> element of the list returned by the function includes the outlying values. The one we imputed manually (15.82) is there, which is a good sanity check. Let’s extract only these values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">outl &lt;-<span class="st"> </span><span class="kw">boxplot</span>(x, <span class="dt">plot =</span> F)<span class="op">$</span>out <span class="co"># don&#39;t show plot</span>
+outl</code></pre></div>
+<pre><code>## [1] -2.864419 15.820000  2.690907</code></pre>
+<p>Cool, all we need to do now is replace the values of <code>x</code> that are equal to these values with <code>NA</code>s:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x <span class="op">%in%</span><span class="st"> </span>outl</code></pre></div>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [23] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+##  [45] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [56] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [78] FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE
+##  [89] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [100] FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x[x <span class="op">%in%</span><span class="st"> </span>outl] &lt;-<span class="st"> </span><span class="ot">NA</span></code></pre></div>
+<p>We can now look at <code>x</code> to see that the outlying values have been replaced with <code>NA</code>s:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x</code></pre></div>
+<pre><code>##   [1]  0.050548105  2.308944104 -0.859463175  1.539116169 -1.614466177
+##   [6] -1.077316458 -0.901360547 -1.521112361  1.484693845  1.033703320
+##  [11]  1.371266498 -0.608921441  0.085597093  1.118507491  1.060529788
+##  [16]  0.560136774  0.158147541 -1.164173222  0.309686196 -0.178493815
+##  [21] -0.654524572  1.576157264 -0.701403737  0.242876389  0.516035756
+##  [26]  1.051154762  0.367304396  1.973215315  0.445136748 -0.488480168
+##  [31]  0.102511536  0.669129246 -2.190508808 -0.095564051  0.041525709
+##  [36] -0.238600874  0.051368536 -1.991806360  0.346236285  0.003029343
+##  [41] -0.492428501           NA -0.411212737  0.118208538 -0.071160768
+##  [46] -0.608697429  0.321645288 -0.910489532  0.699281047  0.825732375
+##  [51]  0.957543412  0.798846270 -0.352127210 -0.024946828  1.245073372
+##  [56]  0.610941959  0.346883033  1.279179711 -0.626845842  0.025263272
+##  [61]  1.301509003 -0.249789695  0.134998345 -0.146673231  1.233930594
+##  [66]  0.135425982  0.067240292 -0.681222109 -0.418462940 -1.569214209
+##  [71]  0.409586541  0.847803193 -1.337384310  0.401354729  0.328935897
+##  [76]  0.195321000  0.071462610  1.634933261  0.333007078  1.401812623
+##  [81]  0.451017021           NA -0.539737455           NA -0.059816076
+##  [86] -0.497475868  0.382417150  0.409180178  0.723745923 -0.914924574
+##  [91] -0.137185092  1.574293278 -0.482917703 -0.356190513  0.610222274
+##  [96] -0.606035147  1.134512003  0.422468289  0.089549711 -1.591713994</code></pre>
+<p>Great! Now that we know our algorithm for removing outliers, we can write our function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out.liar &lt;-<span class="st"> </span><span class="cf">function</span>(variable) { <span class="co"># arguments can be called whatever</span>
+  remove &lt;-<span class="st"> </span><span class="kw">boxplot</span>(variable, <span class="dt">plot =</span> F)<span class="op">$</span>out
+  variable[variable <span class="op">%in%</span><span class="st"> </span>remove] &lt;-<span class="st"> </span><span class="ot">NA</span>
+  <span class="kw">return</span>(variable)
+}</code></pre></div>
+<p>Let’s try it out!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">9</span>, <span class="dv">2</span>)
+x[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">1520</span>
+x</code></pre></div>
+<pre><code>##  [1]    8.305666 1520.000000    8.428190   10.308758    7.150505
+##  [6]    5.818594   10.418797   11.898654    5.911239   10.692138
+## [11]    9.661865    8.267625   12.498570    6.989710    8.765121
+## [16]   10.337011    6.835052   11.211936    8.771693   11.458297</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">out.liar</span>(x)
+x</code></pre></div>
+<pre><code>##  [1]  8.305666        NA  8.428190 10.308758  7.150505  5.818594 10.418797
+##  [8] 11.898654  5.911239 10.692138  9.661865  8.267625 12.498570  6.989710
+## [15]  8.765121 10.337011  6.835052 11.211936  8.771693 11.458297</code></pre>
+<p>Pretty neat, huh?</p>
+<p>The code inside of the function definition can be as simple or as complicated as you want it to be. However, it must run without errors and you need to think about various edge cases that might break the code or lead to unexpected behaviour. For instance, if we give out <code>out.liar()</code> function a character vector, it will throw an error because <code>boxplot()</code> can only cope with numeric vectors:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">out.liar</span>(letters)</code></pre></div>
+<pre><code>## Error in x[floor(d)] + x[ceiling(d)]: non-numeric argument to binary operator</code></pre>
+<p>This error message is a little obscure but what happened is that <code>out.liar()</code> passed the vector of letters to <code>boxplot()</code> which, in turn, passed it to the <code>+</code> function. Since, you cannot add letters, the function threw an error, thus breaking <code>boxplot()</code> and <code>out.liar()</code>.</p>
+<p>You might also wish to make the function able to identify outliers in a data frame. To do that you would have to make the function recognise which columns of the data frame provided are numeric and then run the code on each one of these columns. Finally the function should return the entire data frame with the non-numeric columns untouched and the numeric ones modified:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out.liar &lt;-<span class="st"> </span><span class="cf">function</span>(variable) { <span class="co"># arguments can be called whatever</span>
+  <span class="cf">if</span> (<span class="kw">class</span>(variable) <span class="op">==</span><span class="st"> &quot;data.frame&quot;</span>) {
+    <span class="co"># identify numeric variables by applying the is.numeric</span>
+    <span class="co"># function to each column of the data frame</span>
+    num_vars &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(variable, is.numeric))
+    <span class="co"># run the out.liar function on each numeric column</span>
+    <span class="co"># this kind of recurrence where you run a function inside of itself</span>
+    <span class="co"># is allowed and often used!</span>
+    variable[num_vars] &lt;-<span class="st"> </span><span class="kw">lapply</span>(variable[num_vars], out.liar)
+  } <span class="cf">else</span> {
+    remove &lt;-<span class="st"> </span><span class="kw">boxplot</span>(variable, <span class="dt">plot =</span> F)<span class="op">$</span>out
+    variable[variable <span class="op">%in%</span><span class="st"> </span>remove] &lt;-<span class="st"> </span><span class="ot">NA</span>
+  }
+  <span class="kw">return</span>(variable)
+}</code></pre></div>
+<p>Let’s see if it works. First, create some data frame with a couple of outlying values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id =</span> <span class="kw">factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">var1 =</span> <span class="kw">c</span>(<span class="dv">100</span>, <span class="kw">rnorm</span>(<span class="dv">9</span>)), <span class="dt">var2 =</span> <span class="kw">c</span>(<span class="kw">rchisq</span>(<span class="dv">9</span>, <span class="dv">4</span>), <span class="dv">100</span>), <span class="dt">var3 =</span> LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>])
+df</code></pre></div>
+<pre><code>##    id         var1       var2 var3
+## 1   1 100.00000000   7.247045    A
+## 2   2  -0.02329682   8.398776    B
+## 3   3  -0.73510547   3.299815    C
+## 4   4  -1.34051483   3.008875    D
+## 5   5  -1.37306589   3.500481    E
+## 6   6  -0.14905709   4.896038    F
+## 7   7  -2.00627596   5.283248    G
+## 8   8  -1.55956854   6.808597    H
+## 9   9   1.96270157   1.557017    I
+## 10 10  -0.17831822 100.000000    J</code></pre>
+<p>Next, feed <code>df</code> to <code>out.liar()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">out.liar</span>(df)</code></pre></div>
+<pre><code>##    id        var1     var2 var3
+## 1   1          NA 7.247045    A
+## 2   2 -0.02329682 8.398776    B
+## 3   3 -0.73510547 3.299815    C
+## 4   4 -1.34051483 3.008875    D
+## 5   5 -1.37306589 3.500481    E
+## 6   6 -0.14905709 4.896038    F
+## 7   7 -2.00627596 5.283248    G
+## 8   8 -1.55956854 6.808597    H
+## 9   9  1.96270157 1.557017    I
+## 10 10 -0.17831822       NA    J</code></pre>
+<p>Finally, check if the function still works on single columns even after our modification:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">out.liar</span>(x)</code></pre></div>
+<pre><code>##  [1]  8.305666        NA  8.428190 10.308758  7.150505  5.818594 10.418797
+##  [8] 11.898654  5.911239 10.692138  9.661865  8.267625 12.498570  6.989710
+## [15]  8.765121 10.337011  6.835052 11.211936  8.771693 11.458297</code></pre>
+<p>Everything looking good!</p>
+<p> </p>
+<p>So this is how you write functions. The principle is simple but actually creating good and safe functions requires a lot of thinking and attention to detail.</p>
+<div id="hacking" class="section level3">
+<h3>Hacking</h3>
+<p>Finally, if you’re really into the nitty-gritty of <code>R</code>, a great way of learning how to write functions is to look at ones you use and try to pick them apart, break them, fix them, and put them back together.</p>
+<p>Since – sing it with me – <strong>everything in</strong> <code>R</code> <strong>is an object</strong>, you can assign the code inside of an already existing function to some other object. For instance, the <code>boxplot()</code> function calls a different “method” based on what input you give it (this is rather advanced programming so don’t worry too much about it!). The one we used is called <code>botplot.default()</code> and it hides deep inside package <code>&quot;graphics&quot;</code>. To get it out, we need to tell <code>R</code> to get it from there using the <code>package:::function</code> syntax:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">box2 &lt;-<span class="st"> </span>graphics<span class="op">:::</span>boxplot.default
+box2</code></pre></div>
+<pre><code>## function (x, ..., range = 1.5, width = NULL, varwidth = FALSE, 
+##     notch = FALSE, outline = TRUE, names, plot = TRUE, border = par(&quot;fg&quot;), 
+##     col = NULL, log = &quot;&quot;, pars = list(boxwex = 0.8, staplewex = 0.5, 
+##         outwex = 0.5), horizontal = FALSE, add = FALSE, at = NULL) 
+## {
+##     args &lt;- list(x, ...)
+##     namedargs &lt;- if (!is.null(attributes(args)$names)) 
+##         attributes(args)$names != &quot;&quot;
+##     else rep_len(FALSE, length(args))
+##     groups &lt;- if (is.list(x)) 
+##         x
+##     else args[!namedargs]
+##     if (0L == (n &lt;- length(groups))) 
+##         stop(&quot;invalid first argument&quot;)
+##     if (length(class(groups))) 
+##         groups &lt;- unclass(groups)
+##     if (!missing(names)) 
+##         attr(groups, &quot;names&quot;) &lt;- names
+##     else {
+##         if (is.null(attr(groups, &quot;names&quot;))) 
+##             attr(groups, &quot;names&quot;) &lt;- 1L:n
+##         names &lt;- attr(groups, &quot;names&quot;)
+##     }
+##     cls &lt;- sapply(groups, function(x) class(x)[1L])
+##     cl &lt;- if (all(cls == cls[1L])) 
+##         cls[1L]
+##     else NULL
+##     for (i in 1L:n) groups[i] &lt;- list(boxplot.stats(unclass(groups[[i]]), 
+##         range))
+##     stats &lt;- matrix(0, nrow = 5L, ncol = n)
+##     conf &lt;- matrix(0, nrow = 2L, ncol = n)
+##     ng &lt;- out &lt;- group &lt;- numeric(0L)
+##     ct &lt;- 1
+##     for (i in groups) {
+##         stats[, ct] &lt;- i$stats
+##         conf[, ct] &lt;- i$conf
+##         ng &lt;- c(ng, i$n)
+##         if ((lo &lt;- length(i$out))) {
+##             out &lt;- c(out, i$out)
+##             group &lt;- c(group, rep.int(ct, lo))
+##         }
+##         ct &lt;- ct + 1
+##     }
+##     if (length(cl) &amp;&amp; cl != &quot;numeric&quot;) 
+##         oldClass(stats) &lt;- cl
+##     z &lt;- list(stats = stats, n = ng, conf = conf, out = out, 
+##         group = group, names = names)
+##     if (plot) {
+##         if (is.null(pars$boxfill) &amp;&amp; is.null(args$boxfill)) 
+##             pars$boxfill &lt;- col
+##         do.call(&quot;bxp&quot;, c(list(z, notch = notch, width = width, 
+##             varwidth = varwidth, log = log, border = border, 
+##             pars = pars, outline = outline, horizontal = horizontal, 
+##             add = add, at = at), args[namedargs]))
+##         invisible(z)
+##     }
+##     else z
+## }
+## &lt;bytecode: 0x00000000095b0f58&gt;
+## &lt;environment: namespace:graphics&gt;</code></pre>
+<p>This is the code that creates the boxplot and, if you wish, you can try to look into it and find how the function identifies outliers. You can even change the function by typing <code>edit(box2)</code>.</p>
+<p>Being able to peer under the hood of readymade functions opens up an infinite playground for you so enjoy yourself!</p>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
