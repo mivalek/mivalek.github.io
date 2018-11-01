@@ -510,12 +510,21 @@ df</code></pre></div>
 ##         row(x) &gt;= col(x)
 ##     else row(x) &gt; col(x)
 ## }
-## &lt;bytecode: 0x000000000ba2eaa8&gt;
+## &lt;bytecode: 0x000000000ba20fd0&gt;
 ## &lt;environment: namespace:base&gt;</code></pre>
 </div>
 <div id="anatomy-of-a-function" class="section level2">
 <h2>Anatomy of a function</h2>
-<p>Looking at the code above you can see the basic structure of a function: - First, it’s specified that this object is a <code>function</code> - Second, in the <code>()</code>s, there’s the specifications of the argument the function takes including any default values - As you can see <code>lower.tri()</code> takes two arguments, <code>x</code> and <code>diag</code>, the latter of which is set by default to <code>FALSE</code> - Third, there is the body of the function enveloped in a set of <em>curly braces</em> <code>{}</code> which includes the actual code that does the function’s magic - Finally, there is some meta-information including the environment in which the function lives (in this case, it’s the <code>&quot;base&quot;</code> package)</p>
+<p>Looking at the code above you can see the basic structure of a function:</p>
+<ul>
+<li>First, it’s specified that this object is a <code>function</code></li>
+<li>Second, in the <code>()</code>s, there’s the specifications of the argument the function takes including any default values
+<ul>
+<li>As you can see <code>lower.tri()</code> takes two arguments, <code>x</code> and <code>diag</code>, the latter of which is set by default to <code>FALSE</code></li>
+</ul></li>
+<li>Third, there is the body of the function enveloped in a set of <em>curly braces</em> <code>{}</code> which includes the actual code that does the function’s magic</li>
+<li>Finally, there is some meta-information including the environment in which the function lives (in this case, it’s the <code>&quot;base&quot;</code> package)</li>
+</ul>
 <p>Notice that the function code only works using the <code>x</code> and <code>diag</code> objects. No matter what you pass to the function’s <code>x</code> argument will – as far as the function is concerned – be called <code>x</code>. That is why <code>R</code> doesn’t know where the value passed to the arguments of functions come from!</p>
 </div>
 <div id="diy" class="section level2">
@@ -615,7 +624,7 @@ x</code></pre></div>
 <p>The code inside of the function definition can be as simple or as complicated as you want it to be. However, it must run without errors and you need to think about various edge cases that might break the code or lead to unexpected behaviour. For instance, if we give out <code>out.liar()</code> function a character vector, it will throw an error because <code>boxplot()</code> can only cope with numeric vectors:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">out.liar</span>(letters)</code></pre></div>
 <pre><code>## Error in x[floor(d)] + x[ceiling(d)]: non-numeric argument to binary operator</code></pre>
-<p>This error message is a little obscure but what happened is that <code>out.liar()</code> passed the vector of letters to <code>boxplot()</code> which, in turn, passed it to the <code>+</code> function. Since, you cannot add letters, the function threw an error, thus breaking <code>boxplot()</code> and <code>out.liar()</code>.</p>
+<p>This error message is a little obscure but what happened is that <code>out.liar()</code> passed the vector of letters to <code>boxplot()</code> which, in turn, passed it to the <code>+</code> function. Since you cannot add letters, the function threw an error, thus breaking <code>boxplot()</code> and <code>out.liar()</code>.</p>
 <p>You might also wish to make the function able to identify outliers in a data frame. To do that you would have to make the function recognise which columns of the data frame provided are numeric and then run the code on each one of these columns. Finally the function should return the entire data frame with the non-numeric columns untouched and the numeric ones modified:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out.liar &lt;-<span class="st"> </span><span class="cf">function</span>(variable) { <span class="co"># arguments can be called whatever</span>
   <span class="cf">if</span> (<span class="kw">class</span>(variable) <span class="op">==</span><span class="st"> &quot;data.frame&quot;</span>) {
@@ -660,17 +669,19 @@ df</code></pre></div>
 ## 9   9  1.96270157 1.557017    I
 ## 10 10 -0.17831822       NA    J</code></pre>
 <p>Finally, check if the function still works on single columns even after our modification:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">out.liar</span>(x)</code></pre></div>
-<pre><code>##  [1]  8.305666        NA  8.428190 10.308758  7.150505  5.818594 10.418797
-##  [8] 11.898654  5.911239 10.692138  9.661865  8.267625 12.498570  6.989710
-## [15]  8.765121 10.337011  6.835052 11.211936  8.771693 11.458297</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">9</span>, <span class="dv">2</span>)
+x[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">1520</span>
+<span class="kw">out.liar</span>(x)</code></pre></div>
+<pre><code>##  [1] 10.784808        NA 12.074365  9.905239  5.808611  8.625669 10.135269
+##  [8]  9.325358  6.256034  5.232095  8.863906 10.374614  7.583999  9.755355
+## [15] 10.161515 10.949252 10.174905  9.490558  5.867993  7.983744</code></pre>
 <p>Everything looking good!</p>
 <p> </p>
 <p>So this is how you write functions. The principle is simple but actually creating good and safe functions requires a lot of thinking and attention to detail.</p>
 <div id="hacking" class="section level3">
 <h3>Hacking</h3>
 <p>Finally, if you’re really into the nitty-gritty of <code>R</code>, a great way of learning how to write functions is to look at ones you use and try to pick them apart, break them, fix them, and put them back together.</p>
-<p>Since – sing it with me – <strong>everything in</strong> <code>R</code> <strong>is an object</strong>, you can assign the code inside of an already existing function to some other object. For instance, the <code>boxplot()</code> function calls a different “method” based on what input you give it (this is rather advanced programming so don’t worry too much about it!). The one we used is called <code>botplot.default()</code> and it hides deep inside package <code>&quot;graphics&quot;</code>. To get it out, we need to tell <code>R</code> to get it from there using the <code>package:::function</code> syntax:</p>
+<p>Since – sing along – <strong>everything in</strong> <code>R</code> <strong>is an object</strong>, you can assign the code inside of an already existing function to some other object. For instance, the <code>boxplot()</code> function calls a different “method” based on what input you give it (this is rather advanced programming so don’t worry too much about it!). The one we used is called <code>botplot.default()</code> and it hides deep inside package <code>&quot;graphics&quot;</code>. To get it out, we need to tell <code>R</code> to get it from there using the <code>package:::function</code> syntax:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">box2 &lt;-<span class="st"> </span>graphics<span class="op">:::</span>boxplot.default
 box2</code></pre></div>
 <pre><code>## function (x, ..., range = 1.5, width = NULL, varwidth = FALSE, 
@@ -731,10 +742,11 @@ box2</code></pre></div>
 ##     }
 ##     else z
 ## }
-## &lt;bytecode: 0x00000000095b0f58&gt;
+## &lt;bytecode: 0x00000000095baa90&gt;
 ## &lt;environment: namespace:graphics&gt;</code></pre>
 <p>This is the code that creates the boxplot and, if you wish, you can try to look into it and find how the function identifies outliers. You can even change the function by typing <code>edit(box2)</code>.</p>
 <p>Being able to peer under the hood of readymade functions opens up an infinite playground for you so enjoy yourself!</p>
+<p>To conclude, in case there’s still any lingering doubt, <strong>everything in</strong> <code>R</code> <strong>is an object</strong>!</p>
 </div>
 </div>
 </div>
