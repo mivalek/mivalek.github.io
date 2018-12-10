@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>R^2</title>
+
+<script src="r_squared_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="r_squared_files/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="r_squared_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="r_squared_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="r_squared_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="r_squared_files/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore"><span class="math inline">\(R^2\)</span></h1>
+
+</div>
+
+
+<p><span class="math inline">\(R^2\)</span> is an index that tells us about the <em>proportion of the variance in the outcome variable accounted for</em> (or, explained, in an experimental context) <em>by our model</em>. Let’s say variance is some representation of the spread of your data. So let’s make us some data:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">300</span>, <span class="dv">100</span>, <span class="dv">15</span>)
+<span class="kw">var</span>(y1)</code></pre></div>
+<pre><code>## [1] 226.9448</code></pre>
+<p>It is not easy to visualise variance so let’s take range as a proxy (an imperfect one but hey!):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">t_black &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dt">alpha =</span> .<span class="dv">5</span>) <span class="co"># transparent black</span>
+<span class="kw">plot</span>(y1, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlab =</span> <span class="ot">NA</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> t_black)
+<span class="kw">arrows</span>((<span class="dv">1</span><span class="op">+</span><span class="kw">length</span>(y1))<span class="op">/</span><span class="dv">2</span>, <span class="kw">min</span>(y1), <span class="dt">y1 =</span> <span class="kw">max</span>(y1), <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">length =</span> .<span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;orangered&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="r_squared_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The red arrow shows the range of the <code>y1</code> variable. OK, now let’s create a variable <code>x1</code> that correlates with <code>y1</code>…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">35</span> <span class="op">+</span><span class="st"> </span><span class="fl">1.52</span> <span class="op">*</span><span class="st"> </span>y1 <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">12</span>)
+<span class="co"># let&#39;s categorise it into 5 bins (numbers 1-5)</span>
+x1 &lt;-<span class="st"> </span><span class="kw">cut</span>(x1, <span class="dv">5</span>, <span class="dt">labels =</span> F)</code></pre></div>
+<p>…and fit a linear model predicting <code>y1</code> by <code>x1</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y1 <span class="op">~</span><span class="st"> </span>x1)
+<span class="co">#let&#39;s see...</span>
+<span class="kw">summary</span>(m1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y1 ~ x1)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -20.9470  -6.2850  -0.4077   6.0138  24.3762 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  55.6909     1.8441   30.20   &lt;2e-16 ***
+## x1           15.0353     0.6002   25.05   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8.563 on 298 degrees of freedom
+## Multiple R-squared:  0.678,  Adjusted R-squared:  0.6769 
+## F-statistic: 627.5 on 1 and 298 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Right, so the <span class="math inline">\(R^2\)</span> is roughly 0.68, which means that about 68% of the variance in <code>y1</code> is accounted for by our model (as our model has only a single predictor, we can say accounted for by variance in <code>x1</code>). That means that, while the overall variance of <code>y1</code> is <code>var(y1)</code> <span class="math inline">\(\approx\)</span> 226.94, the mean variance at a given level of <code>x1</code> weighted by the number of points at that level of <code>x1</code> will be reduced by 68% (<span class="math inline">\(\approx\)</span> 73.073):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(doBy)
+<span class="co"># let&#39;s summarise var(x) by y</span>
+(smry &lt;-<span class="st"> </span><span class="kw">summaryBy</span>(y1 <span class="op">~</span><span class="st"> </span>x1, <span class="kw">data.frame</span>(x1, y1), <span class="dt">FUN =</span> var))</code></pre></div>
+<pre><code>##   x1    y1.var
+## 1  1 141.96871
+## 2  2  62.49969
+## 3  3  72.27107
+## 4  4  84.09501
+## 5  5  68.62077</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># extract only the variances</span>
+(vars &lt;-<span class="st"> </span>smry[ , <span class="dv">2</span>])</code></pre></div>
+<pre><code>## [1] 141.96871  62.49969  72.27107  84.09501  68.62077</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get the wieghts (proportion of cases per level of x)</span>
+(wghts &lt;-<span class="st"> </span><span class="kw">prop.table</span>(<span class="kw">table</span>(x1)))</code></pre></div>
+<pre><code>## x1
+##          1          2          3          4          5 
+## 0.02333333 0.26000000 0.48000000 0.20666667 0.03000000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#calculate weighted mean</span>
+<span class="kw">weighted.mean</span>(vars, <span class="dt">w =</span> wghts)</code></pre></div>
+<pre><code>## [1] 73.69089</code></pre>
+<p>The discrepancy is due to a very slight differences in the calculations used by <code>lm()</code> and <code>var()</code> (see further down) and is negligible.</p>
+<p>To visualise, let’s turn to range as a proxy for variance:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">jitter</span>(x1), y1, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x1&quot;</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> t_black)
+<span class="kw">abline</span>(m1, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;royalblue&quot;</span>)
+<span class="kw">arrows</span>(<span class="fl">5.3</span>, <span class="kw">min</span>(y1), <span class="dt">y1 =</span> <span class="kw">max</span>(y1), <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">length =</span> .<span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;orangered&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
+<span class="kw">arrows</span>(<span class="fl">3.3</span>, <span class="kw">min</span>(y1[x1 <span class="op">==</span><span class="st"> </span><span class="dv">3</span>]), <span class="dt">y1 =</span> <span class="kw">max</span>(y1[x1 <span class="op">==</span><span class="st"> </span><span class="dv">3</span>]), <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">length =</span> .<span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;orangered&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</code></pre></div>
+<p><img src="r_squared_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Even though range and variance are not the same thing and thus the numbers don’t check out, you can see that the spread of <code>y1</code> at <code>x1</code> = 3 is much smaller than the overall spread of <code>y1</code>.</p>
+<p> </p>
+<p>A different way of looking at this through the the language of <em>mean squared residual</em>. The total variance in your outcome variable can be broken down into two components: variance <em>explained</em> by your model and variance <em>left unexplained</em> by it. Mean squared residual is really the same as variance left unexplained by a model. <span class="math inline">\(R^2\)</span> is then simply the proportion of explained to total variance.</p>
+<p>You may ask, if all variance can be divided into explained and residual variance, how does one divide <code>var(x)</code>? Thank you, that is an excellent question!</p>
+<p>Well, you can think of the total variance as the residual variance left over from the intercept-only model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># let&#39;s create another variable x</span>
+x2 &lt;-<span class="st"> </span><span class="kw">scale</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>))
+<span class="co"># and a variable y dependent on x</span>
+y2 &lt;-<span class="st"> </span><span class="kw">scale</span>(x2 <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, .<span class="dv">5</span>))
+<span class="co"># these are standardised variable, so their variance = standard deviation = 1</span>
+<span class="kw">c</span>(<span class="kw">var</span>(x2), <span class="kw">var</span>(y2))</code></pre></div>
+<pre><code>## [1] 1 1</code></pre>
+<p>Now, let’s fit the intercept-only (AKA null) model for <code>y2</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">null_m &lt;-<span class="st"> </span><span class="kw">lm</span>(y2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>)
+<span class="kw">summary</span>(null_m)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y2 ~ 1)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.40007 -0.65069 -0.09728  0.63258  2.75155 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 3.053e-17  1.000e-01       0        1
+## 
+## Residual standard error: 1 on 99 degrees of freedom</code></pre>
+<p>As you can see, the “residual standard error” (that’s the same as the the square root of the mean residual variance) is 1. To get the latter from the former, we need to square it, since if</p>
+<p><span class="math display">\[SE_{resid} = \sqrt{var_{resid}}\]</span> , then</p>
+<p><span class="math display">\[SE_{resid}^2 = var_{resid}\]</span></p>
+<p>(You might have noticed that this is the same relationship as that between variance and standard deviation, <span class="math inline">\(var(x) = SD(x)^2\)</span>.)</p>
+<p>Because <span class="math inline">\(1^2 = 1\)</span>, the mean residual variance is also 1. The model explains no variance whatsoever. That makes sense, as the null model is simply the mean, as you can see when you compare the intercept value to <code>mean(y2)</code> = 0 (both are 0 but, for an obscure reason having to do with how computers store numbers, <code>R</code> says they are tiny non-zero numbers).</p>
+<p>So, total variance (or the mean total square, in our case 1) is the explained variance (or mean square of the model; 0) + unexplained variance (mean squared residual; 1). To understand why it’s called the mean squeared residual (or the mean residual square), let’s do what it says on the tin: take the mean of the squared model residuals:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">resid</span>(null_m)<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 0.99</code></pre>
+<p>Just like in the first example, the discrepancy is caused by the way the mean residual square is calculated. Unlike normal mean, you don’t divide by <em>n</em> (here 100) but by residual degrees of freedom (<em>n</em><span class="math inline">\(-\)</span><em>k</em>, where <em>k</em> is the number of estimated parameters, in our case 100 <span class="math inline">\(-\)</span> 1 = 99):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">resid</span>(null_m)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>null_m<span class="op">$</span>df.residual</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>Don’t you just love when it all checks out?</p>
+<p> </p>
+<p>Right, so that shows us that the null model is pretty rubbish. When you fit a better model, the explained variance will go up and the residual variance will go down. Let’s see how that happens when we predict <code>y2</code> by <code>x2</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># fit the model</span>
+m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y2 <span class="op">~</span><span class="st"> </span>x2)
+<span class="kw">summary</span>(m2)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y2 ~ x2)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.39441 -0.25470 -0.01398  0.32161  1.02120 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 1.639e-17  4.663e-02    0.00        1    
+## x2          8.859e-01  4.686e-02   18.91   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4663 on 98 degrees of freedom
+## Multiple R-squared:  0.7848, Adjusted R-squared:  0.7826 
+## F-statistic: 357.4 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>The <span class="math inline">\(R^2\)</span> of our model is about 0.7848 which is pretty good. The residual standard error is 0.4663. When squared this gives us the residual variance, 0.4663<span class="math inline">\(^2\)</span> = 0.2174. As mentioned earlier, <span class="math inline">\(R^2 = \frac{explained~var}{total~var}\)</span> and since explained variance equals total<span class="math inline">\(-\)</span>residual variance, our <span class="math inline">\(R^2\)</span> should be <span class="math inline">\(\frac{1 - .22}{1}\)</span> = .78. Beauty!</p>
+<p> </p>
+<p>And finally, for the benefit of visualisation and pure delight, let’s leave you with this nerd eye candy.</p>
+<p> </p>
+<p>Ciao!</p>
+<p> </p>
+<div class="figure">
+<img src="rsq.gif" />
+
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

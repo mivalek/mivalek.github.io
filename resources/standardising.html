@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Predictor standardisation and their p-values</title>
+
+<script src="standardising_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="standardising_files/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="standardising_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="standardising_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="standardising_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="standardising_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="standardising_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="standardising_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="standardising_files/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Predictor standardisation and their <em>p</em>-values</h1>
+
+</div>
+
+
+<p> </p>
+<div id="what-is-standardisation" class="section level1">
+<h1>What is standardisation?</h1>
+<p>Standardisation is a <strong>linear transformation</strong> of a variable that consists of two operations: <em>centring</em> and <em>scaling</em>.</p>
+<p>Centring means subtracting the mean of the variable from its every point. This has the effect of changing the mean of the variable from whatever it was before to 0. Visually speaking, if you picture a distribution of a variable, centering it will <em>shift it along the x-axis</em> so that its centre is at 0. Let’s say we have some variable <code>x</code>, created with <code>x &lt;- rnorm(100, 53, 7.5)</code>. This variable has mean of roughly 53 (51.8242869, to be exact) and a <em>SD</em> of about 7.5 (7.5330398, if you must). We can centre the variable by doing <code>x &lt;- x - mean(x, na.rm = T)</code>. Visually, it looks like this:</p>
+<div class="figure">
+<img src="centre.gif" />
+
+</div>
+<p>Notice that the shape of the variable’s distribution <em>has not changed</em>, it only shifted towards 0!</p>
+<p>Scaling amounts to dividing every element of a variable by some number. This can be any number you want (other than 0 or <span class="math inline">\(\infty\)</span>, preferably) but, when it comes to standardising, we use the standard deviation. This has the effect of turning the <em>SD</em> of your variable from whatever it was to 1. Visually, we will be stretching (if <em>SD</em>(x) &lt; 1 or compressing (if <em>SD</em>(x) &gt; 1) the distribution. If we take our centred <code>x</code> variable and divide it by its <em>SD</em> (<code>x &lt;- x / sd(x, na.rm = T)</code>), it looks like this:</p>
+<div class="figure">
+<img src="scale.gif" />
+
+</div>
+<p>It is important to understand here that scaling <em>does not change the shape of the distribution</em>; it merely puts it on a different scale. If we zoom in on the x-axis and zoom out on the y-axis, the distribution of scaled <code>x</code> will look the same as the distribution of the original <code>x</code> plotted on the original scale.</p>
+<p><em>Standardising</em> a variable (AKA z-scoring) is simply doing doth of these operations:</p>
+<p><span class="math display">\[z = \frac{x - \bar{x}}{SD(x)}\]</span></p>
+<p>or, in <code>R</code> terms, <code>x &lt;- (x - mean(x))/sd(x)</code>.</p>
+<p>So, from our original variable, <code>x</code> that looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">density</span>(x), <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>)
+<span class="kw">polygon</span>(<span class="kw">density</span>(x), <span class="dt">col =</span> <span class="st">&quot;#998ec3&quot;</span>, <span class="dt">border =</span> <span class="ot">NA</span>)</code></pre></div>
+<p><img src="standardising_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>we get:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">density</span>(<span class="kw">scale</span>(x)), <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;scale(x)&quot;</span>)
+<span class="kw">polygon</span>(<span class="kw">density</span>(<span class="kw">scale</span>(x)), <span class="dt">col =</span> <span class="st">&quot;#998ec3&quot;</span>, <span class="dt">border =</span> <span class="ot">NA</span>)</code></pre></div>
+<p><img src="standardising_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>As you can see, the shape is the same, it’s just the position and scale of the distribution that have changed (look at the axes).</p>
+<p>Instead doing the maths by hand, you can use the <code>scale()</code> function. Apart from the vector you want to transform, the function takes two further arguments, <code>center =</code> and <code>scale =</code>, both set to <code>TRUE</code> by default. So, you can standardise our <code>x</code> with <code>x &lt;- scale(x)</code>, you can centre it around the mean with <code>x &lt;- scale(x, , F)</code> (leave the second argument as it is and change the third to <code>FALSE</code>), or scale it by its <em>SD</em> with <code>x &lt;- scale(x, T)</code>. If you wish you can transform the variable using custom parameters: for instance, <code>x &lt;- scale(x, -10, 5)</code> will shift the distribution of <code>x</code> <em>away from 0</em> by 10 points and then scale it by 5.</p>
+<p> </p>
+<p>OK, that’s enough with the intro, let’s move on…</p>
+<p> </p>
+</div>
+<div id="raw-vs-standardised-predictors-in-linear-models" class="section level1">
+<h1>Raw vs standardised predictors in linear models</h1>
+<p>In order to see how predictors behave in linear models based on whether or not they’re scaled, let’s create some data. We already have our <code>x</code> so let’s use it as our continuous predictor and add a categorical predictor with two levels <code>group</code> and an outcome <code>y</code>. Note, however, that what follows also applies to models with multiple continuous variables!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">group &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="dv">50</span>) <span class="co"># fifty 0s and fifty 1s</span>
+<span class="co"># simulate y dependent on x and group</span>
+y &lt;-<span class="st"> </span><span class="fl">25.4</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.6</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="fl">2.63</span> <span class="op">*</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span><span class="fl">0.37</span> <span class="op">*</span><span class="st"> </span>x <span class="op">*</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">4</span>)</code></pre></div>
+<p>Okay, now, let’s fit two models, one with a raw <code>x</code> and one with a scaled <code>x</code>, predicting <code>y</code> by <code>x</code>, <code>group</code> and adding an interaction term:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">*</span><span class="st"> </span>group) <span class="co"># model with raw x</span>
+m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">scale</span>(x) <span class="op">*</span><span class="st"> </span>group) <span class="co"># model with scaled x</span></code></pre></div>
+<p>The equations for our two models are:</p>
+<p><span class="math display">\[\hat{y} = b_0 + b_1\times x + b_1\times group + b_1\times x\times group\]</span> for model <code>m1</code> and</p>
+<p><span class="math display">\[\hat{y} = b_0 + b_1\times z + b_1\times group + b_1\times z\times group\]</span> where <span class="math inline">\(z=\frac{x-\bar{x}}{SD(x)}\)</span> for model <code>m2</code>.</p>
+<p>Let’s see the summaries of the two models</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x * group)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -11.4855  -2.4022   0.0411   2.1397  12.4083 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 27.83325    4.17491   6.667 1.66e-09 ***
+## x            0.56368    0.07943   7.097 2.20e-10 ***
+## group       -0.27045    5.83053  -0.046 0.963099    
+## x:group      0.41124    0.11134   3.694 0.000368 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.17 on 96 degrees of freedom
+## Multiple R-squared:  0.8956, Adjusted R-squared:  0.8923 
+## F-statistic: 274.5 on 3 and 96 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m2)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ scale(x) * group)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -11.4855  -2.4022   0.0411   2.1397  12.4083 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     57.0455     0.5900  96.686  &lt; 2e-16 ***
+## scale(x)         4.2462     0.5984   7.097  2.2e-10 ***
+## group           21.0417     0.8344  25.218  &lt; 2e-16 ***
+## scale(x):group   3.0979     0.8387   3.694 0.000368 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.17 on 96 degrees of freedom
+## Multiple R-squared:  0.8956, Adjusted R-squared:  0.8923 
+## F-statistic: 274.5 on 3 and 96 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>As you can see, these two models aren’t the same. So what’s changed by standardising <code>x</code>? Well, a couple of things.</p>
+<p>First, the regression coefficients (values of the <em>b</em> parameters). This stands to reason because we changed one of the predictors. Remember that the intercept (<span class="math inline">\(b_0\)</span>) represents the value of the outcome when <em>all predictors</em> are equal to 0. Since standardising <code>x</code> shifts it so that it’s centred around 0, the intercept must change too. Moreover, the slopes (<span class="math inline">\(b_1\)</span> to <span class="math inline">\(b_3\)</span>) didn’t stay the same either. This is due to the scaling of <code>x</code> by its standard deviation. The slope is the change in the outcome as a result of a unit change in the predictor. By scaling <code>x</code> we changed its units, from whatever it was before to units of <em>SD</em> which affected the slope.</p>
+<p>To visualise this change in parameters, here is an example of a simple regression with a single continuous predictor:</p>
+<div class="figure">
+<img src="reg.gif" />
+
+</div>
+<p>Second, because the standard errors of your estimates are also sensitive to scaling, the ones we got from model <code>m1</code> differ from those we got from <code>m2</code>. And, since the <em>t</em>-values are dependent on these standards errors, they too are different.</p>
+<p> </p>
+<p>Notice though that the two models are also the same in two important ways:</p>
+<p>First, the model fit statistics – the residual standard error, the degrees of freedom, the <span class="math inline">\(R^2\)</span>, and the model <em>F-</em> and <em>p-</em>values – are all the same.</p>
+<p>Second, because, as we discussed in above, standardising predictors is a linear transformation, it will not affect the coefficient <em>p</em>-values.</p>
+<p>   </p>
+<p><font size="5"><b>WHAT DID YOU JUST SAY?!</b></font></p>
+<p>   </p>
+<p>No, you’re right, my bad! The <em>p</em>-values of <strong><em>two</em></strong> of the coefficients are indeed different across the models. But why two and not all four?! Well, in order to answer this, let’s explore which two of the <em>p</em>-values differ.</p>
+<p>Comparing the two tables, we see that it was the ones associated with the intercept and the <span class="math inline">\(b_2\)</span> parameter for the group. OK, why these two? Well, notice that all the coefficients (<em>b</em> values) got larger when we standardised <code>x</code>. That would not result in smaller <em>p</em>-values <strong>IF</strong> the associated standard errors got proportionally bigger too. However, while the the standard errors of the coefficients for <code>x</code> and <code>x:group</code> did get proportionally bigger as a result of standardising <code>x</code>, the ones for the intercept and the non-standardised variable (<code>group</code>) actually got much smaller. That is why the <em>p</em>-values associated with the latter two are also much smaller.</p>
+<p>What does this mean? Study the animation below; it might give you some insight into what’s going on here:</p>
+<div class="figure">
+<img src="p_change.gif" />
+
+</div>
+<p>The <em>p</em>-value of the intercept tells us, whether or not it is significantly different from zero. This is very rarely an important thing to interpret, so intercept statistics are ofthen not even reported – they are just not that interesting so we don’t really mind the change. The other <em>p</em>-values, however, are kind of a big deal…</p>
+<p>It shoud be apparent from the plot that, in this case, the meain effect of group in the unstandardised model (when <code>x</code> is 0) is not really telling us much about reality. However, bear in mind that <font size="5"><b>you should not interpret main effects of your predictors in presence of a significant interaction!</b></font> Apart from not being very meaningful, they are also sensitive to things like these.</p>
+<p>To see that this is indeed due to the interaction, let’s run a model without one:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># simulate data with no interaction</span>
+y &lt;-<span class="st"> </span><span class="fl">25.4</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.6</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="fl">4.63</span> <span class="op">*</span><span class="st"> </span>group <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">4</span>)
+
+<span class="co"># raw model</span>
+m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span>group)
+<span class="co"># standardised x model</span>
+m2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">scale</span>(x) <span class="op">+</span><span class="st"> </span>group)</code></pre></div>
+<p>Let’s see:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x + group)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -12.949  -2.449   0.419   2.258  10.801 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 23.89142    2.74062   8.718 7.84e-14 ***
+## x            0.64160    0.05161  12.432  &lt; 2e-16 ***
+## group        4.57180    0.77368   5.909 5.11e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.867 on 97 degrees of freedom
+## Multiple R-squared:  0.6566, Adjusted R-squared:  0.6496 
+## F-statistic: 92.75 on 2 and 97 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m2)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ scale(x) + group)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -12.949  -2.449   0.419   2.258  10.801 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  57.1421     0.5470 104.471  &lt; 2e-16 ***
+## scale(x)      4.8332     0.3888  12.432  &lt; 2e-16 ***
+## group         4.5718     0.7737   5.909 5.11e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.867 on 97 degrees of freedom
+## Multiple R-squared:  0.6566, Adjusted R-squared:  0.6496 
+## F-statistic: 92.75 on 2 and 97 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Again, the intercept is playing up but, as mentioned above, its statistical significance is not really of much interest to us. Notice, though, that the statistics associated with <code>group</code> are exactly the same in both models.</p>
+<p>Below, you can clearly see that the difference in intercept between the two lines (yes, that is what the <em>b</em> for <code>group</code>, or any categorical variable, for that matter, is) remains constant across the two models:</p>
+<div class="figure">
+<img src="no_int.gif" />
+
+</div>
+</div>
+<div id="to-standardise-or-not-to-standardise" class="section level1">
+<h1>To standardise or not to standardise?</h1>
+<p>So what does it mean in practice? Should you, or should you not? Well, that is ultimately up to you. If you want your intercept to represent something meaningul, then it is a good idea to center your predictors in such a way, that the zero points of their centred versions can actually occur in the real world. For example, you would be hard-pressed to find someone with a height of 0 cm but there are quite a few people with hight equal to (height <span class="math inline">\(-\)</span> population mean height). Similarly, when it comes to scaling, it might be sensible (and when it comes to more complex models – such as mixed-effect models – even crucial!) to scale your predictors to avoid your model being <em>overspecific</em>. Moreover, when people standardise predictor variables, they often also standardise the outcome. That allows them to talk about <em>n</em> <em>SD</em> change in the outcome variable as a result of 1 <em>SD</em> change in the predictor (<em>e.g.,</em> a 1 <em>SD</em> increase in height resulted in 0.35 <em>SD</em> decrease in, I don’t know, enjoyability of shoe shopping).</p>
+<p>Ask yourself, does it make sense to make any claims about the cange in your predictor as a result of an increase in a person’s height by <em>a single centimetre</em>? Is it not more reasonable to predict a change in the outcome as a result of 10 cm change? Or a 1 <em>SD</em> change?</p>
+<p> </p>
+<p>Up to you…</p>
+<p>   </p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
