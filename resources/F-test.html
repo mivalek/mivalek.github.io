@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>The F word</title>
+
+<script src="F-test_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="F-test_files/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="F-test_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="F-test_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="F-test_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="F-test_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="F-test_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="F-test_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="F-test_files/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">The F word</h1>
+
+</div>
+
+
+<div id="variance-explained-explained" class="section level1">
+<h1>Variance explained… explained</h1>
+<p>By now, you’re probably having nightmares involving total, residual, model, observed, explained, and who knows what other kinds of variance. This explainer gives a detailed and step-by-step account of what these all mean, how they relate to Sums of Squares, the <em>F</em>-test (<code>anova()</code>), and model fit.</p>
+<p>Let’s start simple…</p>
+<div id="variance" class="section level2">
+<h2>Variance</h2>
+<p>In <a href="https://mivalek.github.io/Lectures/pub/l3_pub.html#/dispersion-variance" target="_blank">Lecture 2</a> we talked about how variance is a measure of spread of a single variable. We also said that it is calculated by taking the distance of each datapoint from the mean of the variable, squaring it, adding those squares up, and dividing by <span class="math inline">\(n-1\)</span>. The added squared deviations from the mean are referred to as the, by now familiar, <strong>S</strong>um of <strong>S</strong>quares:</p>
+<p><span class="math display">\[SS = \sum_{i=1}^n(x_i-\bar{x})^2,\]</span> where <span class="math inline">\(\bar{x}\)</span> is the mean of our variable and <span class="math inline">\(x_i\)</span> is any given observation.</p>
+<p>This sum of squares is then divided by <span class="math inline">\(n-1\)</span>. Now, you know the name for the sum of something divided by its <em>n</em> – it is the mean. The <span class="math inline">\(n-1\)</span> is used instead for reasons having to do with <em>estimating based on a sample</em>. It is known as the degrees of freedom. So by dividing <em>SS</em> by its degrees of freedom, we get the estimate of the mean of <em>SS</em>, the <em>Mean Square</em>. This is what variance is:</p>
+<p><span class="math display">\[var(x) = \frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n-1} = \frac{SS}{df} = MS\]</span>  </p>
+<p>All good! Now, in Lecture 6, we talked about different kinds of sums of squares (total, model, residual) we work with when assessing the fit of a linear regression model. So how do these relate to variance?</p>
+<p>To answer this question, we need to go back to the statement made in <a href="https://mivalek.github.io/Lectures/pub/l4_pub.html#/the-linear-model-2" target="_blank">Lecture 4</a> that everything, including the mean is a linear model. In particular, the mean is the intercept only, or the <strong>null</strong> model. To visualise this, let’s create two correlated variables and plot them against each other:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">scale</span>(<span class="kw">rnorm</span>(<span class="dv">40</span>))
+<span class="co"># create outcome variable using a linear model equation</span>
+<span class="co"># y = intercept + slope * x + noise</span>
+y &lt;-<span class="st"> </span><span class="kw">scale</span>(<span class="fl">3.15</span> <span class="op">+</span><span class="st"> </span><span class="fl">1.74</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dt">sd =</span> <span class="dv">2</span>), F)
+
+<span class="kw">plot</span>(x, y, <span class="dt">bty =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> <span class="st">&quot;grey22&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>))</code></pre></div>
+<p><img src="F-test_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>The mean of our <code>y</code> variable is around 0.77. Let’s fit and visualise the null model to convince ourselves that it is really just the mean:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m_null &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span><span class="dv">1</span>)
+<span class="kw">summary</span>(m_null)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ 1)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.55031 -0.42073 -0.05042  0.45813  1.32206 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.77449    0.09808   7.897  1.3e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.6203 on 39 degrees of freedom</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="ot">NULL</span>, <span class="dt">bty =</span> <span class="st">&quot;l&quot;</span>,
+     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
+<span class="kw">abline</span>(m_null, <span class="dt">col =</span> <span class="st">&quot;orangered&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
+<span class="co"># dashed residual lines</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(y)) {
+  <span class="kw">lines</span>(<span class="kw">rep</span>(x[i], <span class="dv">2</span>), <span class="kw">c</span>(<span class="kw">mean</span>(y), y[i]), <span class="dt">col =</span> <span class="st">&quot;orangered&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
+}
+
+## squares
+<span class="co">#</span>
+<span class="co"># for rectangles, we need 2 x and 2 y coordinte</span>
+<span class="co"># x for right and left (vertical) sides of the rectangle</span>
+<span class="co"># y for top and bottom (horizontal) sides</span>
+<span class="kw">rect</span>(x, <span class="co"># left sides of squares are given by x-coordinates of points</span>
+     <span class="kw">mean</span>(y), <span class="co"># one horizontal side is given by regression line</span>
+     <span class="co"># right sides of squares is x + distance of points to line</span>
+     x <span class="op">+</span><span class="st"> </span><span class="kw">abs</span>(<span class="kw">resid</span>(m_null)),
+     <span class="co"># 2nd horizontal is given by y-coordinates of points</span>
+     y,
+     <span class="dt">col =</span> <span class="st">&quot;#FF450022&quot;</span>, <span class="dt">border =</span> <span class="ot">NA</span>)
+
+<span class="kw">points</span>(x, y, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> <span class="st">&quot;grey22&quot;</span>)</code></pre></div>
+<p><img src="F-test_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The horizontal line is our null model. As you can see, it is parallel to the x-axis and intersects the y axis at <span class="math inline">\(\bar{y}\)</span>. In other words, it <em>is</em> the mean. The dashed orange lines are the deviations of each respective point from the mean, <span class="math inline">\(y_i - \bar{y}\)</span>). And the squares are, well, the squares. If we added their areas up, we would get the sum of squares. And the average area of these squares is the mean square, AKA, variance. Let’s see:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devs &lt;-<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(y)
+sq &lt;-<span class="st"> </span>devs<span class="op">^</span><span class="dv">2</span>
+ss &lt;-<span class="st"> </span><span class="kw">sum</span>(sq)
+ms &lt;-<span class="st"> </span>ss <span class="op">/</span><span class="st"> </span>(<span class="kw">length</span>(y) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="co"># divide by n-1, AKA degrees of freedom</span>
+ms</code></pre></div>
+<pre><code>## [1] 0.3847815</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># compare to variance of y</span>
+<span class="kw">var</span>(y)</code></pre></div>
+<pre><code>##           [,1]
+## [1,] 0.3847815</code></pre>
+<p> </p>
+</div>
+<div id="total-model-residual" class="section level2">
+<h2>Total, model, residual</h2>
+<p>Cool, so the mean square really is the variance. We have, however, discussed three mean squares in the lectures: total (<em>MS<sub>T</sub></em>), model (<em>MS<sub>M</sub></em>), and residual (<em>MS<sub>R</sub></em>). Which one is the one equal to variance of y then? Easy, it’s the total mean square!</p>
+<p>However, you might also have noticed, that the dashed orange lines are also the <strong>model residuals</strong>. If this is not clear, revisit Lecture 6. It should then follow, that the squares are the squared residual, their sum is the residual sum of squares (<em>SS<sub>R</sub></em>) and its average is the residual mean square (<em>MS<sub>R</sub></em>).</p>
+<p>But I just told you that <em>var(y)</em> is the <em>MS<sub>T</sub></em> and now I’m telling you it’s <em>MS<sub>R</sub></em>. What is this devilry?! Well, bear in mind that the model we fitted is the <strong>null</strong> model, the worst possible model. This model captures <em>no variance in the outcome variable whatsoever</em> and therefore its residual variance is equal to the total variance of the outcome variable, <em>MS<sub>T</sub> = MS<sub>R</sub></em>.</p>
+<p>Given that total variance can be portioned into model and residual variance (again, see Lecture 6 if this is not clear), we know that the variance explained by the null model (<em>MS<sub>M</sub></em>) will be zero.</p>
+<p>All of the information we calculated above can be accessed in <code>R</code> using the rather unfortunately named <code>anova()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(m_null)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: y
+##           Df Sum Sq Mean Sq F value Pr(&gt;F)
+## Residuals 39 15.007 0.38478</code></pre>
+<ul>
+<li><code>Df</code> is out <span class="math inline">\(n-1\)</span>,</li>
+<li><code>Sum Sq</code> is <em>SS<sub>R</sub></em>, which - in the case of the null model - is equal to <em>SS<sub>T</sub></em></li>
+<li><code>Mean Sq</code> is <em>MS<sub>R</sub></em> (here also <em>MS<sub>R</sub></em>), <em>i.e.,</em> <code>var(y)</code></li>
+</ul>
+<p>The <em>F</em>- and <em>p</em>-values are missing because the <em>F</em>-test (more on that later) compares the assessed model to the null model (or another reference model). Since out current model is the null model, there’s no need to compare it to itself.</p>
+<p> </p>
+<p>Let’s build a better model now, one that predicts <code>y</code> by <code>x</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x)
+<span class="kw">summary</span>(m1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.9634 -0.3924 -0.1605  0.3669  1.3476 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.77449    0.08667   8.936 7.06e-11 ***
+## x            0.30335    0.08777   3.456  0.00136 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5481 on 38 degrees of freedom
+## Multiple R-squared:  0.2392, Adjusted R-squared:  0.2191 
+## F-statistic: 11.94 on 1 and 38 DF,  p-value: 0.001364</code></pre>
+<p>Let’s see what happens with our variance of <code>y</code> now:</p>
+<p><img src="F-test_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>The plot is a little busy but bear with me. The orange line is still the null model and the orange boxes still represent the squared residuals of the null model whose average is the total variance in y. The green line now represents our model <code>m1</code> with an intercept of 0.77 and a slope of 0.3. The green squares are, you guessed it, the squared residuals of our model <code>m1</code>. Their sum is the <em>SS<sub>R</sub></em> and their average is the <em>MS<sub>M</sub></em> of the model. Because the green line is the line of best fit (in terms of <a href="https://en.wikipedia.org/wiki/Ordinary_least_squares" target="_blank">ordinary least squares</a>), we know that the residual variance is minimised in the model. Therefore, it <strong>must be smaller</strong> than the residual variance of any worse-fitting model – the null model including.</p>
+<p>Let’s compare the null model to <code>m1</code> to see that this is true:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(m_null, m1)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: y ~ 1
+## Model 2: y ~ x
+##   Res.Df    RSS Df Sum of Sq      F   Pr(&gt;F)   
+## 1     39 15.007                                
+## 2     38 11.418  1    3.5889 11.945 0.001364 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The output of the function when given two or more models is slightly different than when you only give it a single model, but all the essential information is still there. We have the formula for each of the compared models to remind us what it is we’re actually comparing. Then there’s the <em>SS</em> information for each one of the compared models. The first line should look familiar, as it pertains to our <code>m_null</code>. We don’t have the value of <em>MS<sub>R</sub></em> but we can easily calculated as <span class="math inline">\(\frac{SS_R}{df_R} = \frac{15.007}{39} \approx 0.38\)</span>. To reiterate, this is the variance left unexplained by the null model and, since the null model explains no variance, it is the total variance in the outcome variable.</p>
+<p>Let’s look at the second line now. Again, we have the residual degrees of freedom <em>df<sub>R</sub></em> and the <em>SS<sub>R</sub></em>. We can check that the latter value is correct by doing the calculation ourselves:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sum of squared model residulas</span>
+<span class="kw">sum</span>(<span class="kw">resid</span>(m1)<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 11.41756</code></pre>
+<p>All checks out!</p>
+<p>Next, we have the model <em>df</em>. This is the number of regression coefficients in the model <strong>other than the intercept</strong>. In <code>m1</code>, we only have a single coefficient (the one for <code>x</code>) and therefore only 1 <em>df<sub>M</sub></em>. The number of <em>df<sub>R</sub></em> for a model is the number of <em>df<sub>R</sub></em> of the <em>null model</em> minus <em>df<sub>M</sub></em> (<span class="math inline">\(n-1-1 = 38\)</span>). As you can see, <em>SS<sub>R</sub></em> for <code>m1</code> is smaller than that for <code>m_null</code>, which is what we set out to show!</p>
+<p>Further to the right, there’s the <em>SS<sub>M</sub></em>. From the lectures, you know that <span class="math inline">\(SS_M = SS_T - SS_R\)</span>, because the total variance can be divided into variance explained by the model and variance left unexplained. If we want to know the model mean square, we can just divide <em>SS<sub>M</sub></em> by <em>df<sub>M</sub></em>:</p>
+<p><span class="math display">\[MS_M = \frac{SS_M}{df_M} = \frac{3.5889}{1} = 3.5889\]</span></p>
+<p>If we run <code>anova()</code> on just our <code>m1</code>, <code>R</code> will do this tricky calculation for us:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(m1)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: y
+##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
+## x          1  3.5889  3.5889  11.945 0.001364 **
+## Residuals 38 11.4176  0.3005                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>All these numbers are telling us is that, <strong>in our sample</strong>, <code>m1</code> explains some of variance that <code>m_null</code> left unexplained (since it’s the null model, this is all of the variance in <code>y</code>). You should already know what’s coming…</p>
+<p>Since, due to sampling error, we can sometimes get a sample in which a model explains <em>some</em> variance, even if, in the population, this model is no better than the null model, we need to know if the variance explained by our model is large enough for us to reject the null hypothesis. Remember that, when it comes to a model as a whole, the <strong>null hypothesis states that the fit of the model is no better than that of the null model</strong>. So how do we know the variance is big enough?</p>
+<p>Persevere, oh reader…</p>
+</div>
+</div>
+<div id="the-f-test" class="section level1">
+<h1>The <em>F</em>-test</h1>
+<p>What I described in the previous paragraph sounded awfully like null hypothesis significance testing, didn’t it? Well, it is exactly that! So, just like with <em>all</em> other NHST tests we’ve covered, we need to follow these simple steps:</p>
+<ol>
+<li>Calculate a statistic that can serve as a measure of departure from the null given our data</li>
+<li>Get the sampling distribution of this statistic, or rely on one of the well-known probability distributions if it’s appropriate</li>
+<li>Locate the value of the statistic with respect to its distribution to get the <em>p</em>-value</li>
+<li>If <span class="math inline">\(p \leq .05\)</span>, then the probability of a statistic this extreme or more extreme given the sample size is <strong>unlikely</strong> if the null hypothesis is really true in the population – reject the null.</li>
+</ol>
+<p>Let’s follow them then…</p>
+<div id="the-statistic" class="section level2">
+<h2>The statistic</h2>
+<p>So we want to know how good a model is in terms of the variance in the outcome variable it explains. As mentioned above, variance is just a sum of squares scaled by degrees of freedom and, as you surely recall from <a href="file:///M:/teaching/univar/Lectures/lecture4/Lecture_4.html#/chi2-distribution" target="_blank">Lecture 4</a>, sums of squares follow the <span class="math inline">\(\chi^2\)</span>-distribution. We could thus use the variance explained as our statistic and the appropriate <span class="math inline">\(\chi^2\)</span>-distribution as its sampling distribution to get the <em>p</em>-value, right?</p>
+<p>Well, not quite. We also need to take into account the variance that was in the data to begin with or the variance that is left unexplained by the model. After all, a model explaining variance of, I don’t know, 2247.2 is a great fit, if the total variance in the outcome is 2317.9 but a pretty poor fit if the total variance is 571,000. For this reason, the statistic we are looking for has to be some kind of ratio. This gives us two good candidates:</p>
+<p><span class="math display">\[\frac{explained\ variance}{total\ variance}\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\frac{explained\ variance}{residual\ variance}\]</span></p>
+<p>In both cases, we have a ratio of two sums of squares divided by their respective degrees of freedom:</p>
+<p><span class="math display">\[\frac{explained\ variance}{total\ variance} = \frac{SS_M/df_M}{SS_T/df_T}\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\frac{explained\ variance}{residual\ variance} = \frac{SS_M/df_M}{SS_R/df_R}\]</span></p>
+<p>In the genre-defining <a href="file:///M:/teaching/univar/Lectures/lecture4/Lecture_4.html#/f--distribution" target="_blank">Lecture 4</a>, we talked about a distribution that arises as a ratio of two <strong>independent</strong> scaled <span class="math inline">\(\chi^2\)</span>-distributed variables – the <em>F</em>-distribution.</p>
+<p>Now, we could technically use either of these statistics but the availability of a theoretical distribution that we can use to get our <em>p</em>-values is a big advantage. It was even a bigger advantage back in the day before cheap computing power, when regression analysis and analysis of variance were developed.</p>
+<p>You can probably guess that, while both of the statistics proposed above are ratios of two scaled <span class="math inline">\(\chi^2\)</span>-distributed variables, the variables are only independent for one of them. If you think about the fact that <span class="math inline">\(SS_T = SS_M + SS_R\)</span>, it becomes apparent that model sum of squares can never be larger than the total sum of squares. Conversely <em>SS<sub>T</sub></em> can never be smaller than <em>SS<sub>M</sub></em>. That means that knowing one of these values gives us some information about the possible values of the other, which is basically the definition of statistical dependence. With <em>SS<sub>M</sub></em> and <em>SS<sub>R</sub></em>, we don’t have this problem: both of them can take any non-negative value, no matter what the value of the other one is.</p>
+<p>All this means is that we use the latter statistic because we know that it comes from an <em>F</em>-distribution. That is why we call it the <em>F</em>-statistic (or the <em>F</em>-value)! This is exactly the value that <code>anova()</code> outputs:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(ftest_m1 &lt;-<span class="st"> </span><span class="kw">anova</span>(m1))</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: y
+##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
+## x          1  3.5889  3.5889  11.945 0.001364 **
+## Residuals 38 11.4176  0.3005                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># model and residual SS, respectively</span>
+(ss &lt;-<span class="st"> </span>ftest_m1<span class="op">$</span><span class="st">`</span><span class="dt">Sum Sq</span><span class="st">`</span>)</code></pre></div>
+<pre><code>## [1]  3.588916 11.417562</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># model and residual df, respectively</span>
+(df &lt;-<span class="st"> </span>ftest_m1<span class="op">$</span>Df)</code></pre></div>
+<pre><code>## [1]  1 38</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># MS_M and MS_R, equal to ftest_m1$`Mean Sq`</span>
+(ms &lt;-<span class="st"> </span>ss<span class="op">/</span>df)</code></pre></div>
+<pre><code>## [1] 3.5889157 0.3004621</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># F-value</span>
+(fval &lt;-<span class="st"> </span>ms[<span class="dv">1</span>]<span class="op">/</span>ms[<span class="dv">2</span>])</code></pre></div>
+<pre><code>## [1] 11.94465</code></pre>
+</div>
+<div id="the-distribution" class="section level2">
+<h2>The distribution</h2>
+<p>Cool, so now we have our test statistic and we also know that it comes from the <em>F</em> family of distributions. As you know, this family includes distributions of various shapes defined by degrees of freedom so we need to know which particular one to look at. That is because a given <em>F</em>-value will have different associated <em>p</em>-values under different distributions.</p>
+<p>What are the degrees of freedom then? Well, since the <em>F</em>-statistic is a ratio of two SSs divided by their respective degrees of freedom, it is not surprising that the associated <em>F</em> distribution inherits the same <em>df</em>s. Yes, the shape of an <em>F</em>- unlike a <em>t</em>- or a <span class="math inline">\(\chi^2\)</span>-distribution is defined by <em>two</em> sets of <em>df</em>s.</p>
+<p>In our <code>m1</code> example, the model and residual <em>df</em>s are 1 and 38, respectively. This is what an <em>F</em>-distribution with these <em>df</em>s looks like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x_coord &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>,<span class="dv">15</span>, <span class="dt">length.out =</span> <span class="dv">200</span>)
+<span class="kw">plot</span>(x_coord, <span class="kw">df</span>(x_coord, df[<span class="dv">1</span>], df[<span class="dv">2</span>]), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;orangered&quot;</span>, <span class="dt">bty =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlab =</span> <span class="kw">expression</span>(<span class="kw">italic</span>(F)<span class="op">-</span>value), <span class="dt">ylab =</span> <span class="st">&quot;Density&quot;</span>)</code></pre></div>
+<p><img src="F-test_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>This is the sampling distribution of the <em>F</em>-value <strong>under the null hypothesis</strong>, meaning that even if our model <code>m1</code> is really no better than <code>m_null</code> when fitted to the population, this is the probability distribution of the various <em>F</em>-values we would get if we fitted the model to all samples of 40 observations.</p>
+<p>All we need to do now is locate the statistic with respect to the distribution and…</p>
+</div>
+<div id="get-the-p-value" class="section level2">
+<h2>Get the <em>p</em>-value</h2>
+<p>Hope you now know by heart that the <em>p</em>-value is the probability of obtaining a value of a test statistic <strong>as extreme or more extreme</strong> as the one observed in the sample <strong>if the null is true</strong>. In the case of the <em>F</em>-test, it is the area below the distribution curve to the right of the observed value. In our case (with an <em>F</em>-value of 11.94):</p>
+<p><img src="F-test_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>The <em>p</em>-value in our case is then simply:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the right hand side end of the distribution is the &quot;upper tail&quot;</span>
+<span class="kw">pf</span>(fval, df[<span class="dv">1</span>], df[<span class="dv">2</span>], <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## [1] 0.001363984</code></pre>
+<p>This is indeed the <em>p</em>-value that <code>anova()</code> gives us. It means that, if the null is true, the probability of getting an <em>F</em>-value of a model that is at least 11.94 in a sample of 40 is only about 0.001. Since it is less than the conventional .05, we deem the result unlikely under the null hypothesis and therefore <strong>reject the null</strong>. We then can claim that this model is a significantly better fit to the data than the intercept-only/null model, because it captures more variance in the outcome variable than just the best uninformed guess of <span class="math inline">\(\bar{y}\)</span>.</p>
+<p>Have a look at the <code>anova()</code> output of the model once again and make sure you understand what the numbers mean and what the relationships between them are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(m1)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: y
+##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
+## x          1  3.5889  3.5889  11.945 0.001364 **
+## Residuals 38 11.4176  0.3005                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p> </p>
+</div>
+</div>
+<div id="comparing-models" class="section level1">
+<h1>Comparing models</h1>
+<p>The nice thing about the <em>F</em>-test is that it allows for the comparison of an arbitrary number of <strong>nested</strong> models, as long as they have been fit to the same data set (of the same size). To see how this works, let’s create a random variable <code>x2</code>, unrelated to our outcome and add it to our linear model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(y), <span class="dv">3</span>)
+<span class="kw">cor</span>(y, x2) <span class="co"># chance-level correlation</span></code></pre></div>
+<pre><code>##            [,1]
+## [1,] 0.09506859</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2 &lt;-<span class="st"> </span><span class="kw">update</span>(m1, <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>x2)</code></pre></div>
+<p>We can put all of our models into an <code>anova()</code> function to perform the <em>F</em>-test:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(m_null, m1, m2)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: y ~ 1
+## Model 2: y ~ x
+## Model 3: y ~ x + x2
+##   Res.Df    RSS Df Sum of Sq       F   Pr(&gt;F)   
+## 1     39 15.007                                 
+## 2     38 11.418  1    3.5889 11.6308 0.001582 **
+## 3     37 11.417  1    0.0005  0.0015 0.969622   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Let’s break down what’s going on here. <code>R</code> tells us that we’re comparing 3 models, the intercept only model (<code>Model 1</code>), the simple regression model (<code>Model 2</code>), and the multiple regression model with 2 predictors (<code>Model 3</code>). The <em>F</em>-test table shows the comparisons of <code>Model 2</code> against <code>Model 1</code> and <code>Model 3</code> against <code>Model 2</code>. Notice that <em>SS<sub>R</sub></em> and <em>df<sub>R</sub></em> of a model become <em>SS<sub>T</sub></em> and <em>df<sub>T</sub></em> for the model below, making the <em>F</em>-value calculations possible. Thus, for <code>Model 3</code>, the values are:</p>
+<p><span class="math display">\[F = \frac{SS_M/df_M}{SS_R/df_R} = \frac{(SS_T - SS_R)/df_M}{SS_R/(df_T - df_M)}\]</span> <span class="math display">\[F \approx \frac{(11.418 - 11.417)/1}{11.417/(38 - 1)} \approx \frac{0.0005/1}{11.417/37}\]</span> <span class="math display">\[F \approx \frac{0.0005}{0.309} \approx 0.0016\]</span></p>
+<p>Convince yourself that this result is indeed the same as the one from the <code>anova()</code> output (within rounding error). While doing it, make sure you understand where those numbers come from.</p>
+<p>The result of the <em>F</em>-test indicate that the amount of variance explained by <code>x2</code> <em>in addition</em> to <code>x1</code> is not large enough to be unlikely in a world where model <code>m2</code> isn’t different from model <code>m1</code>, as the <em>p</em>-value is pretty close to 1. This makes sense because we designed the variable <code>x2</code> to be unrelated to <code>y</code>.</p>
+<p>Now, let’s look at the output of <code>anova(m2)</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(m2)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: y
+##           Df  Sum Sq Mean Sq F value   Pr(&gt;F)   
+## x          1  3.5889  3.5889 11.6308 0.001582 **
+## x2         1  0.0005  0.0005  0.0015 0.969622   
+## Residuals 37 11.4171  0.3086                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>If you have a good look at this table and the one above, you will see that the numbers are the same. Some, like the null model residuals (AKA total variance) and <em>df</em>s, are missing from this one, others are extra, like the mean square values. The principle is, however, the same. The <code>x</code> row shows the results of the <em>F</em>-test for the <code>x</code> predictor, which is the same as comparing the <code>y ~ x</code> model to the null model. The <code>x2</code> row then tests the significance of the additive effect of <code>x2</code>, which is the same as comparing <code>y ~ x + x2</code> to <code>y ~ x</code>. This is what we mean by <em>incremental model fit</em> in lectures.</p>
+<p> </p>
+<p>To test your understanding of the <em>F</em>-test try answering these questions before you read of for the answers: What will <code>anova(m_null, m2)</code> do? How will the output differ from the one above?</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>OK, let’s see:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(m_null, m2)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: y ~ 1
+## Model 2: y ~ x + x2
+##   Res.Df    RSS Df Sum of Sq      F   Pr(&gt;F)   
+## 1     39 15.007                                
+## 2     37 11.417  2    3.5894 5.8161 0.006363 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>What we’re doing here is pitting <code>m2</code> directly against the null model, cutting out the <code>m1</code> middleman. The difference between this <em>f</em>-test and the one produced by <code>anova(m2)</code> is that here, the model gets evaluated as a whole and not one predictor at a time. As a result, even though only one of the predictors accounts for a significant portion of the variance in <code>y</code>, the overall model is still an improvement over the null model.</p>
+</div>
+<div id="summary" class="section level1">
+<h1>Summary</h1>
+<p>To recap, the <em>F</em>-test is a good way of assessing whether a model is a significant improvement on a reference model (by default the null model). The test compares the variance in the outcome accounted for by the model to the variance left unexplained using the <em>F</em>-ratio (<span class="math inline">\(MS_M/MS_R\)</span>). This ratio has a sampling distribution that follows the <em>F</em>-distribution with <em>df<sub>M</sub></em> and <em>df<sub>R</sub></em> degrees of freedom which allows us to assess the probability of a given amount of improvement in a sample <strong>if, in reality, there is no improvement</strong>. If the probability is sufficiently small (<span class="math inline">\(p \leq .05\)</span>), then the model is a significantly better fit to the data than the reference model.</p>
+<p>Easy peasy…</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
