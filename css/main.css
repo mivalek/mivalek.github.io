@@ -1793,8 +1793,8 @@ pre code {
 
 hr {
   border: 0;
-  border-bottom: solid 1px rgba(212, 212, 255, 0.1);
-  margin: 2em 0;
+  border-bottom: solid 2px rgb(255, 255, 255);
+  margin: 5em 0;
 }
 
 hr.major {
@@ -2780,7 +2780,7 @@ button:disabled,
 }
 
 .tiles article {
-  width: 45%;
+  width: 33.3%;
 }
 
 .tiles semester {
@@ -2862,15 +2862,12 @@ button:disabled,
   opacity: 0;
 }
 
-.tiles article:nth-child(2), .tiles article:nth-child(3) {
-  width: 55%;
-}
 
-.tiles article:nth-child(5), .tiles article:nth-child(6) {
+.tiles article:nth-child(4), .tiles article:nth-child(5) {
   width: 50%;
 }
 
-.tiles article:nth-child(7) {
+.tiles article:nth-child(6) {
   width: 100%;
 }
 
@@ -2999,9 +2996,10 @@ button:disabled,
 }
 
 .spotlights > section > .image img {
+  object-fit: cover;
   border-radius: 0;
   display: block;
-  width: 100%;
+  height: 100%;
 }
 
 .spotlights > section > .image:before {
@@ -3034,7 +3032,7 @@ button:disabled,
   -ms-align-items: center;
   align-items: center;
   padding: 2em 3em 0.1em 3em ;
-  width: 70%;
+  width: 90%;
 }
 
 .spotlights > section > .content > .inner {
@@ -3563,6 +3561,10 @@ background-color: #8ea9e8;
 
 #banner.style6:after {
 background-color: #87c5a4;
+  }
+  
+#banner.style6:after {
+background-color: #bec482;
   }
 
 body.is-loading #banner:after {
