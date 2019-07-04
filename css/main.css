@@ -2901,7 +2901,7 @@ button:disabled,
 
 @media screen and (max-width: 1280px) {
   
-  .tiles article {
+  .tiles article, .tiles semeser {
     padding: 4em 3em 2em 3em ;
     height: 30vh;
     max-height: 30em;
@@ -2912,7 +2912,7 @@ button:disabled,
 
 @media screen and (max-width: 980px) {
   
-  .tiles article {
+  .tiles article, .tiles semeser {
     width: 50% !important;
   }
   
@@ -2920,14 +2920,14 @@ button:disabled,
 
 @media screen and (max-width: 736px) {
   
-  .tiles article {
+  .tiles article, .tiles semeser {
     padding: 3em 1.5em 1em 1.5em ;
     height: 16em;
     max-height: none;
     min-height: 0;
   }
   
-  .tiles article h3 {
+  .tiles article h3, , .tiles semeser h3 {
     font-size: 1.5em;
   }
   
@@ -2939,7 +2939,7 @@ button:disabled,
     display: block;
   }
   
-  .tiles article {
+  .tiles article, .tiles semeser {
     height: 20em;
     width: 100% !important;
   }
@@ -3059,11 +3059,11 @@ button:disabled,
 @media screen and (max-width: 1680px) {
   
   .spotlights > section > .image {
-    width: 40%;
+    width: 30%;
   }
   
   .spotlights > section > .content {
-    width: 60%;
+    width: 70%;
   }
   
 }
@@ -3071,11 +3071,11 @@ button:disabled,
 @media screen and (max-width: 1280px) {
   
   .spotlights > section > .image {
-    width: 45%;
+    width: 40%;
   }
   
   .spotlights > section > .content {
-    width: 55%;
+    width: 60%;
   }
   
 }
