@@ -3,7 +3,7 @@
 
 /* Reset */
   
-  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, semester, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -12,7 +12,7 @@
     vertical-align: baseline;
   }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article, semester, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
@@ -1815,7 +1815,7 @@ hr.major {
 
 /* Section/Article */
   
-  section.special, article.special {
+  section.special, article.special, semester.special {
     text-align: center;
   }
 
@@ -2754,7 +2754,7 @@ button:disabled,
   border-top: 0 !important;
 }
 
-.tiles article {
+.tiles article, .tiles semester {
   -moz-align-items: center;
   -webkit-align-items: center;
   -ms-align-items: center;
@@ -2777,27 +2777,34 @@ button:disabled,
   min-height: 23em;
   overflow: hidden;
   position: relative;
+}
+
+.tiles article {
   width: 45%;
 }
 
-.tiles article .image {
+.tiles semester {
+  width: 50%;
+}
+
+.tiles article .image, .tiles semester .image {
   display: none;
 }
 
-.tiles article header {
+.tiles article header,.tiles semester header {
   position: relative;
   z-index: 3;
 }
 
-.tiles article h3 {
+.tiles article h3, .tiles semester h3 {
   font-size: 1.75em;
 }
 
-.tiles article h3 a:hover {
+.tiles article h3 a:hover, .tiles semeser h3 a:hover {
   color: inherit !important;
 }
 
-.tiles article .link.primary {
+.tiles article .link.primary, .tiles semester .link.primary {
   border: 0;
   height: 100%;
   left: 0;
@@ -2807,7 +2814,7 @@ button:disabled,
   z-index: 4;
 }
 
-.tiles article:before {
+.tiles article:before, .tiles semester:before {
   -moz-transition: opacity 0.5s ease;
   -webkit-transition: opacity 0.5s ease;
   -ms-transition: opacity 0.5s ease;
@@ -2823,7 +2830,11 @@ button:disabled,
   z-index: 2;
 }
 
-.tiles article:after {
+.tiles semester:before {
+  background-color: #232323;
+}
+
+.tiles article:after, .tiles semester:after {
   background-color: rgba(36, 41, 67, 0.25);
   content: '';
   display: block;
@@ -2835,7 +2846,7 @@ button:disabled,
   z-index: 1;
 }
 
-.tiles article:hover:before {
+.tiles article:hover:before, .tiles semester:hover:before {
   opacity: 0;
 }
 
@@ -2857,6 +2868,10 @@ button:disabled,
 
 .tiles article:nth-child(5), .tiles article:nth-child(6) {
   width: 50%;
+}
+
+.tiles article:nth-child(7) {
+  width: 100%;
 }
 
 .tiles article:nth-child(6n - 5):before {
@@ -2881,6 +2896,10 @@ button:disabled,
 
 .tiles article:nth-child(6n):before {
   background-color: #87c5a4;
+}
+
+.tiles article:nth-child(7):before {
+  background-color: #bec482;
 }
 
 @media screen and (max-width: 1280px) {

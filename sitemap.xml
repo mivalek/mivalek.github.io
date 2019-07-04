@@ -3,6 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/</loc>
+    <lastmod>2019-07-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/dapr_1/sem_1/</loc>
+    <lastmod>2019-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/dapr_1/sem_1/sem_1/</loc>
+    <lastmod>2019-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
     <lastmod>2017-10-31T22:42:51-05:00</lastmod>
     <priority>0</priority>
@@ -15,12 +31,6 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2017-10-31T22:42:51-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
     <lastmod>2017-10-31T22:42:51-05:00</lastmod>
     <priority>0</priority>
   </url>
@@ -87,13 +97,7 @@
   </url>
   
   <url>
-    <loc>/dapr_1/week02_rmd_intro.nb/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/dapr_1/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
