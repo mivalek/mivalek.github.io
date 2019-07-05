@@ -2804,7 +2804,7 @@ button:disabled,
   color: inherit !important;
 }
 
-.tiles article .link.primary {
+.tiles article .link.primary .tiles semester .link.primary {
   border: 0;
   height: 100%;
   left: 0;
