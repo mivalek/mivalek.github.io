@@ -2901,7 +2901,7 @@ button:disabled,
 
 @media screen and (max-width: 1280px) {
   
-  .tiles article {
+  .tiles article, .tiles semester {
     padding: 4em 3em 2em 3em ;
     height: 30vh;
     max-height: 30em;
@@ -2912,7 +2912,7 @@ button:disabled,
 
 @media screen and (max-width: 980px) {
   
-  .tiles article {
+  .tiles article, .tiles semester {
     width: 50% !important;
   }
   
@@ -2920,7 +2920,7 @@ button:disabled,
 
 @media screen and (max-width: 736px) {
   
-  .tiles article {
+  .tiles article, .tiles semester {
     padding: 3em 1.5em 1em 1.5em ;
     height: 16em;
     max-height: none;
@@ -2939,7 +2939,7 @@ button:disabled,
     display: block;
   }
   
-  .tiles article {
+  .tiles article, .tiles semester {
     height: 20em;
     width: 100% !important;
   }
@@ -3000,6 +3000,8 @@ button:disabled,
   border-radius: 0;
   display: block;
   height: 100%;
+  width: 100%;
+  max-height: 368px;
 }
 
 .spotlights > section > .image:before {
@@ -3059,11 +3061,23 @@ button:disabled,
 @media screen and (max-width: 1680px) {
   
   .spotlights > section > .image {
-    width: 40%;
+    width: 15%;
   }
   
   .spotlights > section > .content {
-    width: 60%;
+    width: 85%;
+  }
+  
+}
+
+@media screen and (max-width: 1366px) {
+  
+  .spotlights > section > .image {
+    width: 20%;
+  }
+  
+  .spotlights > section > .content {
+    width: 80%;
   }
   
 }
@@ -3071,11 +3085,11 @@ button:disabled,
 @media screen and (max-width: 1280px) {
   
   .spotlights > section > .image {
-    width: 45%;
+    width: 25%;
   }
   
   .spotlights > section > .content {
-    width: 55%;
+    width: 75%;
   }
   
 }
