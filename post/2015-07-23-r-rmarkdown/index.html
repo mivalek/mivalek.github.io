@@ -1,5 +1,6 @@
+<!DOCTYPE HTML>
 <html>
-<!-- Header -->
+
     <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,7 @@
 	<meta name="description" content="Your description">
 	<meta name="author" content="Psychology @ Edinburgh">
 	<meta name="generator" content="Hugo 0.55.6" />
-	<title>DapR 1 &middot; Psychology@UoE</title>
+	<title>Hello R Markdown &middot; Psychology@UoE</title>
 	<!-- Stylesheets -->
 	
 	<link rel="stylesheet" href="/css/main.css"/>
@@ -32,13 +33,12 @@
 	<![endif]-->
 </head>
 
-
     <body>
 
     <!-- Wrapper -->
         <div id="wrapper">
 
-        <!-- Header -->
+            <!-- Header -->
     <header id="header" class="alt">
         <a href="/" class="logo"><strong>Qunatitative methods</strong> <span>in R</span></a>
 
@@ -56,88 +56,68 @@
         </ul>
     </nav>
 
-    <section id="banner" class="style1">
-                    <div class="inner">
-			
-                        <header class="major">
-                            <h1>Data analysis for Psychology in R&emsp;1</h1>
-                        </header>
-                        <div class="content">
-                          </div>
-                          </div>
-                          </section>
         <!-- Main -->
-            <div id="main">
+            <div id="main" class="alt">
 
-            
+                
+                    <section id="one">
+                        <div class="inner">
+                            <header class="major">
+                                <h1>Hello R Markdown</h1>
+                            </header>
+                            
                             
 
 
-<section id="one" class="tiles">
-<semester>
-<span class="image">
-<img src="../img/sem1.jpg" alt="" />
-</span>
-<header class="major">
-<h3>
-<a href="sem_1" class="link">Semester 1</a>
-</h3>
-</header>
-</semester>
-<semester>
-<span class="image">
-<img src="../img/sem2.jpg" alt="" />
-</span>
-<header class="major">
-<h3>
-<a href="sem_2" class="link">Semester 2</a>
-</h3>
-</header>
-</semester>
-</section>
+<div id="r-markdown" class="section level1">
+<h1>R Markdown</h1>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>You can embed an R code chunk like this:</p>
+<pre class="r"><code>summary(cars)
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+fit &lt;- lm(dist ~ speed, data = cars)
+fit
+## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Coefficients:
+## (Intercept)        speed  
+##     -17.579        3.932</code></pre>
+</div>
+<div id="including-plots" class="section level1">
+<h1>Including Plots</h1>
+<p>You can also embed plots. See Figure <a href="#fig:pie">1</a> for example:</p>
+<pre class="r"><code>par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c(&#39;Sky&#39;, &#39;Sunny side of pyramid&#39;, &#39;Shady side of pyramid&#39;),
+  col = c(&#39;#0292D8&#39;, &#39;#F7EA39&#39;, &#39;#C4B632&#39;),
+  init.angle = -50, border = NA
+)</code></pre>
+<div class="figure"><span id="fig:pie"></span>
+<img src="/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png" alt="A fancy pie chart." width="672" />
+<p class="caption">
+Figure 1: A fancy pie chart.
+</p>
+</div>
+</div>
 
-<section id="two" class="spotlights">
-                    
-                    <section>
-                        <a href="https://www.ed.ac.uk/profile/tom-booth" class="image" target="_blank">
-							<img src="../img/tom_booth.jpg" alt="" data-position="center center" />
-						</a>
-                        <div class="content">
-                            <div class="inner">
-                                <header class="major">
-                                    <h3>Dr Tom Booth</h3>
-                                </header>
-                                <p>Tom AKA Boothy call is the daddy of all statistics at Psychology. He is also the course organiser on dapR 1.</p>
-                                <ul class="actions">
-                                    <li><a href="https://www.ed.ac.uk/profile/tom-booth" target="_blank" class="button big">See profile</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </section>
-                    
-                                        <section>
-                        <a href="https://www.ed.ac.uk/profile/milan-valasek" class="image" target="_blank">
-							<img src="../img/milan_valasek.jpg" alt="" data-position="center center" />
-						</a>
-                        <div class="content">
-                            <div class="inner">
-                                <header class="major">
-                                    <h3>Dr Milan Valasek</h3>
-                                </header>
-                                <p>Milan is leaving so he won't be able to give much of a fuck about you. So long!</p>
-                                <ul class="actions">
-                                    <li><a href="https://www.ed.ac.uk/profile/milan-valasek" target="_blank" class="button big">See profile</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                    
-                </section>
+            <!-- Disqus Inject -->
+                
             </div>
             
         <!-- Footer -->
-			
-				<!-- Footer -->
+            
+                <!-- Footer -->
     <footer id="footer">
         <div class="inner">
             <ul class="icons">
@@ -163,7 +143,6 @@
     </footer>
 
             
-        
         </div>
 
     <!-- Scripts -->
@@ -183,6 +162,6 @@
     
 
     
-        
+
     </body>
 </html>

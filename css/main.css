@@ -2800,11 +2800,21 @@ button:disabled,
   font-size: 1.75em;
 }
 
-.tiles article h3 a:hover, .tiles semeser h3 a:hover {
+.tiles article h3 a:hover, .tiles semester h3 a:hover {
   color: inherit !important;
 }
 
-.tiles article .link.primary, .tiles semester .link.primary {
+.tiles article .link.primary {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+ .tiles semester .jump.primary {
   border: 0;
   height: 100%;
   left: 0;
@@ -2824,7 +2834,7 @@ button:disabled,
   display: block;
   height: 100%;
   left: 0;
-  opacity: 0.85;
+  opacity: 0.9;
   position: absolute;
   width: 100%;
   z-index: 2;
@@ -3034,7 +3044,7 @@ button:disabled,
   -ms-align-items: center;
   align-items: center;
   padding: 2em 3em 0.1em 3em ;
-  width: 90%;
+  width: 100%;
 }
 
 .spotlights > section > .content > .inner {
@@ -3200,24 +3210,45 @@ padding: 0 1.5em;
 }
 
 #header .logo strong {
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: #ffffff;
+    color: #242943;
+    display: inline-block;
+    line-height: 1.65em;
+    margin-right: 1em;
+    padding: 0 0.3em 0 .5em;
+}
+
+#header .logo span {
 -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-background-color: #ffffff;
-  color: #242943;
-  display: inline-block;
+display: inline-block;
 line-height: 1.65em;
-margin-right: 0.325em;
-padding: 0 0.125em 0 0.375em;
+margin-left: -1em;
+padding: 0 0.3em 0 0.5em;
 }
 
 #header .logo:hover strong {
-background-color: #9bf1ff;
+background-color: #2a2f4a;
+color: #ffffff;
   }
 
+#header .logo:hover span{
+background-color: #ffffff;
+color: #2a2f4a;
+  }
+  
 #header .logo:active strong {
-background-color: #53e3fb;
+background-color: #242943;
+  }
+  
+#header .logo:active strong {
+color: #242943;
   }
 
 #header nav {

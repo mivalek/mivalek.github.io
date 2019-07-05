@@ -138,6 +138,7 @@
 				var $this = $(this),
 					$image = $this.find('.image'), $img = $image.find('img'),
 					$link = $this.find('.link'),
+					$jump = $this.find('.jump'),
 					x;
 
 				// Image.
@@ -178,6 +179,42 @@
 								window.setTimeout(function() {
 
 									if ($link.attr('target') == '_blank')
+										window.open(href);
+									else
+										location.href = href;
+
+								}, 500);
+
+						});
+
+					}
+					
+					// jump to section.
+					if ($jump.length > 0) {
+
+						$x = $jump.clone()
+							.text('')
+							.addClass('primary')
+							.appendTo($this);
+
+						$jump = $jump.add($x);
+
+						$jump.on('click', function(event) {
+
+							var href = $jump.attr('href');
+
+							// Prevent default.
+							//	event.stopPropagation();
+							//	event.preventDefault();
+
+							// Start transitioning.
+							//	$this.addClass('is-transitioning');
+							//	$wrapper.addClass('is-transitioning');
+
+							// Redirect.
+								window.setTimeout(function() {
+
+									if ($jump.attr('target') == '_blank')
 										window.open(href);
 									else
 										location.href = href;
