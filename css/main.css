@@ -42,6 +42,29 @@ body {
   -webkit-text-size-adjust: none;
 }
 
+.decorated{
+     overflow: hidden;
+     text-align: center;
+ }
+.decorated > span{
+    position: relative;
+    display: inline-block;
+}
+.decorated > span:before, .decorated > span:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    border-bottom: 2px solid;
+    width: 591px; /* half of limiter*/
+    margin: 0 20px;
+}
+.decorated > span:before{
+    right: 100%;
+}
+.decorated > span:after{
+    left: 100%;
+}
+
 /* Box Model */
   
   *, *:before, *:after {
@@ -1676,9 +1699,39 @@ a {
   text-decoration: none;
 }
 
+header.major a:hover {
+  border-bottom-color: transparent;
+  color: rgba(46,52,80, .9) !important;
+}
+
 a:hover {
   border-bottom-color: transparent;
   color: #9bf1ff !important;
+}
+
+.style2 a:hover {
+  border-bottom-color: transparent;
+  color: #8d82c4 !important;
+}
+
+.style3 a:hover {
+  border-bottom-color: transparent;
+  color: #ec8d81 !important;
+}
+
+.style4 a:hover {
+  border-bottom-color: transparent;
+  color: #e7b788 !important;
+}
+
+.style5 a:hover {
+  border-bottom-color: transparent;
+  color: #8ea9e8 !important;
+}
+
+.style6 a:hover {
+  border-bottom-color: transparent;
+  color: #87c5a4 !important;
 }
 
 a.button2:hover {
@@ -1852,6 +1905,13 @@ header.major > p {
   letter-spacing: 0.25em;
   margin-bottom: 0;
   text-transform: uppercase;
+}
+
+h1 {
+    position: relative;
+    font-size: 30px;
+    z-index: 1;
+    overflow: hidden;
 }
 
 body.is-ie header.major > :first-child:after {
@@ -2187,6 +2247,26 @@ a.icon.alt:hover:before {
   background-color: #6fc3df;
 }
 
+.style2 a.icon.alt:hover:before {
+  background-color: #8d82c4;
+}
+
+.style3 a.icon.alt:hover:before {
+  background-color: #ec8d81;
+}
+
+.style4 a.icon.alt:hover:before {
+  background-color: #e7b788;
+}
+
+.style5 a.icon.alt:hover:before {
+  background-color: #8ea9e8;
+}
+
+.style6 a.icon.alt:hover:before {
+  background-color: #87c5a4;
+}
+
 a.icon.alt:active:before {
   background-color: #37a6cb;
 }
@@ -2323,7 +2403,7 @@ ul.actions {
 
 ul.actions li {
   display: inline-block;
-  padding: 0 1em 0 0;
+  padding: 0 1em 0.5em 0;
   vertical-align: middle;
 }
 
@@ -2414,6 +2494,31 @@ ul.pagination li > .page.active {
 
 ul.pagination li > .page.active:hover {
   background-color: #9bf1ff;
+    color: #242943 !important;
+}
+
+.style2 ul.pagination li > .page.active:hover {
+  background-color: #8d82c4;
+    color: #242943 !important;
+}
+
+.style3 ul.pagination li > .page.active:hover {
+  background-color: #ec8d81;
+    color: #242943 !important;
+}
+
+.style4 ul.pagination li > .page.active:hover {
+  background-color: #e7b788;
+    color: #242943 !important;
+}
+
+.style5 ul.pagination li > .page.active:hover {
+  background-color: #8ea9e8;
+    color: #242943 !important;
+}
+
+.style6 ul.pagination li > .page.active:hover {
+  background-color: #87c5a4;
     color: #242943 !important;
 }
 
@@ -2568,6 +2673,46 @@ button:active,
 .button:active {
   box-shadow: inset 0 0 0 2px #9bf1ff;
   color: #9bf1ff;
+}
+
+.style2 button:hover,
+.style2 button:active,
+.style2 .button:hover,
+.style2 .button:active {
+  box-shadow: inset 0 0 0 2px #8d82c4;
+  color: #8d82c4;
+}
+
+.style3 button:hover,
+.style3 button:active,
+.style3 .button:hover,
+.style3 .button:active {
+  box-shadow: inset 0 0 0 2px #ec8d81;
+  color: #ec8d81;
+}
+
+.style4 button:hover,
+.style4 button:active,
+.style4 .button:hover,
+.style4 .button:active {
+  box-shadow: inset 0 0 0 2px #e7b788;
+  color: #e7b788;
+}
+
+.style5 button:hover,
+.style5 button:active,
+.style5 .button:hover,
+.style5 .button:active {
+  box-shadow: inset 0 0 0 2px #8ea9e8;
+  color: #8ea9e8;
+}
+
+.style6 button:hover,
+.style6 button:active,
+.style6 .button:hover,
+.style6 .button:active {
+  box-shadow: inset 0 0 0 2px #87c5a4;
+  color: #87c5a4;
 }
 
 button2:hover,
@@ -2770,6 +2915,66 @@ button2.special:active,
 .button2.special:hover,
 .button2.special:active {
   background-color: #9bf1ff;
+    color: #242943 !important;
+}
+
+.style2 button.special:hover,
+.style2 button.special:active,
+.style2 .button.special:hover,
+.style2 .button.special:active,
+.style2 button2.special:hover,
+.style2 button2.special:active,
+.style2 .button2.special:hover,
+.style2 .button2.special:active {
+  background-color: #8d82c4;
+    color: #242943 !important;
+}
+
+.style3 button.special:hover,
+.style3 button.special:active,
+.style3 .button.special:hover,
+.style3 .button.special:active,
+.style3 button2.special:hover,
+.style3 button2.special:active,
+.style3 .button2.special:hover,
+.style3 .button2.special:active {
+  background-color: #ec8d81;
+    color: #242943 !important;
+}
+
+.style4 button.special:hover,
+.style4 button.special:active,
+.style4 .button.special:hover,
+.style4 .button.special:active,
+.style4 button2.special:hover,
+.style4 button2.special:active,
+.style4 .button2.special:hover,
+.style4 .button2.special:active {
+  background-color: #e7b788;
+    color: #242943 !important;
+}
+
+.style5 button.special:hover,
+.style5 button.special:active,
+.style5 .button.special:hover,
+.style5 .button.special:active,
+.style5 button2.special:hover,
+.style5 button2.special:active,
+.style5 .button2.special:hover,
+.style5 .button2.special:active {
+  background-color: #8ea9e8;
+    color: #242943 !important;
+}
+
+.style6 button.special:hover,
+.style6 button.special:active,
+.style6 .button.special:hover,
+.style6 .button.special:active,
+.style6 button2.special:hover,
+.style6 button2.special:active,
+.style6 .button2.special:hover,
+.style6 .button2.special:active {
+  background-color: #87c5a4;
     color: #242943 !important;
 }
 
@@ -3592,6 +3797,11 @@ z-index: 1;
 font-size: 3.25em;
 }
 
+
+#banner ul.actions {
+  text-align: center;
+}
+
 #banner > .inner {
 -moz-transition: opacity 1.5s ease, -moz-transform 0.5s ease-out, -moz-filter 0.5s ease, -webkit-filter 0.5s ease;
 -webkit-transition: opacity 1.5s ease, -webkit-transform 0.5s ease-out, -webkit-filter 0.5s ease, -webkit-filter 0.5s ease;
@@ -3708,7 +3918,7 @@ opacity: 0;
 
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 935px) {
   
   #banner {
   padding: 5em 0 1em 0 ;
