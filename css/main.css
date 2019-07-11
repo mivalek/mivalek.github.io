@@ -1716,7 +1716,7 @@ a:hover {
 
 .style3 a:hover {
   border-bottom-color: transparent;
-  color: #ec8d81 !important;
+  color: #8ea9e8 !important;
 }
 
 .style4 a:hover {
@@ -1726,7 +1726,7 @@ a:hover {
 
 .style5 a:hover {
   border-bottom-color: transparent;
-  color: #8ea9e8 !important;
+  color: #d9d88b !important;
 }
 
 .style6 a:hover {
@@ -2252,7 +2252,7 @@ a.icon.alt:hover:before {
 }
 
 .style3 a.icon.alt:hover:before {
-  background-color: #ec8d81;
+  background-color: #8ea9e8;
 }
 
 .style4 a.icon.alt:hover:before {
@@ -2260,7 +2260,7 @@ a.icon.alt:hover:before {
 }
 
 .style5 a.icon.alt:hover:before {
-  background-color: #8ea9e8;
+  background-color: #d9d88b;
 }
 
 .style6 a.icon.alt:hover:before {
@@ -2503,7 +2503,7 @@ ul.pagination li > .page.active:hover {
 }
 
 .style3 ul.pagination li > .page.active:hover {
-  background-color: #ec8d81;
+  background-color: #8ea9e8;
     color: #242943 !important;
 }
 
@@ -2514,7 +2514,7 @@ ul.pagination li > .page.active:hover {
 
 .style5 ul.pagination li > .page.active:hover {
   background-color: #8ea9e8;
-    color: #242943 !important;
+    color: #d9d88b !important;
 }
 
 .style6 ul.pagination li > .page.active:hover {
@@ -2687,8 +2687,8 @@ button:active,
 .style3 button:active,
 .style3 .button:hover,
 .style3 .button:active {
-  box-shadow: inset 0 0 0 2px #ec8d81;
-  color: #ec8d81;
+  box-shadow: inset 0 0 0 2px #8ea9e8;
+  color: #8ea9e8;
 }
 
 .style4 button:hover,
@@ -2703,8 +2703,8 @@ button:active,
 .style5 button:active,
 .style5 .button:hover,
 .style5 .button:active {
-  box-shadow: inset 0 0 0 2px #8ea9e8;
-  color: #8ea9e8;
+  box-shadow: inset 0 0 0 2px #d9d88b;
+  color: #d9d88b;
 }
 
 .style6 button:hover,
@@ -2938,7 +2938,7 @@ button2.special:active,
 .style3 button2.special:active,
 .style3 .button2.special:hover,
 .style3 .button2.special:active {
-  background-color: #ec8d81;
+  background-color: #8ea9e8;
     color: #242943 !important;
 }
 
@@ -2962,7 +2962,7 @@ button2.special:active,
 .style5 button2.special:active,
 .style5 .button2.special:hover,
 .style5 .button2.special:active {
-  background-color: #8ea9e8;
+  background-color: #d9d88b;
     color: #242943 !important;
 }
 
@@ -3167,7 +3167,7 @@ button2:disabled,
 }
 
 .tiles article:nth-child(6n - 3):before {
-  background-color: #ec8d81;
+  background-color: #8ea9e8;
 }
 
 .tiles article:nth-child(6n - 2):before {
@@ -3175,7 +3175,7 @@ button2:disabled,
 }
 
 .tiles article:nth-child(6n - 1):before {
-  background-color: #8ea9e8;
+  background-color: #d9d88b;
 }
 
 .tiles article:nth-child(6n):before {
@@ -3251,9 +3251,18 @@ button2:disabled,
   margin: 0 0 0.5em 0;
 }
 
+/* Items */
+#main.items > section {
+  border: none;
+}
+
+#main.items > section:nth-child(2n) {
+  background-color: #333856;
+}
+
 /* Spotlights */
   
-  .spotlights {
+.spotlights {
     border-top: 0 !important;
   }
 
@@ -3635,7 +3644,7 @@ color: #8d82c4;
   }
 
 #header.alt.style3 .logo strong {
-color: #ec8d81;
+color: #8ea9e8;
   }
 
 #header.alt.style4 .logo strong {
@@ -3643,7 +3652,7 @@ color: #e7b788;
   }
 
 #header.alt.style5 .logo strong {
-color: #8ea9e8;
+color: #d9d88b;
   }
 
 #header.alt.style6 .logo strong {
@@ -3875,7 +3884,7 @@ background-color: #8d82c4;
   }
 
 #banner.style3:after {
-background-color: #ec8d81;
+background-color: #8ea9e8;
   }
 
 #banner.style4:after {
@@ -3883,7 +3892,7 @@ background-color: #e7b788;
   }
 
 #banner.style5:after {
-background-color: #8ea9e8;
+background-color: #d9d88b;
   }
 
 #banner.style6:after {
