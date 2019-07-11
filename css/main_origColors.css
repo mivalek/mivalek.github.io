@@ -1763,7 +1763,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 1em 0;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .faq a {
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: inherit;
   border-bottom: 0;
 }
@@ -1776,7 +1776,7 @@ h2 {
   font-size: 1.75em;
 }
 
-h3, .faq {
+h3 {
   font-size: 1.35em;
 }
 
@@ -4344,32 +4344,4 @@ body.is-menu-visible #menu .inner {
 transform: none;
 opacity: 1;
 visibility: visible;
-}
-
-.ans {
-  display: none;
-}
-
-.ans > p {
-  background-color: #333856;
-  margin: 0 0 2em 0;
-}
-
-.faq {
-  color: #ffffff;
-    font-weight: 600;
-  line-height: 1.65;
-  margin: 0 0 1em 0;
-}
-
-#faq > .inner {
-  padding: 0 0 0 0;
-}
-
-#faq > .inner:first-child {
-  padding: 5em 0 0 0;
-}
-
-#faq > .inner:last-child {
-  padding: 0 0 4em 0;
 }
