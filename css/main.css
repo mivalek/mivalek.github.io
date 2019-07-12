@@ -3251,6 +3251,15 @@ button2:disabled,
   margin: 0 0 0.5em 0;
 }
 
+.contact-method h4 {
+    margin: 0;
+}
+
+.contact-method a {
+    margin-bottom: 1em;
+    border-bottom: none;
+}
+
 /* Items */
 #main.items > section {
   border: none;
