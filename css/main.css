@@ -3260,6 +3260,10 @@ button2:disabled,
     border-bottom: none;
 }
 
+#multiline.contact-method {
+  margin: 0 0 1em 0;
+}
+
 /* Items */
 #main.items > section {
   border: none;
