@@ -1726,7 +1726,7 @@ a:hover {
 
 .style5 a:hover {
   border-bottom-color: transparent;
-  color: #d9d88b !important;
+  color: #d8d768 !important;
 }
 
 .style6 a:hover {
@@ -2260,7 +2260,7 @@ a.icon.alt:hover:before {
 }
 
 .style5 a.icon.alt:hover:before {
-  background-color: #d9d88b;
+  background-color: #d8d768;
 }
 
 .style6 a.icon.alt:hover:before {
@@ -2514,7 +2514,7 @@ ul.pagination li > .page.active:hover {
 
 .style5 ul.pagination li > .page.active:hover {
   background-color: #8ea9e8;
-    color: #d9d88b !important;
+    color: #d8d768 !important;
 }
 
 .style6 ul.pagination li > .page.active:hover {
@@ -2703,8 +2703,8 @@ button:active,
 .style5 button:active,
 .style5 .button:hover,
 .style5 .button:active {
-  box-shadow: inset 0 0 0 2px #d9d88b;
-  color: #d9d88b;
+  box-shadow: inset 0 0 0 2px #d8d768;
+  color: #d8d768;
 }
 
 .style6 button:hover,
@@ -2962,7 +2962,7 @@ button2.special:active,
 .style5 button2.special:active,
 .style5 .button2.special:hover,
 .style5 .button2.special:active {
-  background-color: #d9d88b;
+  background-color: #d8d768;
     color: #242943 !important;
 }
 
@@ -3175,7 +3175,7 @@ button2:disabled,
 }
 
 .tiles article:nth-child(6n - 1):before {
-  background-color: #d9d88b;
+  background-color: #d8d768;
 }
 
 .tiles article:nth-child(6n):before {
@@ -3665,7 +3665,7 @@ color: #e7b788;
   }
 
 #header.alt.style5 .logo strong {
-color: #d9d88b;
+color: #d8d768;
   }
 
 #header.alt.style6 .logo strong {
@@ -3905,7 +3905,7 @@ background-color: #e7b788;
   }
 
 #banner.style5:after {
-background-color: #d9d88b;
+background-color: #d8d768;
   }
 
 #banner.style6:after {
@@ -4328,6 +4328,10 @@ opacity: 0;
 
 #menu .close:hover:after, #menu .close:active:after {
 opacity: 1;
+}
+
+body {
+cursor: default;
 }
 
 body.is-ie #menu {
