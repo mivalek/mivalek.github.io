@@ -48,36 +48,68 @@ p {
  *********************************************/
 
 .banner {
-    position: absolute;
     background-color: #85a6ea;
+    position: absolute;
     width: 100%;
-    height: 20%;
+    height: 23%;
 }
+
+@media (max-aspect-ratio: 4/5) {
+    .banner {
+      height: 30%;
+    }
+}
+@media (max-aspect-ratio: 7/10) {
+    .banner {
+      height: 35%;
+    }
+}
+@media (max-aspect-ratio: 5/11) {
+    .banner {
+      height: 40%;
+    }
+}
+
 
 .banner .header, .banner .header strong {
   text-align: right;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-weight: 900;
   /* uncomment if you want all caps */
-  /*
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 1em;
-  margin: 1em 1em 0 0;
-  */
+  letter-spacing: 0.2em;  
+  margin: calc(.1em + 1vh) 1em 0 0;
   
   /* comment out the 2 lines below if uncommenting above */
-  font-size: 30px;
-  margin: 0.5em 0.5em 0 0;
+  /*font-size: 30px;
+  margin: 0.5em 0.5em 0 0;*/
   }
   
 .banner .header {
   color: #434b75;
+  font-size: calc(.5em + 0.5vw);
 }
 
 .banner .header strong {
   color: #fdfdfd;
   margin-left: 0.5em;
+  font-size: calc(.5em + 0.5vw);
+}
+
+.reveal .slide-title {
+    height: 135px;
+    margin-bottom: 1em;
+    align-items: center;
+    display: flex;
+    background-color: #85a6ea;
+    margin-top: 0.5em;
+}
+
+.reveal .slide-title > .author {
+    background-color: #fdfdfd;
+    width: 100%;
+    height: 100%;
+    padding-top: 0.5em;
 }
 
 .reveal h1,
@@ -99,7 +131,6 @@ p {
 }
 
 .reveal .subtitle,
-.reveal .author,
 .reveal h3,
 .reveal h4,
 .reveal h5,
@@ -341,7 +372,7 @@ p {
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #f0c384;
+  color: #465ee3;
   text-shadow: none;
   border: none; }
 
@@ -384,8 +415,8 @@ p {
 
 /*********************************************
  * NAVIGATION CONTROLS
- *********************************************/ 
- 
+ *********************************************/
+
 .reveal .controls .navigate-left,
 .reveal .controls .navigate-left.enabled {
   border-right-color: #85a6ea; }
@@ -470,7 +501,7 @@ code span.dt {
     color: #0040c2;
 }
 /*********************************************
- * CODE CHUNKS
+ * NUMBERING & SEARCH BAR
  *********************************************/
  
  .reveal .slide-number {
@@ -484,4 +515,9 @@ code span.dt {
 	background: none;
 	color: #434b75;
 	padding: 0;
+}
+
+.reveal .searchdiv {
+    z-index: 2;
+    margin: calc(-0.2em + 0.8vh) 0 0 0.5em;
 }
