@@ -122,7 +122,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
     <style type="text/css">code{white-space: pre;}</style>
 
-    <link rel="stylesheet" href="/demo/slides_files/css/dapR_3.css"/>
+    <link rel="stylesheet" href="/demo/slides_files/css/dapR_2.css"/>
 
 <!-- Printing and PDF exports -->
 <script id="paper-css" type="application/dynamic-css">
@@ -512,7 +512,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <body>
 
 <div class="banner">
-<div class = "header"><a href="/">dapR<strong>3</strong></a></div>
+<div class = "header"><a href="/">dapR<strong>2</strong></a></div>
 </div>
   <div class="reveal">
     <div class="slides">
@@ -673,10 +673,35 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 $(document).ready(function () {
-    $('h2').each(function () {
+    $('h2:not(.author)').each(function () {
+        $(this).wrapAll('<div class="slide-title" />');
+    });	
+	$('h1.title').each(function () {
         $(this).wrapAll('<div class="slide-title" />');
     });	
 });
+
+var f = (function() {
+	// get scale
+	var element = document.querySelector('.slides');
+	var scaleX = element.getBoundingClientRect().width / element.offsetWidth;
+	var bottom = $(".present > .slide-title").offset().top + ($(".present > .slide-title").outerHeight() * scaleX);
+	
+	$(":root")[0].style.setProperty('--header-height', Math.floor(bottom) + 'px');
+});
+
+window.addEventListener( 'load', f);
+$(window).resize(f);
+Reveal.addEventListener( 'slidechanged', f);
+Reveal.addEventListener( 'overviewshown', function() {
+	$('.banner').addClass( "overview" );
+} );
+Reveal.addEventListener( 'overviewhidden', function() {	
+	$('.banner').removeClass( "overview" );
+});
+Reveal.addEventListener( 'overviewhidden', f);
+
+
 </script>
 
   </body>
