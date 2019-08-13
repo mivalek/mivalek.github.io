@@ -104,6 +104,11 @@ p {
   color: #434b75;
 }
 
+.reveal .slide-title > .title {
+    line-height: 1.1em;
+    margin-bottom: 40px;
+}
+
 .reveal .slide-title {
     height: 135px;
     margin-bottom: 1em;
@@ -157,10 +162,6 @@ p {
   word-wrap: break-word;
   text-align: left; }
 
-.reveal h1.title {
-	margin: 5px 0 60px 0;
-}
-
 .reveal .subtitle,
 .reveal h3,
 .reveal h4,
@@ -177,7 +178,7 @@ p {
   color: var(--bckgd-col); }
   
 .reveal h1 {
-  font-size: 2.8em; }
+  font-size: 2.4em; }
 
 .reveal .subtitle,
 .reveal .author {
