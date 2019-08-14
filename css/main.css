@@ -1907,6 +1907,10 @@ header.major > p {
   text-transform: uppercase;
 }
 
+header.major .lower  {
+  text-transform: none;
+}
+
 h1 {
     position: relative;
     font-size: 30px;
