@@ -5,8 +5,18 @@
   * --bckgd-col is the colour of the slide background and slide titles */
  
 :root {	
-	--theme-col: #b38ed2;
-	--hover-col: #b8d28e;
+	--dapR_1-col1: #6bcded;
+	--dapR_1-col2: #ed8b6b;
+	--dapR_2-col1: #b38ed2;
+	--dapR_2-col2: #b8d28e;
+	--dapR_3-col1: #85a6ea;
+	--dapR_3-col2: #eac985;
+	--usmr-col1: #eda46f;
+	--usmr-col2: #6fb8ed;
+	--msmr-col1: #d8d768;
+	--msmr-col2: #6869d8;
+	--other-col1: #77bd9d;
+	--other-col2: #bd7797;
 	--bckgd-col: #fdfdfd;
 }
 
@@ -70,14 +80,17 @@ p {
 .banner .header, .banner .header strong {
   text-align: right;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
-  font-weight: 900; /* if all caps bold, else 900
-  /* uncomment if you want all caps */
-  /* text-transform: uppercase; */
-  letter-spacing: 0.2em;  
+  font-weight: 900;
+  letter-spacing: 0.2em;
   margin: calc(.1em + 1vh) 1em 0 0;
   /* comment out the 2 lines below if uncommenting above */
   /*font-size: 30px;
   margin: 0.5em 0.5em 0 0;	*/
+  }
+  
+.banner .header.msc, .banner .header.msc strong {
+  font-weight: bold;
+  text-transform: uppercase;
   }
   
 .banner .header a {
@@ -194,7 +207,7 @@ p {
   font-size: 1.6em; }
 
 .reveal h4 {
-	font-size: 1.2em; }
+  font-size: 1.2em; }
 
 .reveal h1 {
   text-shadow: none; }
