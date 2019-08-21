@@ -1907,8 +1907,12 @@ header.major > p {
   text-transform: uppercase;
 }
 
-header.major .lower  {
+.lower  {
   text-transform: none;
+}
+
+.narrow {
+  letter-spacing: 1px;	
 }
 
 h1 {
