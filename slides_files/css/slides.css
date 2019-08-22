@@ -347,11 +347,13 @@ p {
 
 .reveal pre code {
   display: block;
-  padding: 5px;
-  overflow: auto;
-  max-height: 400px;
+  padding: 0px;
+  overflow: inherit;
+  max-height: 450px;
   word-wrap: normal;
-  background: none; }
+  background: none;
+  font-size: 90%;
+}
 
 .reveal table {
   margin: auto;
@@ -526,10 +528,6 @@ p {
 	width: 96%
 }
 
-.reveal pre code {
-    max-height: 450px;
-	padding: 0;
-}
 
 /* Object colour */
 .reveal .sourceCode a.sourceLine {
