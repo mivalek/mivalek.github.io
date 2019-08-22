@@ -516,12 +516,19 @@ p {
 	 background-color: #fff;
 	 margin: 0.5em 0 1em 0;
 	 border: 1px solid #ccc;
+	 overflow: auto;
 }
- 
+
 .reveal pre.sourceCode, .reveal pre.r {
     margin: 0;
     box-shadow: none;
     padding: 1em;
+	width: 96%
+}
+
+.reveal pre code {
+    max-height: 450px;
+	padding: 0;
 }
 
 /* Object colour */

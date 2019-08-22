@@ -117,12 +117,9 @@ code {
 	font-size: 115%
 }
 
-/*
 pre.sourceCode {
-	border: none;
-	border-radius: 0;
+	background-color: none;
 }
-*/
 
 blockquote {
 	border-left: none;
