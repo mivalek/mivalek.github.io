@@ -341,7 +341,7 @@ p {
 
 .reveal code {
   font-family: monospace;
-  background-color: none;
+  background: none;
   font-size: 115%;
   }
 
