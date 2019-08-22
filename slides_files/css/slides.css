@@ -352,9 +352,10 @@ p {
   overflow: inherit;
   max-height: 450px;
   word-wrap: normal;
-  background: none;
+  background-color: #fff;
   font-size: 90%;
   padding: 1em;
+  border: 1px solid #ccc;
 }
 
 .reveal code.sourceCode {
