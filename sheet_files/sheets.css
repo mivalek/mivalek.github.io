@@ -109,12 +109,20 @@ ul {
 
 pre {
     border-radius: 1px;
+	background-color: #fff
 }
 
+code {
+	background-color: none;
+	font-size: 115%
+}
+
+/*
 pre.sourceCode {
 	border: none;
 	border-radius: 0;
 }
+*/
 
 blockquote {
 	border-left: none;

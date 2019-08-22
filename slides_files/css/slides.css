@@ -300,7 +300,7 @@ p {
   margin: 20px auto;
   padding: 5px;
   font-style: italic;
-  background: rgba(255, 255, 255, 0.05);
+  background: none;
   box-shadow: none; }
 
 .reveal blockquote p:first-child,
@@ -321,7 +321,7 @@ p {
 }
 
 .reveal blockquote p {
-    color: #797979;    
+    color: #aaa;    
 }
 
 .reveal q {
@@ -341,7 +341,8 @@ p {
 
 .reveal code {
   font-family: monospace;
-  background-color: rgba(0, 0, 0, .1);
+  background-color: none;
+  font-size: 115%;
   }
 
 .reveal pre code {
@@ -444,7 +445,7 @@ p {
 .reveal section img {
   margin: auto;
   background: rgba(255, 255, 255, 0.12);
-  border: 1px solid #434b75;
+  border: 1px solid #ccc;
   box-shadow: none;
   display: block;}
 
@@ -512,8 +513,9 @@ p {
  *********************************************/
  
  .reveal div.sourceCode {
-	 background-color: #ededed;
+	 background-color: #fff;
 	 margin: 0.5em 0 1em 0;
+	 border: 1px solid #ccc;
 }
  
 .reveal pre.sourceCode, .reveal pre.r {
