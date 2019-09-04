@@ -157,8 +157,9 @@ kbd {
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
     color: #fdfdfd;
-    background-color: var(--other-col);
-    border: none;
+    background-color: var(--theme-col);
+	border: none;
+	border-bottom: 1px solid transparent;
 }
 
 .nav > li > a:focus {
@@ -169,5 +170,12 @@ kbd {
     background-color: white;
 }
 
+.nav-tabs > li > a:hover {
+    border-color: #434b7588;
+}
+
+.nav-tabs {
+	border-bottom-color: #434b7588;
+}
 
 </style>
