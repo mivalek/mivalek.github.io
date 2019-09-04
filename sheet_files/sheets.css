@@ -165,10 +165,6 @@ kbd {
 	outline: none;
 }
 
-.nav-tabs > li > a {
-    border: none;
-}
-
 .nav-tabs > li > a:hover {
     background-color: white;
 }
