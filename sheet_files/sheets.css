@@ -155,4 +155,23 @@ kbd {
     border: solid 1px;
 }
 
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    color: #fdfdfd;
+    background-color: var(--other-col);
+    border: none;
+}
+
+.nav > li > a:focus {
+	outline: none;
+}
+
+.nav-tabs > li > a {
+    border: none;
+}
+
+.nav-tabs > li > a:hover {
+    background-color: white;
+}
+
+
 </style>
