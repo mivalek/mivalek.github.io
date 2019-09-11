@@ -597,3 +597,12 @@ code span.dt {
     font-size: 3em;
     font-weight: bold;
 }
+
+.reveal .slides .seeyou {
+    margin: 7em 10em;
+    color: var(--theme-col);
+}
+
+.reveal .slides .seeyou .slide-title > h2 {
+    color: var(--theme-col);
+}
