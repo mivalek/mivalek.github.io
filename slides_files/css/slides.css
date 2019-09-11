@@ -241,10 +241,13 @@ p {
 
 .reveal strong,
 .reveal b {
-  font-weight: bold; }
+  color: var(--theme-col)
+ }
 
 .reveal em {
-  font-style: italic; }
+  font-style: italic;
+  color: var(--theme-col)
+}
 
 .reveal ol,
 .reveal dl,
@@ -584,4 +587,10 @@ code span.dt {
 .reveal .searchdiv {
     z-index: 2;
     margin: calc(-0.2em + 0.8vh) 0 0 0.5em;
+}
+
+#timer {
+    color: var(--bckgd-col);
+    font-size: 3em;
+    font-weight: bold;
 }
