@@ -591,6 +591,9 @@ code span.dt {
 
 #timer, #timer > p {
     color: var(--bckgd-col);
+}
+
+#timer {
     font-size: 3em;
     font-weight: bold;
 }
