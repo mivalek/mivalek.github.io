@@ -205,4 +205,18 @@ hr {
     background-color: rgba(var(--theme-col), .3);
 }
 
+.solution {
+    border-color: rgb(var(--theme-col));
+    padding-top: 60px;
+}
+
+.solution::before {
+    content: 'Solution';
+    position: absolute;
+    font-size: 2em;
+    margin-top: -50px;
+    color: rgb(var(--theme-col));
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
 </style>
