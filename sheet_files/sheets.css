@@ -207,14 +207,14 @@ hr {
 
 .solution {
     border-color: rgb(var(--theme-col));
-    padding-top: 60px;
+    padding-top: 3.5em;
 }
 
 .solution::before {
     content: 'Solution';
     position: absolute;
     font-size: 2em;
-    margin-top: -50px;
+    margin-top: 1.5em;
     color: rgb(var(--theme-col));
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
