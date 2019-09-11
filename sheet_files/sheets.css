@@ -2,12 +2,12 @@
 <style type="text/css">
 
 :root {
-	--dapR_1-col: #6bcded;
-	--dapR_2-col: #b38ed2;
-	--dapR_3-col: #85a6ea;
-	--usmr-col: #eda46f;
-	--msmr-col: #d8d768;
-	--other-col: #77bd9d;
+	--dapR_1-col: 107, 205, 237;
+	--dapR_2-col: 179, 142, 210;
+	--dapR_3-col: 133, 166, 234;
+	--usmr-col: 237, 164, 111;
+	--msmr-col: 216, 215, 104;
+	--other-col: 119, 189, 157;
 }
 
 body {
@@ -24,7 +24,7 @@ body {
     width: 300%;
     z-index: -1;
     content: '';
-    background-color: var(--theme-col);
+    background-color: rgb(var(--theme-col));
     height: var(--header-height);
     position: absolute;
     top: 0;
@@ -80,20 +80,20 @@ div .tocify {
 .list-group-item.active, .list-group-item.active:focus {
     z-index: 2;
 	color: #fff;
-    background-color: var(--theme-col);
+    background-color: rgb(var(--theme-col));
     border-color: #3d5063;
 }
 
 .list-group-item.active:hover {
     z-index: 2;
 	color: #434b75;
-    background-color: var(--theme-col);
+    background-color: rgb(var(--theme-col));
     border-color: #3d5063;
 
 }
 
 a:hover, .tocify-item a:hover, .tocify .list-group-item:hover {
-    color: var(--theme-col);
+    color: rgb(var(--theme-col));
     background-color: #fdfdfd;
 }
 
@@ -157,7 +157,7 @@ kbd {
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
     color: #fdfdfd;
-    background-color: var(--theme-col);
+    background-color: rgb(var(--theme-col));
 	border: none;
 	border-bottom: 1px solid transparent;
 }
@@ -180,6 +180,29 @@ kbd {
 
 hr {
 	border-top-color: #434b7588;
+}
+
+.caption {
+    font-size: .85em;
+}
+
+.why::before {
+    content: "What for?";
+    text-transform: uppercase;
+    text-orientation: sideways;
+    position: absolute;
+    margin-top: -1.45em;
+    margin-left: -.4em;
+    font-weight: bolder;
+    font-size: 2em;
+    color: rgb(var(--theme-col));
+}
+.why {
+    margin-top: 5em;
+    border: solid 1px rgb(var(--theme-col));
+    padding: 10px;
+    position: relative;
+    background-color: rgba(var(--theme-col), .3);
 }
 
 </style>
