@@ -589,7 +589,7 @@ code span.dt {
     margin: calc(-0.2em + 0.8vh) 0 0 0.5em;
 }
 
-#timer {
+#timer, #timer > p {
     color: var(--bckgd-col);
     font-size: 3em;
     font-weight: bold;
