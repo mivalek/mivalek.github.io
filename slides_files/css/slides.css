@@ -606,3 +606,7 @@ code span.dt {
 .reveal .slides .seeyou .slide-title > h2 {
     color: var(--theme-col);
 }
+
+.reveal h2 strong {
+    color: #434b75;
+}
