@@ -214,7 +214,7 @@ hr {
     content: 'Solution';
     position: absolute;
     font-size: 2em;
-    margin-top: 1.5em;
+    margin-top: -1.5em;
     color: rgb(var(--theme-col));
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
