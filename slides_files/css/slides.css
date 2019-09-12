@@ -458,7 +458,7 @@ p {
 .reveal section img {
   margin: auto;
   background: rgba(255, 255, 255, 0.12);
-  border: 1px solid #ccc;
+  border: none; /* 1px solid #ccc; */
   box-shadow: none;
   display: block;}
 
