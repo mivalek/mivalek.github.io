@@ -694,14 +694,14 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>R implements this</li>
 </ul>
 </aside>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">## R-ish for &quot;equals&quot; or &quot;is&quot; is ==, not = !</span></a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">##  R-ish for &quot;equals&quot; or &quot;is&quot; is ==, not = !</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">weekdays</span>(<span class="kw">Sys.Date</span>()) <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span></a>
 <a class="sourceLine" id="cb1-3" title="3">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb1-4" title="4"></a>
 <a class="sourceLine" id="cb1-5" title="5"><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb1-6" title="6">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb1-7" title="7"></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">## object orange has the value &quot;apple&quot; (premise)</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">##  object orange has the value &quot;apple&quot; (premise)</span></a>
 <a class="sourceLine" id="cb1-9" title="9">orange &lt;-<span class="st"> &quot;apple&quot;</span></a>
 <a class="sourceLine" id="cb1-10" title="10">orange <span class="op">==</span><span class="st"> &quot;apple&quot;</span></a>
 <a class="sourceLine" id="cb1-11" title="11">[<span class="dv">1</span>] <span class="ot">TRUE</span></a></code></pre></div>
@@ -852,7 +852,6 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </section>
 <section id="definition" class="slide level2">
 <h2>Definition</h2>
-<p><br></p>
 <p>If there are <m><span class="math inline">\(a\)</span></m> ways in which <m><span class="math inline">\(X\)</span></m> can occur and <m><span class="math inline">\(b\)</span></m> ways in which <m><span class="math inline">\(X\)</span></m> can fail to occur, then the probability of <m><span class="math inline">\(X\)</span></m> occurring is <m><span class="math inline">\(P(X) = a/(a+b)\)</span></m></p>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
@@ -1022,9 +1021,9 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </ul>
 </section>
 <section id="take-home-message" class="slide level2">
-<h2>Take-home message</h2>
+<h2>=# Take-home message</h2>
 <ul>
-<li>Probability builds on set theory builds on logic</li>
+<li>Probability builds on logic</li>
 <li>Basic logical and set operations are analogous
 <ul>
 <li>NOT : set complement</li>
@@ -1040,9 +1039,9 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="take-10" class="slide level2 center" data-background="pics/take2.jpg">
 <h2>Take 10</h2>
 </section>
-<section id="section" class="slide level2" data-background="gif/rain.gif">
+<section id="section" class="slide level2" data-background="../gif/rain.gif">
 <h2> </h2>
-<script src="js/timer.js"></script>
+<script src="../js/timer.js"></script>
 <p><time></p>
 <div id="timer" onclick="startTimer(1); this.onclick=null">
 <p>10:00</p>
@@ -1083,16 +1082,16 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Every member of the population has the same probability of getting selected</li>
 <li>That does <strong>not</strong> mean that every value has the same chance of being selected!</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">## population - ten integers from 1 to 10</span></a>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">##  population - ten integers from 1 to 10</span></a>
 <a class="sourceLine" id="cb8-2" title="2">pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb8-3" title="3"></a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="co">## pick 5 of them at random</span></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="co">##  pick 5 of them at random</span></a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="kw">sample</span>(pop, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb8-6" title="6">[<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">3</span>  <span class="dv">1</span>  <span class="dv">8</span>  <span class="dv">4</span></a>
+<a class="sourceLine" id="cb8-6" title="6">[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">9</span> <span class="dv">1</span></a>
 <a class="sourceLine" id="cb8-7" title="7"></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="co">## different result each time</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">##  different result each time</span></a>
 <a class="sourceLine" id="cb8-9" title="9"><span class="kw">sample</span>(pop, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb8-10" title="10">[<span class="dv">1</span>] <span class="dv">7</span> <span class="dv">2</span> <span class="dv">9</span> <span class="dv">8</span> <span class="dv">3</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-10" title="10">[<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">5</span>  <span class="dv">7</span> <span class="dv">10</span>  <span class="dv">4</span></a></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1111,13 +1110,13 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>without replacement</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">## sampling WITH replacement</span></a>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">##  sampling WITH replacement</span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)</a>
-<a class="sourceLine" id="cb9-3" title="3"> [<span class="dv">1</span>]  <span class="dv">4</span>  <span class="dv">5</span>  <span class="dv">9</span>  <span class="dv">9</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">6</span>  <span class="dv">5</span>  <span class="dv">4</span> <span class="dv">10</span></a>
+<a class="sourceLine" id="cb9-3" title="3"> [<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">2</span></a>
 <a class="sourceLine" id="cb9-4" title="4"></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">## sampling WITHOUT replacement</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">##  sampling WITHOUT replacement</span></a>
 <a class="sourceLine" id="cb9-6" title="6"><span class="kw">sample</span>(pop, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb9-7" title="7"> [<span class="dv">1</span>]  <span class="dv">8</span>  <span class="dv">3</span> <span class="dv">10</span>  <span class="dv">4</span>  <span class="dv">7</span>  <span class="dv">6</span>  <span class="dv">5</span>  <span class="dv">9</span>  <span class="dv">2</span>  <span class="dv">1</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-7" title="7"> [<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">3</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">9</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">4</span>  <span class="dv">8</span>  <span class="dv">5</span></a></code></pre></div>
 </section>
 <section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
@@ -1266,13 +1265,13 @@ Why is <code>degree</code> ordinal?
 <ul>
 <li>The most frequent value in population/sample</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">## see frequencies</span></a>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">##  see frequencies</span></a>
 <a class="sourceLine" id="cb11-2" title="2">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>eye_col)</a>
 <a class="sourceLine" id="cb11-3" title="3">ftab</a>
 <a class="sourceLine" id="cb11-4" title="4"></a>
 <a class="sourceLine" id="cb11-5" title="5"> blue brown green </a>
 <a class="sourceLine" id="cb11-6" title="6">    <span class="dv">2</span>     <span class="dv">3</span>     <span class="dv">1</span> </a>
-<a class="sourceLine" id="cb11-7" title="7"><span class="co">## get mode from table</span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="co">##  get mode from table</span></a>
 <a class="sourceLine" id="cb11-8" title="8"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
 <a class="sourceLine" id="cb11-9" title="9">[<span class="dv">1</span>] <span class="st">&quot;brown&quot;</span></a></code></pre></div>
 </section>
@@ -1281,13 +1280,13 @@ Why is <code>degree</code> ordinal?
 <ul>
 <li>A variable has <strong>at least</strong> one mode (<i>i.e.,</i> can have multiple modes)</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co">## see frequencies</span></a>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co">##  see frequencies</span></a>
 <a class="sourceLine" id="cb12-2" title="2">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>dpt)</a>
 <a class="sourceLine" id="cb12-3" title="3">ftab</a>
 <a class="sourceLine" id="cb12-4" title="4"></a>
 <a class="sourceLine" id="cb12-5" title="5">cog lel phi psy </a>
 <a class="sourceLine" id="cb12-6" title="6">  <span class="dv">1</span>   <span class="dv">2</span>   <span class="dv">1</span>   <span class="dv">2</span> </a>
-<a class="sourceLine" id="cb12-7" title="7"><span class="co">## get mode from table</span></a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="co">##  get mode from table</span></a>
 <a class="sourceLine" id="cb12-8" title="8"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
 <a class="sourceLine" id="cb12-9" title="9">[<span class="dv">1</span>] <span class="st">&quot;lel&quot;</span> <span class="st">&quot;psy&quot;</span></a></code></pre></div>
 </section>
@@ -1296,13 +1295,13 @@ Why is <code>degree</code> ordinal?
 <ul>
 <li>When each value has the same frequency, <em>every one of them</em> is the mode</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co">## see frequencies</span></a>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co">##  see frequencies</span></a>
 <a class="sourceLine" id="cb13-2" title="2">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>id)</a>
 <a class="sourceLine" id="cb13-3" title="3">ftab</a>
 <a class="sourceLine" id="cb13-4" title="4"></a>
 <a class="sourceLine" id="cb13-5" title="5"><span class="dv">1001</span> <span class="dv">1002</span> <span class="dv">1003</span> <span class="dv">1004</span> <span class="dv">1005</span> <span class="dv">1006</span> </a>
 <a class="sourceLine" id="cb13-6" title="6">   <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">1</span> </a>
-<a class="sourceLine" id="cb13-7" title="7"><span class="co">## get mode from table</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="co">##  get mode from table</span></a>
 <a class="sourceLine" id="cb13-8" title="8"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
 <a class="sourceLine" id="cb13-9" title="9">[<span class="dv">1</span>] <span class="st">&quot;1001&quot;</span> <span class="st">&quot;1002&quot;</span> <span class="st">&quot;1003&quot;</span> <span class="st">&quot;1004&quot;</span> <span class="st">&quot;1005&quot;</span> <span class="st">&quot;1006&quot;</span></a></code></pre></div>
 </section>
@@ -1311,11 +1310,11 @@ Why is <code>degree</code> ordinal?
 <ul>
 <li>Can be calculated on any variable type/measurement level*</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co">## mode of degree</span></a>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co">##  mode of degree</span></a>
 <a class="sourceLine" id="cb14-2" title="2">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>degree)</a>
 <a class="sourceLine" id="cb14-3" title="3"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
 <a class="sourceLine" id="cb14-4" title="4">[<span class="dv">1</span>] <span class="st">&quot;1&quot;</span></a>
-<a class="sourceLine" id="cb14-5" title="5"><span class="co">## mode of age</span></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="co">##  mode of age</span></a>
 <a class="sourceLine" id="cb14-6" title="6">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb14-7" title="7"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
 <a class="sourceLine" id="cb14-8" title="8">[<span class="dv">1</span>] <span class="st">&quot;25&quot;</span></a></code></pre></div>
@@ -1354,10 +1353,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 <li>Even number of values: <m><span class="math inline">\(\frac{N/2 + (N / 2 + 1)}{2}\)</span></m></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co">## N/2</span></a>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co">##  N/2</span></a>
 <a class="sourceLine" id="cb16-2" title="2">(m1 &lt;-<span class="st"> </span>age_sort[<span class="dv">6</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>])</a>
 <a class="sourceLine" id="cb16-3" title="3">[<span class="dv">1</span>] <span class="dv">25</span></a>
-<a class="sourceLine" id="cb16-4" title="4"><span class="co">## (N / 2) + 1</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="co">##  (N / 2) + 1</span></a>
 <a class="sourceLine" id="cb16-5" title="5">(m2 &lt;-<span class="st"> </span>age_sort[<span class="kw">length</span>(age_sort) <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
 <a class="sourceLine" id="cb16-6" title="6">[<span class="dv">1</span>] <span class="dv">25</span></a>
 <a class="sourceLine" id="cb16-7" title="7">(m1 <span class="op">+</span><span class="st"> </span>m2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span></a>
@@ -1374,16 +1373,16 @@ OR 2nd quartile, 5th decile, 50th percentile…
 </ul>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">(<span class="kw">median</span>(data<span class="op">$</span>age))</a>
 <a class="sourceLine" id="cb17-2" title="2">[<span class="dv">1</span>] <span class="dv">25</span></a>
-<a class="sourceLine" id="cb17-3" title="3"><span class="co">## ordinal data must be converted to numeric for median()</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="co">##  ordinal data must be converted to numeric for median()</span></a>
 <a class="sourceLine" id="cb17-4" title="4">(x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))</a>
-<a class="sourceLine" id="cb17-5" title="5"> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">3</span> <span class="dv">3</span> <span class="dv">2</span> <span class="dv">2</span></a>
-<a class="sourceLine" id="cb17-6" title="6">Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb17-5" title="5"> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb17-6" title="6">Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span></a>
 <a class="sourceLine" id="cb17-7" title="7">(<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))</a>
-<a class="sourceLine" id="cb17-8" title="8">[<span class="dv">1</span>] <span class="fl">1.5</span></a>
-<a class="sourceLine" id="cb17-9" title="9"><span class="co">## of limited use with ordered categories</span></a>
+<a class="sourceLine" id="cb17-8" title="8">[<span class="dv">1</span>] <span class="fl">2.5</span></a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="co">##  of limited use with ordered categories</span></a>
 <a class="sourceLine" id="cb17-10" title="10">(<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))</a>
 <a class="sourceLine" id="cb17-11" title="11">[<span class="dv">1</span>] <span class="fl">1.5</span></a>
-<a class="sourceLine" id="cb17-12" title="12"><span class="co">## not meaningful for nominal data but can be done</span></a>
+<a class="sourceLine" id="cb17-12" title="12"><span class="co">##  not meaningful for nominal data but can be done</span></a>
 <a class="sourceLine" id="cb17-13" title="13">(<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>eye_col)))</a>
 <a class="sourceLine" id="cb17-14" title="14">[<span class="dv">1</span>] <span class="dv">2</span></a></code></pre></div>
 </section>
@@ -1416,10 +1415,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 <a class="sourceLine" id="cb18-2" title="2">[<span class="dv">1</span>] <span class="dv">23</span> <span class="dv">25</span> <span class="dv">33</span> <span class="dv">26</span> <span class="dv">25</span> <span class="dv">24</span></a>
 <a class="sourceLine" id="cb18-3" title="3"><span class="kw">sum</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb18-4" title="4">[<span class="dv">1</span>] <span class="dv">156</span></a>
-<a class="sourceLine" id="cb18-5" title="5"><span class="co">## sum / N</span></a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="co">##  sum / N</span></a>
 <a class="sourceLine" id="cb18-6" title="6"><span class="kw">sum</span>(data<span class="op">$</span>age)<span class="op">/</span><span class="kw">nrow</span>(data)</a>
 <a class="sourceLine" id="cb18-7" title="7">[<span class="dv">1</span>] <span class="dv">26</span></a>
-<a class="sourceLine" id="cb18-8" title="8"><span class="co">## readymade R function</span></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="co">##  readymade R function</span></a>
 <a class="sourceLine" id="cb18-9" title="9"><span class="kw">mean</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb18-10" title="10">[<span class="dv">1</span>] <span class="dv">26</span></a></code></pre></div>
 </section>
@@ -1441,16 +1440,16 @@ OR 2nd quartile, 5th decile, 50th percentile…
 </section>
 <section id="sensitive-to-extremes" class="slide level2">
 <h2>Sensitive to extremes</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co">## copy age into new object</span></a>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co">##  copy age into new object</span></a>
 <a class="sourceLine" id="cb19-2" title="2">age &lt;-<span class="st"> </span>data<span class="op">$</span>age</a>
-<a class="sourceLine" id="cb19-3" title="3"><span class="co">## replace highest value (33) with 83</span></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="co">##  replace highest value (33) with 83</span></a>
 <a class="sourceLine" id="cb19-4" title="4">age[age <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(age)] &lt;-<span class="st"> </span><span class="dv">83</span></a>
 <a class="sourceLine" id="cb19-5" title="5">age</a>
 <a class="sourceLine" id="cb19-6" title="6">[<span class="dv">1</span>] <span class="dv">23</span> <span class="dv">25</span> <span class="dv">83</span> <span class="dv">26</span> <span class="dv">25</span> <span class="dv">24</span></a>
-<a class="sourceLine" id="cb19-7" title="7"><span class="co">## original age</span></a>
+<a class="sourceLine" id="cb19-7" title="7"><span class="co">##  original age</span></a>
 <a class="sourceLine" id="cb19-8" title="8"><span class="kw">mean</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb19-9" title="9">[<span class="dv">1</span>] <span class="dv">26</span></a>
-<a class="sourceLine" id="cb19-10" title="10"><span class="co">## new age</span></a>
+<a class="sourceLine" id="cb19-10" title="10"><span class="co">##  new age</span></a>
 <a class="sourceLine" id="cb19-11" title="11"><span class="kw">mean</span>(age) <span class="co"># also, doesn&#39;t exist in sample!</span></a>
 <a class="sourceLine" id="cb19-12" title="12">[<span class="dv">1</span>] <span class="fl">34.33333</span></a>
 <a class="sourceLine" id="cb19-13" title="13"><span class="kw">median</span>(data<span class="op">$</span>age) <span class="co"># median isn&#39;t affected</span></a>
@@ -1483,10 +1482,10 @@ All clear?
 <li>Distance between smallest and largest value in sample</li>
 <li><em>Drawback:</em> Extremely sensitive to outliers</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co">## range() gives minimum and maximum</span></a>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co">##  range() gives minimum and maximum</span></a>
 <a class="sourceLine" id="cb20-2" title="2"><span class="kw">range</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb20-3" title="3">[<span class="dv">1</span>] <span class="dv">23</span> <span class="dv">33</span></a>
-<a class="sourceLine" id="cb20-4" title="4"><span class="co">## get the distance</span></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="co">##  get the distance</span></a>
 <a class="sourceLine" id="cb20-5" title="5"><span class="kw">max</span>(data<span class="op">$</span>age) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb20-6" title="6">[<span class="dv">1</span>] <span class="dv">10</span></a></code></pre></div>
 </section>
@@ -1496,17 +1495,17 @@ All clear?
 <li>Inter-quartile range - distance between 1<small><sup>st</sup></small> and 3<small><sup>rd</sup></small> quartile</li>
 <li><em>Drawback:</em> Ignores half of the data</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co">## get quartiles (quantiles with n = 4)</span></a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="co">## cut data into lower 25%, 50%, 75%, 100%</span></a>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co">##  get quartiles (quantiles with n = 4)</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="co">##  cut data into lower 25%, 50%, 75%, 100%</span></a>
 <a class="sourceLine" id="cb21-3" title="3">(quartiles &lt;-<span class="st"> </span><span class="kw">quantile</span>(age, <span class="kw">c</span>(.<span class="dv">25</span>, <span class="fl">.5</span>, <span class="fl">.75</span>, <span class="dv">1</span>)))</a>
 <a class="sourceLine" id="cb21-4" title="4">  <span class="dv">25</span><span class="op">%   50%</span><span class="st">   </span><span class="dv">75</span><span class="op">%  100%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb21-5" title="5"><span class="fl">24.25</span> <span class="fl">25.00</span> <span class="fl">25.75</span> <span class="fl">83.00</span> </a>
-<a class="sourceLine" id="cb21-6" title="6"><span class="co">## IQR = 3rd - 1st quaritle</span></a>
-<a class="sourceLine" id="cb21-7" title="7"><span class="co">## don&#39;t worry about the &quot;75%&quot;, it&#39;s just a leftover label</span></a>
+<a class="sourceLine" id="cb21-6" title="6"><span class="co">##  IQR = 3rd - 1st quaritle</span></a>
+<a class="sourceLine" id="cb21-7" title="7"><span class="co">##  don&#39;t worry about the &quot;75%&quot;, it&#39;s just a leftover label</span></a>
 <a class="sourceLine" id="cb21-8" title="8">quartiles[<span class="dv">3</span>] <span class="op">-</span><span class="st"> </span>quartiles[<span class="dv">1</span>]</a>
 <a class="sourceLine" id="cb21-9" title="9"><span class="dv">75</span>% </a>
 <a class="sourceLine" id="cb21-10" title="10"><span class="fl">1.5</span> </a>
-<a class="sourceLine" id="cb21-11" title="11"><span class="co">## built-in R function</span></a>
+<a class="sourceLine" id="cb21-11" title="11"><span class="co">##  built-in R function</span></a>
 <a class="sourceLine" id="cb21-12" title="12"><span class="kw">IQR</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb21-13" title="13">[<span class="dv">1</span>] <span class="fl">1.5</span></a></code></pre></div>
 <ul>
@@ -1520,7 +1519,7 @@ All clear?
 <li>Mean is a convenient point</li>
 <li><m><span class="math inline">\(x_i - \bar{x}\)</span></m>, where <m><span class="math inline">\(x_i\)</span></m> is every single data point</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="co">## minus is a vectorised operation in R</span></a>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="co">##  minus is a vectorised operation in R</span></a>
 <a class="sourceLine" id="cb22-2" title="2">data<span class="op">$</span>age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb22-3" title="3">[<span class="dv">1</span>] <span class="dv">-3</span> <span class="dv">-1</span>  <span class="dv">7</span>  <span class="dv">0</span> <span class="dv">-1</span> <span class="dv">-2</span></a></code></pre></div>
 </section>
@@ -1559,16 +1558,16 @@ All clear?
 <li>reason for the <m><span class="math inline">\(N - 1\)</span></m> is quite technical (see <a href="https://en.wikipedia.org/wiki/Bessel%27s_correction">Bessel’s correction</a>)</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co">## deviations</span></a>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co">##  deviations</span></a>
 <a class="sourceLine" id="cb23-2" title="2">(dev &lt;-<span class="st"> </span>data<span class="op">$</span>age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>age))</a>
 <a class="sourceLine" id="cb23-3" title="3">[<span class="dv">1</span>] <span class="dv">-3</span> <span class="dv">-1</span>  <span class="dv">7</span>  <span class="dv">0</span> <span class="dv">-1</span> <span class="dv">-2</span></a>
-<a class="sourceLine" id="cb23-4" title="4"><span class="co">## sums of squares</span></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="co">##  sums of squares</span></a>
 <a class="sourceLine" id="cb23-5" title="5">(ss &lt;-<span class="st"> </span><span class="kw">sum</span>(dev<span class="op">^</span><span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb23-6" title="6">[<span class="dv">1</span>] <span class="dv">64</span></a>
-<a class="sourceLine" id="cb23-7" title="7"><span class="co">## variance</span></a>
+<a class="sourceLine" id="cb23-7" title="7"><span class="co">##  variance</span></a>
 <a class="sourceLine" id="cb23-8" title="8">ss <span class="op">/</span><span class="st"> </span>(<span class="kw">length</span>(data<span class="op">$</span>age) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb23-9" title="9">[<span class="dv">1</span>] <span class="fl">12.8</span></a>
-<a class="sourceLine" id="cb23-10" title="10"><span class="co">## in-built function</span></a>
+<a class="sourceLine" id="cb23-10" title="10"><span class="co">##  in-built function</span></a>
 <a class="sourceLine" id="cb23-11" title="11"><span class="kw">var</span>(data<span class="op">$</span>age)</a>
 <a class="sourceLine" id="cb23-12" title="12">[<span class="dv">1</span>] <span class="fl">12.8</span></a></code></pre></div>
 </section>
@@ -1643,9 +1642,9 @@ Any questions?
         // Vertical centering of slides
         center: false,
         // Transition style
-        transition: 'none', // none/fade/slide/convex/concave/zoom
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
         // Transition style for full page slide backgrounds
-        backgroundTransition: 'none', // none/fade/slide/convex/concave/zoom
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
