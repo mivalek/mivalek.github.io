@@ -209,11 +209,11 @@ hr {
     padding-top: 2em;
 }
 
-.solution::before {
+.solution .r::before {
     content: 'Solution';
     position: absolute;
     font-size: 2em;
-    margin-top: -1em;
+    margin: -2em 0 0 -.5em;
     color: rgb(var(--theme-col));
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
