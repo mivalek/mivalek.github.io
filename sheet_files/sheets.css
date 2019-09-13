@@ -235,23 +235,25 @@ hr {
 
 .writeUp:not(.empty)::before {
     content: 'Write-up';
-    color: rgb(var(--theme-col));
     position: absolute;
     font-size: 2em;
     color: rgb(var(--theme-col));
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-.writeUp:not(.empty)::before {
     margin: -2em 0 0 -.5em;	
 }
 
-.writeUp.empty::before {
+.empty::before {
+    content: 'Write-up';
+    position: absolute;
+    font-size: 2em;
+    color: rgb(var(--theme-col));
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     margin: -6.5em 0 0 -5em;
 }
 
 .writeUp.empty {
 	padding: 10em;
+	background-color: white;
 }
 
 </style>
