@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Tom Booth" />
+  <title>Introduction</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/slides_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="/slides_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="https:\\mivalek.github.io\slides_files\css\slides.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="/slides_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="/slides_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+<div class="banner"><div class = "header"><a href="/">dapR<strong>1</strong></a></div></div>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Introduction</h1>
+  <h1 class="subtitle">Data Analysis for Psychology in R 1</h1>
+    <h2 class="author">Tom Booth</h2>
+    <h3 class="date"><a href="./lec1_intro.html">Click for handout</a></h3>
+</section>
+
+<section id="welcome" class="slide level2">
+<h2>Welcome</h2>
+<style>
+:root {
+--theme-col: var(--dapR_1-col1);
+--hover-col: var(--dapR_1-col2);
+}
+</style>
+<p>We (Tom, Anastasia, Emma, Esperanza, Carolane, Catherine, Abby, Svenja, Yangzi, Diana) would like to start off by welcoming you, the cohort of 2019 to the dapR1. We will be with you for 20 hours of lectures and 40 hours of labs across the whole of the academic year.</p>
+</section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<ul>
+<li>dapR and your degree
+<ul>
+<li>Plus a few course details</li>
+</ul></li>
+<li>dapR and life</li>
+<li>Expectations</li>
+<li><em>We will talk about the overall research process and measurement next lecture</em></li>
+</ul>
+</section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning objectives</h2>
+<ul>
+<li>Understand how dapR1 fits into the psychology degree</li>
+<li>Understand the basic structure of the course</li>
+<li>Understand the way in which learning from this course fits into the data analysis process</li>
+</ul>
+</section>
+<section id="intro-to-us." class="slide level2">
+<h2>Intro to us….</h2>
+<ul>
+<li>Tom: CO, lecturer</li>
+<li>Anastasia: Senior Teaching coordinator - the boss of labs (<em>really just the boss</em>)</li>
+<li>Wonderful lab tutors:
+<ul>
+<li>Emma</li>
+<li>Esperanza</li>
+<li>Carolane</li>
+<li>Catherine</li>
+<li>Abby</li>
+<li>Svenja</li>
+<li>Yangzi</li>
+<li>Diana</li>
+</ul></li>
+</ul>
+</section>
+<section id="where-does-dapr1-fit" class="slide level2" data-background-size="contain" data-background-transition="fade" data-background="timeline1.png">
+<h2>Where does dapR1 fit?</h2>
+</section>
+<section id="dapr-1" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png">
+<h2>dapR 1</h2>
+<ul>
+<li>New course for 2019-20 (<em>in response to student feedback</em>)</li>
+<li>dapR courses (1, 2 &amp; 3) are replacing the RMS courses.</li>
+<li>In dapR1, we will teach you how to…
+<ul>
+<li>get data into R,</li>
+<li>tidy it, manipulate it and transform it,</li>
+<li>visualise it, and</li>
+<li>a little bit of analysing it.</li>
+</ul></li>
+<li>Important skills for psychology and life.</li>
+</ul>
+</section>
+<section id="dapr-1-aims" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png">
+<h2>dapR 1: Aims</h2>
+<ul>
+<li>Build the core data and R skills.
+<ul>
+<li>And to do so at a slow and steady pace.</li>
+</ul></li>
+<li>Introduce some key statistical concepts.</li>
+<li>To help you develop an effective approach to studying data analysis.</li>
+<li>To encourage you as a cohort to be collaborative, supportive peers.</li>
+<li>To integrate with Psychology 1A and 1B.</li>
+</ul>
+</section>
+<section id="dapr-1-structure" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png">
+<h2>dapR 1: Structure</h2>
+<ul>
+<li>1x 1 hour lecture per week (Theory).</li>
+<li>1x 2 hour lab per week (Practical).</li>
+<li>Plus some reading;
+<ul>
+<li>This will appear on LEARN and linked on top of each lab.</li>
+<li>Quite low volume (but we can provide more if you would like it).</li>
+<li>We want you to spend time practising skills.</li>
+</ul></li>
+</ul>
+</section>
+<section id="dapr-1-assessment" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png">
+<h2>dapR 1: Assessment</h2>
+<ul>
+<li>Weekly quizzes (30%)
+<ul>
+<li>Quizzes 1 and 2 are practices.</li>
+<li>Quizzes 3 to 20 count.</li>
+<li>Mark is the average of your best 14/18 scores.</li>
+</ul></li>
+<li>3 lab tests (30%; 10% each)
+<ul>
+<li>5 questions that require code to answer</li>
+<li>Completed in lab</li>
+</ul></li>
+<li>Coursework report (40%)
+<ul>
+<li>Organise some data, produce some plots, run and interpret some analysis.</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-r" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png">
+<h2>What is R?</h2>
+<ul>
+<li>A very flexible, very cool, programming language for all things data.
+<ul>
+<li>It does pretty much any statistical method you can think of. (Cool? I think so)</li>
+<li>But it does a lot more.</li>
+</ul></li>
+<li>We will also begin to teach you Rmarkdown - this is a cool way to integrate text and analysis</li>
+</ul>
+</section>
+<section id="what-is-r-1" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png">
+<h2>What is R?</h2>
+<ul>
+<li>Some examples:
+<ul>
+<li><a href="https://shiny.rstudio.com/gallery/movie-explorer.html">interactive plots</a></li>
+<li><a href="https://gallery.shinyapps.io/086-bus-dashboard/">interactive dashboards</a></li>
+<li>Documents with automatically include results from analysis</li>
+</ul></li>
+</ul>
+</section>
+<section id="remember-this" class="slide level2">
+<h2>Remember this…</h2>
+<p>We (Tom, Anastasia, Emma, Esperanza, Carolane, Catherine, Abby, Svenja, Yangzi, Diana) would like to start off by welcoming you, the cohort of 2019 to the dapR1. We will be with you for 20 hours of lectures and 40 hours of labs across the whole of the academic year.</p>
+</section>
+<section id="welcome-code" class="slide level2">
+<h2>Welcome code</h2>
+<p><img data-src="inline.png" alt="Alt text" /></p>
+</section>
+<section id="what-is-r-2" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png">
+<h2>What is R?</h2>
+<ul>
+<li>Some examples:
+<ul>
+<li><a href="https://shiny.rstudio.com/gallery/movie-explorer.html">interactive plots</a></li>
+<li><a href="https://gallery.shinyapps.io/086-bus-dashboard/">interactive dashboards</a></li>
+<li>Documents with automatically include results from analysis</li>
+</ul>
+<ul>
+<li class="fragment"><a href="https://bookdown.org/csgillespie/efficientR/">books</a></li>
+<li class="fragment"><a href="https://rmarkdown.rstudio.com/">websites</a></li>
+<li class="fragment">Presentations (like the one you are looking at)</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-is-r-3" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png">
+<h2>What is R?</h2>
+<ul>
+<li>But what is best of all is it is completely free.</li>
+<li>You can go and download the R-code that made everything I just showed you.</li>
+<li>There is a massive R community, and a world of resources and help.</li>
+</ul>
+</section>
+<section id="where-does-dapr1-fit-1" class="slide level2" data-background-size="contain" data-background-transition="fade" data-background="timeline1.png">
+<h2>Where does dapR1 fit?</h2>
+</section>
+<section id="dapr-2" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile02.png">
+<h2>dapR 2</h2>
+<ul>
+<li>dapR 2 will build on the core skills developed in dapR 1.</li>
+<li>Major focus here is on analyzing data.</li>
+<li>We will cover a majority of the analytic techniques used in psychological science.
+<ul>
+<li>BUT importantly we will integrate into a single framework</li>
+</ul></li>
+<li>This course will have more <em>individual</em> assessment.</li>
+</ul>
+</section>
+<section id="dapr-3" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile03.png">
+<h2>dapR 3</h2>
+<ul>
+<li>Honours level data analysis course.</li>
+<li>Theoretical focus: some advanced models and thinking critically about statistics.</li>
+<li>Practical focus: taking real data, in the form it comes from the tools we use to do our studies.</li>
+<li>Then using the skills we have built up to answer questions, and report the answers in a variety of formats.</li>
+</ul>
+</section>
+<section id="dapr-3-1" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile03.png">
+<h2>dapR 3</h2>
+<p><img data-src="DataAnalysis.png" alt="Alt text" /></p>
+</section>
+<section id="mini-dissertation" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile04.png">
+<h2>Mini Dissertation</h2>
+<ul>
+<li>Then you do this for real!</li>
+<li>Year 3 mini-dissertation is a group research project with a member of faculty.</li>
+<li>Now you can apply the skills to your own project, with a group to help problem solve.</li>
+</ul>
+</section>
+<section id="the-real-thing" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile05.png">
+<h2>The real thing</h2>
+<ul>
+<li>Then in year 4, you will have the real deal dissertation.
+<ul>
+<li>Well, for those of you who stay with psych.</li>
+</ul></li>
+<li>A real project you can really take ownership of.</li>
+</ul>
+</section>
+<section id="life" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile06.png">
+<h2>Life</h2>
+<ul>
+<li>And once all that is done, it may be time to face down life.</li>
+<li>But don’t think you will leave these skills behind.</li>
+<li>My last 3 months….</li>
+</ul>
+</section>
+<section id="life-1" class="slide level2" data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile06.png">
+<h2>Life</h2>
+<ul>
+<li>Oh and ££££££££££££££££££££££££££££££££££££££££££££££££</li>
+<li>Well I can’t really promise this, but data science and highly numerate jobs tend to pay pretty well!</li>
+</ul>
+</section>
+<section id="what-you-can-expect-from-us" class="slide level2">
+<h2>What you can expect from us</h2>
+<ol type="1">
+<li>We will work hard to help you learn.</li>
+<li>We will be open and communicate with you.</li>
+<li>We will treat you like adults.</li>
+</ol>
+</section>
+<section id="what-i-expect-of-you" class="slide level2">
+<h2>What I expect of you</h2>
+<ol type="1">
+<li>You work hard.</li>
+<li>That you talk to me and the teaching team.</li>
+<li>That you are polite, and respect the teaching team and your classmates.</li>
+<li>Try and have fun.</li>
+</ol>
+</section>
+<section id="tasks-for-this-week" class="slide level2">
+<h2>Tasks for this week…</h2>
+<ol type="1">
+<li>All prep work required for the lab.</li>
+<li>Please read all course documentation.</li>
+<li>Quiz 1: “Pub Quiz”
+<ul>
+<li>Live now, closes Sunday at 17:00</li>
+</ul></li>
+</ol>
+</section>
+<section id="questions" class="slide level2">
+<h2>Questions?</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="/slides_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="/slides_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1000,
+        height: 750,
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+
+
+        chalkboard: {
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '/slides_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: '/slides_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: '/slides_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('h2:not(.author)').each(function () {
+        $(this).wrapAll('<div class="slide-title" />');
+    });	
+	$('h1.title').each(function () {
+        $(this).wrapAll('<div class="slide-title" />');
+    });	
+});
+
+var f = (function() {
+	// get scale
+	var element = document.querySelector('.slides');
+	var scaleX = element.getBoundingClientRect().width / element.offsetWidth;
+	var bottom = $(".present > .slide-title").offset().top + ($(".present > .slide-title").outerHeight() * scaleX);
+	
+	$(":root")[0].style.setProperty('--header-height', Math.floor(bottom) + 'px');
+});
+
+window.addEventListener( 'load', f);
+$(window).resize(f);
+Reveal.addEventListener( 'slidechanged', f);
+Reveal.addEventListener( 'overviewshown', function() {
+	$('.banner').addClass( "overview" );
+} );
+Reveal.addEventListener( 'overviewhidden', function() {	
+	$('.banner').removeClass( "overview" );
+});
+Reveal.addEventListener( 'overviewhidden', f);
+
+
+</script>
+
+  </body>
+</html>
