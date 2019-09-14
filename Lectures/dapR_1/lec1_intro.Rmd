@@ -165,7 +165,7 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
     - Well, for those of you who stay with psych.
 - A real project you can really take ownership of.
 
-## Life {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile06.png"}
+## Life {data-transition="slide-in fade-out" data-background-size="cover" data-background-transition="slide" data-background="tile06.png"}
 
 - And once all that is done, it may be time to face down life.
 - But don't think you will leave these skills behind.
