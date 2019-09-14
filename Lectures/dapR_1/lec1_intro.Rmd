@@ -62,9 +62,9 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
 - Build the core data and R skills.
     - And to do so at a slow and steady pace.
 - Introduce some key statistical concepts.
-- To help you develop an effective approach to studying data analysis.
-- To encourage you as a cohort to be collaborative, supportive peers.
-- To integrate with Psychology 1A and 1B.
+- Help you develop an effective approach to studying data analysis.
+- Encourage you as a cohort to be collaborative, supportive peers.
+- Integrate with Psychology 1A and 1B.
 
 ## dapR 1: Structure {data-transition="fade" data-background-size="cover" data-background-transition="none" data-background="tile01.png"}
 - 1x 1 hour lecture per week (Theory).
@@ -137,7 +137,7 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
 ## dapR 2 {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile02.png"}
 
 - dapR 2 will build on the core skills developed in dapR 1.
-- Major focus here is on analyzing data.
+- Major focus here is on analysing data.
 - We will cover a majority of the analytic techniques used in psychological science.
     - BUT importantly we will integrate into a single framework
 - This course will have more *individual*  assessment.
