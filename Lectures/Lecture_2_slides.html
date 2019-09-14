@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Milan Valášek" />
+  <title>USMR Lecture 2</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="/slides_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="/slides_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="https:\\mivalek.github.io\slides_files\css\slides.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="/slides_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="/slides_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+<div class="banner"><div class = "header msc"><a href="/">Univariate statistics<strong>in R</strong></a></div></div>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">USMR Lecture 2</h1>
+  <h1 class="subtitle">The groundwork</h1>
+    <h2 class="author"><subtitle>Milan Valášek</subtitle></h2>
+    <h3 class="date"><a href="./Lecture_2.html">Click for handout</a></h3>
+</section>
+
+<section id="introductory-stuff" class="slide level2 center" data-background="pics/intro2.jpg">
+<h2>Introductory Stuff</h2>
+<style>
+:root {
+--theme-col: var(--usmr-col1);
+--hover-col: var(--usmr-col2);
+}
+</style>
+</section>
+<section id="office-hours" class="slide level2">
+<h2>Office hours</h2>
+<ul>
+<li>Not compulsory but I’d encourage you to make use of them</li>
+<li>Flexible - send me a meeting request individually or as a group at <a href="https://doodle.com/mvalasek" target="_blank">doodle.com/mvalasek</a></li>
+<li>Questions can be
+<ul>
+<li>About the course</li>
+<li>Conceptual</li>
+<li>Coding issues</li>
+<li>About slides</li>
+<li>About lab exercises</li>
+<li>Generally about stats</li>
+</ul></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>There are links on some of the slides, use them!</li>
+</ul>
+</aside>
+</section>
+<section id="arrest-this-man-he-talks-in-maths" class="slide level2">
+<h2>Arrest this man, he talks in maths</h2>
+<ul>
+<li>There will be numbers, there will be maths</li>
+<li>Maths (and logic) is the language of computers, statistics, science, and – it seems – the universe</li>
+<li>We will focus on developing a conceptual understanding and intuition</li>
+<li>We won’t discuss anything that is beyond your capability to understand</li>
+<li>It won’t be a walk in the park though so do put in the hours</li>
+</ul>
+</section>
+<section id="if-you-find-yourself-struggling" class="slide level2">
+<h2>If you find yourself struggling</h2>
+<ul>
+<li>Go back to where you last felt on top of things and take it from there</li>
+<li><strong>Come</strong> talk to us</li>
+<li><strong>Ask</strong> questions during the lectures</li>
+<li>Make use of the discussion forum on LEARN</li>
+<li>Take a deep breath, go for a walk, <strong>you’ll be fine</strong>!</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Don’t be shy to interrupt, just raise hand, ask questions</li>
+<li>Chances are you’re not the only one who is wondering about the same thing</li>
+<li>but it SHOULD be you who asks!</li>
+<li>if you’re intimidated by the lecturers’ academic seniority or stunning good looks – or the hilarious sense of humour – maybe talk to one of our tutors</li>
+</ul>
+</aside>
+</section>
+<section id="overview-of-weeks-2-5" class="slide level2 center" data-background="pics/overview2.jpg">
+<h2>Overview of Weeks 2-5</h2>
+</section>
+<section id="lectures" class="slide level2">
+<h2>Lectures</h2>
+<ul>
+<li>Conceptual basis for statistical analysis
+<ul>
+<li>Logic &amp; sets, probability, independence, sampling, variables, descriptive statistics</li>
+<li>Functions, basic data visualisation, sampling distribution, Central Limit Theorem</li>
+<li>Models, hypotheses, probability distributions, significance testing</li>
+</ul></li>
+<li>Basic statistical tests
+<ul>
+<li><em>z</em>-test, <em>t</em>-test, <em><span class="math inline">\(\chi\)</span><small><sup>2</sup></small></em>-test, correlation, <em>F</em>-test</li>
+</ul></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Slides available online</li>
+<li>use chrome to print/save as PDF</li>
+</ul>
+</aside>
+</section>
+<section id="labs" class="slide level2">
+<h2>Labs</h2>
+<ul>
+<li>Fundamentals of <code>R</code>
+<ul>
+<li>Commands, objects, functions, data structures</li>
+<li>Working with data: indexing, subsetting, transformations</li>
+</ul></li>
+<li>Exploring and visualising data
+<ul>
+<li>Descriptive statistics, plots</li>
+</ul></li>
+<li>Basic statistical tests in <code>R</code></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Strongly encourage you to come to labs</li>
+<li>Some degree of disjointedness between lectures and labs is unavoidable as we need to cover both theoretical issues and programming</li>
+</ul>
+</aside>
+</section>
+<section id="before-we-start" class="slide level2">
+<h2>Before we start</h2>
+<ul>
+<li>All clear regarding research questions/design and measurement?</li>
+</ul>
+</section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<ul>
+<li>Logic, sets, probability
+<ul>
+<li>Probability theory is the basis for all of statistics</li>
+<li>Sits on a foundation of logic and set theory</li>
+<li>Not the focus of this course but we need to talk about these topics a little</li>
+</ul></li>
+<li>Sampling &amp; independence</li>
+<li>Variables
+<ul>
+<li>Descriptive statistics</li>
+</ul></li>
+</ul>
+</section>
+<section id="thats-logic-innit" class="slide level2 center" data-background="pics/logic2.jpg">
+<h2>That’s logic, innit!</h2>
+</section>
+<section id="logic" class="slide level2">
+<h2>Logic</h2>
+<ul>
+<li>Informally, a discipline concerned with truth value of statements, relationships between objects, and inference based on them</li>
+<li>There are several systems of logic but we will only discuss <a href="https://en.wikipedia.org/wiki/Boolean_algebra" target="_blank">Boolean</a> logic, in which a statement can be exclusively either <code>TRUE</code> (1) or <code>FALSE</code> (0)</li>
+<li>The basis of all maths and computing</li>
+<li>If you want to be able to code, you need to understand at least the basics</li>
+<li><em>Note.</em> The following is a <strong>strictly informal</strong> treatment of logic. Instead of using formal notation, I will use the <code>R</code> notation</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Text in monospace on a brown background is <code>R</code> code: to get used to what it looks like</li>
+</ul>
+</aside>
+</section>
+<section id="logic-truth-value" class="slide level2">
+<h2>Logic: <strong>Truth value</strong></h2>
+<ul>
+<li>Statement is a meaningful utterance about objects in the world and their relationships.
+<ul>
+<li><i>e.g.,</i> <em>“Today is Wednesday.”</em> or <em>“Two is equal to five.”</em></li>
+</ul></li>
+<li>Based on the nature of the relationships and the premises, a statement can either be <code>TRUE</code> (1) or <code>FALSE</code> (0)</li>
+<li>Premises don’t have to be <em>“true”</em> in the sense of corresponding to our experience of reality. We can assess the truth value of a statement even if it’s based on outlandish premises</li>
+</ul>
+</section>
+<section id="logic-truth-value-1" class="slide level2">
+<h2>Logic: <strong>Truth value</strong></h2>
+<ol type="1">
+<li><em>All rivers are laughter</em></li>
+<li><em>All laughter takes a chance</em> <br>Therefore<br></li>
+<li><em>All rivers take a chance</em></li>
+</ol>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>The conclusion is a valid inference based on the premises and so is <code>TRUE</code>, even though it sounds like New Age “wisdom”</li>
+<li>R implements this</li>
+</ul>
+</aside>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">##  R-ish for &quot;equals&quot; or &quot;is&quot; is ==, not = !</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">weekdays</span>(<span class="kw">Sys.Date</span>()) <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span></a>
+<a class="sourceLine" id="cb1-3" title="3">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb1-6" title="6">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">##  object orange has the value &quot;apple&quot; (premise)</span></a>
+<a class="sourceLine" id="cb1-9" title="9">orange &lt;-<span class="st"> &quot;apple&quot;</span></a>
+<a class="sourceLine" id="cb1-10" title="10">orange <span class="op">==</span><span class="st"> &quot;apple&quot;</span></a>
+<a class="sourceLine" id="cb1-11" title="11">[<span class="dv">1</span>] <span class="ot">TRUE</span></a></code></pre></div>
+</section>
+<section id="logic-boolean-operators" class="slide level2">
+<h2>Logic: <strong>Boolean operators</strong></h2>
+<ul>
+<li>Logical operators express relationships between objects (equality, <code>==</code>, is an example)</li>
+<li>There are lots of them but we will focus on four <em>Boolean operators</em>:
+<ul>
+<li>NOT (<code>!</code>)</li>
+<li>AND (<code>&amp;</code>)</li>
+<li>OR (<code>|</code>)</li>
+<li>exclusive OR, XOR (the <code>xor()</code> function in <code>R</code>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="logic-boolean-operators-1" class="slide level2">
+<h2>Logic: <strong>Boolean operators</strong></h2>
+<ul>
+<li>They are quite intuitive except for the OR/XOR distinction</li>
+<li>A statement linking two objects statements with OR is <code>TRUE</code> if <strong>either</strong> of the partial statement is <code>TRUE</code> <strong>or both of them</strong> are <code>TRUE</code></li>
+<li>XOR returns <code>TRUE</code> <strong>if and only if one of the statements</strong> is <code>TRUE</code></li>
+</ul>
+</section>
+<section id="logic-in-r" class="slide level2">
+<h2>Logic in <code>R</code></h2>
+<ul>
+<li><em>Note.</em> <code>%in%</code> is a membership operator in <code>R</code> – <code>a %in% A</code> means “element <code>a</code> is in the object <code>A</code>”; Its result is <code>TRUE</code>/<code>FLASE</code></li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">A &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span> <span class="co"># A contains numbers from 1 to 5</span></a>
+<a class="sourceLine" id="cb2-2" title="2">B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>) <span class="co"># B contains numbers -1, 3, 5, and 7</span></a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="dv">1</span> <span class="op">%in%</span><span class="st"> </span>A</a>
+<a class="sourceLine" id="cb2-5" title="5">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="dv">1</span> <span class="op">%in%</span><span class="st"> </span>B</a>
+<a class="sourceLine" id="cb2-8" title="8">[<span class="dv">1</span>] <span class="ot">FALSE</span></a></code></pre></div>
+</section>
+<section id="logic-in-r-1" class="slide level2">
+<h2>Logic in <code>R</code></h2>
+<ul>
+<li>If the thing to the left of <code>%in%</code> is an object containing several elements, the results will be one logical value per element (<i>i.e.,</i> <code>%in%</code> is <em>vectorised</em>)</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">A <span class="op">%in%</span><span class="st"> </span>B</a>
+<a class="sourceLine" id="cb3-2" title="2">[<span class="dv">1</span>] <span class="ot">FALSE</span> <span class="ot">FALSE</span>  <span class="ot">TRUE</span> <span class="ot">FALSE</span>  <span class="ot">TRUE</span></a></code></pre></div>
+</section>
+<section id="logic-not" class="slide level2">
+<h2>Logic: <strong>NOT (<code>!</code>)</strong></h2>
+<ul>
+<li>The simplest operator</li>
+<li>Negates the subsequent statement, <i>i.e.,</i> turns <code>TRUE</code> to <code>FALSE</code> and <i>vice versa</i></li>
+<li>if <code>A == B</code> is <code>FALSE</code>, <code>!(A == B)</code> or <code>A != B</code> will be <code>TRUE</code></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">a &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="op">!</span>a</a>
+<a class="sourceLine" id="cb4-3" title="3">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb4-4" title="4"></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="op">!</span>(<span class="dv">1</span> <span class="op">%in%</span><span class="st"> </span>A)</a>
+<a class="sourceLine" id="cb4-6" title="6">[<span class="dv">1</span>] <span class="ot">FALSE</span></a></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>What is negation of “larger than”?</li>
+</ul>
+</aside>
+</section>
+<section id="logic-and" class="slide level2">
+<h2>Logic: <strong>AND (<code>&amp;</code>)</strong></h2>
+<p><img data-src="pics/and.png" alt="Truth table of A AND B" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="dv">1</span> <span class="op">%in%</span><span class="st"> </span>A <span class="op">&amp;</span><span class="st"> </span><span class="dv">5</span> <span class="op">%in%</span><span class="st"> </span>B <span class="co"># 1 is in A AND 5 is in B</span></a>
+<a class="sourceLine" id="cb5-2" title="2">[<span class="dv">1</span>] <span class="ot">TRUE</span></a></code></pre></div>
+<p><code>!(A &amp; B)</code> is equivalent to <code>xor(A, B) | (!A &amp; !B)</code></p>
+</section>
+<section id="logic-or" class="slide level2">
+<h2>Logic: <strong>OR (<code>|</code>)</strong></h2>
+<p><img data-src="pics/or.png" alt="Truth table of A OR B" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="dv">-30</span> <span class="op">%in%</span><span class="st"> </span>A <span class="op">|</span><span class="st"> </span><span class="dv">5</span> <span class="op">%in%</span><span class="st"> </span>B <span class="co"># first FALSE, second TRUE</span></a>
+<a class="sourceLine" id="cb6-2" title="2">[<span class="dv">1</span>] <span class="ot">TRUE</span></a></code></pre></div>
+<p><code>!(A | B)</code> is equivalent to <code>(!A &amp; !B)</code></p>
+</section>
+<section id="logic-xor-xor" class="slide level2">
+<h2>Logic: <strong>XOR (<code>xor()</code>)</strong></h2>
+<p><img data-src="pics/xor.png" alt="Truth table of A XOR B" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">xor</span>(<span class="dv">5</span> <span class="op">%in%</span><span class="st"> </span>A, <span class="dv">-1</span> <span class="op">%in%</span><span class="st"> </span>B) <span class="co"># both TRUE</span></a>
+<a class="sourceLine" id="cb7-2" title="2">[<span class="dv">1</span>] <span class="ot">FALSE</span></a></code></pre></div>
+<p><code>!xor(A, B)</code> is equivalent to <code>(A &amp; B) | (!A &amp; !B)</code></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>These operations are especially important for programming</li>
+<li>Is all of this crystal clear? Please ask if not…</li>
+</ul>
+</aside>
+</section>
+<section id="probability-matters-p-.001" class="slide level2 center" data-background="pics/probability2.jpeg" data-transition="fade">
+<h2>Probability matters (p &lt; .001)</h2>
+</section>
+<section id="probability" class="slide level2">
+<h2>Probability</h2>
+<ul>
+<li>System of attributing chance to events</li>
+<li>Based on a foundation of logic and set theory</li>
+<li>Informs all of statistics</li>
+<li>Main approaches: <a href="https://en.wikipedia.org/wiki/Frequentist_probability" target="_blank">frequentist</a> and <a href="https://en.wikipedia.org/wiki/Bayesian_probability" target="_blank">Bayesian</a></li>
+<li>We focus on the frequentist approach but be aware that Bayesian statistics has been gaining a lot of traction in recent years</li>
+</ul>
+</section>
+<section id="its-a-tricky-business" class="slide level2">
+<h2>It’s a tricky business</h2>
+<ul>
+<li>Unlike things we’ve talked about, probability is not intuitive</li>
+<li>We didn’t evolve to solve probabilistic problems analytically but to adopt heuristics</li>
+<li>The whole field started as a result of this counter-intuitive nature
+<ul>
+<li>One Antoine Gombaud, Chevalier de M?r? noticed that when he bet on rolling <strong>at least 1 double-six in 24 rolls of two dice</strong>, he lost more often than when he bet on rolling <strong>at least 1 six in 4 rolls of a single die</strong> and was puzzled by it and challenged mathematicians to explain why</li>
+<li>Blaise Pascal and Pierre de Fermat took up the challenge and, between themselves, laid the groundwork of modern probability theory</li>
+</ul></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>RE M?r? – Boy must he have gambled a lot to notice that!</li>
+</ul>
+</aside>
+</section>
+<section id="two-goats-and-a-car" class="slide level2">
+<h2>Two goats and a car</h2>
+<ul>
+<li>Another great historical example is the <a href="https://en.wikipedia.org/wiki/Monty_Hall_problem" target="_blank">Monty Hall problem</a></li>
+<li>Originally posed and solved in the 70s (<a href="https://www.jstor.org/stable/2683689" target="_blank">Selvin, 1975</a>), it gained prominence in 1990, when it appeared in <a href="https://en.wikipedia.org/wiki/Marilyn_vos_Savant" target="_blank">Marilyn vos Savant</a>’s column in Parade magazine</li>
+<li>The correct answer provoked a massive outcry (<a href="http://marilynvossavant.com/game-show-problem/" target="_blank">transcript</a>)</li>
+</ul>
+</section>
+<section id="the-problem" class="slide level2">
+<h2>The problem</h2>
+<blockquote>
+<p>Suppose you’re on a game show, and you’re given the choice of three doors. Behind one door is a car, behind the others, goats. You pick a door, say #1, and the host, who knows what’s behind the doors, opens another door, say #3, which has a goat. He says to you, <em>“Do you want to pick door #2?”</em> Is it to your advantage to switch your choice of doors?</p>
+</blockquote>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>vos Savant is quite a fascinating person</li>
+<li>Check out the transcripts – they’d be funny if they weren’t outrageous in how condescending the men are!</li>
+<li>What do you think? Should you switch? Does it matter at all?</li>
+</ul>
+</aside>
+</section>
+<section id="definition" class="slide level2">
+<h2>Definition</h2>
+<p>If there are <m><span class="math inline">\(a\)</span></m> ways in which <m><span class="math inline">\(X\)</span></m> can occur and <m><span class="math inline">\(b\)</span></m> ways in which <m><span class="math inline">\(X\)</span></m> can fail to occur, then the probability of <m><span class="math inline">\(X\)</span></m> occurring is <m><span class="math inline">\(P(X) = a/(a+b)\)</span></m></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>So what’s the probability of rolling a 1 on a six-sided die?</li>
+</ul>
+</aside>
+</section>
+<section id="jargon" class="slide level2">
+<h2>Jargon</h2>
+<ul>
+<li>Let’s say we’re flipping a fair coin 10 times</li>
+<li><strong>Outcome</strong> is the possible result; either heads (H) or tails (T)</li>
+<li><strong>Event</strong> is a set of outcomes, <i>e.g.,</i> H H T H T T H H T H</li>
+<li><strong>Experiment</strong> is the process generating simple events and producing outcome; flipping a coin</li>
+<li><strong>Sample space</strong> is the set of all possible outcomes; all combinations of Hs and Ts of size 10</li>
+</ul>
+</section>
+<section id="basic-calculation" class="slide level2">
+<h2>Basic calculation</h2>
+<p><img data-src="pics/sample_space.png" /></p>
+</section>
+<section id="basic-calculation-1" class="slide level2">
+<h2>Basic calculation</h2>
+<p><img data-src="pics/event.png" /></p>
+</section>
+<section id="basic-calculation-2" class="slide level2">
+<h2>Basic calculation</h2>
+<ul>
+<li>Given definition above, since there are 3 ways we can get exactly one T and 5 ways we can get some other number of Ts, the probability of getting exactly one T if we flip a fair coin three times is <m><span class="math inline">\(P(A) = 3 / (3 + 5)\)</span></m></li>
+</ul>
+<p><img data-src="pics/p_A.png" height="380" /></p>
+</section>
+<section id="basic-calculation-3" class="slide level2">
+<h2>Basic calculation</h2>
+<ul>
+<li>Similarly, there is only one way of getting HHT (simple event <m><span class="math inline">\(a\)</span></m>) when flipping a fair coin three times – and therefore seven ways this can fail to occur – so the probability of this happening is <m><span class="math inline">\(P(a) = 1 / 8\)</span></m></li>
+</ul>
+<p><img data-src="pics/p_smallA.png" height="380" /></p>
+</section>
+<section id="basic-calculation-4" class="slide level2">
+<h2>Basic calculation</h2>
+<ul>
+<li class="fragment">OK, your turn, what is the probability of a subset of <m><span class="math inline">\(A\)</span></m> that does not include <m><span class="math inline">\(a\)</span></m>?</li>
+<li class="fragment"><m><span class="math inline">\(P(A\ \&amp;\ !a) = P(A) - P(a)\)</span></m></li>
+<li class="fragment"><m><span class="math inline">\(P(A\ \&amp;\ !a) = .375 - .125 = .250\)</span></m></li>
+</ul>
+<p><img data-src="pics/p_Anota.png" height="380" /></p>
+</section>
+<section id="conditional-probability" class="slide level2">
+<h2>Conditional probability</h2>
+<ul>
+<li>Conditional probability <m><span class="math inline">\(P(A|B)\)</span></m> is the probability of <m><span class="math inline">\(A\)</span></m> occurring <strong>given that <span class="math inline">\(B\)</span> occurred</strong></li>
+<li>Here, it’s the probability of getting exactly 1 T in 3 flips of a fair coin <strong>given</strong> H on the first flip</li>
+<li><em>Note.</em> ‘|’ is conditional probability, not the ‘OR’ operation</li>
+</ul>
+<p><img data-src="pics/p_AgivenB1.png" height="340" /></p>
+</section>
+<section id="conditional-probability-1" class="slide level2">
+<h2>Conditional probability</h2>
+<ul>
+<li>To calculate <m><span class="math inline">\(P(A|B)\)</span></m> applying the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes’ theorem</a>, we need to know the probability of <m><span class="math inline">\(A\)</span></m>, the probability of <m><span class="math inline">\(B\)</span></m>, and the probability of <m><span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span></m></li>
+<li><m><span class="math inline">\(P(A|B) = \frac{P(B\ \&amp;\ A)}{P(B)} = \frac{P(B|A)\times P(A)}{P(B)} = \frac{2/3\times 3/8}{1/2}\)</span></m></li>
+</ul>
+<p><img data-src="pics/p_AgivenB1.png" height="340" /></p>
+</section>
+<section id="conditional-probability-2" class="slide level2">
+<h2>Conditional probability</h2>
+<ul>
+<li>To calculate <m><span class="math inline">\(P(A|B)\)</span></m> applying the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes’ theorem</a>, we need to know the probability of <m><span class="math inline">\(A\)</span></m>, the probability of <m><span class="math inline">\(B\)</span></m>, and the probability of <m><span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span></m></li>
+<li><m><span class="math inline">\(P(A|B) = \frac{P(B\ \&amp;\ A)}{P(B)} = \frac{P(B|A)\times P(A)}{P(B)} = \frac{2/3\times 3/8}{1/2}\)</span></m></li>
+</ul>
+<p><img data-src="pics/p_AgivenB2.png" height="340" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>We want to know the prob of the intersection but only with respect to B, not to entire sample space</li>
+<li>is this crystal clear?</li>
+</ul>
+</aside>
+</section>
+<section id="what-is-all-this-good-for" class="slide level2">
+<h2>What is all this good for?!</h2>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>I see some eyes are beginning to glaze over</li>
+<li>you might be wondering what’s the point… Let’s see how this applies in the very real world</li>
+</ul>
+</aside>
+</section>
+<section id="conditional-probability-in-action" class="slide level2">
+<h2>Conditional probability in action</h2>
+<ul>
+<li>Suppose Tom Riddle goes to get his free WHS-covered routine magica health check-up and the test for Haripotricidal Voldemortitis (HPV) comes back positive</li>
+<li>He is told that the test is 92% <em>sensitive</em> (if he has HPV the test will detect it 92% of the time)</li>
+<li>He finds a paper that reports that the <em>specificity</em> of the test is 98.3% (if he <em>doesn’t</em> have HPV, the test will still come back positive 1.7% of the time)</li>
+</ul>
+<ul>
+<li class="fragment">How certain should Tom be that he is riddled?</li>
+<li class="fragment">Let’s geek out about it!</li>
+</ul>
+</section>
+<section id="conditional-probability-in-action-1" class="slide level2">
+<h2>Conditional probability in action</h2>
+<ul>
+<li>The prevalence of HPV in the Wizarding wolrd is 421 per 100k but it’s much higher in house Slytherin at 1,516 per 100k</li>
+</ul>
+<p><img data-src="pics/hpv_set.png" height="400" /></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>From the picture, you can already probably intuit that it’s not 92%</li>
+<li>that’s why sets and visualisations are useful</li>
+</ul>
+</aside>
+</section>
+<section id="conditional-probability-in-action-2" class="slide level2">
+<h2>Conditional probability in action</h2>
+<ul>
+<li>Let’s put some numbers on it: from our data, we can create a contingency table of HPV infection and test results</li>
+</ul>
+<p><img data-src="pics/hpv_tab.png" height="250" /></p>
+<p><br> <m><span class="math inline">\(P(HPV|pos) = \frac{P(pos|HPV) \times P(HPV)}{P(pos)}\)</span></m> <m><span class="math inline">\(P(HPV|pos) = \frac{sensitivity \times prevalence}{P(pos)}\)</span></m> <m><span class="math inline">\(P(HPV|pos) \approx \frac{.92 \times .015}{.031}\)</span></m></p>
+</section>
+<section id="conditional-probability-in-action-3" class="slide level2">
+<h2>Conditional probability in action</h2>
+<ul>
+<li>Applying the conditional probability formula, we can see that, for an <strong>average wizard</strong> affiliated with Slytherin, the probability of actually having a HPV infection given a positive <strong>routine</strong> test is <strong>45.6%</strong></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>IMPORTANT - usually, when you get tested, it’s not screening and you are usually not from general population!</li>
+<li>There are reasons why people get tested</li>
+</ul>
+</aside>
+</section>
+<section id="thats-what-all-this-is-good-for" class="slide level2">
+<h2>That’s what all this is good for!</h2>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>I hope I’ve convinced you, that understanding probability is useful</li>
+</ul>
+</aside>
+</section>
+<section id="thats-what-all-this-is-good-for-1" class="slide level2" data-background="pics/hpv2.jpg">
+<h2>That’s what all this is good for!</h2>
+<p><strong>For HPV…</strong></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>Let’s go back to probability</li>
+<li>Only a few more things to cover and then we’ll break for tea</li>
+</ul>
+</aside>
+</section>
+<section id="independence" class="slide level2">
+<h2>Independence</h2>
+<ul>
+<li>In probability theory, two events are said to be <em>independent</em> if the occurrence of one does not influence the probability of the other</li>
+<li>We saw that <m><span class="math inline">\(P(HPV) \approx .015\)</span></m> but <m><span class="math inline">\(P(HPV|pos) \approx .46\)</span></m></li>
+<li>Likewise, <m><span class="math inline">\(P(pos) \approx .031\)</span></m> but <m><span class="math inline">\(P(pos|HPV) = .92\)</span></m></li>
+<li>That means that having HPV and testing positive for it are dependent events</li>
+<li>Example of independent events would be getting H on first flip and getting T on second</li>
+</ul>
+</section>
+<section id="take-home-message" class="slide level2">
+<h2>=# Take-home message</h2>
+<ul>
+<li>Probability builds on logic</li>
+<li>Basic logical and set operations are analogous
+<ul>
+<li>NOT : set complement</li>
+<li>AND : set intersection</li>
+<li>OR : set union</li>
+<li>XOR : union of differences</li>
+</ul></li>
+<li>Logic behind probability calculations</li>
+<li>What we mean when we say events are (in)dependent</li>
+<li>How conditional probability expresses the influence one event has on another</li>
+</ul>
+</section>
+<section id="take-10" class="slide level2 center" data-background="pics/take2.jpg">
+<h2>Take 10</h2>
+</section>
+<section id="section" class="slide level2" data-background="../gif/rain.gif">
+<h2> </h2>
+<script src="../js/timer.js"></script>
+<p><time></p>
+<div id="timer" onclick="startTimer(1); this.onclick=null">
+<p>10:00</p>
+</div>
+<p></time></p>
+</section>
+<section id="sampling" class="slide level2 center" data-background="pics/samp2.jpg">
+<h2>Sampling</h2>
+</section>
+<section id="why-sample" class="slide level2">
+<h2>Why sample?</h2>
+<ul>
+<li>We want to say something about the world</li>
+<li>We want to empirically assess that which we’re commenting on</li>
+<li>Unfortunately, we don’t have access to every single instance of that thing</li>
+<li>So we look at <em>some instances</em>, take measurements, quantify relationships of interest and make <em>inferences</em> about other, unobserved instances</li>
+</ul>
+</section>
+<section id="words.-beautiful-words.-the-best-words." class="slide level2">
+<h2>Words. Beautiful words.<br>The best words.</h2>
+<ul>
+<li><strong>Population</strong> – all possible observations in the sample space</li>
+<li><strong>Sample</strong> – a subset of the population we actually collected data from</li>
+<li><strong>Parameter</strong> – a property of interest in the population</li>
+<li><strong>Statistic</strong> – a quantified expression of the property of interest in the sample</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>We use the statistic derived from the sample to make inferences about the population parameter</li>
+</ul>
+</aside>
+</section>
+<section id="random-draw" class="slide level2">
+<h2>Random draw</h2>
+<ul>
+<li>When taking a sample from the population, we assume the process by which we sample is <em>random</em></li>
+<li>Every member of the population has the same probability of getting selected</li>
+<li>That does <strong>not</strong> mean that every value has the same chance of being selected!</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">##  population - ten integers from 1 to 10</span></a>
+<a class="sourceLine" id="cb8-2" title="2">pop &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="co">##  pick 5 of them at random</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="kw">sample</span>(pop, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb8-6" title="6">[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">9</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">##  different result each time</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="kw">sample</span>(pop, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb8-10" title="10">[<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">5</span>  <span class="dv">7</span> <span class="dv">10</span>  <span class="dv">4</span></a></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>If I open a bag of Celebrations chocolates and randomly pick one, I may get any of the 8 treats</li>
+<li>If I “sample” one from the same box the morning after the party, I’m virtually guaranteed to get a Caramel or a Bounty</li>
+<li>Why is this? Let’s see…</li>
+</ul>
+</aside>
+</section>
+<section id="sampling-from-a-finite-population" class="slide level2">
+<h2>Sampling from a finite population</h2>
+<ul>
+<li>There are two kinds of sampling
+<ul>
+<li>with replacement</li>
+<li>without replacement</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">##  sampling WITH replacement</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)</a>
+<a class="sourceLine" id="cb9-3" title="3"> [<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">##  sampling WITHOUT replacement</span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="kw">sample</span>(pop, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb9-7" title="7"> [<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">3</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">9</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">4</span>  <span class="dv">8</span>  <span class="dv">5</span></a></code></pre></div>
+</section>
+<section id="sampling-with-replacement" class="slide level2">
+<h2>Sampling <strong>with</strong> replacement</h2>
+<ul>
+<li>Let’s say our box of CeleBraTiONs contains 10 of each of the 8 chocolates</li>
+<li>Pick a chocolate at random, record which one it is, put it back, repeat</li>
+<li>What’s the probability of picking a Malteaser on the first draw? On the second?</li>
+</ul>
+<ul>
+<li class="fragment"><m><span class="math inline">\(P(malt1) = 10/80\)</span></m></li>
+<li class="fragment"><m><span class="math inline">\(P(malt2) = 10/80\)</span></m></li>
+<li class="fragment">When sampling from a finite population with replacement, is any given draw influenced by the previous draws?</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+What do we call this property?
+</aside>
+</section>
+<section id="sampling-without-replacement" class="slide level2">
+<h2>Sampling <strong>without</strong> replacement</h2>
+<ul>
+<li>Now pick a chocolate – it’s a Malteaser! – keep it, and pass the box on</li>
+<li>What’s the probability of picking a Malteaser on the first draw? On the second?</li>
+</ul>
+<ul>
+<li class="fragment"><m><span class="math inline">\(P(malt1) = 10/80 = .125\)</span></m></li>
+<li class="fragment"><m><span class="math inline">\(P(malt2) = 9/79 = .114\)</span></m></li>
+<li class="fragment">When sampling from a finite population without replacement, individual draws are <em>not independent</em>!</li>
+</ul>
+</section>
+<section id="sampling-in-practice" class="slide level2">
+<h2>Sampling in practice</h2>
+<ul>
+<li>When picking a sample, we <em>assume that the population is infinite</em></li>
+<li>Even though we sample without replacement, the individual draws are essentially independent</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<p>All clear?</p>
+In the remainder of this course, we will focus on how we draw inferences about population parameters from statistics calculated using samples
+</aside>
+</section>
+<section id="variables" class="slide level2 center" data-background="pics/var2.jpg">
+<h2>Variables</h2>
+</section>
+<section id="more-lingo" class="slide level2">
+<h2>More lingo</h2>
+<ul>
+<li>When we collect a sample, it is because we want to measure certain <strong>attributes</strong> (<i>e.g.,</i> age)</li>
+<li>We collect one – or several – observations of the given attribute from each member of the sample</li>
+<li><strong>Domain</strong> is a set of all possible values an observation of a given attribute can take (0 - <a href="https://en.wikipedia.org/wiki/Jeanne_Calment">122+</a> years)</li>
+<li><strong>Variable</strong> is set of attributes in which the observations vary across a domain</li>
+<li>Something that’s a variable in one sample may not be a variable in another sample (first language in a sample of monolingual native English speakers is a <em>constant</em>, not a variable)</li>
+</ul>
+</section>
+<section id="types-of-variables" class="slide level2">
+<h2>Types of variables</h2>
+<ul>
+<li>Several important ones:
+<ul>
+<li><strong>Continuous</strong> – can take <em>any</em> value within the range of its domain (<i>e.g.,</i> age)</li>
+<li><strong>Discrete</strong> – can take a specific set of values but not the values between these (<i>e.g.,</i> number of rooms in a hotel)</li>
+<li><strong>Binomial</strong> – special case of discrete variable; can only take two values, usually 0 and 1 (<i>e.g.,</i> pass/fail outcome of a test)</li>
+</ul></li>
+</ul>
+</section>
+<section id="levels-of-measurement" class="slide level2">
+<h2>Levels of measurement</h2>
+<ul>
+<li><strong>Nominal</strong> – categories with no relative ordering (<i>e.g.,</i> study programme )</li>
+<li><strong>Ordinal</strong> – categories that can be meaningfully ordered (<i>e.g.,</i> lecture quality ranking)</li>
+<li><strong>Interval</strong> – values are ordered and <em>equidistant</em>; no absolute zero point (<i>e.g.,</i> IQ)</li>
+<li><strong>Ratio</strong> – like interval just with an absolute zero (<i>e.g.,</i> age)</li>
+</ul>
+</section>
+<section id="variables-in-r" class="slide level2">
+<h2>Variables in <code>R</code></h2>
+<ul>
+<li><code>R</code> has no way of knowing what level of measurement or type of variable is inside a vector</li>
+<li>It can guess, but it’s <em>much</em> better if you tell it</li>
+<li><code>logical</code> values (<code>TRUE/FALSE</code>) can only be binomial and nominal</li>
+<li><code>character</code> values can only be nominal/ordinal and cannot be continuous</li>
+<li><code>numeric</code> values can represent any level of measurement and any type of variable</li>
+<li>read more <a href="https://mivalek.github.io/resources/saviouR.html#its-elementary-my-dear-watson" target="_blank">here</a></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+All clear?
+</aside>
+</section>
+<section id="descriptive-statistics" class="slide level2 center" data-background="pics/desc2.jpg">
+<h2>Descriptive statistics</h2>
+</section>
+<section id="first-step" class="slide level2">
+<h2>First step</h2>
+<ul>
+<li>Descriptive statistics give us tools to understand variables</li>
+<li>Essential for all statistical inference</li>
+<li>Exploring descriptives is an important prerequisite for data analysis</li>
+<li>Two main groups:
+<ul>
+<li>Measures of <em>central tendency</em></li>
+<li>Measures of <em>dispersion</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="central-tendency" class="slide level2">
+<h2>Central tendency</h2>
+<ul>
+<li>Average (central) value in the sample/population</li>
+<li>Analogous to centre of mass in physical objects</li>
+<li>Three measures:
+<ul>
+<li>Mode</li>
+<li>Median</li>
+<li>Mean</li>
+</ul></li>
+</ul>
+</section>
+<section id="data" class="slide level2">
+<h2>Data</h2>
+<ul>
+<li>let’s create some data to illustrate the concepts</li>
+</ul>
+<pre><code>    id age eye_col dpt degree
+1 1001  23    blue psy    2:2
+2 1002  25   brown cog      1
+3 1003  33   brown lel      1
+4 1004  26   green psy      1
+5 1005  25    blue phi    2:1
+6 1006  24   brown lel    2:1</code></pre>
+<ul>
+<li><code>id</code> – discrete nominal; unique participant ID</li>
+<li><code>age</code> – continuous ratio; age in years</li>
+<li><code>eye_col</code> – discrete nominal; eye colour</li>
+<li><code>dpt</code> – discrete nominal; department</li>
+<li><code>degree</code> – discrete ordinal; UG degree outcome</li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+Why is <code>degree</code> ordinal?
+</aside>
+</section>
+<section id="central-tendency-mode" class="slide level2">
+<h2>Central tendency: <strong>Mode</strong></h2>
+<ul>
+<li>The most frequent value in population/sample</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">##  see frequencies</span></a>
+<a class="sourceLine" id="cb11-2" title="2">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>eye_col)</a>
+<a class="sourceLine" id="cb11-3" title="3">ftab</a>
+<a class="sourceLine" id="cb11-4" title="4"></a>
+<a class="sourceLine" id="cb11-5" title="5"> blue brown green </a>
+<a class="sourceLine" id="cb11-6" title="6">    <span class="dv">2</span>     <span class="dv">3</span>     <span class="dv">1</span> </a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="co">##  get mode from table</span></a>
+<a class="sourceLine" id="cb11-8" title="8"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
+<a class="sourceLine" id="cb11-9" title="9">[<span class="dv">1</span>] <span class="st">&quot;brown&quot;</span></a></code></pre></div>
+</section>
+<section id="central-tendency-mode-1" class="slide level2">
+<h2>Central tendency: <strong>Mode</strong></h2>
+<ul>
+<li>A variable has <strong>at least</strong> one mode (<i>i.e.,</i> can have multiple modes)</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co">##  see frequencies</span></a>
+<a class="sourceLine" id="cb12-2" title="2">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>dpt)</a>
+<a class="sourceLine" id="cb12-3" title="3">ftab</a>
+<a class="sourceLine" id="cb12-4" title="4"></a>
+<a class="sourceLine" id="cb12-5" title="5">cog lel phi psy </a>
+<a class="sourceLine" id="cb12-6" title="6">  <span class="dv">1</span>   <span class="dv">2</span>   <span class="dv">1</span>   <span class="dv">2</span> </a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="co">##  get mode from table</span></a>
+<a class="sourceLine" id="cb12-8" title="8"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
+<a class="sourceLine" id="cb12-9" title="9">[<span class="dv">1</span>] <span class="st">&quot;lel&quot;</span> <span class="st">&quot;psy&quot;</span></a></code></pre></div>
+</section>
+<section id="central-tendency-mode-2" class="slide level2">
+<h2>Central tendency: <strong>Mode</strong></h2>
+<ul>
+<li>When each value has the same frequency, <em>every one of them</em> is the mode</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co">##  see frequencies</span></a>
+<a class="sourceLine" id="cb13-2" title="2">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>id)</a>
+<a class="sourceLine" id="cb13-3" title="3">ftab</a>
+<a class="sourceLine" id="cb13-4" title="4"></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="dv">1001</span> <span class="dv">1002</span> <span class="dv">1003</span> <span class="dv">1004</span> <span class="dv">1005</span> <span class="dv">1006</span> </a>
+<a class="sourceLine" id="cb13-6" title="6">   <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">1</span>    <span class="dv">1</span> </a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="co">##  get mode from table</span></a>
+<a class="sourceLine" id="cb13-8" title="8"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
+<a class="sourceLine" id="cb13-9" title="9">[<span class="dv">1</span>] <span class="st">&quot;1001&quot;</span> <span class="st">&quot;1002&quot;</span> <span class="st">&quot;1003&quot;</span> <span class="st">&quot;1004&quot;</span> <span class="st">&quot;1005&quot;</span> <span class="st">&quot;1006&quot;</span></a></code></pre></div>
+</section>
+<section id="central-tendency-mode-3" class="slide level2">
+<h2>Central tendency: <strong>Mode</strong></h2>
+<ul>
+<li>Can be calculated on any variable type/measurement level*</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co">##  mode of degree</span></a>
+<a class="sourceLine" id="cb14-2" title="2">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>degree)</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
+<a class="sourceLine" id="cb14-4" title="4">[<span class="dv">1</span>] <span class="st">&quot;1&quot;</span></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="co">##  mode of age</span></a>
+<a class="sourceLine" id="cb14-6" title="6">ftab &lt;-<span class="st"> </span><span class="kw">table</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="kw">names</span>(ftab)[ftab <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(ftab)]</a>
+<a class="sourceLine" id="cb14-8" title="8">[<span class="dv">1</span>] <span class="st">&quot;25&quot;</span></a></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+*Caveat – true continuous variables are probably all multi-modal, because no two values are exactly the same
+</aside>
+</section>
+<section id="central-tendency-median" class="slide level2">
+<h2>Central tendency: <strong>Median</strong></h2>
+<ul>
+<li>A special case of <em>quantile</em></li>
+<li>If you sort your data from the smallest value to the largest and divide into <em>n</em> equal parts, the quantile is the largest value in each of the parts</li>
+<li>If <em>n = 4</em>, the individual cut-off points are <strong>quartiles</strong></li>
+<li>If <em>n = 10</em>, they are <strong>deciles</strong></li>
+<li>If <em>n = 100</em>, they are <strong>centiles</strong> (AKA percentiles)</li>
+<li><strong>Median</strong> is the midpoint, <i>i.e.,</i> the only quantile if <em>n = 2</em></li>
+<li>Since we’re ordering, data must be at least <em>ordinal</em></li>
+</ul>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+OR 2nd quartile, 5th decile, 50th percentile…
+</aside>
+</section>
+<section id="central-tendency-median-1" class="slide level2">
+<h2>Central tendency: <strong>Median</strong></h2>
+<ul>
+<li>To find the median, first sort data</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">(age_sort &lt;-<span class="st"> </span><span class="kw">sort</span>(data<span class="op">$</span>age))</a>
+<a class="sourceLine" id="cb15-2" title="2">[<span class="dv">1</span>] <span class="dv">23</span> <span class="dv">24</span> <span class="dv">25</span> <span class="dv">25</span> <span class="dv">26</span> <span class="dv">33</span></a></code></pre></div>
+<ul>
+<li>Then, find the midpoint
+<ul>
+<li>Odd number of values: <m><span class="math inline">\(\frac{N + 1}{2}\)</span></m></li>
+<li>Even number of values: <m><span class="math inline">\(\frac{N/2 + (N / 2 + 1)}{2}\)</span></m></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co">##  N/2</span></a>
+<a class="sourceLine" id="cb16-2" title="2">(m1 &lt;-<span class="st"> </span>age_sort[<span class="dv">6</span> <span class="op">/</span><span class="st"> </span><span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb16-3" title="3">[<span class="dv">1</span>] <span class="dv">25</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="co">##  (N / 2) + 1</span></a>
+<a class="sourceLine" id="cb16-5" title="5">(m2 &lt;-<span class="st"> </span>age_sort[<span class="kw">length</span>(age_sort) <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb16-6" title="6">[<span class="dv">1</span>] <span class="dv">25</span></a>
+<a class="sourceLine" id="cb16-7" title="7">(m1 <span class="op">+</span><span class="st"> </span>m2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb16-8" title="8">[<span class="dv">1</span>] <span class="dv">25</span></a></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<code>()</code> around commands are for instant printing; not something you should really use
+</aside>
+</section>
+<section id="central-tendency-median-2" class="slide level2">
+<h2>Central tendency: <strong>Median</strong></h2>
+<ul>
+<li><code>R</code> has a handy function so we don’t have to calculate everything “by hand”</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">(<span class="kw">median</span>(data<span class="op">$</span>age))</a>
+<a class="sourceLine" id="cb17-2" title="2">[<span class="dv">1</span>] <span class="dv">25</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="co">##  ordinal data must be converted to numeric for median()</span></a>
+<a class="sourceLine" id="cb17-4" title="4">(x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))</a>
+<a class="sourceLine" id="cb17-5" title="5"> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb17-6" title="6">Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb17-7" title="7">(<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))</a>
+<a class="sourceLine" id="cb17-8" title="8">[<span class="dv">1</span>] <span class="fl">2.5</span></a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="co">##  of limited use with ordered categories</span></a>
+<a class="sourceLine" id="cb17-10" title="10">(<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))</a>
+<a class="sourceLine" id="cb17-11" title="11">[<span class="dv">1</span>] <span class="fl">1.5</span></a>
+<a class="sourceLine" id="cb17-12" title="12"><span class="co">##  not meaningful for nominal data but can be done</span></a>
+<a class="sourceLine" id="cb17-13" title="13">(<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>eye_col)))</a>
+<a class="sourceLine" id="cb17-14" title="14">[<span class="dv">1</span>] <span class="dv">2</span></a></code></pre></div>
+</section>
+<section id="central-tendency-arithmetic-mean" class="slide level2">
+<h2>Central tendency: (Arithmetic)<small><sup>*</sup></small> <strong>Mean</strong></h2>
+<ul>
+<li>What most people mean by <em>average</em>
+<ul>
+<li>population mean <m><span class="math inline">\(\mu\)</span></m></li>
+<li>sample mean <m><span class="math inline">\(\bar{x} = \frac{\sum_{i=1}^N x_i}{N}\)</span></m></li>
+</ul></li>
+<li>If there are <em>N</em> observations of variable <em>x</em> in our sample, <m><span class="math inline">\(\sum_{i=1}^N x_i = x_1+x_2+x_3+\cdots +x_N\)</span></m></li>
+<li>Requires at least interval-level data</li>
+</ul>
+<p><br><br><small> <sup>*</sup> Other means are available (<a href="https://en.wikipedia.org/wiki/Geometric_mean">geometric</a>, <a href="https://en.wikipedia.org/wiki/Harmonic_mean">harmonic</a>)</small></p>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+<ul>
+<li>general rule of thumb
+<ul>
+<li>Greek letters – population parameters</li>
+<li>Latin letters – sample statistics</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="central-tendency-arithmetic-mean-1" class="slide level2">
+<h2>Central tendency: (Arithmetic) <strong>Mean</strong></h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">data<span class="op">$</span>age</a>
+<a class="sourceLine" id="cb18-2" title="2">[<span class="dv">1</span>] <span class="dv">23</span> <span class="dv">25</span> <span class="dv">33</span> <span class="dv">26</span> <span class="dv">25</span> <span class="dv">24</span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="kw">sum</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb18-4" title="4">[<span class="dv">1</span>] <span class="dv">156</span></a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="co">##  sum / N</span></a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="kw">sum</span>(data<span class="op">$</span>age)<span class="op">/</span><span class="kw">nrow</span>(data)</a>
+<a class="sourceLine" id="cb18-7" title="7">[<span class="dv">1</span>] <span class="dv">26</span></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="co">##  readymade R function</span></a>
+<a class="sourceLine" id="cb18-9" title="9"><span class="kw">mean</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb18-10" title="10">[<span class="dv">1</span>] <span class="dv">26</span></a></code></pre></div>
+</section>
+<section id="central-tendency-arithmetic-mean-2" class="slide level2">
+<h2>Central tendency: (Arithmetic) <strong>Mean</strong></h2>
+<ul>
+<li>Pros
+<ul>
+<li>Algebraically tractable (has a formula)</li>
+<li>Related to measures of dispersion (coming up next)</li>
+</ul></li>
+<li>Cons
+<ul>
+<li>Assumes data are at least interval</li>
+<li>Might not actually exist in sample</li>
+<li>Sensitive to extreme values (unlike mode and median)</li>
+</ul></li>
+</ul>
+</section>
+<section id="sensitive-to-extremes" class="slide level2">
+<h2>Sensitive to extremes</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="co">##  copy age into new object</span></a>
+<a class="sourceLine" id="cb19-2" title="2">age &lt;-<span class="st"> </span>data<span class="op">$</span>age</a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="co">##  replace highest value (33) with 83</span></a>
+<a class="sourceLine" id="cb19-4" title="4">age[age <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(age)] &lt;-<span class="st"> </span><span class="dv">83</span></a>
+<a class="sourceLine" id="cb19-5" title="5">age</a>
+<a class="sourceLine" id="cb19-6" title="6">[<span class="dv">1</span>] <span class="dv">23</span> <span class="dv">25</span> <span class="dv">83</span> <span class="dv">26</span> <span class="dv">25</span> <span class="dv">24</span></a>
+<a class="sourceLine" id="cb19-7" title="7"><span class="co">##  original age</span></a>
+<a class="sourceLine" id="cb19-8" title="8"><span class="kw">mean</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb19-9" title="9">[<span class="dv">1</span>] <span class="dv">26</span></a>
+<a class="sourceLine" id="cb19-10" title="10"><span class="co">##  new age</span></a>
+<a class="sourceLine" id="cb19-11" title="11"><span class="kw">mean</span>(age) <span class="co"># also, doesn&#39;t exist in sample!</span></a>
+<a class="sourceLine" id="cb19-12" title="12">[<span class="dv">1</span>] <span class="fl">34.33333</span></a>
+<a class="sourceLine" id="cb19-13" title="13"><span class="kw">median</span>(data<span class="op">$</span>age) <span class="co"># median isn&#39;t affected</span></a>
+<a class="sourceLine" id="cb19-14" title="14">[<span class="dv">1</span>] <span class="dv">25</span></a>
+<a class="sourceLine" id="cb19-15" title="15"><span class="kw">median</span>(age)</a>
+<a class="sourceLine" id="cb19-16" title="16">[<span class="dv">1</span>] <span class="dv">25</span></a></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+All clear?
+</aside>
+</section>
+<section id="dispersion" class="slide level2">
+<h2>Dispersion</h2>
+<ul>
+<li>Mode, median, and mean tell us about the central point in our data</li>
+<li>They don’t tell us how spread the data are around this point</li>
+<li>That is what measures of dispersion (spread) do
+<ul>
+<li>Range</li>
+<li>Inter-quartile range</li>
+<li>Deviation</li>
+<li>Variance</li>
+<li>Standard deviation</li>
+</ul></li>
+</ul>
+</section>
+<section id="dispersion-range" class="slide level2">
+<h2>Dispersion: <strong>Range</strong></h2>
+<ul>
+<li>Distance between smallest and largest value in sample</li>
+<li><em>Drawback:</em> Extremely sensitive to outliers</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co">##  range() gives minimum and maximum</span></a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="kw">range</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb20-3" title="3">[<span class="dv">1</span>] <span class="dv">23</span> <span class="dv">33</span></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="co">##  get the distance</span></a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="kw">max</span>(data<span class="op">$</span>age) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb20-6" title="6">[<span class="dv">1</span>] <span class="dv">10</span></a></code></pre></div>
+</section>
+<section id="dispersion-iqr" class="slide level2">
+<h2>Dispersion: <strong>IQR</strong></h2>
+<ul>
+<li>Inter-quartile range - distance between 1<small><sup>st</sup></small> and 3<small><sup>rd</sup></small> quartile</li>
+<li><em>Drawback:</em> Ignores half of the data</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co">##  get quartiles (quantiles with n = 4)</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="co">##  cut data into lower 25%, 50%, 75%, 100%</span></a>
+<a class="sourceLine" id="cb21-3" title="3">(quartiles &lt;-<span class="st"> </span><span class="kw">quantile</span>(age, <span class="kw">c</span>(.<span class="dv">25</span>, <span class="fl">.5</span>, <span class="fl">.75</span>, <span class="dv">1</span>)))</a>
+<a class="sourceLine" id="cb21-4" title="4">  <span class="dv">25</span><span class="op">%   50%</span><span class="st">   </span><span class="dv">75</span><span class="op">%  100%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="fl">24.25</span> <span class="fl">25.00</span> <span class="fl">25.75</span> <span class="fl">83.00</span> </a>
+<a class="sourceLine" id="cb21-6" title="6"><span class="co">##  IQR = 3rd - 1st quaritle</span></a>
+<a class="sourceLine" id="cb21-7" title="7"><span class="co">##  don&#39;t worry about the &quot;75%&quot;, it&#39;s just a leftover label</span></a>
+<a class="sourceLine" id="cb21-8" title="8">quartiles[<span class="dv">3</span>] <span class="op">-</span><span class="st"> </span>quartiles[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb21-9" title="9"><span class="dv">75</span>% </a>
+<a class="sourceLine" id="cb21-10" title="10"><span class="fl">1.5</span> </a>
+<a class="sourceLine" id="cb21-11" title="11"><span class="co">##  built-in R function</span></a>
+<a class="sourceLine" id="cb21-12" title="12"><span class="kw">IQR</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb21-13" title="13">[<span class="dv">1</span>] <span class="fl">1.5</span></a></code></pre></div>
+<ul>
+<li>Other quantiles can be used for different inter-<em>quantile</em> ranges</li>
+</ul>
+</section>
+<section id="dispersion-deviation" class="slide level2">
+<h2>Dispersion: <strong>Deviation</strong></h2>
+<ul>
+<li>Distance from every single value in the data from some convenient point</li>
+<li>Mean is a convenient point</li>
+<li><m><span class="math inline">\(x_i - \bar{x}\)</span></m>, where <m><span class="math inline">\(x_i\)</span></m> is every single data point</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="co">##  minus is a vectorised operation in R</span></a>
+<a class="sourceLine" id="cb22-2" title="2">data<span class="op">$</span>age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb22-3" title="3">[<span class="dv">1</span>] <span class="dv">-3</span> <span class="dv">-1</span>  <span class="dv">7</span>  <span class="dv">0</span> <span class="dv">-1</span> <span class="dv">-2</span></a></code></pre></div>
+</section>
+<section id="dispersion-deviation-1" class="slide level2">
+<h2>Dispersion: <strong>Deviation</strong></h2>
+<ul>
+<li>There are as many deviations as data points</li>
+<li>To get a single measure of spread, how about we add them all up?</li>
+</ul>
+<ul>
+<li class="fragment"><em>Problem:</em> More data points = more points to add up</li>
+<li class="fragment"><em>BIG problem:</em> They always add up to zero</li>
+</ul>
+</section>
+<section id="dispersion-variance" class="slide level2">
+<h2>Dispersion: <strong>Variance</strong></h2>
+<ul>
+<li>How do we get around the <em>BIG problem</em> (deviations adding up to 0)?</li>
+</ul>
+<ul>
+<li class="fragment">By taking the square of the deviations</li>
+<li class="fragment">The sum of these is called the <em><strong>S</strong>um of <strong>S</strong>quares</em></li>
+</ul>
+<!-- keep the empty line there! -->
+<ul>
+<li class="fragment">We can get around the <em>problem</em> by dividing the sum of squares by <em>N</em></li>
+<li class="fragment">This is the <strong>variance</strong></li>
+</ul>
+</section>
+<section id="dispersion-variance-1" class="slide level2">
+<h2>Dispersion: <strong>Variance</strong></h2>
+<ul>
+<li>population variance <m><span class="math inline">\(\sigma^2 = \frac{\sum_{i=1}^N (x_i - \mu)^2}{N}\)</span></m></li>
+<li>sample variance, <m><span class="math inline">\(s^2 = \frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}\)</span></m>
+<ul>
+<li>reason for the <m><span class="math inline">\(N - 1\)</span></m> is quite technical (see <a href="https://en.wikipedia.org/wiki/Bessel%27s_correction">Bessel’s correction</a>)</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="co">##  deviations</span></a>
+<a class="sourceLine" id="cb23-2" title="2">(dev &lt;-<span class="st"> </span>data<span class="op">$</span>age <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(data<span class="op">$</span>age))</a>
+<a class="sourceLine" id="cb23-3" title="3">[<span class="dv">1</span>] <span class="dv">-3</span> <span class="dv">-1</span>  <span class="dv">7</span>  <span class="dv">0</span> <span class="dv">-1</span> <span class="dv">-2</span></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="co">##  sums of squares</span></a>
+<a class="sourceLine" id="cb23-5" title="5">(ss &lt;-<span class="st"> </span><span class="kw">sum</span>(dev<span class="op">^</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb23-6" title="6">[<span class="dv">1</span>] <span class="dv">64</span></a>
+<a class="sourceLine" id="cb23-7" title="7"><span class="co">##  variance</span></a>
+<a class="sourceLine" id="cb23-8" title="8">ss <span class="op">/</span><span class="st"> </span>(<span class="kw">length</span>(data<span class="op">$</span>age) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb23-9" title="9">[<span class="dv">1</span>] <span class="fl">12.8</span></a>
+<a class="sourceLine" id="cb23-10" title="10"><span class="co">##  in-built function</span></a>
+<a class="sourceLine" id="cb23-11" title="11"><span class="kw">var</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb23-12" title="12">[<span class="dv">1</span>] <span class="fl">12.8</span></a></code></pre></div>
+</section>
+<section id="dispersion-standard-deviation" class="slide level2">
+<h2>Dispersion: <strong>Standard deviation</strong></h2>
+<ul>
+<li>Variance is a good measure of dispersion and is widely used</li>
+<li>One minor inconvenience – measured in <em>squared units</em>
+<ul>
+<li>if age is measured in years, <m><span class="math inline">\(s^2_{age}\)</span></m> is expressed in years<small><sup>2</sup></small>, whatever those are</li>
+</ul></li>
+<li>Taking the square root of variance gives us a measure of spread in the original units</li>
+<li>This is the standard deviation
+<ul>
+<li><m><span class="math inline">\(\sigma\)</span></m> for population</li>
+<li><m><span class="math inline">\(s\)</span></m> (or <m><span class="math inline">\(SD\)</span></m>) for sample</li>
+</ul></li>
+</ul>
+</section>
+<section id="dispersion-standard-deviation-1" class="slide level2">
+<h2>Dispersion: <strong>Standard deviation</strong></h2>
+<p><br><m> <span class="math display">\[s = \sqrt{s^2} = \sqrt{\frac{\sum_{i=1}^N (x_i - \bar{x})^2}{N - 1}}\]</span> </m></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">sqrt</span>(<span class="kw">var</span>(data<span class="op">$</span>age))</a>
+<a class="sourceLine" id="cb24-2" title="2">[<span class="dv">1</span>] <span class="fl">3.577709</span></a>
+<a class="sourceLine" id="cb24-3" title="3"><span class="kw">sd</span>(data<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb24-4" title="4">[<span class="dv">1</span>] <span class="fl">3.577709</span></a></code></pre></div>
+<ul>
+<li>If we measured age in decades, <m><span class="math inline">\(s_{ageD}\)</span></m> would be <strong>proportional</strong> to <m><span class="math inline">\(s_{age}\)</span></m></li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">(ageD &lt;-<span class="st"> </span>data<span class="op">$</span>age <span class="op">/</span><span class="st"> </span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb25-2" title="2">[<span class="dv">1</span>] <span class="fl">2.3</span> <span class="fl">2.5</span> <span class="fl">3.3</span> <span class="fl">2.6</span> <span class="fl">2.5</span> <span class="fl">2.4</span></a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="kw">sd</span>(ageD)</a>
+<a class="sourceLine" id="cb25-4" title="4">[<span class="dv">1</span>] <span class="fl">0.3577709</span></a></code></pre></div>
+<!-- speaker notes -->
+<aside class="notes" data-markdown>
+Any questions?
+</aside>
+</section>
+<section id="take-home-message-1" class="slide level2">
+<h2>Take-home message</h2>
+<ul>
+<li>Relationship between <em>population</em> and <em>sample</em></li>
+<li>What <strong>random</strong> sampling <em>with</em> and <em>without</em> replacement is</li>
+<li>Difference between <em>types</em> of variables and <em>levels of measurement</em></li>
+<li>Central tendency describes the <em>average</em> value</li>
+<li>Dispersion describes how much the values are <em>spread</em></li>
+<li>There are several measures, each with pros and cons</li>
+<li><em>variance</em> and <em>standard deviation</em> relate to <em>mean</em></li>
+<li><em>SD</em> in cm = 100 × <em>SD</em> in m</li>
+</ul>
+</section>
+<section id="see-you-in-the-labs" class="slide level2 center seeyou" data-background="pics/end2.jpg">
+<h2>See you in the labs :)</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="/slides_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="/slides_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1000,
+        height: 750,
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+
+
+        chalkboard: {
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '/slides_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: '/slides_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: '/slides_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('h2:not(.author)').each(function () {
+        $(this).wrapAll('<div class="slide-title" />');
+    });	
+	$('h1.title').each(function () {
+        $(this).wrapAll('<div class="slide-title" />');
+    });	
+});
+
+var f = (function() {
+	// get scale
+	var element = document.querySelector('.slides');
+	var scaleX = element.getBoundingClientRect().width / element.offsetWidth;
+	var bottom = $(".present > .slide-title").offset().top + ($(".present > .slide-title").outerHeight() * scaleX);
+	
+	$(":root")[0].style.setProperty('--header-height', Math.floor(bottom) + 'px');
+});
+
+window.addEventListener( 'load', f);
+$(window).resize(f);
+Reveal.addEventListener( 'slidechanged', f);
+Reveal.addEventListener( 'overviewshown', function() {
+	$('.banner').addClass( "overview" );
+} );
+Reveal.addEventListener( 'overviewhidden', function() {	
+	$('.banner').removeClass( "overview" );
+});
+Reveal.addEventListener( 'overviewhidden', f);
+
+
+</script>
+
+  </body>
+</html>
