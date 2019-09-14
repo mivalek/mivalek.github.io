@@ -173,7 +173,7 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
 
 ## Life {data-transition="fade-in slide-out" data-background-size="cover" data-background-transition="slide" data-background="tile06.png"}
 
-- Oh and ££££££££££££££££££££££££££££££££££££££££££££££££
+- Oh and £££
 - Well I can't really promise this, but data science and highly numerate jobs tend to pay pretty well!
 
 ## What you can expect from us
