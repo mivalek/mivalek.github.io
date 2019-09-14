@@ -46,7 +46,7 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
     
 ## Where does dapR1 fit? {data-background-size="contain" data-background-transition="fade" data-background="timeline1.png"}
 
-## dapR 1 {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
+## dapR 1 {data-transition="slide-in fade-out" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
 
 - New course for 2019-20 (*in response to student feedback*)
 - dapR courses (1, 2 & 3) are replacing the RMS courses.
@@ -57,7 +57,7 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
     - a little bit of analysing it.
 - Important skills for psychology and life.
 
-## dapR 1: Aims {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
+## dapR 1: Aims {data-transition="fade" data-background-size="cover" data-background-transition="none" data-background="tile01.png"}
 
 - Build the core data and R skills.
     - And to do so at a slow and steady pace.
@@ -66,7 +66,7 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
 - To encourage you as a cohort to be collaborative, supportive peers.
 - To integrate with Psychology 1A and 1B.
 
-## dapR 1: Structure {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
+## dapR 1: Structure {data-transition="fade" data-background-size="cover" data-background-transition="none" data-background="tile01.png"}
 - 1x 1 hour lecture per week (Theory).
 - 1x 2 hour lab per week (Practical).
 - Plus some reading;
@@ -74,7 +74,7 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
     - Quite low volume (but we can provide more if you would like it). 
     - We want you to spend time practising skills.
     
-## dapR 1: Assessment {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
+## dapR 1: Assessment {data-transition="fade" data-background-size="cover" data-background-transition="none" data-background="tile01.png"}
 
 - Weekly quizzes (30%)
     - Quizzes 1 and 2 are practices.
@@ -86,14 +86,14 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
 - Coursework report (40%)
     - Organise some data, produce some plots, run and interpret some analysis.
 
-## What is R? {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
+## What is R? {data-transition="fade" data-background-size="cover" data-background-transition="none" data-background="tile01.png"}
 
 - A very flexible, very cool, programming language for all things data.
     - It does pretty much any statistical method you can think of. (Cool? I think so)
     - But it does a lot more.
 - We will also begin to teach you Rmarkdown - this is a cool way to integrate text and analysis
 
-## What is R? {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
+## What is R? {data-transition="fade" data-background-size="cover" data-background-transition="none" data-background="tile01.png"}
 - Some examples:
     - [interactive plots](https://shiny.rstudio.com/gallery/movie-explorer.html)
     - [interactive dashboards](https://gallery.shinyapps.io/086-bus-dashboard/) 
@@ -114,9 +114,9 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
 
 ## Welcome code
 
-![Alt text](inline.png)
+![](inline.png)
 
-## What is R? {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
+## What is R? {data-transition="fade" data-background-size="cover" data-background-transition="none" data-background="tile01.png"}
 
 - Some examples:
     - [interactive plots](https://shiny.rstudio.com/gallery/movie-explorer.html) 
@@ -126,13 +126,13 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
     - [websites](https://rmarkdown.rstudio.com/) #inc
     - Presentations (like the one you are looking at) #inc
 
-## What is R? {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile01.png"}
+## What is R? {data-transition="fade" data-background-size="cover" data-background-transition="none" data-background="tile01.png"}
 
 - But what is best of all is it is completely free.
 - You can go and download the R-code that made everything I just showed you.
 - There is a massive R community, and a world of resources and help.
 
-## Where does dapR1 fit? {data-background-size="contain" data-background-transition="fade" data-background="timeline1.png"}
+## Where does dapR1 fit? {data-background-size="contain" data-background-transition="none" data-background="timeline1.png"}
 
 ## dapR 2 {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile02.png"}
 
@@ -149,9 +149,9 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
 - Practical focus: taking real data, in the form it comes from the tools we use to do our studies.
 - Then using the skills we have built up to answer questions, and report the answers in a variety of formats.
 
-## dapR 3 {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile03.png"}
+## dapR 3 {data-transition="fade-in slide-out" data-background-size="cover" data-background-transition="slide" data-background="tile03.png"}
 
-![Alt text](DataAnalysis.png)
+![](DataAnalysis.png)
     
 ## Mini Dissertation {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile04.png"}
 
@@ -171,7 +171,7 @@ We (`r team`) would like to start off by welcoming you, the cohort of `r cohort`
 - But don't think you will leave these skills behind.
 - My last 3 months....
 
-## Life {data-transition="slide" data-background-size="cover" data-background-transition="slide" data-background="tile06.png"}
+## Life {data-transition="fade-in slide-out" data-background-size="cover" data-background-transition="slide" data-background="tile06.png"}
 
 - Oh and ££££££££££££££££££££££££££££££££££££££££££££££££
 - Well I can't really promise this, but data science and highly numerate jobs tend to pay pretty well!
