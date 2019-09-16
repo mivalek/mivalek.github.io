@@ -133,7 +133,6 @@ blockquote p {
 
 blockquote p::before {
     content: open-quote;
-    position: absolute;
     font-size: 5em;
     font-family: times;
     font-weight: bolder;
@@ -143,6 +142,7 @@ blockquote p::before {
     padding: 0;
     margin-top: -40px;
     margin-left: -50px;
+    float: left;
 }
 
 kbd {
