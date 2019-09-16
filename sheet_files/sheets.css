@@ -188,34 +188,30 @@ hr {
 
 .why::before {
     content: "What for?";
-    text-transform: uppercase;
-    text-orientation: sideways;
-    position: absolute;
-    margin-top: -1.45em;
-    margin-left: -.4em;
-    font-weight: bolder;
-    font-size: 2em;
-    color: rgb(var(--theme-col));
+	text-transform: uppercase;
+	text-orientation: sideways;
+	margin-top: -40px;
+	font-weight: bolder;
+	font-size: 2em;
+	color: rgb(var(--theme-col));
+	display: block;
+	transform: translateX(80%);
 }
 .why {
-    margin-top: 5em;
+    margin-top: 4em;
     border: solid 1px rgb(var(--theme-col));
     padding: 10px;
     position: relative;
     background-color: rgba(var(--theme-col), .3);
 }
 
-.solution {
-    padding-top: 2em;
-}
-
-.solution .r::before {
+.solution .sourcCode::before {
     content: 'Solution';
-    position: absolute;
-    font-size: 2em;
-    margin: -2em 0 0 -.5em;
-    color: rgb(var(--theme-col));
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	display: block;
+	font-size: 25px;
+	color: rgb(var(--theme-col));
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin-bottom: 10px;
 }
 
 .solution .sourceCode {
@@ -224,35 +220,43 @@ hr {
 
 .writeUp, .solText {
     border: solid 1px rgb(var(--theme-col));
-    padding: 1em 1em 0.5em 1em;
+    padding: 1em;
     background-color: rgba(var(--theme-col), .3);
     margin-bottom: 3em;
 }
 
-.writeUp {
-    margin-top: 4em;
-}
 
 .writeUp:not(.empty)::before {
-    content: 'Write-up';
-    position: absolute;
-    font-size: 2em;
+    content: "Write-up";
+    font-size: 25px;
     color: rgb(var(--theme-col));
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    margin: -2em 0 0 -.5em;	
+    margin-bottom: 10px;
+    display: block;
 }
 
 .empty::before {
     content: 'Write-up';
-    position: absolute;
-    font-size: 2em;
+    font-size: 25px;
     color: rgb(var(--theme-col));
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    margin: -2em 0 0 -0.5em;
+	margin: -55px 0 10px -15px;
+	display: block;
 }
 
 .writeUp.empty {
 	background-color: white;
+    margin-top: 4em;
+}
+
+@media print {
+	#TOC {
+	display: none;
+	}
+	
+	.why::before {
+	transform: translateX(90%);
+}
 }
 
 </style>
