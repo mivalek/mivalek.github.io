@@ -127,10 +127,6 @@ blockquote {
 	font-style: italic;
 }
 
-blockquote p {
-    position: relative;
-}
-
 blockquote p::before {
     content: open-quote;
     font-size: 5em;
@@ -260,7 +256,15 @@ hr {
   
   .why::before {
 	transform: translateX(85%);
-}
+  }
+  
+  blockquote {
+    border: none;
+  }
+  
+  .writeUp, .solText, .empty, .solution, .why {
+    page-break-inside:avoid
+  }
 }
 
 </style>
