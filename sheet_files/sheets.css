@@ -257,6 +257,10 @@ hr {
   #TOC {
 	display: none;
   }
+  
+  .why::before {
+	transform: translateX(85%);
+}
 }
 
 </style>
