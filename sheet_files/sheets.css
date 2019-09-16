@@ -248,11 +248,10 @@ hr {
     font-size: 2em;
     color: rgb(var(--theme-col));
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    margin: -6.5em 0 0 -5em;
+    margin: -2em 0 0 -0.5em;
 }
 
 .writeUp.empty {
-	padding: 10em;
 	background-color: white;
 }
 
