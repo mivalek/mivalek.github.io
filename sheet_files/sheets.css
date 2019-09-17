@@ -8,6 +8,7 @@
 	--usmr-col: 237, 164, 111;
 	--msmr-col: 216, 215, 104;
 	--other-col: 119, 189, 157;
+	--warn-col: 204, 0, 0;
 }
 
 body {
@@ -185,7 +186,6 @@ hr {
 .why::before {
     content: "What for?";
 	text-transform: uppercase;
-	text-orientation: sideways;
 	margin-top: -40px;
 	font-weight: bolder;
 	font-size: 2em;
@@ -193,6 +193,7 @@ hr {
 	display: block;
 	transform: translateX(80%);
 }
+
 .why {
     margin-top: 4em;
     border: solid 1px rgb(var(--theme-col));
@@ -221,6 +222,23 @@ hr {
     margin-bottom: 3em;
 }
 
+.warn {
+    border: solid 1px rgb(var(--warn-col));
+    padding: 1em 1em 0.5em 1em;
+    background-color: rgba(var(--warn-col), .3);
+    margin-bottom: 3em;
+}
+
+.warn::before {
+    content: "!";
+    font-family: "Times";
+    font-weight: bolder;
+    font-size: 5em;
+    color: rgb(var(--theme-col));
+    margin-top: -37px;
+    margin-left: -40px;
+    float: left;
+}
 
 .writeUp:not(.empty)::before {
     content: "Write-up";
