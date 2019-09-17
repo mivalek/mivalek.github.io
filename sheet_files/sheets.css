@@ -303,7 +303,7 @@ hr {
     font-size: 10pt;
   }
   
-  .solution pre.sourceCode::before, .writeUp::before, why::before {
+  .empty::before, .solution pre.sourceCode::before, .writeUp:not(.empty)::before, why::before {
     font-size: 11pt;      
   }
   
