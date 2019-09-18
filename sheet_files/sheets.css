@@ -222,6 +222,16 @@ hr {
     margin-bottom: 3em;
 }
 
+.solText > title {
+    font-size: 20px;
+    color: rgb(var(--theme-col));
+  }
+
+warn {
+    font-weight: bold;
+    color: rgb(var(--warn-col));
+}
+
 .warn {
     border: solid 1px rgb(var(--warn-col));
     padding: 1em 1em 0.5em 1em;
@@ -229,12 +239,21 @@ hr {
     margin-bottom: 3em;
 }
 
+.warn > h4, .warn > h3 {
+    font-size: 20px;
+    color: rgb(var(--warn-col));
+}
+
+.warn > strong {
+    color: rgb(var(--warn-col));
+}
+
 .warn::before {
     content: "!";
     font-family: "Times";
     font-weight: bolder;
     font-size: 5em;
-    color: rgb(var(--theme-col));
+    color: rgb(var(--warn-col));
     margin-top: -37px;
     margin-left: -40px;
     float: left;
@@ -280,7 +299,7 @@ hr {
     border: none;
   }
   
-  .writeUp, .solText, .empty, .solution, .why {
+  .writeUp, .solText, .empty, .solution, .why, .warn {
     page-break-inside:avoid
   }
   
@@ -331,6 +350,10 @@ hr {
   }
   body {
     margin: 0;
+  }
+  
+  .warn > h4, .warn > h3, .solText > title {
+    font-size: 13pt;
   }
 }
 

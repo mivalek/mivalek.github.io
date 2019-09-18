@@ -122,7 +122,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
     <style type="text/css">code{white-space: pre;}</style>
 
-    <link rel="stylesheet" href="https:\\mivalek.github.io\slides_files\css\slides.css"/>
+    <link rel="stylesheet" href="https:\\psystats.github.io\slides_files\css\slides.css"/>
 
 <!-- Printing and PDF exports -->
 <script id="paper-css" type="application/dynamic-css">
@@ -589,7 +589,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <ul>
 <li>Conceptual basis for statistical analysis
 <ul>
-<li>Logic &amp; sets, probability, independence, sampling, variables, descriptive statistics</li>
+<li>Logic, probability, independence, sampling, variables, descriptive statistics</li>
 <li>Functions, basic data visualisation, sampling distribution, Central Limit Theorem</li>
 <li>Models, hypotheses, probability distributions, significance testing</li>
 </ul></li>
@@ -637,10 +637,10 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="today" class="slide level2">
 <h2>Today</h2>
 <ul>
-<li>Logic, sets, probability
+<li>Logic, probability
 <ul>
 <li>Probability theory is the basis for all of statistics</li>
-<li>Sits on a foundation of logic and set theory</li>
+<li>Sits on a foundation of logic (and set theory)</li>
 <li>Not the focus of this course but we need to talk about these topics a little</li>
 </ul></li>
 <li>Sampling &amp; independence</li>
@@ -696,7 +696,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </aside>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">##  R-ish for &quot;equals&quot; or &quot;is&quot; is ==, not = !</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">weekdays</span>(<span class="kw">Sys.Date</span>()) <span class="op">==</span><span class="st"> &quot;Wednesday&quot;</span></a>
-<a class="sourceLine" id="cb1-3" title="3">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb1-3" title="3">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb1-4" title="4"></a>
 <a class="sourceLine" id="cb1-5" title="5"><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb1-6" title="6">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
@@ -804,7 +804,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h2>Probability</h2>
 <ul>
 <li>System of attributing chance to events</li>
-<li>Based on a foundation of logic and set theory</li>
+<li>Based on a foundation of logic</li>
 <li>Informs all of statistics</li>
 <li>Main approaches: <a href="https://en.wikipedia.org/wiki/Frequentist_probability" target="_blank">frequentist</a> and <a href="https://en.wikipedia.org/wiki/Bayesian_probability" target="_blank">Bayesian</a></li>
 <li>We focus on the frequentist approach but be aware that Bayesian statistics has been gaining a lot of traction in recent years</li>
@@ -965,7 +965,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <aside class="notes" data-markdown>
 <ul>
 <li>From the picture, you can already probably intuit that it’s not 92%</li>
-<li>that’s why sets and visualisations are useful</li>
+<li>That’s why visualisations are useful</li>
 </ul>
 </aside>
 </section>
@@ -1024,13 +1024,6 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h2>=# Take-home message</h2>
 <ul>
 <li>Probability builds on logic</li>
-<li>Basic logical and set operations are analogous
-<ul>
-<li>NOT : set complement</li>
-<li>AND : set intersection</li>
-<li>OR : set union</li>
-<li>XOR : union of differences</li>
-</ul></li>
 <li>Logic behind probability calculations</li>
 <li>What we mean when we say events are (in)dependent</li>
 <li>How conditional probability expresses the influence one event has on another</li>
@@ -1087,11 +1080,11 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <a class="sourceLine" id="cb8-3" title="3"></a>
 <a class="sourceLine" id="cb8-4" title="4"><span class="co">##  pick 5 of them at random</span></a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="kw">sample</span>(pop, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb8-6" title="6">[<span class="dv">1</span>] <span class="dv">3</span> <span class="dv">7</span> <span class="dv">4</span> <span class="dv">9</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-6" title="6">[<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">3</span> <span class="dv">1</span></a>
 <a class="sourceLine" id="cb8-7" title="7"></a>
 <a class="sourceLine" id="cb8-8" title="8"><span class="co">##  different result each time</span></a>
 <a class="sourceLine" id="cb8-9" title="9"><span class="kw">sample</span>(pop, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb8-10" title="10">[<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">5</span>  <span class="dv">7</span> <span class="dv">10</span>  <span class="dv">4</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-10" title="10">[<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">6</span>  <span class="dv">3</span>  <span class="dv">4</span>  <span class="dv">2</span></a></code></pre></div>
 <!-- speaker notes -->
 <aside class="notes" data-markdown>
 <ul>
@@ -1112,11 +1105,11 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">##  sampling WITH replacement</span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="kw">sample</span>(pop, <span class="dv">10</span>, <span class="dt">replace =</span> T)</a>
-<a class="sourceLine" id="cb9-3" title="3"> [<span class="dv">1</span>] <span class="dv">5</span> <span class="dv">9</span> <span class="dv">6</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">6</span> <span class="dv">9</span> <span class="dv">5</span> <span class="dv">3</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb9-3" title="3"> [<span class="dv">1</span>]  <span class="dv">8</span>  <span class="dv">1</span> <span class="dv">10</span>  <span class="dv">4</span> <span class="dv">10</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">8</span>  <span class="dv">3</span>  <span class="dv">1</span></a>
 <a class="sourceLine" id="cb9-4" title="4"></a>
 <a class="sourceLine" id="cb9-5" title="5"><span class="co">##  sampling WITHOUT replacement</span></a>
 <a class="sourceLine" id="cb9-6" title="6"><span class="kw">sample</span>(pop, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb9-7" title="7"> [<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">3</span>  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">9</span>  <span class="dv">1</span>  <span class="dv">2</span>  <span class="dv">4</span>  <span class="dv">8</span>  <span class="dv">5</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-7" title="7"> [<span class="dv">1</span>] <span class="dv">10</span>  <span class="dv">3</span>  <span class="dv">2</span>  <span class="dv">5</span>  <span class="dv">4</span>  <span class="dv">8</span>  <span class="dv">7</span>  <span class="dv">1</span>  <span class="dv">9</span>  <span class="dv">6</span></a></code></pre></div>
 </section>
 <section id="sampling-with-replacement" class="slide level2">
 <h2>Sampling <strong>with</strong> replacement</h2>
@@ -1375,10 +1368,10 @@ OR 2nd quartile, 5th decile, 50th percentile…
 <a class="sourceLine" id="cb17-2" title="2">[<span class="dv">1</span>] <span class="dv">25</span></a>
 <a class="sourceLine" id="cb17-3" title="3"><span class="co">##  ordinal data must be converted to numeric for median()</span></a>
 <a class="sourceLine" id="cb17-4" title="4">(x &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">10</span>, <span class="dt">replace =</span> T)))</a>
-<a class="sourceLine" id="cb17-5" title="5"> [<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">1</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">4</span></a>
-<a class="sourceLine" id="cb17-6" title="6">Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb17-5" title="5"> [<span class="dv">1</span>] <span class="dv">2</span> <span class="dv">4</span> <span class="dv">4</span> <span class="dv">2</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb17-6" title="6">Levels<span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span></a>
 <a class="sourceLine" id="cb17-7" title="7">(<span class="kw">median</span>(<span class="kw">as.numeric</span>(x)))</a>
-<a class="sourceLine" id="cb17-8" title="8">[<span class="dv">1</span>] <span class="fl">2.5</span></a>
+<a class="sourceLine" id="cb17-8" title="8">[<span class="dv">1</span>] <span class="dv">2</span></a>
 <a class="sourceLine" id="cb17-9" title="9"><span class="co">##  of limited use with ordered categories</span></a>
 <a class="sourceLine" id="cb17-10" title="10">(<span class="kw">median</span>(<span class="kw">as.numeric</span>(data<span class="op">$</span>degree)))</a>
 <a class="sourceLine" id="cb17-11" title="11">[<span class="dv">1</span>] <span class="fl">1.5</span></a>
