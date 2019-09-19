@@ -242,7 +242,7 @@ warn {
     margin-bottom: 3em;
 }
 
-.warn > h4, .warn > h3 {
+.warn > h3, .warn > h4, .warn > h5 {
     font-size: 20px;
     color: rgb(var(--warn-col));
 	margin-top: 10px;
@@ -284,6 +284,16 @@ warn {
 .writeUp.empty {
 	background-color: white;
     margin-top: 4em;
+	padding-bottom:1em
+}
+
+.writeUp.empty textarea {
+    overflow: auto;
+    border: none;
+    resize: none;
+    font-size: 15pt;
+    margin-top: 10px;
+	width: 100%;
 }
 
 @media print {	
@@ -358,6 +368,14 @@ warn {
   
   .warn > h3, .warn > h4, .warn > h5, .solText > title {
     font-size: 13pt;
+  }
+  
+  .writeUp.empty textarea {
+    font-size: 11pt;
+  }
+  
+  .writeUp.empty {
+	padding-top:25px
   }
 }
 
