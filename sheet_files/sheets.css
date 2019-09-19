@@ -287,13 +287,22 @@ warn {
 	padding-bottom:1em
 }
 
-.writeUp.empty textarea {
+.writeUp.empty textarea, textarea.notes {
     overflow: auto;
-    border: none;
     resize: none;
-    font-size: 15pt;
-    margin-top: 10px;
 	width: 100%;
+}
+
+.writeUp.empty textarea {
+    margin-top: 10px;
+    border: none;
+    font-size: 15pt;
+}
+
+textarea.notes {
+	border: solid 1px rgb(var(--theme-col));
+	padding: 10px;
+    font-size: 11pt;
 }
 
 @media print {	
@@ -374,7 +383,7 @@ warn {
     font-size: 11pt;
   }
   
-  .writeUp.empty {
+  .writeUp.empty, textarea.notes {
 	padding-top:25px
   }
 }
