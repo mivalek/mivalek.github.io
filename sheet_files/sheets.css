@@ -263,46 +263,34 @@ warn {
     float: left;
 }
 
-.writeUp:not(.empty)::before {
+.writeUp::before {
     content: "Write-up";
     font-size: 25px;
     color: rgb(var(--theme-col));
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    margin-bottom: 10px;
     display: block;
 }
 
-.empty::before {
-    content: 'Write-up';
-    font-size: 25px;
-    color: rgb(var(--theme-col));
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	margin: -55px 0 10px -15px;
-	display: block;
+.writeUp:not(.noteBox)::before {
+    margin-bottom: 10px;
 }
 
-.writeUp.empty {
-	background-color: white;
-    margin-top: 4em;
-	padding-bottom:1em
+.noteBox.writeUp::before {
+    margin: -50px 0 10px 0;
 }
 
-.writeUp.empty textarea, textarea.notes {
-    overflow: auto;
-    resize: none;
-	width: 100%;
+.noteBox {
+    border: solid 1px rgb(var(--theme-col));
+    background-color: #fff;
+    padding: 6px 12px;
+    overflow-y: auto;
+	min-height: 35px;
+	margin-bottom: 40px;
+	overflow-wrap: break-word;
 }
 
-.writeUp.empty textarea {
-    margin-top: 10px;
-    border: none;
-    font-size: 15pt;
-}
-
-textarea.notes {
-	border: solid 1px rgb(var(--theme-col));
-	padding: 10px;
-    font-size: 11pt;
+.noteBox.writeUp {
+	padding: 65px 12px 12px 12px;
 }
 
 @media print {	
@@ -322,7 +310,7 @@ textarea.notes {
     border: none;
   }
   
-  .writeUp, .solText, .empty, .solution, .why, .warn {
+  .writeUp, .solText, .noteBox, .solution, .why, .warn {
     page-break-inside:avoid
   }
   
@@ -363,7 +351,7 @@ textarea.notes {
     font-size: 10pt;
   }
   
-  .empty::before, .solution pre.sourceCode::before, .writeUp:not(.empty)::before, why::before {
+  .noteBox.writeUp::before, .solution pre.sourceCode::before, .writeUp:not(.noteBox)::before, why::before {
     font-size: 11pt;      
   }
   
@@ -371,6 +359,7 @@ textarea.notes {
     border: 1pt solid rgb(var(--theme-col)) !important;
     background-color: rgba(var(--theme-col), .2) !important;
   }
+  
   body {
     margin: 0;
   }
@@ -378,14 +367,15 @@ textarea.notes {
   .warn > h3, .warn > h4, .warn > h5, .solText > title {
     font-size: 13pt;
   }
-  
-  .writeUp.empty textarea {
-    font-size: 11pt;
+    
+  .math.inline {
+    font-size: 8pt !important;
   }
-  
-  .writeUp.empty, textarea.notes {
-	padding-top:25px
-  }
+}
+
+
+.math.inline {
+    font-size: 10pt !important;
 }
 
 </style>
