@@ -181,7 +181,6 @@ hr {
 
 .caption {
     font-size: .85em;
-    color: #434b75;
 }
 
 .why::before {
@@ -379,7 +378,7 @@ warn {
     font-size: 10pt !important;
 }
 
-.table > thead > tr > th {
+.table > thead {
     border-top: 1px solid #434b75aa;
     border-bottom: 1px solid #434b75aa;
 }
@@ -394,5 +393,8 @@ warn {
     border-top: none;
 }
 
+caption {
+    color: #434b75;
+}
 
 </style>
