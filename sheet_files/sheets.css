@@ -181,6 +181,7 @@ hr {
 
 .caption {
     font-size: .85em;
+    color: #434b75;
 }
 
 .why::before {
@@ -377,5 +378,21 @@ warn {
 .math.inline {
     font-size: 10pt !important;
 }
+
+.table > thead > tr > th {
+    border-top: 1px solid #434b75aa;
+    border-bottom: 1px solid #434b75aa;
+}
+
+.table > tbody {
+    border-bottom: 1px solid #434b75aa;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th,
+.table > tfoot > tr > td, .table > tfoot > tr > th,
+.table > thead > tr > td, .table > thead > tr > th {
+    border-top: none;
+}
+
 
 </style>
