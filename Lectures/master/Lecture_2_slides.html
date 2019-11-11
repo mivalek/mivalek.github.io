@@ -1658,18 +1658,22 @@ Any questions?
            8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
           68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
         },
-
+		
 		multiplex: {
 		// Example values. To generate your own, see the socket.io server instructions.
-		secret: null, // null so the clients do not have control of the master presentation
-		id: '04c151c041a92859', // id, obtained from socket.io server
+		secret: '1573489158327250642', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+		id: '04c151c041a92859', // Obtained from socket.io server
 		url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh' // Location of socket.io server
 		},
+		
         // Optional reveal.js plugins
         dependencies: [
-		
 		  { src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js', async: true },
-		  { src: 'plugin/multiplex/client.js', async: true }
+		  { src: 'plugin/multiplex/master.js', async: true },
+
+		// and if you want speaker notes
+		  { src: 'plugin/notes-server/client.js', async: true }
+          { src: '/slides_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
           { src: '/slides_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
           { src: '/slides_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
         ]
