@@ -1206,7 +1206,7 @@ OK, this histogram gives us a visual representation of the distribution of ages 
 <a class="sourceLine" id="cb19-9" title="9"> (Other)<span class="op">:</span><span class="dv">421</span>   NA<span class="st">&#39;s   :6       NA&#39;</span>s                  <span class="op">:</span><span class="st"> </span><span class="dv">11</span>  </a></code></pre></div>
 <aside class="notes" data-markdown>
 <ul>
-<li>1<sub>st</sub> quartile of <code>age</code> is 18 and 3<sub>rd</sub> quartile is 19
+<li>1<sup>st</sup> quartile of <code>age</code> is 18 and 3<sup>rd</sup> quartile is 19
 <ul>
 <li>At least the middle 50% of the sample’s age falls within 18 and 19</li>
 </ul></li>
@@ -1251,8 +1251,10 @@ OK, this histogram gives us a visual representation of the distribution of ages 
 </section>
 <section id="customising-plots-3" class="slide level2">
 <h2>Customising plots</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">my_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">8</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_cowplot</span>()</a></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">my_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">8</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="st">  </span><span class="kw">theme_cowplot</span>()</a></code></pre></div>
 <p><img src="ad_guided_03_slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="480" /></p>
 </section>
 <section id="customising-plots-4" class="slide level2">
@@ -1260,10 +1262,9 @@ OK, this histogram gives us a visual representation of the distribution of ages 
 <ul>
 <li>Let’s give our axes proper labels</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">library</span>(cowplot)</a>
-<a class="sourceLine" id="cb23-2" title="2">my_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-3" title="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">8</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb23-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_cowplot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">my_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">8</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_cowplot</span>()</a></code></pre></div>
 <p><img src="ad_guided_03_slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="480" /></p>
 </section>
 <section id="barchart" class="slide level2">
@@ -1343,11 +1344,8 @@ OK, this histogram gives us a visual representation of the distribution of ages 
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">my_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb28-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">breakfast =</span> <span class="kw">str_to_sentence</span>(breakfast),</a>
 <a class="sourceLine" id="cb28-3" title="3">         <span class="dt">breakfast =</span> <span class="kw">fct_infreq</span>(breakfast)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb28-4" title="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> breakfast)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-5" title="5"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Breakfast&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;N&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-7" title="7"><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb28-8" title="8"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb28-4" title="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> breakfast)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Breakfast&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;N&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_cowplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <p><img src="ad_guided_03_slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="480" /></p>
 </section>
 <section id="plotting-relationships" class="slide level2">
@@ -1377,11 +1375,8 @@ OK, this histogram gives us a visual representation of the distribution of ages 
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">my_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb30-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">breakfast =</span> <span class="kw">str_to_sentence</span>(breakfast),</a>
 <a class="sourceLine" id="cb30-3" title="3">         <span class="dt">breakfast =</span> <span class="kw">fct_rev</span>(breakfast)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb30-4" title="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> breakfast, <span class="dt">y =</span> age)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb30-5" title="5"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb30-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Breakfast&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Age&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb30-7" title="7"><span class="st">  </span><span class="kw">theme_cowplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb30-8" title="8"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb30-4" title="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> breakfast, <span class="dt">y =</span> age)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb30-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Breakfast&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Age&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_cowplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <p><img src="ad_guided_03_slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="480" /></p>
 <aside class="notes" data-markdown>
 And that’s pretty much all we can do with out data in the way of visualisation. There are many more plots <code>ggplot()</code> is capable of creating and many more ways in which to customise plots but, for the time boing, this is plenty.
