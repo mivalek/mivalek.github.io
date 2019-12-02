@@ -4,7 +4,8 @@
   * --hover-col is the colour of link highlights and should be complementary to --theme-col
   * --bckgd-col is the colour of the slide background and slide titles */
  
-:root {	
+:root {
+	--default-col: #434b75;
 	--dapR_1-col1: #6bcded;
 	--dapR_1-col2: #ed8b6b;
 	--dapR_2-col1: #b38ed2;
@@ -47,12 +48,12 @@ text-align: left;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-size: 32px;
   font-weight: normal;
-  color: #434b75; }
+  color: var(--default-col); }
   
 p {
-  color: #434b75;
+  color: var(--default-col);
   }
-  
+
 ::selection {
   color: var(--bckgd-col);
   background: var(--theme-col);
@@ -94,7 +95,7 @@ p {
   }
   
 .banner .header a {
-  color: #434b75;
+  color: var(--default-col);
   font-size: calc(.5em + 0.5vw);
   text-decoration: none;
   -webkit-transition: color .15s ease;
@@ -114,7 +115,7 @@ p {
 }
 
 .banner .header a:hover strong {
-  color: #434b75;
+  color: var(--default-col);
 }
 
 .reveal .slide-title {
@@ -146,7 +147,7 @@ p {
 }
 
 .overview.banner .header a:hover strong {
-  color: #434b75;
+  color: var(--default-col);
 }
 
 .reveal .slide-title > .title {
@@ -196,7 +197,7 @@ p {
 .reveal .subtitle,
 .reveal .author {
   font-size: 1.6em;
-  color: #434b75;
+  color: var(--default-col);
 }
 
 .reveal .date {
@@ -225,6 +226,16 @@ p {
     margin-bottom: 20px;
 }
 
+  
+.slide-title > h2 > em {
+  font-style: italic;
+  color: var(--default-col);
+}
+ 
+.slide-title > h2 > emp {
+  font-style: italic;
+}
+
 /*********************************************
  * OTHER
  *********************************************/
@@ -247,6 +258,10 @@ p {
 .reveal em {
   font-style: italic;
   color: var(--theme-col)
+}
+
+.reveal emp {
+  font-style: italic;
 }
 
 .reveal ol,
@@ -444,7 +459,7 @@ p {
   background: #1a53a1; }
 
 .reveal a i {
-  color: #434b75;
+  color: var(--default-col);
 }
 
 .reveal a i:hover {
@@ -580,7 +595,7 @@ code span.dt {
     line-height: 1;
     font-weight: 600;
 	background: none;
-	color: #434b75;
+	color: var(--default-col);
 	padding: 0;
 }
 
@@ -608,5 +623,5 @@ code span.dt {
 }
 
 .reveal h2 strong {
-    color: #434b75;
+    color: var(--default-col);
 }
