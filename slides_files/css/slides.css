@@ -424,10 +424,14 @@ p {
   border-bottom: none; }
 
 .reveal sup {
-  vertical-align: super; }
+  vertical-align: super;
+  font-size: small;
+}
 
 .reveal sub {
-  vertical-align: sub; }
+  vertical-align: sub;
+  font-size: small;
+}
 
 .reveal small {
   display: inline-block;
