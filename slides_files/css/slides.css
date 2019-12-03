@@ -425,12 +425,12 @@ p {
 
 .reveal sup {
   vertical-align: super;
-  font-size: smaller;
+  font-size: 18pt;
 }
 
 .reveal sub {
   vertical-align: sub;
-  font-size: smaller;
+  font-size: 18pt;
 }
 
 .reveal small {
