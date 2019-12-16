@@ -629,3 +629,7 @@ code span.dt {
 .reveal h2 strong {
     color: var(--default-col);
 }
+
+.reveal hide {
+  display: none;
+}
