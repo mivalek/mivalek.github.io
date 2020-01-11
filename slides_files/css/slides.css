@@ -1,23 +1,11 @@
  
  /* :root defined colour variables for given theme-col
-  * --theme-col is the colour of the banner 
+  * --theme-col is the colour of the banner (defined in slidify())
   * --hover-col is the colour of link highlights and should be complementary to --theme-col
   * --bckgd-col is the colour of the slide background and slide titles */
  
 :root {
 	--default-col: #434b75;
-	--dapR_1-col1: #6bcded;
-	--dapR_1-col2: #ed8b6b;
-	--dapR_2-col1: #b38ed2;
-	--dapR_2-col2: #b8d28e;
-	--dapR_3-col1: #85a6ea;
-	--dapR_3-col2: #eac985;
-	--usmr-col1: #eda46f;
-	--usmr-col2: #6fb8ed;
-	--msmr-col1: #d8d768;
-	--msmr-col2: #6869d8;
-	--other-col1: #77bd9d;
-	--other-col2: #bd7797;
 	--bckgd-col: #fdfdfd;
 }
 
