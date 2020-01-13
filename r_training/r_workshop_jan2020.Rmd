@@ -1,0 +1,57 @@
+---
+title: "R training workshop"
+date: "January 2020"
+output:
+  pdf_document:
+    latex_engine: xelatex
+header-includes:
+- \usepackage[T1]{fontenc}
+- \usepackage{cmbright}
+---
+
+The series consists of three sessions that build on one another. Attending all of them is recommended but you can also pick and choose.
+
+Each session will run **from 10:00 AM to 4:00 PM** with a break for lunch between 1:00 PM and 2:00 PM.
+
+## Session 1 -- Tuesday 14/01, Pevensey I, 1A6
+
+*IMPORTANT!*
+
+- This is not a computer cluster room. Unfortunately all computer rooms are booked out for exams so please bring your laptop.
+- Lunch will be served at 1pm in Pevensey I, 1A3
+  
+Topics covered
+
+-	Introduction to `R` and RStudio
+-	Using script vs command line
+-	Basics of objects and data structures
+- Selecting subsets of data
+-	Basic descriptives
+
+## Session 2 -- Tuesday 21/01, Pevensey I, 2D8/2D9
+
+- This is a computer cluster room but working on your own machine is recommended
+- Lunch will be served at 1pm in Pevensey I, 2A12
+
+Topics covered
+
+-	Pretty plots in `R`
+-	Intro to the `tidyverse`
+-	Transforming data between long and wide formats
+-	Basic data wrangling
+-	Running statistical models in `R`
+-	Flow control (conditional evaluation and `for` loops)
+
+## Session 3 -- Friday 24/01, Pevensey I, 2D8/2D9
+
+- This is a computer cluster room but working on your own machine is recommended
+- Lunch will be served at 1pm in Pevensey I, 1B3
+
+Topics covered
+
+-	Tips on workflow
+-	Writing good code dos and don’ts
+-	When things go wrong
+-	Writing slides and papers in RStudio
+-	`R`-GitHub integration
+
