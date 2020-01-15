@@ -109,7 +109,8 @@ pre {
 
 code {
 	background: none;
-	font-size: 115%
+	font-size: 115%;	
+	padding-right: 0px
 }
 
 pre.sourceCode {
@@ -315,7 +316,6 @@ warn {
     
   code {
     font-size: 10pt;
-	padding-right: 0px;
   }
     
   pre {
