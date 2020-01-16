@@ -226,11 +226,11 @@ hr {
 }
 
 .solText a:hover, .why a:hover, .writeUp a:hover {
-    background-color: rgba(var(--theme-col), .3);
+    background-color: transparent;
 }
 
 .solText a, .why a, .writeUp a {
-    color: var(--theme-col);
+    color: rgb(var(--theme-col));
 }
 
 warn {
@@ -256,11 +256,11 @@ warn {
 }
 
 .warn a:hover {
-    background-color: rgba(var(--warn-col), .3);
+    background-color: transparent);
 }
 
 .warn a {
-    color: var(--warn-col);
+    color: rgb(var(--warn-col));
 }
 
 .warn::before {
