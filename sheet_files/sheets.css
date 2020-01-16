@@ -225,6 +225,14 @@ hr {
 	margin-bottom: 5px;
 }
 
+.solText a:hover, .why a:hover, .writeUp a:hover {
+    background-color: rgba(var(--theme-col), .3);
+}
+
+.solText a, .why a, .writeUp a {
+    color: var(--theme-col);
+}
+
 warn {
     font-weight: bold;
     color: rgb(var(--warn-col));
@@ -245,6 +253,14 @@ warn {
 
 .warn strong {
     color: rgb(var(--warn-col));
+}
+
+.warn a:hover {
+    background-color: rgba(var(--warn-col), .3);
+}
+
+.warn a {
+    color: var(--warn-col);
 }
 
 .warn::before {
