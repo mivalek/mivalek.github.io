@@ -605,6 +605,26 @@ code span.dt {
     font-weight: bold;
 }
 
+quiz {
+    text-align: center;
+}
+
+quiz > #timer {
+    color: var(--default-col);
+    display: inline-block;
+    padding: .9em;
+    font-size: 5em;
+}
+
+quiz > .lastMin #timer {
+    color: var(--theme-col);
+}
+
+quiz > .lastMin .timeout #timer {
+    padding: .7em;
+    font-size: 3em;
+}
+
 .reveal .slides .seeyou {
     margin: 7em 10em;
     color: var(--theme-col);
