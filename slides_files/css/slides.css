@@ -614,6 +614,7 @@ code span.dt {
     display: inline-block;
     padding: .9em;
     font-size: 5em;
+	cursor: pointer;
 }
 
 .quiz > #timer.lastMin {
