@@ -605,22 +605,22 @@ code span.dt {
     font-weight: bold;
 }
 
-quiz {
+.quiz {
     text-align: center;
 }
 
-quiz > #timer {
+.quiz > #timer {
     color: var(--default-col);
     display: inline-block;
     padding: .9em;
     font-size: 5em;
 }
 
-quiz > .lastMin #timer {
+.quiz > #timer.lastMin {
     color: var(--theme-col);
 }
 
-quiz > .lastMin .timeout #timer {
+.quiz > #timer.lastMin.timeout {
     padding: .7em;
     font-size: 3em;
 }
