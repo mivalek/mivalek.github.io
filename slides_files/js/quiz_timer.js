@@ -21,6 +21,7 @@ function quizTimer(mins){
       if (t < 0) {
           clearInterval(x);
           document.getElementById("timer").classList.add("timeout");
+		  document.getElementById("timer").innerHTML = "Submit your answers!";
       }
   }, 1000);
 }
