@@ -1,7 +1,7 @@
 
-function quizTimer(){
+function quizTimer(mins){
   var current_time = Date.parse(new Date());
-  var deadline = new Date(current_time + 7*60*1000);
+  var deadline = new Date(current_time + mins*60*1000);
 
   Number.prototype.pad = function(size) {
     var s = String(this);
