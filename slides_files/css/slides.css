@@ -622,7 +622,6 @@ code span.dt {
 }
 
 .quiz > #timer.lastMin.timeout {
-    padding: .7em;
     font-size: 3em;
 }
 
