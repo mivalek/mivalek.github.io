@@ -612,7 +612,7 @@ code span.dt {
 .quiz > #timer {
     color: var(--default-col);
     display: inline-block;
-    padding: .9em;
+    padding: .8em;
     font-size: 5em;
 	cursor: pointer;
 }
