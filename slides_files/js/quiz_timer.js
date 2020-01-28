@@ -16,11 +16,11 @@ function quizTimer(){
   var seconds = Math.floor((t % (1000 * 60)) / 1000);
   document.getElementById("timer").innerHTML = minutes + ":" + seconds.pad(2);
       if (t < 60000) {
-          document.getElementById("timer").style.color = "#b38ed2";
+          document.getElementById("timer").classList.add("lastMin");
   }
       if (t < 0) {
           clearInterval(x);
-          document.getElementById("timer").innerHTML = "Submit your quiz answers!";
+          document.getElementById("timer").classList.add("timeout");
       }
   }, 1000);
 }
