@@ -622,7 +622,7 @@ code span.dt {
 }
 
 .quiz > #timer.lastMin.timeout {
-    font-size: 3em;
+    font-size: 4em;
 }
 
 .reveal .slides .seeyou {
