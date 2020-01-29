@@ -312,8 +312,16 @@ iframe {
     width: 100%;
     border: solid 2px rgb(var(--theme-col));
     height: 300px;
-    margin-top: 1em;
+    margin-top: -1.9em;
     margin-bottom: 2em;
+}
+
+.iframe::before {
+    content: "Web page";
+    font-weight: bolder;
+    font-size: 5em;
+    color: rgb(var(--theme-col));
+    position: relative;
 }
 
 @media print {	
