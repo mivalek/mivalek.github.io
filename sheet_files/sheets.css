@@ -308,6 +308,14 @@ warn {
 	padding: 65px 12px 12px 12px;
 }
 
+iframe {
+    width: 100%;
+    border: solid 2px rgb(var(--theme-col));
+    height: 300px;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
 @media print {	
   .col-md-9 {
     width: 100%;
