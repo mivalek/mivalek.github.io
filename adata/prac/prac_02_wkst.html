@@ -1565,7 +1565,7 @@ div.tocify {
 <h3>Setting options <strong>globally</strong></h3>
 <ul>
 <li>The setup chunk that gets put into every new Rmd file can be edited to set global options</li>
-<li>You can just change/add the <code>echo=</code>, <code>eval=</code>, <code>include=</code>, and oter options</li>
+<li>You can just change/add the <code>echo=</code>, <code>eval=</code>, <code>include=</code>, and other options</li>
 </ul>
 <pre><code>
 ```{r setup, include = FALSE}
@@ -1727,13 +1727,13 @@ output:
 <li>Results</li>
 <li>Discussion</li>
 </ul>
-<p>In the following weeks, we will learn how to write the Method, Results, and Discussion sections.</p>
+<p>In the following weeks, we will learn how to write the Method, Results, and Discussion sections. We will be practicing exactly what you will need to submit for your lab report assessment so stay tuned!</p>
 <p> </p>
 </div>
 <div id="task-3" class="section level3">
 <h3>Task 3</h3>
 <p>In the .Rmd, change the title to “Silly paper” and author to your name.</p>
-<p>Notice the special characters in Milan’s surname and how they appear in the .Rmd file. These weird bunches of characters beginning with an <a href="https://en.wikipedia.org/wiki/Ampersand">ampersand</a>, <code>&amp;</code><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and ending with a semi-colon, <code>;</code> are so-called “HTML entities”. Every letter or symbol that is not in the basic character set has an associated HTML entity. For instance, the “accent” on á in Milan’s name is called acute accent, which is why the HTML entity for an “a” with an acute accent is called <code>&amp;aacute;</code>. If you know what the character’s name is, you can easily look it up. You can also find nice reference charts, such as <a href="https://dev.w3.org/html5/html-author/charref">this one</a>.</p>
+<p>Notice the special characters in Milan’s surname and how they appear in the .Rmd file. These weird bunches of characters beginning with an <a href="https://en.wikipedia.org/wiki/Ampersand">ampersand</a>, <code>&amp;</code><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> and ending with a semi-colon, <code>;</code> are so-called “HTML entities”. Every letter or symbol that is not in the basic character set has an associated HTML entity. For instance, the accent on á in Milan’s name is called an “acute” accent, which is why the HTML entity for an “a” with an acute accent is called <code>&amp;aacute;</code>. If you know what the character’s name is, you can easily look it up. You can also find nice reference charts, such as <a href="https://dev.w3.org/html5/html-author/charref">this one</a>.</p>
 <div class="warn">
 <p>HTML entities can only be used with HTML and Word output documents. If you want to knit into PDF, they will not work. Instead, you have to use a different kind of markup language called LaTeX. Without going into details, here is a <a href="https://en.wikibooks.org/wiki/LaTeX/Special_Characters">list of characters</a> and their LaTeX codes</p>
 </div>
@@ -1753,33 +1753,38 @@ output:
 </div>
 <div id="task-6" class="section level3">
 <h3>Task 6</h3>
-<p>Set <code>echo=</code> to <code>FALSE</code> <strong>globally</strong> and knit the file to see the changes.</p>
-<p><strong>Hint: </strong>It’s done in the <code>setup</code> chunk.</p>
+<p>Look at the quote from <em>The Raven</em> and the footnote after the first sentence and notice how they are created in R Markdown. Chances are the knowledge will come in handy at some point.</p>
 <p> </p>
 </div>
 <div id="task-7" class="section level3">
 <h3>Task 7</h3>
-<p>The list of parts of the eye is misaligned. Make all items on the list the same level of indentation.</p>
+<p>Set <code>echo=</code> to <code>FALSE</code> <strong>globally</strong> and knit the file to see the changes.</p>
+<p><strong>Hint: </strong>It’s done in the <code>setup</code> chunk.</p>
 <p> </p>
 </div>
 <div id="task-8" class="section level3">
 <h3>Task 8</h3>
-<p>Something has gone wrong with the <code>## Materials</code> section.</p>
-<p>Look at the Rmd file and how the markdown got knitted in the document. The Materials subsection didn’t get created and the heading is still somewhere under participants. Can you fix this?</p>
+<p>The list of parts of the eye is misaligned. Make all items on the list the same level of indentation.</p>
 <p> </p>
 </div>
 <div id="task-9" class="section level3">
 <h3>Task 9</h3>
-<p>Table 1 is rounded to thee digits. Change it to two digits.</p>
+<p>Something has gone wrong with the <code>## Materials</code> section.</p>
+<p>Look at the Rmd file and how the markdown got knitted in the document. The Materials subsection didn’t get created and the heading is still somewhere under participants. Can you fix this?</p>
 <p> </p>
 </div>
 <div id="task-10" class="section level3">
 <h3>Task 10</h3>
+<p>Table 1 is rounded to three digits. Change it to two digits.</p>
+<p> </p>
+</div>
+<div id="task-11" class="section level3">
+<h3>Task 11</h3>
 <p>Make the plot bigger and knit the file to see all your changes.</p>
 <p><strong>Hint: </strong>You can manipulate the height and the width of the figure independently. Look at the corresponding code chunk.</p>
 <p> </p>
 <p><font size="+4"><strong>Very well done!</strong></font></p>
-<p>That is all for today, unless you’re a keen bean, in which case carry on to some more challenging but all the more rewarding tasks!</p>
+<p>Today, you have revisited and expanded your knowledge of R Markdown. You learnt how to manipulate code chunk output and how to change default HTML document options in the YAML header. That is all for today, unless you’re a keen bean, in which case carry on to some more challenging but all the more rewarding tasks!</p>
 <p> </p>
 </div>
 </div>
