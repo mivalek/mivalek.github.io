@@ -196,7 +196,7 @@ details[open] {
 
 summary {
 	display: block;
-    padding: 3px;
+    padding: 3px 3px 3px 6px;
 	cursor: pointer;
 	outline: 0;
 }
