@@ -188,6 +188,7 @@ details {
     border-radius: 5px;
     margin: 1em 0 2em 0;
     background-color: rgba(var(--theme-col), .3);
+	padding: .5em
 }
 
 details[open] {
@@ -196,13 +197,11 @@ details[open] {
 
 summary {
 	display: block;
-    padding: 3px 3px 3px 6px;
 	cursor: pointer;
 	outline: 0;
 }
 
 details > .sourceCode {
-	padding: 0 0.5em;
 	margin-top: 0
 }
 
