@@ -205,6 +205,10 @@ details > .sourceCode {
 	margin-top: 0
 }
 
+details > .pagedtable-wrapper {
+	background-color: #fdfdfd;
+}
+
 .why::before {
     content: "What for?";
 	text-transform: uppercase;
