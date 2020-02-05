@@ -184,25 +184,28 @@ hr {
 
 details {
     border: solid 1px rgb(var(--theme-col));
-    width: 6.5em;
+    width: 6em;
     border-radius: 5px;
     margin: 1em 0 2em 0;
-    background-color: rgba(var(--theme-col), .3);
+    background-color: rgb(var(--theme-col));
 	padding: .5em
 }
 
 details[open] {
 	width: 100%;
+    background-color: rgba(var(--theme-col), .3);
 }
 
 summary {
-	display: block;
+	display: list-item;
 	cursor: pointer;
 	outline: 0;
+	color: #fdfdfd;
 }
 
 details[open] > summary {
     padding-bottom: 1em;
+	color: #434b75;
 }
 
 details > .sourceCode {
