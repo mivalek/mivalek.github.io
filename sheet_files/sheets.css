@@ -212,7 +212,12 @@ details > .sourceCode {
 	margin-top: 0
 }
 
-details > .pagedtable-wrapper {
+details > .pagedtable-wrapper,
+.warn > .pagedtable-wrapper,
+.why > .pagedtable-wrapper,
+.solution >  .pagedtable-wrapper,
+.writeUp >  .pagedtable-wrapper,
+.solText >  .pagedtable-wrapper {
 	background-color: #fdfdfd;
 }
 
