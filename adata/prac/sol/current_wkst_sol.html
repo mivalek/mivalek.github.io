@@ -1587,13 +1587,14 @@ div.tocify {
 }
 </style>
 <!-- To knit this .Rmd do the following -->
-<div id="today" class="section level2">
-<h2>Today</h2>
+<div id="intro" class="section level2">
+<h2>Intro</h2>
+<p>Welcome to the third Analysing Data practical. Today, we will be using the skills you revised in the <a href="https://mivalek.github.io/adata/tut/tut_03_pipelines.html">latest tutorial</a> to start analysing real data. We will:</p>
 <ul>
-<li>Read in and check data</li>
-<li>Basic descriptive statistics</li>
-<li>Including tables in papers/reports</li>
-<li>Write-up: Participants</li>
+<li>Read in datasets and check data</li>
+<li>Do basic descriptive statistics</li>
+<li>Learn how to make tables and include them in papers/reports</li>
+<li>Write-up the Participants and Procedure sections</li>
 </ul>
 </div>
 <div id="guided-part" class="section level2">
@@ -1601,19 +1602,25 @@ div.tocify {
 <p>First of all, let’s make sure we’re all set up:</p>
 <ul>
 <li>Log into Canvas and go to this week’s practical</li>
-<li>Download the “prac_03_basic_desc.Rmd” file into your analysing_data project folder</li>
+<li>Download the “prac_03_basic_desc.Rmd” file into your <code>r_docs</code> subfolder analysing_data project folder</li>
 <li>Open RStudio</li>
+<li>Open a new sript and save it in the same folder as “prac_03_script.R”</li>
 </ul>
 <div id="read-in-data" class="section level3">
 <h3>Read in data</h3>
-<p>Data from the form you filled in in the previous lecture are here: <a href="https://mivalek.github.io/adata/gen_sex_q.csv" class="uri">https://mivalek.github.io/adata/gen_sex_q.csv</a></p>
-<p>Anything online is just some sort of file. In this case, it is a “comma-separated values” file, or CSV. We <em>could</em> download it to our folder and then read it into RStudio. However, we can also read it directly from the URL like this:</p>
+<p>From this week on, we will be using data from the Gender and Sexuality Questionnaire that we asked you to fill in. You can get the data set here: <a href="https://mivalek.github.io/adata/gen_sex_q.csv" class="uri">https://mivalek.github.io/adata/gen_sex_q.csv</a></p>
+<p>When dealing with the Internet, it is useful to understand that anything online is just some sort of file. Most website are simply HTML documents not too unlike the ones you’ve already created using Rmd. In the case of our data, it is a “comma-separated values” file, or CSV. We <em>could</em> download it into our <code>data</code> folder and then read it into RStudio. However, we can also read it directly from the URL (link) like this:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">read_csv</span>(<span class="st">&quot;https://mivalek.github.io/adata/gen_sex_q.csv&quot;</span>)</a></code></pre></div>
-<p><strong>Time to think</strong></p>
-<p>Why might it be preferable to read data in from the URL?</p>
-<p>Why might it be better to save data on your computer?</p>
-<p>The <code>read_csv()</code> function comes from the <code>tidyverse</code> package. What do we need to do before we can run the command above?</p>
-<p>What will the command above do? Is that what we want? If not, what do we need to add to the line?</p>
+<p> </p>
+<div id="time-to-think" class="section level4">
+<h4>Time to think</h4>
+<ul>
+<li>Why might it be preferable to read data in from the URL?</li>
+<li>Why might it be better to save data on your computer?</li>
+<li>The <code>read_csv()</code> function comes from the <code>tidyverse</code> package. What do we need to do before we can run the command above?</li>
+<li>What will the command above do? Is that what we want? If not, what do we need to add to the line?</li>
+</ul>
+<p> </p>
 <p>Let’s read the data into RStudio so that we can start working with them.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(tidyverse)</a>
 <a class="sourceLine" id="cb2-2" title="2">gensex &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://mivalek.github.io/adata/gen_sex_q.csv&quot;</span>)</a></code></pre></div>
@@ -1623,9 +1630,10 @@ div.tocify {
 For educational purposes we also added a few rows of data with odd/missing values.
 </div>
 </div>
+</div>
 <div id="first-glance" class="section level3">
 <h3>First glance</h3>
-<p>Now that we have our data in RStudio, we should familiarise ourselves with it. Best place to start is often looking at the structure of the data set.</p>
+<p>Now that we have our dataset in RStudio, we should familiarise ourselves with it. Before we can go through with any analyses, we need to make sure we can trust our data. Data come in all sorts of shapes: sometimes neat and tidy, other times very messy. Human error can creep in and, if uncorrected, can render data useless or deceptive. That’s why we always need to perform a thorough data audit. Best place to start is often looking at the structure of the data set.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">gensex <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str</span>()</a>
 <a class="sourceLine" id="cb3-2" title="2">Classes <span class="st">&#39;spec_tbl_df&#39;</span>, <span class="st">&#39;tbl_df&#39;</span>, <span class="st">&#39;tbl&#39;</span> and <span class="st">&#39;data.frame&#39;</span><span class="op">:</span><span class="st">    </span><span class="dv">317</span> obs. of  <span class="dv">13</span> variables<span class="op">:</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="st"> </span><span class="er">$</span><span class="st"> </span>Duration            <span class="op">:</span><span class="st"> </span>num  <span class="dv">198</span> <span class="dv">144</span> <span class="dv">592</span> <span class="dv">99</span> <span class="dv">135</span> <span class="dv">154</span> <span class="dv">88</span> <span class="dv">185</span> <span class="dv">219</span> <span class="dv">475</span> ...</a>
@@ -1657,29 +1665,25 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb3-29" title="29">  ..   <span class="dt">Romantic_freq_1 =</span> <span class="kw">col_double</span>(),</a>
 <a class="sourceLine" id="cb3-30" title="30">  ..   <span class="dt">Romantic_gender_1 =</span> <span class="kw">col_double</span>()</a>
 <a class="sourceLine" id="cb3-31" title="31">  .. )</a></code></pre></div>
-<p>Here we can see if the variables are coded as numbers (<code>num</code>), character strings (<code>char</code>), or logical (<code>logi</code>). The first step in data audit/cleaning is to make sure these so called “classes” (<code>numeric</code>, <code>character</code>, <code>logical</code>) are what we would expect given our variables and, if not, to understand why.</p>
-<p>Looking at the output of the command above, everything is looking good, except for <code>Age</code>. <code>Age</code> is supposed to be a numeric variable, but <code>R</code> read it as a character string. To understand why this happened, we need to look at what values were entered as age by our participants. We can do that by grouping our data by <code>Age</code> and then taking the tally of different ages:</p>
+<p>Here we can see if the variables are coded as numbers (<code>num</code>), character strings (<code>char</code>), or logical (<code>logi</code>). The first step in data audit/cleaning is to make sure these so called “classes” (<code>numeric</code>, <code>character</code>, <code>logical</code>, <code>factor</code>) are what we would expect given our variables and, if not, to understand why.</p>
+<p>Looking at the output of the command above, everything is looking good, except for <code>Age</code>. <code>Age</code> is supposed to be a numeric variable, but <code>R</code> read it as a character string. To understand why this happened, we need to look at what values were entered as age by our participants. We can do that by pulling the <code>Age</code> variable from our data and making a frequency table of the different ages:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">gensex <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(Age) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw">tally</span>()</a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="co"># A tibble: 21 x 2</span></a>
-<a class="sourceLine" id="cb4-5" title="5">   Age              n</a>
-<a class="sourceLine" id="cb4-6" title="6">   <span class="op">&lt;</span>chr<span class="op">&gt;</span><span class="st">        </span><span class="er">&lt;</span>int<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="st"> </span><span class="dv">1</span> <span class="dv">18</span>              <span class="dv">71</span></a>
-<a class="sourceLine" id="cb4-8" title="8"> <span class="dv">2</span> <span class="dv">18</span> years         <span class="dv">1</span></a>
-<a class="sourceLine" id="cb4-9" title="9"> <span class="dv">3</span> <span class="dv">189</span>              <span class="dv">1</span></a>
-<a class="sourceLine" id="cb4-10" title="10"> <span class="dv">4</span> <span class="dv">19</span>             <span class="dv">115</span></a>
-<a class="sourceLine" id="cb4-11" title="11"> <span class="dv">5</span> <span class="dv">19</span> years old     <span class="dv">1</span></a>
-<a class="sourceLine" id="cb4-12" title="12"> <span class="dv">6</span> <span class="dv">193</span>              <span class="dv">1</span></a>
-<a class="sourceLine" id="cb4-13" title="13"> <span class="dv">7</span> <span class="dv">20</span>              <span class="dv">72</span></a>
-<a class="sourceLine" id="cb4-14" title="14"> <span class="dv">8</span> <span class="dv">21</span>              <span class="dv">22</span></a>
-<a class="sourceLine" id="cb4-15" title="15"> <span class="dv">9</span> <span class="dv">219</span>              <span class="dv">1</span></a>
-<a class="sourceLine" id="cb4-16" title="16"><span class="dv">10</span> <span class="dv">22</span>               <span class="dv">7</span></a>
-<a class="sourceLine" id="cb4-17" title="17"><span class="co"># ... with 11 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span><span class="kw">pull</span>(Age) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw">table</span>()</a>
+<a class="sourceLine" id="cb4-4" title="4">.</a>
+<a class="sourceLine" id="cb4-5" title="5">          <span class="dv">18</span>     <span class="dv">18</span> years          <span class="dv">189</span>           <span class="dv">19</span> <span class="dv">19</span> years old          <span class="dv">193</span> </a>
+<a class="sourceLine" id="cb4-6" title="6">          <span class="dv">71</span>            <span class="dv">1</span>            <span class="dv">1</span>          <span class="dv">115</span>            <span class="dv">1</span>            <span class="dv">1</span> </a>
+<a class="sourceLine" id="cb4-7" title="7">          <span class="dv">20</span>           <span class="dv">21</span>          <span class="dv">219</span>           <span class="dv">22</span>           <span class="dv">23</span>           <span class="dv">24</span> </a>
+<a class="sourceLine" id="cb4-8" title="8">          <span class="dv">72</span>           <span class="dv">22</span>            <span class="dv">1</span>            <span class="dv">7</span>            <span class="dv">7</span>            <span class="dv">5</span> </a>
+<a class="sourceLine" id="cb4-9" title="9">          <span class="dv">25</span>           <span class="dv">27</span>          <span class="dv">270</span>           <span class="dv">28</span>          <span class="dv">321</span>           <span class="dv">34</span> </a>
+<a class="sourceLine" id="cb4-10" title="10">           <span class="dv">4</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span> </a>
+<a class="sourceLine" id="cb4-11" title="11">         <span class="dv">492</span>           <span class="dv">51</span>          <span class="dv">526</span> </a>
+<a class="sourceLine" id="cb4-12" title="12">           <span class="dv">1</span>            <span class="dv">2</span>            <span class="dv">1</span> </a></code></pre></div>
+<p> </p>
 </div>
 <div id="data-cleaning" class="section level3">
 <h3>Data cleaning</h3>
-<p>Hmm.. Looks like some participants didn’t just enter the number, but instead wrote “18 years” and “19 years old”. Because of these two data points, the variable cannot be understood as numbers. To convert <code>Age</code> into a numeric variable, we first need to replace these values with 18 and 19, respectively. We can write a pipeline that <em>mutates</em> (changes) the value of the <code>Age</code> variable <em>recoding</em> the two rows as numbers:</p>
+<p>Hmm…   Looks like some participants didn’t just enter the number, but instead wrote “18 years” and “19 years old”. Because of these two data points, the variable cannot be understood as numbers. To convert <code>Age</code> into a numeric variable, we first need to replace these values with 18 and 19, respectively. We can write a pipeline that <em>mutates</em> (changes) the value of the <code>Age</code> variable <em>recoding</em> the two rows as numbers:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">gensex <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw">recode</span>(Age, <span class="st">&quot;18 years&quot;</span> =<span class="st"> &quot;18&quot;</span>, <span class="st">&quot;19 years old&quot;</span> =<span class="st"> &quot;19&quot;</span>))</a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="co"># A tibble: 317 x 13</span></a>
@@ -1698,33 +1702,14 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb5-16" title="16"><span class="co"># ... with 307 more rows, and 6 more variables: Sexual_strength_1 &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb5-17" title="17"><span class="co">#   Sexual_fewq_1 &lt;dbl&gt;, Sexual_gender_1 &lt;dbl&gt;, Romantic_strength_1 &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb5-18" title="18"><span class="co">#   Romantic_freq_1 &lt;dbl&gt;, Romantic_gender_1 &lt;dbl&gt;</span></a></code></pre></div>
-<p>OK, something happened, but it’s sort of difficult to see what and whether we did what we wanted. But because of the flexibility of the pipelines, we can just take this resulting tibble and group it by <code>Age</code> and take the tally again, just like we did before:</p>
+<p>OK, something happened, but it’s sort of difficult to see what and whether we did what we wanted. But because of the flexibility of the pipelines, we can just take this resulting tibble, pull the <code>Age</code> variable out of it and create a frequency table, just like we did before:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">gensex <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw">recode</span>(Age, <span class="st">&quot;18 years&quot;</span> =<span class="st"> &quot;18&quot;</span>, <span class="st">&quot;19 years old&quot;</span> =<span class="st"> &quot;19&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(Age) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">tally</span>()</a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="co"># A tibble: 19 x 2</span></a>
-<a class="sourceLine" id="cb6-6" title="6">   Age       n</a>
-<a class="sourceLine" id="cb6-7" title="7">   <span class="op">&lt;</span>chr<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>int<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="st"> </span><span class="dv">1</span> <span class="dv">18</span>       <span class="dv">72</span></a>
-<a class="sourceLine" id="cb6-9" title="9"> <span class="dv">2</span> <span class="dv">189</span>       <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-10" title="10"> <span class="dv">3</span> <span class="dv">19</span>      <span class="dv">116</span></a>
-<a class="sourceLine" id="cb6-11" title="11"> <span class="dv">4</span> <span class="dv">193</span>       <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-12" title="12"> <span class="dv">5</span> <span class="dv">20</span>       <span class="dv">72</span></a>
-<a class="sourceLine" id="cb6-13" title="13"> <span class="dv">6</span> <span class="dv">21</span>       <span class="dv">22</span></a>
-<a class="sourceLine" id="cb6-14" title="14"> <span class="dv">7</span> <span class="dv">219</span>       <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-15" title="15"> <span class="dv">8</span> <span class="dv">22</span>        <span class="dv">7</span></a>
-<a class="sourceLine" id="cb6-16" title="16"> <span class="dv">9</span> <span class="dv">23</span>        <span class="dv">7</span></a>
-<a class="sourceLine" id="cb6-17" title="17"><span class="dv">10</span> <span class="dv">24</span>        <span class="dv">5</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="dv">11</span> <span class="dv">25</span>        <span class="dv">4</span></a>
-<a class="sourceLine" id="cb6-19" title="19"><span class="dv">12</span> <span class="dv">27</span>        <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-20" title="20"><span class="dv">13</span> <span class="dv">270</span>       <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-21" title="21"><span class="dv">14</span> <span class="dv">28</span>        <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-22" title="22"><span class="dv">15</span> <span class="dv">321</span>       <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-23" title="23"><span class="dv">16</span> <span class="dv">34</span>        <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-24" title="24"><span class="dv">17</span> <span class="dv">492</span>       <span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-25" title="25"><span class="dv">18</span> <span class="dv">51</span>        <span class="dv">2</span></a>
-<a class="sourceLine" id="cb6-26" title="26"><span class="dv">19</span> <span class="dv">526</span>       <span class="dv">1</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">  </span><span class="kw">pull</span>(Age) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="st">  </span><span class="kw">table</span>()</a>
+<a class="sourceLine" id="cb6-5" title="5">.</a>
+<a class="sourceLine" id="cb6-6" title="6"> <span class="dv">18</span> <span class="dv">189</span>  <span class="dv">19</span> <span class="dv">193</span>  <span class="dv">20</span>  <span class="dv">21</span> <span class="dv">219</span>  <span class="dv">22</span>  <span class="dv">23</span>  <span class="dv">24</span>  <span class="dv">25</span>  <span class="dv">27</span> <span class="dv">270</span>  <span class="dv">28</span> <span class="dv">321</span>  <span class="dv">34</span> <span class="dv">492</span>  <span class="dv">51</span> <span class="dv">526</span> </a>
+<a class="sourceLine" id="cb6-7" title="7"> <span class="dv">72</span>   <span class="dv">1</span> <span class="dv">116</span>   <span class="dv">1</span>  <span class="dv">72</span>  <span class="dv">22</span>   <span class="dv">1</span>   <span class="dv">7</span>   <span class="dv">7</span>   <span class="dv">5</span>   <span class="dv">4</span>   <span class="dv">1</span>   <span class="dv">1</span>   <span class="dv">1</span>   <span class="dv">1</span>   <span class="dv">1</span>   <span class="dv">1</span>   <span class="dv">2</span>   <span class="dv">1</span> </a></code></pre></div>
 <p>This looks good: Whereas before we had 69 participants with age 18 and 113 with age 19, now we have 70 and 114, respectively.</p>
 <p>We’re not done yet, though! The variable is still coded as <code>character</code> so we need to change it into <code>numeric</code> by adding the <code>as.numeric()</code> function, inside the <code>mutate()</code> section of our pipeline:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">gensex <span class="op">%&gt;%</span></a>
@@ -1753,7 +1738,10 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb8-4" title="4"><span class="st">  </span><span class="kw">pull</span>(Age) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="st">  </span><span class="kw">class</span>()</a>
 <a class="sourceLine" id="cb8-6" title="6">[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></a></code></pre></div>
-<p>Success!</p>
+<p> </p>
+<p><font size="+3"><strong>Success!</strong></font></p>
+<p> </p>
+<p> </p>
 <div class="warn">
 <p>Notice that the <code>&quot;18&quot;</code> and <code>&quot;19&quot;</code> are in quotes. This is important. Remember that <code>Age</code> is currently a <code>character</code> variable so if we are changing some of its values, the replacement values must also be <code>character</code> values. Putting in simply <code>18</code> and <code>19</code> will result in unwanted behaviour:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">gensex <span class="op">%&gt;%</span></a>
@@ -1884,21 +1872,8 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb18-3" title="3">[<span class="dv">1</span>] <span class="dv">7</span></a></code></pre></div>
 <p>OK, so we’re removing 7 rows. Let’s do it using <code>filter()</code>.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">gensex &lt;-<span class="st"> </span>gensex <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">rowSums</span>(<span class="kw">is.na</span>(gensex)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">11</span>)</a></code></pre></div>
-<!-- \  -->
-<!-- However, `id` should be a unique code so it's good to check if there are no duplicates. The `duplicated()` function takes a vector and returns a vector of `TRUE`s and `FLASE`s of equal length. We expect all values to be `FALSE` (*e.g.,* `id`s are unique). -->
-<!-- ```{r} -->
-<!-- duplicated(c(1, 2, 5)) # unique -> all FALSE -->
-<!-- duplicated(c(1, 2, 2)) # not unique -> some TRUE -->
-<!-- ``` -->
-<!-- Let's create a column `id_check` and ask for `summary()` again -->
-<!-- ```{r} -->
-<!-- gensex %>% -->
-<!--   mutate(id_check = duplicated(id)) %>% -->
-<!--   summary() -->
-<!-- ``` -->
-<!-- Cool, there are only `FALSE`s which means no duplicates! -->
-<!-- *Note. *We don't really need the `id_check` column permanently in our data set so we don't need to modify it by doing `gensex <- gensex %>% mutate(...`. -->
 <p>And with that, our data are reasonable clean…</p>
+<p> </p>
 </div>
 </div>
 <div id="basic-descriptive-stats" class="section level3">
@@ -1914,17 +1889,6 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb20-8" title="8">  age_mean sd_age min_age max_age</a>
 <a class="sourceLine" id="cb20-9" title="9">     <span class="op">&lt;</span>dbl<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span></a>
 <a class="sourceLine" id="cb20-10" title="10"><span class="dv">1</span>     <span class="fl">19.6</span>   <span class="fl">2.50</span>      <span class="dv">18</span>      <span class="dv">51</span></a></code></pre></div>
-<!-- Why are we getting weird results? -->
-<!-- What do we need to do to get what we want? -->
-<!-- ```{r} -->
-<!-- age_desc <- gensex %>% -->
-<!--   summarise(mean = mean(Age, na.rm = T), -->
-<!--             sd = sd(Age, na.rm = T), -->
-<!--             min = min(Age, na.rm = T), -->
-<!--             max = max(Age, na.rm = T), -->
-<!--             na = sum(is.na(Age))) -->
-<!-- age_desc -->
-<!-- ``` -->
 <p>We only ever need to report these kinds of numbers to 2 decimal places so let’s round things up:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">age_desc &lt;-<span class="st"> </span>age_desc <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw">modify</span>(round, <span class="dv">2</span>)</a>
@@ -1954,14 +1918,15 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb23-4" title="4">            <span class="dt">perc =</span> <span class="kw">n</span>()<span class="op">/</span><span class="kw">nrow</span>(gensex) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</a>
 <a class="sourceLine" id="cb23-5" title="5">            <span class="dt">mean_age =</span> <span class="kw">mean</span>(Age, <span class="dt">na.rm =</span> T),</a>
 <a class="sourceLine" id="cb23-6" title="6">            <span class="dt">sd_age =</span> <span class="kw">sd</span>(Age, <span class="dt">na.rm =</span> T))</a>
-<a class="sourceLine" id="cb23-7" title="7">gen_age_desc</a>
-<a class="sourceLine" id="cb23-8" title="8"><span class="co"># A tibble: 4 x 5</span></a>
-<a class="sourceLine" id="cb23-9" title="9">  Gender     n   perc mean_age sd_age</a>
-<a class="sourceLine" id="cb23-10" title="10">  <span class="op">&lt;</span>fct<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>int<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb23-11" title="11"><span class="dv">1</span> Female   <span class="dv">247</span> <span class="fl">81.5</span>       <span class="fl">19.6</span>   <span class="fl">2.68</span></a>
-<a class="sourceLine" id="cb23-12" title="12"><span class="dv">2</span> Male      <span class="dv">48</span> <span class="fl">15.8</span>       <span class="fl">19.9</span>   <span class="fl">1.57</span></a>
-<a class="sourceLine" id="cb23-13" title="13"><span class="dv">3</span> Other      <span class="dv">5</span>  <span class="fl">1.65</span>      <span class="fl">19.2</span>   <span class="fl">1.30</span></a>
-<a class="sourceLine" id="cb23-14" title="14"><span class="dv">4</span> <span class="op">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st">       </span><span class="dv">3</span>  <span class="fl">0.990</span>     <span class="fl">19.7</span>   <span class="fl">1.53</span></a></code></pre></div>
+<a class="sourceLine" id="cb23-7" title="7">Warning<span class="op">:</span><span class="st"> </span>Factor <span class="st">`</span><span class="dt">Gender</span><span class="st">`</span> contains implicit <span class="ot">NA</span>, consider using <span class="st">`</span><span class="dt">forcats::fct_explicit_na</span><span class="st">`</span></a>
+<a class="sourceLine" id="cb23-8" title="8">gen_age_desc</a>
+<a class="sourceLine" id="cb23-9" title="9"><span class="co"># A tibble: 4 x 5</span></a>
+<a class="sourceLine" id="cb23-10" title="10">  Gender     n   perc mean_age sd_age</a>
+<a class="sourceLine" id="cb23-11" title="11">  <span class="op">&lt;</span>fct<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>int<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb23-12" title="12"><span class="dv">1</span> Female   <span class="dv">247</span> <span class="fl">81.5</span>       <span class="fl">19.6</span>   <span class="fl">2.68</span></a>
+<a class="sourceLine" id="cb23-13" title="13"><span class="dv">2</span> Male      <span class="dv">48</span> <span class="fl">15.8</span>       <span class="fl">19.9</span>   <span class="fl">1.57</span></a>
+<a class="sourceLine" id="cb23-14" title="14"><span class="dv">3</span> Other      <span class="dv">5</span>  <span class="fl">1.65</span>      <span class="fl">19.2</span>   <span class="fl">1.30</span></a>
+<a class="sourceLine" id="cb23-15" title="15"><span class="dv">4</span> <span class="op">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st">       </span><span class="dv">3</span>  <span class="fl">0.990</span>     <span class="fl">19.7</span>   <span class="fl">1.53</span></a></code></pre></div>
 <p>The command returns the following message:</p>
 <p>“Factor <code>Gender</code> contains implicit NA, consider using <code>forcats::fct_explicit_na</code>”</p>
 <p>This is not technically a problem, we can just have a row for <code>NA</code> in the tibble. However, using the <code>fct_explicit_na()</code> function suggested by the warning creates an additional level <code>(Missing)</code> in the <code>Gender</code> variable, instead of the <code>NA</code>s. We can use the function inside of <code>mutate()</code>:</p>
@@ -2076,24 +2041,13 @@ Other
 </tr>
 </tbody>
 </table>
-<p>Granted, the table isn’t formatted perfectly… Let’s do it then!</p>
+<p>Granted, the table isn’t formatted perfectly… Let’s remedy that!</p>
 <p>There are basically only two things we want to edit</p>
-<!-- 1. It would be good to capitalise the first letters for each gender category -->
 <ol style="list-style-type: decimal">
 <li>The table header could look better</li>
 <li>The table should have a caption</li>
 <li>Reported numbers should be rounded to 2 decimal places</li>
 </ol>
-<!-- With respect to the first point, we could laboriously change the first column of `gen_age_desc`. Fortunately, there is a function in the `stringr` package that turns a string into a sentence, *i.e.,* capitalises the first letter: -->
-<!-- ```{r} -->
-<!-- library(stringr) -->
-<!-- str_to_sentence("some string we want to edit") -->
-<!-- ``` -->
-<!-- We can use this function in `mutate()` to change the first column of our `gen_age_desc` tibble: -->
-<!-- ```{r} -->
-<!-- gen_age_desc %>% -->
-<!--   mutate(Gender = str_to_sentence(Gender)) -->
-<!-- ``` -->
 <p>All of these edits can be done using arguments to <code>kable()</code>, namely <code>col.names=</code> and <code>caption=</code>. We can use R Markdown within these arguments to get things like subscripts or italics:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">gen_age_desc <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Gender =</span> <span class="kw">str_to_sentence</span>(Gender)) <span class="op">%&gt;%</span></a>
@@ -2205,6 +2159,7 @@ Other
 <div id="write-up" class="section level3">
 <h3>Write-up</h3>
 <p>Now that we are familiar with our data, we can start writing up. Obviously, we don’t really have any results yet but we can at least describe our sample. This is normally done in the <em>Participants</em> subsection of the <em>Method</em> section. On top of that, we can give a description of what data were collected and how in the <em>Materials</em> and <em>Procedure</em> subsections, respectively. Here, both would be very short so we can collapse them into a single subsection:</p>
+<p> </p>
 <div id="method" class="section level4">
 <h4>Method</h4>
 <div id="participants" class="section level5">
@@ -2329,7 +2284,8 @@ Points to notice
 <p>These are all good guidelines for writing up the <em>Method</em> section.</p>
 </div>
 <p> </p>
-<p>That’s all we have to cover this week. Over to you now!</p>
+<p>That’s all we have to cover this week. <strong>Save you “prac_02_script.R” file</strong> and it’s over to you!</p>
+<p> </p>
 </div>
 </div>
 </div>
@@ -2346,7 +2302,7 @@ Points to notice
 </div>
 <div id="task-2" class="section level3">
 <h3>Task 2</h3>
-<p>In the <code>packages</code> code chunk, write the code to load all the packages you will need to complete this practical: <code>tidyverse</code> and <code>kableExtra</code> (or <code>knitr</code>, if that one causes trouble) should be enough.</p>
+<p>In the <code>packages</code> code chunk, write the code to load the packages you will need to complete this practical: <code>tidyverse</code> and <code>kableExtra</code> (or <code>knitr</code>, if the latter causes trouble) should be enough.</p>
 <div class="solution">
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co"># add library() commands to load all packages you need for this document.</span></a>
 <a class="sourceLine" id="cb27-2" title="2"></a>
@@ -2451,7 +2407,7 @@ Humanness
 nominal
 </td>
 <td style="text-align:left;">
-Avatar type: 1 – Human, 2 – Robot
+Avatar type: 1 = Human, 2 = Robot
 </td>
 </tr>
 <tr>
@@ -2462,7 +2418,7 @@ Harm
 nominal
 </td>
 <td style="text-align:left;">
-Avatar state: 1 – Unharmed, 2 – Harmed
+Avatar state: 1 = Unharmed, 2 = Harmed
 </td>
 </tr>
 <tr>
@@ -2473,7 +2429,7 @@ Gender
 nominal
 </td>
 <td style="text-align:left;">
-Participant gender: 1 – Male, 2 – Female
+Participant gender: 1 = Male, 2 = Female
 </td>
 </tr>
 <tr>
@@ -2495,7 +2451,7 @@ Pain
 ordinal
 </td>
 <td style="text-align:left;">
-Does avatar have capacity to feel pain? 1 – Strongly disagree, 7 – Strongly agree
+Does avatar have capacity to feel pain? 1 = Strongly disagree, 7 = Strongly agree
 </td>
 </tr>
 <tr>
@@ -2506,7 +2462,7 @@ Experience
 ordinal
 </td>
 <td style="text-align:left;">
-Does avatar have experience? 1 – Strongly disagree, 7 – Strongly agree
+Does avatar have experience? 1 = Strongly disagree, 7 = Strongly agree
 </td>
 </tr>
 <tr>
@@ -2517,7 +2473,7 @@ Agency
 ordinal
 </td>
 <td style="text-align:left;">
-Does avatar have agency? 1 – Strongly disagree, 7 – Strongly agree
+Does avatar have agency? 1 = Strongly disagree, 7 = Strongly agree
 </td>
 </tr>
 <tr>
@@ -2528,7 +2484,7 @@ Consciousness
 ordinal
 </td>
 <td style="text-align:left;">
-Does avatar have consciousness? 1 – Strongly disagree, 7 – Strongly agree
+Does avatar have consciousness? 1 = Strongly disagree, 7 = Strongly agree
 </td>
 </tr>
 <tr>
@@ -2655,6 +2611,7 @@ Attractiveness of avatar: Higher number means more attractive
 <div id="task-4.4" class="section level4">
 <h4>Task 4.4</h4>
 <p>Check if all ID codes are unique (<em>e.g.,</em> they do not repeat).</p>
+<p><strong>Hint: </strong>Once again, a frequency table might come in handy.</p>
 <div class="solText">
 <p>There are several solutions to this problem. <code>table()</code> will do the trick. If all ID only occur once, than they are unique.</p>
 </div>
@@ -2943,8 +2900,8 @@ Female
 <h3>Task 10</h3>
 <p>Knit (generate) the final document from your R markdown file and rejoice in its beauty.</p>
 <p> </p>
-<p>That’s all for this week. Well done!</p>
-<p> </p>
+<p>That’s all for this week. You’ve done quite a lot today. You learnt about why it’s important to audit your data. You explored some of the things you should look at and how to clean datasets in <code>R</code>. You practiced creating pipelines, filtering, modifying, grouping, and summarising data. You looked at the brak-down of data by levels of a variable and created tables of basic descriptive statistics. Finally, you learnt how to write up the Participants and Procedure sections of a paper.</p>
+<p><font size="+4"><strong>Well done!</strong></font>  </p>
 <p> </p>
 </div>
 </div>
@@ -3266,6 +3223,12 @@ warn {
     margin-top: -37px;
     margin-left: -40px;
     float: left;
+}
+
+.solText > .warn {
+    width: max-content;
+    margin: 1em auto;
+    max-width: 95%;
 }
 
 .writeUp::before {
