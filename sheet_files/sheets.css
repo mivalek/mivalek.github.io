@@ -317,6 +317,12 @@ warn {
     float: left;
 }
 
+.solText > .warn {
+    width: max-content;
+    margin: 1em auto;
+    max-width: 95%;
+}
+
 .writeUp::before {
     content: "Write-up";
     font-size: 25px;
