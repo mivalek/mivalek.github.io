@@ -1832,8 +1832,8 @@ For educational purposes we also added a few rows of data with odd/missing value
 <li>Remove rows for which this added up number is equal or larger than some number we choose</li>
 </ol>
 <p>OK, let’s take it one step at a time.</p>
-<p>To test each data point for missingness, we can use the <code>is.na()</code> function. The output of this function is not a <code>tibble</code> but we can convert it into one using <code>as.tibble()</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">is.na</span>(gensex) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.tibble</span>()</a>
+<p>To test each data point for missingness, we can use the <code>is.na()</code> function. The output of this function is not a <code>tibble</code> but we can convert it into one using <code>as_tibble()</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">is.na</span>(gensex) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as_tibble</span>()</a>
 <a class="sourceLine" id="cb16-2" title="2"><span class="co"># A tibble: 310 x 13</span></a>
 <a class="sourceLine" id="cb16-3" title="3">   Duration Age   Gender Gender_comforta<span class="op">~</span><span class="st"> </span>Gender_masc_<span class="dv">1</span> Gender_fem_<span class="dv">1</span> Gender_stabilit<span class="op">~</span></a>
 <a class="sourceLine" id="cb16-4" title="4"><span class="st">   </span><span class="er">&lt;</span>lgl<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>lgl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>lgl<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>lgl<span class="op">&gt;</span><span class="st">            </span><span class="er">&lt;</span>lgl<span class="op">&gt;</span><span class="st">         </span><span class="er">&lt;</span>lgl<span class="op">&gt;</span><span class="st">        </span><span class="er">&lt;</span>lgl<span class="op">&gt;</span><span class="st">           </span></a>
@@ -2046,11 +2046,10 @@ Other
 </ol>
 <p>All of these edits can be done using arguments to <code>kable()</code>, namely <code>col.names=</code> and <code>caption=</code>. We can use R Markdown within these arguments to get things like subscripts or italics:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">gen_age_desc <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Gender =</span> <span class="kw">str_to_sentence</span>(Gender)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-3" title="3"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Gender&quot;</span>, <span class="st">&quot;*N*&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;*M*~age~&quot;</span>, <span class="st">&quot;*SD*~age~&quot;</span>),</a>
-<a class="sourceLine" id="cb26-4" title="4">        <span class="dt">caption =</span> <span class="st">&quot;Table 1 *Descriptive statistics by Gender*&quot;</span>,</a>
-<a class="sourceLine" id="cb26-5" title="5">        <span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-6" title="6"><span class="st">  </span><span class="kw">kable_styling</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">kable</span>(<span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Gender&quot;</span>, <span class="st">&quot;*N*&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;*M*~age~&quot;</span>, <span class="st">&quot;*SD*~age~&quot;</span>),</a>
+<a class="sourceLine" id="cb26-3" title="3">        <span class="dt">caption =</span> <span class="st">&quot;Table 1 *Descriptive statistics by Gender*&quot;</span>,</a>
+<a class="sourceLine" id="cb26-4" title="4">        <span class="dt">digits =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-5" title="5"><span class="st">  </span><span class="kw">kable_styling</span>()</a></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Table 1 <em>Descriptive statistics by Gender</em>
@@ -2857,6 +2856,10 @@ div .tocify {
 a:hover, .tocify-item a:hover, .tocify .list-group-item:hover {
     color: rgb(var(--theme-col));
     background-color: #fdfdfd;
+}
+
+a {
+	color: #4674ff;
 }
 
 .date a {
