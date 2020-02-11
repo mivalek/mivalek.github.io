@@ -92,6 +92,10 @@ a:hover, .tocify-item a:hover, .tocify .list-group-item:hover {
     background-color: #fdfdfd;
 }
 
+a {
+	color: #4674ff;
+}
+
 .date a {
     color: #fdfdfd;
 }
