@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -1379,6 +1378,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -1407,6 +1407,12 @@ summary {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -1484,7 +1490,7 @@ div.tocify {
 
 <style>
 :root {
---theme-col: var(--other-col);
+--theme-col: 179, 142, 210;
 }
 </style>
 <div id="a" class="section level3">
@@ -1506,7 +1512,31 @@ Practical
 aes
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+all
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+as.numeric
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+as_tibble
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1531,40 +1561,15 @@ Practical
 c
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;width: 4in; ">
-coord_flip
+class
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="d" class="section level3">
-<h3>D</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-duplicated
-</td>
-<td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1586,10 +1591,18 @@ Practical
 <tbody>
 <tr>
 <td style="text-align:left;width: 4in; ">
+facet_wrap
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_01_wkst.html">01</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
 factor
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
@@ -1597,23 +1610,15 @@ factor
 fct_explicit_na
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
 <td style="text-align:left;width: 4in; ">
-fct_infreq
+filter
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-fct_rev
-</td>
-<td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1635,26 +1640,10 @@ Practical
 <tbody>
 <tr>
 <td style="text-align:left;width: 4in; ">
-geom_bar
-</td>
-<td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-geom_boxplot
-</td>
-<td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
 geom_histogram
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>
 </td>
 </tr>
 <tr>
@@ -1662,7 +1651,7 @@ geom_histogram
 ggplot
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>
 </td>
 </tr>
 <tr>
@@ -1670,7 +1659,7 @@ ggplot
 group_by
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1695,7 +1684,7 @@ Practical
 is.na
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1720,7 +1709,15 @@ Practical
 kable
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+kable_styling
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1745,15 +1742,7 @@ Practical
 labs
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-levels
-</td>
-<td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>
 </td>
 </tr>
 <tr>
@@ -1761,7 +1750,7 @@ levels
 library
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1786,7 +1775,7 @@ Practical
 max
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
@@ -1794,7 +1783,7 @@ max
 mean
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
@@ -1802,7 +1791,7 @@ mean
 min
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
@@ -1810,15 +1799,7 @@ min
 modify
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-modify_if
-</td>
-<td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
@@ -1826,7 +1807,7 @@ modify_if
 mutate
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1851,7 +1832,15 @@ Practical
 n
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+names
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
@@ -1859,7 +1848,7 @@ n
 nrow
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1884,7 +1873,64 @@ Practical
 pull
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="r" class="section level3">
+<h3>R</h3>
+<table class="table" style="width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:left;">
+Function
+</th>
+<th style="text-align:left;">
+Practical
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 4in; ">
+read_csv
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+recode
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+rep
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+rnorm
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_01_wkst.html">01</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+rowSums
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1909,7 +1955,15 @@ Practical
 sd
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+select
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_01_wkst.html">01</a>
 </td>
 </tr>
 <tr>
@@ -1917,23 +1971,7 @@ sd
 str
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-str_to_sentence
-</td>
-<td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-sum
-</td>
-<td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
@@ -1941,7 +1979,7 @@ sum
 summarise
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 <tr>
@@ -1949,7 +1987,7 @@ summarise
 summary
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1971,10 +2009,18 @@ Practical
 <tbody>
 <tr>
 <td style="text-align:left;width: 4in; ">
-theme_cowplot
+table
 </td>
 <td style="text-align:left;">
-<a href="ad_practical_03.html">03</a>
+<a href="prac/prac_03_wkst.html">03</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4in; ">
+tibble
+</td>
+<td style="text-align:left;">
+<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
 </td>
 </tr>
 </tbody>
@@ -1985,12 +2031,6 @@ theme_cowplot
 <style type="text/css">
 
 :root {
-	--dapR_1-col: 107, 205, 237;
-	--dapR_2-col: 179, 142, 210;
-	--dapR_3-col: 133, 166, 234;
-	--usmr-col: 237, 164, 111;
-	--msmr-col: 216, 215, 104;
-	--other-col: 119, 189, 157;
 	--warn-col: 204, 0, 0;
 }
 
@@ -2081,8 +2121,16 @@ a:hover, .tocify-item a:hover, .tocify .list-group-item:hover {
     background-color: #fdfdfd;
 }
 
-.date a:hover {
+a {
+	color: #4674ff;
+}
+
+.date a {
     color: #fdfdfd;
+}
+
+.date a:hover {
+    color: #434b75;
     background-color: inherit;
 	text-decoration: none;
 }
@@ -2098,7 +2146,8 @@ pre {
 
 code {
 	background: none;
-	font-size: 115%
+	font-size: 115%;	
+	padding-right: 0px
 }
 
 pre.sourceCode {
@@ -2166,6 +2215,45 @@ hr {
     font-size: .85em;
 }
 
+details {
+    border: solid 1px rgb(var(--theme-col));
+    width: 6em;
+    border-radius: 5px;
+    margin: 1em 0 2em 0;
+    background-color: rgb(var(--theme-col));
+	padding: .5em
+}
+
+details[open] {
+	width: 100%;
+    background-color: rgba(var(--theme-col), .3);
+}
+
+summary {
+	display: list-item;
+	cursor: pointer;
+	outline: 0;
+	color: #fdfdfd;
+}
+
+details[open] > summary {
+    padding-bottom: 1em;
+	color: #434b75;
+}
+
+details > .sourceCode {
+	margin-top: 0
+}
+
+details > .pagedtable-wrapper,
+.warn > .pagedtable-wrapper,
+.why > .pagedtable-wrapper,
+.solution >  .pagedtable-wrapper,
+.writeUp >  .pagedtable-wrapper,
+.solText >  .pagedtable-wrapper {
+	background-color: #fdfdfd;
+}
+
 .why::before {
     content: "What for?";
 	text-transform: uppercase;
@@ -2213,6 +2301,14 @@ hr {
 	margin-bottom: 5px;
 }
 
+.solText a:hover, .why a:hover, .writeUp a:hover {
+    background-color: transparent;
+}
+
+.solText a, .why a, .writeUp a {
+    color: rgb(var(--theme-col));
+}
+
 warn {
     font-weight: bold;
     color: rgb(var(--warn-col));
@@ -2235,6 +2331,14 @@ warn {
     color: rgb(var(--warn-col));
 }
 
+.warn a:hover {
+    background-color: transparent;
+}
+
+.warn a {
+    color: rgb(var(--warn-col));
+}
+
 .warn::before {
     content: "!";
     font-family: "Times";
@@ -2244,6 +2348,12 @@ warn {
     margin-top: -37px;
     margin-left: -40px;
     float: left;
+}
+
+.solText > .warn {
+    width: max-content;
+    margin: 1em auto;
+    max-width: 95%;
 }
 
 .writeUp::before {
@@ -2276,6 +2386,22 @@ warn {
 	padding: 65px 12px 12px 12px;
 }
 
+iframe {
+    width: 100%;
+    border: solid 2px rgb(var(--theme-col));
+    height: 300px;
+    margin-top: -1.9em;
+    margin-bottom: 2em;
+}
+
+.iframe::before {
+    content: "Web page";
+    font-weight: bolder;
+    font-size: 5em;
+    color: rgb(var(--theme-col));
+    position: relative;
+}
+
 @media print {	
   .col-md-9 {
     width: 100%;
@@ -2303,7 +2429,7 @@ warn {
   }
     
   code {
-    font-size: 10pt;    
+    font-size: 10pt;
   }
     
   pre {
