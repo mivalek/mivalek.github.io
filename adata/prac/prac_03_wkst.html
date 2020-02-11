@@ -1671,14 +1671,12 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span><span class="kw">pull</span>(Age) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw">table</span>()</a>
 <a class="sourceLine" id="cb4-4" title="4">.</a>
-<a class="sourceLine" id="cb4-5" title="5">          <span class="dv">18</span>     <span class="dv">18</span> years          <span class="dv">189</span>           <span class="dv">19</span> <span class="dv">19</span> years old          <span class="dv">193</span> </a>
-<a class="sourceLine" id="cb4-6" title="6">          <span class="dv">71</span>            <span class="dv">1</span>            <span class="dv">1</span>          <span class="dv">115</span>            <span class="dv">1</span>            <span class="dv">1</span> </a>
-<a class="sourceLine" id="cb4-7" title="7">          <span class="dv">20</span>           <span class="dv">21</span>          <span class="dv">219</span>           <span class="dv">22</span>           <span class="dv">23</span>           <span class="dv">24</span> </a>
-<a class="sourceLine" id="cb4-8" title="8">          <span class="dv">72</span>           <span class="dv">22</span>            <span class="dv">1</span>            <span class="dv">7</span>            <span class="dv">7</span>            <span class="dv">5</span> </a>
-<a class="sourceLine" id="cb4-9" title="9">          <span class="dv">25</span>           <span class="dv">27</span>          <span class="dv">270</span>           <span class="dv">28</span>          <span class="dv">321</span>           <span class="dv">34</span> </a>
-<a class="sourceLine" id="cb4-10" title="10">           <span class="dv">4</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span> </a>
-<a class="sourceLine" id="cb4-11" title="11">         <span class="dv">492</span>           <span class="dv">51</span>          <span class="dv">526</span> </a>
-<a class="sourceLine" id="cb4-12" title="12">           <span class="dv">1</span>            <span class="dv">2</span>            <span class="dv">1</span> </a></code></pre></div>
+<a class="sourceLine" id="cb4-5" title="5">          <span class="dv">18</span>     <span class="dv">18</span> years          <span class="dv">189</span>           <span class="dv">19</span> <span class="dv">19</span> years old          <span class="dv">193</span>           <span class="dv">20</span> </a>
+<a class="sourceLine" id="cb4-6" title="6">          <span class="dv">71</span>            <span class="dv">1</span>            <span class="dv">1</span>          <span class="dv">115</span>            <span class="dv">1</span>            <span class="dv">1</span>           <span class="dv">72</span> </a>
+<a class="sourceLine" id="cb4-7" title="7">          <span class="dv">21</span>          <span class="dv">219</span>           <span class="dv">22</span>           <span class="dv">23</span>           <span class="dv">24</span>           <span class="dv">25</span>           <span class="dv">27</span> </a>
+<a class="sourceLine" id="cb4-8" title="8">          <span class="dv">22</span>            <span class="dv">1</span>            <span class="dv">7</span>            <span class="dv">7</span>            <span class="dv">5</span>            <span class="dv">4</span>            <span class="dv">1</span> </a>
+<a class="sourceLine" id="cb4-9" title="9">         <span class="dv">270</span>           <span class="dv">28</span>          <span class="dv">321</span>           <span class="dv">34</span>          <span class="dv">492</span>           <span class="dv">51</span>          <span class="dv">526</span> </a>
+<a class="sourceLine" id="cb4-10" title="10">           <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">1</span>            <span class="dv">2</span>            <span class="dv">1</span> </a></code></pre></div>
 <p> </p>
 </div>
 <div id="data-cleaning" class="section level3">
@@ -1699,9 +1697,9 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb5-13" title="13"> <span class="dv">8</span>      <span class="dv">185</span> <span class="dv">18</span>    Female                <span class="dv">9</span>             <span class="dv">3</span>            <span class="dv">5</span>                <span class="dv">6</span></a>
 <a class="sourceLine" id="cb5-14" title="14"> <span class="dv">9</span>      <span class="dv">219</span> <span class="dv">21</span>    Female                <span class="dv">9</span>             <span class="dv">3</span>            <span class="dv">7</span>                <span class="dv">8</span></a>
 <a class="sourceLine" id="cb5-15" title="15"><span class="dv">10</span>      <span class="dv">475</span> <span class="dv">19</span>    Male                  <span class="dv">9</span>             <span class="dv">8</span>            <span class="dv">7</span>                <span class="dv">8</span></a>
-<a class="sourceLine" id="cb5-16" title="16"><span class="co"># ... with 307 more rows, and 6 more variables: Sexual_strength_1 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#   Sexual_fewq_1 &lt;dbl&gt;, Sexual_gender_1 &lt;dbl&gt;, Romantic_strength_1 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="co">#   Romantic_freq_1 &lt;dbl&gt;, Romantic_gender_1 &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co"># ... with 307 more rows, and 6 more variables: Sexual_strength_1 &lt;dbl&gt;, Sexual_fewq_1 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#   Sexual_gender_1 &lt;dbl&gt;, Romantic_strength_1 &lt;dbl&gt;, Romantic_freq_1 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co">#   Romantic_gender_1 &lt;dbl&gt;</span></a></code></pre></div>
 <p>OK, something happened, but it’s sort of difficult to see what and whether we did what we wanted. But because of the flexibility of the pipelines, we can just take this resulting tibble, pull the <code>Age</code> variable out of it and create a frequency table, just like we did before:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">gensex <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw">recode</span>(Age, <span class="st">&quot;18 years&quot;</span> =<span class="st"> &quot;18&quot;</span>, <span class="st">&quot;19 years old&quot;</span> =<span class="st"> &quot;19&quot;</span>)) <span class="op">%&gt;%</span></a>
@@ -1728,9 +1726,9 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb7-14" title="14"> <span class="dv">8</span>      <span class="dv">185</span>    <span class="dv">18</span> Female                <span class="dv">9</span>             <span class="dv">3</span>            <span class="dv">5</span>                <span class="dv">6</span></a>
 <a class="sourceLine" id="cb7-15" title="15"> <span class="dv">9</span>      <span class="dv">219</span>    <span class="dv">21</span> Female                <span class="dv">9</span>             <span class="dv">3</span>            <span class="dv">7</span>                <span class="dv">8</span></a>
 <a class="sourceLine" id="cb7-16" title="16"><span class="dv">10</span>      <span class="dv">475</span>    <span class="dv">19</span> Male                  <span class="dv">9</span>             <span class="dv">8</span>            <span class="dv">7</span>                <span class="dv">8</span></a>
-<a class="sourceLine" id="cb7-17" title="17"><span class="co"># ... with 307 more rows, and 6 more variables: Sexual_strength_1 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb7-18" title="18"><span class="co">#   Sexual_fewq_1 &lt;dbl&gt;, Sexual_gender_1 &lt;dbl&gt;, Romantic_strength_1 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb7-19" title="19"><span class="co">#   Romantic_freq_1 &lt;dbl&gt;, Romantic_gender_1 &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-17" title="17"><span class="co"># ... with 307 more rows, and 6 more variables: Sexual_strength_1 &lt;dbl&gt;, Sexual_fewq_1 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb7-18" title="18"><span class="co">#   Sexual_gender_1 &lt;dbl&gt;, Romantic_strength_1 &lt;dbl&gt;, Romantic_freq_1 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb7-19" title="19"><span class="co">#   Romantic_gender_1 &lt;dbl&gt;</span></a></code></pre></div>
 <p>We can check that this did the job by pulling out the <code>Age</code> variable from the dataset and looking at its class:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">gensex <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Age =</span> <span class="kw">recode</span>(Age, <span class="st">&quot;18 years&quot;</span> =<span class="st"> &quot;18&quot;</span>, <span class="st">&quot;19 years old&quot;</span> =<span class="st"> &quot;19&quot;</span>),</a>
@@ -1760,9 +1758,9 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb9-14" title="14"> <span class="dv">8</span>      <span class="dv">185</span>    <span class="ot">NA</span> Female                <span class="dv">9</span>             <span class="dv">3</span>            <span class="dv">5</span>                <span class="dv">6</span></a>
 <a class="sourceLine" id="cb9-15" title="15"> <span class="dv">9</span>      <span class="dv">219</span>    <span class="ot">NA</span> Female                <span class="dv">9</span>             <span class="dv">3</span>            <span class="dv">7</span>                <span class="dv">8</span></a>
 <a class="sourceLine" id="cb9-16" title="16"><span class="dv">10</span>      <span class="dv">475</span>    <span class="ot">NA</span> Male                  <span class="dv">9</span>             <span class="dv">8</span>            <span class="dv">7</span>                <span class="dv">8</span></a>
-<a class="sourceLine" id="cb9-17" title="17"><span class="co"># ... with 307 more rows, and 6 more variables: Sexual_strength_1 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-18" title="18"><span class="co">#   Sexual_fewq_1 &lt;dbl&gt;, Sexual_gender_1 &lt;dbl&gt;, Romantic_strength_1 &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb9-19" title="19"><span class="co">#   Romantic_freq_1 &lt;dbl&gt;, Romantic_gender_1 &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-17" title="17"><span class="co"># ... with 307 more rows, and 6 more variables: Sexual_strength_1 &lt;dbl&gt;, Sexual_fewq_1 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-18" title="18"><span class="co">#   Sexual_gender_1 &lt;dbl&gt;, Romantic_strength_1 &lt;dbl&gt;, Romantic_freq_1 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="co">#   Romantic_gender_1 &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 <p> </p>
 <p>Don’t forget that pipelines on their own <strong>do not modify the original data</strong>. To save our changes into <code>gensex</code>, we need to reassign the output of the pipeline back to itself:</p>
@@ -1849,23 +1847,21 @@ For educational purposes we also added a few rows of data with odd/missing value
 <a class="sourceLine" id="cb16-12" title="12"> <span class="dv">8</span> <span class="ot">FALSE</span>    <span class="ot">FALSE</span> <span class="ot">FALSE</span>  <span class="ot">FALSE</span>            <span class="ot">FALSE</span>         <span class="ot">FALSE</span>        <span class="ot">FALSE</span>           </a>
 <a class="sourceLine" id="cb16-13" title="13"> <span class="dv">9</span> <span class="ot">FALSE</span>    <span class="ot">FALSE</span> <span class="ot">FALSE</span>  <span class="ot">FALSE</span>            <span class="ot">FALSE</span>         <span class="ot">FALSE</span>        <span class="ot">FALSE</span>           </a>
 <a class="sourceLine" id="cb16-14" title="14"><span class="dv">10</span> <span class="ot">FALSE</span>    <span class="ot">FALSE</span> <span class="ot">FALSE</span>  <span class="ot">FALSE</span>            <span class="ot">FALSE</span>         <span class="ot">FALSE</span>        <span class="ot">FALSE</span>           </a>
-<a class="sourceLine" id="cb16-15" title="15"><span class="co"># ... with 300 more rows, and 6 more variables: Sexual_strength_1 &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb16-16" title="16"><span class="co">#   Sexual_fewq_1 &lt;lgl&gt;, Sexual_gender_1 &lt;lgl&gt;, Romantic_strength_1 &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb16-17" title="17"><span class="co">#   Romantic_freq_1 &lt;lgl&gt;, Romantic_gender_1 &lt;lgl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb16-15" title="15"><span class="co"># ... with 300 more rows, and 6 more variables: Sexual_strength_1 &lt;lgl&gt;, Sexual_fewq_1 &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb16-16" title="16"><span class="co">#   Sexual_gender_1 &lt;lgl&gt;, Romantic_strength_1 &lt;lgl&gt;, Romantic_freq_1 &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb16-17" title="17"><span class="co">#   Romantic_gender_1 &lt;lgl&gt;</span></a></code></pre></div>
 <p>As you can see, we now get only the values <code>TRUE</code> and <code>FALSE</code> in place of our data. We can use the fact that computers treat <code>TRUE</code> as 1 and <code>FALSE</code> as 0 to calculate the number of missing values per each row. To do that, we only need to take the row sums using the aptly names <code>rowSums()</code> function:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">rowSums</span>(<span class="kw">is.na</span>(gensex))</a>
-<a class="sourceLine" id="cb17-2" title="2">  [<span class="dv">1</span>]  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-3" title="3"> [<span class="dv">29</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-4" title="4"> [<span class="dv">57</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-5" title="5"> [<span class="dv">85</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-6" title="6">[<span class="dv">113</span>]  <span class="dv">1</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-7" title="7">[<span class="dv">141</span>]  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-8" title="8">[<span class="dv">169</span>]  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-9" title="9">[<span class="dv">197</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-10" title="10">[<span class="dv">225</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-11" title="11">[<span class="dv">253</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-12" title="12">[<span class="dv">281</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
-<a class="sourceLine" id="cb17-13" title="13">[<span class="dv">309</span>]  <span class="dv">0</span>  <span class="dv">0</span></a></code></pre></div>
+<a class="sourceLine" id="cb17-2" title="2">  [<span class="dv">1</span>]  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-3" title="3"> [<span class="dv">32</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-4" title="4"> [<span class="dv">63</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-5" title="5"> [<span class="dv">94</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-6" title="6">[<span class="dv">125</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-7" title="7">[<span class="dv">156</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-8" title="8">[<span class="dv">187</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-9" title="9">[<span class="dv">218</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-10" title="10">[<span class="dv">249</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span> <span class="dv">11</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a>
+<a class="sourceLine" id="cb17-11" title="11">[<span class="dv">280</span>]  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">1</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span>  <span class="dv">0</span></a></code></pre></div>
 <p>Because we only have 12 variables in our questionnaire (plus the Duration column), any row that has 12 missing values doesn’t include any data. We can however argue, that even data from participants who only provided 1 answer is are not very useful. Thus, we can filter only those rows that have fewer than 11 <code>NA</code>s. Just like with odd values of <code>Age</code>, before we do that, lets count how many rows we will be removing:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">all_missing &lt;-<span class="st"> </span>gensex <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">rowSums</span>(<span class="kw">is.na</span>(gensex)) <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">nrow</span>()</a>
 <a class="sourceLine" id="cb18-2" title="2">all_missing</a>
@@ -2325,30 +2321,22 @@ Points to notice
 <p>Make sure the classes of your variables match the code book below: Ordinal variables can be coded as numbers but categorical (nominal) variables should be factors.</p>
 <p><strong>Hint. </strong>A basic summary will do.</p>
 <div class="solution">
-<pre><code>       ID          Condition      Humanness          Harm           Gender     
- Min.   : 60.0   Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:200.0   1st Qu.:1.00   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000  
- Median :359.0   Median :3.00   Median :2.000   Median :2.000   Median :2.000  
- Mean   :324.6   Mean   :2.53   Mean   :1.507   Mean   :1.516   Mean   :1.626  
- 3rd Qu.:433.0   3rd Qu.:4.00   3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000  
- Max.   :558.0   Max.   :4.00   Max.   :2.000   Max.   :2.000   Max.   :2.000  
-                                                                NA&#39;s   :14     
-     Age                 Pain         Experience        Agency      Consciousness  
- Length:217         Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- Class :character   1st Qu.:3.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000  
- Mode  :character   Median :6.000   Median :5.000   Median :5.000   Median :4.000  
-                    Mean   :4.899   Mean   :4.659   Mean   :4.664   Mean   :4.512  
-                    3rd Qu.:7.000   3rd Qu.:6.000   3rd Qu.:6.000   3rd Qu.:6.000  
-                    Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
-                                                                                   
-    Empathy      Attractiveness 
- Min.   :1.000   Min.   :1.000  
- 1st Qu.:4.000   1st Qu.:1.000  
- Median :5.000   Median :4.000  
- Mean   :4.599   Mean   :3.853  
- 3rd Qu.:6.000   3rd Qu.:6.000  
- Max.   :7.000   Max.   :7.000  
-                                </code></pre>
+<pre><code>       ID          Condition      Humanness          Harm           Gender          Age           
+ Min.   : 60.0   Min.   :1.00   Min.   :1.000   Min.   :1.000   Min.   :1.000   Length:217        
+ 1st Qu.:200.0   1st Qu.:1.00   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000   Class :character  
+ Median :359.0   Median :3.00   Median :2.000   Median :2.000   Median :2.000   Mode  :character  
+ Mean   :324.6   Mean   :2.53   Mean   :1.507   Mean   :1.516   Mean   :1.626                     
+ 3rd Qu.:433.0   3rd Qu.:4.00   3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000                     
+ Max.   :558.0   Max.   :4.00   Max.   :2.000   Max.   :2.000   Max.   :2.000                     
+                                                                NA&#39;s   :14                        
+      Pain         Experience        Agency      Consciousness      Empathy      Attractiveness 
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:3.000   1st Qu.:3.000   1st Qu.:4.000   1st Qu.:4.000   1st Qu.:4.000   1st Qu.:1.000  
+ Median :6.000   Median :5.000   Median :5.000   Median :4.000   Median :5.000   Median :4.000  
+ Mean   :4.899   Mean   :4.659   Mean   :4.664   Mean   :4.512   Mean   :4.599   Mean   :3.853  
+ 3rd Qu.:7.000   3rd Qu.:6.000   3rd Qu.:6.000   3rd Qu.:6.000   3rd Qu.:6.000   3rd Qu.:6.000  
+ Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000   Max.   :7.000  
+                                                                                                </code></pre>
 </div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -2508,23 +2496,7 @@ Attractiveness of avatar: Higher number means more attractive
 <h4>Task 4.2</h4>
 <p>If there’s something wrong with any of the variables, fix it! The result should look like this:</p>
 <!-- solution
-The `Age` variable is currently a `character` variable. That's not right. We can use `tally()` to see what values there are in the variable:-->
-<div class="solution">
-<pre><code># A tibble: 30 x 2
-   Age       n
-   &lt;chr&gt; &lt;int&gt;
- 1 1        15
- 2 118       1
- 3 18       65
- 4 19       35
- 5 199       1
- 6 1y        1
- 7 20       16
- 8 21       21
- 9 22        7
-10 223       1
-# ... with 20 more rows</code></pre>
-</div>
+The `Age` variable is currently a `character` variable. That's not right. We can use `table()` to see what values there are in the variable:-->
 <!-- solution
 There seems to be an odd value of age: "1y". Since we can't be sure what the actual age is, let's remove this row. While we are at it, we may as well convert the variable to numeric:-->
 <!-- solution
@@ -2532,6 +2504,20 @@ OK, that did the trick. Now, let's convert the variables that should be nominal 
 <div class="solution">
 
 </div>
+<pre><code># A tibble: 216 x 12
+   ID    Condition Humanness Harm  Gender   Age  Pain Experience Agency Consciousness Empathy
+   &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+ 1 78    1         1         1     2          1     7          7      7             7       7
+ 2 82    1         1         1     1         41     6          6      5             6       1
+ 3 85    1         1         1     1         36     7          6      5             7       5
+ 4 86    1         1         1     1         37     7          7      7             7       6
+ 5 102   1         1         1     2         26     6          6      6             6       5
+ 6 117   1         1         1     2         36     7          7      6             7       6
+ 7 127   1         1         1     2        199     7          7      7             7       6
+ 8 133   1         1         1     2         29     6          5      5             6       6
+ 9 141   1         1         1     1         22     7          6      5             6       5
+10 144   1         1         1     1         34     7          7      7             7       7
+# ... with 206 more rows, and 1 more variable: Attractiveness &lt;dbl&gt;</code></pre>
 <p> </p>
 </div>
 <div id="task-4.3" class="section level4">
@@ -2541,19 +2527,19 @@ OK, that did the trick. Now, let's convert the variables that should be nominal 
 To do this, let's go back to the last command above and edit it, specifying the `labels=` argument:-->
 <div class="solution">
 <pre><code># A tibble: 216 x 12
-   ID    Condition Humanness Harm  Gender   Age  Pain Experience Agency Consciousness
-   &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;
- 1 78    Human_No~ Human     Unha~ Female     1     7          7      7             7
- 2 82    Human_No~ Human     Unha~ Male      41     6          6      5             6
- 3 85    Human_No~ Human     Unha~ Male      36     7          6      5             7
- 4 86    Human_No~ Human     Unha~ Male      37     7          7      7             7
- 5 102   Human_No~ Human     Unha~ Female    26     6          6      6             6
- 6 117   Human_No~ Human     Unha~ Female    36     7          7      6             7
- 7 127   Human_No~ Human     Unha~ Female   199     7          7      7             7
- 8 133   Human_No~ Human     Unha~ Female    29     6          5      5             6
- 9 141   Human_No~ Human     Unha~ Male      22     7          6      5             6
-10 144   Human_No~ Human     Unha~ Male      34     7          7      7             7
-# ... with 206 more rows, and 2 more variables: Empathy &lt;dbl&gt;, Attractiveness &lt;dbl&gt;</code></pre>
+   ID    Condition Humanness Harm  Gender   Age  Pain Experience Agency Consciousness Empathy
+   &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;fct&gt; &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+ 1 78    Human_No~ Human     Unha~ Female     1     7          7      7             7       7
+ 2 82    Human_No~ Human     Unha~ Male      41     6          6      5             6       1
+ 3 85    Human_No~ Human     Unha~ Male      36     7          6      5             7       5
+ 4 86    Human_No~ Human     Unha~ Male      37     7          7      7             7       6
+ 5 102   Human_No~ Human     Unha~ Female    26     6          6      6             6       5
+ 6 117   Human_No~ Human     Unha~ Female    36     7          7      6             7       6
+ 7 127   Human_No~ Human     Unha~ Female   199     7          7      7             7       6
+ 8 133   Human_No~ Human     Unha~ Female    29     6          5      5             6       6
+ 9 141   Human_No~ Human     Unha~ Male      22     7          6      5             6       5
+10 144   Human_No~ Human     Unha~ Male      34     7          7      7             7       7
+# ... with 206 more rows, and 1 more variable: Attractiveness &lt;dbl&gt;</code></pre>
 </div>
 <p> </p>
 </div>
