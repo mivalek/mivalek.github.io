@@ -2714,15 +2714,15 @@ Attractiveness of avatar: Higher number means more attractive
 <a class="sourceLine" id="cb39-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>(),</a>
 <a class="sourceLine" id="cb39-4" title="4">            <span class="dt">pain_m =</span> <span class="kw">mean</span>(Pain),</a>
 <a class="sourceLine" id="cb39-5" title="5">            <span class="dt">exp_m =</span> <span class="kw">mean</span>(Experience),</a>
-<a class="sourceLine" id="cb39-6" title="6">            <span class="dt">agency_m =</span> <span class="kw">sd</span>(Agency),</a>
-<a class="sourceLine" id="cb39-7" title="7">            <span class="dt">consc_m =</span> <span class="kw">sd</span>(Consciousness))</a>
+<a class="sourceLine" id="cb39-6" title="6">            <span class="dt">agency_m =</span> <span class="kw">mean</span>(Agency),</a>
+<a class="sourceLine" id="cb39-7" title="7">            <span class="dt">consc_m =</span> <span class="kw">mean</span>(Consciousness))</a>
 <a class="sourceLine" id="cb39-8" title="8"><span class="co"># let&#39;s see</span></a>
 <a class="sourceLine" id="cb39-9" title="9">type_desc</a>
 <a class="sourceLine" id="cb39-10" title="10"><span class="co"># A tibble: 2 x 6</span></a>
 <a class="sourceLine" id="cb39-11" title="11">  Humanness     n pain_m exp_m agency_m consc_m</a>
 <a class="sourceLine" id="cb39-12" title="12">  <span class="op">&lt;</span>fct<span class="op">&gt;</span><span class="st">     </span><span class="er">&lt;</span>int<span class="op">&gt;</span><span class="st">  </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">   </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb39-13" title="13"><span class="dv">1</span> Human       <span class="dv">106</span>   <span class="fl">6.25</span>  <span class="fl">6.08</span>     <span class="fl">1.05</span>    <span class="fl">1.32</span></a>
-<a class="sourceLine" id="cb39-14" title="14"><span class="dv">2</span> Robot       <span class="dv">110</span>   <span class="fl">3.57</span>  <span class="fl">3.27</span>     <span class="fl">1.56</span>    <span class="fl">1.80</span></a></code></pre></div>
+<a class="sourceLine" id="cb39-13" title="13"><span class="dv">1</span> Human       <span class="dv">106</span>   <span class="fl">6.25</span>  <span class="fl">6.08</span>     <span class="fl">5.39</span>    <span class="fl">5.42</span></a>
+<a class="sourceLine" id="cb39-14" title="14"><span class="dv">2</span> Robot       <span class="dv">110</span>   <span class="fl">3.57</span>  <span class="fl">3.27</span>     <span class="fl">3.95</span>    <span class="fl">3.62</span></a></code></pre></div>
 </div>
 <p> </p>
 </div>
