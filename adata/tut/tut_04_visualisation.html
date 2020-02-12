@@ -1791,7 +1791,7 @@ div.tocify {
 </div>
 <div id="æsthetics" class="section level2">
 <h2>Æsthetics</h2>
-<p>æsthetics – the <code>aes()</code> function – let us map variables onto the plot. Every time we use a variable anywhere inside a <code>ggplot()</code>, we have to do it using <code>aes()</code>. To tell <code>R</code> that we want the <code>length</code> variable on the X-axis and the <code>rating</code> variable on the Y-axis, we have to map these as æsthetics in the base layer. The base layer (the one that creates the plotting space) itself is created using the <code>ggplot()</code> function:</p>
+<p>Æsthetics – the <code>aes()</code> function – let us map variables onto the plot. Every time we use a variable anywhere inside a <code>ggplot()</code>, we have to do it using <code>aes()</code>. To tell <code>R</code> that we want the <code>length</code> variable on the X-axis and the <code>rating</code> variable on the Y-axis, we have to map these as æsthetics in the base layer. The base layer (the one that creates the plotting space) itself is created using the <code>ggplot()</code> function:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> movie_data,</a>
 <a class="sourceLine" id="cb4-2" title="2">       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> length,</a>
 <a class="sourceLine" id="cb4-3" title="3">                     <span class="dt">y =</span> rating))</a></code></pre></div>
