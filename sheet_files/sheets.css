@@ -172,15 +172,15 @@ kbd {
 }
 
 .nav-tabs > li > a:hover {
-    border-color: rgb(var(--font-col))88;
+    border-color: rgba(var(--font-col), .5);
 }
 
 .nav-tabs {
-	border-bottom-color: rgb(var(--font-col))88;
+	border-bottom-color: rgba(var(--font-col), .5);
 }
 
 hr {
-	border-top-color: rgb(var(--font-col))88;
+	border-top-color: rgba(var(--font-col), .5);
 }
 
 .caption {
@@ -460,12 +460,12 @@ iframe {
 }
 
 .table > thead {
-    border-top: 1px solid rgb(var(--font-col))aa;
-    border-bottom: 1px solid rgb(var(--font-col))aa;
+    border-top: 1px solid rgba(var(--font-col), .66);
+    border-bottom: 1px solid rgba(var(--font-col), .66);
 }
 
 .table > tbody {
-    border-bottom: 1px solid rgb(var(--font-col))aa;
+    border-bottom: 1px solid rgba(var(--font-col), .66);
 }
 
 .table > tbody > tr > td, .table > tbody > tr > th,
