@@ -189,7 +189,7 @@ hr {
 }
 
 details {
-	position: relative
+	position: relative;
     border: solid 1px rgb(var(--theme-col));
     display: inline-block;
     border-radius: 5px;
