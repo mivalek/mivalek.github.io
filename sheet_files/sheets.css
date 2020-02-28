@@ -189,6 +189,7 @@ hr {
 }
 
 details {
+	position: relative
     border: solid 1px rgb(var(--theme-col));
     display: inline-block;
     border-radius: 5px;
@@ -209,24 +210,23 @@ summary {
 	color: #fdfdfd;
 }
 
+
+details > summary::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
 .faq {
 	display: block;
 }
 
-.faq > summary::before {
-	content: "Q:";
-    font-weight: bold;
-}
-
 .faq > ans {
-    padding-left: 2.5em;
+    padding-left: 1.4em;
     display: block;
-}
-
-.faq > ans::before {
-	content: "A:";
-	font-weight: bold;
-	margin-left: -1.3em;
 }
 
 details[open] > summary {
