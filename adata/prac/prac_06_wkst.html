@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Analysing Data" />
 
 
-<title>Index of functions used in practicals</title>
+<title>Practical 6: Measures of Association</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -1273,6 +1274,98 @@ window.buildTabsets = function(tocID) {
 </script>
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -1483,801 +1576,1012 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Index of functions used in practicals</h1>
+<h1 class="title toc-ignore">Practical 6: Measures of Association</h1>
+<h4 class="author">Analysing Data</h4>
 
 </div>
 
 
 <style>
 :root {
---theme-col: 1, 48, 53;
---font-col: 1, 48, 53;
+--theme-col: 179, 142, 210;
 }
 </style>
-<p>Below is the idexed list of all the functions we have used in the practicals. It tells you which practicals make use of any given function. You can click on the number of the practical to open the worksheet and then search (<kbd>Ctrl</kbd> + <kbd>F</kbd> on Windows and <kbd>⌘ Command</kbd> + <kbd>F</kbd> on Mac OS) for the function to see how it is used.</p>
-<div id="a" class="section level3">
-<h3>A</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-add_header_above
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_05_wkst.html">05</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-aes
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-all
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-as.matrix
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-as.numeric
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-as_tibble
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
-</td>
-</tr>
-</tbody>
-</table>
+<p>This practical will help you practice preparing for, conducting, and reporting correlation and chi-squared analyses in R. Before you start this practical, you should make sure you review the relevant lecture, as this practical assumes you already know what these analyses are and how to interpret the output. You should also use this practical in combination with the tutorial on the same topic.</p>
+<div id="setting-up" class="section level1">
+<h1>Setting Up</h1>
+<p>For this practical, you will need this worksheet, RStudio, and a new Markdown document. At this point, you should have enough experience with Markdown to make your own document. Remember that you can easily switch between windows with the <kbd>Alt</kbd> + <kbd>↹ Tab</kbd> (Windows) and <kbd>⌘ Command</kbd> + <kbd>⇥ Tab</kbd> (Mac OS) shortcuts.</p>
+<p> </p>
+<div id="task-1" class="section level3">
+<h3>Task 1</h3>
+<p>Open your analysing_data <code>R</code> project in RStudio and create a new Markdown file. Since we will be practicing reporting using inline code, we will need Markdown later on. For the tasks, get into the habit of creating new code chunks as you go.</p>
+<p> </p>
+<p> </p>
 </div>
-<div id="c" class="section level3">
-<h3>C</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-c
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-chisq.test
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-class
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-cor.test
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>
-</td>
-</tr>
-</tbody>
-</table>
+<div id="task-2" class="section level3">
+<h3>Task 2</h3>
+<p>Aside from loading <code>tidyverse</code>, we will also be using <code>Hmisc</code>, <code>cowplot</code>, and <code>kableExtra</code>. If you don’t have any of these packages installed, do that now using <code>install.packages(&quot;package_name&quot;)</code>. <strong>Remember that installing packages is a one-off thing</strong> so don’t put the command that does it in your Markdown. Simply type it into the console and press <kbd>↵ Enter</kbd>. The <code>library()</code> commands should always go in a separate code chunk at the beginning of your Markdown document, so that your code will run correctly.</p>
+<p> </p>
 </div>
-<div id="e" class="section level3">
-<h3>E</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-everything
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>
-</td>
-</tr>
-</tbody>
-</table>
+<div id="data-and-design" class="section level3">
+<h3>Data and Design</h3>
+<p>As usual, we will need some data to work with. Since we put so much work into cleaning it previously, let’s use the harm dataset that we have seen previously, from <a href="https://journals.sagepub.com/doi/10.1177/0301006618809919">an actual paper by Swiderska and Küster (2018)</a>. You can find the data from the study at <a href="https://raw.githubusercontent.com/mivalek/AnD/master/data/harm_data.csv" class="uri">https://raw.githubusercontent.com/mivalek/AnD/master/data/harm_data.csv</a>. You will also need to copy and paste in the code that you wrote from Practical 3 to clean this dataset.</p>
+<p>The main idea in this study is that people attribute mental states to someone else to a higher degree if they also perceive them to be able to experience pain. The study created harmed and unharmed versions of human and robot avatars and showed them to participants in an independent-measures design (i.e. each participant only saw one of the four possible avatars). The participants were then asked to rate the avatars on a variety of mental awareness measures, such as consciousness and agency.</p>
+<p><strong>CONTENT WARNING - Facial injury</strong>: The design of this study involved showing participants pictures of photorealistic avatars, either human or robot. These avatars also were either unharmed, or had a facial wound resembling a burn. The images will not be replicated in this practical, but the original paper does contain these images on pg 5 of the linked PDF. This practical will only refer to the experimental manipulation, “harm”, in general terms.</p>
+<p> </p>
 </div>
-<div id="f" class="section level3">
-<h3>F</h3>
-<table class="table" style="width: auto !important; ">
+<div id="task-3" class="section level3">
+<h3>Task 3</h3>
+<p>Read in the data and write or copy (from the Week 3 practical) any code to clean it.</p>
+<p><strong>Hint</strong>: Copy and paste in code that saves something or makes a change to the dataset, ie uses the assignment operator <code>&lt;-</code>.</p>
+<p> </p>
+</div>
+</div>
+<div id="data-preparation" class="section level1">
+<h1>Data Preparation</h1>
+<p>As usual, before beginning any analysis, we will want to take a look at our data to make sure it’s clean and correct before we proceed. Since we’re using a dataset that we’ve cleaned already, we should be pretty happy with this, but let’s have a look again at these variables. The main reason is that you can run tests all day, but if you don’t know what the variables you are working with actually mean, that doesn’t do you much good!</p>
+<div id="codebook" class="section level2">
+<h2>Codebook</h2>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-Function
+Variable name
 </th>
 <th style="text-align:left;">
-Practical
+Type
+</th>
+<th style="text-align:left;">
+Description
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4in; ">
-facet_wrap
+<td style="text-align:left;">
+ID
 </td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
 factor
 </td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+Unique participant ID
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-fct_explicit_na
+<td style="text-align:left;">
+Condition
 </td>
 <td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>
+factor
+</td>
+<td style="text-align:left;">
+Experimental condition; combination of Humanness and Harm. 1 = Human_Harmed, 2 = Human_Unharmed, 3 = Robot_Harmed, 4 = Robot_Unharmed
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-filter
+<td style="text-align:left;">
+Humanness
 </td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+factor
+</td>
+<td style="text-align:left;">
+Avatar type: 1 = Human, 2 = Robot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Harm
+</td>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+Avatar state: 1 = Harmed, 2 = Unharmed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gender
+</td>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+Participant gender: 1 = Male, 2 = Female
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Participant age in years
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pain
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Does avatar have capacity to feel pain? 1 = Strongly disagree, 7 = Strongly agree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Experience
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Does avatar have experience? 1 = Strongly disagree, 7 = Strongly agree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agency
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Does avatar have agency? 1 = Strongly disagree, 7 = Strongly agree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Consciousness
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Does avatar have consciousness? 1 = Strongly disagree, 7 = Strongly agree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Empathy
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Level of empathy for avatar: Higher number means more empathy felt
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Attractiveness
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Attractiveness of avatar: Higher number means more attractive
 </td>
 </tr>
 </tbody>
 </table>
+<p> </p>
+<div id="task-4" class="section level3">
+<h3>Task 4</h3>
+<p>Use the codebook above to check each variable, and make sure you understand how each variable was measured and that your data is coded the same way</p>
+<p><strong>NOTE</strong>: A previous version of the codebook had reversed the labels for <code>Harm</code>. Check your code against the corrected codebook here and ensure your data is correctly coded in both the <code>Harm</code> and <code>Condition</code> variables. If you need to, edit the cleaning code above and read in/clean the dataset again.</p>
+<p> </p>
 </div>
-<div id="g" class="section level3">
-<h3>G</h3>
-<table class="table" style="width: auto !important; ">
+</div>
+</div>
+<div id="correlation" class="section level1">
+<h1>Correlation</h1>
+<p>The first of the two analyses we will practice today is bivariate correlation. At the end of our analysis, we want to be able to report the strength and direction of the relationship between any two variables using the correlation coefficient <em>r</em>, as well as the associated <em>p</em>-value.</p>
+<div id="graphing" class="section level2">
+<h2>Graphing</h2>
+<p>Once again, we should graph our data before we jump into running our analysis. Looking at summaries of numbers is good, but there’s no substitute for a good graph to help you understand your data.</p>
+<p> </p>
+<div id="task-5" class="section level3">
+<h3>Task 5</h3>
+<p>Use <code>select()</code> and <code>pivot_longer</code> along with <code>ggplot()</code> to make multiple histograms, one each for <code>Pain</code>, <code>Experience</code>, and <code>Agency</code>, as below.</p>
+<p><strong>Hint</strong>: See the tutorial for how to do this. If you’re not confident using <code>pivot_longer()</code>, you can also make these three histograms separately.</p>
+<p><img src="data:image/png;base64,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" width="480" style="display: block; margin: auto;" /></p>
+<p> </p>
+<div id="task-5.1" class="section level4">
+<h4>Task 5.1</h4>
+<p>Before you move on, stop and think about what the histograms are telling you about the distribution of each variable.</p>
+<!--solution
+We can see that these three variables are each distributed differently. `Agency` is the most symmetrical, so most people thought that the avatars had some agency; very few people thought that the avatars had little to no agency (small bars on the left side of the graph). For `Experience`, opinions were fairly evenly distributed, but with many people saying that the avatars had more experiences. Finally, `Pain` shows a very interesting distribution - most people said that the avatars were in considerable pain (the very tall bar on the right side of the graph). But we can also see that a good number of people said that the avatars weren't experiencing much pain. What happened?
+
+Remember that these are histograms for the whole study - that is, we haven't made separate histograms for different conditions. So, these histograms are showing us people who saw different robot/human and harmed/unharmed conditions all on the same graph. That means we might not be getting the real picture! We'll have to dig a bit deeper into this data to find out what's going on.
+-->
+<p>As we said above, we’re particularly interested in the relationship between <code>Pain</code> and <code>Experience</code>, and between <code>Pain</code> and <code>Agency</code>, in different conditions. Let’s have an overall look at the relationships between these variables with a correlation matrix.</p>
+</div>
+</div>
+</div>
+<div id="correlation-matrix-the-big-picture" class="section level2">
+<h2>Correlation Matrix: The Big Picture</h2>
+<p> </p>
+<div id="task-6" class="section level3">
+<h3>Task 6</h3>
+<p>Create a correlation matrix of <code>Pain</code>, <code>Experience</code>, and <code>Agency</code> using <code>rcorr()</code> and save it as <code>harm.cor</code>.</p>
+<p><strong>Hint</strong>: Don’t forget that you have to change your data into a matrix before you can pipe it into <code>rcorr()</code>. <a href="http://users.sussex.ac.uk/~jm636/tut_05_cor_chisq.html#correlation">Have a look at the tutorial</a> if you get stuck!</p>
+<p> </p>
+<div id="task-6.1" class="section level4">
+<h4>Task 6.1</h4>
+<p>Use <code>$</code> to get the matrix of correlation coefficients out of <code>harm.cor</code> and save it as <code>harm.cor.r</code>. Then, turn it into a nicely formatted table rounded to two decimal places, as below</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Correlation Matrix
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Function
 </th>
-<th style="text-align:left;">
-Practical
+<th style="text-align:right;">
+Pain
+</th>
+<th style="text-align:right;">
+Experience
+</th>
+<th style="text-align:right;">
+Agency
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4in; ">
-geom_bar
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_06_wkst.html">06</a>
+Pain
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+0.90
+</td>
+<td style="text-align:right;">
+0.72
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-geom_boxplot
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>
+Experience
+</td>
+<td style="text-align:right;">
+0.90
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+0.78
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-geom_histogram
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>
+Agency
 </td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-geom_point
+<td style="text-align:right;">
+0.72
 </td>
-<td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+<td style="text-align:right;">
+0.78
 </td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-ggplot
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-group_by
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+<td style="text-align:right;">
+1.00
 </td>
 </tr>
 </tbody>
 </table>
+<p> </p>
 </div>
-<div id="i" class="section level3">
-<h3>I</h3>
-<table class="table" style="width: auto !important; ">
+<div id="task-6.2" class="section level4">
+<h4>Task 6.2</h4>
+<p>Have a look at the correlations in the output. What is the strongest correlation? The weakest? Are they positive or negative? What does this mean? Write down your interpretation in your Markdown file.</p>
+<!--solution
+We can see that we get our three variables listed along both the top and sides of this matrix. Where two variables intersect, we can find the value of the correlation between them. Because this table is mirrored (ie has the same values) above and below the diagonal line, we only need to look at three different values of *r*.
+
+The highest correlation is between Pain and Experience (*r* = .90). This is an extremely strong correlation - almost a perfect one-to-one correspondence between these variables. The weakest correlation is between Pain and Agency (*r* = .72), although this is still quite a strong relationship. The correlation between Experience and Agency was in between (*r* = .78). All three are positive correlations, which means as any one of these variables increases (ie the participant gave higher ratings), the other variables also increased.
+-->
+<p> </p>
+</div>
+</div>
+<div id="task-7" class="section level3">
+<h3>Task 7</h3>
+<p>Create a nicely formatted table of the <em>p</em>-values for the same correlation matrix, rounding to three decimal places, as below.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Correlation <em>p</em>-values
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Function
 </th>
-<th style="text-align:left;">
-Practical
+<th style="text-align:right;">
+Pain
+</th>
+<th style="text-align:right;">
+Experience
+</th>
+<th style="text-align:right;">
+Agency
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4in; ">
-ifelse
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>
+Pain
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-is.na
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>
+Experience
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agency
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 </tbody>
 </table>
+<p> </p>
+<div id="task-7.1" class="section level4">
+<h4>Task 7.1</h4>
+<p>What do the values in this table mean? What do they tell you about the correlation coefficients from the previous table? Write down your interpretation in your Markdown file.</p>
+<!--solution
+This table is pretty unhelpful. Instead of getting *p*-values to three decimal places, we just have zeros. What happened?
+
+As we will see in a moment, this is because all three of the correlations between variables have a very very small *p*-value. So small, in fact, that when we ask for rounding to three decimal places, we get 0.000 - which R just simplifies to 0. However, remember that *p* is never actually 0, just very very small.
+
+In any case, the value of *p* for the correlations for all three pairs of is smaller than .001. We can conclude from this that it is very unlikely that would get correlations as strong as the ones we have found (or stronger), if the true value of each of these correlations was in fact 0. In other words, all three of these correlations are significant.
+-->
 </div>
-<div id="k" class="section level3">
-<h3>K</h3>
-<table class="table" style="width: auto !important; ">
+</div>
+</div>
+<div id="bivariate-correlations" class="section level2">
+<h2>Bivariate Correlations</h2>
+<p>We said above that we were particularly interested in the relationship between <code>Pain</code> and both <code>Experience</code> and <code>Agency</code>. Here we’re going to focus down even more and look at only <code>Pain</code> and <code>Experience</code>.</p>
+<p>As a reminder, in the original study the researchers showed each participant one avatar, which could have been one of four possibilities. First, the avatar could have been either a human or robot avatar (<code>Humanness</code>). Second, the avatar could have been either harmed or unharmed (<code>Harm</code>). So, there were four possible conditions, each representing one of the four possible combinations of <code>Humanness</code> and <code>Harm</code> - namely, <code>Human_Unharmed</code>, <code>Human_Harmed</code>, <code>Robot_Unharmed</code>, and <code>Robot_Harmed</code> [variable <code>Condition</code>]. The study hypothesised that participants would rate the avatars more highly on <code>Experience</code> - that is, whether the avatar had feelings, desires, etc. - if they were harmed. They also thought that participants would rate the avatars more highly on experience if they thought the avatars were experiencing more pain (<code>Pain</code>).</p>
+<p> </p>
+<div id="task-8" class="section level3">
+<h3>Task 8</h3>
+<p>Use <code>cor.test()</code> to calculate a correlation between <code>Pain</code> and <code>Experience</code> and save it as <code>pain_exp_corr</code>.</p>
+<p><strong>Hint</strong>: If you are having trouble using pipes, try <code>$</code> instead! See the tutorial for more details.</p>
+<p>When we run this function, the output is some reasonably easy to read information about the results of our test. We can see here that we have:</p>
+<ul>
+<li>The type of analysis we asked for (Pearson’s product-moment correlation) and the variables we used</li>
+<li>The value of <em>r</em> under “sample estimates: cor”</li>
+<li>The values of <em>t</em>, degrees of freedom, and <em>p</em></li>
+<li>The 95% confidence interval around <em>r</em></li>
+</ul>
+<p> </p>
+<div id="task-8.1" class="section level4">
+<h4>Task 8.1</h4>
+<p>Stop and look at the values that the output has given you. Based on what you have learned from the lecture, write down what you think this result means, and how you could interpret it.</p>
+<!--solution
+The values of *r* and *p* are the same here as in the correlation matrix above, so we can interpret them the same way. Namely, as participants perceived the avatar to be in more pain, they also rated them as having higher Experience. This was a very strong, positive, and significant relationship.
+
+We can also see that the confidence intervals around the estimated value of *r* are quite narrow. So, if this is one of the 95% of confidence interval that contain the true population value of *r*, then that value is somewhere between .86 and .93.
+-->
+<p> </p>
+</div>
+<div id="task-8.2" class="section level4">
+<h4>Task 8.2</h4>
+<p>Create a scatterplot of these two variables to help you understand the correlation. Does this change your interpretation at all?</p>
+<!--solution
+
+<img src="prac_06_wkst_temp_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" />
+We can see from this plot that this is a very strong correlation, with a clear positive trend upwards to the right. We might notice that the points are bunched up at the low and high ends of the plot. This indicates that there were a lot of participants who gave similar answers to both the Pain and Experience ratings - that is, if they rated a 7 on one, they tended to rate a 7 on the other, or if they rated 1 on one, they tended to rate 1 on the other. It's a bit strange to see people having such different perceptions - it could be that these ratings are coming from people in different conditions.
+-->
+<p> </p>
+</div>
+<div id="task-8.3" class="section level4">
+<h4>Task 8.3</h4>
+<p>Report the results of this correlation analysis and your interpretation in APA style, using inline reporting.</p>
+<!-- solution
+As usual, the following is an example; you should try writing this report in your own words.
+
+<pre><code>
+To investigate the relationship between ratings of pain and experience, we performed a correlation analysis on these two variables. The results showed that there was a very strong positive relationship between them (*r* = &#96;r pain_exp_corr$estimate %>% round(2)&#96;, 95% CI [&#96;r pain_exp_corr$conf.int[1] %>% round(2)&#96;, &#96;r pain_exp_corr$conf.int[2] %>% round(2)&#96;], *p* < .001). 
+</pre></code>
+
+This will be rendered in Markdown as:
+
+To investigate the relationship between ratings of pain and experience, we performed a correlation analysis on these two variables. The results showed that there was a very strong positive relationship between them (*r* = 0.9, 95% CI [0.86, 0.93], *p* < .001). 
+-->
+</div>
+</div>
+<div id="summary" class="section level3">
+<h3>Summary</h3>
+<p>If you’ve gotten this far and been able to successfully run and interpret the analyses and plots, then well done! You have a good grip on how to perform correlation analyses in R. However, we haven’t really answered the research question that we mentioned above: namely, does the relationship between Pain and Experience change depending on experimental condition? The next section will look into the data in more depth to understand this relationship, but this is <strong>optional</strong> if you would prefer to move on to chi-squared instead.</p>
+<div class="solText">
+<h2 id="challenge-task-interactions">Challenge Task: Interactions</h2>
+<p> </p>
+<h3 id="task-9">Task 9</h3>
+<p>This series of tasks will take a more in-depth look at the relationship between ratings of Pain and Experience in different experimental conditions.</p>
+<p>What we are really looking at here is called an <strong>interaction</strong>. An interaction is when the relationship between two variables changes depending on a third variable. Here, for instance, the relationship between <code>Pain</code> and <code>Experience</code> may change depending on what condition participants were in (that is, whether they were giving those ratings for a human or robot avatar, and whether that avatar was harmed or unharmed). This is a complex topic that we will return to in second year, when we will learn how to evaluate interactions statistically. You <strong>do not need to about interactions for this module</strong> or for any assessments on this module. However, read on if you’re interested in investigating the patterns in the data and practicing your analysis and interpretation skills.</p>
+<p> </p>
+<h4 id="task-9.1">Task 9.1</h4>
+<p>Create a scatterplot of <code>Pain</code> vs <code>Experience</code>, with different coloured dots depending on <code>Harm</code>, and with separate panels for <code>Humanness</code>. What does this tell you about the relationship between <code>Pain</code> and <code>Experience</code> in different conditions?</p>
+<p><strong>Hint</strong>: Have a look at the Week 4 Practical, task 5.</p>
+<!--solution
+<img src="prac_06_wkst_temp_files/figure-html/unnamed-chunk-11-1.png" width="480" style="display: block; margin: auto;" />
+This plot makes the same scatterplot we saw above, but now we know what condition each dot belongs to, which shows us some interesting patterns. We can see, as we expected, that there seems to be a positive correlation of `Pain` and `Experience` for both human and robot avatars (different panels). This means that overall, as we saw before, participants who thought the avatars were more able to feel pain also thought they had more overall experiences.
+
+However, look at the different colours of dots in the Human vs Robot panels, representing different levels of `Harm`. Let's start on the Human panel. The red dots, representing "harmed", all cluster quite tightly in the upper right. This tells us that the harmed human avatars were almost universally perceived to have the ability to feel pain, and also a strong ability to have other mental experiences. The blue dots, representing "unharmed", are much more spread out, indicating that both the ability to feel pain and to have other mental experiences were not as strong for unharmed human avatars.
+
+Now we can compare this pattern to how participants responded for robot avatars (right panel). For both harmed and unharmed avatars, the dots show a much more scattered pattern than for human avatars, with more ratings in the bottom left corner of the plot (indicating lower ratings on both the `Pain` and `Experience` scales). For unharmed robot avatars particularly, many participants seemed to rate both ability to feel pain and to experience other mental states very low, producing the cluster of blue dots in the bottom left of the plot. This is noticeably different to the way they responded when the robot avatar was harmed (red dots). In this case, the ratings on both scales tended to be higher; but not as high as they were for the human avatar.
+-->
+<p>Overall it seems that there were different patterns of responses in all four combinations of conditions. Let’s look into this further.</p>
+<p> </p>
+<h4 id="task-9.2">Task 9.2</h4>
+<p>Run correlation analyses for <code>Pain</code> vs <code>Experience</code> separately for each of the four levels of <code>Condition</code>. How do the correlation coefficients (i.e. values of <em>r</em>) differ in each of the four combinations of condtions? What does can you conclude from this?</p>
+<p><strong>Hint</strong>: Running these analyses will require some problem-solving, and there are a few different ways you could tackle this problem. If you get stuck, try looking at the <code>formula</code> options in the help documentation for <code>cor.test()</code>.</p>
+<!--solution
+You can run the four analyses in a few different ways. The first is not very tidyverse, but it'll work, namely: creating four new datasets, each with only one value of `Condition`:
+
+
+```r
+data.cond1 <- data %>% 
+  filter(Condition == "Human_Harmed")
+data.cond2 <- data %>% 
+  filter(Condition == "Human_Unharmed")
+data.cond3 <- data %>% 
+  filter(Condition == "Robot_Harmed")
+data.cond4 <- data %>% 
+  filter(Condition == "Robot_Unharmed")
+
+cor.test(data.cond1$Pain, data.cond1$Experience, alternative = "two.sided", method = "pearson")
+cor.test(data.cond2$Pain, data.cond2$Experience, alternative = "two.sided", method = "pearson")
+cor.test(data.cond3$Pain, data.cond3$Experience, alternative = "two.sided", method = "pearson")
+cor.test(data.cond4$Pain, data.cond4$Experience, alternative = "two.sided", method = "pearson")
+```
+
+This works but it's tedious and not very obvious what we're doing, if we come back to this code later. (It would be a good idea, as usual, to comment in your code so that you can remember what you were doing!) However, the following command using a pipe doesn't work, as we've seen before:
+
+
+```r
+data %>% 
+  filter(Condition == "Human_Unharmed") %>% 
+  cor.test(Pain, Experience, alternative = "two.sided", method = "pearson")
+```
+
+So, is there simpler and more tidyverse way to do this?
+
+It turns out, there is! If you looked at the help documentation for `cor.test()`, you will see that besides the `x`, `y` method of putting data into the function, there's also a `formula` method. The formula comes up in `t.test()` and `lm()` as well, so this is a good chance to use it! The thing that's different about the formula method is that it has an argument where you can tell R which data to use - which means, you can pipe a dataset in. In the help documentation, we can see that the formula we need to use is `~ u + v`, where `u` and `v` are the two variables we want to correlate. Let's try it:
+
+
+```
+
+    Pearson's product-moment correlation
+
+data:  Pain and Experience
+t = 5.1042, df = 33, p-value = 1.357e-05
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4250471 0.8166872
+sample estimates:
+      cor 
+0.6642112 
+
+    Pearson's product-moment correlation
+
+data:  Pain and Experience
+t = 9.5558, df = 28, p-value = 2.599e-10
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.7513718 0.9391136
+sample estimates:
+      cor 
+0.8748284 
+
+    Pearson's product-moment correlation
+
+data:  Pain and Experience
+t = 5.5945, df = 24, p-value = 9.307e-06
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.5150757 0.8825037
+sample estimates:
+      cor 
+0.7523267 
+
+    Pearson's product-moment correlation
+
+data:  Pain and Experience
+t = 12.751, df = 39, p-value = 1.724e-15
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.8158324 0.9447083
+sample estimates:
+      cor 
+0.8980741 
+```
+
+Note the dot `.`, which is where we told R to pipe in the dataset. This is still a bit repetitive, but it will do for now!
+
+Finally, let's have a look at our results. We can see that indeed, the values of *r* are different in each of the four combinations of condition. For people who rated harmed human avatars, the correlation between pain and experience was 0.66, whereas for unharmed human avatars it was 0.87. This is quite a difference, and tells us that the relationship between pain and experience was stronger for unharmed avatars. For comparison, for harmed robot avatars, the correlation between pain and experience was 0.75, whereas for unharmed robot avatars it was 0.9! So, it seems that for both human and robot avatars, the relationship between pain and experience is stronger in the unharmed rather than harmed condition. This could be because people react differently to harm - some ascribing stronger and others less strong mental states.
+
+Our next step might be to find out whether the mean ratings differed in these conditions...but we'll come back to that next week. There are also more complex analyses we could do with these kinds of designs, but that's a problem for next year! If you are very keen on this sort of thing, you can do the entire analysis again, but for Agency instead of Experience. For now, if you gave this a bash - even if you weren't entirely successful - well done. This is quite a complex way of thinking about data, but it also allows us to ask (and answer) more interesting questions about the way people perceive, think, and behave.
+-->
+</div>
+</div>
+</div>
+</div>
+<div id="chi-squared" class="section level1">
+<h1>Chi-Squared</h1>
+<p>Our second test of association is the chi-squared test. Unlike <em>r</em>, we will use chi-squared on frequency data to find out whether two categorical variables are independent of each other or not.</p>
+<div id="data-preparation-1" class="section level2">
+<h2>Data Preparation</h2>
+<p>We have the same problem here that we had in the tutorial. Specifically, we need to perform a chi-squared test on categorical data. Here we have five categorical variables, but it’s pointless to perform a chi-squared analysis on any of them. So, we’ll need to create a categorical variable, as we did in the tutorial, before we can practice with the chi-squared analysis.</p>
+<p> </p>
+<div id="task-10" class="section level3">
+<h3>Task 10</h3>
+<p>Why is it that there’s no point in analysing our existing categorical variables with chi-squared? Look at the variables we have and think about what the analysis would tell us.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Harm Dataset Codebook
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Function
+Variable name
 </th>
 <th style="text-align:left;">
-Practical
+Type
+</th>
+<th style="text-align:left;">
+Description
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4in; ">
-kable
+<td style="text-align:left;">
+ID
 </td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+factor
+</td>
+<td style="text-align:left;">
+Unique participant ID
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-kable_styling
+<td style="text-align:left;">
+Condition
 </td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+factor
+</td>
+<td style="text-align:left;">
+Experimental condition; combination of Humanness and Harm. 1 = Human_Harmed, 2 = Human_Unharmed, 3 = Robot_Harmed, 4 = Robot_Unharmed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Humanness
+</td>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+Avatar type: 1 = Human, 2 = Robot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Harm
+</td>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+Avatar state: 1 = Harmed, 2 = Unharmed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gender
+</td>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+Participant gender: 1 = Male, 2 = Female
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Participant age in years
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pain
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Does avatar have capacity to feel pain? 1 = Strongly disagree, 7 = Strongly agree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Experience
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Does avatar have experience? 1 = Strongly disagree, 7 = Strongly agree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Agency
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Does avatar have agency? 1 = Strongly disagree, 7 = Strongly agree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Consciousness
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Does avatar have consciousness? 1 = Strongly disagree, 7 = Strongly agree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Empathy
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Level of empathy for avatar: Higher number means more empathy felt
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Attractiveness
+</td>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+Attractiveness of avatar: Higher number means more attractive
 </td>
 </tr>
 </tbody>
 </table>
+<!--solution
+Referring to the codebook, the five categorical variables we have are `ID`, `Condition`, `Humanness`, `Harm`, and `Gender`. ID is not really a variable - it's just a unique identifier for each participant. `Condition` is just a combination of `Humanness` and `Harm`, and therefore has four levels - we have only learned this far about chi-squared with two categories, but in any case this variable is redundant if we have `Humanness` and `Harm` already. We could look at a chi-squared analysis between `Gender` and `Humanness`, or `Gender` and `Harm`, but this would only tell us whether the researchers allocated equal numbers of male and female participants to their experimental conditions.
+
+In short, the primary problem here is that all of the categorical variables are **predictors**, and none of them are **outcomes**. So, performing a chi-squared analysis using them won't tell us anything interesting about our research question.
+-->
+<p>The issue is that all of the outcome variables in our dataset - <code>Pain</code>, <code>Experience</code>, <code>Agency</code>, and <code>Consciousness</code>, <code>Empathy</code>, and <code>Attractiveness</code> - are all continuous rather than categorical variables. However, we saw in the tutorial that we can create a categorical variable out of a continous variable. We’ll do this again here using a <strong>median split</strong>, which simply means that we find the middle value in a variable and split the variable in half. Values below the median go in one category (e.g. “low”), and values above the median go in another (e.g. “high”). Since we haven’t looked at it much, we’ll do this with <code>Consciousness</code>.</p>
+<p> </p>
 </div>
-<div id="l" class="section level3">
-<h3>L</h3>
-<table class="table" style="width: auto !important; ">
+<div id="task-11" class="section level3">
+<h3>Task 11</h3>
+<p>Run the following code to create a new factor variable, <code>Conc_med</code>, out of the <code>Consciousness</code> variable, and ask for a summary to have a look at it. The general format of the code should look familiar to you.</p>
+<p>See the “What For?” box in the tutorial for more on <code>ifelse()</code> if you’re interested in how this code works. Don’t worry if you don’t understand it completely; you just need to understand that the new variable contains a new factor called <code>Conc_med</code>, which captures whether participants gave low or high ratings for avatar consciousness.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Conc_med =</span> <span class="kw">ifelse</span>(Consciousness <span class="op">&lt;</span><span class="st"> </span><span class="kw">median</span>(Consciousness), <span class="st">&quot;Low&quot;</span>, <span class="st">&quot;High&quot;</span>),</span>
+<span id="cb1-3"><a href="#cb1-3"></a>         <span class="dt">Conc_med =</span> <span class="kw">factor</span>(Conc_med))</span></code></pre></div>
+<div class="warn">
+<h3 id="median-splits">Median Splits</h3>
+<p>Changing the way a variable is measured, as we have done with <code>Consciousness</code>, above, is not an uncommon practice, but it should be done carefully and thoughtfully. In some cases, splitting at the median (as we have done) is the most sensible option; in other cases, you may want to split at the mean, or at the quartiles. Which you do depends on understanding very clearly what question you asked your participants and what your data means before you do it.</p>
+<p>Although the median split is a simple mathematical operation, you should consider carefully whether this is a good idea, including the following points:</p>
+<ol style="list-style-type: decimal">
+<li>When you change data from continuous to categorical in this way, you lose detail. For example, in this case, because the median was 4.5, everyone who gave a rating below this was categorised as giving as “low” rating for the consciousness of the avatar. So if Participant gave a 4 but Participant B gave a 1, this distinction was lost.</li>
+<li>People who gave more similar ratings could be in different categories. For example, if Participant A rated consciousness as a 4, they were put in the same category as Participant B who rated 1, but a <strong>different</strong> category from Participant C, who rated 5. So, Participants A (low) and C (high) actually rated consciousness more similarly than A and B did.</li>
+<li>Is it really a good idea to analyse data that your participants haven’t actually given you? That is, you can’t be sure whether, if you had actually asked your participants, “Would you say that this avatar has a high or low level of consciousness?” they would respond the same way as your median split has categorised them.</li>
+</ol>
+<p>Altogether, it’s generally best practice to analyse the data you actually collected. However, you will see median splits reported in papers, and it’s useful for us here to practice chi-squared specifically, so we’ll make use of it, cautiously.</p>
+</div>
+<p> </p>
+<p>Before we move on, we should get some summaries of our data to help us get an idea of what’s going on.</p>
+<p> </p>
+</div>
+<div id="task-12" class="section level3">
+<h3>Task 12</h3>
+<p>Create contingency (frequency) tables of <code>Conc_med</code>, split up by <code>Humanness</code>, and split up by <code>Harm</code>. Save them into new objects, e.g. <code>conc_human_tab</code> and <code>conc_harm_tab</code>. Then, create nicely formatted versions of each using <code>kable</code>.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Consciousness by Avatar Humanness
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Function
 </th>
-<th style="text-align:left;">
-Practical
+<th style="text-align:right;">
+Human
+</th>
+<th style="text-align:right;">
+Robot
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4in; ">
-labs
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+High
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+18
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-levels
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>
+Low
 </td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-library
+<td style="text-align:right;">
+17
 </td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-lm
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_07_wkst.html">07</a>
+<td style="text-align:right;">
+49
 </td>
 </tr>
 </tbody>
 </table>
-</div>
-<div id="m" class="section level3">
-<h3>M</h3>
-<table class="table" style="width: auto !important; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Consciousness by Avatar Harm
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Function
 </th>
-<th style="text-align:left;">
-Practical
+<th style="text-align:right;">
+Harmed
+</th>
+<th style="text-align:right;">
+Unharmed
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4in; ">
-max
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>
+High
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+29
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-mean
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_07_wkst.html">07</a>
+Low
 </td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-median
+<td style="text-align:right;">
+24
 </td>
-<td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-min
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-modify
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-mutate
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+<td style="text-align:right;">
+42
 </td>
 </tr>
 </tbody>
 </table>
+<!--solution
+Both these tables give us some interesting information. Unsurprisingly, it looks like participants gave higher ratings of consciousness to humans than to robots. Also, as the original paper had hypothesized, when avatars were harmed, they were more likely to have higher levels of consciousness attributed to them. 
+-->
 </div>
-<div id="n" class="section level3">
-<h3>N</h3>
-<table class="table" style="width: auto !important; ">
+</div>
+<div id="graphing-1" class="section level2">
+<h2>Graphing</h2>
+<p>As in the tutorial, it’s a good idea to visualise your data besides just looking at the numbers. (It’s also good practice for your lab report!).</p>
+<p> </p>
+<div id="task-13" class="section level3">
+<h3>Task 13</h3>
+<p>Create two bar graphs representing the counts in the two tables above (ie <code>Conc_med</code> vs <code>Humanness</code> and <code>Conc_med</code> vs <code>Harm</code>).</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>In <code>aes()</code>, use <code>fill = variable_name</code> to split up the bars on the x-axis by that variable</li>
+<li>In your geom function, use <code>position = &quot;dodge&quot;</code> to put the bars side by side
+<ul>
+<li>You can also try leaving this out to see what happens!</li>
+</ul></li>
+<li>Use <code>labs()</code> to rename the labels informatively.</li>
+<li>Use <code>scale_fill_manual(name = &quot;...&quot;, values = c(...))</code> to change the legend title and the colours of the bars.</li>
+<li>Use a nice theme (hint: cows are very stylish!)</li>
+</ul>
+<p><img src="data:image/png;base64,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" width="480" style="display: block; margin: auto;" /><img src="data:image/png;base64,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LZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SfAn85emdn/f/un5zliSrx+872kRgQoMfPAm8e53UBL5M9c1Yfd3eJgITGvzgR+DdOqkJvE0qXrW2icCEBj94ETg9/9YE/vI0Se6lV88fL+pW19tEYEKDH3wI/MFdMVeubpLk/lX2IvP6vK1NBCY0+EEu8HV6ok0eX1QCp9quvs9ffjorVD5qE4EJDX6QC5yecFcva51Y6RV0aW3N5YM2EZjQ4AcPAq+eXNV7obdJ8qB8b93ajYXAhAZPyAX+nJ1uDwWuvvhuEPikWjYZGiT4vw9cl7Yu883+5hICExr8gMCaatlkaJCwoMD7NhGY0OAHBNZUyyZDgwQE1lTLJkODBP8C0ws9vZZNhgYJswjMfeCJtWwyNEjwLzAjsabXssnQIMG/wIyFnl7LJkODhBkm9DMbaXItmwwNEmYQ2M0Hfsd84Am1bDI0SJhjSR1W5JhayyZDg4RZ1sT6hTWxptWyydAgYRaBWZVyYi2bDA0SWBdaUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEKy5uEYAAAqbSURBVFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0SEFhTLZsMDRIQWFMtmwwNEhBYUy2bDA0S5hH4+s1Zkqwev+9oE4EJDX6YReDLVN+M1dftbSIwocEPcwi8TSpetbaJwIQGP8wg8JenSXIvvXr+eJEkd35uaxOBCQ1+mEHgTZLcv8pe7F4nyXlbmwhMaPCDf4FTbVff5y8/nRUqH7WJwIQGP/gXOL2CLq2tuXzQJgITGvzgX+BtkjwoX69bu7EQmNDgiVkErr74bhD4pFo2GRok+Be4Lm1d5pv9zSUEJjT4Qa3AADDMggLv20RgAD8gMEDAIDBAwKjthQaAYdTeBwaAYdSOxAKAYdSOhQaA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" width="480" style="display: block; margin: auto;" /> <!--solution
+We can now clearly see the pattern that the counts were telling us earlier. The result for Humanness is particularly striking - almost a perfectly opposite pattern for humans vs robots. Again, though, this isn't particularly surprising, since what we're measuring with `Conc_med` is whether participants thought that the avatar had high or low levels of consciousness. 
+
+The pattern for harm is similar, although less strongly divided. In general (remember, we're looking at both humans and robots together), harmed avatars were percieved to have higher levels of consciousness than unharmed avatars. 
+--></p>
+</div>
+</div>
+<div id="analysis-with-chisq.test" class="section level2">
+<h2>Analysis with <code>chisq.test()</code></h2>
+<p>Now that we know what the general pattern of the data looks like, we can run our statistical analysis to find out whether the counts in different categories are different enough to believe that there may be an association between them.</p>
+<p> </p>
+<div id="task-14" class="section level3">
+<h3>Task 14</h3>
+<p>Use the contingency tables you created above to run two chi-squared tests and save the output for each in a new object.</p>
+<p>As we might have suspected from the graph, our results show that it’s very unlikely that the pattern of an avatar’s perceived consciousness (high vs low) is independent from its humanness or level of harm.</p>
+<p> </p>
+<div id="task-14.1" class="section level4">
+<h4>Task 14.1</h4>
+<p>Use subsetting to get a table of expected frequencies and format it nicely for both analyses. Have we met the assumptions for the chi-squared test?</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Expected Frequencies
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Function
 </th>
-<th style="text-align:left;">
-Practical
+<th style="text-align:right;">
+Harmed
+</th>
+<th style="text-align:right;">
+Unharmed
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4in; ">
-n
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>
+High
+</td>
+<td style="text-align:right;">
+30.5
+</td>
+<td style="text-align:right;">
+35.5
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-na_if
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_05_wkst.html">05</a>
+Low
 </td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-names
+<td style="text-align:right;">
+30.5
 </td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-nrow
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
+<td style="text-align:right;">
+35.5
 </td>
 </tr>
 </tbody>
 </table>
-</div>
-<div id="p" class="section level3">
-<h3>P</h3>
-<table class="table" style="width: auto !important; ">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Expected Frequencies
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
-Function
 </th>
-<th style="text-align:left;">
-Practical
+<th style="text-align:right;">
+Human
+</th>
+<th style="text-align:right;">
+Robot
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 4in; ">
-pivot_longer
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>
+High
+</td>
+<td style="text-align:right;">
+32.5
+</td>
+<td style="text-align:right;">
+33.5
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 4in; ">
-plot_grid
-</td>
 <td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>
+Low
 </td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-pull
+<td style="text-align:right;">
+32.5
 </td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_07_wkst.html">07</a>
+<td style="text-align:right;">
+33.5
 </td>
 </tr>
 </tbody>
 </table>
+<p>To complete our analysis, we need to report our results properly. This not only means writing down our interpretation, but also formally reporting the results of our analysis. As we’ve said before, it’s very useful to do this using inline code.</p>
+<p> </p>
 </div>
-<div id="q" class="section level3">
-<h3>Q</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-quantile
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>
-</td>
-</tr>
-</tbody>
-</table>
+<div id="task-14.2" class="section level4">
+<h4>Task 14.2</h4>
+<p>Report the results of both chi-squared analyses using inline code. Refer to the tutorial for examples of phrasing and inline code, but try writing the text yourself.</p>
+<p><strong>Hint</strong>: You can use <code>str()</code> to remind yourself of what’s stored in the output.</p>
+<!--solution
+<pre><code>
+We performed two chi-squared analyses to investigate whether rating of consciousness (high vs low) was associated with either humanness are harm. First, there was a significant association between humanness and consciousness, *&chi;*^2^(&#96;r conc_human_chisq$parameter&#96;) = &#96;r conc_human_chisq$statistic %>% round(2)&#96;, *p* < .001. There was also a significant association between harm and consciousnessness, *&chi;*^2^(&#96;r conc_harm_chisq$parameter&#96;) = &#96;r conc_harm_chisq$statistic %>% round(2)&#96;, *p* = &#96;r conc_harm_chisq$p.value %>% round(3)&#96;.
+</code></pre>
+
+Which should appear in Markdown as:
+
+We performed two chi-squared analyses to investigate whether rating of consciousness (high vs low) was associated with either humanness are harm. First, there was a significant association between humanness and consciousness, *&chi;*^2^(1) = 27.28, *p* < .001. There was also a significant association between harm and consciousnessness, *&chi;*^2^(1) = 4.39, *p* = .036.
+-->
+<p> </p>
 </div>
-<div id="r" class="section level3">
-<h3>R</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-rcorr
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-read_csv
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-recode
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-rep
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-rnorm
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-rowSums
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>
-</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="s" class="section level3">
-<h3>S</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-scale_fill_manual
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-sd
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-select
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_06_wkst.html">06</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-stat_summary
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-str
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-summarise
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_05_wkst.html">05</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-summary
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="t" class="section level3">
-<h3>T</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-t.test
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-table
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_06_wkst.html">06</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-theme_bw
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-theme_cowplot
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>, <a href="prac/prac_06_wkst.html">06</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-theme_grey
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-theme_set
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_04_wkst.html">04</a>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 4in; ">
-tibble
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_01_wkst.html">01</a>, <a href="prac/prac_03_wkst.html">03</a>, <a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-</tbody>
-</table>
 </div>
-<div id="y" class="section level3">
-<h3>Y</h3>
-<table class="table" style="width: auto !important; ">
-<thead>
-<tr>
-<th style="text-align:left;">
-Function
-</th>
-<th style="text-align:left;">
-Practical
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;width: 4in; ">
-ylim
-</td>
-<td style="text-align:left;">
-<a href="prac/prac_07_wkst.html">07</a>
-</td>
-</tr>
-</tbody>
-</table>
+<div id="summary-1" class="section level1">
+<h1>Summary</h1>
+<p>Well done! You are making excellent progress with your analysis skills in R. You can use this practical and the accompanying tutorial as a template for the analysis you should do and report in your lab report, if you are writing about the green study. If you are writing about the red study, you should instead use next week’s tutorial and practical, covering <em>t</em>-tests</p>
+<p>In sum, we’ve practiced the following tasks:</p>
+<ul>
+<li>How to prepare and visualise data for correlation and chi-squared analyses</li>
+<li>How to run these analyses, read the output, and store them as <code>htest</code> objects</li>
+<li>How to use the subsetting operator <code>$</code> to easily report results</li>
+<li>How to interpret the statistical results of these tests in real-world terms</li>
+</ul>
+<p> </p>
+<p><font size="+3"><strong>Good job!</strong></font></p>
+<p>That’s all for today. See you soon!</p>
+<p> </p>
+<p> </p>
+<p> </p>
 </div>
 
 
@@ -2874,7 +3178,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2,h3",
+      selectors: "h1,h2",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
