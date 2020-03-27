@@ -238,6 +238,10 @@ p {
   max-width: 95%;
   max-height: 95%; }
 
+.plot_ly {
+    text-align: center;
+}
+
 .plot_ly iframe {
     width:90%;
     height:576px;
