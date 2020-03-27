@@ -199,6 +199,7 @@ details {
 }
 
 details[open] {
+details[open] {
 	width: 100%;
     background-color: rgba(var(--theme-col), .3);
 }
@@ -236,6 +237,14 @@ details[open] > summary {
 
 details > .sourceCode {
 	margin-top: 0;
+}
+
+details > a {
+    position: relative;
+}
+
+details > a:hover {
+    background-color: #0000;
 }
 
 details > .pagedtable-wrapper,
@@ -385,6 +394,11 @@ iframe {
     height: 300px;
     margin-top: -1.9em;
     margin-bottom: 2em;
+}
+
+.plot_ly iframe {
+    width:90%;
+    height:576px;
 }
 
 .iframe::before {

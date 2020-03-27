@@ -238,6 +238,11 @@ p {
   max-width: 95%;
   max-height: 95%; }
 
+.plot_ly iframe {
+    width:90%;
+    height:576px;
+}
+
 .reveal strong,
 .reveal b {
   color: var(--theme-col)
