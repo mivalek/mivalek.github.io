@@ -398,7 +398,7 @@ iframe {
 
 .plot_ly iframe {
     width:90%;
-    height:576px;
+    height:700px;
 }
 
 .iframe::before {
