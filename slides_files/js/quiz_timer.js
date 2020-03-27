@@ -14,6 +14,8 @@ function quizTimer(mins){
   var t = deadline - now;
   var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((t % (1000 * 60)) / 1000);
+  var div = document.createElement('div')
+  div.className = "lastMin";
   document.getElementById("timer").innerHTML = minutes + ":" + seconds.pad(2);
       if (t < 60000) {
           document.getElementById("timer").classList.add("lastMin");
@@ -22,6 +24,7 @@ function quizTimer(mins){
           clearInterval(x);
           document.getElementById("timer").classList.add("timeout");
 		  document.getElementById("timer").innerHTML = "Submit your answers!";
+		  
       }
   }, 1000);
 }
