@@ -122,10 +122,6 @@ code {
 	padding-right: 0px
 }
 
-code.sourceCode {
-	white-space: break-spaces;
-}
-
 pre.sourceCode {
 	background-color: #fff;
 	overflow-x: auto;
