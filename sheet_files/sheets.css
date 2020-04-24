@@ -97,6 +97,10 @@ a {
 	color: #4674ff;
 }
 
+a:focus {
+	outline: none;
+}
+
 .date a {
     color: #fdfdfd;
 }
@@ -208,6 +212,7 @@ summary {
 	cursor: pointer;
 	outline: 0;
 	color: #fdfdfd;
+	position: initial;
 }
 
 
@@ -229,6 +234,9 @@ details > summary::before {
     display: block;
 }
 
+.faq > ans > a {
+    position: relative;
+}
 details[open] > summary {
     padding-bottom: 1em;
 	color: rgb(var(--font-col));
@@ -302,7 +310,7 @@ details > .pagedtable-wrapper,
 	margin-bottom: 5px;
 }
 
-.solText a:hover, .why a:hover, .writeUp a:hover {
+.solText a:hover, .why a:hover, .writeUp a:hover, .faq > ans > a:hover {
     background-color: transparent;
 }
 
