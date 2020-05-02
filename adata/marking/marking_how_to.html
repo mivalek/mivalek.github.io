@@ -1771,8 +1771,7 @@ Donec egestas mi vitae congue bibendum. Sed purus mi, luctus id malesuada eu, vi
 <p>The only thing you need to edit in the script before your run it is the bit towards the beginning (but see below for edits for calibration marking):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
-<a class="sourceLine" id="cb5-3" title="3">marking_path &lt;-<span class="st"> &quot;C:/work/OneDrive - University of Sussex/marking/AnD/2019-20/Milan&quot;</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#############################################################################</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-3" title="3">marking_path &lt;-<span class="st"> &quot;C:/work/OneDrive - University of Sussex/marking/AnD/2019-20/Milan&quot;</span></a></code></pre></div>
 <p>The path should point to the synced OneDrive folder containing the commented .Rmd files. The files should not be in separate subfolders.</p>
 <p>Once you’ve made these two edits, you can run the code, sit back and watch it do its thing. Or better still, go get a cuppa; with 50+ reports per marker, this can take a while.</p>
 <div class="solText">
@@ -1783,10 +1782,15 @@ Calibration marking
 <p>However, because of these differences, you need to slightly change the way you edit the file in two ways:</p>
 <ol style="list-style-type: decimal">
 <li><code>marking_path</code> should point to the folder to which you saved the .Rmd files.</li>
-<li>You need to edit the path to the marking spreadsheet (line 25), changing it from the Google sheet URL and pointing it to the CSV file you were sent. Comment out the first of the two commands and uncomment and edit the second:</li>
+<li>You need to edit the path to the marking spreadsheet, changing it from the Google sheet URL and pointing it to the CSV file you were sent. Comment out the first of the two commands and uncomment and edit the second:</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># marks &lt;- read.csv(&quot;https://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=19CXCZk28CQzX4MzQ86a5U-ijYQvP47x0mfX7pQk6KKo&amp;exportFormat=csv&quot;, stringsAsFactors = F)</span></a>
-<a class="sourceLine" id="cb6-2" title="2">marks &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;path/to/csv/file.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> F)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
+<a class="sourceLine" id="cb6-3" title="3">marking_path &lt;-<span class="st"> &quot;path/to/where/you/saved/the/calibration/files&quot;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co"># marks &lt;- read.csv(&quot;https://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=19CXCZk28CQzX4MzQ86a5U-ijYQvP47x0mfX7pQk6KKo&amp;exportFormat=csv&quot;, stringsAsFactors = F)</span></a>
+<a class="sourceLine" id="cb6-6" title="6">marks &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;path/to/csv/file.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> F)</a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#############################################################################</span></a></code></pre></div>
 <p>After that, you can simply run the script.</p>
 <p><strong>DO NOT FORGET to change it back once you are done, uncommenting the line with the Google sheet path and commenting out the local one!</strong></p>
 </div>
