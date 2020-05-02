@@ -1768,13 +1768,28 @@ Donec egestas mi vitae congue bibendum. Sed purus mi, luctus id malesuada eu, vi
 <div id="knitting-marked-.rmd-files" class="section level2">
 <h2>Knitting marked .Rmd files</h2>
 <p>Once you have commented all .Rmd files and entered all the partial and total grades in the marking spreadsheet, the module convenor will arrange moderation. Once the marks have been moderated and any necessary changes to marks have been made, you will need to knit the files to produce the augmented HTML documents. The code for this will have been shared with you (marking_script.R).</p>
-<p>The only thing you need to edit in the script before your run it is the bit towards the beginning:</p>
+<p>The only thing you need to edit in the script before your run it is the bit towards the beginning (but see below for edits for calibration marking):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
 <a class="sourceLine" id="cb5-3" title="3">marking_path &lt;-<span class="st"> &quot;C:/work/OneDrive - University of Sussex/marking/AnD/2019-20/Milan&quot;</span></a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="co">#############################################################################</span></a></code></pre></div>
 <p>The path should point to the synced OneDrive folder containing the commented .Rmd files. The files should not be in separate subfolders.</p>
 <p>Once you’ve made these two edits, you can run the code, sit back and watch it do its thing. Or better still, go get a cuppa; with 50+ reports per marker, this can take a while.</p>
+<div class="solText">
+<title>
+Calibration marking
+</title>
+<p>Before actual marking starts, you will receive a small number of selected reports to mark for the purpose of calibration. All markers receive the same reports and mark them independently form one another. Because of this, the .Rmd files are not shared via OneDrive and there is no master marking spreadsheet. Instead, you will be emailed the calibration sample and a CSV file into which you enter marks. Please save these into a single folder on your computer. When you have finished marking the claibration sample, you can use the same marking_script.R file to knit the reports to HTML.</p>
+<p>However, because of these differences, you need to slightly change the way you edit the file in two ways:</p>
+<ol style="list-style-type: decimal">
+<li><code>marking_path</code> should point to the folder to which you saved the .Rmd files.</li>
+<li>You need to edit the path to the marking spreadsheet (line 25), changing it from the Google sheet URL and pointing it to the CSV file you were sent. Comment out the first of the two commands and uncomment and edit the second:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># marks &lt;- read.csv(&quot;https://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=19CXCZk28CQzX4MzQ86a5U-ijYQvP47x0mfX7pQk6KKo&amp;exportFormat=csv&quot;, stringsAsFactors = F)</span></a>
+<a class="sourceLine" id="cb6-2" title="2">marks &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;path/to/csv/file.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> F)</a></code></pre></div>
+<p>After that, you can simply run the script.</p>
+<p><strong>DO NOT FORGET to change it back once you are done, uncommenting the line with the Google sheet path and commenting out the local one!</strong></p>
+</div>
 <p> </p>
 </div>
 <div id="uploading-marked-html-files" class="section level2">
@@ -1785,12 +1800,12 @@ Donec egestas mi vitae congue bibendum. Sed purus mi, luctus id malesuada eu, vi
 <li>Change the path to point it to the folder with the knitted HTML files.</li>
 <li>Insert your <a href="#get-access-token">Canvas access token</a> inside the &quot;s.</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
-<a class="sourceLine" id="cb6-3" title="3">fpath &lt;-<span class="st"> &quot;marking/AnD/2019-20&quot;</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="co"># insert your Canvas token</span></a>
-<a class="sourceLine" id="cb6-5" title="5">canvas_token &lt;-<span class="st"> &quot;&quot;</span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="co">#############################################################################</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
+<a class="sourceLine" id="cb7-3" title="3">fpath &lt;-<span class="st"> &quot;marking/AnD/2019-20&quot;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co"># insert your Canvas token</span></a>
+<a class="sourceLine" id="cb7-5" title="5">canvas_token &lt;-<span class="st"> &quot;&quot;</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">#############################################################################</span></a></code></pre></div>
 <p>The code will then upload the HTML documents as feedback attachments to each individual student submission. Again, this may take a minute.</p>
 <p> </p>
 </div>
@@ -1822,7 +1837,8 @@ Donec egestas mi vitae congue bibendum. Sed purus mi, luctus id malesuada eu, vi
 </div>
 <p> </p>
 <p> </p>
-<p>That is all you need to know to get going on the marking. Thank you so much for all your hard work!</p>
+<p><font size="4.5">That is all you need to know to get going on the marking. Thank you so much for all your hard work!</font></p>
+<p> </p>
 </div>
 
 
