@@ -1655,6 +1655,12 @@ div.tocify {
 <div class="warn">
 <strong>Please do not delete or hide any rows or columns of this spreadsheet as doing so might break the whole thing!</strong>
 </div>
+<div class="solText">
+<title>
+Note on the “results_ok” column
+</title>
+<p>The spreadsheet contains a “results_ok” column that stores the output of the results-checking function that is run on the reports in pre-processing, before the Rmd files get to you. Because there may be multiple valid ways of analysing the data as well as because of the non-trivial difficulties associated with checking another person’s code, the test is <strong>rather conservative</strong>. That means that if the column does not say <code>FALSE</code> you can be pretty sure the results are correct. However, the converse is not necessarily true. Therefore <strong>it is important to consider the reports that have <code>FALSE</code> in the corresponding cell of the “results_ok” column on a case-by-case basis</strong>.</p>
+</div>
 <p> </p>
 </div>
 <div id="onedrive-folder" class="section level3">
