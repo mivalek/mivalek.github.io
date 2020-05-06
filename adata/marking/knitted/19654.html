@@ -334,8 +334,12 @@ summary {
 <p><strong><em>N</em> removed NAs:</strong> 
 2
 </p>
+<p><strong><em>N</em> removed typo:</strong> 
+1
+</p>
 <p><strong><em>N</em> removed &lt;18:</strong> 
-24
+26
+</p>
 </p>
 <p><strong><em>N</em> total clean:</strong> 
 122
@@ -371,6 +375,24 @@ summary {
 <p><strong>Main analysis results</strong></p>
 <p><em>t</em>(120) = 5.03, <em>p</em> &lt; .001</p>
 </div>
+</div>
+<div class="rubric">
+<details>
+<summary><img src="https://raw.githubusercontent.com/mivalek/mivalek.github.io/master/img/rubric.png" width="25px" height="22px"></summary>
+<iframe src="https://mivalek.github.io/adata/marking/rubric_and_criteria_faq.html"></iframe>
+</details>
+</div>
+<div class="flow second">
+<details>
+<summary><img src="https://raw.githubusercontent.com/mivalek/mivalek.github.io/master/img/flowchart.png" width="25px" height="22px"></summary>
+<img src="https://raw.githubusercontent.com/mivalek/mivalek.github.io/master/adata/marking/AnD_report_flowchart.png"></img>
+</details>
+</div>
+<div class="quick-com third">
+<details>
+<summary><img src="https://raw.githubusercontent.com/mivalek/mivalek.github.io/master/img/comment.png" width="25px" height="22px"></summary>
+<iframe src="https://docs.google.com/spreadsheets/d/19CXCZk28CQzX4MzQ86a5U-ijYQvP47x0mfX7pQk6KKo/edit#gid=588770828"></iframe>
+</details>
 </div>
 </div>
 </div>
@@ -416,14 +438,22 @@ summary {
 <div id="results" class="section level1">
 <h1>Results</h1>
 <p>The mean attractiveness rating of the control group is higher than the mean attractiness rating of the experimetal group. Below is a table of results, including the composite attractiveness ratings.</p>
-<pre><code>##     id_code             group        years           item_1          item_2          item_3       opinion_comp  
-##  ADBM   :  1   control     :57   Min.   :18.00   Min.   :2.000   Min.   :3.000   Min.   :3.000   Min.   :3.667  
-##  AQWR   :  1   experimental:65   1st Qu.:19.00   1st Qu.:5.000   1st Qu.:5.000   1st Qu.:5.000   1st Qu.:5.000  
-##  AWBH   :  1                     Median :21.00   Median :6.000   Median :6.000   Median :6.000   Median :5.667  
-##  AXNA   :  1                     Mean   :20.68   Mean   :5.631   Mean   :5.566   Mean   :5.918   Mean   :5.705  
-##  BEPI   :  1                     3rd Qu.:22.00   3rd Qu.:6.000   3rd Qu.:6.000   3rd Qu.:7.000   3rd Qu.:6.333  
-##  BPIM   :  1                     Max.   :26.00   Max.   :9.000   Max.   :9.000   Max.   :9.000   Max.   :7.667  
-##  (Other):116</code></pre>
+<pre><code>##     id_code             group        years           item_1          item_2          item_3     
+##  ADBM   :  1   control     :57   Min.   :18.00   Min.   :2.000   Min.   :3.000   Min.   :3.000  
+##  AQWR   :  1   experimental:65   1st Qu.:19.00   1st Qu.:5.000   1st Qu.:5.000   1st Qu.:5.000  
+##  AWBH   :  1                     Median :21.00   Median :6.000   Median :6.000   Median :6.000  
+##  AXNA   :  1                     Mean   :20.68   Mean   :5.631   Mean   :5.566   Mean   :5.918  
+##  BEPI   :  1                     3rd Qu.:22.00   3rd Qu.:6.000   3rd Qu.:6.000   3rd Qu.:7.000  
+##  BPIM   :  1                     Max.   :26.00   Max.   :9.000   Max.   :9.000   Max.   :9.000  
+##  (Other):116                                                                                    
+##   opinion_comp  
+##  Min.   :3.667  
+##  1st Qu.:5.000  
+##  Median :5.667  
+##  Mean   :5.705  
+##  3rd Qu.:6.333  
+##  Max.   :7.667  
+## </code></pre>
 <p>A t-test was caried out to examine the differene of the two means of attractiveness ratings of the two colour groups. The analysis indicated that there was a significant diffrence in the mean attactivness ratings of the red vs white colour groups (<em>M</em> = 6.08) than a white frame aounf the image of the man (<em>M</em> = 5.37). This difference in means was significant (<em>M</em><sub>diff</sub> = 0.71, 95% CI [0.43, 0.99], <em>t</em> (120) = 5.03, <em>p</em> = p &lt; .001). Therefore, it is unlikely that these sample means came from the same population and we can accept the null hypotheis that colour frames have an effet on rated attractiveness.</p>
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAA4VBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZmYAZpAAZrY6AAA6AGY6OgA6Ojo6OmY6ZmY6ZpA6ZrY6kLY6kNtmAABmADpmOgBmOjpmOmZmZjpmZmZmZpBmkJBmkLZmkNtmtttmtv+QOgCQZgCQZjqQZmaQkDqQkGaQkLaQtraQttuQ29uQ2/+2ZgC2Zjq2kDq2kGa2kJC2kLa2tpC2tra2ttu225C229u22/+2///bkDrbkGbbtmbbtpDbtrbb27bb29vb2//b/7bb/9vb////AAD/tmb/25D/27b/29v//7b//9v////wXKeYAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nO3d/WPTVp7oYbmBe8kSGpYuzNBhgU1vtwxh2dv0lnp56yybBJz//w+6lizZcqwX+2sndk6e54eBJE4O48ifSpZ0TnYBQEi27X8AwE0loABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQVcf0EyjgTQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShA0Cbq9uloP8sGh+9aRhBQIE3r1230Jis9ah5BQIE0rV+34yzrLKiAAolau25n48P3/Oj9/OX4MP510wgCCqRp7boNs+ze5G/HzbugAgokau26HU/3O0+nKZ0fQUCBNAkoQNBmD+FfNI0goECa1q7btx/Kk0hHWXb3S9MIAgqkaf26nT+urmK680f9B8+sPQTALtpA3fILmHKHc/ufAgqkbv26DaehHDxvHEFAgTRt4iRS9vDPi4uv+R2dTiIBt8i6dcvPIZXZfJ9l3/2x+AgBBRK1bt3qF382X8ckoECi1q3bsBbNYeO9nAIKJGqTAT0VUOA2cQgPELRu3fLZ7MpqnjbPZyegQKI2MJlI7TImk4kAt8hG7oVvvJdzOoKAAmnawJpIL6t+Ns4lIqBAqjayKueTYlXO31tGEFAgTdaFBwgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAIAEFCBJQgCABBQgSUIAgAQUIElCAoN66/Zn/z+jtfpbtPY+NIKBAmrrrdn6UfffHuJ8vs8K9L5ERBBRIU2fdzsb7nXlAh1npUWQEAQXS1FW3YsdzHND8z8HzT0fj/30dGEFAgTR11e103M+HXyY7ovm+53FoF1RAgUR11W0czHv5n8Ny13Mc1LurvwsqoECiOuo2PnIvupkfwRfh/PZD8Y7oqiMIKJCmjrpVvcyP4O/VP7HiCAIKpGmJgOZvhb6of2LFEQQUSNMSAT2uzr6Pd0W9BwpQ6X4PNN/znL4FOj2ptOIIAlrKdse2nwpIQ9dLaViU831WXr2U/+VFYASv1tK2q1mz7acC0tD1UsrPHg3uZ8UR/OjDkyyLvAUqoBvl2YQd0vl6rG7hfFS8IRq7EclLfqM8m7BDul+Pk4I+vJgE9M670Ahe8hvk2YQd0vN6HP369N+LCe2+/cvhq+AIXvIb5NmEHWJC5ZvFswk7REBvFs8m7BABvVk8m7BDLOlxs3g2YYdY0uNm8WzCDrGkx45zVxHsLkt67Lrsfzp5dmF7LOmx6wQUdpYlPXZeZ0E9ubBFlvTYeQIKu8qSHruvo6CeW9gmS3rsvvaAemphqzaxpMfo/cG4sQfPm98fFdC1tRbUUwtbtYElPfJD/MKdxt1TAV1bW0A9s7Bd6y/pMe1nyzl6AV1fS0E9s7Bday/pkc+0PHhe3i7fdJmogG5AY0E9sbBlay/pMZxmteUyUQHdAAGFXbTukh7VxaLzf50bwet8AxoK6nmFbVt3SY/xYX7PWvECugmLAfW0wtat+zI87b0/XkA3YqGgnlbYunVfhsP8zPz5Ucd8ywK6EZcD6lmF7Vv3dXicDV4Pm64DNWHlhmUCCrum93X46aeD4jz7t780vgc6Duhfp6WsX+UkoBuW6Sfsmp4X4tnjqozffmi6SGmy2Mfhu4uLr2+y5huVBHRDMv2EHbPMZUxVQBuuoy8CWp5FOm2+UFRAN0RAYdd0vhLzeZgGh7/uF+t6NO9hHteunj9uvNVTQDcl00/YLV0vxXync1zHalamxnvh68t8NF/SJKAbkwko7JT+yURm04A2zcY0FNDrk+kn7JT+6exmAW262f20FtWhgF6xTEBhl3RPqFycFJoGtGlG+rP92ee8B3rVMv2EXbLEjPSdAS2O6ye7pe8bp7sT0E3K9BN2yNoBzScNvfN7eR2o+UCvmIDCLln3PdDZtaJmpL8OmX7C7uh6OZZn3auA5kFtutXov6o1PQ4bV5UT0Eq2Cf+zkZ+y7acC0tC3pMfzWUDzXc2Gk0Tjo/e397Ns8OD3lhG8WksbSd9mbPupgDR0vpTGu6DZwy+TgJ4fZS3H6H0jeLUCaeqs27fH1R7LQXGY3nSSvX8EAQXS1F23WUFzTWsiLTGCgAJp6qvb++mq74NngeP3CwEFktVft68nPz19+vSX0N5nMYKAAmm6+roJKJAoAQUIElCAIAEFCOqu2+jtwfwdLIErQQUUSFRn3c72s0xAAZr1rYkkoAAtetZEygaHJ3W/rX4xvYACieqZDzR09/ulEQQUSFP3jPTN09etOIKAAmlaYkmPdUcQUCBNAgoQ1P0eaLGs8bojCCiQpp6z8E3LbK46goACaeqq22Z2QQUUSFTfnUiDZ3+uO4KAAmnqOon0ZLISUjY4mHrgTiSAUs91oG7lBGgjoABBXZcxfTxZ4F54gIoJlQGCBBQgSEABggQUIKi3bp9+OihOvn/7y6vgCAIKpKmnbmePq6uXvv2Q3V39FPyFgELA4iWE27Pt52KXdT85w/IZnAQ0Nrud5x9WttViXrLt52KXdT45p1m+KNKv+3k5R2/GH9yLjOD5h63w2rtyfatyjg/bq4mV32ehJT78EmE7vPauXM98oPnbntOZ6Y9Du6B+ibAdXntXrmdVznyPcxrQ0yxyHskvEbbDa+/KdU8mUsynPA1obJEkv0TYDq+9K7fEonICCjeS196VE1BIhkuSrpv3QCEd2f908lrctK5ntDzrXgU0D6qz8LDDBPSadT2jZ/tZ9nwW0KHrQGHHdRbUS3HjOp/S8S5o9vDLJKDnR1noCF5A4foI6PXqfEq/Pa7eep6sz+leeNhxHQX1Sty87ud0VtDcnXehEfza4Nq0B9QL8Qr0Panv96t8Dp6FZrMTULhOrQX1QrwC/U/q15Ofnj59+kto77MYwe8Nrk9bQL0Or4IlPSAtLQX1OrwKAgqJaSyol+GV6LqV818e/rmJEfzm4DoJ6PXpvhc+2wueOaqP4DcH16qhoF6FV6MnoGMPgqtxTkfwq4NrtRhQL8Ir0vXEnh+V1zAdhk/BXwgoXLuFgnoRXpGeJ/bTk/UuAr0QULh2lwPqNXhVep/Z0YfybqQ7r1xIDzdDJqDXY5lndvS2OpT/PTKCXx5cs0w/r8eST231dqgZ6eEmyPTzWiz/3Bbz2Qko3AQCej2WfW7Pf45OaCegcP0y/bwOSz25X6s3QSMn4wUUtiAT0GvQ/+SO3t7P1rkcVEBhCzL9vAY9z+70Iqb4DUkCCtuQCejV63x2p/WMXgNajOAXCFuQ6efV678Xfp27kIoR/AZhGzL9vHJ9AR2sdR98MYJfIawq24Q8oBuw7edil3UHNHTr0eURPP+wqk2Eb1zQjfyUbT8Xu6zjyRn9tpkRPP+wFZkj+KtmSQ9IltfeVRNQgKCmun17cvDgj+KPBQ/cyglQagzoD8U979VlTHXuhQeoCChAUFPdRh9PfvtS/LHgN5OJAJScRAIIElCAoK4L6X96+uPcEfv50f27DuEBSt23cs6fM1r4xHIjCCiQJgEFCGqs26fijPuv+9ngl/op+JcuYwKYaazb2X7bvCz3AiMIKJCm5rodtwX0RWAEAQXS1Fy3ppuQsmzw4HVkBAEF0rTKSaTgCAIKpElAAYK6LqT/GLn1fXEEAQXS5FZOgCABBQjqq9vXt38p3gf99sPgYex4XkCBRHXX7fyouvkov7Bp8Dw0goACaeqsW3FH0iygoevoBRRIVVfdimgODidH7l/f7oduhRdQIFVddRuO+/nPszc+z8c9fRQYQUCBNHVdB/ryUjBPs8yEygCV7juRBq8vfcJ0dgAVEyoDBK2yB3q2L6AAU111O770HujQhMoAM111O52/8vN034TKADNddctPw2eH7yYf5DclRU7CCyiQqv47kbJscHBQ/uV1ZAQBBdLUXbf51eXuvA6NIKBAmnrqNno7TejgmdmYAGr66zb6mK8JH5+bXkCBRJlQGSBIQAGCBBQgaPm6jT5//vjzP7mVE6DUv6THHPfCA1Q663a6nwkoQIveJT3m7AWuBRVQIFF9S3o8/PzpcTb4++fPb+9bVA6grmc6u3sX01nt8qlFTCYCMNWzJlK+y3laTgOaH9Gbzg6gssSSHmf75Z7n0KqcADNLBHS6FNK0pKuNIKBAmpYI6PhQfjIRqEXlAGq63wMtwlm9FyqgAHU9Z+FflH8W731alROgpmdRuSKYw/L6pdPQdUwCCiSq706kwfPJwh6PJn9Y1hig0lm3YXn3+3G+okd+J5LrQAGmuus2nAR0elN8YAdUQIFU9dTt/Kh4F/T8ZdHPh5GFkQQUSNSydft6cnJiVU6Amq66vX8eXoqzPoKAAmnqmUwkcO/7wggCCqSp+1bOyS2ca44goECalrgXft0RBBRI0xL3wq87goACaepZ0uPe+qeRBBRIVN+dSHd++XPdEQQUSFPXIfzHk8my8IODqQdmYwIodZ9EWmA6O4CKgAIEdR/CL/jNfKAApauvm4ACiRJQgKCuQ/ifnv44d8R+fnTfkh4AlVVu5bQqJ0CNgAIENdbtU3HG/df9bPBL/RT8S5cxAcw01i1ff7OZVTkBKs11O24LqFU5ASrNdWu6CSnLBg9eR0YQUCBNJlQGCBJQgKDue+EDt74vjiCgQJrciQQQ5EJ6gCABBQhyJxJAkDuRAILciQQQ5E4kgCAX0gMECShAkDuRAIJWq9vo/7oTCaC0St0+PXEdKMDU0nUbvc0vDhVQgMqSdRvvfBYEFKCyTN0mO5/FlaDPvAcKUOqvW7XzmWWH70IjCCiQpp66zXY+77yKjiCgQJo66zbb+VzjinoBBRLVXrfZzuf3+wIKsKCtbtOdzwev1rynU0CBRDXW7Wu187n3PD/rLqAADZrqVk5mN3j25/RjAQW4rC2gg9o1SwIK0KA9oL/VPxZQgMs6DuGzO6++VB/3B/Rsv2W9DwEFEtVctw/VOfjD3y+WC2geXQEFbpW2uk2vAh08/HOZgB63rjgnoECiOup2flTuhu7134l02r5kp4ACiequ24fH1TRM3XfCT941FVDgVumr2/Sa+snboc1GL7Pv/o+AArfMEnX7VB3KD9rmsxuO4zkUUOCWWapuo/f3u2ZlOtvPHl0IKHDbLFu3r2/22wI6PoC/+0VAgVtnhbrlEzQ1BfQ4G7y+WAhoNrPmPxFgN61Ut9HbB4sBPc3GB/ACCtw+a9ft2w/5AfxiQGcjCCiQprXrdlwe1gsocNusW7dpNwUUuG3WrNvZfnZv8jcBBW6bNes2zOY9ahhBQIE0CShAkIACBG2sbt4DBW6bxrq9+f7Zl1V/kIACt01T3fLZ6f4Y//Hx5LflOyqgwG3TsqhcHtDVFuMUUOC2EVCAoLZljR+tuxz8bAQBBdLUWLd8ic3BQT6J8t7BvIbZmHpHEFAgTY11O83aBHZJBRRIVHPdLl8fL6AAC1rq9vXXp0//up8Nvn8678eVrw8VUCBVHXVzEgmgi4ACBHXUbbU7kdpHEFAgTVdfNwEFEiWgAEG9dfvwZD+/fmnw4FXwcF5AgUT11O39/uwa0MHz2AgCCqSpu26XLqhvmG9+iREEFEhTZ92KWzr3nv32+fPHt/md8S3zLfWMIKBAmrrqls/KNHhVffRhP3Qnp4ACqeqq2/gAfvB69uHZfmgXVECBRHXV7fjSu57joN4LjCCgQJq6b+Ws74AWu6B3TSYCUFrlXvjYzfECCiRKQAGCuiYTeekQHqBdz0mke10fLzmCgAJp6qpbfh197fbN97Er6QUUSFRX3cbH8Fn2sDxoH70ZfxA4ghdQIFWddTsrphLZe/r06V+LOznn3xJddgQBBdLUXbez/fpcIqF+CiiQqp66nR/N+nkYmxBUQIFE9dft409/PTj4/sffwiMIKJAmS3oABAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQFDXssZPDi578PRvK09rJ6BAorrXhW8yeLbaxMoCCiRq9YCuurScgAKJ6qjb6OPJf+S9/P5vJyc//7VYHen7p8Wfj1YaQUCBNPWtyjmYLgz/fn+y7zlccXU5AQUS1VW38TF8PZX5Ep0vxn8er7YLKqBAorrqNrxUyvHH98Z/nK72LqiAAonqeg/05aVj9fEuaF7O8Y7pd3+sMIKAAmnqPgs/H8ryEwIKkBNQgKDuQ/jipNFU+ebn+EheQAE6TyIdZ3OlzC+sz08iDZ1EArjoDmh+3dLgVfXR+ePJBaAf9l3GBHDRcyH9ML/7aO9vJ2M/38+KW5CK+ztdSA/QN53dcP4m+EflDfJu5QTonQ/0w+NZPu/kR/N5QB+uNoKAAmnqrdv5zwd5PQ9+fFd8OPrpl9VmsxNQIFVmpAcIElCAIAEFCBJQgKDuuo3eHsxfyLTKPZzVCAIKpKlvRvpMQAGa9cxIL6AAbXpmpM8Ghyd1v614EeiFgALJ6pnOLrDHuTCCgAJp6lkX/kX7l5ceQUCBNK0yI31wBAEF0iSgAEGrrMoZHEFAgTStsi58cAQBBdLUVbfN7IIKKJCovjuRBs/+XHcEAQXS1HUS6cnB5FbOwcHUA3ciAZR6rgN1KydAGwEFCOq6jOnjyQL3wgNUTKgMECSgAEECChAkoABBTXX79qS43nP8xwLXgQJUGgM6mYbJZUwAXQQUIKipbqOPxfWergMF6OIkEkCQgAIEdd3K+dPTH+eO2M+P7t91CA9QWmVNpNgiSQIKJEpAAYIa6/apOOP+6342+KV+Cv6ly5gAZhrrdra/eAXoxL3ACAIKpKm5bsdtAX0RGEFAgTQ1163pJqQsGzx4HRlBQIE0rXISKTiCgAJpElCAoO41kQK3vi+OIKBAmtzKCRAkoABBy9dt9Pnzx5//yYX0AKXuup0fmVAZoEVn3U4X7kgSUIBKV90WL6ffe2Y6O4BSV92G42Q+/PzpcTb4++fPb+/H7uQUUCBVXXU7nkweMv7j0fiP0cssC8ynLKBAqroupH852eU8LSdhyo/oTSYCUFniVs6z/XLPczjZFV11BAEF0rREQKf3xE9LutoIAgqkaYmAjg/lB6/rn1hxBAEF0tT9HmgRzuq9UAEFqOs5C/+i/LN473N8CC+gAJWuup2Wdx4Ny+uXTkPXMQkokKi+O5EGzydrzD2a/GFROYBKZ92G5d3v+Rpzg/sWlQOo667bcBLQ6U3xgR1QAQVS1VO386PiXdDzl0U/H0ZW+BBQIFHL1u3ryclJbIEkAQUSZUkPgCABBQharW4f/uJCeoBSV90+X/p49MadSABTbXX7+iZfD2lQP+/+ft+aSAAzLXV7Xy0nN5mH6aJaoFNAASrNdTudrSNXFnRS1MG/BkYQUCBNjXUr7jwaPH3617ya+fwho8mF9HffRUYQUCBNjXUbVncdjY6L+9+/PS52P5/HRhBQIE2NdTuezluX73rem+x/HsZuRBJQIFVNdZtOQX8xmQv0P+K7nxcCCiSrqW7ffpidfD+bnI6PLAhfjSCgQJpaAjq9XGkyk11gNePZCAIKpGmpgK7TTwEFUrVMQCPTKNdGEFAgTUsEdPp+aHAEAQXStERAA7dvzo0goECaBBQgSEABggQUIEhAAYLa7kT65WTi1/3Z38d+W/2OJAEFEtUS0DYmVAaoCChAkIACBFkXHiBIQAGCBBQgSEABggQUIEhAAYIEFCBIQAGCBBQgSEABggQUIEhAAYIEFCBIQAGCBBQgSEABgrrrNnp7YEJlgGaddTvbNyM9QJuuujUs7SGgAJWuug3HxRwcntRZ1hig0lG30cvQHufCCAIKpKmjbvkR/IsNjCCgQJq6A7qBHVABBVIloABB3e+BDl5vYAQBBdLUcxb+0QZGEFAgTV1128wuqIACieq7E2nw7M++HzG533Pv8F3LCAIKpKnrJNKTg8mtnIODqQeLZ5XeT+/3fNg8goACaeq5DrT/Vs7T2lfvNY4goECa1g1o/qA7v4//8ulx1vyOqYACieq6jOnjyYKFe+FPp/ud+Z2fTbugAgokat26Hc9u9zzbz+42zDUioECiNli38dG8gAK3iIACBG2wbqfeAwVuleXrNvr8+ePP/9Q+u8h4B7R+Fr526n6Nfx7A7uqu2/nR0kt6jI7nd0AFFEhdZ91Ol19ULu9n8xcFFEjUaovK7T1rWRMpvwi0ZeIRAQUS1beo3MPPnx5ng79//vz2fta+wsd5221IFwIKJKurbuW7mseTaUHzncymy5QuJvOJ3Gk7uBdQIFE9q3Lmu5zV5Umti8wVe6qt6x0LKJCoJdZEmt6i2TJD/Zusc+Z6AQUStURAp4vLNd/sPmx/+3MygoACaVoioNOVPRqX6Rwf4H/XMhd9OYKAAmlaYlXO6r3QxoBeuv+oaQQBBdLUcxb+Rfln8R7n+BB+IaDDuetEm1oqoECiuup2Wt5cNCyvXzpdvI4p3zsVUOB26rsTafC82PPMd0HzPy5Pt3TpZiUBBW6RzroNy7vfj/M25ncitd6K1DWCgAJp6q7bcBLQ6X5m47KbfSMIKJCmnrqdHxXvgp5P3upsv92oawQBBdK0bN2+npycRPIpoECyrr5uAgokSkABggQUIKi3bp9+OihOxX/7y6vgCAIKpKmnbmePq6WQWlZ9X2IEAQXS1HsdaC2gHWtydo0goECaulflzO9AOvy1mENk9MaF9AB1fffCjw/bq1ns3ruVE6CmZ1XO/G3P6TSgx6FdUAEFErXEonLTgDZMZ7fMCAIKpKl7SY9ierppQBuX9OgfQUCBNK2yqJyAAtQIKECQ90ABgnoWlcvPuteWN3YWHmCqq275IkjPZwEdug4UoKazbsfFLPSTgJ4fZaEjeAEFUtVZt2+Pq+U2D/bLW+IDIwgokKbuus0KmrvzLjSCgAJp6qvb+/3pmu/PrIkEUNNft68nPz19+vSX0N5nMYKAAmmypAdAkIACBAkoQJCAAgQ11S2fib6FyUQAKgIKECSgAEFtAd3720mT30xnB1Bq3wMdHIavnZ8fQUCBNDXW7fxocgPn4PD3DYwgoECa2ur29W15E/zhq3VHEFAgTR11mzb0wavYNCLlCAIKpKm7bl/f3i9nsos3VECBRPXWbVQ1dM90dgB1y9Rt9J+Pq4b+GRhBQIE0LVm30YfHLqQHmLN83c4fCyhAzZJ1+1ReGSqgAJVl6vbhaLqsXOCiUAEFEtVbtw9Pqno+iF1SL6BAojrrVp06ym9ICt/UKaBAotrrNr14ac1pRQQUSFRL3aa3IGWDv605KZOAAolqqtuougk+duX85REEFEhTx4z0d/59nTlEZiMIKJCmtoDeefa5iVs5ASrWRAIIElCAIAEFCGqs29fG9z+9BwpQd/V1E1AgUQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAAQQIKECSgAEECChAkoABBAgoQJKAA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" width="672" /></p>
 <p>As can be seen from the graph above, the mean rating of attractivness of the control group (white frame) is higher than the experimental group(red frame). Therefore, we an conclude that coloured frames have a negative effect on attractivness when viewing images of men.</p>
@@ -893,6 +923,7 @@ details summary::-webkit-details-marker {
 	position: fixed;
 	left: 15px;
 	width: 260px;
+	z-index: 1;
 }
 
 .sidebar2 {
@@ -964,6 +995,102 @@ details summary::-webkit-details-marker {
 	padding-top: 0;
 }
 
+.quick-com, .flow, .rubric {
+    position: fixed;
+    top: 20px;
+}
+
+.rubric {
+    right: 280px;
+}
+
+.second {
+    right: 330px;
+}
+
+.third {
+    right: 380px;
+}
+
+.quick-com > details, .flow > details, .rubric > details {
+    border: none;
+	width: max-content;
+	margin: 0;
+	padding: 0;
+}
+
+.quick-com > details > summary, .flow > details > summary, .rubric > details > summary {
+    border: solid 1px rgb(var(--theme-col));
+    border-radius: 6px;
+    background-color: rgb(var(--theme-col));
+    width: 40px;
+    text-align: center;
+}
+
+.quick-com > details > iframe, .flow > details > iframe, .rubric > details > iframe {
+	top: -1px;
+    width: calc(100vw - 312px);
+    height: 90vh;
+    z-index: 3;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: solid 1px rgb(var(--theme-col));
+	border-radius: 6px;
+}
+
+.quick-com > details[open], .flow > details[open], .rubric > details[open] {
+    width: calc(100vw - 312px);
+    position: relative;
+    z-index: 2;
+    padding-left: 0;
+}
+
+.second > details[open] {
+	right: -50px;
+}
+
+.third > details[open] {
+	right: -100px;
+}
+
+.quick-com > details[open] > summary, .flow > details[open] > summary,
+.rubric > details[open] > summary {
+	position: relative;
+	float: right;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.rubric > details[open] > iframe {
+	border-top-right-radius: 0;
+}
+
+.second > details[open] > summary {
+	position: relative;
+	right: 50px;
+}
+
+.third > details[open] > summary {
+	position: relative;
+	right: 100px;
+}
+
+summary > img {
+	vertical-align: top;
+    margin-top: 4px;
+}
+
+.flow > details > img {
+    max-height: 90vh;
+    float: right;
+    margin-top: 31px;
+    border: 1px solid rgb(var(--theme-col));
+    border-radius: 6px;
+    padding: 5px;
+    background-color: rgba(var(--theme-col), .7);
+    margin-right: -40px;
+}
 
 @media screen and (max-width: 1130px) { 
 	
@@ -1014,6 +1141,26 @@ details summary::-webkit-details-marker {
 	
 	details[open] {
 		width: 100%;
+	}
+	
+	.rubric {
+		right: 20px;
+	}
+
+	.second {
+		right: 70px;
+	}
+	
+	.third {
+		right: 120px;
+	}
+	
+	.quick-com > details[open], .flow > details[open], .rubric > details[open] {
+		width: calc(100vw - 52px);
+	}
+	
+	.quick-com > details > iframe, .flow > details > iframe, .rubric > details > iframe {
+		width: calc(100vw - 52px);
 	}
 }
 
@@ -1097,7 +1244,43 @@ details summary::-webkit-details-marker {
 		top: calc(32vh + 30px);
 		right: 25px;
 	}
+	
+	.quick-com, .flow, .rubric {
+		top: 30px;
+	}
+	
+	.rubric {
+		right: 30px;
+	}
 
+	.second {
+		right: 80px;
+	}
+	
+	.third {
+		right: 130px;
+	}
+	
+	.quick-com > details > summary, .flow > details > summary, .rubric > details > summary {
+		margin-right: 5px;
+	}
+	
+	.quick-com > details[open], .flow > details[open], .rubric > details[open] {
+		width: calc(100vw - 77px);
+	}
+	
+	.quick-com > details > iframe, .flow > details > iframe, .rubric > details > iframe {
+		width: calc(100vw - 77px);
+	}
+
+	.rubric > details[open] > iframe {
+		border-top-right-radius: 6px;
+	}
+	
+	.flow > details > img {
+		margin-top: 0;
+		margin-right: 0;
+	}
 }
 
 
@@ -1140,6 +1323,10 @@ details summary::-webkit-details-marker {
 	
 	.main-content {
 		position: relative;
+	}
+	
+	.quick-com, .flow, .rubric {
+		top: 35px;
 	}
 	
 }
