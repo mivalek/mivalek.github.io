@@ -1618,15 +1618,24 @@ div.tocify {
 <p>Again, you’ll have to install <code>teachR</code> from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;mivalek/teachR&quot;</span>)</a></code></pre></div>
 <p>If <code>R</code> prompts you about updating packages, it’s best to update all.</p>
+<div id="theshow.me-function" class="section level4">
+<h4>The<code>show.me()</code> function</h4>
+<p>The <code>show.me()</code> function from <code>teachR</code> allows for the integration of marking in a single RStudio window. When called using a report id, it opens up the corresponding <a href="#rmd-files-to-mark">Rmd file</a> in RStudio’s source editor and displays the corresponding knitted <a href="#pre-knitted-html-documents">augmented HTML file</a> in the Viewer pane. This saves you having to switch between multiple windows when marking. Obviously, you are not required to use it but if you think this might be useful, you are welcome to.</p>
+<p>The best way to use the function involves setting wour working directory (<code>setwd()</code>) using the path to the folder where the Rmd files are located on your computer. Then you can just call the function, passing the sutdent id or Rmd file name to the <code>id=</code> argument:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">setwd</span>(<span class="st">&quot;C:/work/OneDrive - University of Sussex/marking/AnD/2019-20/Milan&quot;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">show.me</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co"># alternatively</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">show.me</span>(<span class="st">&quot;1234.Rmd&quot;</span>)</a></code></pre></div>
 <p> </p>
+</div>
 </div>
 <div id="adata" class="section level3">
 <h3><code>adata</code></h3>
 <p>Finally, even though we will check students’ results automatically, you might want the ability to have a look at their data yourself. For that, you will need the <code>adata</code> package, from where? From GitHub.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;mivalek/adata&quot;</span>)</a>
-<a class="sourceLine" id="cb3-2" title="2"></a>
-<a class="sourceLine" id="cb3-3" title="3">red &lt;-<span class="st"> </span>adata<span class="op">::</span><span class="kw">red_data</span>(<span class="dv">123456</span>)</a>
-<a class="sourceLine" id="cb3-4" title="4">green &lt;-<span class="st"> </span>adata<span class="op">::</span><span class="kw">green_data</span>(<span class="dv">123456</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;mivalek/adata&quot;</span>, <span class="dt">ref=</span><span class="st">&quot;dev&quot;</span>)</a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3">red &lt;-<span class="st"> </span>adata<span class="op">::</span><span class="kw">red_data</span>(<span class="dv">123456</span>)</a>
+<a class="sourceLine" id="cb4-4" title="4">green &lt;-<span class="st"> </span>adata<span class="op">::</span><span class="kw">green_data</span>(<span class="dv">123456</span>)</a></code></pre></div>
 <p>The package only contains two functions <code>red_data()</code> and <code>green_data()</code>. They both take a candidate number as their first argument and generate a dataset for the given student.</p>
 <p> </p>
 <p>And with that, you’re all set up for the main event.</p>
@@ -1672,6 +1681,7 @@ Note on the “results_ok” column
 <div id="pre-knitted-html-documents" class="section level3">
 <h3>Pre-knitted HTML documents</h3>
 <p>Before the files get to you, they will be checked for word count and results. The HTML files will be hosted online and linked to from the marking spreadsheet. They will include the correct results and, if the report exceeds the word limit, a note saying so inserted in the appropriate place in the report. In case of a student having reported specific learning difficulties, their report will include a note of this with a link to marking guidelines for SLD.</p>
+<p>To aid you in marking, the knitted HTML files also include three buttons at the top of the screen with rubric/grading details, report flowchart previously given to students for guidance, and the <a href="#quick-comments">Quick comments</a> sheet of the marking spreadsheet. The latter might need reloading every now and then.</p>
 <p>An example of such a file is below (you can see the full-size document with a wider layout <a href="https://mivalek.github.io/adata/marking/marking_example.html">here</a>).</p>
 <div class="iframe">
 <iframe src="https://mivalek.github.io/adata/marking/marking_example.html" height="700px">
@@ -1773,11 +1783,11 @@ Donec egestas mi vitae congue bibendum. Sed purus mi, luctus id malesuada eu, vi
 </div>
 <div id="knitting-marked-.rmd-files" class="section level2">
 <h2>Knitting marked .Rmd files</h2>
-<p>Once you have commented all .Rmd files and entered all the partial and total grades in the marking spreadsheet, the module convenor will arrange moderation. Once the marks have been moderated and any necessary changes to marks have been made, you will need to knit the files to produce the augmented HTML documents. The code for this will have been shared with you (marking_script.R).</p>
+<p>Once you have commented <strong>all .Rmd files and entered all the partial and total grades</strong> in the marking spreadsheet, the module convenor will arrange moderation. Once the marks have been moderated and any necessary changes to marks have been made, you will need to knit the files to produce the augmented HTML documents. The code for this will have been shared with you (marking_script.R).</p>
 <p>The only thing you need to edit in the script before your run it is the bit towards the beginning (but see below for edits for calibration marking):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
-<a class="sourceLine" id="cb5-3" title="3">marking_path &lt;-<span class="st"> &quot;C:/work/OneDrive - University of Sussex/marking/AnD/2019-20/Milan&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
+<a class="sourceLine" id="cb6-3" title="3">marking_path &lt;-<span class="st"> &quot;C:/work/OneDrive - University of Sussex/marking/AnD/2019-20/Milan&quot;</span></a></code></pre></div>
 <p>The path should point to the synced OneDrive folder containing the commented .Rmd files. The files should not be in separate subfolders.</p>
 <p>Once you’ve made these two edits, you can run the code, sit back and watch it do its thing. Or better still, go get a cuppa; with 50+ reports per marker, this can take a while.</p>
 <div class="solText">
@@ -1790,13 +1800,13 @@ Calibration marking
 <li><code>marking_path</code> should point to the folder to which you saved the .Rmd files.</li>
 <li>You need to edit the path to the marking spreadsheet, changing it from the Google sheet URL and pointing it to the CSV file you were sent. Comment out the first of the two commands and uncomment and edit the second:</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
-<a class="sourceLine" id="cb6-3" title="3">marking_path &lt;-<span class="st"> &quot;path/to/where/you/saved/the/calibration/files&quot;</span></a>
-<a class="sourceLine" id="cb6-4" title="4"></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="co"># marks &lt;- read.csv(&quot;https://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=19CXCZk28CQzX4MzQ86a5U-ijYQvP47x0mfX7pQk6KKo&amp;exportFormat=csv&quot;, stringsAsFactors = F)</span></a>
-<a class="sourceLine" id="cb6-6" title="6">marks &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;path/to/csv/file.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> F)</a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="co">#############################################################################</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
+<a class="sourceLine" id="cb7-3" title="3">marking_path &lt;-<span class="st"> &quot;path/to/where/you/saved/the/calibration/files&quot;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co"># marks &lt;- read.csv(&quot;https://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=19CXCZk28CQzX4MzQ86a5U-ijYQvP47x0mfX7pQk6KKo&amp;exportFormat=csv&quot;, stringsAsFactors = F)</span></a>
+<a class="sourceLine" id="cb7-6" title="6">marks &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;path/to/csv/file.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> F)</a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="co">#############################################################################</span></a></code></pre></div>
 <p>After that, you can simply run the script and, once knitted, save the HTML files into the shared Calibration folder on OneDrive.</p>
 <p><strong>DO NOT FORGET to change the marking script back once you are done, uncommenting the line with the Google sheet path and commenting out the local one!</strong></p>
 </div>
@@ -1810,12 +1820,12 @@ Calibration marking
 <li>Change the path to point it to the folder with the knitted HTML files.</li>
 <li>Insert your <a href="#get-access-token">Canvas access token</a> inside the &quot;s.</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
-<a class="sourceLine" id="cb7-3" title="3">fpath &lt;-<span class="st"> &quot;marking/AnD/2019-20&quot;</span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="co"># insert your Canvas token</span></a>
-<a class="sourceLine" id="cb7-5" title="5">canvas_token &lt;-<span class="st"> &quot;&quot;</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="co">#############################################################################</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">######################## EDIT AS APPROPRIATE ################################</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="co"># EDIT PATH to the OneDrive folder we shared with you</span></a>
+<a class="sourceLine" id="cb8-3" title="3">fpath &lt;-<span class="st"> &quot;marking/AnD/2019-20&quot;</span></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="co"># insert your Canvas token</span></a>
+<a class="sourceLine" id="cb8-5" title="5">canvas_token &lt;-<span class="st"> &quot;&quot;</span></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="co">#############################################################################</span></a></code></pre></div>
 <p>The code will then upload the HTML documents as feedback attachments to each individual student submission. Again, this may take a minute.</p>
 <p> </p>
 </div>
@@ -1835,6 +1845,7 @@ Calibration marking
 <li>Read the HTML file while commenting on the report inside the .Rmd file as detailed <a href="#commenting-on-.rmd-files">above</a>.
 <ul>
 <li><strong>Do not change the file names!</strong></li>
+<li>The <a href="#theshow.me-function"><code>show.me()</code> function</a> from <code>teachR</code> comes in handy here as it allows you to have everything open in a single RStudio window.</li>
 </ul></li>
 <li><a href="#awarding-marks">Enter marks</a> per each rubric criterion and a total grade into the Google spreadsheet.</li>
 <li>Once the module convenor has notified you that moderation has been completed, run the code inside marking_script.R, <a href="#knitting-marked-.rmd-files">editing as appropriate</a>.</li>
