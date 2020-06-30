@@ -225,6 +225,43 @@ details > summary::before {
 	bottom: 0;
 }
 
+details[open] {
+	width: 100%;
+    background-color: rgba(var(--theme-col), .3);
+}
+
+details.hint[open] > summary {
+	width: 100%;
+    color: rgb(var(--font-col));
+}
+
+details.hint > summary {
+	width: 100%;
+    color: rgb(var(--theme-col));
+}
+
+details[open] {
+    background-color: white;
+}
+
+summary {
+	display: list-item;
+	cursor: pointer;
+	outline: 0;
+	color: #fdfdfd;
+	position: initial;
+}
+
+
+details > summary::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
 .faq {
 	display: block;
 }
