@@ -240,7 +240,7 @@ details.hint > summary {
     color: rgb(var(--theme-col));
 }
 
-details[open] {
+details {
     background-color: white;
 }
 
