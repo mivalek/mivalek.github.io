@@ -465,11 +465,11 @@ iframe {
     position: relative;
 }
 
-.r.copy {
+.copy {
     position: relative;
 }
 
-.r.copy:hover {
+.copy .r:hover {
     background-color: rgb(var(--theme-col));
     transition: background 0.1s linear;
     cursor: pointer;
@@ -478,7 +478,7 @@ iframe {
 	overflow: hidden;
 }
 
-.r.copy:hover::after {
+.copy .r:hover::after {
     content: 'copy code';
     position: absolute;
     left: 50%;
@@ -492,13 +492,13 @@ iframe {
     margin-top: -35px;
 }
 
-.copy:hover code span.kw, .copy:hover code span.dt, .copy:hover code span.dv,
-.copy:hover code span.op, .copy:hover code span.st, .copy:hover code span.er,
-.copy:hover code span.co {
+.copy .r:hover code span.kw, .copy .r:hover code span.dt, .copy .r:hover code span.dv,
+.copy .r:hover code span.op, .copy .r:hover code span.st, .copy .r:hover code span.er,
+.copy .r:hover code span.co {
     color: #0000005c;
 }
 
-.r.copy:active {
+.copy .r:active {
     background-color: rgb(var(--font-col));
     border-color: rgb(var(--font-col));
 }
