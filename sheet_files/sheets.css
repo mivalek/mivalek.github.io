@@ -470,9 +470,8 @@ iframe {
 }
 
 .r.copy:hover {
-    background-color: #85a6ea;
+    background-color: rgb(var(--theme-col));
     transition: background 0.1s linear;
-    filter: blur(1px);
     cursor: pointer;
     color: #0000005c;
     border-color: rgb(var(--theme-col));
