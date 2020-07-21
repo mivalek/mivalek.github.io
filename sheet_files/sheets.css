@@ -465,11 +465,11 @@ iframe {
     position: relative;
 }
 
-.copy .r {
+.copy pre.r {
     position: relative;
 }
 
-.copy .r:hover {
+.copy pre.r:hover {
     background-color: rgb(var(--theme-col));
     transition: background 0.1s linear;
     cursor: pointer;
@@ -478,7 +478,7 @@ iframe {
 	overflow: hidden;
 }
 
-.copy .r:hover::after {
+.copy pre.r:hover::after {
     content: 'copy code';
     position: absolute;
     left: 50%;
@@ -498,7 +498,7 @@ iframe {
     color: #0000005c;
 }
 
-.copy .r:active {
+.copy pre.r:active {
     background-color: rgb(var(--font-col));
     border-color: rgb(var(--font-col));
 }
