@@ -465,6 +465,33 @@ iframe {
     position: relative;
 }
 
+.r.copy {
+    position: relative;
+}
+
+.r.copy:hover {
+    background-color: #85a6ea;
+    transition: background 0.1s linear;
+    filter: blur(1px);
+    cursor: pointer;
+    color: #0000005c;
+    border-color: rgb(var(--theme-col));
+}
+
+.r.copy:hover::before {
+    content: 'copy code';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 50px;
+    font-family: Helvetica;
+    color: white;
+    font-weight: bold;
+    margin-left: -125px;
+    text-align: center;
+    margin-top: -35px;
+}
+
 @media print {	
   .col-md-9 {
     width: 100%;
