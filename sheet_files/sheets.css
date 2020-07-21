@@ -477,7 +477,7 @@ iframe {
     border-color: rgb(var(--theme-col));
 }
 
-.r.copy:hover::before {
+.r.copy:hover::after {
     content: 'copy code';
     position: absolute;
     left: 50%;
