@@ -475,6 +475,7 @@ iframe {
     cursor: pointer;
     color: #0000005c;
     border-color: rgb(var(--theme-col));
+	overflow: hidden;
 }
 
 .r.copy:hover::after {
@@ -495,6 +496,11 @@ iframe {
 .copy:hover code span.op, .copy:hover code span.st, .copy:hover code span.er,
 .copy:hover code span.co {
     color: #0000005c;
+}
+
+.r.copy:active {
+    background-color: rgb(var(--font-col));
+    border-color: rgb(var(--font-col));
 }
 
 @media print {	
