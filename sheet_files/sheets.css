@@ -491,9 +491,9 @@ iframe {
     margin-top: -35px;
 }
 
-.copy code span.kw, .copy code span.dt, .copy code span.dv,
-.copy code span.op, .copy code span.st, .copy code span.er,
-.copy code span.co {
+.copy:hover code span.kw, .copy:hover code span.dt, .copy:hover code span.dv,
+.copy:hover code span.op, .copy:hover code span.st, .copy:hover code span.er,
+.copy:hover code span.co {
     color: #0000005c;
 }
 
