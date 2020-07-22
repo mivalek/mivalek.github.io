@@ -1563,6 +1563,53 @@ div.tocify {
 
 
 
+<script>/*!
+ * clipboard.js v2.0.4
+ * https://zenorocha.github.io/clipboard.js
+ * 
+ * Licensed MIT © Zeno Rocha
+ */
+!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.ClipboardJS=e():t.ClipboardJS=e()}(this,function(){return function(n){var o={};function r(t){if(o[t])return o[t].exports;var e=o[t]={i:t,l:!1,exports:{}};return n[t].call(e.exports,e,e.exports,r),e.l=!0,e.exports}return r.m=n,r.c=o,r.d=function(t,e,n){r.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},r.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},r.t=function(e,t){if(1&t&&(e=r(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)r.d(n,o,function(t){return e[t]}.bind(null,o));return n},r.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(e,"a",e),e},r.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},r.p="",r(r.s=0)}([function(t,e,n){"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},i=function(){function o(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}}(),a=o(n(1)),c=o(n(3)),u=o(n(4));function o(t){return t&&t.__esModule?t:{default:t}}var l=function(t){function o(t,e){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,o);var n=function(t,e){if(!t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!e||"object"!=typeof e&&"function"!=typeof e?t:e}(this,(o.__proto__||Object.getPrototypeOf(o)).call(this));return n.resolveOptions(e),n.listenClick(t),n}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function, not "+typeof e);t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,enumerable:!1,writable:!0,configurable:!0}}),e&&(Object.setPrototypeOf?Object.setPrototypeOf(t,e):t.__proto__=e)}(o,c.default),i(o,[{key:"resolveOptions",value:function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof t.action?t.action:this.defaultAction,this.target="function"==typeof t.target?t.target:this.defaultTarget,this.text="function"==typeof t.text?t.text:this.defaultText,this.container="object"===r(t.container)?t.container:document.body}},{key:"listenClick",value:function(t){var e=this;this.listener=(0,u.default)(t,"click",function(t){return e.onClick(t)})}},{key:"onClick",value:function(t){var e=t.delegateTarget||t.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new a.default({action:this.action(e),target:this.target(e),text:this.text(e),container:this.container,trigger:e,emitter:this})}},{key:"defaultAction",value:function(t){return s("action",t)}},{key:"defaultTarget",value:function(t){var e=s("target",t);if(e)return document.querySelector(e)}},{key:"defaultText",value:function(t){return s("text",t)}},{key:"destroy",value:function(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}],[{key:"isSupported",value:function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:["copy","cut"],e="string"==typeof t?[t]:t,n=!!document.queryCommandSupported;return e.forEach(function(t){n=n&&!!document.queryCommandSupported(t)}),n}}]),o}();function s(t,e){var n="data-clipboard-"+t;if(e.hasAttribute(n))return e.getAttribute(n)}t.exports=l},function(t,e,n){"use strict";var o,r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},i=function(){function o(t,e){for(var n=0;n<e.length;n++){var o=e[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(t,o.key,o)}}return function(t,e,n){return e&&o(t.prototype,e),n&&o(t,n),t}}(),a=n(2),c=(o=a)&&o.__esModule?o:{default:o};var u=function(){function e(t){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),this.resolveOptions(t),this.initSelection()}return i(e,[{key:"resolveOptions",value:function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{};this.action=t.action,this.container=t.container,this.emitter=t.emitter,this.target=t.target,this.text=t.text,this.trigger=t.trigger,this.selectedText=""}},{key:"initSelection",value:function(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function(){var t=this,e="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return t.removeFake()},this.fakeHandler=this.container.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[e?"right":"left"]="-9999px";var n=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.style.top=n+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,this.container.appendChild(this.fakeElem),this.selectedText=(0,c.default)(this.fakeElem),this.copyText()}},{key:"removeFake",value:function(){this.fakeHandler&&(this.container.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(this.container.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function(){this.selectedText=(0,c.default)(this.target),this.copyText()}},{key:"copyText",value:function(){var e=void 0;try{e=document.execCommand(this.action)}catch(t){e=!1}this.handleResult(e)}},{key:"handleResult",value:function(t){this.emitter.emit(t?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function(){this.trigger&&this.trigger.focus(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function(){this.removeFake()}},{key:"action",set:function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=t,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function(){return this._action}},{key:"target",set:function(t){if(void 0!==t){if(!t||"object"!==(void 0===t?"undefined":r(t))||1!==t.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&t.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(t.hasAttribute("readonly")||t.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=t}},get:function(){return this._target}}]),e}();t.exports=u},function(t,e){t.exports=function(t){var e;if("SELECT"===t.nodeName)t.focus(),e=t.value;else if("INPUT"===t.nodeName||"TEXTAREA"===t.nodeName){var n=t.hasAttribute("readonly");n||t.setAttribute("readonly",""),t.select(),t.setSelectionRange(0,t.value.length),n||t.removeAttribute("readonly"),e=t.value}else{t.hasAttribute("contenteditable")&&t.focus();var o=window.getSelection(),r=document.createRange();r.selectNodeContents(t),o.removeAllRanges(),o.addRange(r),e=o.toString()}return e}},function(t,e){function n(){}n.prototype={on:function(t,e,n){var o=this.e||(this.e={});return(o[t]||(o[t]=[])).push({fn:e,ctx:n}),this},once:function(t,e,n){var o=this;function r(){o.off(t,r),e.apply(n,arguments)}return r._=e,this.on(t,r,n)},emit:function(t){for(var e=[].slice.call(arguments,1),n=((this.e||(this.e={}))[t]||[]).slice(),o=0,r=n.length;o<r;o++)n[o].fn.apply(n[o].ctx,e);return this},off:function(t,e){var n=this.e||(this.e={}),o=n[t],r=[];if(o&&e)for(var i=0,a=o.length;i<a;i++)o[i].fn!==e&&o[i].fn._!==e&&r.push(o[i]);return r.length?n[t]=r:delete n[t],this}},t.exports=n},function(t,e,n){var d=n(5),h=n(6);t.exports=function(t,e,n){if(!t&&!e&&!n)throw new Error("Missing required arguments");if(!d.string(e))throw new TypeError("Second argument must be a String");if(!d.fn(n))throw new TypeError("Third argument must be a Function");if(d.node(t))return s=e,f=n,(l=t).addEventListener(s,f),{destroy:function(){l.removeEventListener(s,f)}};if(d.nodeList(t))return a=t,c=e,u=n,Array.prototype.forEach.call(a,function(t){t.addEventListener(c,u)}),{destroy:function(){Array.prototype.forEach.call(a,function(t){t.removeEventListener(c,u)})}};if(d.string(t))return o=t,r=e,i=n,h(document.body,o,r,i);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList");var o,r,i,a,c,u,l,s,f}},function(t,n){n.node=function(t){return void 0!==t&&t instanceof HTMLElement&&1===t.nodeType},n.nodeList=function(t){var e=Object.prototype.toString.call(t);return void 0!==t&&("[object NodeList]"===e||"[object HTMLCollection]"===e)&&"length"in t&&(0===t.length||n.node(t[0]))},n.string=function(t){return"string"==typeof t||t instanceof String},n.fn=function(t){return"[object Function]"===Object.prototype.toString.call(t)}},function(t,e,n){var a=n(7);function i(t,e,n,o,r){var i=function(e,n,t,o){return function(t){t.delegateTarget=a(t.target,n),t.delegateTarget&&o.call(e,t)}}.apply(this,arguments);return t.addEventListener(n,i,r),{destroy:function(){t.removeEventListener(n,i,r)}}}t.exports=function(t,e,n,o,r){return"function"==typeof t.addEventListener?i.apply(null,arguments):"function"==typeof n?i.bind(null,document).apply(null,arguments):("string"==typeof t&&(t=document.querySelectorAll(t)),Array.prototype.map.call(t,function(t){return i(t,e,n,o,r)}))}},function(t,e){if("undefined"!=typeof Element&&!Element.prototype.matches){var n=Element.prototype;n.matches=n.matchesSelector||n.mozMatchesSelector||n.msMatchesSelector||n.oMatchesSelector||n.webkitMatchesSelector}t.exports=function(t,e){for(;t&&9!==t.nodeType;){if("function"==typeof t.matches&&t.matches(e))return t;t=t.parentNode}}}])});</script>
+
+
+<script>
+// Tooltip
+
+$('button').tooltip({
+  trigger: 'click',
+  placement: 'bottom'
+});
+
+function setTooltip(btn,message) {
+  $(btn).tooltip('destroy')
+    .attr('data-original-title', message)
+    .tooltip('show');
+}
+
+function hideTooltip(btn) {
+  setTimeout(function() {
+    $(btn).tooltip('destroy');
+  }, 500);
+}
+
+// Clipboard
+
+var clipboard = new ClipboardJS('button');
+
+clipboard.on('success', function(e) {
+  e.clearSelection();
+  setTooltip(e.trigger, 'Markdown copied');
+  hideTooltip(e.trigger);
+});
+
+clipboard.on('error', function(e) {
+  e.clearSelection();
+  setTooltip(e.trigger, 'Try again');
+  hideTooltip(e.trigger);
+});
+
+</script>
+
 <div class="fluid-row" id="header">
 
 
@@ -1677,13 +1724,38 @@ div.tocify {
 <details>
 <p><summary>Solution</summary></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">head</span>(biling_data)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>     id gender age age_L2 BILING wais DALF_PASS yearsFR ehi_<span class="dv">01</span> ehi_<span class="dv">02</span> ehi_<span class="dv">03</span> ehi_<span class="dv">04</span> ehi_<span class="dv">05</span> ehi_<span class="dv">06</span> ehi_<span class="dv">07</span> ehi_<span class="dv">08</span> ehi_<span class="dv">09</span> ehi_<span class="dv">10</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a> [ reached <span class="st">&#39;max&#39;</span> <span class="op">/</span><span class="st"> </span><span class="kw">getOption</span>(<span class="st">&quot;max.print&quot;</span>) <span class="op">--</span><span class="st"> </span>omitted <span class="dv">6</span> rows ]</span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">summary</span>(biling_data)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>      id               gender               age            age_L2           BILING            wais         DALF_PASS         yearsFR     </span>
-<span id="cb3-6"><a href="#cb3-6"></a>     ehi_<span class="dv">01</span>            ehi_<span class="dv">02</span>            ehi_<span class="dv">03</span>            ehi_<span class="dv">04</span>            ehi_<span class="dv">05</span>            ehi_<span class="dv">06</span>            ehi_<span class="dv">07</span>       </span>
-<span id="cb3-7"><a href="#cb3-7"></a>     ehi_<span class="dv">08</span>            ehi_<span class="dv">09</span>            ehi_<span class="dv">10</span>      </span>
-<span id="cb3-8"><a href="#cb3-8"></a> [ reached <span class="kw">getOption</span>(<span class="st">&quot;max.print&quot;</span>) <span class="op">--</span><span class="st"> </span>omitted <span class="dv">7</span> rows ]</span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a>     id gender age age_L2 BILING     wais DALF_PASS yearsFR ehi_<span class="dv">01</span> ehi_<span class="dv">02</span> ehi_<span class="dv">03</span> ehi_<span class="dv">04</span> ehi_<span class="dv">05</span> ehi_<span class="dv">06</span> ehi_<span class="dv">07</span> ehi_<span class="dv">08</span> ehi_<span class="dv">09</span> ehi_<span class="dv">10</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="dv">1</span> DQQTR      <span class="dv">0</span>  <span class="dv">31</span>      <span class="dv">7</span>     <span class="dv">72</span> <span class="fl">111.3249</span>         <span class="dv">1</span>      <span class="dv">18</span>  <span class="fl">-10.0</span>    <span class="dv">-10</span>    <span class="dv">-10</span>  <span class="fl">-10.0</span>    <span class="dv">-10</span>  <span class="fl">-10.0</span>    <span class="dv">-10</span>    <span class="dv">-10</span>    <span class="dv">-10</span>    <span class="dv">-10</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="dv">2</span> DEJXF      <span class="dv">0</span>  <span class="dv">33</span>      <span class="dv">6</span>     <span class="dv">91</span> <span class="fl">113.3173</span>         <span class="dv">1</span>       <span class="dv">9</span>  <span class="fl">-10.0</span>    <span class="dv">-10</span>    <span class="dv">-10</span>  <span class="fl">-10.0</span>    <span class="dv">-10</span>  <span class="fl">-10.0</span>     <span class="dv">10</span>     <span class="dv">10</span>    <span class="dv">-10</span>     <span class="dv">10</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="dv">3</span> ZOZNR      <span class="dv">1</span>  <span class="dv">34</span>      <span class="dv">9</span>     <span class="dv">43</span> <span class="fl">116.6215</span>         <span class="dv">0</span>       <span class="dv">8</span>   <span class="fl">10.0</span>     <span class="dv">10</span>     <span class="dv">10</span>   <span class="fl">10.0</span>     <span class="dv">10</span>   <span class="fl">10.0</span>     <span class="dv">10</span>     <span class="dv">10</span>     <span class="dv">10</span>     <span class="dv">10</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="dv">4</span> CMMZK      <span class="dv">1</span>  <span class="dv">31</span>      <span class="dv">8</span>     <span class="dv">63</span> <span class="fl">122.8463</span>         <span class="dv">0</span>       <span class="dv">8</span>    <span class="fl">2.5</span>     <span class="dv">10</span>     <span class="dv">10</span>    <span class="fl">2.5</span>     <span class="dv">10</span>    <span class="fl">2.5</span>     <span class="dv">10</span>     <span class="dv">10</span>     <span class="dv">10</span>     <span class="dv">10</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="dv">5</span> MCJWA      <span class="dv">0</span>  <span class="dv">28</span>      <span class="dv">7</span>     <span class="dv">79</span> <span class="fl">107.6733</span>         <span class="dv">1</span>      <span class="dv">17</span>   <span class="fl">10.0</span>     <span class="dv">10</span>     <span class="dv">10</span>   <span class="fl">10.0</span>     <span class="dv">10</span>   <span class="fl">10.0</span>     <span class="dv">10</span>     <span class="dv">10</span>     <span class="dv">10</span>     <span class="dv">10</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="dv">6</span> FIZVP      <span class="dv">1</span>  <span class="dv">33</span>      <span class="dv">8</span>     <span class="dv">65</span> <span class="fl">118.7081</span>         <span class="dv">0</span>       <span class="dv">9</span>   <span class="fl">10.0</span>     <span class="dv">10</span>     <span class="dv">10</span>   <span class="fl">10.0</span>     <span class="dv">10</span>   <span class="fl">10.0</span>     <span class="dv">10</span>     <span class="dv">10</span>     <span class="dv">10</span>     <span class="dv">10</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">summary</span>(biling_data)</span>
+<span id="cb3-10"><a href="#cb3-10"></a>      id               gender               age            age_L2           BILING            wais         DALF_PASS         yearsFR     </span>
+<span id="cb3-11"><a href="#cb3-11"></a> Length<span class="op">:</span><span class="dv">593</span>         Length<span class="op">:</span><span class="dv">593</span>         Min.   <span class="op">:</span><span class="st"> </span><span class="fl">3.00</span>   Min.   <span class="op">:</span><span class="st"> </span><span class="fl">5.000</span>   Min.   <span class="op">:</span><span class="st"> </span><span class="fl">39.00</span>   Min.   <span class="op">:</span><span class="fl">102.4</span>   Min.   <span class="op">:</span><span class="fl">0.0000</span>   Min.   <span class="op">:</span><span class="st"> </span><span class="fl">3.00</span>  </span>
+<span id="cb3-12"><a href="#cb3-12"></a> Class <span class="op">:</span>character   Class <span class="op">:</span>character   1st Qu.<span class="op">:</span><span class="fl">27.00</span>   1st Qu.<span class="op">:</span><span class="st"> </span><span class="fl">7.000</span>   1st Qu.<span class="op">:</span><span class="st"> </span><span class="fl">58.00</span>   1st Qu.<span class="op">:</span><span class="fl">111.8</span>   1st Qu.<span class="op">:</span><span class="fl">0.0000</span>   1st Qu.<span class="op">:</span><span class="st"> </span><span class="fl">8.00</span>  </span>
+<span id="cb3-13"><a href="#cb3-13"></a> Mode  <span class="op">:</span>character   Mode  <span class="op">:</span>character   Median <span class="op">:</span><span class="fl">30.00</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">8.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">66.00</span>   Median <span class="op">:</span><span class="fl">115.5</span>   Median <span class="op">:</span><span class="fl">0.0000</span>   Median <span class="op">:</span><span class="fl">11.00</span>  </span>
+<span id="cb3-14"><a href="#cb3-14"></a>                                       Mean   <span class="op">:</span><span class="fl">30.01</span>   Mean   <span class="op">:</span><span class="st"> </span><span class="fl">7.766</span>   Mean   <span class="op">:</span><span class="st"> </span><span class="fl">65.48</span>   Mean   <span class="op">:</span><span class="fl">115.2</span>   Mean   <span class="op">:</span><span class="fl">0.4566</span>   Mean   <span class="op">:</span><span class="fl">11.36</span>  </span>
+<span id="cb3-15"><a href="#cb3-15"></a>                                       3rd Qu.<span class="op">:</span><span class="fl">33.00</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">8.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">72.00</span>   3rd Qu.<span class="op">:</span><span class="fl">118.6</span>   3rd Qu.<span class="op">:</span><span class="fl">1.0000</span>   3rd Qu.<span class="op">:</span><span class="fl">14.00</span>  </span>
+<span id="cb3-16"><a href="#cb3-16"></a>                                       Max.   <span class="op">:</span><span class="fl">84.00</span>   Max.   <span class="op">:</span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="fl">100.00</span>   Max.   <span class="op">:</span><span class="fl">130.1</span>   Max.   <span class="op">:</span><span class="fl">1.0000</span>   Max.   <span class="op">:</span><span class="fl">25.00</span>  </span>
+<span id="cb3-17"><a href="#cb3-17"></a>                                                                                                         NA<span class="st">&#39;s   :6                       </span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="st">     ehi_01            ehi_02            ehi_03            ehi_04            ehi_05            ehi_06            ehi_07       </span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="st"> Min.   :-10.000   Min.   :-10.000   Min.   :-10.000   Min.   :-10.000   Min.   :-10.000   Min.   :-10.000   Min.   :-10.000  </span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="st"> 1st Qu.:-10.000   1st Qu.:-10.000   1st Qu.:-10.000   1st Qu.:-10.000   1st Qu.:-10.000   1st Qu.:-10.000   1st Qu.:-10.000  </span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="st"> Median : 10.000   Median : 10.000   Median : 10.000   Median : 10.000   Median : 10.000   Median : 10.000   Median : 10.000  </span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="st"> Mean   :  3.583   Mean   :  3.558   Mean   :  3.568   Mean   :  3.419   Mean   :  3.537   Mean   :  3.602   Mean   :  3.587  </span></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="st"> 3rd Qu.: 10.000   3rd Qu.: 10.000   3rd Qu.: 10.000   3rd Qu.: 10.000   3rd Qu.: 10.000   3rd Qu.: 10.000   3rd Qu.: 10.000  </span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="st"> Max.   : 10.000   Max.   : 10.000   Max.   : 10.000   Max.   : 10.000   Max.   : 10.000   Max.   : 10.000   Max.   : 10.000  </span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="st"> NA&#39;</span>s   <span class="op">:</span><span class="dv">1</span>         NA<span class="st">&#39;s   :2         NA&#39;</span>s   <span class="op">:</span><span class="dv">1</span>         NA<span class="st">&#39;s   :3                           NA&#39;</span>s   <span class="op">:</span><span class="dv">2</span>         NA<span class="st">&#39;s   :2        </span></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="st">     ehi_08            ehi_09            ehi_10      </span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="st"> Min.   :-10.000   Min.   :-10.000   Min.   :-10.00  </span></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="st"> 1st Qu.:-10.000   1st Qu.:-10.000   1st Qu.:-10.00  </span></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="st"> Median : 10.000   Median : 10.000   Median : 10.00  </span></span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="st"> Mean   :  3.609   Mean   :  3.564   Mean   :  3.44  </span></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="st"> 3rd Qu.: 10.000   3rd Qu.: 10.000   3rd Qu.: 10.00  </span></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="st"> Max.   : 10.000   Max.   : 10.000   Max.   : 10.00  </span></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="st"> NA&#39;</span>s   <span class="op">:</span><span class="dv">1</span>         NA<span class="st">&#39;s   :1         NA&#39;</span>s   <span class="op">:</span><span class="dv">4</span>       </span></code></pre></div>
 </details>
 <p> </p>
 <p>All numeric variables are looking OK except for <code>age</code>. There seem to be at least improbably young participant. However, the summary did not give us a good feel for the <code>gender</code> variable. It would have produced a more useful information if the variable were a factor but currently it is just a character vector.</p>
@@ -1705,26 +1777,46 @@ div.tocify {
 <span id="cb4-3"><a href="#cb4-3"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">gender =</span> <span class="kw">factor</span>(gender)) <span class="op">%&gt;%</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="st">  </span><span class="kw">summary</span>()</span>
 <span id="cb4-5"><a href="#cb4-5"></a>      id             gender         age            age_L2           BILING            wais         DALF_PASS         yearsFR     </span>
-<span id="cb4-6"><a href="#cb4-6"></a>     ehi_<span class="dv">01</span>            ehi_<span class="dv">02</span>            ehi_<span class="dv">03</span>            ehi_<span class="dv">04</span>            ehi_<span class="dv">05</span>            ehi_<span class="dv">06</span>            ehi_<span class="dv">07</span>       </span>
-<span id="cb4-7"><a href="#cb4-7"></a>     ehi_<span class="dv">08</span>            ehi_<span class="dv">09</span>            ehi_<span class="dv">10</span>      </span>
-<span id="cb4-8"><a href="#cb4-8"></a> [ reached <span class="kw">getOption</span>(<span class="st">&quot;max.print&quot;</span>) <span class="op">--</span><span class="st"> </span>omitted <span class="dv">7</span> rows ]</span>
-<span id="cb4-9"><a href="#cb4-9"></a>biling_data <span class="op">%&gt;%</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(gender) <span class="op">%&gt;%</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="st">  </span><span class="kw">unique</span>()</span>
-<span id="cb4-12"><a href="#cb4-12"></a>[<span class="dv">1</span>] <span class="st">&quot;0&quot;</span> <span class="st">&quot;1&quot;</span> <span class="ot">NA</span>  <span class="st">&quot;2&quot;</span> <span class="st">&quot;)&quot;</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>biling_data <span class="op">%&gt;%</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">pull</span>(gender) <span class="op">%&gt;%</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a><span class="st">  </span><span class="kw">table</span>()</span>
-<span id="cb4-16"><a href="#cb4-16"></a>.</span>
-<span id="cb4-17"><a href="#cb4-17"></a>  <span class="er">)</span>   <span class="dv">0</span>   <span class="dv">1</span>   <span class="dv">2</span> </span>
-<span id="cb4-18"><a href="#cb4-18"></a>  <span class="dv">1</span> <span class="dv">251</span> <span class="dv">307</span>   <span class="dv">7</span> </span>
-<span id="cb4-19"><a href="#cb4-19"></a></span>
-<span id="cb4-20"><a href="#cb4-20"></a><span class="co"># base R way</span></span>
-<span id="cb4-21"><a href="#cb4-21"></a><span class="co"># biling_data$gender &lt;- factor(biling_data$gender)</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a><span class="co"># summary(biling_data)</span></span>
-<span id="cb4-23"><a href="#cb4-23"></a></span>
-<span id="cb4-24"><a href="#cb4-24"></a><span class="co"># unique(biling_data$gender)</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a><span class="co"># table(biling_data$gender)</span></span></code></pre></div>
+<span id="cb4-6"><a href="#cb4-6"></a> Length<span class="op">:</span><span class="dv">593</span>         <span class="er">)</span>   <span class="op">:</span><span class="st">  </span><span class="dv">1</span>   Min.   <span class="op">:</span><span class="st"> </span><span class="fl">3.00</span>   Min.   <span class="op">:</span><span class="st"> </span><span class="fl">5.000</span>   Min.   <span class="op">:</span><span class="st"> </span><span class="fl">39.00</span>   Min.   <span class="op">:</span><span class="fl">102.4</span>   Min.   <span class="op">:</span><span class="fl">0.0000</span>   Min.   <span class="op">:</span><span class="st"> </span><span class="fl">3.00</span>  </span>
+<span id="cb4-7"><a href="#cb4-7"></a> Class <span class="op">:</span>character   <span class="dv">0</span>   <span class="op">:</span><span class="dv">251</span>   1st Qu.<span class="op">:</span><span class="fl">27.00</span>   1st Qu.<span class="op">:</span><span class="st"> </span><span class="fl">7.000</span>   1st Qu.<span class="op">:</span><span class="st"> </span><span class="fl">58.00</span>   1st Qu.<span class="op">:</span><span class="fl">111.8</span>   1st Qu.<span class="op">:</span><span class="fl">0.0000</span>   1st Qu.<span class="op">:</span><span class="st"> </span><span class="fl">8.00</span>  </span>
+<span id="cb4-8"><a href="#cb4-8"></a> Mode  <span class="op">:</span>character   <span class="dv">1</span>   <span class="op">:</span><span class="dv">307</span>   Median <span class="op">:</span><span class="fl">30.00</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">8.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">66.00</span>   Median <span class="op">:</span><span class="fl">115.5</span>   Median <span class="op">:</span><span class="fl">0.0000</span>   Median <span class="op">:</span><span class="fl">11.00</span>  </span>
+<span id="cb4-9"><a href="#cb4-9"></a>                    <span class="dv">2</span>   <span class="op">:</span><span class="st">  </span><span class="dv">7</span>   Mean   <span class="op">:</span><span class="fl">30.01</span>   Mean   <span class="op">:</span><span class="st"> </span><span class="fl">7.766</span>   Mean   <span class="op">:</span><span class="st"> </span><span class="fl">65.48</span>   Mean   <span class="op">:</span><span class="fl">115.2</span>   Mean   <span class="op">:</span><span class="fl">0.4566</span>   Mean   <span class="op">:</span><span class="fl">11.36</span>  </span>
+<span id="cb4-10"><a href="#cb4-10"></a>                    NA<span class="st">&#39;s: 27   3rd Qu.:33.00   3rd Qu.: 8.000   3rd Qu.: 72.00   3rd Qu.:118.6   3rd Qu.:1.0000   3rd Qu.:14.00  </span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="st">                               Max.   :84.00   Max.   :10.000   Max.   :100.00   Max.   :130.1   Max.   :1.0000   Max.   :25.00  </span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="st">                                                                                                 NA&#39;</span>s   <span class="op">:</span><span class="dv">6</span>                       </span>
+<span id="cb4-13"><a href="#cb4-13"></a>     ehi_<span class="dv">01</span>            ehi_<span class="dv">02</span>            ehi_<span class="dv">03</span>            ehi_<span class="dv">04</span>            ehi_<span class="dv">05</span>            ehi_<span class="dv">06</span>            ehi_<span class="dv">07</span>       </span>
+<span id="cb4-14"><a href="#cb4-14"></a> Min.   <span class="op">:-</span><span class="fl">10.000</span>   Min.   <span class="op">:-</span><span class="fl">10.000</span>   Min.   <span class="op">:-</span><span class="fl">10.000</span>   Min.   <span class="op">:-</span><span class="fl">10.000</span>   Min.   <span class="op">:-</span><span class="fl">10.000</span>   Min.   <span class="op">:-</span><span class="fl">10.000</span>   Min.   <span class="op">:-</span><span class="fl">10.000</span>  </span>
+<span id="cb4-15"><a href="#cb4-15"></a> 1st Qu.<span class="op">:-</span><span class="fl">10.000</span>   1st Qu.<span class="op">:-</span><span class="fl">10.000</span>   1st Qu.<span class="op">:-</span><span class="fl">10.000</span>   1st Qu.<span class="op">:-</span><span class="fl">10.000</span>   1st Qu.<span class="op">:-</span><span class="fl">10.000</span>   1st Qu.<span class="op">:-</span><span class="fl">10.000</span>   1st Qu.<span class="op">:-</span><span class="fl">10.000</span>  </span>
+<span id="cb4-16"><a href="#cb4-16"></a> Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>  </span>
+<span id="cb4-17"><a href="#cb4-17"></a> Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.583</span>   Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.558</span>   Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.568</span>   Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.419</span>   Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.537</span>   Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.602</span>   Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.587</span>  </span>
+<span id="cb4-18"><a href="#cb4-18"></a> 3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>  </span>
+<span id="cb4-19"><a href="#cb4-19"></a> Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>  </span>
+<span id="cb4-20"><a href="#cb4-20"></a> NA<span class="st">&#39;s   :1         NA&#39;</span>s   <span class="op">:</span><span class="dv">2</span>         NA<span class="st">&#39;s   :1         NA&#39;</span>s   <span class="op">:</span><span class="dv">3</span>                           NA<span class="st">&#39;s   :2         NA&#39;</span>s   <span class="op">:</span><span class="dv">2</span>        </span>
+<span id="cb4-21"><a href="#cb4-21"></a>     ehi_<span class="dv">08</span>            ehi_<span class="dv">09</span>            ehi_<span class="dv">10</span>      </span>
+<span id="cb4-22"><a href="#cb4-22"></a> Min.   <span class="op">:-</span><span class="fl">10.000</span>   Min.   <span class="op">:-</span><span class="fl">10.000</span>   Min.   <span class="op">:-</span><span class="fl">10.00</span>  </span>
+<span id="cb4-23"><a href="#cb4-23"></a> 1st Qu.<span class="op">:-</span><span class="fl">10.000</span>   1st Qu.<span class="op">:-</span><span class="fl">10.000</span>   1st Qu.<span class="op">:-</span><span class="fl">10.00</span>  </span>
+<span id="cb4-24"><a href="#cb4-24"></a> Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Median <span class="op">:</span><span class="st"> </span><span class="fl">10.00</span>  </span>
+<span id="cb4-25"><a href="#cb4-25"></a> Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.609</span>   Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.564</span>   Mean   <span class="op">:</span><span class="st">  </span><span class="fl">3.44</span>  </span>
+<span id="cb4-26"><a href="#cb4-26"></a> 3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   3rd Qu.<span class="op">:</span><span class="st"> </span><span class="fl">10.00</span>  </span>
+<span id="cb4-27"><a href="#cb4-27"></a> Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.000</span>   Max.   <span class="op">:</span><span class="st"> </span><span class="fl">10.00</span>  </span>
+<span id="cb4-28"><a href="#cb4-28"></a> NA<span class="st">&#39;s   :1         NA&#39;</span>s   <span class="op">:</span><span class="dv">1</span>         NA<span class="st">&#39;s   :4       </span></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="st">biling_data %&gt;%</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a><span class="st">  dplyr::pull(gender) %&gt;%</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a><span class="st">  unique()</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="st">[1] &quot;0&quot; &quot;1&quot; NA  &quot;2&quot; &quot;)&quot;</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a><span class="st">biling_data %&gt;%</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a><span class="st">  dplyr::pull(gender) %&gt;%</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a><span class="st">  table()</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a><span class="st">.</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a><span class="st">  )   0   1   2 </span></span>
+<span id="cb4-38"><a href="#cb4-38"></a><span class="st">  1 251 307   7 </span></span>
+<span id="cb4-39"><a href="#cb4-39"></a></span>
+<span id="cb4-40"><a href="#cb4-40"></a><span class="st"># base R way</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a><span class="st"># biling_data$gender &lt;- factor(biling_data$gender)</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a><span class="st"># summary(biling_data)</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a></span>
+<span id="cb4-44"><a href="#cb4-44"></a><span class="st"># unique(biling_data$gender)</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a><span class="st"># table(biling_data$gender)</span></span></code></pre></div>
 </details>
 <p> </p>
 <p>You can tell from the new summary and the table that there is a single instance of <code>&quot;)&quot;</code> in the variable, most likely a typo.</p>
@@ -1740,10 +1832,9 @@ div.tocify {
 <details>
 <p><summary>Solution</summary></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>biling_data<span class="op">$</span>gender[biling_data<span class="op">$</span>gender <span class="op">==</span><span class="st"> &quot;)&quot;</span>]</span>
-<span id="cb5-2"><a href="#cb5-2"></a> [<span class="dv">1</span>] <span class="ot">NA</span> <span class="ot">NA</span> <span class="ot">NA</span> <span class="ot">NA</span> <span class="ot">NA</span> <span class="ot">NA</span> <span class="ot">NA</span> <span class="ot">NA</span> <span class="ot">NA</span> <span class="ot">NA</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a> [ reached <span class="kw">getOption</span>(<span class="st">&quot;max.print&quot;</span>) <span class="op">--</span><span class="st"> </span>omitted <span class="dv">18</span> entries ]</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># alternatively</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># biling_data[biling_data$gender == &quot;)&quot;, &quot;gender&quot;]</span></span></code></pre></div>
+<span id="cb5-2"><a href="#cb5-2"></a> [<span class="dv">1</span>] <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="st">&quot;)&quot;</span> <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span>  <span class="ot">NA</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># alternatively</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># biling_data[biling_data$gender == &quot;)&quot;, &quot;gender&quot;]</span></span></code></pre></div>
 </details>
 <div class="warn">
 As you can see the code returned the element of <code>biling_data$gender</code> which is equal to <code>&quot;)&quot;</code> <em>as well as</em> all the <code>NA</code> because, for those, the test <code>biling_data$gender == &quot;)&quot;</code> returns <code>NA</code> and not a <code>TRUE/FALSE</code>. Since we want to replace the closing bracket with <code>NA</code> this does not matter: we will simply replace all of these values with <code>NA</code>. If, however, you want to change your data to some other non-<code>NA</code> value, you need to be mindful of how <code>R</code> deals with <code>NA</code> in logical tests.
@@ -1887,7 +1978,15 @@ Because there are <code>NA</code>s in the data, we need to tell the <code>cor()<
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>ehi_cor<span class="op">$</span>P</span>
 <span id="cb14-2"><a href="#cb14-2"></a>       ehi_<span class="dv">01</span> ehi_<span class="dv">02</span> ehi_<span class="dv">03</span> ehi_<span class="dv">04</span> ehi_<span class="dv">05</span> ehi_<span class="dv">06</span> ehi_<span class="dv">07</span> ehi_<span class="dv">08</span> ehi_<span class="dv">09</span> ehi_<span class="dv">10</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>ehi_<span class="dv">01</span>     <span class="ot">NA</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a> [ reached <span class="kw">getOption</span>(<span class="st">&quot;max.print&quot;</span>) <span class="op">--</span><span class="st"> </span>omitted <span class="dv">9</span> rows ]</span></code></pre></div>
+<span id="cb14-4"><a href="#cb14-4"></a>ehi_<span class="dv">02</span>      <span class="dv">0</span>     <span class="ot">NA</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>ehi_<span class="dv">03</span>      <span class="dv">0</span>      <span class="dv">0</span>     <span class="ot">NA</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>ehi_<span class="dv">04</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>     <span class="ot">NA</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>ehi_<span class="dv">05</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>     <span class="ot">NA</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>ehi_<span class="dv">06</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>     <span class="ot">NA</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>ehi_<span class="dv">07</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>     <span class="ot">NA</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>ehi_<span class="dv">08</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>     <span class="ot">NA</span>      <span class="dv">0</span>      <span class="dv">0</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a>ehi_<span class="dv">09</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>     <span class="ot">NA</span>      <span class="dv">0</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>ehi_<span class="dv">10</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>      <span class="dv">0</span>     <span class="ot">NA</span></span></code></pre></div>
 </details>
 <div class="solText">
 Since the correlations are all ≥ .95 and <em>N</em>s are reasonably large, the <em>p</em>-values are all tiny (&lt; 10<sup>−16</sup>), hence the 0s everywhere.
@@ -2108,9 +2207,11 @@ Since the correlations are all ≥ .95 and <em>N</em>s are reasonably large, the
 <span id="cb26-7"><a href="#cb26-7"></a>Model <span class="dv">4</span><span class="op">:</span><span class="st"> </span>BILING <span class="op">~</span><span class="st"> </span>age_L2 <span class="op">+</span><span class="st"> </span>wais <span class="op">+</span><span class="st"> </span>age_L2<span class="op">:</span>wais</span>
 <span id="cb26-8"><a href="#cb26-8"></a>  Res.Df   RSS Df Sum of Sq         F <span class="kw">Pr</span>(<span class="op">&gt;</span>F)    </span>
 <span id="cb26-9"><a href="#cb26-9"></a><span class="dv">1</span>    <span class="dv">591</span> <span class="dv">63168</span>                                  </span>
-<span id="cb26-10"><a href="#cb26-10"></a> [ reached <span class="kw">getOption</span>(<span class="st">&quot;max.print&quot;</span>) <span class="op">--</span><span class="st"> </span>omitted <span class="dv">3</span> rows ]</span>
-<span id="cb26-11"><a href="#cb26-11"></a><span class="op">---</span></span>
-<span id="cb26-12"><a href="#cb26-12"></a>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="dv">2</span>    <span class="dv">590</span> <span class="dv">16715</span>  <span class="dv">1</span>     <span class="dv">46453</span> <span class="fl">1636.8946</span> <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="dv">3</span>    <span class="dv">589</span> <span class="dv">16701</span>  <span class="dv">1</span>        <span class="dv">14</span>    <span class="fl">0.4763</span> <span class="fl">0.4904</span>    </span>
+<span id="cb26-12"><a href="#cb26-12"></a><span class="dv">4</span>    <span class="dv">588</span> <span class="dv">16687</span>  <span class="dv">1</span>        <span class="dv">15</span>    <span class="fl">0.5227</span> <span class="fl">0.4700</span>    </span>
+<span id="cb26-13"><a href="#cb26-13"></a><span class="op">---</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
 </details>
 <p> </p>
 </div>
@@ -2182,7 +2283,7 @@ Since the correlations are all ≥ .95 and <em>N</em>s are reasonably large, the
 <span id="cb28-34"><a href="#cb28-34"></a>  .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;order&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span></span>
 <span id="cb28-35"><a href="#cb28-35"></a>  .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;intercept&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span></span>
 <span id="cb28-36"><a href="#cb28-36"></a>  .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;response&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span></span>
-<span id="cb28-37"><a href="#cb28-37"></a>  .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;.Environment&quot;</span>)=<span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x000001dc798eab58</span><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb28-37"><a href="#cb28-37"></a>  .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;.Environment&quot;</span>)=<span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x000002007c33b498</span><span class="op">&gt;</span><span class="st"> </span></span>
 <span id="cb28-38"><a href="#cb28-38"></a><span class="st">  </span>.. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;predvars&quot;</span>)=<span class="st"> </span>language <span class="kw">list</span>(BILING, age_L2)</span>
 <span id="cb28-39"><a href="#cb28-39"></a>  .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;dataClasses&quot;</span>)=<span class="st"> </span>Named chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;numeric&quot;</span> <span class="st">&quot;numeric&quot;</span></span>
 <span id="cb28-40"><a href="#cb28-40"></a>  .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;names&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;BILING&quot;</span> <span class="st">&quot;age_L2&quot;</span></span>
@@ -2199,7 +2300,7 @@ Since the correlations are all ≥ .95 and <em>N</em>s are reasonably large, the
 <span id="cb28-51"><a href="#cb28-51"></a>  .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;order&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span></span>
 <span id="cb28-52"><a href="#cb28-52"></a>  .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;intercept&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span></span>
 <span id="cb28-53"><a href="#cb28-53"></a>  .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;response&quot;</span>)=<span class="st"> </span>int <span class="dv">1</span></span>
-<span id="cb28-54"><a href="#cb28-54"></a>  .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;.Environment&quot;</span>)=<span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x000001dc798eab58</span><span class="op">&gt;</span><span class="st"> </span></span>
+<span id="cb28-54"><a href="#cb28-54"></a>  .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;.Environment&quot;</span>)=<span class="er">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x000002007c33b498</span><span class="op">&gt;</span><span class="st"> </span></span>
 <span id="cb28-55"><a href="#cb28-55"></a><span class="st">  </span>.. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;predvars&quot;</span>)=<span class="st"> </span>language <span class="kw">list</span>(BILING, age_L2)</span>
 <span id="cb28-56"><a href="#cb28-56"></a>  .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;dataClasses&quot;</span>)=<span class="st"> </span>Named chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;numeric&quot;</span> <span class="st">&quot;numeric&quot;</span></span>
 <span id="cb28-57"><a href="#cb28-57"></a>  .. .. .. ..<span class="op">-</span><span class="st"> </span><span class="kw">attr</span>(<span class="op">*</span>, <span class="st">&quot;names&quot;</span>)=<span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="st">&quot;BILING&quot;</span> <span class="st">&quot;age_L2&quot;</span></span>
@@ -2281,9 +2382,12 @@ Since the correlations are all ≥ .95 and <em>N</em>s are reasonably large, the
 <span id="cb34-9"><a href="#cb34-9"></a></span>
 <span id="cb34-10"><a href="#cb34-10"></a>        Df Deviance Resid. Df Resid. Dev <span class="kw">Pr</span>(<span class="op">&gt;</span>Chi)    </span>
 <span id="cb34-11"><a href="#cb34-11"></a><span class="ot">NULL</span>                      <span class="dv">559</span>     <span class="fl">773.17</span>             </span>
-<span id="cb34-12"><a href="#cb34-12"></a> [ reached <span class="kw">getOption</span>(<span class="st">&quot;max.print&quot;</span>) <span class="op">--</span><span class="st"> </span>omitted <span class="dv">4</span> rows ]</span>
-<span id="cb34-13"><a href="#cb34-13"></a><span class="op">---</span></span>
-<span id="cb34-14"><a href="#cb34-14"></a>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
+<span id="cb34-12"><a href="#cb34-12"></a>gender   <span class="dv">2</span>    <span class="fl">1.081</span>       <span class="dv">557</span>     <span class="fl">772.09</span>   <span class="fl">0.5825</span>    </span>
+<span id="cb34-13"><a href="#cb34-13"></a>wais     <span class="dv">1</span>    <span class="fl">2.139</span>       <span class="dv">556</span>     <span class="fl">769.95</span>   <span class="fl">0.1436</span>    </span>
+<span id="cb34-14"><a href="#cb34-14"></a>yearsFR  <span class="dv">1</span>  <span class="fl">219.267</span>       <span class="dv">555</span>     <span class="fl">550.69</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span></span>
+<span id="cb34-15"><a href="#cb34-15"></a>BILING   <span class="dv">1</span>  <span class="fl">156.139</span>       <span class="dv">554</span>     <span class="fl">394.55</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span></span>
+<span id="cb34-16"><a href="#cb34-16"></a><span class="op">---</span></span>
+<span id="cb34-17"><a href="#cb34-17"></a>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span></code></pre></div>
 </details>
 <p> </p>
 </div>
@@ -2306,18 +2410,21 @@ Since the correlations are all ≥ .95 and <em>N</em>s are reasonably large, the
 <span id="cb35-12"><a href="#cb35-12"></a><span class="st">             </span>Estimate Std. Error z value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>z<span class="op">|</span>)    </span>
 <span id="cb35-13"><a href="#cb35-13"></a>(Intercept) <span class="fl">-36.94642</span>    <span class="fl">4.43629</span>  <span class="fl">-8.328</span>  <span class="op">&lt;</span><span class="st"> </span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span></span>
 <span id="cb35-14"><a href="#cb35-14"></a>gender1      <span class="fl">-0.14627</span>    <span class="fl">0.25580</span>  <span class="fl">-0.572</span>    <span class="fl">0.567</span>    </span>
-<span id="cb35-15"><a href="#cb35-15"></a> [ reached <span class="kw">getOption</span>(<span class="st">&quot;max.print&quot;</span>) <span class="op">--</span><span class="st"> </span>omitted <span class="dv">4</span> rows ]</span>
-<span id="cb35-16"><a href="#cb35-16"></a><span class="op">---</span></span>
-<span id="cb35-17"><a href="#cb35-17"></a>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
-<span id="cb35-18"><a href="#cb35-18"></a></span>
-<span id="cb35-19"><a href="#cb35-19"></a>(Dispersion parameter <span class="cf">for</span> binomial family taken to be <span class="dv">1</span>)</span>
-<span id="cb35-20"><a href="#cb35-20"></a></span>
-<span id="cb35-21"><a href="#cb35-21"></a>    Null deviance<span class="op">:</span><span class="st"> </span><span class="fl">773.17</span>  on <span class="dv">559</span>  degrees of freedom</span>
-<span id="cb35-22"><a href="#cb35-22"></a>Residual deviance<span class="op">:</span><span class="st"> </span><span class="fl">394.55</span>  on <span class="dv">554</span>  degrees of freedom</span>
-<span id="cb35-23"><a href="#cb35-23"></a>  (<span class="dv">32</span> observations deleted due to missingness)</span>
-<span id="cb35-24"><a href="#cb35-24"></a>AIC<span class="op">:</span><span class="st"> </span><span class="fl">406.55</span></span>
-<span id="cb35-25"><a href="#cb35-25"></a></span>
-<span id="cb35-26"><a href="#cb35-26"></a>Number of Fisher Scoring iterations<span class="op">:</span><span class="st"> </span><span class="dv">6</span></span></code></pre></div>
+<span id="cb35-15"><a href="#cb35-15"></a>gender2      <span class="fl">-1.66909</span>    <span class="fl">1.29827</span>  <span class="fl">-1.286</span>    <span class="fl">0.199</span>    </span>
+<span id="cb35-16"><a href="#cb35-16"></a>wais          <span class="fl">0.15534</span>    <span class="fl">0.02934</span>   <span class="fl">5.294</span> <span class="fl">1.19e-07</span> <span class="op">**</span><span class="er">*</span></span>
+<span id="cb35-17"><a href="#cb35-17"></a>yearsFR       <span class="fl">0.59747</span>    <span class="fl">0.05378</span>  <span class="fl">11.109</span>  <span class="op">&lt;</span><span class="st"> </span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span></span>
+<span id="cb35-18"><a href="#cb35-18"></a>BILING        <span class="fl">0.18526</span>    <span class="fl">0.01961</span>   <span class="fl">9.447</span>  <span class="op">&lt;</span><span class="st"> </span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span></span>
+<span id="cb35-19"><a href="#cb35-19"></a><span class="op">---</span></span>
+<span id="cb35-20"><a href="#cb35-20"></a>Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span></span>
+<span id="cb35-21"><a href="#cb35-21"></a></span>
+<span id="cb35-22"><a href="#cb35-22"></a>(Dispersion parameter <span class="cf">for</span> binomial family taken to be <span class="dv">1</span>)</span>
+<span id="cb35-23"><a href="#cb35-23"></a></span>
+<span id="cb35-24"><a href="#cb35-24"></a>    Null deviance<span class="op">:</span><span class="st"> </span><span class="fl">773.17</span>  on <span class="dv">559</span>  degrees of freedom</span>
+<span id="cb35-25"><a href="#cb35-25"></a>Residual deviance<span class="op">:</span><span class="st"> </span><span class="fl">394.55</span>  on <span class="dv">554</span>  degrees of freedom</span>
+<span id="cb35-26"><a href="#cb35-26"></a>  (<span class="dv">32</span> observations deleted due to missingness)</span>
+<span id="cb35-27"><a href="#cb35-27"></a>AIC<span class="op">:</span><span class="st"> </span><span class="fl">406.55</span></span>
+<span id="cb35-28"><a href="#cb35-28"></a></span>
+<span id="cb35-29"><a href="#cb35-29"></a>Number of Fisher Scoring iterations<span class="op">:</span><span class="st"> </span><span class="dv">6</span></span></code></pre></div>
 </details>
 <p> </p>
 </div>
@@ -2817,6 +2924,48 @@ iframe {
     position: relative;
 }
 
+.copy pre.r {
+    position: relative;
+}
+
+.copy pre.r:hover {
+    background-color: rgb(var(--theme-col));
+    transition: background 0.1s linear;
+    cursor: pointer;
+    color: #0000005c;
+    border-color: rgb(var(--theme-col));
+	overflow: hidden;
+}
+
+.copy pre.r:hover::after {
+    content: 'copy code';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 50px;
+    font-family: Helvetica;
+    color: white;
+    font-weight: bold;
+    margin-left: -125px;
+    text-align: center;
+    margin-top: -40px;
+}
+
+.copy .r:hover code span.kw, .copy .r:hover code span.dt, .copy .r:hover code span.dv,
+.copy .r:hover code span.op, .copy .r:hover code span.st, .copy .r:hover code span.er,
+.copy .r:hover code span.co {
+    color: #0000005c;
+}
+
+.copy pre.r:active {
+    background-color: rgb(var(--font-col));
+    border-color: rgb(var(--font-col));
+}
+
+.copy:active .r code.r {
+    visibility: hidden;
+}
+
 @media print {	
   .col-md-9 {
     width: 100%;
@@ -2966,6 +3115,19 @@ $(document).ready(toc_width);
 $(window).resize(my_offset);
 $(window).resize(toc_width);
 $(window).resize(f);
+
+function copyCode(text) {
+    var dummy = document.createElement("textarea");
+    // to avoid breaking orgain page when copying more words
+    // cant copy when adding below this code
+    // dummy.style.display = 'none'
+    document.body.appendChild(dummy);
+    //Be careful if you use texarea. setAttribute('value', value), which works with "input" does not work with "textarea". – Eduard
+    dummy.value = $(text).text();
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+}
 
 </script>
 
