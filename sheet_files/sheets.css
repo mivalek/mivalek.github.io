@@ -507,6 +507,28 @@ iframe {
     visibility: hidden;
 }
 
+/* D3.js  */
+
+svg {
+    border: solid 1pt rgb(var(--theme-col));
+}
+
+#panel #sliders {
+    width: 50%;
+    padding: 10px;
+    float: left;
+    margin-bottom: 20px;
+    min-width: 250px;
+}
+
+#panel #equation {
+    width: 50%;
+    float: right;
+    font-size: 40px;
+    padding: 10px;
+	padding-bottom: 40px;
+}
+
 @media print {	
   .col-md-9 {
     width: 100%;
