@@ -539,21 +539,21 @@ svg {
 }
 
 @media screen and (max-width: 1070px) {  
-  #panel #sliders {
-	width: 100%;  
-    float: none;
-	display: block;
-	margin: auto;
-    margin-bottom: 10px;
-  }
+	#panel #sliders {
+		width: 100%;  
+		float: none;
+		display: block;
+		margin: auto;
+		margin-bottom: 10px;
+	}
 
-  #panel #equation {
-    float: none;
-    font-size: 25px;
-	display: block;
-	margin: auto;
-    margin-bottom: 20px;
-  }
+	#panel #equation {
+		float: none;
+		font-size: 25px;
+		display: block;
+		margin: auto;
+		margin-bottom: 20px;
+	}
 }
 
 @media screen and (max-width: 570px) {
