@@ -1615,7 +1615,7 @@ function updateSdOutput(event) {
 
 function updateMuOutput(event) {
   let x = muIn.value;
-  muOut.innerText = x;
+  muOut.innerText = Math.round(Number(x) * 100) / 100;
 }
 
 
@@ -1698,7 +1698,16 @@ function gaussian(x, mean, sigma) {
     updateMuOutput()
     updatePlot()
   });
-
+// touch devices
+  $("#sdInput").on("touchmove", function(d){
+    updateSdOutput()
+    updatePlot()
+  });
+  
+  $("#muInput").on("touchmove", function(d){
+    updateMuOutput()
+    updatePlot()
+  });
 
 updateMuOutput();
 updateSdOutput();  
