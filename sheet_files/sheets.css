@@ -513,13 +513,14 @@ svg {
     border: solid 1pt rgb(var(--theme-col));
     background-color: white;
 	display: block;
-	margin: auto;
+	margin: 10px;
     margin-bottom: 15px;
 }
 
 #panel {
     background-color: rgba(var(--theme-col), .3);
     border: solid 1pt rgb(var(--theme-col));
+	min-width: 273px;
 }
 
 #panel #sliders {
@@ -527,7 +528,7 @@ svg {
     padding: 10px;
     float: left;
     margin-bottom: 20px;
-    min-width: 250px;
+    min-width: 273px;
 }
 
 #panel #equation {
@@ -535,7 +536,30 @@ svg {
     float: right;
     font-size: 40px;
     padding: 10px;
-	padding-bottom: 40px;
+}
+
+@media screen and (max-width: 1070px) {  
+  #panel #sliders {
+    float: none;
+	display: block;
+	margin: auto;
+    margin-bottom: 10px;
+  }
+
+  #panel #equation {
+    float: none;
+    font-size: 25px;
+	display: block;
+	margin: auto;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  #panel #equation {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
 }
 
 .sliderTitle {
