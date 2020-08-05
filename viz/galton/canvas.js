@@ -1,14 +1,26 @@
 
-
 const sliderValueToFreq = (sliderValue) => {
   let freqValues = [100, 80, 60, 40, 30, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
   return freqValues[sliderValue];
 };
 
+let background,
+    bkg,
+    canvas,
+    c,
+    beadFreq = sliderValueToFreq(+document.getElementById('beadFreq').value),
+    nBins = 2,
+    tick = 0,
+    interval,
+    height,
+    width,
+    tempWidth;
+
 function binSliderChange () {
   nBins = +document.getElementById('nBins').value;
   clearInterval(interval);
-  beanMachine();;
+  drawCanvas();
+  beanMachine();
 };
 
 function freqSliderChange () {
@@ -56,19 +68,39 @@ function pickColour (colours) {
   return colours[Math.floor(Math.random() * colours.length)];
 }
 
-let beadFreq = sliderValueToFreq(+document.getElementById('beadFreq').value),
-    nBins = +document.getElementById('nBins').value,
-    tick = 0,
-    interval;
+ // background = document.getElementById('background')
+ // bkg = background.getContext('2d');
+ // canvas = document.getElementById('main')
+ // c = canvas.getContext('2d');
+
+
+
+function drawCanvas() {
+  background = document.getElementById('background'),
+  bkg = background.getContext('2d'),
+  canvas = document.getElementById('main'),
+  c = canvas.getContext('2d'),
+  height = innerHeight * .75,
+  width = height / 2;
+  nBins = +document.getElementById('nBins').value;
+
+  let tempWidth = Math.min(width / 10, width / nBins);
+
+  width = Math.min(width, nBins * tempWidth);
+
+  canvas.width = width;
+  canvas.height = height;
+  background.width = width;
+  background.height = height;
+  canvas.style.setProperty('left', ((innerWidth - width) / 2) + "px", "");
+  background.style.setProperty('left', ((innerWidth - width) / 2) + "px", "");
+
+}
 // let beadFreq = 40;
 
 function beanMachine () {
-  const background = document.getElementById('background')
-  const bkg = background.getContext('2d');
-  const canvas = document.getElementById('main')
-  const c = canvas.getContext('2d');
-  const height = innerHeight * .75,
-        nPegRows = nBins - 1,
+
+  const nPegRows = nBins - 1,
         probMiddleBin = pbinom(nBins);
         cols = [
           "#f08be2",
@@ -79,8 +111,7 @@ function beanMachine () {
           "#d600ba"
         ];
 
-  let width = height / 2;
-      beads = [],
+  let beads = [],
       pegs = [],
       bins = [],
       // tick = 1,
@@ -90,8 +121,7 @@ function beanMachine () {
       beadRestCounter = 0,
       beadsRunning = 1;
 
-  let temp = Math.min(width / 10, width / nBins);
-  width = Math.min(width, nBins * temp);
+
 
   const pegSpacingX = width / nBins,
         halfPegSpacingX = pegSpacingX / 2,
@@ -107,12 +137,7 @@ function beanMachine () {
         halfBinWidth = binWidth / 2,
         binWallWidth = pegSize / 2;
 
-  canvas.width = width;
-  canvas.height = height;
-  background.width = width;
-  background.height = height;
-  canvas.style.setProperty('left', ((innerWidth - width) / 2) + "px", "");
-  background.style.setProperty('left', ((innerWidth - width) / 2) + "px", "");
+
 
   class Bead {
     constructor (beadNo) {
@@ -193,6 +218,7 @@ function beanMachine () {
         this.dx = sampleBin() * 1 * veloUnits;
       };
 
+      let temp
       for (let i = 1; i < nPegRows; i++) {
         temp = Math.round(Math.random())
         this.steps.push(temp);
@@ -310,4 +336,5 @@ function beanMachine () {
   interval = setInterval(animate, 4);
 }
 
+drawCanvas();
 beanMachine();
