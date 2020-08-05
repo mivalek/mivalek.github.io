@@ -1,35 +1,43 @@
 
 
+const sliderValueToFreq = (sliderValue) => {
+  let freqValues = [100, 80, 60, 40, 30, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+  return freqValues[sliderValue];
+};
 
-const canvas = document.querySelector('canvas');
-const c = canvas.getContext('2d');
+function binSliderChange () {
+  nBins = +document.getElementById('nBins').value;
+  clearInterval(interval);
+  beanMachine();;
+};
 
-const FPS = 400;
-const ballFreq = 1;
-const height = innerHeight * .9;
-let width = height / 2;
+function freqSliderChange () {
+  beadFreq = sliderValueToFreq(+document.getElementById('beadFreq').value);
+  tick = 0;
+};
 
-let bins = 50,
-    padX = Math.min(width / 10, width / (bins - 1));
+// listen in on the sliders
+document.getElementById('nBins').addEventListener("change", binSliderChange);
+document.getElementById('beadFreq').addEventListener("change", freqSliderChange);
+// listen in on the sliders
+document.getElementById('nBins').addEventListener("touchmove", binSliderChange);
+document.getElementById('beadFreq').addEventListener("touchmove", freqSliderChange);
 
+function fact(num) {
+  if (num === 0) {
+    return 1;
+  } else {
+    return num * fact( num - 1 );
+  }
+}
 
-width = Math.min(width, bins * padX);
-canvas.width = width;
-canvas.height = height;
+function pbinom (nBins) {
+  const middleBin = Math.floor(nBins/2);
+  const comb = fact(nBins)/(fact(middleBin) * fact(nBins - middleBin));
+  return Math.round(comb * (0.5 ** nBins) * 100) / 100;
+}
 
-let padY = padX/1.5,
-    topPinY = 4*padY,
-    pinRadius = Math.floor(padX * .10),
-    ballX = width / 2,
-    ballY = 0,
-    ballRadius = Math.floor(padX * .2),
-    speed = 1,
-    gravity = 1,
-    objects,
-    distArray,
-    interval
-    tick = 0
-    tock = 0;
+const sum = arr => arr.reduce((a,b) => a + b, 0);
 
 function sampleBin() {
   let x = Math.random();
@@ -40,335 +48,266 @@ function sampleBin() {
   }
 }
 
-/**
- * Rotates coordinate system for velocities
- *
- * Takes velocities and alters them as if the coordinate system they're on was rotated
- *
- * @param  Object | velocity | The velocity of an individual particle
- * @param  Float  | angle    | The angle of collision between two objects in radians
- * @return Object | The altered x and y velocities after the coordinate system has been rotated
- */
-
-function rotate(velocity, angle) {
-    const rotatedVelocities = {
-        x: velocity.x * Math.cos(angle) - velocity.y * Math.sin(angle),
-        y: velocity.x * Math.sin(angle) + velocity.y * Math.cos(angle)
-    };
-
-    return rotatedVelocities;
-}
-
-/**
- * Swaps out two colliding particles' x and y velocities after running through
- * an elastic collision reaction equation
- *
- * @param  Object | particle      | A particle object with x and y coordinates, plus velocity
- * @param  Object | otherParticle | A particle object with x and y coordinates, plus velocity
- * @return Null | Does not return a value
- */
-
-// function resolveCollision(particle, otherParticle) {
-//     const xVelocityDiff = particle.velocity.x - otherParticle.velocity.x;
-//     const yVelocityDiff = particle.velocity.y - otherParticle.velocity.y;
-//
-//     const xDist = otherParticle.x - particle.x;
-//     const yDist = otherParticle.y - particle.y;
-//
-//     // Prevent accidental overlap of particles
-//     if (xVelocityDiff * xDist + yVelocityDiff * yDist >= 0) {
-//
-//         // Grab angle between the two colliding particles
-//         const angle = -Math.atan2(otherParticle.y - particle.y, otherParticle.x - particle.x);
-//
-//         // Store mass in var for better readability in collision equation
-//         const m1 = particle.mass;
-//         const m2 = otherParticle.mass;
-//
-//         // Velocity before equation
-//         const u1 = rotate(particle.velocity, angle);
-//         const u2 = rotate(otherParticle.velocity, angle);
-//
-//         // Velocity after 1d collision equation
-//         const v1 = { x: u1.x * (m1 - m2) / (m1 + m2) + u2.x * 2 * m2 / (m1 + m2), y: u1.y };
-//         const v2 = { x: u2.x * (m1 - m2) / (m1 + m2) + u1.x * 2 * m2 / (m1 + m2), y: u2.y };
-//
-//         // Final velocity after rotating axis back to original location
-//         const vFinal1 = rotate(v1, -angle);
-//         const vFinal2 = rotate(v2, -angle);
-//
-//         // Swap particle velocities for realistic bounce effect
-//         particle.velocity.x = vFinal1.x;
-//         particle.velocity.y = vFinal1.y;
-//
-//         otherParticle.velocity.x = vFinal2.x;
-//         otherParticle.velocity.y = vFinal2.y;
-//     }
-// }
-
-function resolveCollision(particle, otherParticle) {
-    const xVelocityDiff = particle.velocity.x;
-    const yVelocityDiff = particle.velocity.y;
-
-    const xDist = otherParticle.x - particle.x;
-    const yDist = otherParticle.y - particle.y;
-
-    // Prevent accidental overlap of particles
-    if (xVelocityDiff * xDist + yVelocityDiff * yDist >= 0) {
-
-        // Grab angle between the two colliding particles
-        const angle = -Math.atan2(otherParticle.y - particle.y, otherParticle.x - particle.x);
-
-        // Store mass in var for better readability in collision equation
-        const m1 = particle.mass;
-        const m2 = 5;
-
-        // Velocity before equation
-        const u1 = rotate(particle.velocity, angle);
-        const u2 = {x: 0, y: 0};
-
-        // Velocity after 1d collision equation
-        const v1 = { x: u1.x * (m1 - m2) / (m1 + m2) + u2.x * 2 * m2 / (m1 + m2), y: u1.y };
-
-        // Final velocity after rotating axis back to original location
-        const vFinal1 = rotate(v1, -angle);
-
-        // Swap particle velocities for realistic bounce effect
-        particle.velocity.x = vFinal1.x;
-        particle.velocity.y = vFinal1.y;
-    }
-}
-
-
-function Pin(x, y, radius) {
-  this.x = x;
-  this.y = y;
-  this.radius = radius;
-  this.padX = padX;
-  this.padY = padY;
-
-  this.draw = function() {
-    c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = '#242943';
-    c.strokeStyle = "#5a5f7a";
-    c.lineWidth = 3;
-    c.fill();
-    c.stroke();
-    c.closePath;
-  }
-}
-
-function Ball(x, y, radius, dx, dy) {
-  this.x = x + (Math.random() - 0.5) * 2;
-  this.y = y + (Math.random() - 1) * 10;
-  this.radius = radius;
-  this.velocity = {x: dx, y: dy};
-  this.mass = 1,
-  this.position = 1,
-  this.rest = height,
-  this.touchdown = false,
-  this.colliding = false,
-  this.collisionWith = -1;
-
-  this.update = function() {
-    console.log({
-      colliding: this.colliding,
-      colwith: this.collisionWith,
-      dist: dist(this, objects[2]),
-      dx: this.velocity.x
-    });
-    if (this.velocity.x == 0 && this.velocity.y == 0) {
-
-      this.draw();
-    } else {
-      this.dist = []
-      if (this.y < lastPin.y) {
-        this.velocity.y += gravity;
-        this.velocity.x *= .8;
-        if (!this.colliding) {
-          for (let j = 0; j < objects.length; j++) {
-            this.dist.push(dist(this, objects[j]));
-          }
-          // objects.forEach((obj, i) => {
-          //   this.dist.push(dist(this, obj));
-          // });
-          for (let i = 0; i < this.dist.length; i++) {
-            if (this.dist[i] <= this.radius + pinRadius) {
-              this.velocity.x = sampleBin() * this.velocity.y;
-              this.velocity.y = this.velocity.y / 2;
-              // resolveCollision(this, objects[i]);
-              this.colliding = true;
-              this.collisionWith = i;
-            }
-          }
-        } else {
-          if (dist(this, objects[this.collisionWith]) >= this.radius + pinRadius) {
-            this.colliding = false;
-          }
-        }
-
-      } else {
-        this.velocity.x = 0;
-        this.position = Math.floor((this.x + padX / 2) / padX);
-        if (!this.touchdown) {
-          this.rest = bottomPosition[this.position];
-          bottomPosition[this.position] -= 1.8 * this.radius;
-          this.touchdown = true;
-          if (bottomPosition[this.position] <= lastPin.y) {
-            gameOver = true;
-          }
-        }
-        if (this.y + this.radius + this.velocity.y > this.rest) {
-          if (this.velocity.y < 1) {
-            this.velocity.y = 0;
-          } else {
-            this.velocity.y = -this.velocity.y * .2;
-          }
-        } else if (this.velocity.y != 0){
-          this.velocity.y += gravity;
-          this.velocity.x *= .8;
-        }
-      }
-      if (Math.abs(this.x - width / 2) + this.radius > width / 2) {
-        this.velocity.x = -this.velocity.x * .9;
-      }
-
-      // if (Math.abs(this.x - width / 2) + this.radius > this.y / 1.33) {
-      //   this.velocity.x = -this.velocity.x * .9;
-      // }
-
-
-      this.x += this.velocity.x;
-      this.y += this.velocity.y;
-      this.draw();
-    }
-  }
-
-  this.draw = function() {
-    c.beginPath();
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    c.fillStyle = "#dd2255";
-    c.fill();
-    c.closePath;
-  }
-}
-
-let balls,
-    nPins,
-    lastPin
-    bottomPosition = [];
-
-for (let i = 0; i < bins; i++) {
-  bottomPosition.push(height);
-}
-
-const init = () => {
-  balls = [];
-  objects = [];
-  let gameOver;
-
-// balls.push(new Ball(ballX, ballY, ballRadius, 0, speed));
-  let firstRow = Math.min(bins - 1 + bins % 2, 5);
-  let pinsPerRow;
-  for (let i = 0; i < bins - 1; i ++) {
-    pinsPerRow = Math.min(firstRow + i, bins + i + bins % 2);
-    for (let j = 0; j < pinsPerRow; j ++) {
-      objects.push(new Pin((width - (pinsPerRow - 1) * padX)/ 2 + j * padX, topPinY + padY * i, pinRadius));
-    }
-  }
-  nPins = objects.length;
-  lastPin = objects[nPins - 1];
-  for (let i = 0; i < nPins; i++) {
-    objects[i].draw();
-  }
-}
-
-
-const animate = () => {
-  gaveOver = false;
-  c.clearRect(0, 0, width, height);
-  if (tick == 0) {
-    balls.push(new Ball(ballX, ballY, ballRadius, 0, speed));
-  }
-  balls.forEach(ball => ball.update());
-  for (let i = 0; i < nPins; i++) {
-    objects[i].draw();
-  }
-  // c.beginPath();
-  // c.moveTo(width / 2, 0);
-  // c.lineTo(width / 2 + height, 1.33 * height);
-  // c.stroke();
-
-  tick++;
-  if (tick == ballFreq) {
-    tock++;
-    tick = 0;
-  }
-  if (gameOver) {
-    clearInterval(interval);
-  }
-  // console.log(bottomPosition);
-}
-const dist = (o1, o2) => {
+function dist(o1, o2) {
   return Math.sqrt((o1.x - o2.x) ** 2 + (o1.y - o2.y) ** 2);
 }
 
+function pickColour (colours) {
+  return colours[Math.floor(Math.random() * colours.length)];
+}
 
-// c.beginPath();
-// c.moveTo((width - padX) / 2, 0);
-// c.lineTo((width - padX) / 2, topPinY - 2.7 * padY - 20);
-// c.arc((width - padX) / 2 - 20, topPinY - 2.7 * padY, 20, 0, Math.PI / 4, false);
-// c.lineTo(0, topPinY + padY * (bins - 4.7));
-// c.lineTo(0, 0);
-// c.closePath();
-// c.fillStyle = '#242943';
-// c.strokeStyle = "#5a5f7a";
-// c.lineWidth = 5;
-// c.fill();
-// c.stroke();
-//
-// c.beginPath();
-// c.moveTo((width + padX) / 2, 0);
-// c.lineTo((width + padX) / 2, topPinY - 2.7 * padY - 20);
-// c.arc((width + padX) / 2 + 20, topPinY - 2.7 * padY, 20, Math.PI, Math.PI * 3/4, true);
-// c.lineTo(width, topPinY + padY * (bins - 4.7));
-// c.lineTo(width, 0);
-// c.closePath();
-// c.fillStyle = '#242943';
-// c.strokeStyle = "#5a5f7a";
-// c.lineWidth = 5;
-// c.lineJoin = "round";
-// c.fill();
-// c.stroke();
+let beadFreq = sliderValueToFreq(+document.getElementById('beadFreq').value),
+    nBins = +document.getElementById('nBins').value,
+    tick = 0,
+    interval;
+// let beadFreq = 40;
+
+function beanMachine () {
+  const background = document.getElementById('background')
+  const bkg = background.getContext('2d');
+  const canvas = document.getElementById('main')
+  const c = canvas.getContext('2d');
+  const height = innerHeight * .75,
+        nPegRows = nBins - 1,
+        probMiddleBin = pbinom(nBins);
+        cols = [
+          "#f08be2",
+          "#db58c9",
+          "#cc23b5",
+          "#911180",
+          "#ff6eec",
+          "#d600ba"
+        ];
+
+  let width = height / 2;
+      beads = [],
+      pegs = [],
+      bins = [],
+      // tick = 1,
+      tock = 1,
+      gameOver = false,
+      beadCounter = 1,
+      beadRestCounter = 0,
+      beadsRunning = 1;
+
+  let temp = Math.min(width / 10, width / nBins);
+  width = Math.min(width, nBins * temp);
+
+  const pegSpacingX = width / nBins,
+        halfPegSpacingX = pegSpacingX / 2,
+        pegSpacingY = Math.sqrt((pegSpacingX ** 2) - (halfPegSpacingX ** 2)),
+        topPegY = pegSpacingY,
+        bottomPegY = nBins * pegSpacingY;
+        halfWidth = width / 2,
+        beadSize = Math.max(5, Math.floor(halfPegSpacingX * 0.55)),
+        beadMass = 1;
+        pegSize = beadSize * 0.6,
+        veloUnits = pegSpacingX / 100,
+        binWidth = pegSpacingX - pegSize,
+        halfBinWidth = binWidth / 2,
+        binWallWidth = pegSize / 2;
+
+  canvas.width = width;
+  canvas.height = height;
+  background.width = width;
+  background.height = height;
+  canvas.style.setProperty('left', ((innerWidth - width) / 2) + "px", "");
+  background.style.setProperty('left', ((innerWidth - width) / 2) + "px", "");
+
+  class Bead {
+    constructor (beadNo) {
+      let firstStep = Math.round(Math.random())
+      this.x = width/2 + (Math.random() - 0.5) * 10 * veloUnits;
+      this.y = 0 + (Math.random() - 0.5);
+      this.r = beadSize;
+      this.dx = 0;
+      this.dy = veloUnits;
+      this.mass = beadMass;
+      this.colour = pickColour(cols);
+      this.steps = [firstStep];
+      this.pegsInWay = [0];
+      this.bin = firstStep;
+      this.rest = false;
+      this.bottomColliding = false;
+      this.wallsColliding = false;
+      this.update = function () {
+        if (!this.rest) {
+          this.x += this.dx;
+          this.y += this.dy;
+          this.dx *= 0.9;
+          this.dy += veloUnits;
+          this.binWalls.bottom = bins[this.bin].bottomBall;
+          if (this.pegsInWay.length != 0) {
+            let distFromPeg = dist(this, pegs[this.pegsInWay[0]]) - (this.r + pegSize);
+            if (distFromPeg <= 0) {
+              this.pegBounce();
+            }
+          } else {
+            if (this.y > bottomPegY + 10) {
+              if (this.x - this.r < this.binWalls.left || this.x + this.r > this.binWalls.right) {
+                  if (!this.wallsColliding) {this.wallBounce()};
+                  this.wallsColliding = true;
+              } else {
+                this.wallsColliding = false;
+              }
+
+              if (this.y + this.r > this.binWalls.bottom) {
+                  this.dx = 0;
+                  this.dy = 0;
+                  this.y = height + 100;
+                  this.rest = true;
+                  beadRestCounter++;
+                  bins[this.bin].bottomBall -= 1;
+                  if (bins[this.bin].bottomBall - bottomPegY < beadsRunning * probMiddleBin * 1) {
+                    gameOver = true;
+                  }
+                }
+            } else {
+              this.x += (this.dx + (Math.random() - 0.5)) / 2;
+            }
+          }
+        }
+        this.draw();
+      };
+      this.draw = function () {
+        c.beginPath();
+        c.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+        c.fillStyle = this.colour;
+        c.fill();
+        c.closePath;
+      };
+      this.pegBounce = function () {
+        this.dy = -this.dy * 0.1 + (Math.random() - 0.5) * veloUnits;
+        this.dx = ((this.steps[0] - 0.5) * 12 + (Math.random() - 0.5)) * veloUnits;
+        this.pegsInWay.shift();
+        this.steps.shift();
+      };
+
+      this.wallBounce = function () {
+        this.dy *= 0.4;
+        this.dx *= -.65;
+      };
+
+      this.bottomBounce = function () {
+        this.dy *= -0.5 * veloUnits;
+        this.dx = sampleBin() * 1 * veloUnits;
+      };
+
+      for (let i = 1; i < nPegRows; i++) {
+        temp = Math.round(Math.random())
+        this.steps.push(temp);
+        this.pegsInWay.push(this.pegsInWay[i-1] + i + this.steps[i-1]);
+        this.bin += temp;
+      }
+
+      this.binWalls = {
+        left: bins[this.bin].left,
+        right: bins[this.bin].right,
+        bottom: bins[this.bin].bottomBall
+      };
+    }
+
+  }
+
+  class Peg {
+    constructor (x, y) {
+      this.x = x;
+      this.y = y;
+      this.r = pegSize;
+      this.draw = function () {
+        c.beginPath();
+        c.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+        c.fillStyle = '#242943';
+        c.strokeStyle = "#5a5f7a";
+        c.lineWidth = 3;
+        c.fill();
+        c.stroke();
+        c.closePath;
+      }
+    }
+  }
+
+  class Bin {
+    constructor (leftWall) {
+      this.left = leftWall + binWallWidth;
+      this.right = this.left + binWidth;
+      this.top = bottomPegY;
+      this.bottom = height - 10;
+      this.bottomBall = height - 10;
+      this.colour = pickColour(cols);
+      this.draw = function () {
+        c.beginPath();
+        c.moveTo(this.left + 3, this.top);
+        c.lineTo(this.left + 3, this.bottom - halfBinWidth);
+        c.arc(this.left + halfPegSpacingX - binWallWidth, this.bottom - halfBinWidth, halfBinWidth - 3, Math.PI, 0, true);
+        c.lineTo(this.right - 3, this.top);
+        c.lineTo(this.right + binWallWidth, this.top);
+        c.lineTo(this.right + binWallWidth, height);
+        c.lineTo(leftWall, height);
+        c.lineTo(leftWall, this.top);
+        c.lineTo(this.left, this.top);
+        c.closePath();
+        c.fillStyle = '#242943';
+        c.strokeStyle = "#5a5f7a";
+        c.lineWidth = 1;
+        c.lineJoin = "round";
+        c.fill();
+        c.stroke();
+        bkg.beginPath();
+        bkg.moveTo(this.left, this.bottomBall);
+        bkg.lineTo(this.right, this.bottomBall);
+        bkg.lineTo(this.right, this.bottom);
+        bkg.lineTo(this.left, this.bottom);
+        bkg.lineTo(this.left, this.bottomBall);
+        bkg.closePath();
+        bkg.fillStyle = this.colour;
+        bkg.lineJoin = "round";
+        bkg.fill();
+      }
+    }
+  }
+
+  function init() {
+    for (let i = 0; i < nBins; i++) {
+      for (let j = 0; j < i; j++) {
+        pegs.push(new Peg(x = halfWidth - halfPegSpacingX * (i - 1) + pegSpacingX * j,
+                          y = topPegY + pegSpacingY * i))
+      }
+      bins.push(new Bin(pegSpacingX * i));
+    }
+    beads.push(new Bead(0));
+  }
 
 
-init();
+  function animate() {
+    if (!gameOver) {
+      if (tick == beadFreq) {
+        beads.push(new Bead(beadCounter));
+        beadCounter++;
+        tick = 0
+      }
+    }
 
+    c.clearRect(0, 0, width, height);
+    beads.forEach(bead => bead.update());
+    bins.forEach(bin => bin.draw());
+    pegs.forEach(peg => peg.draw());
 
-// for (let i = 0; i < bins + 1; i ++) {
-//   c.beginPath();
-//   c.rect(lastPin.x - i * padX, topPinY + padY * (bins - 2), 3, height - (topPinY + padY * (bins - 2)));
-//   c.lineWidth = 5;
-//   c.strokeStyle = "#5a5f7a";
-//   c.fillStyle = '#242943';
-//   c.stroke();
-//   c.fill();
-// }
-//
-// c.beginPath();
-// c.moveTo(width / 2, 0);
-// c.lineTo(width / 2 + height, 1.33* height);
-// c.stroke();
-//
-// c.beginPath();
-// c.rect(0, 0, width, height);
-// c.lineWidth = 10;
-// c.strokeStyle = "#5a5f7a";
-// c.fillStyle = '#242943';
-// c.stroke();
+    if ((beadsRunning == 0) & gameOver) {
+      clearInterval(interval);
+    }
+    tick++;
+    tock++;
+    beadsRunning = beadCounter - beadRestCounter;
+    // clean beads that have fallen off screen
+    if (tock == 200) {
+      beads.forEach((bead, i) => {if (beads[i].rest) {beads.splice(i, 1)}});
+      tock = 1;
+    }
+  }
 
+  init();
+  interval = setInterval(animate, 4);
+}
 
-
-
-interval = setInterval(animate, 1000/FPS);
+beanMachine();

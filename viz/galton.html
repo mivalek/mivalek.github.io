@@ -8,25 +8,23 @@
     </style>
   </head>
   <body>
-    <h1>Binomial distribution and the bean machine</h1>
-    <canvas></canvas>
+    <!-- <h1>Binomial distribution and the bean machine</h1> -->
+    <div id="panel">
+      <!-- <script>
+        console.log("script #1: %o", document.getElementById("nBins")); // null
+      </script> -->
+      <div id="sliders">
+        <div class="sliderTitle">No. of bins</div>
+        <input id="nBins" type="range" min="2" max="30" value="2" step="1" style="width: 100%; min-width: 250px; color: black; height: 10px"/>
+        <div  class="sliderTitle">Ball drop frequency</div>
+        <input id="beadFreq" type="range" min="0" max="15" value="0" step="1" style="width: 100%; min-width: 250px; height: 10px"/>
+      </div>
+
+    </div>
+    <div id="widget" style="position:relative;">
+      <canvas id="background" style="position: absolute; top: 2px; z-index: 0;"></canvas>
+      <canvas id="main" style="position: absolute; top: 0; z-index: 1;"></canvas>
+    </div>
     <script src="galton/canvas.js"></script>
   </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Glaton board</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://unpkg.com/d3@5.9.2/dist/d3.min.js"></script>
-</head>
-
-<body>
-  <h1>Galton board visualisation</h1>
-  <svg width="960" height="960"></svg>
-  <script src="index.js"></script>
-</body>
-
-</html> -->
