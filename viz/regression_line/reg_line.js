@@ -56,12 +56,12 @@ slopeIn.addEventListener("mousemove", function(){
   updatePlot();
 });
 // touch devices
-interceptIn.addEventListener("mousemove", function(){
+interceptIn.addEventListener("touchmove", function(){
   updateInterceptValue(intercept);
   updatePlot();
 });
 
-slopeIn.addEventListener("mousemove", function(){
+slopeIn.addEventListener("touchmove", function(){
   updateSlopeValue(slope);
   updatePlot();
 });
