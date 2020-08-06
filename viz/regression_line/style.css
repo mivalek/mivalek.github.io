@@ -1,8 +1,23 @@
+:root {
+  --main-col: #3a3f5a;
+}
 
 body {
     font-family: sans-serif;
-    color: #3a3f5a;
+    color: var(--main-col);
     font-size: 1.5em;
+}
+
+.axis line{
+  stroke: var(--main-col);
+}
+
+.axis path{
+  stroke: var(--main-col);
+}
+
+.axis text{
+  fill: var(--main-col);
 }
 
 div#sliders {
@@ -31,6 +46,12 @@ input {
     vertical-align: middle;
     line-height: 70px;
     margin-top: 20px;
+}
+
+#equation > div {
+    line-height: 1.5em;
+    text-indent: -2em;
+    letter-spacing: 3px;
 }
 
 #intercept-value {

@@ -5,12 +5,14 @@
 //       : out;
 // }
 
+const mainColor = "#3a3f5a";
+
 const sliderToValue = (value, slope) => {
   let out = Math.abs(Math.round(value * 100) / 100);
     if (slope) {
       if (value == 1) {
         out = " + x";
-      } else if (value > 0) {
+      } else if (value >= 0) {
         out =  '+ ' + out;
       }
     }
@@ -91,6 +93,7 @@ const xScale = d3.scaleLinear()
 // axes
 g.append("g")
   .attr("transform", "translate(0," + (height + 10) + ")")
+  .attr("class", "axis")
   .call(d3.axisBottom(xScale)
           .ticks(7));
 
@@ -98,17 +101,22 @@ g.append("text")
   .attr("text-anchor", "middle")
   .attr("x", width/2)
   .attr("y", height + margin.bottom)
-  .text("x");
+  .text("x")
+  .attr("fill", mainColor);
 
   g.append("text")
+    .attr("class", "axis")
     .attr("text-anchor", "middle")
     .attr("x", 10 - margin.left)
     .attr("y", (height + margin.top)/2)
-    .text("y");
+    .text("y")
+    .attr("fill", mainColor);
 
 g.append("g")
   .call(d3.axisLeft(yScale))
-  .attr("transform", "translate(-10, 0)");
+  .attr("transform", "translate(-10, 0)")
+  .attr("class", "axis")
+  .attr("color", mainColor);
 
 // vertical at x=0
 g.append("line")
@@ -145,61 +153,80 @@ function updatePlot() {
 
   const gg = g.append("g")
     .attr("id", "gg")
-    .attr("clip-path", "url(#clip)");
 
-  gg.append("circle")
-    .attr("cx", xScale(0))
-    .attr("cy", yScale(intercept))
-    .attr("r", rScale(1))
-    .attr("fill", "rgba(51, 160, 225, .35)");
-
-  gg.append("circle")
-    .attr("cx", xScale(1))
-    .attr("cy", yScale((intercept + (intercept + slope))/2))
-    .attr("r", rScale(Math.abs(slope/4)))
-    .attr("fill", "rgba(255, 228, 78, .4)")
-    .attr("transform", "translate(10, 0)");
-
-  // slope indicator
+  // horizontal at y=slope
+  // must be appended to gg instead of ggg so that it doesn't get clipped
+  let relativeSlope = yScale((slope + intercept)),
+      scaledIntercept = yScale(intercept);
   gg.append("line")
-    .attr("x1", xScale(1))
-    .attr("y1", yScale(intercept + slope))
-    .attr("x2", xScale(1))
-    .attr("y2", yScale(intercept))
-    .attr("stroke-width", 1)
-    .attr("stroke", "black")
-    .attr("transform", "translate(10, 0)");
-
-  gg.append("line")
-    .attr("x1", xScale(1))
-    .attr("y1", yScale(intercept + slope))
+    .attr("x1", xScale(-1.25))
+    .attr("y1", relativeSlope)
     .attr("x2", xScale(1.1))
-    .attr("y2", yScale(intercept + slope))
+    .attr("y2", relativeSlope)
     .attr("stroke-width", 1)
-    .attr("stroke", "black")
-    .attr("transform", "translate(7, 0)");
-
-  gg.append("line")
-    .attr("x1", xScale(1))
-    .attr("y1", yScale(intercept))
-    .attr("x2", xScale(1.1))
-    .attr("y2", yScale(intercept))
-    .attr("stroke-width", 1)
-    .attr("stroke", "black")
-    .attr("transform", "translate(7, 0)");
+    .attr("stroke", mainColor)
+    .attr("opacity", 1);
 
   // horizontal at y=intercept
   gg.append("line")
-    .attr("x1", xScale(-1.2))
-    .attr("y1", yScale(intercept))
+    .attr("x1", xScale(-1.1))
+    .attr("y1", scaledIntercept)
     .attr("x2", xScale(5))
-    .attr("y2", yScale(intercept))
+    .attr("y2", scaledIntercept)
     .attr("stroke-width", 0.5)
     .attr("stroke", "#888")
     .style("stroke-dasharray", ("4, 5"));
 
+  const ggg = gg.append("g")
+    .attr("clip-path", "url(#clip)");
+
+  ggg.append("circle")
+    .attr("cx", xScale(0))
+    .attr("cy", scaledIntercept)
+    .attr("r", rScale(1))
+    .attr("fill", "rgba(51, 160, 225, .35)");
+
+  ggg.append("circle")
+    .attr("cx", xScale(1))
+    .attr("cy", yScale((intercept + (intercept + slope))/2))
+    .attr("r", rScale(Math.abs(slope/4)))
+    .attr("fill", "rgba(255, 228, 78, .4)")
+    // .attr("transform", "translate(10, 0)");
+
+  // slope indicator
+  ggg.append("line")
+    .attr("x1", xScale(1))
+    .attr("y1", relativeSlope)
+    .attr("x2", xScale(1))
+    .attr("y2", scaledIntercept)
+    .attr("stroke-width", 1)
+    .attr("stroke", mainColor)
+    // .attr("transform", "translate(10, 0)");
+
+  // ggg.append("line")
+  //   .attr("x1", xScale(1))
+  //   .attr("y1", yScale(intercept + slope))
+  //   .attr("x2", xScale(1.1))
+  //   .attr("y2", yScale(intercept + slope))
+  //   .attr("stroke-width", 1)
+  //   .attr("stroke", mainColor)
+  //   .attr("transform", "translate(-3, 0)");
+
+
+
+
+  ggg.append("line")
+    .attr("x1", xScale(1))
+    .attr("y1", scaledIntercept)
+    .attr("x2", xScale(1.1))
+    .attr("y2", scaledIntercept)
+    .attr("stroke-width", 1)
+    .attr("stroke", mainColor)
+    .attr("transform", "translate(-3, 0)");
+
+
   // regression line
-  gg.append("line")
+  ggg.append("line")
      .attr("x1", xScale(-1))
      .attr("y1", yScale(intercept - 1 * slope))
      .attr("x2", xScale(5))
