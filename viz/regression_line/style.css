@@ -1,0 +1,53 @@
+
+body {
+    font-family: sans-serif;
+    color: #3a3f5a;
+    font-size: 1.5em;
+}
+
+div#sliders {
+    display: block;
+    width: 50%;
+    margin: auto;
+}
+
+div#plot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.sliderTitle {
+    padding-bottom: 0.5em;
+}
+
+input {
+    margin-bottom: 2em;
+}
+
+#equation {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
+}
+
+#intercept-value {
+    border: solid 1px transparent;
+    background: #33a0e15e;
+    border-radius: 40px;
+    display: inline-block;
+    width: 70px;
+}
+
+#slope-value {
+    border: solid 1px transparent;
+    background: #ffe44e78;
+    border-radius: 40px;
+    display: inline-block;
+    width: 70px;
+}
+
+.negative {
+  color: #cc0000;
+}

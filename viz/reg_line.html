@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Regression formula | Milan Valasek</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <link rel="stylesheet" href="regression_line/style.css">
+  </head>
+
+  <body>
+
+    <div id="panel">
+      <div id="sliders">
+
+        <div class="sliderTitle">Intercept</div>
+
+        <input id="intercept" type="range" min="-5" max="5" value="0" step="0.01" style="width: 100%; min-width: 250px"/>
+
+
+        <div  class="sliderTitle">Slope</div>
+
+        <input id="slope" type="range" min="-5" max="5" value="0" step="0.01" style="width: 100%; min-width: 250px"/>
+
+      </div>
+
+      <div id="equation">
+        y = <span id="zero">0</span>
+        <span id="intercept-value"></span>
+        <span id="slope-value"></span>
+        <span id="x">&times; x</span>
+      </div>
+    </div>
+
+<!-- Create a div where the graph will take place -->
+  <div id="plot"></div>
+  <script src="regression_line/reg_line.js"></script>
+
+</body>
