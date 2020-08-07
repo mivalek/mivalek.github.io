@@ -50,9 +50,9 @@ let interceptIn = document.getElementById('intercept'),
 const reset = () => {
    document.getElementById('intercept').value = 0;
    document.getElementById('slope').value = 0;
+   updatePlot();
    updateInterceptValue(intercept);
    updateSlopeValue(slope);
-   updatePlot();
 };
 
 // listen to sliders
