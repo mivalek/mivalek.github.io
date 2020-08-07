@@ -6,6 +6,11 @@ body {
     font-family: sans-serif;
     color: var(--main-col);
     font-size: 1.5em;
+    min-width: 500px;
+    max-width: 800px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
 }
 
 .axis line{
@@ -31,6 +36,31 @@ div#plot {
     align-items: center;
     justify-content: center;
     margin-top: 1em;
+}
+
+button {
+  position: relative;
+  top: 0;
+  left: 75%;
+  border-radius: 10px;
+  border: solid 1px var(--main-col);
+  height: 40px;
+  width: 90px;
+  font-size: 1em;
+  color: var(--main-col);
+  background: #c3ccde;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover:active {
+    padding: 0;
+    background: var(--main-col);
+    color: #c3ccde;
+    border-color: #c3ccde;
 }
 
 .sliderTitle {

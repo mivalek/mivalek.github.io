@@ -47,6 +47,14 @@ let interceptIn = document.getElementById('intercept'),
     slopeIn = document.getElementById('slope'),
     slopeOut = document.getElementById('slope-value');
 
+const reset = () => {
+   document.getElementById('intercept').value = 0;
+   document.getElementById('slope').value = 0;
+   updateInterceptValue(intercept);
+   updateSlopeValue(slope);
+   updatePlot();
+};
+
 // listen to sliders
 interceptIn.addEventListener("mousemove", function(){
   updateInterceptValue(intercept);
