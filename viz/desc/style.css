@@ -1,0 +1,102 @@
+:root {
+  --main-col: #3a3f5a;
+}
+
+#applet {
+    font-family: sans-serif;
+    color: var(--main-col);
+    font-size: 1.5em;
+    /* min-width: 500px; */
+    width: 545px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    background: #c3ccde;
+    border: solid 1px var(--main-col);
+    border-radius: 10px;
+    padding: 1em 0.5em;
+}
+
+
+.axis line{
+  stroke: var(--main-col);
+}
+
+.axis path{
+  stroke: var(--main-col);
+}
+
+.axis text{
+  fill: var(--main-col);
+}
+
+#panel {
+  border: solid 1px;
+  padding: 1em;
+  background: #fff;
+  border-radius: 10px;
+  display: flex;
+  margin: .1em
+}
+
+#equation {
+  /* border: solid 1px; */
+  padding: 0 1em;
+  /* background: #fdfdfd; */
+  /* border-radius: 10px; */
+  width: max-content;
+  display: block;
+  /* font-size: .8em; */
+}
+
+#buttons {
+  /* border: solid 1px; */
+  /* padding: .5em; */
+  /* background: #fdfdfd; */
+  /* border-radius: 10px; */
+  width: 20%;
+  display: block;
+}
+
+button {
+  border-radius: 10px;
+  border: solid 1px var(--main-col);
+  height: 40px;
+  width: 90px;
+  font-size: 1em;
+  color: var(--main-col);
+  background: #c3ccde;
+  cursor: pointer;
+  margin-bottom: .3em;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover:active, button.pressed {
+    padding: 0;
+    background: var(--main-col);
+    color: #c3ccde;
+    border-color: #c3ccde;
+}
+
+#plot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+svg {
+  cursor: pointer;
+}
+
+#medDiv, #meanDiv, #sdDiv {
+  display: block;
+  margin-top: 10px;
+}
+
+#meanDiv.hidden, #medDiv.hidden, #sdDiv.hidden {
+  display: none;
+}
