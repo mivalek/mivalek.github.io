@@ -1,5 +1,5 @@
 
-const margin = {top: 10, right: 10, bottom: 70, left: 10},
+const margin = {top: 0, right: 10, bottom: 70, left: 10},
 w = 500,
 h = 200,
 width = w - margin.left - margin.right,
@@ -70,41 +70,25 @@ const svg = d3.select("#plot").append("svg")
 
 const svgDefs = svg.append('defs')
 
-// svgDefs.append("radialGradient")
-//         .attr("id", "sdGradient")
-//         .attr("cx", "50%")	//not really needed, since 50% is the default
-//         .attr("cy", "50%")	//not really needed, since 50% is the default
-//         .attr("r", "100%")	//not really needed, since 50% is the default
-//         .selectAll("stop")
-//         .data([
-//             {offset: "0%", color: "#df03fc", opacity: ".5"},
-//             {offset: "50%", color: "#df03fc", opacity: ".2"},
-//             {offset: "80%", color: "#df03fc", opacity: ".0"},
-//             {offset: "100%", color: "#df03fc", opacity: "0"}
-//           ])
-//         .enter().append("stop")
-//         .attr("offset", function(d) { return d.offset; })
-//         .attr("stop-color", function(d) { return d.color; })
-//         .attr("stop-opacity", function(d) { return d.opacity; })
-
-svgDefs.append('linearGradient')
-    .attr('id', 'sdGradient')
-    .attr("x1", 0)
-    .attr("x2", 0)
-    .attr("y1", .95)
-    .attr("y2", .05)
-    .selectAll("stop")
-    .data([
-        {offset: "0%", color: "#df03fc", opacity: "0"},
-        {offset: "15%", color: "#df03fc", opacity: ".4"},
-        {offset: "50%", color: "#df03fc", opacity: ".4"},
-        {offset: "85%", color: "#df03fc", opacity: ".4"},
-        {offset: "100%", color: "#df03fc", opacity: "0"}
-      ])
-    .enter().append("stop")
-    .attr("offset", function(d) { return d.offset; })
-    .attr("stop-color", function(d) { return d.color; })
-    .attr("stop-opacity", function(d) { return d.opacity; })
+// Gradient fill for sdRect
+// svgDefs.append('linearGradient')
+//     .attr('id', 'sdGradient')
+//     .attr("x1", 0)
+//     .attr("x2", 0)
+//     .attr("y1", .95)
+//     .attr("y2", .05)
+//     .selectAll("stop")
+//     .data([
+//         {offset: "0%", color: "#df03fc", opacity: "0"},
+//         {offset: "15%", color: "#df03fc", opacity: ".4"},
+//         {offset: "50%", color: "#df03fc", opacity: ".4"},
+//         {offset: "85%", color: "#df03fc", opacity: ".4"},
+//         {offset: "100%", color: "#df03fc", opacity: "0"}
+//       ])
+//     .enter().append("stop")
+//     .attr("offset", function(d) { return d.offset; })
+//     .attr("stop-color", function(d) { return d.color; })
+//     .attr("stop-opacity", function(d) { return d.opacity; })
 
 
 svg.append("g")
@@ -114,21 +98,14 @@ svg.append("g")
   .ticks(7))
 
 
-// Add a background
-// svg.append("rect")
-// .attr("width", w)
-// .attr("height", h)
-// .style("stroke", "#999999")
-// .style("fill", "#F6F6F6")
-
-
 svg.append("rect")
 .attr("id", "sdRect")
 .attr("x", w/2)
 .attr("y", 0)
 .attr("width", 0)
 .attr("height", h)
-.attr("fill", "url(#sdGradient)")
+// .attr("fill", "url(#sdGradient)")
+.attr("fill", "#df03fc44")
 
 svg.append("line")
 .attr("id", "meanLine")
@@ -136,7 +113,7 @@ svg.append("line")
 .attr("x2", w/2)
 .attr("y1", 0)
 .attr("y2", h)
-.attr("stroke-width", 1)
+.attr("stroke-width", 1.5)
 .attr("stroke", "#df03fc")
 .style("opacity", 0)
 
@@ -146,7 +123,7 @@ svg.append("line")
 .attr("x2", w/2)
 .attr("y1", 0)
 .attr("y2", h)
-.attr("stroke-width", 1)
+.attr("stroke-width", 1.5)
 .attr("stroke", "#00f7ff")
 .style("opacity", 0)
 
