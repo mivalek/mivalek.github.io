@@ -65,7 +65,6 @@ function click(){
 const svg = d3.select("#plot").append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
   .on("click", click);
 
 const svgDefs = svg.append('defs')
@@ -113,7 +112,7 @@ svg.append("line")
 .attr("x2", w/2)
 .attr("y1", 0)
 .attr("y2", h)
-.attr("stroke-width", 1.5)
+.attr("stroke-width", 2)
 .attr("stroke", "#df03fc")
 .style("opacity", 0)
 
@@ -123,7 +122,7 @@ svg.append("line")
 .attr("x2", w/2)
 .attr("y1", 0)
 .attr("y2", h)
-.attr("stroke-width", 1.5)
+.attr("stroke-width", 2)
 .attr("stroke", "#00f7ff")
 .style("opacity", 0)
 
