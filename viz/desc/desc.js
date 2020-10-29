@@ -35,7 +35,7 @@ function click(){
   .attr("cy", p.y)
   .attr("class", "dot")
   .style("cursor", "pointer")
-  .style("fill", "#20fc03")
+  .style("fill", "#009d18")
   .style("stroke", "#3adb25")
   .style("stroke-width", "1")
   .attr("r", "0")

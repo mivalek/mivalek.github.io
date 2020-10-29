@@ -71,6 +71,18 @@ button:hover:active, button.pressed {
     border-color: #c3ccde;
 }
 
+button#reset {
+  background: #e478f2;
+  color: var(--main-col);
+  border-color: var(--main-col);
+}
+
+button#reset:hover:active {
+  background: #c32dd7;
+  color: #c3ccde;
+  border-color: #c3ccde;
+}
+
 #plot {
 	border: solid 1px;
 	/* padding: 0 0 1em 0; */
