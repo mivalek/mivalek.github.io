@@ -19,7 +19,64 @@ xScale = d3.scaleLinear()
 let data = [],
     meanOn = false,
     medOn = false,
-    sdOn = false
+    sdOn = false,
+    rangeOn = false,
+    iqrOn = false,
+    devOn = false,
+    squareOn = false,
+    labsOn = false,
+    spreadOn = false
+
+
+    const sum = (x) => {
+      if (x.length > 1) {
+        return x.reduce((a, b) => a + b);
+      } else {
+        return x[0]
+      }
+    }
+
+    const mean = (x) => sum(x) / x.length;
+    const sd = (x) => {
+      if (x.length > 1) {
+        let squares = []
+        x.forEach((a) => squares.push(a * a));
+        let out = Math.sqrt((sum(squares) - (sum(x) ** 2) / x.length) / (x.length - 1));
+        return out;
+      } else {
+        return NaN;
+      }
+    }
+    const median = (x) => {
+      if(x.length ===0) return 0;
+
+      x.sort(function(a,b){
+        return a-b;
+      });
+
+      var half = Math.floor(x.length / 2);
+
+      if (x.length % 2)
+        return x[half];
+
+      return (x[half - 1] + x[half]) / 2.0;
+    }
+
+    // quantile function from https://stackoverflow.com/questions/48719873/how-to-get-median-and-quartiles-percentiles-of-an-array-in-javascript-or-php
+    const asc = arr => arr.sort((a, b) => a - b)
+    const quantile = (arr, q) => {
+        const sorted = asc(arr);
+        const pos = (sorted.length - 1) * q;
+        const base = Math.floor(pos);
+        const rest = pos - base;
+        if (sorted[base + 1] !== undefined) {
+            return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
+        } else {
+            return sorted[base];
+        }
+    }
+    const q25 = arr => quantile(arr, .25)
+    const q75 = arr => quantile(arr, .75)
 
 function click(){
   // Ignore the click event if it was suppressed
@@ -30,7 +87,7 @@ function click(){
   , p = {x: point[0], y: point[1] };
 
   // Append a new point
-  svg.append("circle")
+  points.append("circle")
   .attr("cx", p.x)
   .attr("cy", p.y)
   .attr("class", "dot")
@@ -55,10 +112,8 @@ function click(){
    .duration(200)
    .attr("r", "8")
 
-  data = updateData()
-  updateMean()
-  updateMedian()
-  updateSD()
+  data = getX()
+  updateAll()
 }
 
 // Create the SVG
@@ -97,7 +152,10 @@ svg.append("g")
   .ticks(7))
 
 
-svg.append("rect")
+let stats = svg.append("g")
+  .attr("id", "stats")
+
+stats.append("rect")
 .attr("id", "sdRect")
 .attr("x", w/2)
 .attr("y", 0)
@@ -106,7 +164,16 @@ svg.append("rect")
 // .attr("fill", "url(#sdGradient)")
 .attr("fill", "#df03fc44")
 
-svg.append("line")
+stats.append("rect")
+.attr("id", "iqrRect")
+.attr("x", w/2)
+.attr("y", 0)
+.attr("width", 0)
+.attr("height", h)
+// .attr("fill", "url(#sdGradient)")
+.attr("fill", "#3a3f5a44")
+
+stats.append("line")
 .attr("id", "meanLine")
 .attr("x1", w/2)
 .attr("x2", w/2)
@@ -116,7 +183,7 @@ svg.append("line")
 .attr("stroke", "#df03fc")
 .style("opacity", 0)
 
-svg.append("line")
+stats.append("line")
 .attr("id", "medLine")
 .attr("x1", w/2)
 .attr("x2", w/2)
@@ -125,6 +192,72 @@ svg.append("line")
 .attr("stroke-width", 2)
 .attr("stroke", "#00f7ff")
 .style("opacity", 0)
+
+let rangeLine = stats.append("g")
+.attr("id", "rangeLine")
+.attr("class", "hidden")
+
+rangeLine.append("line")
+.attr("id", "rangeLineHoriz")
+.attr("x1", 0)
+.attr("x2", 0)
+.attr("y1", h/2)
+.attr("y2", h/2)
+.attr("stroke-width", 1)
+.attr("stroke", "#3a3f5a")
+
+rangeLine.append("line")
+.attr("id", "rangeLineLeft")
+.attr("x1", 0)
+.attr("x2", 0)
+.attr("y1", h/2 - 5)
+.attr("y2", h/2 + 5)
+.attr("stroke-width", 2)
+.attr("stroke", "#3a3f5a")
+
+rangeLine.append("line")
+.attr("id", "rangeLineRight")
+.attr("x1", 0)
+.attr("x2", 0)
+.attr("y1", h/2 - 5)
+.attr("y2", h/2 + 5)
+.attr("stroke-width", 2)
+.attr("stroke", "#3a3f5a")
+
+rangeLine.append("line")
+.attr("id", "rangeLineToMin")
+.attr("x1", 0)
+.attr("x2", 0)
+.attr("y1", h/2)
+.attr("y2", h/2)
+.attr("stroke-width", .5)
+.attr("stroke", "#3a3f5a")
+.style("stroke-dasharray", ("4, 5"));
+
+rangeLine.append("line")
+.attr("id", "rangeLineToMax")
+.attr("x1", 0)
+.attr("x2", 0)
+.attr("y1", h/2)
+.attr("y2", h/2)
+.attr("stroke-width", .5)
+.attr("stroke", "#3a3f5a")
+.style("stroke-dasharray", ("4, 5"));
+
+let squares = stats.append("g")
+  .attr("id", "squares")
+
+let g = stats.append("g")
+  .attr("id", "resid")
+
+
+let points = svg.append("g")
+    .attr("id", "points")
+
+let labels = svg.append("g")
+  .attr("id", "labels")
+
+
 
 
 
@@ -151,10 +284,8 @@ function dragmove(d) {
   .attr("cx", x)
   .attr("cy", y)
 
-  data = updateData()
-  updateMean()
-  updateMedian()
-  updateSD()
+  data = getX()
+  updateAll()
 }
 
 function removeElement(d) {
@@ -166,10 +297,9 @@ function removeElement(d) {
   // .style("opacity", .5)
   .remove()
 
-  data = updateData()
-  updateMean()
-  updateMedian()
-  updateSD()
+  data = getX()
+
+  updateAll()
 }
 
 const reset = () => {
@@ -178,51 +308,138 @@ const reset = () => {
   if (meanOn) meanSwitch()
   if (medOn) medSwitch()
   if (sdOn) sdSwitch()
-  updateMean()
-  updateMedian()
-  updateSD()
+  if (devOn) devSwitch()
+  if (rangeOn) rangeSwitch()
+  if (iqrOn) iqrSwitch()
+  if (spreadOn) panelSwitch()
+
+  updateAll()
+
+  document.getElementById('med').innerText = "";
   document.getElementById('mean').innerText = "";
   document.getElementById('sd').innerText = "";
-}
-
-const btnPress = (on, id) => {
-  if (on) {
-    document.getElementById(id).classList.add("pressed")
-  } else {
-    document.getElementById(id).classList.remove("pressed");
+  document.getElementById('range').innerText = "";
+  document.getElementById('iqr').innerText = "";
+  let checkboxes = document.getElementsByTagName('input');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = false;
   }
 }
 
-const showEquation = (on, id) => {
-  if (on) {
-    document.getElementById(id).classList.remove("hidden")
-  } else {
-    document.getElementById(id).classList.add("hidden");
-  }
-}
+// const btnPress = (on, id) => {
+//   if (on) {
+//     document.getElementById(id).classList.add("pressed")
+//   } else {
+//     document.getElementById(id).classList.remove("pressed");
+//   }
+// }
+
+// const showEquation = (on, id) => {
+//   if (on) {
+//     document.getElementById(id).classList.remove("hidden")
+//   } else {
+//     document.getElementById(id).classList.add("hidden");
+//   }
+// }
 
 const meanSwitch = () => {
   meanOn = !meanOn
-  btnPress(meanOn, "meanBtn")
-  showEquation(meanOn, "meanDiv")
+  // btnPress(meanOn, "meanBtn")
+  // showEquation(meanOn, "meanDiv")
   updateMean()
 }
 const medSwitch = () => {
   medOn = !medOn
-  btnPress(medOn, "medBtn")
-  showEquation(medOn, "medDiv")
+  // btnPress(medOn, "medBtn")
+  // showEquation(medOn, "medDiv")
   updateMedian()
 }
 const sdSwitch = () => {
   sdOn = !sdOn
-  btnPress(sdOn, "sdBtn")
-  showEquation(sdOn, "sdDiv")
+  // btnPress(sdOn, "sdBtn")
+  // showEquation(sdOn, "sdDiv")
   updateSD()
+}
+
+const devSwitch = () => {
+  devOn = !devOn
+  // btnPress(devOn, "devBtn")
+  updateDev()
+  let checkboxes = document.getElementsByName('devToggle');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = false;
+  }
+  if (!devOn) {
+    labsOn = false
+    squareOn = false
+  }
+  let details = document.getElementById('devCtrls')
+  if (details.open) {
+  // toggle close
+    details.open = false;
+  }
+  else {
+  // toggle open
+    details.open = true;
+  }
+}
+
+const rangeSwitch = () => {
+  rangeOn = !rangeOn
+  // btnPress(rangeOn, "rangeBtn")
+  // showEquation(rangeOn, "rangeDiv")
+  updateRange()
+}
+
+const iqrSwitch = () => {
+  iqrOn = !iqrOn
+  // btnPress(iqrOn, "iqrBtn")
+  // showEquation(iqrOn, "iqrDiv")
+  updateIQR()
+}
+
+const labSwitch = () => {
+  labsOn = !labsOn
+  updateDev()
+}
+
+const squareSwitch = () => {
+  squareOn = !squareOn
+  updateDev()
+}
+
+const panelSwitch = () => {
+  spreadOn = !spreadOn
+
+  if (spreadOn) {
+    document.getElementById("spread").classList.remove("hidden")
+    document.getElementById("location").classList.add("hidden")
+    if (meanOn) meanSwitch()
+    if (medOn) medSwitch()
+    let checkboxes = document.getElementsByName('locSwitch');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = false;
+    }
+  } else {
+    document.getElementById("location").classList.remove("hidden")
+    document.getElementById("spread").classList.add("hidden")
+    if (rangeOn) rangeSwitch()
+    if (iqrOn) iqrSwitch()
+    if (devOn) devSwitch()
+    if (sdOn) sdSwitch()
+    let checkboxes = document.getElementsByName('sprSwitch');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = false;
+    }
+  }
 }
 
 const round = (x, dec) => Math.round(x * (10 ** dec)) / (10 ** dec),
       scaleX = (x) => round((x-w/2)/2.4, 2)
-const updateData = () => d3.selectAll('.dot').nodes().map(function(d) {return +d.getAttribute("cx")})
+const getX = () => d3.selectAll('.dot').nodes().map(function(d) {return +d.getAttribute("cx")})
+const getXY = () => d3.selectAll('.dot').nodes().map(function(d) {return {x: +d.getAttribute("cx"), y: +d.getAttribute("cy")}})
+
+
 const updateMean = () => {
   if (meanOn) {
     if (data.length === 0) {
@@ -236,13 +453,11 @@ const updateMean = () => {
     } else {
       meanX = mean(data)
       svg.select("#meanLine")
-      .transition()
-      .duration('50')
       .attr("x1", meanX)
       .attr("x2", meanX)
       .style("opacity", 1)
+      document.getElementById('mean').innerHTML = "= " + scaleX(meanX).toString().replace("-", "&minus;");
     }
-    document.getElementById('mean').innerHTML = scaleX(meanX).toString().replace("-", "&minus;");
   } else {
     svg.select("#meanLine")
     .transition()
@@ -265,12 +480,10 @@ const updateMedian = () => {
         } else {
       medX = median(data)
       svg.select("#medLine")
-      .transition()
-      .duration('50')
       .attr("x1", medX)
       .attr("x2", medX)
       .style("opacity", 1)
-      document.getElementById('med').innerHTML = scaleX(medX).toString().replace("-", "&minus;");
+      document.getElementById('med').innerHTML = "= " + scaleX(medX).toString().replace("-", "&minus;");
 
     }
   } else {
@@ -284,55 +497,165 @@ const updateMedian = () => {
 
 
 const updateSD = () => {
-  if (sdOn) {
+  if (sdOn & data.length > 0) {
+    if (!devOn & !meanOn) meanSwitch()
     sdX = sd(data)
     meanX = mean(data)
     svg.select("#sdRect")
-    .transition()
-    .duration('50')
     .attr("x", meanX - sdX)
     .attr("width", 2 * sdX)
     .style("opacity", 1)
 
-    document.getElementById('sd').innerText = round(sdX/2.4, 2);
+    document.getElementById('sd').innerText = "= " + round(sdX/2.4, 2)
   } else {
+
+    if (!devOn & meanOn) meanSwitch()
     svg.select("#sdRect")
     .transition()
     .duration('50')
     .style("opacity", 0)
+    document.getElementById('sd').innerText = ""
   }
 }
 
-const sum = (x) => {
-  if (x.length > 1) {
-    return x.reduce((a, b) => a + b);
+const updateDev = () => {
+  if (devOn) {
+    if (!sdOn & !meanOn) meanSwitch()
+    const dataXY = getXY(),
+    meanX = mean(data)
+
+    g.selectAll("line")
+    .remove()
+
+    g.selectAll("line")
+    .data(dataXY)
+    .enter()
+    .append("line")
+    .attr("class", "devLine")
+    .attr("x1", meanX)
+    .attr("x2", function(d, i) {return d.x})
+    .attr("y1", function(d, i) {return d.y})
+    .attr("y2", function(d, i) {return d.y})
+    .attr("stroke-width", "1px")
+    .attr("stroke", "#df03fc")
+    .style("stroke-dasharray", ("4, 5"));
+
+    labels.selectAll("text")
+    .remove()
+
+    if (labsOn) {
+      labels.selectAll("text")
+      .data(dataXY)
+      .enter()
+      .append("text")
+      .attr("class", "devLab")
+      .attr("x",function(d, i) {return (d.x + meanX) / 2})
+      .attr("y", function(d, i) {return d.y - 8})
+      .text(function(d, i) {return round((d.x - meanX) / 2.4, 2)})
+    }
+
+    squares.selectAll("rect")
+    .remove()
+
+    if (squareOn) {
+      squares.selectAll("rect")
+      .data(dataXY)
+      .enter()
+      .append("rect")
+      .attr("class", "devSq")
+      .attr("x", function(d, i) {return Math.min(d.x, meanX)})
+      .attr("y", function(d, i) {return d.y})
+      .attr("width", function(d, i) {return Math.abs(d.x - meanX)})
+      .attr("height", function(d, i) {return Math.abs(d.x - meanX)})
+      .attr("fill", "#df03fc20")
+      .attr("transform", function(d, i) {return `translate(0, ${d.y < h/2 ? 0 : -Math.abs(d.x - meanX)})`})
+    }
   } else {
-    return x[0]
+    if (!sdOn & meanOn) meanSwitch()
+    g.selectAll("line")
+    .remove()
+    labels.selectAll("text")
+    .remove()
+    squares.selectAll("rect")
+    .remove()
   }
 }
 
-const mean = (x) => sum(x) / x.length;
-const sd = (x) => {
-  if (x.length > 1) {
-    let squares = []
-    x.forEach((a) => squares.push(a * a));
-    let out = Math.sqrt((sum(squares) - (sum(x) ** 2) / x.length) / (x.length - 1));
-    return out;
+const updateAll = () => {
+  if (spreadOn) {
+    updateMean()
+    updateRange()
+    updateIQR()
+    updateDev()
+    updateSD()
   } else {
-    return NaN;
+    updateMean()
+    updateMedian()
   }
 }
-const median = (x) => {
-  if(x.length ===0) return 0;
+const updateRange = () => {
+  if (rangeOn & data.length > 0) {
+    let minX = Math.min(...data),
+    maxX = Math.max(...data),
+    rangeX = maxX - minX,
+    dataXY = getXY(),
+    maxY = dataXY.reduce((prev, curr) => prev.x > curr.x ? prev : curr).y,
+    minY = dataXY.reduce((prev, curr) => prev.x < curr.x ? prev : curr).y
+    svg.select("#rangeLine")
+    .classed('hidden', false);
 
-  x.sort(function(a,b){
-    return a-b;
-  });
+    if (data.length === 2 & data[0] == data[1]) {
+      maxY = dataXY[0].y
+      minY = dataXY[1].y
+    }
+    svg.select("#rangeLineHoriz")
+    .attr("x1", minX)
+    .attr("x2", maxX)
+    svg.select("#rangeLineLeft")
+    .attr("x1", minX)
+    .attr("x2", minX)
+    svg.select("#rangeLineRight")
+    .attr("x1", maxX)
+    .attr("x2", maxX)
+    svg.select("#rangeLineToMin")
+    .attr("x1", minX)
+    .attr("x2", minX)
+    .attr("y1", minY)
+    svg.select("#rangeLineToMax")
+    .attr("x1", maxX)
+    .attr("x2", maxX)
+    .attr("y1", maxY)
 
-  var half = Math.floor(x.length / 2);
+    svg.select("#rangeLine").classed('hidden', false)
 
-  if (x.length % 2)
-    return x[half];
+    document.getElementById('range').innerText = "= " + round(rangeX/2.4, 2);
+  } else {
+    svg.select("#rangeLine").classed('hidden', true)
 
-  return (x[half - 1] + x[half]) / 2.0;
+    document.getElementById('range').innerText = "";
+  }}
+
+  const updateIQR = () => {
+    if (iqrOn) {
+      if (data.length == 0) {
+        document.getElementById('iqr').innerText = ""
+      } else {
+        const q1 = q25(data),
+              q3 = q75(data)
+
+        svg.select("#iqrRect")
+        .attr("x", q1)
+        .attr("width", q3 - q1)
+        .style("opacity", 1)
+
+        document.getElementById('iqr').innerText = "= " + round((q3 - q1)/2.4, 2)
+     }
+  } else {
+
+      svg.select("#iqrRect")
+      .transition()
+      .duration('50')
+      .style("opacity", 0)
+      document.getElementById('iqr').innerText = ""
+  }
 }
