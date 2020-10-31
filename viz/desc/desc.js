@@ -27,58 +27,73 @@ let data = [],
     labsOn = false,
     spreadOn = false
 
-
-    const sum = (x) => {
-      if (x.length > 1) {
-        return x.reduce((a, b) => a + b);
-      } else {
-        return x[0]
-      }
+const rnorm = (mean, sd) => {
+    // approximation
+    let rand = 0;
+    for (var i = 0; i < 6; i++) {
+      rand += Math.random();
     }
+    return (rand / 6 - .5) * 8.44 * sd + mean
+}
 
-    const mean = (x) => sum(x) / x.length;
-    const sd = (x) => {
-      if (x.length > 1) {
-        let squares = []
-        x.forEach((a) => squares.push(a * a));
-        let out = Math.sqrt((sum(squares) - (sum(x) ** 2) / x.length) / (x.length - 1));
-        return out;
-      } else {
-        return NaN;
-      }
+const sum = (x) => {
+  if (x.length > 1) {
+    return x.reduce((a, b) => a + b);
+  } else {
+    return x[0]
+  }
+}
+
+const mean = (x) => sum(x) / x.length;
+const sd = (x) => {
+  if (x.length > 1) {
+    let squares = []
+    x.forEach((a) => squares.push(a * a));
+    let out = Math.sqrt((sum(squares) - (sum(x) ** 2) / x.length) / (x.length - 1));
+    return out;
+  } else {
+    return NaN;
+  }
+}
+const median = (x) => {
+  if(x.length ===0) return 0;
+
+  x.sort(function(a,b){
+    return a-b;
+  });
+
+  var half = Math.floor(x.length / 2);
+
+  if (x.length % 2)
+    return x[half];
+
+  return (x[half - 1] + x[half]) / 2.0;
+}
+
+// quantile function from https://stackoverflow.com/questions/48719873/how-to-get-median-and-quartiles-percentiles-of-an-array-in-javascript-or-php
+const asc = arr => arr.sort((a, b) => a - b)
+const quantile = (arr, q) => {
+    const sorted = asc(arr);
+    const pos = (sorted.length - 1) * q;
+    const base = Math.floor(pos);
+    const rest = pos - base;
+    if (sorted[base + 1] !== undefined) {
+        return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
+    } else {
+        return sorted[base];
     }
-    const median = (x) => {
-      if(x.length ===0) return 0;
+}
+const q25 = arr => quantile(arr, .25)
+const q75 = arr => quantile(arr, .75)
 
-      x.sort(function(a,b){
-        return a-b;
-      });
-
-      var half = Math.floor(x.length / 2);
-
-      if (x.length % 2)
-        return x[half];
-
-      return (x[half - 1] + x[half]) / 2.0;
-    }
-
-    // quantile function from https://stackoverflow.com/questions/48719873/how-to-get-median-and-quartiles-percentiles-of-an-array-in-javascript-or-php
-    const asc = arr => arr.sort((a, b) => a - b)
-    const quantile = (arr, q) => {
-        const sorted = asc(arr);
-        const pos = (sorted.length - 1) * q;
-        const base = Math.floor(pos);
-        const rest = pos - base;
-        if (sorted[base + 1] !== undefined) {
-            return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
-        } else {
-            return sorted[base];
-        }
-    }
-    const q25 = arr => quantile(arr, .25)
-    const q75 = arr => quantile(arr, .75)
+const deselect = () => {
+  d3.selectAll("circle").each(function(d,i) {
+    d3.select(this).classed( "selected", false)
+  })
+}
 
 function click(){
+  deselect()
   // Ignore the click event if it was suppressed
   if (d3.event.defaultPrevented) return;
 
@@ -92,8 +107,8 @@ function click(){
   .attr("cy", p.y)
   .attr("class", "dot")
   .style("cursor", "pointer")
-  .style("fill", "#009d18")
-  .style("stroke", "#3adb25")
+  // .style("fill", "#009d18")
+  // .style("stroke", "#3adb25")
   .style("stroke-width", "1")
   .attr("r", "0")
   .call(drag)
@@ -116,10 +131,74 @@ function click(){
   updateAll()
 }
 
+
+let selectRectOrigin
+
+const beginSelect = (d) => {
+  svg.append("rect")
+  .attr("id", "selectRect")
+  .attr("x", d3.event.x - 20.5)
+  .attr("y", d3.event.y)
+  .attr("width", 0)
+  .attr("height", 0)
+  // .attr("fill", "url(#sdGradient)")
+  .attr("fill", "#009d1822")
+  .attr("stroke", "#009d1888")
+  .attr("stroke-width", .5)
+  selectRectOrigin = {x: d3.event.x - 20.5, y: d3.event.y}
+}
+
+const dragSelect = (d) => {
+  const x1 = selectRectOrigin.x,
+        y1 = selectRectOrigin.y,
+        x2 = d3.event.x - 20.5,
+        y2 = d3.event.y,
+        minX = Math.min(x1, x2),
+        minY = Math.min(y1, y2),
+        maxX = Math.max(x1, x2),
+        maxY = Math.max(y1, y2),
+        dataXY = getXY()
+
+  let isSelected = []
+
+  dataXY.forEach((d, i) => {
+    isSelected[i] = d.x >= minX & d.x <= maxX & d.y >= minY & d.y <= maxY
+  })
+
+  d3.select("#selectRect")
+  .attr("x", minX)
+  .attr("y", minY)
+  .attr("width", Math.abs(x1 - x2))
+  .attr("height", Math.abs(y1 - y2))
+
+  d3.selectAll("circle").each(function(d,i) {
+    if(isSelected[i]) {
+      d3.select(this).classed( "selected", true)
+    } else {
+      d3.select(this).classed( "selected", false)
+    }
+  })
+
+  // data = getX()
+  // updateAll()
+}
+
+const endSelect = (d) => {
+  d3.select("#selectRect").remove()
+}
+
+
+
+const select = d3.drag()
+.on("start", beginSelect)
+.on("drag", dragSelect)
+.on("end", endSelect)
+
 // Create the SVG
 const svg = d3.select("#plot").append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
+  .call(select)
   .on("click", click);
 
 const svgDefs = svg.append('defs')
@@ -190,7 +269,7 @@ stats.append("line")
 .attr("y1", 0)
 .attr("y2", h)
 .attr("stroke-width", 2)
-.attr("stroke", "#00f7ff")
+.attr("stroke", "#3a3f5a")
 .style("opacity", 0)
 
 let rangeLine = stats.append("g")
@@ -232,7 +311,7 @@ rangeLine.append("line")
 .attr("y2", h/2)
 .attr("stroke-width", .5)
 .attr("stroke", "#3a3f5a")
-.style("stroke-dasharray", ("4, 5"));
+.style("stroke-dasharray", "6");
 
 rangeLine.append("line")
 .attr("id", "rangeLineToMax")
@@ -242,7 +321,7 @@ rangeLine.append("line")
 .attr("y2", h/2)
 .attr("stroke-width", .5)
 .attr("stroke", "#3a3f5a")
-.style("stroke-dasharray", ("4, 5"));
+.style("stroke-dasharray", "6");
 
 let squares = stats.append("g")
   .attr("id", "squares")
@@ -262,12 +341,40 @@ let labels = svg.append("g")
 
 
 // Define drag beavior
+let dragMoveStartingPosition = []
 var drag = d3.drag()
-.on("drag", dragmove);
+.on("start", dragStart)
+.on("drag", dragmove)
 
 function dragmove(d) {
-  var x = d3.event.x;
-  var y = d3.event.y;
+  let x = d3.event.x,
+      y = d3.event.y,
+      dx = d3.event.dx,
+      dy = d3.event.dy
+
+  const moveX = (x, dx) => {
+    if (x + dx > w-10) {
+      x = w-10
+    } else if (x + dx < 10) {
+      x = 10
+    } else {
+      x = x + dx
+    }
+    return x
+  }
+
+  const moveY = (y, dy) => {
+    if (y + dy > h-20) {
+      y = h-20
+    } else if (y + dy < 10) {
+      y = 10
+    } else {
+      y = y + dy
+    }
+    return y
+  }
+
+
   if (x > w-10) {
     x = w-10
   }
@@ -280,13 +387,37 @@ function dragmove(d) {
   if (y < 10) {
     y = 10
   }
-  d3.select(this)
-  .attr("cx", x)
-  .attr("cy", y)
+  // const dataXY = getXY()
+  console.log({x: x, y: y})
+  if (!d3.select(this).classed("selected")) {
+    d3.select(this)
+    .attr("cx", x)
+    .attr("cy", y)
+
+    deselect()
+  } else {
+    d3.selectAll(".selected").each(
+      function(d, i) {
+        const thisX = +d3.select(this).attr("cx"),
+              thisY = +d3.select(this).attr("cy")
+          d3.select(this)
+          .attr("cx", moveX(thisX, dx))
+          .attr("cy", moveY(thisY, dy))
+
+        console.log({x: thisX, dx: dx});
+      }
+    )
+  }
 
   data = getX()
   updateAll()
 }
+
+
+function dragStart(d) {
+  dragMoveStartingPosition = {x: d3.event.x, y: d3.event.y}
+}
+
 
 function removeElement(d) {
   d3.event.stopPropagation();
@@ -326,6 +457,40 @@ const reset = () => {
   }
 }
 
+const addPts = () => {
+  newData = Array(5)
+    .fill(true)
+    .map(() => [rnorm(250, 75), ~~(Math.random() * 160) + 10])
+
+  points.selectAll("point")
+  .data(newData)
+  .enter()
+  .append("circle")
+  .attr("cx", (d, i) => d[0])
+  .attr("cy", (d, i) => d[1 ])
+  .attr("class", "dot")
+  .style("cursor", "pointer")
+  .style("stroke-width", "1")
+  .attr("r", "0")
+  .call(drag)
+  .on("click", removeElement)
+  .on('mouseover', function (d) {
+            d3.select(this).transition()
+                 .duration('200')
+                 .attr('r', '10')
+               })
+  .on('mouseout', function (d) {
+            d3.select(this).transition()
+                 .duration('200')
+                 .attr('r', '8')
+               })
+   .transition()
+   .duration(200)
+   .attr("r", "8")
+
+  data = getX()
+  updateAll()
+}
 // const btnPress = (on, id) => {
 //   if (on) {
 //     document.getElementById(id).classList.add("pressed")
@@ -436,7 +601,7 @@ const panelSwitch = () => {
 
 const round = (x, dec) => Math.round(x * (10 ** dec)) / (10 ** dec),
       scaleX = (x) => round((x-w/2)/2.4, 2)
-const getX = () => d3.selectAll('.dot').nodes().map(function(d) {return +d.getAttribute("cx")})
+  const getX = () => d3.selectAll('.dot').nodes().map(function(d) {return +d.getAttribute("cx")})
 const getXY = () => d3.selectAll('.dot').nodes().map(function(d) {return {x: +d.getAttribute("cx"), y: +d.getAttribute("cy")}})
 
 

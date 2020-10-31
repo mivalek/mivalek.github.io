@@ -50,9 +50,9 @@
 
 #location, #spread {
 	display: flex;
-	margin: .1em;
 	flex-direction: row;
 	justify-content: space-between;
+  align-items: flex-end;
 }
 
 #equation {
@@ -62,7 +62,7 @@
 	justify-content: space-evenly;
 }
 
-#buttons {
+#switches {
 	width: max-content;
 	display: flex;
 	flex-direction: column;
@@ -70,10 +70,20 @@
 	flex-wrap: wrap;
 }
 
-#buttons > div {
+#switches > div {
 	margin: 5px 0;
 }
 
+#buttons {
+	width: max-content;
+	display: flex;
+	flex-direction: column;
+	height: max-content;
+	flex-wrap: wrap;
+}
+#buttons > div {
+	margin: 5px 0;
+}
 
 details > summary {
   list-style: none;
@@ -91,7 +101,7 @@ button {
   border-radius: 10px;
   border: solid 1px var(--main-col);
   height: 40px;
-  width: 90px;
+  width: max-content;
   font-size: 1em;
   color: var(--main-col);
   background: var(--secondary-col);
@@ -103,7 +113,6 @@ button:focus {
 }
 
 button:hover:active, button.pressed {
-    padding: 0;
     background: var(--main-col);
     color: var(--secondary-col);
     border-color: var(--secondary-col);
@@ -143,9 +152,13 @@ svg {
 }
 
 .devLine, #rangeLineHoriz, #rangeLineLeft,
-#rangeLineRight, #rangeLineToMax, #rangeLineToMin {
+#rangeLineRight {
   fill: none;
   shape-rendering: crispEdges;
+}
+
+#rangeLineToMax, #rangeLineToMin {
+  fill: none;
 }
 
 .devLab {
@@ -158,6 +171,15 @@ svg {
   display: none;
 }
 
+circle.dot {
+  stroke: #3adb25;
+  fill: #009d18;
+}
+
+.dot.selected {
+	stroke: #eadc66;
+	fill: #f7ff00;
+}
 /* from w3 schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */
 
 .switch {
@@ -231,4 +253,9 @@ input:checked + .slider:before {
 
 .twoway input:checked + .slider {
   background-color: #c32dd7;
+}
+
+.svg-drag-select-area-overlay {
+  border: 1px dotted gray;
+  background-color: rgba(255,255,255,.4);
 }
