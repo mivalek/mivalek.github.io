@@ -25,7 +25,8 @@ let data = [],
     devOn = false,
     squareOn = false,
     labsOn = false,
-    spreadOn = false
+    spreadOn = false,
+    anySelected = false
 
 const rnorm = (mean, sd) => {
     // approximation
@@ -90,45 +91,49 @@ const deselect = () => {
   d3.selectAll("circle").each(function(d,i) {
     d3.select(this).classed( "selected", false)
   })
+  anySelected = false
 }
 
 function click(){
-  deselect()
-  // Ignore the click event if it was suppressed
-  if (d3.event.defaultPrevented) return;
+  if (anySelected) {
+    deselect()
+  } else {
+    // Ignore the click event if it was suppressed
+    if (d3.event.defaultPrevented) return;
 
-  // Extract the click location\
-  var point = d3.mouse(this)
-  , p = {x: point[0], y: point[1] };
+    // Extract the click location\
+    var point = d3.mouse(this)
+    , p = {x: point[0], y: point[1] };
 
-  // Append a new point
-  points.append("circle")
-  .attr("cx", p.x)
-  .attr("cy", p.y)
-  .attr("class", "dot")
-  .style("cursor", "pointer")
-  // .style("fill", "#009d18")
-  // .style("stroke", "#3adb25")
-  .style("stroke-width", "1")
-  .attr("r", "0")
-  .call(drag)
-  .on("click", removeElement)
-  .on('mouseover', function (d) {
-            d3.select(this).transition()
-                 .duration('200')
-                 .attr('r', '10')
-               })
-  .on('mouseout', function (d) {
-            d3.select(this).transition()
-                 .duration('200')
-                 .attr('r', '8')
-               })
-   .transition()
-   .duration(200)
-   .attr("r", "8")
+    // Append a new point
+    points.append("circle")
+    .attr("cx", p.x)
+    .attr("cy", p.y)
+    .attr("class", "dot")
+    .style("cursor", "pointer")
+    // .style("fill", "#009d18")
+    // .style("stroke", "#3adb25")
+    .style("stroke-width", "1")
+    .attr("r", "0")
+    .call(drag)
+    .on("click", removeElement)
+    .on('mouseover', function (d) {
+              d3.select(this).transition()
+                   .duration('200')
+                   .attr('r', '10')
+                 })
+    .on('mouseout', function (d) {
+              d3.select(this).transition()
+                   .duration('200')
+                   .attr('r', '8')
+                 })
+     .transition()
+     .duration(200)
+     .attr("r", "8")
 
-  data = getX()
-  updateAll()
+    data = getX()
+    updateAll()
+  }
 }
 
 
@@ -164,6 +169,8 @@ const dragSelect = (d) => {
   dataXY.forEach((d, i) => {
     isSelected[i] = d.x >= minX & d.x <= maxX & d.y >= minY & d.y <= maxY
   })
+
+  if (isSelected.length > 0) anySelected = true
 
   d3.select("#selectRect")
   .attr("x", minX)
