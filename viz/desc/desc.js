@@ -1,4 +1,6 @@
 
+
+
 const margin = {top: 0, right: 10, bottom: 70, left: 10},
 w = 500,
 h = 200,
@@ -427,14 +429,19 @@ function dragStart(d) {
 
 
 function removeElement(d) {
-  d3.event.stopPropagation();
-  d3.select(this)
+  d3.event.stopPropagation()
+  if (anySelected) {
+    d3.selectAll(".selected")
+    .each(function(d, i) {d3.select(this).remove()})
+  } else {
+
+    d3.select(this)
   // .transition()
   // .duration(50)
   // .attr("r", 15)
   // .style("opacity", .5)
-  .remove()
-
+    .remove()
+  }
   data = getX()
 
   updateAll()
@@ -831,3 +838,8 @@ const updateRange = () => {
       document.getElementById('iqr').innerText = ""
   }
 }
+
+
+["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "msfullscreenchange"].forEach(
+    document.addEventListener("click", deselect, false)
+);
