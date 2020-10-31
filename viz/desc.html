@@ -26,8 +26,8 @@
     <div id="panel">
 
 
+        <div id="switches">
         <div id="location">
-          <div id="switches">
             <div class="toggle">
           <label class="switch">
             <input type="checkbox" name="locSwitch">
@@ -42,22 +42,9 @@
           </label>
           <div>Mean</div><span id="mean"></span>
         </div>
-        </div>
-        <div id="buttons">
-          <button type="button" id="addFive" onclick="addPts()">+5</button>
-        </div>
-        <!-- <div id="equation">
-            <div id="meanDiv" class="hidden">
-              \(\bar{x} = \frac{\sum_{i=1}^Nx_i}{N} =\) <span id="mean"></span>
-              </div>
-            <div id="medDiv"  class="hidden">
-              Median \(=\) <span id="med"></span>
-              </div>
-        </div> -->
-        </div>
 
+        </div>
         <div id="spread" class="hidden">
-          <div id="switches">
             <div class="toggle">
           <label class="switch">
             <input type="checkbox" name="sprSwitch">
@@ -79,6 +66,7 @@
           </label>
           <details id="devCtrls">
            <summary>Deviation</summary>
+           <div id="devOpts">
            <div class="toggle">
            <label class="switch">
              <input type="checkbox" name="devToggle">
@@ -93,6 +81,7 @@
            </label>
            <div>Squares</div>
          </div>
+       </div>
        </details>
         </div>
           <div class="toggle">
@@ -103,9 +92,21 @@
           <div>SD</div><span id="sd"></span>
         </div>
         </div>
+        </div>
+        <!-- <div id="equation">
+            <div id="meanDiv" class="hidden">
+              \(\bar{x} = \frac{\sum_{i=1}^Nx_i}{N} =\) <span id="mean"></span>
+              </div>
+            <div id="medDiv"  class="hidden">
+              Median \(=\) <span id="med"></span>
+              </div>
+        </div> -->
         <div id="buttons">
           <button type="button" id="addFive" onclick="addPts()">+5</button>
         </div>
+
+
+
         <!-- <div id="equation">
             <div id="rangeDiv"  class="hidden">
               Range \(=\) <span id="range"></span>
@@ -118,13 +119,13 @@
               </div>
         </div> -->
     </div>
-
+    <!-- Create a div where the graph will take place -->
+      <div id="plot"></div>
+      <!-- <svg width="500" height="400"></svg> -->
+      <script src="desc/desc.js"></script>
 
     </div>
 
-<!-- Create a div where the graph will take place -->
-  <div id="plot"></div>
-  <!-- <svg width="500" height="400"></svg> -->
-  <script src="desc/desc.js"></script>
+
 </div>
 </body>

@@ -48,7 +48,8 @@
 .toggle {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
+  margin: 5px 0;
 }
 
 .toggle > div, details {
@@ -59,21 +60,49 @@
 	margin-top: 3px;
 }
 
-#location, #spread {
+#panel {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-  align-items: flex-end;
+	align-items: flex-end;
 }
 
-#equation {
+#location, #spread {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  -moz-transition: height .5s;
+  -ms-transition: height .5s;
+  -o-transition: height .5s;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+}
+
+#location {
+  height: 90px;
+}
+
+#spread {
+  height: 180px;
+}
+
+#spread.hidden, #location.hidden {
+  /* -moz-transition: height .5s;
+  -ms-transition: height .5s;
+  -o-transition: height .5s;
+  -webkit-transition: height .5s;
+  transition: height .5s; */
+  height: 0;
+}
+
+/* #equation {
 	width: max-content;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-}
+} */
 
-#switches {
+/* #switches {
 	width: max-content;
 	display: flex;
 	flex-direction: column;
@@ -83,7 +112,7 @@
 
 #switches > div {
 	margin: 5px 0;
-}
+} */
 
 #buttons {
 	width: max-content;
@@ -105,7 +134,58 @@ details > summary::-webkit-details-marker {
 }
 
 details > div {
-	margin: 10px 0 5px 0;
+	margin: -36px 0 0 110px;
+}
+
+details > #devOpts {
+	display: flex;
+	position: absolute;
+  overflow: hidden;
+  width: 0px;
+  /* -moz-transition: width .5s;
+  -ms-transition: width .5s;
+  -o-transition: width .5s;
+  -webkit-transition: width .5s;
+  transition: width .5s; */
+}
+
+details[open] > #devOpts {
+  /* -moz-transition: width .5s;
+  -ms-transition: width .5s;
+  -o-transition: width .5s;
+  -webkit-transition: width .5s;
+  transition: width .5s; */
+  width: 300px;
+}
+
+details[open] summary ~ * {
+  animation: sweep1 .5s ease-in-out;
+  -moz-transition: width .5s;
+  -ms-transition: width .5s;
+  -o-transition: width .5s;
+  -webkit-transition: width .5s;
+  transition: width .5s;
+  width: 300px;
+}
+
+details summary ~ * {
+  animation: sweep2 .5s ease-in-out;
+  -moz-transition: width .5s;
+  -ms-transition: width .5s;
+  -o-transition: width .5s;
+  -webkit-transition: width .5s;
+  transition: width .5s;
+  width: 0;
+}
+
+@keyframes sweep1 {
+  0%    {width: 0px}
+  100%  {width: 300px}
+}
+
+@keyframes sweep2 {
+  0%    {width: 300px}
+  100%  {width: 0px}
 }
 
 button {
@@ -178,7 +258,7 @@ svg {
 	color: var(--main-col);
 }
 
-#spread.hidden, #location.hidden, #equation .hidden, .hidden {
+.hidden {
   display: none;
 }
 
