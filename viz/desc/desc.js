@@ -635,13 +635,14 @@ const updateMean = () => {
       .attr("x1", meanX)
       .attr("x2", meanX)
       .style("opacity", 1)
-      document.getElementById('mean').innerHTML = "= " + scaleX(meanX).toString().replace("-", "&minus;");
+      document.getElementById('mean').innerHTML = "= " + scaleX(meanX).toString().replace("-", "&minus;")
     }
   } else {
     svg.select("#meanLine")
     .transition()
     .duration('50')
     .style("opacity", 0)
+    document.getElementById('mean').innerHTML = ""
   }
 }
 
@@ -670,6 +671,7 @@ const updateMedian = () => {
     .transition()
     .duration('50')
     .style("opacity", 0)
+    document.getElementById('med').innerHTML = ""
   }
   // document.getElementById('mean').innerHTML = scaleX(meanX).toString().replace("-", "&minus;");
 }
