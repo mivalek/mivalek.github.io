@@ -13,7 +13,7 @@ const // format value as pixels
     rpx = function(m) { return px(rv(m)) },
     // random background position
     bkg = function(w,h) { return rpx(w)+" "+rpx(h||w); },
-
+    nToDraw = 7
     // Prototypes
     fp = Function.prototype,
     ap = Array.prototype,
@@ -36,57 +36,6 @@ const // format value as pixels
     y = d3.scaleLinear()
       .domain([0, 500])  // d3.hist has to be called before the Y axis obviously
       .range([h - margin.bottom, margin.top])
-
-    svg = d3.select("#plot").append("svg")
-      .attr("width", w)
-      .attr("height", h)
-
-
-
-let stats = svg.append("g")
-      .attr("id", "stats"),
-    bars = svg.append("g")
-      .attr("id", "bars")
-
-
-stats.append("line")
-  .attr("id", "meanLine")
-  .attr("x1", x(1.87))
-  .attr("x2", x(1.87))
-  .attr("y1", 10)
-  .attr("y2", height + 20)
-  .attr("stroke-width", 2)
-  .attr("stroke", "#df03fc")
-
-svg.append("g")
-  .attr("transform", `translate(0, ${h-margin.bottom})`)
-  .attr("class", "axis")
-  .call(d3.axisBottom(x)
-  .ticks(10))
-
-svg.append("g")
-   .attr("class", "axis")
-   .attr("transform", `translate(${margin.left - 5}, 0)`)
-   .call(d3.axisLeft(y));
-
-   // text label for the x axis
-svg.append("text")
-  .attr("class", "axis")
-   .attr("transform",
-         "translate(" + (w/2 + 10) + " ," +
-                        (h - 10) + ")")
-   .style("text-anchor", "middle")
-   .text("Sample mean");
-
-// text label for the y axis
-svg.append("text")
-   .attr("class", "axis")
-   .attr("transform", "rotate(-90)")
-   .attr("y", 0)
-   .attr("x", 0 - ((h - margin.bottom) / 2))
-   .attr("dy", "1em")
-   .style("text-anchor", "middle")
-   .text("Count");
 
 const letters = [
   {"letter":"a","points":1}, {"letter":"a","points":1}, {"letter":"a","points":1}, {"letter":"a","points":1},
@@ -117,9 +66,7 @@ const letters = [
 ]
 
 
-
 const getLetter = () => letters[Math.floor(letters.length * r())],
-      nToDraw = 7,
       sum = (x) => {
         if (x.length > 1) {
           return x.reduce((a, b) => a + b);
@@ -136,18 +83,80 @@ const getLetter = () => letters[Math.floor(letters.length * r())],
           return out;
       }
 
-let data = [],
-    means = []
+let svg,
+    stats,
+    bars,
+    data = [],
+    means = [],
+    se = [],
+    maxBin = []
 
-const se = round(sd(letters.map(l => l.points))/letters.length)
-stats.append("rect")
-.attr("id", "seRect")
-.attr("x", x(1.87) - x(se))
-.attr("y", 10)
-.attr("width", 2 * x(se))
-.attr("height", height + 10)
-// .attr("fill", "url(#sdGradient)")
-.attr("fill", "#df03fc44")
+const init = () => {
+
+ data = []
+ means = []
+ maxBin = []
+
+ svg = d3.select("#plot").append("svg")
+   .attr("width", w)
+   .attr("height", h)
+
+ stats = svg.append("g")
+        .attr("id", "stats"),
+ bars = svg.append("g")
+        .attr("id", "bars")
+
+  stats.append("line")
+    .attr("id", "meanLine")
+    .attr("x1", x(1.87))
+    .attr("x2", x(1.87))
+    .attr("y1", 10)
+    .attr("y2", height + 20)
+    .attr("stroke-width", 2)
+    .attr("stroke", "#df03fc")
+
+  svg.append("g")
+    .attr("transform", `translate(0, ${h-margin.bottom})`)
+    .attr("class", "axis")
+    .call(d3.axisBottom(x)
+    .ticks(10))
+
+  svg.append("g")
+     .attr("class", "axis")
+     .attr("transform", `translate(${margin.left - 5}, 0)`)
+     .call(d3.axisLeft(y));
+
+     // text label for the x axis
+  svg.append("text")
+    .attr("class", "axis")
+     .attr("transform",
+           "translate(" + (w/2 + 10) + " ," +
+                          (h - 10) + ")")
+     .style("text-anchor", "middle")
+     .text("Sample mean");
+
+  // text label for the y axis
+  svg.append("text")
+     .attr("class", "axis")
+     .attr("transform", "rotate(-90)")
+     .attr("y", 0)
+     .attr("x", 0 - ((h - margin.bottom) / 2))
+     .attr("dy", "1em")
+     .style("text-anchor", "middle")
+     .text("Count");
+
+
+  se = round(sd(letters.map(l => l.points))/letters.length)
+  stats.append("rect")
+  .attr("id", "seRect")
+  .attr("x", x(1.87) - x(se))
+  .attr("y", 10)
+  .attr("width", 2 * x(se))
+  .attr("height", height + 10)
+  // .attr("fill", "url(#sdGradient)")
+  .attr("fill", "#df03fc44")
+}
+
 
 const draw = () => {
   const rack = $(".rack")[0]
@@ -208,8 +217,9 @@ const draw = () => {
       .thresholds(x.ticks(50)); // then the numbers of bins
 
   // And apply this function to data to get the bins
-  const bins = histogram(means),
-        maxBin = bins.map(b => b.length).reduce((a, b) => Math.max(a, b))
+  const bins = histogram(means)
+
+  maxBin = bins.map(b => b.length).reduce((a, b) => Math.max(a, b))
 
   svg.select("#muHatLine").remove()
   if (means.length > 0) {
@@ -242,11 +252,7 @@ const draw = () => {
 }
 
 const animate = () => {
-  if (!paused) {
-    draw()
-  } else {
-    clearInterval(interval);
-  }
+    if (maxBin < 500) {draw()}
 }
 
 let paused = true
@@ -263,13 +269,14 @@ const togglePlay = () => {
       btn.classList.remove("play")
       btn.classList.add("pause")
       document.getElementById("sliders").classList.remove("hidden")
+      interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value))
     } else {
       btn.classList.remove("pause")
       btn.classList.add("play")
+      clearInterval(interval)
     }
 
     paused = !paused
-    interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value))
 }
 
 const changeSpeed = () => {
@@ -280,18 +287,18 @@ const changeSpeed = () => {
 const reset = () => {
   setTimeout(() => document.getElementById('speed').value = "1", 200);
   clearInterval(interval)
-  interval = setInterval(animate, sliderValueToSpeed(1))
-  clearInterval(interval)
-  data = []
-  means = []
-  bars.selectAll("rect").remove()
+
+  d3.selectAll("svg").remove()
   document.querySelectorAll('.tile').forEach(e => e.remove());
   if (!paused) togglePlay()
 
   document.getElementById("sliders").classList.add("hidden")
+  init()
 }
 document.getElementById("play").addEventListener("click", togglePlay)
 
 // listen in on the sliders
 document.getElementById('speed').addEventListener("change", changeSpeed)
 document.getElementById('speed').addEventListener("touchmove", changeSpeed)
+
+init()
