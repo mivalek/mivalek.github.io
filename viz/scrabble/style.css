@@ -12,10 +12,7 @@
 }
 :root {
   /* padding: 5vh 5vw; */
-  background-color: #fcfbfb;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-image: radial-gradient(center, #7c6f59, transparent);
+  background-color: transparent;
 }
 :root::before {
   position: fixed;
@@ -47,7 +44,7 @@ body {
     width: 540px;
     display: block;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 30px;
     background: transparent;
     padding: 0 0 1em 0;
     user-select: none;
