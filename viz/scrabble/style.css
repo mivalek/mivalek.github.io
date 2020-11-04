@@ -3,6 +3,7 @@
   --secondary-col: #c3ccde;
 }
 
+
 @font-face {
   font-family: 'Oswald';
   font-style: normal;
@@ -10,8 +11,8 @@
   src: url(https://fonts.gstatic.com/s/oswald/v35/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiYA.ttf) format('truetype');
 }
 :root {
-  padding: 5vh 5vw;
-  background-color: #fcfdfd;
+  /* padding: 5vh 5vw; */
+  background-color: #fcfbfb;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-image: radial-gradient(center, #7c6f59, transparent);
@@ -36,8 +37,6 @@ body {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
-  height: 90vh;
-  width: 90vw;
   box-sizing: border-box;
 }
 
@@ -48,7 +47,7 @@ body {
     width: 540px;
     display: block;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 10px;
     background: transparent;
     padding: 0 0 1em 0;
     user-select: none;
