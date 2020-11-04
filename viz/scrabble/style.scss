@@ -1,0 +1,158 @@
+
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+@unit: 1mm;
+:root {
+  @base: desaturate(#F3CC8B, 20%);
+  @darker: desaturate(darken(@base, 33%), 45%);
+  padding: 5vh 5vw;
+  background-color: @base;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(center,
+      @darker,
+      transparent);
+}
+
+:root::before {
+  position: fixed;
+  content: "";
+  top: 0; bottom: 0;
+  right: 0; left: 0;
+  opacity: 0.80;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/grit-fs8.png);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh; width: 90vw;
+  box-sizing: border-box;
+}
+
+
+
+.rack {
+  display: flex;
+  justify-content: center;
+
+  .tile {
+    margin: @unit / 2;
+    .tile(@size: 19 * @unit);
+  }
+}
+
+.all {
+  @small-size: @unit * 9.5;
+  margin-top: @unit * 12.5;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: @small-size * 10.9;
+  height: @small-size * 10.9;
+  .tile { .tile(@size: @small-size); }
+}
+
+
+.tile(@size) {
+  @tile-base: #f5cf90;
+  @thin: (@size * 0.5/19);
+  @small: (@size * 0.75/19);
+  @med: @small * 1.5;
+
+  background-color: @tile-base;
+  background-image:
+    url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/veneer-birch-texture-fs8.png');
+
+  position: relative;
+
+  width: @size;
+  height: @size;
+  box-sizing: border-box;
+  box-shadow: 0 @med @small -@thin fadeout(black, 60%);
+
+  border-style: solid;
+
+  border-top-width: @small;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: @med;
+
+  border-top-color: fadeout(white, 55%);
+  border-left-color: fadeout(white, 75%);
+
+  border-right-color: fadeout(black, 85%);
+  border-bottom-color: fadeout(black, 70%);
+
+  border-radius: @small;
+
+  &[data-letter]::before {
+    content: attr(data-letter);
+    text-transform: uppercase;
+    font-family: Oswald, sans-serif;
+    font-size: @size * .70;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+
+    color: rgba(0,0,0,0.6);
+    text-shadow:
+      4px 4px 6px @tile-base,
+      0 0 0 rgba(0,0,0,0.7),
+      1px 2px 1px rgba(255,255,255,0.5);
+  }
+
+  &[data-letter]::after {
+    color: fadeout(black, 30%);
+    font-family: sans-serif;
+    font-size: @size * 0.225;
+    position: absolute;
+    right: 12.5%;
+    bottom: 12.5%;
+    transform: translate(50%,50%);
+  }
+
+  &[data-letter='e'],
+  &[data-letter='a'],
+  &[data-letter='i'],
+  &[data-letter='o'],
+  &[data-letter='n'],
+  &[data-letter='r'],
+  &[data-letter='t'],
+  &[data-letter='l'],
+  &[data-letter='s'],
+  &[data-letter='u'] {
+    &::after { content: "1"; }
+  }
+  &[data-letter='d'],
+  &[data-letter='g'] {
+    &::after { content: "2"; }
+  }
+  &[data-letter='b'],
+  &[data-letter='c'],
+  &[data-letter='m'],
+  &[data-letter='p'] {
+    &::after { content: "3"; }
+  }
+  &[data-letter='f'],
+  &[data-letter='h'],
+  &[data-letter='v'],
+  &[data-letter='w'],
+  &[data-letter='y'] {
+    &::after { content: "4"; }
+  }
+  &[data-letter='k'] {
+    &::after { content: "5"; }
+  }
+  &[data-letter='j'],
+  &[data-letter='x'] {
+    &::after { content: "8"; }
+  }
+  &[data-letter='q'],
+  &[data-letter='z'] {
+    &::after { content: "10"; }
+  }
+}
