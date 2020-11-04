@@ -1,6 +1,7 @@
 :root {
   --main-col: #3a3f5a;
   --secondary-col: #c3ccde;
+  background-color: transparent;
 }
 
 
@@ -10,20 +11,9 @@
   font-weight: 400;
   src: url(https://fonts.gstatic.com/s/oswald/v35/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUZiYA.ttf) format('truetype');
 }
-:root {
-  /* padding: 5vh 5vw; */
-  background-color: transparent;
-}
-:root::before {
-  position: fixed;
-  content: "";
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  opacity: 0.8;
-  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/49914/grit-fs8.png);
-}
+
+
+
 body {
   display: -webkit-box;
   display: flex;
