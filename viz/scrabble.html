@@ -38,7 +38,13 @@
   <div class="rack" id="rack">
   </div>
   <div id="mean">&nbsp;</div>
-  <div id="plot"></div>
+  <div class="toggle">
+    <label class="switch">
+      <input type="checkbox" id="switch">
+      <span class="slider round" onclick="plotSwitch()"></span>
+    </label>
+  </div>
+  <div id="plot" class="hidden"></div>
   </div>
 
 <script src="./scrabble/scrabble.js"></script>

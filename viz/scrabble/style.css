@@ -55,6 +55,19 @@ body {
     position: relative;
 }
 
+#plot {
+  height: 350px;
+  transition: height 0.2s ease-out;
+  -webkit-transition: height 0.2s ease-out;
+  overflow: hidden;
+}
+
+#plot.hidden {
+  height: 0px;
+  transition: height 0.2s ease-in;
+  -webkit-transition: height 0.2s ease-in;
+}
+
 button {
   border-radius: 10px;
   border: solid 1px var(--main-col);
@@ -255,6 +268,7 @@ div#sliders {
     width: 50%;
     /* margin: auto; */
     transition: height 0.2s ease-in;
+    -webkit-transition: height 0.2s ease-in;
     height: 100px;
     overflow: hidden;
 }
@@ -262,6 +276,7 @@ div#sliders {
 div#sliders.hidden {
     height: 0px;
     transition: height 0.2s ease-out;
+    -webkit-transition: height 0.2s ease-out;
 }
 
 
@@ -359,4 +374,79 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
+}
+
+
+.toggle {
+	display: flex;
+	flex-direction: row;
+	/* flex-wrap: wrap; */
+  margin: 5px 0;
+}
+
+.toggle > div, details {
+	margin: 3px 10px 0 10px;
+}
+
+.toggle > span {
+	margin-top: 3px;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--secondary-col);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: solid 1px var(--main-col);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--main-col);
+}
+
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

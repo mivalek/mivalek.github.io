@@ -89,13 +89,19 @@ let svg,
     data = [],
     means = [],
     se = [],
-    maxBin = []
+    maxBin = [],
+    interval = []
+
+
+
 
 const init = () => {
 
  data = []
  means = []
  maxBin = []
+ interval = []
+ isPlot = false
 
  svg = d3.select("#plot").append("svg")
    .attr("width", w)
@@ -284,16 +290,29 @@ const changeSpeed = () => {
   interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value))
 }
 
+plotSwitch = () => {
+  if (!isPlot) {
+    document.getElementById("plot").classList.remove("hidden")
+  } else {
+    document.getElementById("plot").classList.add("hidden")
+  }
+  isPlot = !isPlot
+}
 const reset = () => {
-  setTimeout(() => document.getElementById('speed').value = "1", 200);
-  clearInterval(interval)
+  document.getElementById("plot").classList.add("hidden")
 
   d3.selectAll("svg").remove()
   document.querySelectorAll('.tile').forEach(e => e.remove());
   if (!paused) togglePlay()
 
   document.getElementById("sliders").classList.add("hidden")
+
+  document.getElementById("switch").checked = false
+  document.getElementById('mean').innerHTML = "&nbsp;"
+
   init()
+  setTimeout(() => document.getElementById('speed').value = "1", 200)
+  clearInterval(interval)
 }
 document.getElementById("play").addEventListener("click", togglePlay)
 
