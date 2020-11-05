@@ -241,26 +241,22 @@ g.axis > line, g.axis > path {
 .buttonRow {
 	justify-content: space-between;
 	display: flex;
+	height: 45px;
 }
 
-.buttonCol {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-}
 
-div#sliders {
+  div#sliders {
     display: block;
     width: 50%;
-    /* margin: auto; */
-    transition: height 0.2s ease-in;
-    -webkit-transition: height 0.2s ease-in;
-    height: 100px;
     overflow: hidden;
+    /* margin: auto; */
+    transition: width 0.2s ease-in;
+    -webkit-transition: width 0.2s ease-in;
 }
 
 div#sliders.hidden {
-    height: 0px;
+    width: 0px;
+    overflow: hidden;
     transition: height 0.2s ease-out;
     -webkit-transition: height 0.2s ease-out;
 }

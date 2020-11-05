@@ -275,6 +275,7 @@ const togglePlay = () => {
       btn.classList.remove("play")
       btn.classList.add("pause")
       document.getElementById("sliders").classList.remove("hidden")
+      draw()
       interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value))
     } else {
       btn.classList.remove("pause")
