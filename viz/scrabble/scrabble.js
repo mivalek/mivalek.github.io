@@ -24,7 +24,7 @@ const // format value as pixels
     // jQuery-ish
     $ = dp.querySelectorAll.bind(document),
 
-    margin = {top: 20, right: 10, bottom: 50, left: 60},
+    margin = {top: 20, right: 10, bottom: 50, left: 70},
     w = 500,
     h = 350,
     width = w - margin.left - margin.right,
@@ -34,7 +34,7 @@ const // format value as pixels
     .range([margin.left, width + margin.left]),
     // Y axis: scale and draw:
     y = d3.scaleLinear()
-      .domain([0, 500])  // d3.hist has to be called before the Y axis obviously
+      .domain([0, 50])  // d3.hist has to be called before the Y axis obviously
       .range([h - margin.bottom, margin.top])
 
 const letters = [
@@ -89,8 +89,9 @@ let svg,
     data = [],
     means = [],
     se = [],
-    maxBin = [],
-    interval = []
+    maxBin,
+    interval = [],
+    yMax
 
 
 
@@ -99,9 +100,10 @@ const init = () => {
 
  data = []
  means = []
- maxBin = []
+ maxBin = 0
  interval = []
  isPlot = false
+ yMax = 50
 
  svg = d3.select("#plot").append("svg")
    .attr("width", w)
@@ -128,8 +130,9 @@ const init = () => {
     .ticks(10))
 
   svg.append("g")
+     .attr("id", "y-axis")
      .attr("class", "axis")
-     .attr("transform", `translate(${margin.left - 5}, 0)`)
+     .attr("transform", `translate(${margin.left-5}, 0)`)
      .call(d3.axisLeft(y));
 
      // text label for the x axis
@@ -252,13 +255,14 @@ const draw = () => {
         // .style("fill", "#69b3a2")
 
 
-  if (maxBin >= 500) {
-    clearInterval(interval)
+  if (maxBin == yMax) {
+    transition_axis()
   }
+  if (maxBin == 10000) {clearInterval()}
 }
 
 const animate = () => {
-    if (maxBin < 500) {draw()}
+    if (maxBin < 9999) {draw()}
 }
 
 let paused = true
@@ -311,10 +315,37 @@ const reset = () => {
   document.getElementById("switch").checked = false
   document.getElementById('mean').innerHTML = "&nbsp;"
 
+  // Update scale domain
+  y.domain([0, 50]);
+
+  svg.selectAll("#y-axis")
+    .call(d3.axisLeft(y));
+
   init()
   setTimeout(() => document.getElementById('speed').value = "1", 200)
   clearInterval(interval)
 }
+
+const transition_axis = () => {
+
+  // Dounle y scale if highest bin reaches top
+  yMax = 2 * yMax
+
+  // Update scale domain
+  y.domain([0, yMax]);
+
+  clearInterval(interval)
+  bars.selectAll("rect")
+    .transition().duration(500)
+    .attr("y", function(d) {return y(d.length)})
+    .attr("height", function(d) { return y(0) - y(d.length)})
+
+  svg.selectAll("#y-axis")
+    .transition().duration(500)
+    .call(d3.axisLeft(y))
+  setTimeout(() => interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value)), 500)
+}
+
 document.getElementById("play").addEventListener("click", togglePlay)
 
 // listen in on the sliders
