@@ -139,10 +139,10 @@ const init = () => {
   svg.append("text")
     .attr("class", "axis")
      .attr("transform",
-           "translate(" + (w/2 + 10) + " ," +
+           "translate(" + (w/2 + 45) + " ," +
                           (h - 10) + ")")
      .style("text-anchor", "middle")
-     .text("Sample mean");
+     .text("Mean of drawn tiles");
 
   // text label for the y axis
   svg.append("text")
@@ -182,7 +182,7 @@ const draw = () => {
         muHat = round(mean(means))
 
   means.push(currentMean)
-  document.getElementById('mean').innerHTML = "Mean points = " + currentMean
+  document.getElementById('mean').innerHTML = "Mean points of drawn tiles = " + currentMean
   forEach(data, (i) => {
     let tile = document.createElement("div")
 

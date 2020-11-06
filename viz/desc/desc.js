@@ -210,7 +210,7 @@ const svg = d3.select("#plot").append("svg")
   .call(select)
   .on("click", click);
 
-const svgDefs = svg.append('defs')
+// const svgDefs = svg.append('defs')
 
 // Gradient fill for sdRect
 // svgDefs.append('linearGradient')
@@ -629,6 +629,7 @@ const updateMean = () => {
       .transition()
       .attr("x1", w/2)
       .attr("x2", w/2)
+      document.getElementById('mean').innerHTML = ""
     } else {
       meanX = mean(data)
       svg.select("#meanLine")
@@ -656,7 +657,7 @@ const updateMedian = () => {
       .transition()
       .attr("x1", w/2)
       .attr("x2", w/2)
-
+      document.getElementById('med').innerHTML = ""
         } else {
       medX = median(data)
       svg.select("#medLine")
