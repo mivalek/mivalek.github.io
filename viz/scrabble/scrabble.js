@@ -268,7 +268,7 @@ const animate = () => {
 let paused = true
 
 const sliderValueToSpeed = (sliderValue) => {
-  let freqValues = [1000, 900, 800, 650, 500, 350, 160, 80, 40, 20];
+  let freqValues = [1000, 700, 550, 400, 300, 210, 150, 80, 30, 10];
   return freqValues[+sliderValue];
 }
 
@@ -349,7 +349,7 @@ const transition_axis = () => {
 document.getElementById("play").addEventListener("click", togglePlay)
 
 // listen in on the sliders
-document.getElementById('speed').addEventListener("change", changeSpeed)
+document.getElementById('speed').addEventListener("input", changeSpeed)
 document.getElementById('speed').addEventListener("touchmove", changeSpeed)
 
 init()
