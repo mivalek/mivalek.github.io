@@ -2,11 +2,8 @@
 const // prototypes
     fp = Function.prototype,
     ap = Array.prototype,
-    dp = Document.prototype,
     // callable forEach
     forEach = fp.call.bind(ap.forEach),
-    // jQuery-ish
-    $ = dp.querySelectorAll.bind(document),
 
     margin = {top: 20, right: 10, bottom: 20, left: 70},
     w = 500,
