@@ -178,10 +178,11 @@ const draw = () => {
     samplePoints.push(data[i].points)
   }
 
-  const currentMean = round(mean(samplePoints)),
-        muHat = round(mean(means))
-
+  const currentMean = round(mean(samplePoints))
   means.push(currentMean)
+
+  const muHat = round(mean(means))
+  
   document.getElementById('mean').innerHTML = "Mean points of drawn tiles = " + currentMean
   forEach(data, (i) => {
     let tile = document.createElement("div")
