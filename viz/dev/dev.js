@@ -65,6 +65,15 @@ const init = () => {
     .attr("stroke-width", 2.5)
     .attr("stroke", "#df03fc")
 
+g.append("text")
+   .attr("y", 10)
+   .attr("x", x(meanX - .5))
+   .attr("dy", "1em")
+   .style("text-anchor", "end")
+   .attr("stroke", "none")
+   .attr("fill", "#df03fc")
+   .text("Mean");
+
 g.append("line")
     .attr("id", "medLine")
     .attr("x1", x(medX))
@@ -73,6 +82,15 @@ g.append("line")
     .attr("y2", height + 20)
     .attr("stroke-width", 2.5)
     .attr("stroke", "#0ab77e")
+
+g.append("text")
+   .attr("y", 10)
+   .attr("x", x(medX + .5))
+   .attr("dy", "1em")
+   .style("text-anchor", "start")
+   .attr("stroke", "none")
+   .attr("fill", "#0ab77e")
+   .text("Median");
 
   svg.append("g")
     .attr("transform", `translate(0, ${h-margin.bottom})`)
