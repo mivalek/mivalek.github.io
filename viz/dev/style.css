@@ -63,9 +63,6 @@ line.dashed-line {
 	height: max-content;
 }
 
-svg {
-  cursor: pointer;
-}
 
 #ctrls {
 	display: flex;
