@@ -91,13 +91,15 @@ let svg,
     se = [],
     maxBin,
     interval = [],
-    yMax
+    yMax,
+    paused
 
 
 
 
 const init = () => {
 
+paused = true
  data = []
  means = []
  maxBin = 0
@@ -182,7 +184,7 @@ const draw = () => {
   means.push(currentMean)
 
   const muHat = round(mean(means))
-  
+
   document.getElementById('mean').innerHTML = "Mean points of drawn tiles = " + currentMean
   forEach(data, (i) => {
     let tile = document.createElement("div")
@@ -259,41 +261,46 @@ const draw = () => {
   if (maxBin == yMax) {
     transition_axis()
   }
-  if (maxBin == 10000) {clearInterval()}
+  if (maxBin == 10000) {setTimeout(() => clearInterval(interval), 10)}
 }
 
 const animate = () => {
     if (maxBin < 9999) {draw()}
 }
 
-let paused = true
-
 const sliderValueToSpeed = (sliderValue) => {
-  let freqValues = [1000, 700, 550, 400, 300, 210, 150, 80, 30, 10];
+  let freqValues = [1000, 700, 550, 400, 300, 210, 150, 80, 30, 15];
+  // console.log(freqValues[+sliderValue]);
   return freqValues[+sliderValue];
 }
 
 const togglePlay = () => {
 
+    setTimeout(() => clearInterval(interval), 10)
     let btn = document.getElementById("play")
     if (paused) {
       btn.classList.remove("play")
       btn.classList.add("pause")
       document.getElementById("sliders").classList.remove("hidden")
       draw()
-      interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value))
+      setTimeout(() => interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value)), 10)
     } else {
       btn.classList.remove("pause")
       btn.classList.add("play")
-      clearInterval(interval)
     }
 
     paused = !paused
 }
 
 const changeSpeed = () => {
-  clearInterval(interval)
-  interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value))
+  setTimeout(() => clearInterval(interval), 10)
+  setTimeout(() => {
+    if (paused) {
+      togglePlay()
+    } else {
+      interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value))
+    }
+  }, 10)
 }
 
 plotSwitch = () => {
@@ -305,12 +312,16 @@ plotSwitch = () => {
   isPlot = !isPlot
 }
 const reset = () => {
+  clearInterval(interval)
   document.getElementById("plot").classList.add("hidden")
 
   d3.selectAll("svg").remove()
   document.querySelectorAll('.tile').forEach(e => e.remove());
-  if (!paused) togglePlay()
-
+  if (!paused) {
+    let btn = document.getElementById("play")
+    btn.classList.remove("pause")
+    btn.classList.add("play")
+  }
   document.getElementById("sliders").classList.add("hidden")
 
   document.getElementById("switch").checked = false
@@ -322,9 +333,8 @@ const reset = () => {
   svg.selectAll("#y-axis")
     .call(d3.axisLeft(y));
 
+  document.getElementById('speed').value = "0"
   init()
-  setTimeout(() => document.getElementById('speed').value = "1", 200)
-  clearInterval(interval)
 }
 
 const transition_axis = () => {
@@ -335,7 +345,7 @@ const transition_axis = () => {
   // Update scale domain
   y.domain([0, yMax]);
 
-  clearInterval(interval)
+  setTimeout(() => clearInterval(interval), 10)
   bars.selectAll("rect")
     .transition().duration(500)
     .attr("y", function(d) {return y(d.length)})
