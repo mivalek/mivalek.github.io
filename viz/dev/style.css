@@ -110,7 +110,7 @@ svg {
   width: 26px;
   bottom: 2px;
   left: 2px;
-  background-color: white;
+  background-color: var(--secondary-col);
   -webkit-transition: .4s;
   transition: .4s;
   border: solid 1px var(--main-col);

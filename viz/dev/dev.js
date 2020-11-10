@@ -15,7 +15,7 @@ const // prototypes
     .range([margin.left, width + margin.left]),
     // Y axis: scale and draw:
     y = d3.scaleLinear()
-      .domain([0, 800])  // d3.hist has to be called before the Y axis obviously
+      .domain([200, 800])  // d3.hist has to be called before the Y axis obviously
       .range([h - margin.bottom, margin.top]),
       meanX = 5.6,
       medX = 8
@@ -166,7 +166,7 @@ const draw = () => {
       .attr("class", "dashed-line")
       .attr("x1", currentX)
       .attr("x2", currentX)
-      .attr("y1", y(0))
+      .attr("y1", h-19)
       .attr("y2", currentY)
 
   graphLayer.append("line")
@@ -181,7 +181,7 @@ const draw = () => {
        .attr("class", "dashed-line")
        .attr("x1", mirrorX)
        .attr("x2", mirrorX)
-       .attr("y1", y(0))
+       .attr("y1", h-19)
        .attr("y2", currentY)
 
    graphLayer.append("circle")
