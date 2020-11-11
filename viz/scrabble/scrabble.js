@@ -269,7 +269,7 @@ const animate = () => {
 }
 
 const sliderValueToSpeed = (sliderValue) => {
-  let freqValues = [1000, 700, 550, 400, 300, 210, 150, 80, 30, 15];
+  let freqValues = [1000, 700, 500, 400, 250, 180, 100, 50, 20, 5];
   // console.log(freqValues[+sliderValue]);
   return freqValues[+sliderValue];
 }
