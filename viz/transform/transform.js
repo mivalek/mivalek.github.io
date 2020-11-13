@@ -323,8 +323,7 @@ document.addEventListener("mousemove", function(event) {
 
 document.addEventListener("touchmove", function(event) {
   if (isMouseDown) {
-    this.body.style = "cursor:col-resize"
-    const diff = event.clientX - mouseXcoord
+    const diff = event.touches[0].clientX - mouseXcoord
     let adjustValue,
         insertValue
     switch (dragged) {
@@ -382,7 +381,6 @@ document.addEventListener("touchend", function(event) {
     // this.getElementById(dragged).releasePointerCapture(event.pointerId)
     isMouseDown = false
     dragged = null
-    this.body.style = "cursor:default"
   }
 })
 
@@ -395,7 +393,7 @@ for (var i = 0; i < draggables.length; i++) {
   })
   draggables[i].addEventListener("touchstart", function(event) {
     // this.setPointerCapture(event.pointerId)
-    mouseXcoord = event.clientX
+    mouseXcoord = event.touches[0].clientX
     isMouseDown = true
     dragged = this.id
   })
