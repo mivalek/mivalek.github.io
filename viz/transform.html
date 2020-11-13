@@ -17,24 +17,34 @@
 <div id="applet">
   <div id="ctrls">
     <div class="ctrl add">
-      <div>&plus;</div>
       <div class="toggle">
         <label class="switch">
           <input type="checkbox" id="addSwitch">
-          <span class="slider round" onclick="addSwitch()"></span>
+          <span class="slider round" onclick="toggleSwitch('addInput')"></span>
         </label>
       </div>
-      <div id="add"></div>
+        <div id="addInput" class="numInput hidden">x &plus; <span class="input">0</span></div>
+      <!-- <input id="add"></input> -->
     </div>
     <div class="ctrl mult">
-      <div>&times;</div>
       <div class="toggle">
         <label class="switch">
           <input type="checkbox" id="multSwitch">
-          <span class="slider round" onclick="multSwitch()"></span>
+          <span class="slider round" onclick="toggleSwitch('multInput')"></span>
         </label>
       </div>
-      <div id="mult"></div>
+        <div id = "multInput" class="numInput hidden">x &times; <span class="input">1</span></div>
+      <!-- <input id="mult"></input> -->
+    </div>
+    <div class="ctrl exp">
+      <div class="toggle">
+        <label class="switch">
+          <input type="checkbox" id="expSwitch">
+          <span class="slider round" onclick="toggleSwitch('expInput')"></span>
+        </label>
+      </div>
+        <div id="expInput" class="numInput hidden">x<sup><span class="input">1</span></sup></div>
+      <!-- <input id="exp"></input> -->
     </div>
   </div>
   <div id="box">

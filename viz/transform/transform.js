@@ -4,36 +4,46 @@ const // prototypes
     ap = Array.prototype,
     // callable forEach
     forEach = fp.call.bind(ap.forEach),
-
+    min = 0,
+    max = 20,
+    yScalingFactor = 1,
+    funs = ["add", "mult", "exp"],
     margin = {top: 20, right: 10, bottom: 20, left: 70},
     w = 500,
     h = 350,
     width = w - margin.left - margin.right,
     height = h - margin.top - margin.bottom,
     x = d3.scaleLinear()
-    .domain([-10, 10])
+    .domain([min, max])
     .range([margin.left, width + margin.left]),
     // Y axis: scale and draw:
     y = d3.scaleLinear()
-      .domain([-50, 50])  // d3.hist has to be called before the Y axis obviously
-      .range([h - margin.bottom, margin.top])
+      .domain([min * yScalingFactor, max * yScalingFactor])  // d3.hist has to be called before the Y axis obviously
+      .range([h - margin.bottom, margin.top]),
+    clipBeginX = x(min)-4
 
-const points = [-10,-9.9,-9.8,-9.7,-9.6,-9.5,-9.4,-9.3,-9.2,-9.1,-9,-8.9,-8.8,-8.7,-8.6,-8.5,-8.4,-8.3,-8.2,-8.1,-8,-7.9,-7.8,-7.7,-7.6,-7.5,-7.4,-7.3,-7.2,-7.1,-7,-6.9,-6.8,-6.7,-6.6,-6.5,-6.4,-6.3,-6.2,-6.1,-6,-5.9,-5.8,-5.7,-5.6,-5.5,-5.4,-5.3,-5.2,-5.1,-5,-4.9,-4.8,-4.7,-4.6,-4.5,-4.4,-4.3,-4.2,-4.1,-4,-3.9,-3.8,-3.7,-3.6,-3.5,-3.4,-3.3,-3.2,-3.1,-3,-2.9,-2.8,-2.7,-2.6,-2.5,-2.4,-2.3,-2.2,-2.1,-2,-1.9,-1.8,-1.7,-1.6,-1.5,-1.4,-1.3,-1.2,-1.1,-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5,5.1,5.2,5.3,5.4,5.5,5.6,5.7,5.8,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7,7.1,7.2,7.3,7.4,7.5,7.6,7.7,7.8,7.9,8,8.1,8.2,8.3,8.4,8.5,8.6,8.7,8.8,8.9,9,9.1,9.2,9.3,9.4,9.5,9.6,9.7,9.8,9.9,10]
+let points = [min]
 
+for (var i = 1; i < 201; i++) {
+  points[i] = Math.ceil((points[i-1] + (max-min)/201)*10)/10
+}
 
 let svg, g, graphLayer,
     ind = 0,
-    isAdd = true,
-    isMult = true
+    isAdd = false,
+    isMult = false,
+    isExp = false,
+    dataX,
+    clipPathsForPoints, add, mult, exp
 
 
 
 
 const init = () => {
-
-
+  add = 0
+  mult = 1
+  exp = 1
   ind = 0
-
  svg = d3.select("#plot").append("svg")
    .attr("width", w)
    .attr("height", h)
@@ -63,17 +73,72 @@ const init = () => {
      .text("f(x)");
 }
 
+const drawLines = () => {
+  svg.select("#lines").remove()
+  data = []
+  clipPathsForPoints = []
+  points.forEach((d) => data.push({x: x(d), addY: d + add, multY: d * mult, expY: exp <= 0 && d == 0 ? 0.005**exp : d ** exp}))
+  lineLayer = svg.append("g")
+     .attr("id", "lines")
+
+
+  for (var i = 0; i < funs.length; i++) {
+    currentFun = funs[i]
+
+    // draw all lines
+    lineLayer.append("path")
+        .datum(data)
+        .attr("class", `line ${currentFun}`)
+        .attr("d", d3.line()
+          .x(function(d) {return d.x})
+          .y(function(d) { return y(d[`${currentFun}Y`])})
+          )
+          .attr("clip-path", `url(#${currentFun}-clip)`) // clipping mask
+
+    clipPathsForPoints[i] = lineLayer.append("clipPath") // define a clip path
+     .attr("id", `${currentFun}-clip`) // give the clipPath an ID
+     .append("rect") //Append the shape for clipping
+     .attr("x", clipBeginX)
+     .attr("y", 0)
+     .attr("width", 0)
+     .attr("height", height + 20)
+
+    // minor points along the lines for each integer value of x
+    for (var j = min; j < max; j++) {
+      lineLayer.append("circle")
+        .attr("class", funs[i])
+        .attr("cx", x(j))
+        .attr("cy", y(data.find(obj => {return obj.x === x(j)})[`${currentFun}Y`]))
+        .attr("r", 3)
+        .attr("clip-path", `url(#${currentFun}-clip)`)
+    }
+
+    svg.append("clipPath") // define a clip path
+     .attr("id", "main-clip") // give the clipPath an ID
+     .append("rect") //Append the shape for clipping
+     .attr("x", 0)
+     .attr("y", 0)
+     .attr("width", w)
+     .attr("height", y(min*yScalingFactor) +9)
+   svg.append("clipPath") // define a clip path
+    .attr("id", "dash-clip") // give the clipPath an ID
+    .append("rect") //Append the shape for clipping
+    .attr("x", 66)
+    .attr("y", 17)
+    .attr("width", width)
+    .attr("height", y(min*yScalingFactor) - 16)
+
+  }
+}
+
+
 const draw = () => {
   ind = +document.getElementById('xValue').value
-  const dataX = points.slice(0, ind+1),
-        data = []
-  dataX.forEach((d) => data.push({x: x(d), addY: y(d + 1), multY: y(d * 2)}))
+
   const currentX = data[ind].x,
-        currentAddY = data[ind].addY,
-        currentMultY = data[ind].multY
-
-console.log(data);
-
+        currentAddY = y(data[ind].addY),
+        currentMultY = y(data[ind].multY),
+        currentExpY = y(data[ind].expY)
 
 
 
@@ -82,70 +147,120 @@ console.log(data);
   graphLayer = svg.append("g")
      .attr("class", "graph")
 
-  if (isAdd || isMult) {
+
+
+
+  if (isAdd || isMult || isExp) {
     graphLayer.append("line")
        .attr("class", "dashed-line vert-line")
        .attr("x1", currentX)
        .attr("x2", currentX)
        .attr("y1", h-19)
-       .attr("y2", Math.min(currentAddY * isAdd, currentMultY * isMult))
+       .attr("y2", y(Math.max(data[ind].addY * isAdd, data[ind].multY * isMult, data[ind].expY * isExp)))
   }
   if (isAdd) {
-    graphLayer.append("path")
-        .datum(data)
-        .attr("class", "line add")
-        .attr("d", d3.line()
-          .x(function(d) {return d.x})
-          .y(function(d) { return d.addY})
-          )
     graphLayer.append("line")
         .attr("class", "dashed-line")
         .attr("stroke", "#df03fc")
-        .attr("x1", x(-10.2))
+        .attr("x1", x(min - 1))
         .attr("x2", currentX)
         .attr("y1", currentAddY)
         .attr("y2", currentAddY)
-    graphLayer.append("circle")
+        .attr("clip-path", "url(#dash-clip)")
+
+    let addCirc = graphLayer.append("circle")
       .attr("fill", "#df03fc")
       .attr("cx", currentX)
       .attr("cy", currentAddY)
       .attr("r", 8)
+      .attr("clip-path", "url(#main-clip)")
+
+    clipPathsForPoints[0]
+      .attr("width", currentX - clipBeginX)
+
+    if ((isMult && currentAddY == currentMultY)|| (isExp && currentAddY == currentExpY)) {
+      addCirc.attr("transform", "translate(2,-2)")
+    }
   }
 
   if (isMult) {
-    graphLayer.append("path")
-        .datum(data)
-        .attr("class", "line mult")
-        .attr("d", d3.line()
-          .x(function(d) {return d.x})
-          .y(function(d) { return d.multY})
-          )
     graphLayer.append("line")
         .attr("class", "dashed-line")
         .attr("stroke", "#0ab77e")
-        .attr("x1", x(-10.2))
+        .attr("x1", x(min - 1))
         .attr("x2", currentX)
         .attr("y1", currentMultY)
         .attr("y2", currentMultY)
-    graphLayer.append("circle")
+        .attr("clip-path", "url(#dash-clip)")
+    let multCirc = graphLayer.append("circle")
       .attr("fill", "#0ab77e")
       .attr("cx", currentX)
       .attr("cy", currentMultY)
       .attr("r", 8)
+      .attr("clip-path", "url(#main-clip)")
+
+    clipPathsForPoints[1]
+      .attr("width", currentX - clipBeginX)
+
+   if ((isAdd && currentAddY == currentMultY)|| (isMult && currentMultY == currentExpY)) {
+      multCirc.attr("transform", "translate(-1,-1)")
+    }
   }
 
+  if (isExp) {
+    graphLayer.append("line")
+        .attr("class", "dashed-line")
+        .attr("stroke", "#fbec0a")
+        .attr("x1", x(min - 1))
+        .attr("x2", currentX)
+        .attr("y1", currentExpY)
+        .attr("y2", currentExpY)
+        .attr("clip-path", "url(#dash-clip)")
+    let expCirc = graphLayer.append("circle")
+      .attr("fill", "#fbec0a")
+      .attr("cx", currentX)
+      .attr("cy", currentExpY)
+      .attr("r", 8)
+      .attr("clip-path", "url(#main-clip)")
 
+    clipPathsForPoints[2]
+      .attr("width", currentX - clipBeginX)
 
+   if ((isMult && currentExpY == currentMultY)|| (isAdd && currentAddY == currentExpY)) {
+      expCirc.attr("transform", "translate(2, 0)")
+    }
+  }
+}
 
-
+const toggleSwitch = (id) => {
+  document.getElementById(id).classList.toggle("hidden")
+  switch(id) {
+  case "addInput":
+    isAdd = !isAdd
+    clipPathsForPoints[0]
+      .attr("width", 0)
+    break;
+    case "multInput":
+    isMult = !isMult
+    clipPathsForPoints[1]
+      .attr("width", 0)
+    break;
+    case "expInput":
+    isExp = !isExp
+    clipPathsForPoints[2]
+      .attr("width", 0)
+}
+draw()
 }
 
 const reset = () => {
   d3.selectAll("#plot > svg").remove()
   document.getElementById('addSwitch').checked = false
   document.getElementById('multSwitch').checked = false
+  document.getElementById('expSwitch').checked = false
   document.getElementById('xValue').value = "-10"
   init()
+  drawLines()
   draw()
 }
 
@@ -153,6 +268,139 @@ const reset = () => {
 // document.getElementById('xValue').addEventListener("change", draw)
 document.getElementById('xValue').addEventListener("input", draw)
 document.getElementById('xValue').addEventListener("touchmove", draw)
+const draggables = document.getElementsByClassName('numInput')
+
+let isMouseDown = false,
+    mouseXcoord,
+    dragged
+
+document.addEventListener("mousemove", function(event) {
+  if (isMouseDown) {
+    this.body.style = "cursor:col-resize"
+    const diff = event.clientX - mouseXcoord
+    let adjustValue,
+        insertValue
+    switch (dragged) {
+      case "addInput":
+        adjustValue = diff / 20
+        if (adjustValue > 10) {
+          adjustValue = 10
+        }
+        if (adjustValue < -10) {
+          adjustValue = -10
+        }
+        add = adjustValue
+        break;
+      case "multInput":
+        if (diff >= 0) {
+          adjustValue = Math.min(diff/20 + 1, 10)
+        } else {
+          adjustValue = Math.max(~~((1 + (diff / 100)) * 100) / 100, 0)
+        }
+        mult = adjustValue
+        break;
+      case "expInput":
+        adjustValue = diff / 50 + 1
+        if (adjustValue > 3) {
+          adjustValue = 3
+        }
+        if (adjustValue < -3) {
+          adjustValue = -3
+        }
+        exp = adjustValue
+        break;
+    }
+
+    adjustValue = ~~(adjustValue*10)/10
+    insertValue = adjustValue.toString()
+    insertValue = insertValue.replace("-", "&minus;")
+    if (dragged == "addInput" && adjustValue < 0) {insertValue = "(" + insertValue + ")"}
+    this.getElementById(dragged).getElementsByClassName("input")[0].innerHTML=insertValue
+    drawLines()
+    draw()
+  }
+})
+
+document.addEventListener("touchmove", function(event) {
+  if (isMouseDown) {
+    this.body.style = "cursor:col-resize"
+    const diff = event.clientX - mouseXcoord
+    let adjustValue,
+        insertValue
+    switch (dragged) {
+      case "addInput":
+        adjustValue = diff / 20
+        if (adjustValue > 10) {
+          adjustValue = 10
+        }
+        if (adjustValue < -10) {
+          adjustValue = -10
+        }
+        add = adjustValue
+        break;
+      case "multInput":
+        if (diff >= 0) {
+          adjustValue = Math.min(diff/20 + 1, 10)
+        } else {
+          adjustValue = Math.max(~~((1 + (diff / 100)) * 100) / 100, 0)
+        }
+        mult = adjustValue
+        break;
+      case "expInput":
+        adjustValue = diff / 50 + 1
+        if (adjustValue > 3) {
+          adjustValue = 3
+        }
+        if (adjustValue < -3) {
+          adjustValue = -3
+        }
+        exp = adjustValue
+        break;
+    }
+
+    adjustValue = ~~(adjustValue*10)/10
+    insertValue = adjustValue.toString()
+    insertValue = insertValue.replace("-", "&minus;")
+    if (dragged == "addInput" && adjustValue < 0) {insertValue = "(" + insertValue + ")"}
+    this.getElementById(dragged).getElementsByClassName("input")[0].innerHTML=insertValue
+    drawLines()
+    draw()
+  }
+})
+
+document.addEventListener("mouseup", function(event) {
+  if (isMouseDown) {
+    // this.getElementById(dragged).releasePointerCapture(event.pointerId)
+    isMouseDown = false
+    dragged = null
+    this.body.style = "cursor:default"
+  }
+})
+
+document.addEventListener("touchend", function(event) {
+  if (isMouseDown) {
+    // this.getElementById(dragged).releasePointerCapture(event.pointerId)
+    isMouseDown = false
+    dragged = null
+    this.body.style = "cursor:default"
+  }
+})
+
+for (var i = 0; i < draggables.length; i++) {
+  draggables[i].addEventListener("mousedown", function(event) {
+    // this.setPointerCapture(event.pointerId)
+    mouseXcoord = event.clientX
+    isMouseDown = true
+    dragged = this.id
+  })
+  draggables[i].addEventListener("touchstart", function(event) {
+    // this.setPointerCapture(event.pointerId)
+    mouseXcoord = event.clientX
+    isMouseDown = true
+    dragged = this.id
+  })
+}
 
 init()
+drawLines()
 draw()

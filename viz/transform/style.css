@@ -42,6 +42,10 @@
   stroke: #0ab77e;
 }
 
+.exp {
+  stroke: #fbec0a;
+}
+
 circle {
   stroke: var(--main-col);
   stroke-width: 1.5px;
@@ -81,7 +85,33 @@ line.dashed-line {
 	align-items: center;
 }
 
+.ctrl {
+	display: flex;
+	flex-direction: row;
+	width: 33%;
+	flex-wrap: wrap;
+}
 
+#addInput, #multInput {
+	line-height: 1.4;
+}
+
+#expInput {
+	line-height: 0.9;
+}
+
+.numInput.hidden {
+  max-width: 0;
+  transition: max-width .2s ease-out;
+}
+.numInput {
+  max-height: 1.2em;
+  overflow: hidden;
+	cursor: col-resize;
+  max-width: 120px;
+  transition: max-width .2s ease-out;
+  margin-left: 10px
+}
 /* from w3 schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */
 
 .switch {
@@ -121,6 +151,22 @@ line.dashed-line {
   -webkit-transition: .4s;
   transition: .4s;
   border: solid 1px var(--main-col);
+  line-height: 1;
+  text-align: center;
+}
+
+.add .slider.round:before {
+  content: "+";
+}
+
+.mult .slider.round:before {
+  content: "\00D7";
+  line-height: 1.2;
+}
+
+.exp .slider.round:before {
+  content: "^";
+  line-height: 1.4;
 }
 
 .add input:checked + .slider {
@@ -131,6 +177,9 @@ line.dashed-line {
   background-color: #0ab77e;
 }
 
+.exp input:checked + .slider {
+  background-color: #fbec0a;
+}
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
