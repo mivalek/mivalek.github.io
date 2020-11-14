@@ -195,39 +195,36 @@ let isMouseDown = false,
 
 
 
-const drag = (e) => {
-  if (isMouseDown) {
-    document.body.style = "cursor:col-resize"
-    const diff = e.clientX - mouseXcoord
-    let adjustValue,
-        insertValue
-    switch (dragged) {
-      case "addInput":
-        adjustValue = diff / 20 + currentValue
-        if (adjustValue > 10) {
-          adjustValue = 10
-        }
-        if (adjustValue < -10) {
-          adjustValue = -10
-        }
-        add = round2(adjustValue)
-        break;
-      case "multInput":
-        if (diff >= 0) {
-          adjustValue = Math.min(diff/50 + currentValue, 3)
-        } else {
-          adjustValue = Math.max(round2((diff / 100)) + currentValue, 0.1)
-        }
-        console.log({d: diff, adj: adjustValue});
-        mult = round2(adjustValue)
-        break;
-    }
-
-    insertValue = adjustValue.toFixed(2)
-    insertValue = insertValue.replace("-", "&minus;")
-    document.getElementById(dragged).innerHTML=insertValue
-    draw()
+const drag = (e, diff) => {
+  document.body.style = "cursor:col-resize"
+  let adjustValue,
+      insertValue
+  switch (dragged) {
+    case "addInput":
+      adjustValue = diff / 20 + currentValue
+      if (adjustValue > 10) {
+        adjustValue = 10
+      }
+      if (adjustValue < -10) {
+        adjustValue = -10
+      }
+      add = round2(adjustValue)
+      break;
+    case "multInput":
+      if (diff >= 0) {
+        adjustValue = Math.min(diff/50 + currentValue, 3)
+      } else {
+        adjustValue = Math.max(round2((diff / 100)) + currentValue, 0.1)
+      }
+      mult = round2(adjustValue)
+      break;
   }
+
+  insertValue = adjustValue.toFixed(2)
+  insertValue = insertValue.replace("-", "&minus;")
+  document.getElementById(dragged).innerHTML=insertValue
+  draw()
+
 }
 
 const dragEnd = (e) => {
@@ -239,8 +236,18 @@ const dragEnd = (e) => {
   }
 }
 
-document.addEventListener("mousemove", function(event) {drag(event)})
-document.addEventListener("touchmove", function(event) {drag(event)})
+document.addEventListener("mousemove", function(event) {
+  if (isMouseDown) {
+  const diff = event.clientX - mouseXcoord
+  drag(event, diff)
+  }
+})
+document.addEventListener("touchmove", function(event) {
+  if (isMouseDown) {
+  const diff = event.touches[0].clientX - mouseXcoord
+  drag(event, diff)
+  }
+})
 
 document.addEventListener("mouseup", function(event) {dragEnd(event)})
 document.addEventListener("touchend", function(event) {dragEnd(event)})
