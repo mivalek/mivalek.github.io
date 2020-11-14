@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Transformations | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG">
+  </script>
+    </script>
+  <link rel="stylesheet" href="./std_norm/style.css">
+
+</head>
+
+<body onload="reset()">
+<div id="applet">
+  <div class="params">
+  <div>\(\bar{x}=\)<span id="muOut"></span></div>
+    <div>\(SD=\)<span id="sigmaOut"></span></div>
+    </div>
+  <div id="box">
+    <div id="plot"></div>
+  </div>
+
+    <div id="ctrls">
+          <div style="display: flex; text-align: center;">(
+            <span class="ital">x</span>
+            &plus;
+            <span id="addInput" class="input" ondblclick="resetMu()">0</span>
+            ) &times;
+            <span id="multInput" class="input" ondblclick="resetSigma()">1</span></div>
+    </div>
+</div>
+
+  <script src="./std_norm/std_norm.js"></script>
+</body>
