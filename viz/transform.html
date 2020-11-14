@@ -15,38 +15,6 @@
 
 <body onload="reset()">
 <div id="applet">
-  <div id="ctrls">
-    <div class="ctrl add">
-      <div class="toggle">
-        <label class="switch">
-          <input type="checkbox" id="addSwitch">
-          <span class="slider round" onclick="toggleSwitch('addInput')"></span>
-        </label>
-      </div>
-        <div id="addInput" class="numInput hidden">x &plus; <span class="input">0</span></div>
-      <!-- <input id="add"></input> -->
-    </div>
-    <div class="ctrl mult">
-      <div class="toggle">
-        <label class="switch">
-          <input type="checkbox" id="multSwitch">
-          <span class="slider round" onclick="toggleSwitch('multInput')"></span>
-        </label>
-      </div>
-        <div id = "multInput" class="numInput hidden">x &times; <span class="input">1</span></div>
-      <!-- <input id="mult"></input> -->
-    </div>
-    <div class="ctrl exp">
-      <div class="toggle">
-        <label class="switch">
-          <input type="checkbox" id="expSwitch">
-          <span class="slider round" onclick="toggleSwitch('expInput')"></span>
-        </label>
-      </div>
-        <div id="expInput" class="numInput hidden">x<sup><span class="input">1</span></sup></div>
-      <!-- <input id="exp"></input> -->
-    </div>
-  </div>
   <div id="box">
     <div id="plot"></div>
     <div id="slider">
@@ -54,6 +22,39 @@
   </div>
   <div>Slide to change value of \(x\)</div>
   </div>
+
+    <div id="ctrls">
+      <div class="ctrl add">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" id="addSwitch">
+            <span class="slider round" onclick="toggleSwitch('addInput')"></span>
+          </label>
+        </div>
+          <div id="addInput" class="numInput hidden">x &plus; <span class="input">0</span></div>
+        <!-- <input id="add"></input> -->
+      </div>
+      <div class="ctrl mult">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" id="multSwitch">
+            <span class="slider round" onclick="toggleSwitch('multInput')"></span>
+          </label>
+        </div>
+          <div id = "multInput" class="numInput hidden">x &times; <span class="input">1</span></div>
+        <!-- <input id="mult"></input> -->
+      </div>
+      <div class="ctrl exp">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" id="expSwitch">
+            <span class="slider round" onclick="toggleSwitch('expInput')"></span>
+          </label>
+        </div>
+          <div id="expInput" class="numInput hidden">x<sup><span class="input">1</span></sup></div>
+        <!-- <input id="exp"></input> -->
+      </div>
+    </div>
 </div>
 
   <script src="./transform/transform.js"></script>
