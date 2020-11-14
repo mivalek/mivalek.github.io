@@ -16,6 +16,32 @@
     user-select: none;
 }
 
+#plot.error::after {
+	content: "Order of operations!";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 115px 100px;
+	text-align: center;
+	color: #d00;
+	background: var(--secondary-col);
+	border: solid 2px #d00;
+	border-radius: 10px;
+	font-weight: bold;
+	padding-top: 50px;
+}
+
+#plot.error::before {
+	content: "";
+	background: #00000055;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
 
 .axis line, .axis path, .line, .graph line, .vert-line, path.dashed {
   stroke: var(--main-col);
@@ -48,11 +74,11 @@ circle {
 }
 
 .sigma.stdNrm{
-  fill: #ffd70088;
+  fill: #df03fc6d;
 }
 
 .graph line.mu.stdNrm {
-  stroke: #0070ff;
+  stroke: #0ab77e;
 }
 
 path.line {
@@ -76,6 +102,7 @@ path.dashed {
 	align-items: center;
 	justify-content: center;
 	height: max-content;
+  position: relative;
 }
 
 

@@ -94,11 +94,11 @@ const init = () => {
 const draw = () => {
   let data = [],
       currentSigma = round2(sigma * mult),
-      currentMu = round2(mu + add)
+      currentMu = round2((mu + add) * mult)
     sigmaX = [currentMu - currentSigma],
     sigmaData = []
 
-  muOut.innerHTML = currentMu.toFixed(2).replace("-", "&minus;")
+  muOut.innerHTML = currentMu .toFixed(2).replace("-", "&minus;")
   sigmaOut.innerHTML = currentSigma.toFixed(2)
 
   points.forEach((p) => {data.push({x: x(p), y: y(dnorm(p, currentMu, currentSigma))})})
@@ -127,10 +127,11 @@ const draw = () => {
 
   graphLayer.append("line")
       .attr("class", "mu")
-      .attr("x1", x(mu + add))
-      .attr("x2", x(mu + add))
+      .attr("x1", x(currentMu))
+      .attr("x2", x(currentMu))
       .attr("y1", y(0))
       .attr("y2", y(dnorm(0, 0, sigma * mult)))
+      .attr("clip-path", "url(#rect-clip)")
   graphLayer.append("path")
         .datum(data)
         .attr("class", "line")
@@ -201,6 +202,7 @@ const drag = (e, diff) => {
       insertValue
   switch (dragged) {
     case "addInput":
+    console.log(mult);
       adjustValue = diff / 20 + currentValue
       if (adjustValue > 10) {
         adjustValue = 10
@@ -208,7 +210,7 @@ const drag = (e, diff) => {
       if (adjustValue < -10) {
         adjustValue = -10
       }
-      add = round2(adjustValue)
+      add = round2(adjustValue) / mult
       break;
     case "multInput":
       if (diff >= 0) {
@@ -229,6 +231,7 @@ const drag = (e, diff) => {
 
 const dragEnd = (e) => {
   if (isMouseDown) {
+    document.getElementById("plot").classList.remove("error")
     // this.getElementById(dragged).releasePointerCapture(event.pointerId)
     isMouseDown = false
     dragged = null
@@ -258,12 +261,20 @@ for (var i = 0; i < draggables.length; i++) {
     mouseXcoord = event.clientX
     isMouseDown = true
     dragged = this.id
+    if (dragged == "addInput" && mult != 1) {
+      dragged = "error"
+      document.getElementById("plot").classList.add("error")
+    }
   })
   draggables[i].addEventListener("touchstart", function(event) {
     currentValue = +(this.innerHTML.replace("−", "-"))
     mouseXcoord = event.touches[0].clientX
     isMouseDown = true
     dragged = this.id
+    if (dragged == "addInput" && mult != 1) {
+      dragged = "error"
+      document.getElementById("plot").classList.add("error")
+    }
   })
 }
 
