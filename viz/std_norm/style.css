@@ -43,7 +43,7 @@
 	right: 0;
 }
 
-.axis line, .axis path, .line, .graph line, .vert-line, path.dashed {
+.axis line, .axis path, .line, .graph line, .vert-line, path.dashed, line.dashed {
   stroke: var(--main-col);
   fill: none;
 }
@@ -85,7 +85,7 @@ path.line {
   stroke-width: 1.5px;
 }
 
-path.dashed {
+path.dashed, line.dashed {
   stroke-width: 1px;
   stroke-dasharray: 5;
   shape-rendering: crispEdges;

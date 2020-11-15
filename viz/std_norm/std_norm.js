@@ -89,6 +89,17 @@ const init = () => {
       .y(function(d) { return y(dnorm(d, 0, 1))})
       )
     .attr("clip-path", "url(#rect-clip)")
+    
+  for (var d of [-1, 1]) {
+    console.log(d);
+    svg.append("line")
+      .attr("class", "dashed")
+      .attr("x1", x(d))
+      .attr("x2", x(d))
+      .attr("y1", y(0))
+      .attr("y2", y(dnorm(d, 0, 1)))
+  }
+
 }
 
 const draw = () => {
