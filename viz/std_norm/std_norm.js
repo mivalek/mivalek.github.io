@@ -89,9 +89,8 @@ const init = () => {
       .y(function(d) { return y(dnorm(d, 0, 1))})
       )
     .attr("clip-path", "url(#rect-clip)")
-    
+
   for (var d of [-1, 1]) {
-    console.log(d);
     svg.append("line")
       .attr("class", "dashed")
       .attr("x1", x(d))
@@ -105,17 +104,19 @@ const init = () => {
 const draw = () => {
   let data = [],
       currentSigma = round2(sigma * mult),
-      currentMu = round2((mu + add) * mult)
-    sigmaX = [currentMu - currentSigma],
-    sigmaData = []
+      currentMu = round2((mu + add) * mult),
+      // [0.02, 0.04, 0.06 ... 2]
+      multiples = Array.apply(0, Array(100)).map(function(_,b) { return (b + 1)/50; })
+      sigmaX = [currentMu - currentSigma],
+      sigmaData = []
 
   muOut.innerHTML = currentMu .toFixed(2).replace("-", "&minus;")
   sigmaOut.innerHTML = currentSigma.toFixed(2)
 
   points.forEach((p) => {data.push({x: x(p), y: y(dnorm(p, currentMu, currentSigma))})})
 
-  for (var i = 1; i < 100; i++) {
-    sigmaX[i] = sigmaX[i - 1] + currentSigma/50
+  for (var i = 0; i < multiples.length; i++) {
+    sigmaX[i+1] = round2(sigmaX[0] + currentSigma * multiples[i])
   }
   sigmaX.forEach((p) => {sigmaData.push({x: x(p), y: y(dnorm(p, currentMu, currentSigma))})})
 
@@ -213,7 +214,6 @@ const drag = (e, diff) => {
       insertValue
   switch (dragged) {
     case "addInput":
-    console.log(mult);
       adjustValue = diff / 20 + currentValue
       if (adjustValue > 10) {
         adjustValue = 10
