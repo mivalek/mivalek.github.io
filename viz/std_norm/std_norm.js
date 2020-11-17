@@ -162,15 +162,15 @@ const draw = () => {
     graphLayer.select(".sigma")
           .attr("class", "sigma stdNrm")
 
-    graphLayer.append("text")
-        .attr("x", x(0))
-        .attr("y", y(0.5))
-        // .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .style("fill", "var(--main-col)")
-        .style("font-weight", "bold")
-        .style("font-size", "1.5em")
-        .text("Standardised!");
+    // graphLayer.append("text")
+    //     .attr("x", x(0))
+    //     .attr("y", y(0.5))
+    //     // .attr("dy", "1em")
+    //     .style("text-anchor", "middle")
+    //     .style("fill", "var(--main-col)")
+    //     .style("font-weight", "bold")
+    //     .style("font-size", "1.5em")
+    //     .text("Standardised!");
   }
 }
 
@@ -203,6 +203,9 @@ const draw = () => {
 
 const reset = () => {
   d3.selectAll("#plot > svg").remove()
+  document.getElementById('addInput').innerHTML = "0"
+  document.getElementById('multInput').innerHTML = "1"
+  document.getElementById("addInput").classList.remove("disabled")
   init()
   draw()
 }
@@ -261,6 +264,18 @@ const dragEnd = (e) => {
     isMouseDown = false
     dragged = null
     document.body.style = "cursor:default"
+
+    if ((currentSigma == 1) && !currentMu) {
+      graphLayer.append("text")
+          .attr("x", x(0))
+          .attr("y", y(0.5))
+          // .attr("dy", "1em")
+          .style("text-anchor", "middle")
+          .style("fill", "var(--main-col)")
+          .style("font-weight", "bold")
+          .style("font-size", "1.5em")
+          .text("Standardised!");
+    }
   }
 }
 
