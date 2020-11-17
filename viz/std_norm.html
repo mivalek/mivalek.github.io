@@ -18,17 +18,18 @@
   <div class="params">
   <div>\(\bar{x}=\)<span id="muOut"></span></div>
     <div>\(SD=\)<span id="sigmaOut"></span></div>
+    <button onclick="reset()">Reset</button>
     </div>
   <div id="box">
     <div id="plot"></div>
   </div>
 
     <div id="ctrls">
-          <div style="display: flex; text-align: center;">(
+          <div style="display: flex; text-align: center;"><span class="ital">z(x) = </span>(
             <span class="ital">x</span>
-            &plus;
+            &nbsp;&minus;
             <span id="addInput" class="input" ondblclick="resetMu()">0</span>
-            ) &times;
+            ) &nbsp;&#8725;
             <span id="multInput" class="input" ondblclick="resetSigma()">1</span></div>
     </div>
 </div>

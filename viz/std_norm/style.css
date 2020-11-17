@@ -43,6 +43,34 @@
 	right: 0;
 }
 
+
+button {
+  border-radius: 10px;
+  border: solid 1px var(--main-col);
+  height: 40px;
+  width: max-content;
+  font-size: 1em;
+  color: var(--secondary-col);
+  background: var(--main-col);
+  cursor: pointer;
+  min-width: 50px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:hover:active {
+    background: var(--secondary-col);
+    color: var(--main-col);
+    border-color: var(--main-col);
+}
+
+
 .axis line, .axis path, .line, .graph line, .vert-line, path.dashed, line.dashed {
   stroke: var(--main-col);
   fill: none;
@@ -136,8 +164,10 @@ path.dashed, line.dashed {
 .params {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-between;
 	margin-bottom: 0.5em;
+	align-items: flex-end;
+	margin-left: 2em;
 }
 
 #muOut, #sigmaOut {

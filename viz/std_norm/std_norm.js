@@ -1,12 +1,12 @@
 
-const margin = {top: 20, right: 10, bottom: 40, left: 70},
-    w = 500,
+const margin = {top: 20, right: 0, bottom: 40, left: 80},
+    w = 545,
     h = 350,
     width = w - margin.left - margin.right,
     height = h - margin.top - margin.bottom,
     x = d3.scaleLinear()
     .domain([-10, 10])
-    .range([margin.left, width + margin.left]),
+    .range([margin.left, width + margin.left - 20]),
     // Y axis: scale and draw:
     y = d3.scaleLinear()
       .domain([0, 0.8])  // d3.hist has to be called before the Y axis obviously
@@ -14,7 +14,8 @@ const margin = {top: 20, right: 10, bottom: 40, left: 70},
     muOut = document.getElementById("muOut"),
     sigmaOut = document.getElementById("sigmaOut")
 
-const round2 = (x) => ~~(x * 100)/100
+const round2 = (x) => ~~(x * 100)/100,
+      round = (x, d) => ~~(x * (10 ** d))/ (10 ** d)
 function dnorm(x, mu, sigma) {
   return Math.exp(-1/2 * (((x - mu) / sigma) ** 2))/(sigma * Math.sqrt(2 * Math.PI))
 }
@@ -22,7 +23,7 @@ let svg, g, graphLayer, mu, add, sigma, mult, currentValue
     points = []
 
 points[0] = -10.2
-for (var i = 1; i < 416; i++) {
+for (var i = 1; i < 422; i++) {
   points[i] = points[i - 1] + 0.05
 }
 
@@ -30,10 +31,12 @@ for (var i = 1; i < 416; i++) {
 const init = () => {
 
   ind = 0
-  mu = 4
-  sigma = 2.5
+  mu = round2(~~(Math.random() * 200 - 100)/10)
+  sigma = round2((~~(Math.random() * 25) + 5) / 10)
   add = 0
   mult = 1
+  muLims = {min: -10-mu, max: 10-mu}
+  sigmaLims = {min: round2(sigma/5), max: round2(sigma/0.5)}
 
  svg = d3.select("#plot").append("svg")
    .attr("width", w)
@@ -54,7 +57,7 @@ const init = () => {
      .attr("transform", `translate(${margin.left-5}, 0)`)
      .call(d3.axisLeft(y));
 
-     // text label for the y axis
+     // text label for the x axis
      svg.append("text")
         .attr("class", "axis ital lab")
         .attr("x", x(0))
@@ -67,7 +70,7 @@ const init = () => {
   svg.append("text")
      .attr("class", "axis lab")
      .attr("transform", "rotate(-90)")
-     .attr("y", 0)
+     .attr("y", 10)
      .attr("x", 0 - ((h - margin.bottom + 10) / 2))
      .attr("dy", "1em")
      .style("text-anchor", "middle")
@@ -78,11 +81,11 @@ const init = () => {
     .append("rect") //Append the shape for clipping
     .attr("x", x(-10.2))
     .attr("y", 0)
-    .attr("width", x(10.2))
+    .attr("width", x(11))
     .attr("height", height + margin.top + 1)
 
   svg.append("path")
-    .datum(points)
+    .datum(points.slice(134, 275))
     .attr("class", "dashed")
     .attr("d", d3.line()
       .x(function(d) {return x(d)})
@@ -158,6 +161,16 @@ const draw = () => {
       .attr("class", "mu stdNrm")
     graphLayer.select(".sigma")
           .attr("class", "sigma stdNrm")
+
+    graphLayer.append("text")
+        .attr("x", x(0))
+        .attr("y", y(0.5))
+        // .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .style("fill", "var(--main-col)")
+        .style("font-weight", "bold")
+        .style("font-size", "1.5em")
+        .text("Standardised!");
   }
 }
 
@@ -194,10 +207,6 @@ const reset = () => {
   draw()
 }
 
-const toggleSwitch = (id) => {
-  document.getElementById(id).classList.toggle("hidden")
-}
-
 
 const draggables = document.getElementsByClassName('input')
 
@@ -214,22 +223,22 @@ const drag = (e, diff) => {
       insertValue
   switch (dragged) {
     case "addInput":
-      adjustValue = diff / 20 + currentValue
-      if (adjustValue > 10) {
-        adjustValue = 10
+      adjustValue = -diff / 20 + currentValue
+      if (adjustValue > muLims.max) {
+        adjustValue = muLims.max
       }
-      if (adjustValue < -10) {
-        adjustValue = -10
+      if (adjustValue < muLims.min) {
+        adjustValue = muLims.min
       }
       add = round2(adjustValue) / mult
       break;
     case "multInput":
       if (diff >= 0) {
-        adjustValue = Math.min(diff/50 + currentValue, 3)
+        adjustValue = Math.min(diff/100 + currentValue,  sigmaLims.max)
       } else {
-        adjustValue = Math.max(round2((diff / 100)) + currentValue, 0.1)
+        adjustValue = Math.max(round((diff / 200), 3) + currentValue, sigmaLims.min)
       }
-      mult = round2(adjustValue)
+      mult = 1/round2(adjustValue)
       break;
   }
 
