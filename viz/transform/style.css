@@ -80,9 +80,10 @@ line.dashed-line {
 #ctrls {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	align-items: center;
-	margin-top: 1em;
+	margin-top: 0.2em;
+	height: 2.7em;
 }
 
 .ctrl {
@@ -92,26 +93,50 @@ line.dashed-line {
 	flex-wrap: wrap;
 }
 
-#addInput, #multInput {
-	line-height: 1.4;
+.toggle {
+	align-self: center;
 }
 
+
 #expInput {
-	line-height: 0.9;
+	display: flex;
 }
 
 .numInput.hidden {
   max-width: 0;
-  transition: max-width .2s ease-out;
+  max-height: 0;
+  transition: max-width .2s ease-out, max-height .2s ease-out;
 }
 .numInput {
-  max-height: 1.2em;
-  overflow: hidden;
+	overflow: hidden;
 	cursor: col-resize;
-  max-width: 120px;
-  transition: max-width .2s ease-out;
-  margin-left: 10px
+	max-width: 120px;
+	max-height: 2.7em;
+	transition: max-width .2s ease-out, max-height .2s ease-out;
+	margin-left: 10px;
+	line-height: 2.5em;
 }
+
+.input {
+	background: #df03fc88;
+	border-radius: 50%;
+	display: inline-block;
+	text-align: center;
+	width: 2.6em;
+	padding: 0.1em;
+}
+
+#multInput .input {
+	background: #0ab77e88;
+}
+
+#expInput .input {
+	background: #fbec0a88;
+	line-height: 2em;
+	width: 2em;
+	display: block;
+}
+
 /* from w3 schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */
 
 .switch {
