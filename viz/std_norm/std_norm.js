@@ -156,7 +156,7 @@ const draw = () => {
           )
         .attr("clip-path", "url(#rect-clip)")
 
-  if ((currentSigma == 1) && !currentMu) {
+  if (((sigma * mult).toFixed(3) === "1.000") && ((mu + add) * mult).toFixed(3) == "0.000") {
     graphLayer.select(".mu")
       .attr("class", "mu stdNrm")
     graphLayer.select(".sigma")
@@ -241,7 +241,7 @@ const drag = (e, diff) => {
       } else {
         adjustValue = Math.max(round((diff / 200), 3) + currentValue, sigmaLims.min)
       }
-      mult = 1/round2(adjustValue)
+      mult = 1/adjustValue
       if (currentMu.toFixed(2) != "0.00" && currentSigma.toFixed(2) != sigma.toFixed(2)) {
         document.getElementById("addInput").classList.add("disabled")
       } else {
@@ -265,7 +265,7 @@ const dragEnd = (e) => {
     dragged = null
     document.body.style = "cursor:default"
 
-    if ((currentSigma == 1) && !currentMu) {
+    if (((sigma * mult).toFixed(3) === "1.000") && ((mu + add) * mult).toFixed(3) == "0.000") {
       graphLayer.append("text")
           .attr("x", x(0))
           .attr("y", y(0.5))
