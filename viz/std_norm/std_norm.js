@@ -19,7 +19,7 @@ const round2 = (x) => ~~(x * 100)/100,
 function dnorm(x, mu, sigma) {
   return Math.exp(-1/2 * (((x - mu) / sigma) ** 2))/(sigma * Math.sqrt(2 * Math.PI))
 }
-let svg, g, graphLayer, mu, add, sigma, mult, currentValue
+let svg, g, graphLayer, mu, add, sigma, mult, currentValue, currentMu, currentSigma
     points = []
 
 points[0] = -10.2
@@ -105,9 +105,9 @@ const init = () => {
 }
 
 const draw = () => {
+  currentSigma = round2(sigma * mult)
+  currentMu = round2((mu + add) * mult)
   let data = [],
-      currentSigma = round2(sigma * mult),
-      currentMu = round2((mu + add) * mult),
       // [0.02, 0.04, 0.06 ... 2]
       multiples = Array.apply(0, Array(100)).map(function(_,b) { return (b + 1)/50; })
       sigmaX = [currentMu - currentSigma],
@@ -239,6 +239,11 @@ const drag = (e, diff) => {
         adjustValue = Math.max(round((diff / 200), 3) + currentValue, sigmaLims.min)
       }
       mult = 1/round2(adjustValue)
+      if (currentMu.toFixed(2) != "0.00" && currentSigma.toFixed(2) != sigma.toFixed(2)) {
+        document.getElementById("addInput").classList.add("disabled")
+      } else {
+        document.getElementById("addInput").classList.remove("disabled")
+      }
       break;
   }
 
@@ -307,6 +312,7 @@ const resetMu = () => {
 const resetSigma = () => {
   mult = 1
   document.getElementById('multInput').innerHTML = "1"
+  document.getElementById("addInput").classList.remove("disabled")
   draw()
 }
 

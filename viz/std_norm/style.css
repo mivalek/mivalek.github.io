@@ -148,6 +148,11 @@ path.dashed, line.dashed {
   margin-right: 0;
 }
 
+#addInput.disabled {
+  background: var(--secondary-col);
+  cursor: not-allowed;
+}
+
 #multInput {
   background: #0ab77e88;
 }
