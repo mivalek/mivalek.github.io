@@ -92,12 +92,13 @@ let svg,
     maxBin,
     interval = [],
     yMax,
-    paused
+    paused,
+    counter
 
 
 
 
-const init = () => {
+const init = (cntr) => {
 
 paused = true
  data = []
@@ -106,6 +107,8 @@ paused = true
  interval = []
  isPlot = false
  yMax = 50
+ counter = cntr
+
 
  svg = d3.select("#plot").append("svg")
    .attr("width", w)
@@ -275,7 +278,9 @@ const sliderValueToSpeed = (sliderValue) => {
 }
 
 const togglePlay = () => {
-
+    if (counter === 8) {
+      next()
+    }
     setTimeout(() => clearInterval(interval), 10)
     let btn = document.getElementById("play")
     if (paused) {
@@ -311,7 +316,7 @@ plotSwitch = () => {
   }
   isPlot = !isPlot
 }
-const reset = () => {
+const reset = (cntr) => {
   clearInterval(interval)
   document.getElementById("plot").classList.add("hidden")
 
@@ -324,7 +329,7 @@ const reset = () => {
   }
   document.getElementById("sliders").classList.add("hidden")
 
-  document.getElementById("switch").checked = false
+  // document.getElementById("switch").checked = false
   document.getElementById('mean').innerHTML = "&nbsp;"
 
   // Update scale domain
@@ -334,7 +339,8 @@ const reset = () => {
     .call(d3.axisLeft(y));
 
   document.getElementById('speed').value = "0"
-  init()
+  init(cntr)
+  if (cntr === 0) {next(2000)}
 }
 
 const transition_axis = () => {
@@ -363,4 +369,63 @@ document.getElementById("play").addEventListener("click", togglePlay)
 document.getElementById('speed').addEventListener("input", changeSpeed)
 document.getElementById('speed').addEventListener("touchmove", changeSpeed)
 
-init()
+
+
+const next = () => {
+  annotations.children[0].classList.remove("show")
+  setTimeout(() => {
+    annotations.children[0].remove()
+    annotations.children[0].classList.add("show")
+  }, 600);
+
+}
+
+const manualDraw = () => {
+  annotations.children[0].classList.remove("show")
+  draw()
+  if (counter < 2) {
+    next()
+    setTimeout(() => next(), 5000)
+  // } else if (counter === 2) {
+  } else if (counter === 4) {
+    reset(4)
+    plotSwitch()
+    draw()
+    next()
+  } else if (counter === 7) {
+    next()
+  }
+
+  counter += 1
+}
+
+const instrOneNext = () => {
+  next()
+  setTimeout(() => next(), 5000)
+  setTimeout(() => next(), 10000)
+}
+
+const positionNext = (annotId, elId, elProperty) => {
+  positionAnotByEl(annotId, elId, elProperty)
+  next()
+}
+
+const positionAnotByEl = (annotId, elId, elProperty) => {
+  const x = +document.getElementById(elId).getAttribute(elProperty),
+        annot = document.getElementById(annotId)
+  let margin
+  if (x > 270) {
+    margin = "right"
+  } else {
+    margin = "left"
+  }
+
+  if (margin == "left") {
+    annot.style.marginLeft = (x + 33).toFixed(2) + "px"
+  } else if (margin == "right") {
+    annot.style.marginRight = (x - 33).toFixed(2) + "px"
+  }
+  annot.classList.add(margin)
+}
+
+init(0)
