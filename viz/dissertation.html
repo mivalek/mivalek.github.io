@@ -19,26 +19,27 @@
 
 
 <!-- <body onload="init()"> -->
-<body onload="reset(0)"
-<div id="applet">
-  <div id="crtls">
-    <div class="buttonRow">
-      <button type="button" onclick="manualDraw()">Draw</button>
-      <button type="button" id="reset" onclick="setTimeout(() => reset(counter), 50)">Reset</button>
-    </div>
-    <div class="buttonRow">
-      <button type="button" id="play" class="play"></button>
-      <div id="sliders" class="hidden">
-        <input id="speed" type="range" min="0" max="9" value="0" step="1" style="width: 100%; height: 10px"/>
-        <!-- <div  class="sliderTitle">Speed</div> -->
+<body onload="reset(0)">
+  <div id="container">
+    <div id="applet">
+      <div id="ctrls">
+        <div class="buttonRow">
+          <button type="button" onclick="manualDraw()">Draw</button>
+          <button type="button" id="reset" onclick="setTimeout(() => reset(counter), 50)">Reset</button>
+        </div>
+        <div class="buttonRow">
+          <button type="button" id="play" class="play"></button>
+          <div id="sliders" class="hidden">
+            <input id="speed" type="range" min="0" max="9" value="0" step="1" style="width: 100%; height: 10px"/>
+            <!-- <div  class="sliderTitle">Speed</div> -->
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="rack" id="rack">
-  </div>
-  <div id="mean">&nbsp;</div>
-  <div id="plot" class="hidden"></div>
+      <div class="rack" id="rack"></div>
+      <div id="mean">&nbsp;</div>
+      <div id="plot" class="hidden"></div>
+    </div>
   </div>
 <div id="annotations">
   <div id="blank"></div>
@@ -47,9 +48,9 @@
   <div id="draw" class="annot">Click Draw to pick 7 different tiles</div>
   <div id="meanTiles" class="annot">As you can see, the average value is now different</div>
   <div id="draw" class="annot">Pick a few more samples and check the average each time</div>
-  <div id="plotDesc" class="instruction"><p>OK, next level! :)<br>Here is a plot... Click Next when you are ready</p><button onclick="next()">Next</button></div>
+  <div id="plotDesc" class="instruction"><p>OK, next level! :)<br>Here is a plot... Click Next when you are ready</p><button onclick="next(enable='cont')">Next</button></div>
   <div id="mu" class="annot">This purple line represents the average value of the population - all 100 tiles in the bag that we are sampling from<button onclick="positionNext('distMean', 'muHatLine', 'x1')">OK</button></div>
-  <div id="distMean" class="annot">This dashed line is the average of all the averages we get everytime we pick a new set of 7 tiles<button onclick="next()">Got it</button></div>
+  <div id="distMean" class="annot">This dashed line is the average of all the averages we get everytime we pick a new set of 7 tiles<button onclick="next(enable='ctrl')">Got it</button></div>
   <div id="draw" class="annot">Draw a few more sets of tiles and watch how the plot changes everytime you do it</div>
   <div id="play" class="annot">Click here to run animation</div>
   <div id="blank"></div>

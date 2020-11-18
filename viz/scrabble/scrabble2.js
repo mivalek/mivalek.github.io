@@ -93,7 +93,9 @@ let svg,
     interval = [],
     yMax,
     paused,
-    counter
+    counter,
+    controls = document.getElementById("ctrls"),
+    container = document.getElementById("container")
 
 
 
@@ -371,39 +373,77 @@ document.getElementById('speed').addEventListener("touchmove", changeSpeed)
 
 
 
-const next = () => {
-  annotations.children[0].classList.remove("show")
-  setTimeout(() => {
-    annotations.children[0].remove()
-    annotations.children[0].classList.add("show")
-  }, 600);
 
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
 }
 
+const next = (enable = "nothing") => {
+  annotations.children[0].classList.remove("show")
+  sleep(600)
+    .then(() => {
+      annotations.children[0].remove()
+      annotations.children[0].classList.add("show")
+    }).then(() => {
+      switch (enable) {
+        case "all":
+          container.classList.remove("disabled")
+          controls.classList.remove("disabled")
+          break
+        case "ctrl":
+          controls.classList.remove("disabled")
+          break
+        case "cont":
+        container.classList.remove("disabled")
+
+        default: false
+    }
+  })
+}
+
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
 const manualDraw = () => {
+  controls.classList.add("disabled")
   annotations.children[0].classList.remove("show")
   draw()
   if (counter < 2) {
     next()
-    setTimeout(() => next(), 5000)
+    sleep(3000)
+      .then(() => next())
+      .then(() => sleep(500).then(() => controls.classList.remove("disabled")))
+
   // } else if (counter === 2) {
   } else if (counter === 4) {
     reset(4)
     plotSwitch()
     draw()
-    next()
+    sleep(500)
+      .then(() => {
+        next()
+        container.classList.add("disabled")
+    })
   } else if (counter === 7) {
     next()
+    sleep(1000).then(() => controls.classList.remove("disabled"))
+  } else {
+    sleep(200).then(() => controls.classList.remove("disabled"))
   }
 
   counter += 1
 }
 
-const instrOneNext = () => {
-  next()
-  setTimeout(() => next(), 5000)
-  setTimeout(() => next(), 10000)
-}
 
 const positionNext = (annotId, elId, elProperty) => {
   positionAnotByEl(annotId, elId, elProperty)
