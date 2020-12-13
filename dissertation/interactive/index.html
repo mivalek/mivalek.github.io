@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+
+<!-- scrabble by James Holmes https://codepen.io/32bitkid/pen/NPEgbx -->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Sampling distribution | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG">
+  </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.1.1/tinycolor.min.js">
+    </script>
+  <link rel="stylesheet" href="../assets/style.css">
+
+</head>
+
+
+
+<!-- <body onload="init()"> -->
+<body>
+  <div id="container">
+    <div id="applet">
+      <div id="ctrls">
+        <div class="buttonRow">
+          <button type="button" onclick="manualDraw()">Draw</button>
+          <button type="button" class="hidden transparent" id="reset" onclick="setTimeout(() => reset(counter, false), 50)">Reset</button>
+        </div>
+        <div class="buttonRow">
+          <button type="button" id="play" class="play hidden transparent"></button>
+          <div id="sliders" class="hidden">
+            <input id="speed" type="range" min="0" max="9" value="0" step="1" style="width: 100%; height: 10px"/>
+            <!-- <div  class="sliderTitle">Speed</div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="rack" id="rack"></div>
+      <div id="mean">&nbsp;</div>
+      <div id="plot" class="hidden"></div>
+      <div>
+        <button id="done-btn" type="button" class="hidden transparent" onclick="donezo()" style="position: absolute; right: 0">Done</button>
+      </div>
+    </div>
+  </div>
+<div id="annotations">
+  <div id="blank"></div>
+  <div id="draw" class="annot">Click here to draw a <strong><em>sample</em></strong> of 7 Scrabble tiles from the bag</div>
+  <div id="meanTiles" class="annot">This is the average value of the tiles you picked - the <strong><em>sample mean</em></strong></div>
+  <div id="draw" class="annot">Click Draw to pick 7 different tiles</div>
+  <div id="meanTiles" class="annot">As you can see, the sample mean is now different. This is called <strong>sampling variation</strong></div>
+  <div id="draw" class="annot">Pick a few more more samples and check the average each time</div>
+  <div id="plotDesc" class="instruction"><p>OK, next level! :)<br><br>We can plot the individual sample means on a histogram to see what kind of values we get if we keep drawing new samples of 7 tiles.<br><br>Click Next when you are ready</p><button onclick="next(enable='cont')">Next</button></div>
+  <div id="mu" class="annot">This purple line represents <strong><em>population mean</em></strong> - the average value of all 100 tiles in the bag that we are sampling from<button onclick="positionNext('distMean', 'muHatLine', 'x1')">OK</button></div>
+  <div id="distMean" class="annot">This dashed line is the average of all the averages we have calculated so far. It gets updated every time we pick add a new sample mean to the plot.<button onclick="next(enable='ctrl')">Got it</button></div>
+  <div id="draw" class="annot">Draw 3 more sets of tiles and watch how the plot changes everytime you do it</div>
+  <div id="play" class="annot">Click here to run animation and watch how a distribution forms.<br>The animation will stop itself once there are enough samples.</div>
+  <div id="speedHint" class="annot">Use the slider to change animation speed.</div>
+  <div id="sampDist1" class="instruction">
+    <p>Let's pause here<br>
+      <br>We have now picked <em>all possible combinations of 7 tiles</em> and plotted them on our histogram. The distribution the plot shows is the
+        <strong>sampling distribution of the mean</strong>. It is the distribution of all the means of all possible samples of size 7 from our population of Scrabble tiles.
+      </p><button onclick="next()">Next</button></div>
+  <div id="sampDist2" class="instruction">
+    <p>This particular sampling distribution is unique to our scenario. If we were picking samples of a different size, it would look different. If we were calculating some other <em>statistic</em> (maybe the median or the variance) it would look different still.<br><br>
+      With that in mind, let's explore a couple of very important properties of our sampling distribution</p><button onclick="positionNext('distMean2', 'muHatLine', 'x1', 'cont')">OK, let's!</button></div>
+  <div id="distMean2" class="annot"><p>Notice that the mean of our sampling distribution is <strong>identical to the population mean.</strong>
+    <br><br>That's not a coincidence! The sampling distribution of <em>any statistic</em> (such as the mean, the median, the standard deviation...) is <em>equal to the population value of that statistic</em>.
+  </p><button onclick="next()">Nice!</button>
+  </div>
+  <div id="se" class="annot">
+    <p>This light-pink ribbon represents &pm;1 standard deviation from the mean of the sampling distribution.<br>
+    The standard deviation of a sampling distribution is called <stron>the Standard Error</strong> (<em>SE</em>) and it's very important for statistics.
+    It is a measure of how much the means tend to differ from sample to sample.</p>
+    <button onclick="next()">Got it</button>
+  </div>
+  <div id="se" class="annot">
+    <p>As you can see, the majority of the distribution is inside the ribbon (within &pm;1 <em>SE</em> from the mean of the distribution).
+    <br><em>SE</em> expresses the uncertainty in the relationship between a statistic calculated on a sample (such as the mean) and its value in the population.
+    </p><button onclick="changeN()">Got it</button>
+  </div>
+  <div id="n30" class="instruction">
+    <p>Let's see now what the sampling distribution of the mean looks like when we increase the sample size from 7 to 30.<br>
+      <br>Have a little play around with the visualisation again. You can get a single sample by pressing the "Draw" button if you want to.
+      <br><br>When you're ready, run the animation using the play button and speed it up and down as you please using the slider. Once there is enough data in the plot, the animation will pause and we'll move on.</p><button onclick="resume(enable='all')">Next</button>
+  </div>
+  <!-- <div id="blank"></div> -->
+  <div id="distDesc" class="annot"><p>With a larger sample size (<em>N</em>=30), the sampling distribution looks more normal (bell-shaped and symmetrical).<br>
+    The larger the sample, the more normal the shape of the sampling distribution, <strong>regardless of how the population valules are distributed!</strong></p><button onclick="positionNext('distMean3', 'muHatLine', 'x1')">Nice!</button></div>
+  <div id="distMean3" class="annot"><p>Just like last time, the mean of the <em>sampling distribution of the mean</em> has settled on the same value as the <em>population mean</em>.</p>
+    <button onclick="next()">I see</button>
+  </div>
+  <div id="se2" class="annot">
+    <p>Notice that the &pm;1 <em>SE</em> area is now narrower! That's because the larger the sample size, the less likely it is that you'll pick a sample whose mean is wildly different from the population.
+    <br>The larger the sample size (<em>N</em>), the smaller the <em>SE</em></p>
+    <button onclick="next()">Makes sense</button>
+  </div>
+  <div id="se2" class="annot">
+    <p>At the same time, the <em>SE</em> gets smaller as the variability (the standard deviation) of the <strong>population decreases</strong>: If the tile values don't differ much, all samples will be relatively representative.
+      If the values vary a lot, it's more likely that you'll get a freak sample by accident.</p>
+    <button onclick="next()">Cool</button>
+  </div>
+  <div id="sandbox" class="instruction">
+    <p>Feel free to play around with the visualisation until you feel like you understand what the sampling distribution and its main properties are.</p>
+    <p>When you feel like you've got it, just carry on with the survey.</p><button onclick="startSandbox()">OK</button>
+  </div>
+  <div id="done" class="instruction">
+    <p>Sampling distribution is very useful because we don’t have to pick all the possible sample tiles from the scrabble bag to know the characteristics (mean, approximate shape and spread) of the sampling distribution.
+      <br><br>We can even <strong>estimate the standard error</strong> (<em>SE</em>) just from the standard deviation (<em>SD</em>) of a single sample and the size (<em>N</em>) of the sample as \(\frac{SD}{\sqrt{N}}\)
+    </p>
+    <p>Please proceed with the rest of the study.</p>
+  </div>
+</div>
+
+<script src="../assets/scrabble2.js"></script>
+</body>
