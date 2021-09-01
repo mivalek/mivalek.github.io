@@ -157,14 +157,13 @@ paused = true
      .text("Count");
 
 
-  se = round(sd(letters.map(l => l.points))/letters.length)
+  se = round(sd(letters.map(l => l.points))/Math.sqrt(nToDraw))
   stats.append("rect")
   .attr("id", "seRect")
-  .attr("x", x(1.87) - x(se))
+  .attr("x", x(1.87 - se))
   .attr("y", 10)
-  .attr("width", 2 * x(se))
+  .attr("width", (x(se) - x(0)) * 2)
   .attr("height", height + 10)
-  // .attr("fill", "url(#sdGradient)")
   .attr("fill", "#df03fc44")
 }
 
