@@ -1,0 +1,137 @@
+---
+title: "AI in Health and Social Care"
+subtitle: "Vision for MSc course"
+author: "Milan Valášek"
+date: "2 May 2022"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: slides.css
+    nature:
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{js, echo = FALSE}
+window.onload = function() {
+  const usher_logo = document.createElement("div");
+  usher_logo.classList.add("logo");
+  usher_logo.classList.add("inst-logo");
+  usher_logo.innerHTML = "<img src='./usher_logo.svg'/>";
+  const uoe_logo = document.createElement("div");
+  uoe_logo.classList.add("logo");
+  uoe_logo.innerHTML = "<img src='./uoe_logo.png'/>";
+  title_slide = document.querySelector(".title-slide");
+  title_slide.appendChild(usher_logo);
+  title_slide.appendChild(uoe_logo);
+};
+
+```
+
+## In this presentation
+
+- Challenges
+
+- Learning outcomes and prerequisites
+
+- Course structure and content
+
+- Assessment
+
+---
+
+## Challenges
+
+- Diverse student population with varying degrees of computing/programming and data-analytical skills
+
+--
+
+- Provide a high-level understanding of a range of AI tools and techniques with hands-on experience, while covering topics specific to H&SC
+
+---
+
+## Learning outcomes
+
+- Knowledge of a variety of contexts within H&SC where AI is and can be useful
+- Ability to communicate with H&SC professionals and users as well as computer/data science experts about AI
+- Hands-on experience of machine learning methods
+- Appreciation of the challenges, limitations, and ethical and security issues associated with AI
+
+--
+
+## Prerequisites
+
+- Understanding of issues in data curation in H&SC
+  - Data ethics and ownership OR
+  - Data standards and core technologies in health and social care
+  
+- Basic computing and statistics skills
+  - Data Analysis with R
+  - Data visualisation: knowledge transfer (?)
+  
+---
+
+## Structure
+
+- Series of short videos (max 15 min) OR standard lectures
+- Interactive tutorials/worksheets
+- Seminars / Live coding workshops
+- Required and recommended reading
+- Discussion topics
+ 
+--
+
+## Content
+
+**Week 1:** Uses of AI in H&SC present and future
+
+**Week 2:** What _actually_ is AI + case studies
+
+**Week 3:** Overview of AI tools (NLP, machine learning, robotics)
+
+**Week 4:** Selected ML methods in `R` (or Python) - practical experience
+
+**Week 5:** Ethical issues and limitations of AI in H&SC
+
+---
+
+.pull-left[
+### Learning outcomes
+
+- Knowledge of a variety of contexts within H&SC where AI is and can be useful
+
+- Ability to communicate with H&SC professionals and users as well as computer/data science experts about AI
+
+- Hands-on experience of machine learning methods
+]
+
+.pull-right[
+### Assessment
+
+- 100% Coursework
+
+- Discussion board engagement
+
+- Reading journal
+
+- Coursework assignment
+  - Essay on a selection of topics (*e.g.*, Sources and consequences of bias in AI)
+  - Coding assignment (training a simple ML model)
+]
+
+---
+
+background-image: url("./hal.jpg")
+background-size: cover
+
+
+.joke[
+I'm sorry panel
+
+I'm afraid this is the end
+]
+

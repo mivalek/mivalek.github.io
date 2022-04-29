@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>AI in Health and Social Care</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Milan Valášek" />
+    <meta name="date" content="2022-05-02" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# AI in Health and Social Care
+]
+.subtitle[
+## Vision for MSc course
+]
+.author[
+### Milan Valášek
+]
+.date[
+### 2 May 2022
+]
+
+---
+
+
+
+
+
+&lt;script type="text/javascript"&gt;
+window.onload = function() {
+  const usher_logo = document.createElement("div");
+  usher_logo.classList.add("logo");
+  usher_logo.classList.add("inst-logo");
+  usher_logo.innerHTML = "&lt;img src='./usher_logo.svg'/&gt;";
+  const uoe_logo = document.createElement("div");
+  uoe_logo.classList.add("logo");
+  uoe_logo.innerHTML = "&lt;img src='./uoe_logo.png'/&gt;";
+  title_slide = document.querySelector(".title-slide");
+  title_slide.appendChild(usher_logo);
+  title_slide.appendChild(uoe_logo);
+};
+
+&lt;/script&gt;
+
+## In this presentation
+
+- Challenges
+
+- Learning outcomes and prerequisites
+
+- Course structure and content
+
+- Assessment
+
+---
+
+## Challenges
+
+- Diverse student population with varying degrees of computing/programming and data-analytical skills
+
+--
+
+- Provide a high-level understanding of a range of AI tools and techniques with hands-on experience, while covering topics specific to H&amp;SC
+
+---
+
+## Learning outcomes
+
+- Knowledge of a variety of contexts within H&amp;SC where AI is and can be useful
+- Ability to communicate with H&amp;SC professionals and users as well as computer/data science experts about AI
+- Hands-on experience of machine learning methods
+- Appreciation of the challenges, limitations, and ethical and security issues associated with AI
+
+--
+
+## Prerequisites
+
+- Understanding of issues in data curation in H&amp;SC
+  - Data ethics and ownership OR
+  - Data standards and core technologies in health and social care
+  
+- Basic computing and statistics skills
+  - Data Analysis with R
+  - Data visualisation: knowledge transfer (?)
+  
+---
+
+## Structure
+
+- Series of short videos (max 15 min) OR standard lectures
+- Interactive tutorials/worksheets
+- Seminars / Live coding workshops
+- Required and recommended reading
+- Discussion topics
+ 
+--
+
+## Content
+
+**Week 1:** Uses of AI in H&amp;SC present and future
+
+**Week 2:** What _actually_ is AI + case studies
+
+**Week 3:** Overview of AI tools (NLP, machine learning, robotics)
+
+**Week 4:** Selected ML methods in `R` (or Python) - practical experience
+
+**Week 5:** Ethical issues and limitations of AI in H&amp;SC
+
+---
+
+.pull-left[
+### Learning outcomes
+
+- Knowledge of a variety of contexts within H&amp;SC where AI is and can be useful
+
+- Ability to communicate with H&amp;SC professionals and users as well as computer/data science experts about AI
+
+- Hands-on experience of machine learning methods
+]
+
+.pull-right[
+### Assessment
+
+- 100% Coursework
+
+- Discussion board engagement
+
+- Reading journal
+
+- Coursework assignment
+  - Essay on a selection of topics (*e.g.*, Sources and consequences of bias in AI)
+  - Coding assignment (training a simple ML model)
+]
+
+---
+
+background-image: url("./hal.jpg")
+background-size: cover
+
+
+.joke[
+I'm sorry panel
+
+I'm afraid this is the end
+]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
