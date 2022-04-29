@@ -107,6 +107,8 @@ window.onload = function() {
 - Ability to communicate with H&SC professionals and users as well as computer/data science experts about AI
 
 - Hands-on experience of machine learning methods
+
+- Appreciation of the challenges, limitations, and ethical and security issues associated with AI
 ]
 
 .pull-right[
