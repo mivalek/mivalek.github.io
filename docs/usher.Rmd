@@ -66,12 +66,13 @@ window.onload = function() {
 ## Prerequisites
 
 - Understanding of issues in data curation in H&SC
-  - Data ethics and ownership OR
-  - Data standards and core technologies in health and social care
+  - Data Ethics in Health and Social Care *OR*
+  - Data security and protection in health and social care
   
 - Basic computing and statistics skills
-  - Data Analysis with R
-  - Data visualisation: knowledge transfer (?)
+  - Data Analysis with R *OR*
+  - Introduction to statistics in health and social care *OR*
+  - Working with data types and structures in Python and R
   
 ---
 
