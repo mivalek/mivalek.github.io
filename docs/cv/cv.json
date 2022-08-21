@@ -1,0 +1,155 @@
+{
+	"education": [
+		{
+			"degree": "PhD Psychology",
+			"institution": "University of Edinburgh",
+			"where": "UK",
+			"start": "2011",
+			"end": "2015"
+		},
+		{
+			"degree": "Mgr (Masters degree) Psychology",
+			"institution": "Comenius University",
+			"where": "Bratislava",
+			"start": "2008",
+			"end": "2010"
+		},
+		{
+			"degree": "Bc (Bachelors degree) Psychology",
+			"institution": "Comenius University",
+			"where": "Bratislava",
+			"start": "2005",
+			"end": "2008"
+		}
+	],
+	"work": [
+		{
+			"what": "Lecturer in Psychology",
+			"institution": "University of Sussex",
+			"where": "UK",
+			"start": "October 2019",
+			"end": "present",
+			"type": "all"
+		},
+		{
+			"what": "Senior Teaching Co-ordinator (Statistics)",
+			"institution": "University of Edinburgh",
+			"where": "UK",
+			"start": "September 2018",
+			"end": "September 2019",
+			"type": "all"
+		},
+		{
+			"what": "Post-doctoral Tutor in Statistics",
+			"institution": "University of Edinburgh",
+			"where": "UK",
+			"start": "September 2017",
+			"end": "September 2018",
+			"type": "all"
+		},
+		{
+			"what": "Psychometrician",
+			"institution": "Royal College of Surgeons of Edinburgh",
+			"where": "UK",
+			"start": "September 2015",
+			"end": "September 2017",
+			"type": "data science"
+		},
+		{
+			"what": "Tutor",
+			"institution": "University of Edinburgh",
+			"where": "UK",
+			"start": "June 2015",
+			"end": "August 2015",
+			"type": "teaching"
+		},
+		{
+			"what": "Data Processing and Statistical Analysis Specialist",
+			"institution": "National Institute for Certified Educational Measurements",
+			"where": "Bratislava, Slovakia",
+			"start": "October 2010",
+			"end": "December 2010",
+			"type": "data science"
+		}		 
+	],
+	"qualifications": [
+		{
+			"what": "Postgraduate Certificate in Higher Education",
+			"where": "University of Sussex",
+			"when": "2021"
+		}],
+	"grants_awards": [	
+		{			
+			"type": "award",
+			"what": "School of Psychology Innovation in Teaching Award",
+			"desc": "University of Sussex",
+			"when": "2021"
+		},
+		{
+			"type": "grant",
+			"what": "Using the body to calm the mind: An examination of heart rate variability biofeedback as a tool to reduce generalised anxiety disorder symptoms",
+			"desc": "Medical Research Council Grant (PI Dr Frances Meeten)",
+			"when": "2011"
+		},
+		{
+			"type": "grant",
+			"what": "The Denwyn Dobby Scholarship",
+			"desc": "(GBP 2,770)",
+			"when": "2011"
+		},
+		{
+			
+			"type": "grant",
+			"what": "The Parapsychological Association Research Endowment",
+			"desc": "(USD 4,000)",
+			"when": "2012"
+		}	
+	],
+	"output": [
+		"High quality public domain teaching materials (lectures, tutorials, worksheets, additional resources)",
+		"Interactive visualisation applications",
+		"Browser-based educational games aimed at teaching data processing and statistical analysis",
+		"\\texttt{R} package \\texttt{sxdr} containing tools to retrieve various information from Sussex Direct and additional tools for interacting with Canvass",
+		"Open-source template for creating websites for university modules with extensive custom functionality (nearing completion; see \\url{https://and.netlify.app/} for a working example)",
+		"Template for internal module assessment reports (in progress)"		
+	],
+	"skills": {
+		"teaching": [
+			"I have extensive experience teaching research methods, statistics, R programming, SPSS, and academic writing to undergraduate, masters, PhD students, post-docs, and faculty across several disciplines (psychology, linguistics, cognitive science) in group and one-on-one settings",
+			"I have designed teaching materials, coursework assignment, and lectures and convened undergraduate modules",
+			"I have co-ordinated coursework assessment and marked and moderated student’s assignments",
+			"I have managed teams of postgraduate tutors on several courses",
+			"I have created \\href{https://and.netlify.app/viz/}{interactive visualisations} of statistical concepts and \\href{https://and.netlify.app/docs/escape/}{gamified tutorials} on statistics and R",
+			"I have received the School of Psychology Innovation in Teaching Award 2021 and have been nominated for multiple teaching awards over the years."
+		],
+		"research": [
+			"Expertise in quantitative research methodology",
+			"A wide range of methods of statistical analysis (e.g. standard observational and experimental design analysis, modern robust methods, signal detection analysis, latent variable models)",
+			"Experience in questionnaire design, validation, and administration",
+			"Experience in conducting research, academic writing, and writing grant applications",
+			"Critical evaluation of information and strong analytical thinking",
+			"Experience in the administration and evaluation of various psychological tests and questionnaires and interviewing both children and adults"
+		],
+		"computing": [
+			"Experience in software development, having written a suite of user-friendly programs for data processing and analysis and interactive online teaching materials",
+			"Advanced experience with R, JavaScript, HTML, CSS, Git, Markdown, Hugo, and IBM SPSS for Windows",
+			"Referencing software (EndNote, Zotero, Mendeley)",
+			"Intemediate knowledge of various video, audio, and image design software (Adobe suite)",
+			"Standard computing skills (Microsoft Windows, Microsoft Office Suite, Internet browsers)"			
+		],
+		"organisational": [
+			"I have acted as convenor and course coordinatorand of both undergraduate and postgraduate courses on statistics in R",
+			"I have supervised over a dozen undergraduate dissertations.",
+			"I have designed data pipelines and admin support software",
+			"I have been in charge of ensuring the smooth running of logistically complex studies which involved passing information between three parties, maintaining detailed record on the progress of the studies and managing follow-up of participants in the desired time-frame."
+		],
+		"communication": [
+			"I have rich experience communicating methodological and statistical concepts to audiences across disciplines (psychology, linguistics, neuroscience, medicine, urbanism) and levels (UG, PG, PhD, faculty)",
+			"I have led numerous examiner training workshops for several royal medical colleges and intercollegiate bodies, delivering training on psychometrics, statistics, and examination methodology.",
+			"I have experience of giving group presentations to both academic and lay audiences.",
+			"In my professional life I have been required to communicate with youths, adults, and seniors and to provide them with professional services and support.",
+			"I am fluent in English, Slovak and Czech, with intermediate knowledge of French and Spanish and a basic level of Polish.",
+			"I have experience in both individual and team work."
+		]
+	}
+}

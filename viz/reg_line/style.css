@@ -1,8 +1,10 @@
 :root {
-    --line-col: #3a3f5a;
-    --bg-col: #e1e6ef;
-    --second-col: #00979f;
-    --primary-col: #52006f;
+  --line-col: #3a3f5a;
+  --bg-col: #e1e6ef;
+  --second-col: #36adb3;
+  --primary-col: #9766a8;
+  --second-col: #00979f;
+  --primary-col: #52006f;
 }
 
 body {
@@ -13,86 +15,99 @@ body {
     font-family: sans-serif;
     color: var(--line-col);
     font-size: 1.5em;
-    max-width: 545px;
+    max-width: 500px;
     display: block;
     margin: auto;
     user-select: none;
 }
 
-
-.axis line, .axis path, .line, .graph line {
-    fill: none;
-    stroke: var(--line-col);
+.axis line{
+  stroke: var(--line-col);
 }
 
-.axis text, .axis.lab {
+.axis path{
+  stroke: var(--line-col);
+}
+
+.axis text{
   fill: var(--line-col);
 }
 
-.graph line.mu {
-  stroke: var(--primary-col);
-  stroke-width: 2px;
+div#sliders {
+    position: relative;
+    display: block;
+    width: 85%;
+    margin: auto;
 }
-
-.sigma {
-  fill: var(--second-col);
-}
-
-path.line {
-  stroke-width: 1.5px;
-}
-
-
-#box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0.5em;
-    height: max-content;
-    max-width: 500px;
-}
-
 
 #plot {
-    width: 100%;
-    padding-bottom: 0;
-    overflow: hidden;
+	position: relative;
+	width: 100%;
+	padding-bottom: 80%;
 }
 
 .svg-content {
-	display: inline-block;
-	position: relative;
-	max-width: 500px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 }
 
-#ctrls {
-  position: relative;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 500px;
+.sliderTitle {
+    padding-bottom: 0.5em;
 }
 
-#ctrls > div {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-}
-
-#ctrls .lab {
-  color: var(--line-col);
-	margin-top: 7px;
-  margin-left: 4%;
-}
-/* input slider */
-#slider {
-    width: 88%;
+#sliders div {
+	margin-top: 0.5em;
 }
 
 input {
     margin-bottom: 2em;
 }
+
+#equation {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
+    margin-top: 20px;
+}
+
+#equation > div {
+    line-height: 1.5em;
+    text-indent: -2em;
+    letter-spacing: 3px;
+}
+
+#intercept-value {
+    color: #fff;
+    border: solid 1px transparent;
+    background: var(--primary-col);
+    border-radius: 40px;
+    display: inline-block;
+    width: 70px;
+}
+
+#slope-value {
+    color: #fff;
+    border: solid 1px transparent;
+    background: var(--second-col);
+    border-radius: 40px;
+    display: inline-block;
+    width: 70px;
+}
+
+
+#intercept-circle {
+  fill: var(--primary-col);
+}
+
+#slope-circle {
+  fill: var(--second-col);
+}
+
+#intercept-value.negative, #slope-value.negative {
+  color: #ffbf00;
+}
+
 
 
 input[type=range] {
@@ -109,16 +124,16 @@ input[type=range]:focus {
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 99%;
-  height: 10px;
+  height: 12px;
   cursor: pointer;
   background: var(--bg-col);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #525772;
 }
 input[type=range]::-webkit-slider-thumb {
-  height: 2em;
-  width: 2em;
-  border-radius: 1em;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
   border: solid 1px var(--line-col);
   cursor: pointer;
   -webkit-appearance: none;
@@ -129,17 +144,17 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 input[type=range]::-moz-range-track {
   width: 99%;
-  height: 10px;
+  height: 12px;
   cursor: pointer;
   background: var(--bg-col);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #525772;
 }
 input[type=range]::-moz-range-thumb {
-  height: 2em;
-  width: 2em;
-  border-radius: 1em;
-  border: solid 1px var(--line-col);
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
+  /* border: solid 1px var(--line-col); */
   /* background: var(--line-col); */
   cursor: pointer;
 }
@@ -163,8 +178,8 @@ input[type=range]::-ms-fill-upper {
   border-radius: 2.6px;
 }
 input[type=range]::-ms-thumb {
-  height: 2em;
-  width: 2em;
+  height: 2.2em;
+  width: 2.2em;
   border-radius: 1em;
   border: solid 1px var(--line-col);
   cursor: pointer;
@@ -176,27 +191,33 @@ input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
 }
 
-input#muValue[type=range]::-webkit-slider-thumb {
+input#intercept[type=range]::-webkit-slider-thumb {
+border: solid 1px var(--primary-col);
   background: var(--primary-col);
 }
-input#muValue[type=range]::-moz-range-thumb {
+input#intercept[type=range]::-moz-range-thumb {
+border: solid 1px var(--primary-col);
   background: var(--primary-col);
 }
-input#muValue[type=range]::-ms-thumb {
+input#intercept[type=range]::-ms-thumb {
+border: solid 1px var(--primary-col);
   background: var(--primary-col);
 }
 
-input#sigmaValue[type=range]::-webkit-slider-thumb {
+input#slope[type=range]::-webkit-slider-thumb {
+  border: solid 1px var(--second-col);
   background: var(--second-col);
 }
-input#sigmaValue[type=range]::-moz-range-thumb {
+input#slope[type=range]::-moz-range-thumb {
+  border: solid 1px var(--second-col);
   background: var(--second-col);
 }
-input#sigmaValue[type=range]::-ms-thumb {
+input#slope[type=range]::-ms-thumb {
+  border: solid 1px var(--second-col);
   background: var(--second-col);
 }
 
-#ctrls #cite {
+#cite {
   display: none;
   position: absolute;
   bottom: -35px;
@@ -206,7 +227,7 @@ input#sigmaValue[type=range]::-ms-thumb {
   color: var(--second-col);
 }
 
-#ctrls #cite.show {
+#cite.show {
   display: initial;
 }
 

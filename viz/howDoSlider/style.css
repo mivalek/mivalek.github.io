@@ -1,8 +1,8 @@
 :root {
-    --line-col: #3a3f5a;
-    --bg-col: #e1e6ef;
-    --second-col: #00979f;
-    --primary-col: #52006f;
+  --line-col: #3a3f5a;
+  --bg-col: #e1e6ef;
+  --second-col: #00979f;
+  --primary-col: #52006f;
 }
 
 body {
@@ -13,81 +13,27 @@ body {
     font-family: sans-serif;
     color: var(--line-col);
     font-size: 1.5em;
-    max-width: 545px;
+    max-width: 500px;
     display: block;
     margin: auto;
     user-select: none;
 }
 
 
-.axis line, .axis path, .line, .graph line {
-    fill: none;
-    stroke: var(--line-col);
-}
-
-.axis text, .axis.lab {
-  fill: var(--line-col);
-}
-
-.graph line.mu {
-  stroke: var(--primary-col);
-  stroke-width: 2px;
-}
-
-.sigma {
-  fill: var(--second-col);
-}
-
-path.line {
-  stroke-width: 1.5px;
-}
-
-
-#box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0.5em;
-    height: max-content;
-    max-width: 500px;
-}
-
-
-#plot {
-    width: 100%;
-    padding-bottom: 0;
-    overflow: hidden;
-}
-
-.svg-content {
-	display: inline-block;
-	position: relative;
-	max-width: 500px;
-}
 
 #ctrls {
-  position: relative;
+    margin-left: 12%;
+    margin-top: .6em;
+    margin-bottom: 1em;
+    text-align: center;
+    width: 84%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    max-width: 500px;
 }
 
-#ctrls > div {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-}
 
-#ctrls .lab {
-  color: var(--line-col);
-	margin-top: 7px;
-  margin-left: 4%;
-}
-/* input slider */
 #slider {
-    width: 88%;
+    width: 100%;
 }
 
 input {
@@ -109,17 +55,18 @@ input[type=range]:focus {
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 99%;
-  height: 10px;
+  height: 12px;
   cursor: pointer;
   background: var(--bg-col);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #525772;
 }
 input[type=range]::-webkit-slider-thumb {
-  height: 2em;
-  width: 2em;
-  border-radius: 1em;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
   border: solid 1px var(--line-col);
+  background: var(--primary-col);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -.8em;
@@ -129,18 +76,19 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 input[type=range]::-moz-range-track {
   width: 99%;
-  height: 10px;
+  height: 12px;
   cursor: pointer;
   background: var(--bg-col);
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #525772;
 }
 input[type=range]::-moz-range-thumb {
-  height: 2em;
-  width: 2em;
-  border-radius: 1em;
-  border: solid 1px var(--line-col);
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
+  /* border: solid 1px var(--line-col); */
   /* background: var(--line-col); */
+  background: var(--primary-col);
   cursor: pointer;
 }
 input[type=range]::-ms-track {
@@ -163,10 +111,11 @@ input[type=range]::-ms-fill-upper {
   border-radius: 2.6px;
 }
 input[type=range]::-ms-thumb {
-  height: 2em;
-  width: 2em;
+  height: 2.2em;
+  width: 2.2em;
   border-radius: 1em;
   border: solid 1px var(--line-col);
+  background: var(--primary-col);
   cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {
@@ -176,41 +125,15 @@ input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
 }
 
-input#muValue[type=range]::-webkit-slider-thumb {
-  background: var(--primary-col);
-}
-input#muValue[type=range]::-moz-range-thumb {
-  background: var(--primary-col);
-}
-input#muValue[type=range]::-ms-thumb {
-  background: var(--primary-col);
-}
-
-input#sigmaValue[type=range]::-webkit-slider-thumb {
+input#xSlider[type=range]::-webkit-slider-thumb {
+border: solid 1px var(--second-col);
   background: var(--second-col);
 }
-input#sigmaValue[type=range]::-moz-range-thumb {
+input#xSlider[type=range]::-moz-range-thumb {
+border: solid 1px var(--second-col);
   background: var(--second-col);
 }
-input#sigmaValue[type=range]::-ms-thumb {
+input#xSlider[type=range]::-ms-thumb {
+border: solid 1px var(--second-col);
   background: var(--second-col);
-}
-
-#ctrls #cite {
-  display: none;
-  position: absolute;
-  bottom: -35px;
-  right: 0;
-  font-size: 50%;
-  text-align: right;
-  color: var(--second-col);
-}
-
-#ctrls #cite.show {
-  display: initial;
-}
-
-#cite a {
-  color: var(--primary-col);
-  outline: none;
 }

@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+:root {
+  --line-col: #3a3f5a;
+  --bg-col: #e1e6ef;
+  --second-col: #00979f;
+  --primary-col: #52006f;
+}
+
+#applet {
+    font-family: Open sans, sans-serif;
+    color: var(--line-col);
+    font-size: 1.5em;
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    user-select: none;
+}
+
+
+.axis line, .axis path, .line, .graph line {
+    fill: none;
+    stroke: var(--line-col);
+}
+
+.axis text, .axis.lab {
+  fill: var(--line-col);
+}
+
+#xBar, #yBar {
+  stroke-width: .5px;
+  stroke: var(--line-col);
+  stroke-dasharray: 6;
+  opacity: .5;
+  pointer-events: none;
+}
+
+#yHat {
+  stroke-width: 2.5px;
+  stroke: #f4c300
+}
+
+#yHat.ols {
+  stroke: var(--primary-col);
+}
+
+.dev {
+  stroke-width: .5px;
+  stroke: var(--second-col);
+  stroke-dasharray: 4;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+}
+
+.devSq {
+  stroke: none;
+  fill: var(--second-col);
+  opacity: .3;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -moz-transition: opacity 0.4s ease-in-out;
+}
+
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -moz-transition: opacity 0.4s ease-in-out;
+}
+
+#box {
+  position: relative;
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.5em;
+	height: max-content;
+}
+
+#plot, #ssr-container {
+	position: relative;
+	width: 100%;
+	padding-bottom: 65%;
+}
+
+#ssr-container {
+  margin-top: 10px;
+	padding-bottom: 100%;
+}
+
+.svg-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+circle {
+	fill: #3a3f5a88;
+}
+
+.control {
+  fill: #f4c300;
+  z-index: 99;
+  cursor: pointer;
+  opacity: .5;
+  transition: opacity .2s ease-in
+}
+
+.control-mid {
+  fill: var(--primary-col);
+  pointer-events: none;
+}
+
+.control:hover, .control.hovered {
+  opacity: 1;
+}
+
+#info {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+  transition: opacity 0.1s ease-in;
+  -webkit-transition: opacity 0.1s ease-in;
+  -moz-transition: opacity 0.1s ease-in;
+  opacity: 1;
+}
+
+#info.hide {
+  opacity: .05;
+}
+
+#info div {
+  position: absolute;
+  background: #ffffffaa;
+  width: max-content;
+}
+
+#xBarDiv, #yBarDiv {
+  color: #777;
+}
+
+#ssr-rect {
+  fill: #52006f77;
+  stroke: var(--primary-col);
+}
+
+#ssr-label, #ssr-value {
+  fill: var(--primary-col);
+  dominant-baseline: central;
+}
+
+#hint-container {
+  font-family: 'Open Sans', sans-serif;
+	position: absolute;
+	top: 0;
+	left: 0;
+	clip-path: url(#hint-clip);
+	font-size: min(80%, 3.5vw);
+	color: white;
+	pointer-events: none;
+}
+
+#hint-label {
+  fill: white;
+  text-anchor: middle;
+  pointer-events: none;
+  font-size: 80%;
+  opacity: .9;
+  transition: opacity 0.2s ease-in;
+  -webkit-transition: opacity 0.2s ease-in;
+  -moz-transition: opacity 0.2s ease-in;
+}
+
+#hint-label.hide {
+  opacity: 0;
+}
+
+#hint-text {
+  position: relative;
+  padding: 3%;
+}
+
+ul {
+	padding-left: min(20px, 3vw);
+}
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: var(--second-col);
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: var(--primary-col);
+  outline: none;
+}
+
+@media(max-width: 405px) {
+  #rSqDiv {
+    font-size: .8em;
+  }
+}

@@ -83,6 +83,8 @@ const getLetter = () => letters[Math.floor(letters.length * r())],
           return out;
       }
 
+
+
 let svg,
     stats,
     bars,
@@ -90,19 +92,29 @@ let svg,
     means = [],
     se = [],
     maxBin,
-    interval = [],
+    interval = null,
     yMax,
     paused,
     counter,
-    controls = document.getElementById("ctrls"),
     container = document.getElementById("container"),
-    nToDraw = 7,
-    stopAt = 351
+    overlay = document.getElementById("overlay"),
+    stopAt = 150,
+    currentSpeed,
+    nToDraw = 7
 
+const param = new URLSearchParams(window.location.search).get('tiles')
+if (param === "30") {
+  nToDraw = 30
+}
 
+const init = () => {
+  d3.selectAll("svg").remove()
+  document.querySelectorAll('.tile').forEach(e => e.remove());
+    // document.getElementById("switch").checked = false
+    document.getElementById('mean').innerHTML = "&nbsp;"
 
-
-const init = (cntr) => {
+  // Update scale domain
+  y.domain([0, 50]);
 
   if (nToDraw === 30) {
     $(".rack")[0].classList.add("thirty")
@@ -115,10 +127,10 @@ paused = true
  data = []
  means = []
  maxBin = 0
- interval = []
  isPlot = false
  yMax = 50
- counter = cntr
+ counter = 0
+ currentSpeed = 0
 
 
  svg = d3.select("#plot").append("svg")
@@ -180,12 +192,14 @@ paused = true
   .attr("height", height + 10)
   // .attr("fill", "url(#sdGradient)")
   .attr("fill", "#df03fc44")
+
+  overlay.addEventListener("click", togglePlay)
+
 }
 
 
 const draw = () => {
 
-    console.log(counter);
   const rack = $(".rack")[0]
 
   let samplePoints = []
@@ -277,41 +291,32 @@ const draw = () => {
   if (maxBin == yMax) {
     transition_axis()
   }
-  if (maxBin == 10000) {setTimeout(() => clearInterval(interval), 10)}
 }
 
 const animate = () => {
     if (maxBin < stopAt) {
       draw()
-    } else if (stopAt == 351) {
-      setTimeout(() => clearInterval(interval), 10)
+      counter++
+      if (counter == 10 && currentSpeed < 9) {
+        counter = 0
+        currentSpeed++
+        changeSpeed(currentSpeed)
+      }
+    } else {
+      changeSpeed(0)
+      setTimeout(() => clearInterval(interval), 20)
+        // clearInterval(interval)
       // if (nToDraw === 7) {
-        sleep(500)
+        sleep(1000)
           .then(() => {
-            controls.classList.add("disabled")
-            if (nToDraw === 7) {container.classList.add("disabled")}
-            annotations.children[0].classList.remove("annot-hidden")
-            annotations.children[0].classList.add("show")
+            currentSpeed = 0
+            paused = true
+            container.classList.add("disabled")
+            overlay.classList.add("reset")
+            overlay.removeEventListener("click", togglePlay)
+            overlay.addEventListener("click", reset)
           }
         )
-    // } else {
-    //   controls.classList.add("disabled")
-    //   annotations.children[0].classList.remove("show")
-    //   sleep(500)
-    //     .then(() => {
-    //       annotations.children[0].remove()
-    //       annotations.children[0].classList.remove("annot-hidden")
-    //       annotations.children[0].classList.add("show")
-    // }
-  } else {
-    setTimeout(() => clearInterval(interval), 10)
-  }
-  if (nToDraw == 7 && means.length == 10) {
-    annotations.children[0].classList.remove("annot-hidden")
-    annotations.children[0].classList.add("show")
-  }
-  if (nToDraw == 7 && means.length == 11) {
-    sliderAnimation()
   }
 }
 
@@ -322,74 +327,32 @@ const sliderValueToSpeed = (sliderValue) => {
 }
 
 const togglePlay = () => {
-    if (counter === 8) {
-      annotations.children[0].remove()
-      counter++
-    }
-    setTimeout(() => clearInterval(interval), 10)
-    let btn = document.getElementById("play")
+    container.classList.toggle("disabled")
     if (paused) {
-      btn.classList.remove("play")
-      btn.classList.add("pause")
-      if (counter === 9 ) {
-        sleep(4500).then(() => document.getElementById("sliders").classList.remove("hidden"))
-      } else {
-        document.getElementById("sliders").classList.remove("hidden")
-      }
-      draw()
-      setTimeout(() => interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value)), 10)
+      overlay.classList.remove("play", "reset", "pause")
+      // setTimeout(() => interval = setInterval(animate, sliderValueToSpeed(currentSpeed)), 20)
+      interval = setInterval(animate, sliderValueToSpeed(currentSpeed))
     } else {
-      btn.classList.remove("pause")
-      btn.classList.add("play")
+      overlay.classList.add("pause")
+      // setTimeout(() => clearInterval(interval), 20)
+      clearInterval(interval)
     }
-
     paused = !paused
-}
+  }
 
-const changeSpeed = () => {
+const changeSpeed = (speed) => {
   setTimeout(() => clearInterval(interval), 10)
   setTimeout(() => {
-    if (paused) {
-      togglePlay()
-    } else {
-      interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value))
-    }
-  }, 10)
+      interval = setInterval(animate, sliderValueToSpeed(speed))
+  }, 20)
 }
 
-plotSwitch = () => {
-  if (!isPlot) {
-    document.getElementById("plot").classList.remove("hidden")
-  } else {
-    document.getElementById("plot").classList.add("hidden")
-  }
-  isPlot = !isPlot
-}
-const reset = (cntr, hidePlot = true) => {
-  clearInterval(interval)
-  if (hidePlot) {document.getElementById("plot").classList.add("hidden")}
-
-  d3.selectAll("svg").remove()
-  document.querySelectorAll('.tile').forEach(e => e.remove());
-  if (!paused) {
-    let btn = document.getElementById("play")
-    btn.classList.remove("pause")
-    btn.classList.add("play")
-  }
-  document.getElementById("sliders").classList.add("hidden")
-
-  // document.getElementById("switch").checked = false
-  document.getElementById('mean').innerHTML = "&nbsp;"
-
-  // Update scale domain
-  y.domain([0, 50]);
-
-  svg.selectAll("#y-axis")
-    .call(d3.axisLeft(y));
-
-  document.getElementById('speed').value = "0"
-  init(cntr)
-  if (cntr === 0) {next()}
+const reset = () => {
+  overlay.removeEventListener("click", reset)
+  maxBin = 0
+  sleep(20)
+    .then(() => init())
+      .then(() => togglePlay())
 }
 
 const transition_axis = () => {
@@ -400,7 +363,8 @@ const transition_axis = () => {
   // Update scale domain
   y.domain([0, yMax]);
 
-  setTimeout(() => clearInterval(interval), 10)
+  // setTimeout(() => clearInterval(interval), 10)
+  clearInterval(interval)
   bars.selectAll("rect")
     .transition().duration(500)
     .attr("y", function(d) {return y(d.length)})
@@ -409,75 +373,8 @@ const transition_axis = () => {
   svg.selectAll("#y-axis")
     .transition().duration(500)
     .call(d3.axisLeft(y))
-  setTimeout(() => interval = setInterval(animate, sliderValueToSpeed(document.getElementById('speed').value)), 500)
-}
-
-document.getElementById("play").addEventListener("click", togglePlay)
-
-// listen in on the sliders
-document.getElementById('speed').addEventListener("input", changeSpeed)
-document.getElementById('speed').addEventListener("touchmove", changeSpeed)
-
-
-
-
-
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
-const sliderAnimation = () => {
-  const slider = $("#speed")[0]
-  slider.step = "0.1"
-  let back = false
-  moveSlider = setInterval(() => {
-    if (!back) {
-	     if (+slider.value < 9) {
-		       slider.value = +slider.value + .1
-	     } else {
-		       back = true
-	     }
-     } else {
-	      if (+slider.value > 0) {
-		        slider.value = +slider.value - .1
-	      } else {
-		        clearInterval(moveSlider)
-            slider.step = "1"
-            annotations.children[0].remove()
-        }
-    }
-  }, 7)
-}
-
-
-const next = (enable = "nothing") => {
-  if (annotations.children.length > 0) {
-  annotations.children[0].classList.remove("show")
-  sleep(600)
-    .then(() => {
-      annotations.children[0].remove()
-      annotations.children[0].classList.remove("annot-hidden")
-      annotations.children[0].classList.add("show")
-    }).then(() => {
-      switch (enable) {
-        case "all":
-          container.classList.remove("disabled")
-          controls.classList.remove("disabled")
-          break
-        case "ctrl":
-          controls.classList.remove("disabled")
-          break
-        case "cont":
-        container.classList.remove("disabled")
-
-        default: false
-    }
-  })
-  }
+  // setTimeout(() => interval = setInterval(animate, sliderValueToSpeed(currentSpeed), 500))
+  interval = setInterval(animate, sliderValueToSpeed(currentSpeed), 500)
 }
 
 
@@ -486,123 +383,4 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
-
-const manualDraw = () => {
-  controls.classList.add("disabled")
-  if (annotations.children.length > 0) {
-    annotations.children[0].classList.remove("show")
-  }
-  draw()
-  if (counter < 2) {
-    next()
-    sleep(4000)
-      .then(() => next())
-      .then(() => sleep(500).then(() => controls.classList.remove("disabled")))
-
-  // } else if (counter === 2) {
-  } else if (counter === 4) {
-    reset(4)
-    plotSwitch()
-    draw()
-    sleep(500)
-      .then(() => {
-        next()
-        container.classList.add("disabled")
-    })
-  } else if (counter === 7) {
-    $("#play")[0].classList.toggle("hidden")
-    sleep(20).then(() => {
-        $("#play")[0].classList.toggle("transparent")
-      }
-    )
-    // $("#play")[0].classList.remove("hidden")
-    next()
-    sleep(1000).then(() => controls.classList.remove("disabled"))
-  } else {
-    sleep(200).then(() => controls.classList.remove("disabled"))
-  }
-
-  counter += 1
-}
-
-
-const positionNext = (annotId, elId, elProperty, enable = "nothing") => {
-  positionAnotByEl(annotId, elId, elProperty)
-  next(enable)
-}
-
-const positionAnotByEl = (annotId, elId, elProperty) => {
-  const x = +document.getElementById(elId).getAttribute(elProperty),
-        annot = document.getElementById(annotId)
-  let margin
-  if (x > 270) {
-    margin = "right"
-  } else {
-    margin = "left"
-  }
-
-  if (margin == "left") {
-    annot.style.marginLeft = (x + 33).toFixed(2) + "px"
-  } else if (margin == "right") {
-    annot.style.marginRight = (x - 33).toFixed(2) + "px"
-  }
-  annot.classList.add(margin)
-}
-
-const changeN = (n = 30) => {
-  annotations.children[0].classList.remove("show")
-  sleep(600)
-    .then(() => {
-      container.classList.add("disabled")
-      annotations.children[0].remove()
-      nToDraw = 30
-      reset(10, false)
-    })
-  sleep(1600).then(() => {
-    annotations.children[0].classList.remove("annot-hidden")
-    annotations.children[0].classList.add("show")
-  })
-}
-
-const resume = (enable = "nothing") => {
-annotations.children[0].classList.remove("show")
-sleep(600)
-  .then(() => {
-    annotations.children[0].remove()
-  }).then(() => {
-    switch (enable) {
-      case "all":
-        container.classList.remove("disabled")
-        controls.classList.remove("disabled")
-        break
-      case "ctrl":
-        controls.classList.remove("disabled")
-        break
-      case "cont":
-      container.classList.remove("disabled")
-
-      default: false
-  }
-})
-}
-
-const startSandbox = () => {
-  stopAt = 1500
-  reset(10, false)
-  next(enable='ctrl')
-  $("#reset")[0].classList.toggle("hidden")
-  $("#done-btn")[0].classList.toggle("hidden")
-
-  sleep(20).then(() => {
-     $("#reset")[0].classList.toggle("transparent")
-     $("#done-btn")[0].classList.toggle("transparent")
-    }
-  )
-}
-
-for (let i = 0; i < annotations.children.length; i++) {
-  annotations.children[i].classList.add("annot-hidden")
-}
-
-init(0)
+init()

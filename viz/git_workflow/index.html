@@ -1,0 +1,357 @@
+
+<style media="screen">
+
+  @import url(https://fonts.googleapis.com/css?family=Noto+Sans:300,300i&display=swap);
+
+  :root {
+    --title-color: #52006f;
+    --sticker-col: #009fa7;
+  }
+
+  body {
+    animation: blur 10s, dark 7s 3s;*/
+  }
+
+  #work-flow {
+      width: 750px;
+      font-family: monospace;
+      font-size: 2em
+  }
+
+  #labs {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 0.5em;
+  }
+
+  #pull-lab {
+    width: max-content;
+    margin: auto;
+  }
+
+  #git {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .stage {
+    position: relative;
+    padding: 1em;
+    border-radius: 20px;
+    height: 400px;
+    width: 75px;
+    background: #ccc;
+  }
+
+  .stage::after {
+    color: white;
+  	font-family: sans-serif;
+  	content: "";
+  	position: absolute;
+  	top: 0;
+  	bottom: 0;
+  	text-orientation: upright;
+  	writing-mode: vertical-rl;
+  	text-transform: uppercase;
+  	left: 50%;
+  	text-align: center;
+  	transform: translateX(-50%);
+
+  }
+
+  #working-tree {
+  	border: solid 2px #a2a2a2;
+    z-index:  4;
+    animation: git-pull-flash 9s infinite;
+    animation-delay: 2.8s;
+  }
+
+  #working-tree::after {
+    content: "Working dir";
+    color: #777;
+  }
+
+  #staging-area {
+    background: #dbdbdb;
+    z-index:  3;
+    height: 320px;
+    animation: git-add-flash 4s infinite;
+  }
+
+
+  #staging-area::after {
+    content: "stage";
+  }
+
+  #local-repo {
+  	background: #8796bb;
+  	border: solid 2px #00216f;
+   z-index:  2;
+   height: 320px;
+   animation: git-commit-flash 4s infinite;
+   animation-delay: 0.5s;
+  }
+  #local-repo::after {
+    content: "local";
+  }
+  #remote-repo {
+  	background: #d4b455;
+  	border: solid 2px #bf8f00;
+    animation: git-push-flash 4s infinite;
+    animation-delay: 1.1s;
+  }
+
+  #remote-repo::after {
+    content: "remote repo";
+  }
+  .ball-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 320px;
+    align-items: flex-end;
+  }
+
+  #git-add-container {
+    margin-bottom: 1.5em;
+    height: 400px;
+  }
+
+  .ball {
+    height: 40px;
+    width: 40px;
+    background: black;
+    border-radius: 50%;
+    margin-bottom: .5em;
+    opacity: 0;
+  }
+
+  .git-add, .git-commit, .git-push {
+    background: #9c49b9;
+    animation: slide 4s infinite;
+  }
+
+  .git-add:nth-of-type(2) {
+    animation-delay: 0.5s;
+    background: #c77de1;
+  }
+  .git-add:nth-of-type(3) {
+    animation-delay: 1s;
+    background: #bd01ff;
+    margin-bottom: 1.5em
+  }
+  .git-add:nth-of-type(4) {
+    animation-delay: 1.8s;
+    background: #40bbc1;
+  }
+  .git-add:nth-of-type(5) {
+    animation-delay: 2.3s;
+    background: #367c80;
+  }
+  .git-add:nth-of-type(6) {
+    animation-delay: 2.8s;
+    background: #1ad0db;
+    margin-bottom: 2em
+  }
+
+  .git-commit {
+    background: var(--title-color);
+    animation-delay: 1.6s;
+  }
+
+  .git-push {
+    background: #00216f;
+    animation-delay: 4.1s;
+  }
+
+  .git-commit:nth-of-type(2) {
+    background: var(--sticker-col);
+    animation-delay: 3.5s
+  }
+
+  .git-pull {
+    background: #bf8f00;
+    margin-bottom: 0;
+    opacity: 0;
+    animation: slide-back 9s infinite reverse ease-in 2s;
+  }
+
+  @keyframes slide {
+    0% {
+    transform: translate(0, 0);
+    opacity: 0;
+    }
+    10% {;
+      opacity: 1;
+    }
+    /* Finish changes by here */
+    20% {
+      transform: translate(125px, 0);
+      opacity: 1
+    }
+
+    20.1% {
+      opacity: 0;
+        transform: translate(125px, 0);
+    }
+    20.2% {
+      opacity: 0;
+      transform: translate(0, 0)
+    }
+
+    /* Between 20.2% and 100%, nothing changes */
+    100% {
+      opacity: 0;
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes slide-back {
+    0% {
+    transform: translate(0px, 0);
+    opacity: 1;
+    }
+    5% {;
+      opacity: 1;
+    }
+    /* Finish changes by here */
+    10% {
+      transform: translate(500px, 0);
+      opacity: 0
+    }
+
+    10.1% {
+      opacity: 0;
+        transform: translate(400px, 0);
+    }
+    10.2% {
+      opacity: 0;
+      transform: translate(0, 0)
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes git-add-flash {
+    0%, 14%, 24%, 26%, 36%, 38%, 48%, 58%, 68%, 72%, 82%, 84%, 94%  {
+      background-color: #dbdbdb;
+    }
+    20% {
+      background-color: #9c49b9;
+    }
+    32% {
+      background-color: #c77de1;
+    }
+    44% {
+      background-color: #bd01ff;
+    }
+    64% {
+      background-color: #40bbc1;
+    }
+    78% {
+      background-color: #367c80;
+    }
+    90% {
+      background-color: #1ad0db;
+    }
+  }
+
+  @keyframes git-commit-flash {
+    0%, 41%, 51%, 88%, 100%  {
+      background-color: #8796bb;
+    	border-color: #00216f;
+    }
+    47% {
+      background-color: var(--title-color);
+    	border-color: var(--title-color);
+    }
+    94% {
+      background-color: var(--sticker-col);
+    	border-color: var(--sticker-col);
+    }
+  }
+
+  @keyframes git-push-flash {
+    0%, 86%, 100%  {
+      background-color: #d4b455;
+    	border-color: #bf8f00;
+    }
+    94% {
+      background-color: #00216f;
+    	border-color: #00216f;
+    }
+  }
+
+  @keyframes git-pull-flash {
+    0%, 88%, 95%  {
+      background-color: #ccc;
+    	border-color: #a2a2a2;
+    }
+    91% {
+      background-color: #bf8f00;
+    	border-color: #bf8f00;
+    }
+  }
+
+</style>
+
+<body>
+  <div id="work-flow">
+  <div id="labs">
+    <div>git add</div>
+      <div>git commit</div>
+        <div>git push</div>
+  </div>
+  <div id="git">
+
+  <div id="working-tree" class="stage">
+    <div id="git-add-container" class="ball-container">
+      <div class="git-add ball">
+      </div>
+      <div class="git-add ball">
+      </div>
+      <div class="git-add ball">
+      </div>
+      <div class="git-add ball">
+      </div>
+      <div class="git-add ball">
+      </div>
+      <div class="git-add ball">
+      </div>
+      <div class="git-pull ball">
+      </div>
+    </div>
+  </div>
+
+  <div id="staging-area" class="stage">
+    <div id="git-commit-container" class="ball-container">
+      <div class="git-commit ball">
+      </div>
+      <div class="git-commit ball">
+      </div>
+    </div>
+  </div>
+
+  <div id="local-repo" class="stage">
+    <div id="git-commit-container" class="ball-container">
+      <div class="git-push ball">
+      </div>
+    </div>
+  </div>
+
+  <div id="remote-repo" class="stage">
+  <div id="git-commit-container" class="ball-container">
+    </div>
+  </div>
+  </div>
+    <div id="pull-lab">git pull</div>
+  </div>
+</body>

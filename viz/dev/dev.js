@@ -1,4 +1,9 @@
 
+const urlParams = new URLSearchParams(window.location.search)
+if (urlParams.get('cite') === 'true') {
+  document.getElementById("cite").classList.add("show")
+}
+
 const // prototypes
     fp = Function.prototype,
     ap = Array.prototype,
@@ -51,8 +56,9 @@ const init = () => {
   critPoint = 0
 
  svg = d3.select("#plot").append("svg")
-   .attr("width", w)
-   .attr("height", h)
+   .attr("preserveAspectRatio", "xMinYMin meet")
+   .attr("viewBox", "0 0 " + w + " " + h)
+   .classed("svg-content", true)
 
 
   g = svg.append("g")
@@ -63,7 +69,7 @@ const init = () => {
     .attr("y1", 10)
     .attr("y2", height + 20)
     .attr("stroke-width", 2.5)
-    .attr("stroke", "#df03fc")
+    .attr("stroke", "#52006f")
 
 g.append("text")
    .attr("y", 10)
@@ -71,7 +77,7 @@ g.append("text")
    .attr("dy", "1em")
    .style("text-anchor", "end")
    .attr("stroke", "none")
-   .attr("fill", "#df03fc")
+   .attr("fill", "#52006f")
    .text("Mean");
 
 g.append("line")
@@ -81,7 +87,7 @@ g.append("line")
     .attr("y1", 10)
     .attr("y2", height + 20)
     .attr("stroke-width", 2.5)
-    .attr("stroke", "#0ab77e")
+    .attr("stroke", "#00979f")
 
 g.append("text")
    .attr("y", 10)
@@ -89,7 +95,7 @@ g.append("text")
    .attr("dy", "1em")
    .style("text-anchor", "start")
    .attr("stroke", "none")
-   .attr("fill", "#0ab77e")
+   .attr("fill", "#00979f")
    .text("Median");
 
   svg.append("g")
@@ -192,7 +198,7 @@ const draw = () => {
   }
 
   graphLayer.append("circle")
-    .attr("fill", isSqDev ? "#df03fc": "#0ab77e")
+    .attr("fill", isSqDev ? "#52006f": "#00979f")
     .attr("cx", currentX)
     .attr("cy", currentY)
     .attr("r", 8)

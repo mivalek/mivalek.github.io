@@ -1,0 +1,47 @@
+---
+title: "Application for the role of Data Science Consultant Specialized in Statistics"
+author: "Milan Valášek"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+what: "Data Science Consultant Specialized in Statistics"
+where: "NCCR Evolving Language"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Cover letter
+
+Dear Dr Widmer,
+
+I am very excited to be applying for the position of `r rmarkdown::metadata$what` at the `r rmarkdown::metadata$where`.
+
+I have had a lasting interest in quantitative research methodology and statistics, both of which I have been teaching at the university level for a significant part of my academic career.
+Since my **PhD studies at the University of Edinburgh**, I have tutored, co-ordinated, convened, and lectured both undergraduate and postgraduate statistics and methods courses as well as multiple workshops for PhD students, post-docs, and faculty.
+
+While not a linguist by training, I have always had a **keen interest in the subject, especially phonology, grammar, and diachronic linguistics** and have taught statistics to Linguistics MSc students at Edinburgh.
+Combined with the experience of communicating statistical and methodological concepts to people from a wide range of academic backgrounds (psychology, linguistics, neuroscience, urbanism, medicine), this makes me a good fit for a role in a multidisciplinary centre, such as the `r rmarkdown::metadata$where`.
+
+On multiple occasions, I have taken the initiative to create efficient **data pipelines**.
+While working at the Royal College of Surgeons of Edinburgh, I wrote a suite of user-friendly programs that ensured a smooth flow of data and information between several departments of the institution, thereby significantly cutting the workload of exams administrators and data analysts.
+In my current job, I wrote an R package for **web-scraping** the University intranet system to make administrative tasks less laborious.
+I have **a lot of experience with APIs and web development** (I made a [very well-received website](https://and.netlify.app) for one of the modules I currently teach) and have extensively worked with R and JavaScript.
+
+I am fully in support of the mission statement of Evolving Language with respect to the need for an interdisciplinary collaborative approach to science.
+I myself **collaborated with a multidisciplinary team of researchers** at the Bauhaus University in Weimar, Germany as a methodologist and statistician.
+Furthermore, I was one of the collaborators on Reproducibility Project: Psychology, a large international collaborative **open science** effort aimed at estimating the replicability of the findings published in top tier psychology journals.
+My role involved auditing the analyses of the replicated studies and writing openly accessible R scripts for data manipulation and statistical analysis.
+The project resulted in a high-profile publication in _Science_.
+Given my interests, skills, and experiences, the prospect of working at the centre is thus both professionally and personally attractive to me.
+It would allow me to not only contribute my own knowledge and skills to the project but also learn a lot from colleagues with a broad range of expertise.
+I hope to have the opportunity to discuss my application in greater detail during an interview and look forward to hearing from you.
+
+Sincerely,
+
+<!-- ![]() -->
+
+Milan Valášek
+
+## CV
+

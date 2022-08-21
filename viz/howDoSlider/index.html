@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>How Do Slider | Jennifer Mankin </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+
+<link rel="stylesheet" href=  "./style.css">
+
+</head>
+
+<body>
+  <div id="applet">
+    <div id="box">
+      <div id="ctrls">
+        <!-- <div id="slider-range"></div>
+        <div id="label"><em>&mu;</em>&nbsp;&pm;&nbsp;<span id="range">0</span>&nbsp;<em>&sigma;</em></div> -->
+
+        <div id="slider">
+        <input id="xSlider" type="range" min="0" max="100" value="70" step="1" style="width: 100%; height: 10px" ondblclick="resetSlider('xSlider')"/>
+
+        <div class="lab"><em>x</em> = <span id="xValue">70</span></div>
+      </div>
+      <div id="slider">
+      <input id="ySlider" type="range" min="0" max="100" value="70" step="1" style="width: 100%; height: 10px" ondblclick="resetSlider('ySlider')"/>
+
+      <div class="lab"><em>y</em> = <span id="yValue">70</span></div>
+    </div>
+    <div id="slider">
+    <input id="zSlider" type="range" min="0" max="100" value="70" step="1" style="width: 100%; height: 10px" ondblclick="resetSlider('zSlider')"/>
+
+    <div class="lab"><em>z</em> = <span id="zValue">70</span></div>
+  </div>
+  <div>
+  <input id="grade" value="70">
+    </div>
+      </div>
+    </div>
+
+<div>You <span id="gradeNeeded">need a 70 or better to</span> get your target grade of <span id="targetGrade">70</span></div>
+
+</div>
+<script src="./jennifer.js"></script>
+<script>
+
+</script>
+</body>

@@ -1,0 +1,10 @@
+\definecolor{color0}{rgb}{0.3,0.3,0.3}% black
+\definecolor{color1}{HTML}{5895B8}% custom
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
+%\AtBeginDocument{\hypersetup{colorlinks,urlcolor=color1}}
+
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Calibri} 
+
+\setlength{\hintscolumnwidth}{2.5cm}

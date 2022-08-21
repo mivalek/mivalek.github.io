@@ -25,6 +25,7 @@ body {
   -webkit-box-direction: normal;
           flex-direction: column;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 #applet, #annotations {
@@ -136,6 +137,17 @@ button {
   background: var(--secondary-col);
   cursor: pointer;
   min-width: 50px;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+
+button.transparent {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+button.hidden {
+  display: none;
 }
 
 button:focus {
@@ -160,15 +172,18 @@ button#reset:hover:active {
   border-color: var(--secondary-col);
 }
 
-button.pause {
+button.pause, button#done-btn {
   color: var(--secondary-col);
   background-color: var(--main-col);
   border-color: var(--secondary-col);
-  font-size: 0.75rem;
   min-width: 50px;
 }
 
-button.pause:hover:active {
+button.pause {
+  font-size: 0.75rem;
+}
+
+button.pause:hover:active, button#done-btn:hover:active {
     background: var(--secondary-col);
     color: var(--main-col);
     border-color: var(--main-col);
@@ -184,10 +199,24 @@ button.pause:hover:active {
 .rack {
   display: -webkit-box;
   display: flex;
+  flex-wrap: wrap;
   -webkit-box-pack: center;
   justify-content: center;
   min-height: 80px
 }
+
+.rack.thirty {
+	display: -webkit-box;
+	display: flex;
+	flex-wrap: wrap;
+	-webkit-box-pack: center;
+	justify-content: center;
+	min-height: 228px;
+	width: calc(100% * 1.4);
+	transform: translate(-110px, 30px) scale(.72);
+	margin-top: -60px;
+}
+
 .rack .tile {
   margin: 0.5mm;
   background-color: #f5cf90;
@@ -507,6 +536,10 @@ input:checked + .slider:before {
 
 /* ALEXANDRA'S DISSERTATION */
 
+.annot-hidden, .instruction.annot-hidden {
+    transform: translateY(-1000px);
+}
+
 .annot {
 	position: absolute;
 	background: #00aabb;
@@ -547,6 +580,16 @@ input:checked + .slider:before {
 	border-left: 0;
 }
 
+.annot.reverse::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-right: 0;
+  border-left: 32px solid transparent;
+}
+
 #draw.annot:after, #play.annot:after {
   top: 0;
 	margin-left: 20px;
@@ -576,7 +619,7 @@ input:checked + .slider:before {
 	border-bottom-color: #e478f2;
 }
 
-#mu > button {
+#mu > button, #se > button, #se2 > button {
 	border: solid 2px #e478f2;
 	background: #f7bbfe;
 	color: #e478f2;
@@ -586,26 +629,41 @@ input:checked + .slider:before {
 	padding: 0 0.5em;
 }
 
-#distMean > button {
+#distMean > button, #distMean2 > button, #distMean3 > button {
 	border-width: 2px;
 	position: absolute;
 	bottom: -20px;
 	right: -30px;
 }
 
-#distMean.annot {
+#distMean.annot, #distMean2.annot, #distMean3.annot {
 	content: none;
-	background: white;
+	background: #c3ccde;
 	color: var(--main-col);
 	border: dashed;
-	top: 350px;
 }
 
-#distMean.left.annot:after {
+#distMean.annot {
+top: 200px;
+}
+
+#distMean2.annot {
+top: 120px;
+}
+
+#distMean3.annot {
+top: 250px;
+}
+
+#distMean.left.annot:after,
+#distMean2.left.annot:after,
+#distMean3.left.annot:after {
   border-right-color: var(--main-col);
 }
 
-#distMean.right.annot:after {
+#distMean.right.annot:after,
+#distMean2.right.annot:after,
+#distMean3.right.annot:after {
   border-left-color: var(--main-col);
 }
 
@@ -629,6 +687,70 @@ input:checked + .slider:before {
 #play.annot {
 	top: 115px;
 	left: 20px;
+}
+
+#speedHint.annot {
+	top: 100px;
+	width: 260px;
+}
+
+#speedHint.annot::after {
+	top: -60px;
+	border-bottom-color: #0ab;
+	border-left: solid 32px transparent;
+	border-right: 0;
+	left: 240px;
+}
+
+#se.annot, #se2.annot {
+	background: #e478f2;
+	top: 0px;
+	left: 18px;
+	max-width: 90%;
+}
+
+#se.annot {
+	top: 0px;
+}
+
+#se2.annot {
+	top: 60px;
+}
+
+#se.annot::after, #se2.annot::after {
+	transform: rotate(110deg);
+	margin-top: -8px;
+	border-bottom-color: #e478f2;
+}
+
+#se.annot::after {
+  margin-left: 210px;
+}
+#se2.annot::after {
+	margin-left: 190px;
+}
+
+#distDesc.annot {
+	top: 80px;
+	left: 195px;
+}
+
+
+#distDesc.annot::after {
+	transform: rotate(110deg);
+	margin-top: -10px;
+	margin-left: 10px;
+	border-bottom-color: #00aabb;
+}
+
+#distDesc > button {
+	border: solid 2px #00aabb;
+	background: #7dd3dc;
+	color: #00aabb;
+	position: absolute;
+	right: -20px;
+	bottom: -20px;
+	padding: 0 0.5em;
 }
 
 .instruction {
@@ -663,4 +785,33 @@ input:checked + .slider:before {
 .instruction > button {
   background-color: var(--main-col);
   color: var(--secondary-col);
+}
+
+#overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  cursor: pointer;
+}
+
+#overlay::before {
+	font-size: 3em;
+	margin-left: 50%;
+	margin-top: 300px;
+	height: 100%;
+	display: block;
+}
+
+#overlay.pause::before {
+  font-size: 2em;
+}
+
+#overlay.reset::before {
+  content: "\21BB"
+}
+
+#overlay.hidden {
+	display: none;
 }

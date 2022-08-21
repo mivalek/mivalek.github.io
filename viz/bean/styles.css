@@ -1,0 +1,150 @@
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #3a3f5a;
+  background: transparent;
+  margin-top: 1em;
+}
+
+div#widget {
+    height: 510px
+}
+
+canvas#background {
+    background: #c3ccde;
+    margin-left: 4px;
+    border-radius: 30px;
+}
+
+canvas#main {
+    border: solid 3pt #525772;
+    border-radius: 30px;
+}
+
+div#sliders {
+    position: relative;
+    display: block;
+    width: 50%;
+    margin: auto;
+}
+
+.sliderTitle {
+    padding-top: 0.5em;
+}
+
+input {
+    margin-bottom: 2em;
+}
+
+
+input[type=range] {
+  /* vertical slider: mibbe later */
+  /* -webkit-appearance: slider-vertical; */
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 10px;
+  height: 100%;
+  background: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: #c3ccde;
+  border-radius: 5px;
+  border: 1px solid #525772;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+  background: #00979f;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -.8em;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #c3ccde;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: #c3ccde;
+  border-radius: 5px;
+  border: 1px solid #525772;
+}
+input[type=range]::-moz-range-thumb {
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+  border-color: #00979f;
+  background: #00979f;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #c3ccde;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-thumb {
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+  background: #00979f;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #c3ccde;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+
+/* vertical slider: mibbe later */
+/* input[type=range][orient=vertical]
+{
+   writing-mode: bt-lr;
+   -webkit-appearance: slider-vertical;
+   width: 8px;
+   height: 175px;
+   padding: 0 5px;
+}  */
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  font-size: 80%;
+  text-align: right;
+  color: #00979f;
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+	color: #911180;
+	outline: none;
+}

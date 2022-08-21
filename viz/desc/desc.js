@@ -1,22 +1,19 @@
 
 
+const urlParams = new URLSearchParams(window.location.search)
+if (urlParams.get('cite') === 'true') {
+  document.getElementById("cite").classList.add("show")
+}
 
 const margin = {top: 0, right: 10, bottom: 70, left: 10},
-w = 500,
-h = 200,
+w = 545,
+h = 218,
 width = w - margin.left - margin.right,
 height = h - margin.top - margin.bottom,
 xScale = d3.scaleLinear()
 .domain([-100, 100])
 .range([10, width + 10])
 
-// const g = d3.select("#plot")
-//   .append("svg")
-//     .attr("width", width + margin.left + margin.right)
-//     .attr("height", height + margin.top + margin.bottom)
-// .append("g")
-//   .attr("transform",
-//         "translate(" + margin.left + "," + margin.top + ")");
 
 let data = [],
     meanOn = false,
@@ -114,7 +111,7 @@ function click(){
     .attr("class", "dot")
     .style("cursor", "pointer")
     // .style("fill", "#009d18")
-    // .style("stroke", "#3adb25")
+    // .style("stroke", "#16c3cc")
     .style("stroke-width", "1")
     .attr("r", "0")
     .call(drag)
@@ -139,27 +136,39 @@ function click(){
 }
 
 
-let selectRectOrigin
+let selectRectOrigin,
+    wScaled,
+    hScaled
+
+function dragScaleX(x) {
+  return x / wScaled * w
+}
+
+function dragScaleY(y) {
+  return y / hScaled * h
+}
 
 const beginSelect = (d) => {
+  wScaled = d3.select(".svg-content").node().scrollWidth
+  hScaled = d3.select(".svg-content").node().scrollHeight
+  selectRectOrigin = {x: dragScaleX(d3.event.x), y: dragScaleY(d3.event.y)}
   svg.append("rect")
   .attr("id", "selectRect")
-  .attr("x", d3.event.x - 20.5)
-  .attr("y", d3.event.y)
+  .attr("x", selectRectOrigin.x)
+  .attr("y",selectRectOrigin.y)
   .attr("width", 0)
   .attr("height", 0)
   // .attr("fill", "url(#sdGradient)")
-  .attr("fill", "#009d1822")
-  .attr("stroke", "#009d1888")
+  .attr("fill", "#f4c30022")
+  .attr("stroke", "#f4c30088")
   .attr("stroke-width", .5)
-  selectRectOrigin = {x: d3.event.x - 20.5, y: d3.event.y}
 }
 
 const dragSelect = (d) => {
   const x1 = selectRectOrigin.x,
         y1 = selectRectOrigin.y,
-        x2 = d3.event.x - 20.5,
-        y2 = d3.event.y,
+        x2 = dragScaleX(d3.event.x),
+        y2 = dragScaleY(d3.event.y),
         minX = Math.min(x1, x2),
         minY = Math.min(y1, y2),
         maxX = Math.max(x1, x2),
@@ -205,33 +214,11 @@ const select = d3.drag()
 
 // Create the SVG
 const svg = d3.select("#plot").append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
+  .attr("preserveAspectRatio", "xMinYMin meet")
+  .attr("viewBox", "0 0 " + w + " " + h)
+  .classed("svg-content", true)
   .call(select)
   .on("click", click);
-
-// const svgDefs = svg.append('defs')
-
-// Gradient fill for sdRect
-// svgDefs.append('linearGradient')
-//     .attr('id', 'sdGradient')
-//     .attr("x1", 0)
-//     .attr("x2", 0)
-//     .attr("y1", .95)
-//     .attr("y2", .05)
-//     .selectAll("stop")
-//     .data([
-//         {offset: "0%", color: "#df03fc", opacity: "0"},
-//         {offset: "15%", color: "#df03fc", opacity: ".4"},
-//         {offset: "50%", color: "#df03fc", opacity: ".4"},
-//         {offset: "85%", color: "#df03fc", opacity: ".4"},
-//         {offset: "100%", color: "#df03fc", opacity: "0"}
-//       ])
-//     .enter().append("stop")
-//     .attr("offset", function(d) { return d.offset; })
-//     .attr("stop-color", function(d) { return d.color; })
-//     .attr("stop-opacity", function(d) { return d.opacity; })
-
 
 svg.append("g")
   .attr("transform", `translate(0, ${h-20})`)
@@ -249,7 +236,6 @@ stats.append("rect")
 .attr("y", 0)
 .attr("width", 0)
 .attr("height", h)
-// .attr("fill", "url(#sdGradient)")
 .attr("fill", "#df03fc44")
 
 stats.append("rect")
@@ -258,7 +244,6 @@ stats.append("rect")
 .attr("y", 0)
 .attr("width", 0)
 .attr("height", h)
-// .attr("fill", "url(#sdGradient)")
 .attr("fill", "#3a3f5a44")
 
 stats.append("line")
@@ -268,7 +253,7 @@ stats.append("line")
 .attr("y1", 0)
 .attr("y2", h)
 .attr("stroke-width", 2)
-.attr("stroke", "#df03fc")
+.attr("stroke", "#52006f")
 .style("opacity", 0)
 
 stats.append("line")
@@ -278,7 +263,7 @@ stats.append("line")
 .attr("y1", 0)
 .attr("y2", h)
 .attr("stroke-width", 2)
-.attr("stroke", "#3a3f5a")
+.attr("stroke", "#00979f")
 .style("opacity", 0)
 
 let rangeLine = stats.append("g")
@@ -505,44 +490,22 @@ const addPts = () => {
   data = getX()
   updateAll()
 }
-// const btnPress = (on, id) => {
-//   if (on) {
-//     document.getElementById(id).classList.add("pressed")
-//   } else {
-//     document.getElementById(id).classList.remove("pressed");
-//   }
-// }
-
-// const showEquation = (on, id) => {
-//   if (on) {
-//     document.getElementById(id).classList.remove("hidden")
-//   } else {
-//     document.getElementById(id).classList.add("hidden");
-//   }
-// }
 
 const meanSwitch = () => {
   meanOn = !meanOn
-  // btnPress(meanOn, "meanBtn")
-  // showEquation(meanOn, "meanDiv")
   updateMean()
 }
 const medSwitch = () => {
   medOn = !medOn
-  // btnPress(medOn, "medBtn")
-  // showEquation(medOn, "medDiv")
   updateMedian()
 }
 const sdSwitch = () => {
   sdOn = !sdOn
-  // btnPress(sdOn, "sdBtn")
-  // showEquation(sdOn, "sdDiv")
   updateSD()
 }
 
 const devSwitch = () => {
   devOn = !devOn
-  // btnPress(devOn, "devBtn")
   updateDev()
   let checkboxes = document.getElementsByName('devToggle');
   for(var i=0, n=checkboxes.length;i<n;i++) {
@@ -565,15 +528,11 @@ const devSwitch = () => {
 
 const rangeSwitch = () => {
   rangeOn = !rangeOn
-  // btnPress(rangeOn, "rangeBtn")
-  // showEquation(rangeOn, "rangeDiv")
   updateRange()
 }
 
 const iqrSwitch = () => {
   iqrOn = !iqrOn
-  // btnPress(iqrOn, "iqrBtn")
-  // showEquation(iqrOn, "iqrDiv")
   updateIQR()
 }
 
@@ -749,7 +708,7 @@ const updateDev = () => {
       .attr("y", function(d, i) {return d.y})
       .attr("width", function(d, i) {return Math.abs(d.x - meanX)})
       .attr("height", function(d, i) {return Math.abs(d.x - meanX)})
-      .attr("fill", "#df03fc20")
+      .attr("fill", "#00979f20")
       .attr("transform", function(d, i) {return `translate(0, ${d.y < h/2 ? 0 : -Math.abs(d.x - meanX)})`})
     }
   } else {
@@ -843,6 +802,6 @@ const updateRange = () => {
 }
 
 
-["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "msfullscreenchange"].forEach(
-    document.addEventListener("click", deselect, false)
-);
+// ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "msfullscreenchange"].forEach(
+//     document.addEventListener("click", deselect, false)
+// );

@@ -3,19 +3,19 @@
   --secondary-col: #c3ccde;
 }
 
+body {
+  overflow: hidden;
+}
+
 #applet {
     font-family: sans-serif;
     color: var(--main-col);
     font-size: 1.5em;
-    width: 545px;
+    max-width: 500px;
     display: block;
     margin: auto;
-    margin-top: 30px;
-    background: transparent;
-    padding: 0 0 1em 0;
     user-select: none;
 }
-
 
 .axis line, .axis path, .line, .graph line {
     fill: none;
@@ -35,15 +35,15 @@
 }
 
 .add {
-  stroke: #df03fc;
+  stroke: #52006f;
 }
 
 .mult {
-  stroke: #0ab77e;
+  stroke: #00979f;
 }
 
 .exp {
-  stroke: #fbec0a;
+  stroke: #f4c300;
 }
 
 circle {
@@ -65,22 +65,32 @@ line.dashed-line {
 
 
 #box {
-	border: solid 1px;
-	/* padding: 0 0 1em 0; */
-	background: var(--secondary-col);
-	border-radius: 10px;
+  position: relative;
 	display: flex;
   flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin-top: 0.5em;
 	height: max-content;
 }
 
+#plot {
+	position: relative;
+	width: 100%;
+	padding-bottom: 0;
+}
+
+.svg-content {
+	display: inline-block;
+	position: relative;
+	max-width: 500px;
+}
 
 #ctrls {
+  position: relative;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
 	margin-top: 0.2em;
 	height: 2.7em;
@@ -89,8 +99,8 @@ line.dashed-line {
 .ctrl {
 	display: flex;
 	flex-direction: row;
-	width: 33%;
 	flex-wrap: wrap;
+	min-width: 40%;
 }
 
 .toggle {
@@ -118,7 +128,7 @@ line.dashed-line {
 }
 
 .input {
-	background: #df03fc88;
+	background: #6700756b;
 	border-radius: 50%;
 	display: inline-block;
 	text-align: center;
@@ -127,11 +137,11 @@ line.dashed-line {
 }
 
 #multInput .input {
-	background: #0ab77e88;
+	background: #00979f88;
 }
 
 #expInput .input {
-	background: #fbec0a88;
+	background: #f4c30088;
 	line-height: 2em;
 	width: 2em;
 	display: block;
@@ -195,15 +205,15 @@ line.dashed-line {
 }
 
 .add input:checked + .slider {
-  background-color: #c32dd7;
+  background-color: #52006f;
 }
 
 .mult input:checked + .slider {
-  background-color: #0ab77e;
+  background-color: #00979f;
 }
 
 .exp input:checked + .slider {
-  background-color: #fbec0a;
+  background-color: #f4c300;
 }
 
 input:checked + .slider:before {
@@ -228,8 +238,8 @@ input:checked + .slider:before {
 
 /* input slider */
 #slider {
-	width: 445px;
-	margin-left: 65px;
+	width: 89%;
+	margin-left: 11%;
 }
 
 input {
@@ -253,7 +263,7 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 99%;
   height: 10px;
   cursor: pointer;
-  background: white;
+  background: var(--secondary-col);
   border-radius: 5px;
   border: 1px solid #525772;
 }
@@ -267,13 +277,13 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -.8em;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: white;
+  background: var(--secondary-col);
 }
 input[type=range]::-moz-range-track {
   width: 99%;
   height: 10px;
   cursor: pointer;
-  background: white;
+  background: var(--secondary-col);
   border-radius: 5px;
   border: 1px solid #525772;
 }
@@ -289,7 +299,7 @@ input[type=range]::-ms-track {
   width: 99%;
   height: 10px;
   cursor: pointer;
-  background: transparent;
+  background: var(--secondary-col);
   border-color: transparent;
   border-width: 16px 0;
   color: transparent;
@@ -300,7 +310,7 @@ input[type=range]::-ms-fill-lower {
   border-radius: 2.6px;
 }
 input[type=range]::-ms-fill-upper {
-  background: white;
+  background: var(--bg-col);
   border: 0.2px solid #010101;
   border-radius: 2.6px;
 }
@@ -316,4 +326,43 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
+}
+
+@media only screen and (max-width: 540px) {
+  .ctrl {
+    height: 65px;
+	  width: 180px;
+	  flex-wrap: wrap;
+	  height: 65px;
+  }
+
+  #ctrls {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 0.2em;
+	gap: 5px;
+	height: max-content;
+  }
+}
+
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: #00979f;
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: #52006f;
+  outline: none;
 }

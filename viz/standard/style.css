@@ -1,0 +1,220 @@
+:root {
+  --main-col: #3a3f5a;
+  --secondary-col: #c3ccde;
+}
+
+#applet {
+    font-family: sans-serif;
+    color: var(--main-col);
+    font-size: 1.5em;
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    background: transparent;
+    padding: 0 0 1em 0;
+    user-select: none;
+}
+
+#plot.error {
+	filter: blur(4px);
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+}
+
+#error {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color: #b30000;
+  display: none;
+}
+
+#error.show {
+  display: block;
+}
+
+#error div {
+	background: white;
+	width: max-content;
+	position: relative;
+	margin: auto;
+	margin-top: 20%;
+	padding: 5px;
+	border: solid 2px;
+}
+
+#error div span {
+	font-size: .7em;
+}
+
+button {
+  border-radius: 10px;
+  border: solid 1px var(--main-col);
+  height: 40px;
+  width: max-content;
+  font-size: 1em;
+  color: var(--secondary-col);
+  background: var(--main-col);
+  cursor: pointer;
+  min-width: 50px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:hover:active {
+    background: var(--secondary-col);
+    color: var(--main-col);
+    border-color: var(--main-col);
+}
+
+
+.axis line, .axis path, .line, .graph line, .vert-line, path.dashed, line.dashed {
+  stroke: var(--main-col);
+  fill: none;
+}
+
+.axis text, .axis.lab {
+  fill: var(--main-col);
+}
+
+.ital {
+	font-family: serif;
+	font-style: italic;
+  margin: 0 5px;
+}
+
+circle {
+  stroke: var(--main-col);
+  stroke-width: 1.5px;
+}
+
+
+.graph line.mu {
+  stroke: #52006f;
+  stroke-width: 2px;
+}
+
+.sigma {
+  fill: #00979f;
+}
+
+.sigma.stdNrm{
+  fill: #52006f;
+}
+
+.graph line.mu.stdNrm {
+  stroke: #00979f;
+}
+
+path.line {
+  stroke-width: 1.5px;
+}
+
+path.dashed, line.dashed {
+  stroke-width: 1px;
+  stroke-dasharray: 5;
+  shape-rendering: crispEdges;
+}
+
+
+#box {
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: max-content;
+  position: relative;
+}
+
+#plot {
+	position: relative;
+	width: 100%;
+	padding-bottom: 0;
+}
+
+.svg-content {
+	display: inline-block;
+	position: relative;
+	max-width: 500px;
+}
+
+#ctrls {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 1em;
+  line-height: 70px;
+}
+
+#addInput {
+  background: #52006f;
+  margin-right: 0;
+  color: white;
+}
+
+#addInput.disabled {
+  background: var(--secondary-col);
+  cursor: not-allowed;
+  color: var(--primary-col);
+}
+
+#multInput {
+  background: #00979f;
+  color: white;
+}
+
+
+.input {
+  overflow: hidden;
+	cursor: col-resize;
+  width: 70px;
+  margin: 0 10px;
+  border-radius: 50%;
+}
+
+.params {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 0.5em;
+	align-items: flex-end;
+	margin-left: 2em;
+}
+
+#muOut, #sigmaOut {
+	width: 70px;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: #00979f;
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: #52006f;
+  outline: none;
+}

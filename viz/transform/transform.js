@@ -1,4 +1,9 @@
 
+const urlParams = new URLSearchParams(window.location.search)
+if (urlParams.get('cite') === 'true') {
+  document.getElementById("cite").classList.add("show")
+}
+
 const // prototypes
     fp = Function.prototype,
     ap = Array.prototype,
@@ -45,8 +50,9 @@ const init = () => {
   exp = 1
   ind = 0
  svg = d3.select("#plot").append("svg")
-   .attr("width", w)
-   .attr("height", h)
+   .attr("preserveAspectRatio", "xMinYMin meet")
+   .attr("viewBox", "0 0 " + w + " " + h)
+   .classed("svg-content", true)
 
 
   g = svg.append("g")
@@ -161,7 +167,7 @@ const draw = () => {
   if (isAdd) {
     graphLayer.append("line")
         .attr("class", "dashed-line")
-        .attr("stroke", "#df03fc")
+        .attr("stroke", "#52006f")
         .attr("x1", x(min - 1))
         .attr("x2", currentX)
         .attr("y1", currentAddY)
@@ -169,7 +175,7 @@ const draw = () => {
         .attr("clip-path", "url(#dash-clip)")
 
     let addCirc = graphLayer.append("circle")
-      .attr("fill", "#df03fc")
+      .attr("fill", "#52006f")
       .attr("cx", currentX)
       .attr("cy", currentAddY)
       .attr("r", 8)
@@ -186,14 +192,14 @@ const draw = () => {
   if (isMult) {
     graphLayer.append("line")
         .attr("class", "dashed-line")
-        .attr("stroke", "#0ab77e")
+        .attr("stroke", "#00979f")
         .attr("x1", x(min - 1))
         .attr("x2", currentX)
         .attr("y1", currentMultY)
         .attr("y2", currentMultY)
         .attr("clip-path", "url(#dash-clip)")
     let multCirc = graphLayer.append("circle")
-      .attr("fill", "#0ab77e")
+      .attr("fill", "#00979f")
       .attr("cx", currentX)
       .attr("cy", currentMultY)
       .attr("r", 8)
@@ -210,14 +216,14 @@ const draw = () => {
   if (isExp) {
     graphLayer.append("line")
         .attr("class", "dashed-line")
-        .attr("stroke", "#fbec0a")
+        .attr("stroke", "#f4c300")
         .attr("x1", x(min - 1))
         .attr("x2", currentX)
         .attr("y1", currentExpY)
         .attr("y2", currentExpY)
         .attr("clip-path", "url(#dash-clip)")
     let expCirc = graphLayer.append("circle")
-      .attr("fill", "#fbec0a")
+      .attr("fill", "#f4c300")
       .attr("cx", currentX)
       .attr("cy", currentExpY)
       .attr("r", 8)

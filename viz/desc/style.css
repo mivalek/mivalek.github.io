@@ -1,6 +1,8 @@
 :root {
   --main-col: #3a3f5a;
-  --secondary-col: #c3ccde;
+  --bg-col: #c3ccde;
+  --second-col: #00979f;
+  --primary-col: #52006f;
 }
 
 #applet-container {
@@ -17,7 +19,8 @@
     font-family: sans-serif;
     color: var(--main-col);
     font-size: 1.5em;
-    width: 545px;
+    max-width: 545px;
+    min-width: 475px;
     display: block;
     margin: auto;
     margin-top: 30px;
@@ -87,32 +90,8 @@
 }
 
 #spread.hidden, #location.hidden {
-  /* -moz-transition: height .5s;
-  -ms-transition: height .5s;
-  -o-transition: height .5s;
-  -webkit-transition: height .5s;
-  transition: height .5s; */
   height: 0;
 }
-
-/* #equation {
-	width: max-content;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-} */
-
-/* #switches {
-	width: max-content;
-	display: flex;
-	flex-direction: column;
-	height: max-content;
-	flex-wrap: wrap;
-}
-
-#switches > div {
-	margin: 5px 0;
-} */
 
 #buttons {
 	width: max-content;
@@ -142,19 +121,9 @@ details > #devOpts {
 	position: absolute;
   overflow: hidden;
   width: 0px;
-  /* -moz-transition: width .5s;
-  -ms-transition: width .5s;
-  -o-transition: width .5s;
-  -webkit-transition: width .5s;
-  transition: width .5s; */
 }
 
 details[open] > #devOpts {
-  /* -moz-transition: width .5s;
-  -ms-transition: width .5s;
-  -o-transition: width .5s;
-  -webkit-transition: width .5s;
-  transition: width .5s; */
   width: 300px;
 }
 
@@ -195,7 +164,7 @@ button {
   width: max-content;
   font-size: 1em;
   color: var(--main-col);
-  background: var(--secondary-col);
+  background: var(--bg-col);
   cursor: pointer;
 }
 
@@ -205,32 +174,47 @@ button:focus {
 
 button:hover:active, button.pressed {
     background: var(--main-col);
-    color: var(--secondary-col);
-    border-color: var(--secondary-col);
+    color: var(--bg-col);
+    border-color: var(--bg-col);
 }
 
 button#reset {
-  background: #e478f2;
-  color: var(--main-col);
+  background: var(--primary-col);
+  color: var(--bg-col);
   border-color: var(--main-col);
 }
 
 button#reset:hover:active {
-  background: #c32dd7;
-  color: var(--secondary-col);
-  border-color: var(--secondary-col);
+  background: var(--second-col);
+  color: var(--main-col);
 }
 
-#plot {
-	border: solid 1px;
-	/* padding: 0 0 1em 0; */
-	background: var(--secondary-col);
-	border-radius: 10px;
+#box {
+	position: relative;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	margin-top: 0.5em;
-	height: max-content;
+	height: 38.5vw;
+	min-height: 189px;
+	max-height: 217px;
+	border: solid 1px;
+	background: var(--bg-col);
+}
+
+#plot{
+	position: relative;
+	width: 100%;
+  height: 100%;
+	padding-bottom: 0;
+  display: block;
+}
+
+.svg-content {
+	display: inline-block;
+	position: relative;
+	max-width: 545px;
 }
 
 svg {
@@ -263,13 +247,13 @@ svg {
 }
 
 circle.dot {
-  stroke: #3adb25;
-  fill: #009d18;
+  stroke: #16c3cc;
+  fill: var(--second-col);
 }
 
 .dot.selected {
-	stroke: #eadc66;
-	fill: #f7ff00;
+	stroke: #dbaf00;
+	fill: #f4c300;
 }
 /* from w3 schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */
 
@@ -293,7 +277,7 @@ circle.dot {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--secondary-col);
+  background-color: var(--bg-col);
   -webkit-transition: .4s;
   transition: .4s;
   border: solid 1px var(--main-col);
@@ -336,17 +320,36 @@ input:checked + .slider:before {
 }
 
 .twoway .slider:before {
-  background-color: var(--secondary-col);
+  background-color: var(--bg-col);
   border: solid 1px var(--main-col);
   bottom: 2px;
   left: 2px;
 }
 
 .twoway input:checked + .slider {
-  background-color: #c32dd7;
+  background-color: var(--second-col);
 }
 
 .svg-drag-select-area-overlay {
   border: 1px dotted gray;
   background-color: rgba(255,255,255,.4);
+}
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: var(--second-col);
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: var(--primary-col);
+  outline: none;
 }
