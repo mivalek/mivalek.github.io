@@ -1,1 +1,0 @@
-import{_ as t}from"./q-XYi0b4s7.js";import{c as i,q as o}from"./q-Co-T66JZ.js";const a=i(o(()=>t(()=>import("./q-DtMlrIH7.js"),[]),"s_i0yI6ZFoBeA")),n={title:"Visualisations",meta:[{name:"description",content:"Interactive visualisations of statistical concepts"}]};export{a as default,n as head};
