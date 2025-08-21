@@ -1,0 +1,1 @@
+import{_ as e}from"./q-XYi0b4s7.js";import{c as t,q as i}from"./q-C1ka19dj.js";const s=t(i(()=>e(()=>import("./q-BEPI8lDE.js"),[]),"s_nJhgpnZRql0")),n={title:"mivalek's GH pages",meta:[{name:"description",content:"GitHub pages website made with Qwik"}]};export{s as default,n as head};
