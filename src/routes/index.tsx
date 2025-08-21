@@ -6,20 +6,18 @@ export default component$(() => {
     <>
       <h1>Hi 👋</h1>
       <div>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
+        Working on it...
       </div>
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "mivalek's GH pages",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "GitHub pages website with Qwik",
     },
   ],
 };
