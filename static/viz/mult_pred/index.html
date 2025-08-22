@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Line of best fit | Milan Valasek </title>
+<script src="https://unpkg.com/d3-3d/build/d3-3d.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <!-- <script src="d3-3d.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG"></script>
+
+
+<link rel="stylesheet" href=  "./style.css">
+
+</head>
+
+<body onresize="resize()">
+  <div id="applet">
+    <div id="box">
+      <div id="plot">
+      </div>
+      <div id="formula">y<sub>i</sub> = <span id="int-span" class="coef"><i>b</i><sub>0</sub></span>
+        <span class="coef-container" id="slope1-container">+ <span id="slope1" class="coef"><i>b</i><sub>1</sub></span> &times; x<sub>1<sub>i</sub></sub></span>
+        <span class="coef-container" id="slope2-container">+ <span id="slope2" class="coef"><i>b</i><sub>2</sub></span> &times; x<sub>2<sub>i</sub></sub></span> +
+    <i>e</i><sub>i</sub></div>
+        <!-- <div id="hint-container">
+          <div id="hint-text">
+            Drag the yellow circles up and down to change the intercept and slope and see how the square residuals grow and shrink. The purple square below is the <strong>S</strong>um of these <strong>S</strong>quared <strong>R</strong>esiduals.
+            <br>Ordinary Least Squares regression finds the line that results in the smallest SSR possible.
+            <br>Try to find it!
+        </div></div> -->
+      <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+        <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+    </div>
+</div>
+<script src="./mult_pred.js"></script>
+<script>
+
+</script>
+</body>

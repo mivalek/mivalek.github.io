@@ -1,0 +1,249 @@
+:root {
+  --line-col: #3a3f5a;
+  --bg-col: #e1e6ef;
+  --second-col: #00979f;
+  --primary-col: #52006f;
+}
+
+body {
+  background: transparent;
+}
+
+#applet {
+    font-family: sans-serif;
+    color: var(--line-col);
+    font-size: 1.5em;
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    user-select: none;
+}
+
+
+.axis line, .axis path, .line, .graph line {
+    fill: none;
+    stroke: var(--line-col);
+}
+
+.axis text, .axis.lab {
+  fill: var(--line-col);
+}
+
+.graph line.mu {
+  stroke: var(--bg-col);
+  stroke-width: 2px;
+}
+
+.outer {
+  fill: var(--primary-col);
+}
+
+.inner {
+  fill: var(--second-col);
+}
+
+path.line {
+  stroke-width: 1.5px;
+}
+
+
+#box {
+  position: relative;
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.5em;
+	height: max-content;
+}
+
+#plot {
+	position: relative;
+	width: 100%;
+	padding-bottom: 0;
+}
+
+.svg-content {
+	display: inline-block;
+	position: relative;
+	max-width: 500px;
+}
+
+
+#range {
+	position: absolute;
+	right: 5%;
+	top: 20%;
+  width: 4.8em;
+	font-size: .7em;
+	font-size: min(.8em, 3.6vw);
+	color: #fff;
+	text-align: end;
+	z-index: 1;
+	background: var(--primary-col);
+	padding: 2px 8px;
+	border-radius: 8px;
+}
+
+#ctrls {
+    margin-left: 12%;
+    margin-top: .6em;
+    margin-bottom: 1em;
+    text-align: center;
+    width: 84%;
+    display: flex;
+    flex-direction: column;
+}
+
+pre {
+	border: solid 1px var(--line-col);
+	padding: 1em;
+	background: var(--bg-col);
+  white-space: break-spaces;
+}
+
+code {
+  font-size: .8em;
+}
+
+.num {
+  color: var(--second-col);
+}
+
+.obj {
+  font-weight: bold;
+  color: var(--primary-col);
+  filter: brightness(150%);
+}
+
+.foo, #lowerQuantIn, #upperQuantIn {
+  font-weight: bold;
+}
+
+.cmnt {
+  font-style: italic;
+  font-weight: bold;
+  filter: brightness(220%);
+}
+
+#slider {
+    width: 100%;
+}
+
+input {
+    margin-bottom: 2em;
+}
+
+
+input[type=range] {
+  /* vertical slider: mibbe later */
+  /* -webkit-appearance: slider-vertical; */
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 10px;
+  height: 99%;
+  background: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 99%;
+  height: 12px;
+  cursor: pointer;
+  background: var(--bg-col);
+  border-radius: 8px;
+  border: 1px solid #525772;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
+  border: solid 1px var(--line-col);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -.8em;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--bg-col);
+}
+input[type=range]::-moz-range-track {
+  width: 99%;
+  height: 12px;
+  cursor: pointer;
+  background: var(--bg-col);
+  border-radius: 8px;
+  border: 1px solid #525772;
+}
+input[type=range]::-moz-range-thumb {
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
+  /* border: solid 1px var(--line-col); */
+  /* background: var(--line-col); */
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 99%;
+  height: 10px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-fill-upper {
+  background: var(--bg-col);
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-thumb {
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 1em;
+  border: solid 1px var(--line-col);
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: var(--bg-col);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+input#dfValue[type=range]::-webkit-slider-thumb {
+border: solid 1px var(--primary-col);
+  background: var(--primary-col);
+}
+input#dfValue[type=range]::-moz-range-thumb {
+border: solid 1px var(--primary-col);
+  background: var(--primary-col);
+}
+input#dfValue[type=range]::-ms-thumb {
+border: solid 1px var(--primary-col);
+  background: var(--primary-col);
+}
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: var(--second-col);
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: var(--primary-col);
+  outline: none;
+}

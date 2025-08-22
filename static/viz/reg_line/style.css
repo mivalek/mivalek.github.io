@@ -1,0 +1,237 @@
+:root {
+  --line-col: #3a3f5a;
+  --bg-col: #e1e6ef;
+  --second-col: #36adb3;
+  --primary-col: #9766a8;
+  --second-col: #00979f;
+  --primary-col: #52006f;
+}
+
+body {
+  background: transparent;
+}
+
+#applet {
+    font-family: sans-serif;
+    color: var(--line-col);
+    font-size: 1.5em;
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    user-select: none;
+}
+
+.axis line{
+  stroke: var(--line-col);
+}
+
+.axis path{
+  stroke: var(--line-col);
+}
+
+.axis text{
+  fill: var(--line-col);
+}
+
+div#sliders {
+    position: relative;
+    display: block;
+    width: 85%;
+    margin: auto;
+}
+
+#plot {
+	position: relative;
+	width: 100%;
+	padding-bottom: 80%;
+}
+
+.svg-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.sliderTitle {
+    padding-bottom: 0.5em;
+}
+
+#sliders div {
+	margin-top: 0.5em;
+}
+
+input {
+    margin-bottom: 2em;
+}
+
+#equation {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
+    margin-top: 20px;
+}
+
+#equation > div {
+    line-height: 1.5em;
+    text-indent: -2em;
+    letter-spacing: 3px;
+}
+
+#intercept-value {
+    color: #fff;
+    border: solid 1px transparent;
+    background: var(--primary-col);
+    border-radius: 40px;
+    display: inline-block;
+    width: 70px;
+}
+
+#slope-value {
+    color: #fff;
+    border: solid 1px transparent;
+    background: var(--second-col);
+    border-radius: 40px;
+    display: inline-block;
+    width: 70px;
+}
+
+
+#intercept-circle {
+  fill: var(--primary-col);
+}
+
+#slope-circle {
+  fill: var(--second-col);
+}
+
+#intercept-value.negative, #slope-value.negative {
+  color: #ffbf00;
+}
+
+
+
+input[type=range] {
+  /* vertical slider: mibbe later */
+  /* -webkit-appearance: slider-vertical; */
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 10px;
+  height: 99%;
+  background: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 99%;
+  height: 12px;
+  cursor: pointer;
+  background: var(--bg-col);
+  border-radius: 8px;
+  border: 1px solid #525772;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
+  border: solid 1px var(--line-col);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -.8em;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--bg-col);
+}
+input[type=range]::-moz-range-track {
+  width: 99%;
+  height: 12px;
+  cursor: pointer;
+  background: var(--bg-col);
+  border-radius: 8px;
+  border: 1px solid #525772;
+}
+input[type=range]::-moz-range-thumb {
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
+  /* border: solid 1px var(--line-col); */
+  /* background: var(--line-col); */
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 99%;
+  height: 10px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-fill-upper {
+  background: var(--bg-col);
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-thumb {
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 1em;
+  border: solid 1px var(--line-col);
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: var(--bg-col);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+input#intercept[type=range]::-webkit-slider-thumb {
+border: solid 1px var(--primary-col);
+  background: var(--primary-col);
+}
+input#intercept[type=range]::-moz-range-thumb {
+border: solid 1px var(--primary-col);
+  background: var(--primary-col);
+}
+input#intercept[type=range]::-ms-thumb {
+border: solid 1px var(--primary-col);
+  background: var(--primary-col);
+}
+
+input#slope[type=range]::-webkit-slider-thumb {
+  border: solid 1px var(--second-col);
+  background: var(--second-col);
+}
+input#slope[type=range]::-moz-range-thumb {
+  border: solid 1px var(--second-col);
+  background: var(--second-col);
+}
+input#slope[type=range]::-ms-thumb {
+  border: solid 1px var(--second-col);
+  background: var(--second-col);
+}
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: var(--second-col);
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: var(--primary-col);
+  outline: none;
+}

@@ -1,1 +1,0 @@
-import{B as l}from"./q-Co-T66JZ.js";import"./q-XYi0b4s7.js";const o=()=>l("footer",null,{class:"m-auto flex max-w-3xl flex-row justify-between p-6"},l("div",null,{class:"flex flex-row items-center gap-2"},l("div",null,{class:"w-fit text-nowrap"},"©2025 Milan Valášek",3,null),3,null),3,"8f_0");export{o as s_tubdIiNVWvo};

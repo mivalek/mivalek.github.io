@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+:root {
+  --line-col: #3a3f5a;
+  --bg-col: #e1e6ef;
+  --second-col: #00979f;
+  --primary-col: #52006f;
+  --terc-col: #f4c300
+}
+
+#applet {
+    font-family: Open sans, sans-serif;
+    color: var(--line-col);
+    font-size: 1.5em;
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    user-select: none;
+}
+
+line.axis {
+    fill: none;
+    stroke: var(--line-col);
+    stroke-width: .5px;
+}
+
+.reg-line {
+	stroke-width: 2.5;
+}
+
+#x1 {
+	stroke: var(--second-col);
+}
+
+#x2 {
+	stroke: var(--primary-col);
+}
+
+.reg-plane {
+	opacity: .4;
+	fill: #5b73bb;
+}
+
+.axis line, .axis path, .line, .graph line {
+    fill: none;
+    stroke: var(--line-col);
+}
+
+.axis text, .axis.lab {
+  fill: var(--line-col);
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -moz-transition: opacity 0.4s ease-in-out;
+}
+
+#box {
+  position: relative;
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.5em;
+	height: max-content;
+}
+
+#plot {
+	position: relative;
+	width: 100%;
+	padding-bottom: 80%;
+}
+
+.svg-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+circle {
+	fill: #3a3f5a;
+  opacity: .7;
+}
+
+circle.above {
+  opacity: 1;
+}
+
+circle.intercept {
+	fill: var(--terc-col);
+	opacity: 1;
+}
+
+sub {
+	font-size: 0.6em;
+}
+
+.coef-container {
+	display: none;
+}
+
+.coef-container.show {
+	display: inline;
+}
+
+.coef {
+	border: solid 1px transparent;
+	border-radius: 50%;
+	display: inline-block;
+	padding: 4px 10px;
+	color: white;
+}
+
+#int-span {
+	background: var(--terc-col);
+}
+
+#slope1 {
+	background: var(--second-col);
+}
+
+#slope2 {
+	background: var(--primary-col);
+}
+
+.control {
+  fill: var(--terc-col);
+  z-index: 99;
+  cursor: pointer;
+  opacity: .7;
+  transition: opacity .2s ease-in
+}
+
+.control:hover, .control.hovered {
+  opacity: 1;
+}
+
+#hint-container {
+  font-family: 'Open Sans', sans-serif;
+	position: absolute;
+	top: 0;
+	left: 0;
+	clip-path: url(#hint-clip);
+	font-size: min(80%, 3.5vw);
+	color: white;
+	pointer-events: none;
+}
+
+#hint-label {
+  fill: white;
+  text-anchor: middle;
+  pointer-events: none;
+  font-size: 80%;
+  opacity: .9;
+  transition: opacity 0.2s ease-in;
+  -webkit-transition: opacity 0.2s ease-in;
+  -moz-transition: opacity 0.2s ease-in;
+}
+
+#hint-label.hide {
+  opacity: 0;
+}
+
+#hint-text {
+  position: relative;
+  padding: 3%;
+}
+
+ul {
+	padding-left: min(20px, 3vw);
+}
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: var(--second-col);
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: var(--primary-col);
+  outline: none;
+}

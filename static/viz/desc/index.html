@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Descriptives | Milan Valasek </title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG">
+  </script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+
+<body onload="reset()">
+  <div id="applet">
+    <div class="masterCtrl">
+      <button type="button" id="reset" onclick="reset()">Reset</button>
+        <div class="toggle">
+      <div>Location</div>
+      <label class="switch twoway">
+        <input type="checkbox">
+        <span class="slider round" onclick="panelSwitch()"></span>
+      </label>
+      <div>Spread</div>
+    </div>
+    </div>
+    <div id="panel">
+
+
+        <div id="switches">
+        <div id="location">
+            <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" name="locSwitch">
+            <span class="slider round" onclick="medSwitch()"></span>
+          </label>
+          <div>Median</div><span id="med"></span>
+        </div>
+          <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" name="locSwitch">
+            <span class="slider round" onclick="meanSwitch()"></span>
+          </label>
+          <div>Mean</div><span id="mean"></span>
+        </div>
+
+        </div>
+        <div id="spread" class="hidden">
+            <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" name="sprSwitch">
+            <span class="slider round" onclick="rangeSwitch()"></span>
+          </label>
+          <div>Range</div><span id="range"></span>
+        </div>
+          <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" name="sprSwitch">
+            <span class="slider round" onclick="iqrSwitch()"></span>
+          </label>
+          <div>IQR</div><span id="iqr"></span>
+        </div>
+          <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" name="sprSwitch">
+            <span class="slider round" onclick="devSwitch()"></span>
+          </label>
+          <details id="devCtrls">
+           <summary>Deviation</summary>
+           <div id="devOpts">
+           <div class="toggle">
+           <label class="switch">
+             <input type="checkbox" name="devToggle">
+             <span class="slider round" onclick="labSwitch()"></span>
+           </label>
+           <div>Value</div>
+         </div>
+           <div class="toggle">
+           <label class="switch">
+             <input type="checkbox" name="devToggle">
+             <span class="slider round" onclick="squareSwitch()"></span>
+           </label>
+           <div>Squares</div>
+         </div>
+       </div>
+       </details>
+        </div>
+          <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" name="sprSwitch">
+            <span class="slider round" onclick="sdSwitch()"></span>
+          </label>
+          <div>SD</div><span id="sd"></span>
+        </div>
+        </div>
+        </div>
+        <!-- <div id="equation">
+            <div id="meanDiv" class="hidden">
+              \(\bar{x} = \frac{\sum_{i=1}^Nx_i}{N} =\) <span id="mean"></span>
+              </div>
+            <div id="medDiv"  class="hidden">
+              Median \(=\) <span id="med"></span>
+              </div>
+        </div> -->
+        <div id="buttons">
+          <button type="button" id="addFive" onclick="addPts()">+5</button>
+        </div>
+
+
+
+        <!-- <div id="equation">
+            <div id="rangeDiv"  class="hidden">
+              Range \(=\) <span id="range"></span>
+              </div>
+            <div id="iqrDiv"  class="hidden">
+              IQR \(=\) <span id="iqr"></span>
+              </div>
+            <div id="sdDiv"  class="hidden">
+              \(SD = \sqrt{\frac{\sum_{i=1}^N(x_i-\bar{x})^2}{N - 1}} =\) <span id="sd"></span>
+              </div>
+        </div> -->
+    </div>
+    <!-- Create a div where the graph will take place -->
+
+      <div id="box">
+      <div id="plot"></div>
+    <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+      <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+    </div>
+      <!-- <svg width="500" height="400"></svg> -->
+      <script src="./desc.js"></script>
+
+    </div>
+
+
+</div>
+</body>

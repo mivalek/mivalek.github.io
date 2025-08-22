@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Squared vs Absolute Deviation | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG">
+  </script>
+    </script>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body onload="reset()">
+<div id="applet">
+  <div id="data">$$d = \{-4, 0, 8, 10, 14\}$$</div>
+  <div id="ctrls">
+    <div>$$\sum_{i=1}^N{(d_i - x)^2}$$</div>
+    <div class="toggle">
+
+      <label class="switch">
+        <input type="checkbox" id="switch">
+        <span class="slider round" onclick="devSwitch()"></span>
+      </label>
+    </div>
+
+    <div>$$\sum_{i=1}^N{|d_i - x|}$$</div>
+    </div>
+  <div id="box">
+    <div id="plot"></div>
+    <div id="slider">
+    <input id="xValue" type="range" min="0" max="200" value="0" step="1" style="width: 100%; height: 10px"/>
+  </div>
+  <div>Slide to change value of \(x\)</div>
+<div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+  <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+  </div>
+</div>
+
+  <script src="./dev.js"></script>
+</body>

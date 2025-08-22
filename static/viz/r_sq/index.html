@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport" />
+  <title>R squared | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG"></script>
+  <!-- <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js"
+    integrity="sha512-iBAeBWWWFb8HqSBcrqcz98iIpuVH1la39dEYHtyQ/pGpeCQTQVvLJOWAuhv2Q7JSHp9k7hWA7sGxU3hHJe+tFg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body onresize="resize()">
+  <div id="applet">
+    <div id="box">
+      <div id="plot">
+      </div>
+
+      <div id="info">
+        <div id="xBarDiv">\(\bar{x}\)</div>
+        <div id="yBarDiv">\(\bar{y}\)</div>
+        <!-- <div id="rSqDiv">\(R^2\) <span id="rSqValue"></span></div> -->
+      </div>
+      <div id="hint-container">
+        <div id="hint-text">
+          <ul>
+            <li>click/tap inside the plot to add a point</li>
+            <li>click/tap on a point to remove it</li>
+            <li>drag a point with mouse/finger to move it</li>
+            <li>click/tap and drag inside the plot to select multiple points to move or delete</li>
+            <li>hover over regression line to see predicted point</li>
+            <li>click of SS<sub>R</sub> and SS<sub>T</sub> to switch between showing squared <strong>resuduals</strong>
+              from the line of best fit and square <strong>deviations</strong> from \(\bar{y}\)</li>
+          </ul>
+        </div>
+      </div>
+      <div id="rSqDiv">
+        <div id="rSqEq">R<sup>2</sup> = 1 &minus;&nbsp;</div>
+        <div id="ctrls">
+          <div class="top"><span id="ssr">SS<sub>R</sub></span></div>
+          <div class="bottom"><span id="sst">SS<sub>T</sub></span></div>
+        </div>
+        <div>&nbsp; = 1 &minus; &nbsp;</div>
+        <div id="values">
+          <div class="top"><span id="ssrValue"></span></div>
+          <div class="bottom"><span id="sstValue"></span></div>
+        </div>
+        <div id="rSqValue"></div>
+      </div>
+      <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+        <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+      <!-- <div id="ctrls">
+        <div id="slider">
+        <input id="rValue" type="range" min="-1" max="1" value="0" step=".02" style="width: 100%; height: 10px" ondblclick="reset()"/>
+
+        <div class="lab"><em>r</em> = <span id="r">0</span></div>
+      </div>
+
+      </div> -->
+    </div>
+  </div>
+  <script src="./r_sq.js"></script>
+  <script>
+
+  </script>
+</body>

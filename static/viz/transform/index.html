@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Transformations | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG">
+  </script>
+    </script>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body onload="reset()">
+<div id="applet">
+  <div id="box">
+    <div id="plot"></div>
+    <div id="slider">
+    <input id="xValue" type="range" min="0" max="200" value="0" step="1" style="width: 100%; height: 10px"/>
+  </div>
+  <div>Slide to change value of \(x\)</div>
+  </div>
+
+    <div id="ctrls">
+      <div class="ctrl add">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" id="addSwitch">
+            <span class="slider round" onclick="toggleSwitch('addInput')"></span>
+          </label>
+        </div>
+          <div id="addInput" class="numInput hidden">x &plus; <span class="input">0</span></div>
+        <!-- <input id="add"></input> -->
+      </div>
+      <div class="ctrl mult">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" id="multSwitch">
+            <span class="slider round" onclick="toggleSwitch('multInput')"></span>
+          </label>
+        </div>
+          <div id = "multInput" class="numInput hidden">x &times; <span class="input">1</span></div>
+        <!-- <input id="mult"></input> -->
+      </div>
+      <div class="ctrl exp">
+        <div class="toggle">
+          <label class="switch">
+            <input type="checkbox" id="expSwitch">
+            <span class="slider round" onclick="toggleSwitch('expInput')"></span>
+          </label>
+        </div>
+          <div id="expInput" class="numInput hidden">x<sup><span class="input">1</span></sup></div>
+        <!-- <input id="exp"></input> -->
+      </div>
+    <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+      <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+    </div>
+</div>
+
+  <script src="./transform.js"></script>
+</body>
