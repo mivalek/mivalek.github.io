@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>z-transform | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG">
+  </script>
+    </script>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body onload="reset()">
+<div id="applet">
+  <div class="params">
+  <div>\(\bar{x}=\)<span id="muOut"></span></div>
+    <div>\(SD=\)<span id="sigmaOut"></span></div>
+    <button onclick="reset()">Reset</button>
+    </div>
+  <div id="box">
+    <div id="plot">
+  <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+    <a href="https://mival.netlify.app" target="_blank">hosted here</a></div></div>
+    <div id="error">
+      <div>Order of operations!<br>
+      <span>(Reset scale to 1 to continue)</span></div>
+    </div>
+  </div>
+
+    <div id="ctrls">
+          <div style="display: flex; text-align: center;"><span>\(z(x) = (x\)</span>&nbsp;&minus;
+            <span id="addInput" class="input" ondblclick="resetMu()">0</span>
+            <span>\()/\)</span>
+            <span id="multInput" class="input" ondblclick="resetSigma()">1</span></div>
+    </div>
+</div>
+
+  <script src="./standard.js"></script>
+</body>

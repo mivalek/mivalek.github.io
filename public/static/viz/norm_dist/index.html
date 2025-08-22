@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Normal distribtuion | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_SVG">
+  </script>
+    </script>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body onload="reset()">
+<div id="applet">
+  <div id="box">
+    <div id="plot"></div>
+  </div>
+  <div id="ctrls">
+    <div>
+    <div id="slider">
+    <input id="muValue" type="range" min="-5" max="5" value="0" step=".1" style="width: 100%; height: 10px" ondblclick="resetMu()"/>
+  </div>
+  <div class="lab">\(\mu\)</div>
+  </div>
+  <div>
+  <div id="slider">
+  <input id="sigmaValue" type="range" min="0" max="199" value="100" step="1" style="width: 100%; height: 10px" ondblclick="resetSigma()"/>
+</div>
+<div class="lab">\(\sigma\)</div>
+  </div>
+  <div id="cite">made by Milan Val&aacute;&scaron;ek<br><a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+  </div>
+  </div>
+
+  <script src="./norm_dist.js"></script>
+</body>

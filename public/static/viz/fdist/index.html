@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>F distribution | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
+
+
+<link rel="stylesheet" href=  "./style.css">
+
+</head>
+
+<body onload="reset()">
+  <div id="applet">
+    <div id="box">
+      <div id="plot">
+        <div id="range">
+          > <span id="critValue"></span>
+        </div>
+      </div>
+      <div id="ctrls">
+        <div id="slider">
+          <input id="df1Value" type="range" min="1" max="100" value="1" step="1" style="width: 100%; height: 10px" ondblclick="resetDf('df1Value')"/>
+          <div class="lab"><em>df1</em> = <span id="df1">1</span></div>
+        </div>
+        <div id="slider">
+          <input id="df2Value" type="range" min="1" max="100" value="1" step="1" style="width: 100%; height: 10px" ondblclick="resetDf('df2Value')"/>
+          <div class="lab"><em>df2</em> = <span id="df2">1</span></div>
+        </div>
+      </div>
+    <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+      <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+    </div>
+
+
+<pre><code><span class="cmnt"># critical value for right 5% tail</span>
+<span class="foo">qf</span>(<span class="num">.95</span>, df1 = <span class="num" id="df1In">1</span>, df2 = <span class="num" id="df2In">1</span>)
+<span class="output">[1] <span id="quantile">12.7062</span></span></code></pre>
+</div>
+<script src="./fdist.js"></script>
+<script>
+
+</script>
+</body>

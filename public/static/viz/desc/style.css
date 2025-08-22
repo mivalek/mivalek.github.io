@@ -1,0 +1,355 @@
+:root {
+  --main-col: #3a3f5a;
+  --bg-col: #c3ccde;
+  --second-col: #00979f;
+  --primary-col: #52006f;
+}
+
+#applet-container {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+}
+
+#applet {
+    font-family: sans-serif;
+    color: var(--main-col);
+    font-size: 1.5em;
+    max-width: 545px;
+    min-width: 475px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    background: transparent;
+    padding: 0 0 1em 0;
+    user-select: none;
+}
+
+
+.axis line{
+  stroke: var(--main-col);
+}
+
+.axis path{
+  stroke: var(--main-col);
+}
+
+.axis text{
+  fill: var(--main-col);
+}
+
+.masterCtrl {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.toggle {
+	display: flex;
+	flex-direction: row;
+	/* flex-wrap: wrap; */
+  margin: 5px 0;
+}
+
+.toggle > div, details {
+	margin: 3px 10px 0 10px;
+}
+
+.toggle > span {
+	margin-top: 3px;
+}
+
+#panel {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+#location, #spread {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  -moz-transition: height .5s;
+  -ms-transition: height .5s;
+  -o-transition: height .5s;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+}
+
+#location {
+  height: 90px;
+}
+
+#spread {
+  height: 180px;
+}
+
+#spread.hidden, #location.hidden {
+  height: 0;
+}
+
+#buttons {
+	width: max-content;
+	display: flex;
+	flex-direction: column;
+	height: max-content;
+	flex-wrap: wrap;
+}
+#buttons > div {
+	margin: 5px 0;
+}
+
+details > summary {
+  list-style: none;
+  pointer-events: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > div {
+	margin: -36px 0 0 110px;
+}
+
+details > #devOpts {
+	display: flex;
+	position: absolute;
+  overflow: hidden;
+  width: 0px;
+}
+
+details[open] > #devOpts {
+  width: 300px;
+}
+
+details[open] summary ~ * {
+  animation: sweep1 .5s ease-in-out;
+  -moz-transition: width .5s;
+  -ms-transition: width .5s;
+  -o-transition: width .5s;
+  -webkit-transition: width .5s;
+  transition: width .5s;
+  width: 300px;
+}
+
+details summary ~ * {
+  animation: sweep2 .5s ease-in-out;
+  -moz-transition: width .5s;
+  -ms-transition: width .5s;
+  -o-transition: width .5s;
+  -webkit-transition: width .5s;
+  transition: width .5s;
+  width: 0;
+}
+
+@keyframes sweep1 {
+  0%    {width: 0px}
+  100%  {width: 300px}
+}
+
+@keyframes sweep2 {
+  0%    {width: 300px}
+  100%  {width: 0px}
+}
+
+button {
+  border-radius: 10px;
+  border: solid 1px var(--main-col);
+  height: 40px;
+  width: max-content;
+  font-size: 1em;
+  color: var(--main-col);
+  background: var(--bg-col);
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover:active, button.pressed {
+    background: var(--main-col);
+    color: var(--bg-col);
+    border-color: var(--bg-col);
+}
+
+button#reset {
+  background: var(--primary-col);
+  color: var(--bg-col);
+  border-color: var(--main-col);
+}
+
+button#reset:hover:active {
+  background: var(--second-col);
+  color: var(--main-col);
+}
+
+#box {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.5em;
+	height: 38.5vw;
+	min-height: 189px;
+	max-height: 217px;
+	border: solid 1px;
+	background: var(--bg-col);
+}
+
+#plot{
+	position: relative;
+	width: 100%;
+  height: 100%;
+	padding-bottom: 0;
+  display: block;
+}
+
+.svg-content {
+	display: inline-block;
+	position: relative;
+	max-width: 545px;
+}
+
+svg {
+  cursor: pointer;
+}
+
+#medDiv, #meanDiv, #sdDiv {
+  display: block;
+  margin-top: 10px;
+}
+
+.devLine, #rangeLineHoriz, #rangeLineLeft,
+#rangeLineRight {
+  fill: none;
+  shape-rendering: crispEdges;
+}
+
+#rangeLineToMax, #rangeLineToMin {
+  fill: none;
+}
+
+.devLab {
+	font-size: 11px;
+	text-anchor: middle;
+	color: var(--main-col);
+}
+
+.hidden {
+  display: none;
+}
+
+circle.dot {
+  stroke: #16c3cc;
+  fill: var(--second-col);
+}
+
+.dot.selected {
+	stroke: #dbaf00;
+	fill: #f4c300;
+}
+/* from w3 schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-col);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: solid 1px var(--main-col);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--main-col);
+}
+
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.twoway .slider {
+  background-color: var(--main-col);
+}
+
+.twoway .slider:before {
+  background-color: var(--bg-col);
+  border: solid 1px var(--main-col);
+  bottom: 2px;
+  left: 2px;
+}
+
+.twoway input:checked + .slider {
+  background-color: var(--second-col);
+}
+
+.svg-drag-select-area-overlay {
+  border: 1px dotted gray;
+  background-color: rgba(255,255,255,.4);
+}
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: var(--second-col);
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: var(--primary-col);
+  outline: none;
+}

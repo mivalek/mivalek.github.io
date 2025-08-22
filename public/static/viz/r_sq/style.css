@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+:root {
+  --line-col: #3a3f5a;
+  --bg-col: #e1e6ef;
+  --second-col: #00979f;
+  --primary-col: #52006f;
+}
+
+#applet {
+    font-family: sans-serif;
+    color: var(--line-col);
+    font-size: 1.5em;
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    user-select: none;
+}
+
+
+.axis line, .axis path, .line, .graph line {
+    fill: none;
+    stroke: var(--line-col);
+}
+
+.axis text, .axis.lab {
+  fill: var(--line-col);
+}
+
+#xBar {
+  stroke-width: .5px;
+  stroke: var(--line-col);
+  stroke-dasharray: 6;
+  opacity: .5;
+  pointer-events: none;
+}
+
+#yBar {
+  stroke-width: 2px;
+  stroke: var(--primary-col);
+  pointer-events: none;
+}
+
+#yHat {
+  stroke-width: 2.5px;
+  stroke: var(--second-col);
+}
+
+.dev {
+  stroke-width: .5px;
+  stroke: var(--second-col);
+  stroke-dasharray: 4;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+}
+
+.dev.yBar {
+  stroke: var(--primary-col);
+}
+
+.devSq {
+  stroke: none;
+  fill: var(--second-col);
+  opacity: .3;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -moz-transition: opacity 0.4s ease-in-out;
+}
+
+.devSq.yBar {
+  fill: var(--primary-col);
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -moz-transition: opacity 0.4s ease-in-out;
+}
+#select {
+	stroke: #f4c300;
+}
+
+#box {
+  position: relative;
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.5em;
+	height: max-content;
+}
+
+#plot {
+	position: relative;
+	width: 100%;
+	padding-bottom: 80%;
+}
+
+.svg-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+circle {
+	fill: #3a3f5a88;
+  z-index: 99;
+  cursor: pointer;
+}
+
+circle.selected {
+	fill: #f4c300dd;
+}
+
+line.yHatHover {
+  stroke: var(--primary-col);
+  opacity: 2;
+  stroke-width: 0.5px;
+  stroke-dasharray: 6px;
+  pointer-events: none;
+}
+
+circle.yHatHover {
+  fill: var(--primary-col);
+  opacity: 1;
+  pointer-events: none;
+}
+
+#info {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+  transition: opacity 0.1s ease-in;
+  -webkit-transition: opacity 0.1s ease-in;
+  -moz-transition: opacity 0.1s ease-in;
+  opacity: 1;
+}
+
+#info.hide {
+  opacity: .05;
+}
+
+#info div {
+  position: absolute;
+  background: #ffffffaa;
+  width: max-content;
+}
+
+#xBarDiv, #yBarDiv {
+  color: #777;
+}
+
+#rSqDiv {
+  position: relative;
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  width: max-content;
+  flex-direction: row;
+  align-items: center;
+}
+
+#rSqEq {
+	margin-bottom: 2px;
+}
+
+#ctrls {
+	margin-top: 14px;
+}
+
+.top{
+  border-bottom:solid black 1px;
+  display:inline-block;
+  float:left;
+}
+
+.bottom{
+  display:inline-block;
+  clear:left;
+  float:left;
+}
+
+#ctrls > .bottom {
+  line-height: 42px
+}
+
+#ssr, #sst {
+	padding: 2px 5px;
+  cursor: pointer;
+  border: solid 1px transparent;
+}
+
+#ssr {
+  background: #7ccbce;
+  color: var(--second-col);
+}
+
+#ssr:hover {
+  border-color: var(--second-col);
+}
+
+#ssr:active {
+  color: white;
+  background: var(--second-col);
+  border-color: var(--second-col);
+}
+
+#sst {
+  background: #a57cb5;
+  color: var(--primary-col);
+  padding-right: 6px
+}
+
+#sst:hover {
+  border-color: var(--primary-col);
+}
+
+#sst:active {
+  color: white;
+  background: var(--primary-col);
+  border-color: var(--primary-col);
+}
+
+#values > div {
+	width: 85px;
+	text-align: center;
+}
+
+#hint-container {
+  font-family: 'Open Sans', sans-serif;
+	position: absolute;
+	top: 0;
+	left: 0;
+	clip-path: url(#hint-clip);
+	font-size: min(80%, 3.5vw);
+	color: white;
+	pointer-events: none;
+}
+
+#hint-label {
+  fill: white;
+  text-anchor: middle;
+  pointer-events: none;
+  font-size: 80%;
+  opacity: .9;
+  transition: opacity 0.2s ease-in;
+  -webkit-transition: opacity 0.2s ease-in;
+  -moz-transition: opacity 0.2s ease-in;
+}
+
+#hint-label.hide {
+  opacity: 0;
+}
+
+#hint-text {
+  position: relative;
+  padding: 3%;
+}
+
+ul {
+	padding-left: min(20px, 3vw);
+}
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: var(--second-col);
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: var(--primary-col);
+  outline: none;
+}
+
+@media(max-width: 405px) {
+  #rSqDiv {
+    font-size: .8em;
+  }
+}

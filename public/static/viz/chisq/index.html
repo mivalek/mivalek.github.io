@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Chi-squared distribution | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+
+<link rel="stylesheet" href=  "./style.css">
+
+</head>
+
+<body onload="reset()">
+  <div id="applet">
+    <div id="box">
+      <div id="plot">
+        <div id="range">
+          > <span id="critValue"></span>
+        </div>
+      </div>
+      <div id="ctrls">
+        <!-- <div id="slider-range"></div>
+        <div id="label"><em>&mu;</em>&nbsp;&pm;&nbsp;<span id="range">0</span>&nbsp;<em>&sigma;</em></div> -->
+
+        <div id="slider">
+        <input id="dfValue" type="range" min="1" max="10" value="1" step=".1" style="width: 100%; height: 10px" ondblclick="resetDf()"/>
+
+        <div class="lab"><em>df</em> = <span id="df">1</span></div>
+      </div>
+
+      </div>
+      <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+      <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+    </div>
+
+
+<pre><code><span class="cmnt"># critical value for right 5% tail</span>
+<span class="foo">qchisq</span>(<span class="num">.95</span>, df = <span class="num" id="dfIn">1</span>)
+<span class="output">[1] <span id="quantile">12.7062</span></span></code></pre>
+</div>
+<script src="./chisq.js"></script>
+<script>
+
+</script>
+</body>

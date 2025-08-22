@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bean machine | Milan Valasek</title>
+    <link rel="stylesheet" href="./styles.css">
+    </style>
+  </head>
+  <body onresize="drawCanvas()">
+    <!-- <h1>Binomial distribution and the bean machine</h1> -->
+    <div id="widget" style="position:relative;">
+      <canvas id="background" style="position: absolute; top: 2px; z-index: 0;"></canvas>
+      <canvas id="main" style="position: absolute; top: 0; z-index: 1;"></canvas>
+    </div>
+
+    <div id="panel">
+      <!-- <script>
+        console.log("script #1: %o", document.getElementById("nBins")); // null
+      </script> -->
+      <div id="sliders">
+        <div class="sliderTitle">No. of bins</div>
+        <input id="nBins" type="range" min="2" max="30" value="2" step="1" style="width: 100%; min-width: 250px; color: black; height: 0px"/>
+        <div  class="sliderTitle">Ball drop frequency</div>
+        <input id="beadFreq" type="range" min="0" max="15" value="0" step="1" style="width: 100%; min-width: 250px; height: 0px"/>
+      <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+        <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+      </div>
+
+    </div>
+    <script src="./bean.js"></script>
+  </body>
+</html>

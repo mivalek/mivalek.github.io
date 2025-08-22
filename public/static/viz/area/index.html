@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Area under the curve | Milan Valasek </title>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js" integrity="sha512-0bEtK0USNd96MnO4XhH8jhv3nyRF0eK87pJke6pkYf3cM0uDIhNJy9ltuzqgypoIFXw3JSuiy04tVk4AjpZdZw==" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body onload="reset()">
+  <div id="applet">
+    <div id="box">
+      <div id="plot"></div>
+      <div id="ctrls">
+        <div id="slider-range"></div>
+        <div id="label"><em>&mu;</em>&nbsp;&pm;&nbsp;<span id="range">0</span>&nbsp;<em>&sigma;</em></div>
+
+      </div>
+      <div id="percContainer">
+        <div id="innerPerc">0.000</div>
+        <div id="outerPerc">1.000</div>
+      </div>
+    <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+      <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+    </div>
+
+
+<pre><code><span class="cmnt"># area below curve in the left tail</span>
+<span class="obj">lower</span> <- <span class="foo">pnorm</span>(<span class="num" id="lowerQuantIn">0</span>, mean = <span class="num">0</span>, sd = <span class="num">1</span>)
+
+<span class="cmnt"># area below curve from -infinity
+# to right tail</span>
+<span class="obj">upper</span> <- <span class="foo">pnorm</span>(<span class="num" id="upperQuantIn">0</span>, mean = <span class="num">0</span>, sd = <span class="num">1</span>)
+
+<span class="cmnt"># proportion in tails (2 * because symmetry)</span>
+2 * <span class="obj">lower</span>
+<span class="output">[1] <span id="outerOut">1</span></span>
+<span class="cmnt"># proportion in bulk</span>
+<span class="obj">upper</span> - <span class="obj">lower</span>
+<span class="output">[1] <span id="innerOut">0</span></span>
+
+<span class="cmnt"># critical values for the proportions</span>
+<span class="foo">qnorm</span>(<span class="obj">lower</span>, mean = <span class="num">0</span>, sd = <span class="num">1</span>)
+<span class="output">[1] <span id="lowerQuantOut">0</span></span>
+<span class="foo">qnorm</span>(<span class="obj">upper</span>, mean = <span class="num">0</span>, sd = <span class="num">1</span>)
+<span class="output">[1] <span id="upperQuantOut">0</span></span></code></pre>
+</div>
+<script src="./area.js"></script>
+<script>
+
+</script>
+</body>

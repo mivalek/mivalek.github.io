@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Regression formula | Milan Valasek</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div id="applet">
+
+      <!-- Create a div where the graph will take place -->
+      <div id="plot"></div>
+      <div id="panel">
+        <div id="equation">
+          <div>y = <i>b</i><sub>0</sub> + <i>b</i><sub>1</sub> &times; x</div>
+          = <span id="intercept-value"></span>
+            <span id="slope-value"></span> &times; x
+        </div>
+
+        <div id="sliders">
+          <div id="interceptSlider">
+            <!-- <div class="sliderTitle">Intercept</div> -->
+            <input id="intercept" class="intercept"  type="range" min="-5" max="5" value="0" step="0.01" style="width: 100%; min-width: 250px" ondblclick="resetInt()"/>
+          </div>
+          <div id="slopeSlider">
+            <!-- <div class="sliderTitle">Slope</div> -->
+            <input id="slope" class="slope" type="range" min="-5" max="5" value="0" step="0.01" style="width: 100%; min-width: 250px" ondblclick="resetSlope()"/>
+          </div>
+        <div id="cite">made by Milan Val&aacute;&scaron;ek<br>
+          <a href="https://mival.netlify.app" target="_blank">hosted here</a></div>
+        </div>
+
+      </div>
+
+  </div>
+  <script src="reg_line.js"></script>
+
+</body>

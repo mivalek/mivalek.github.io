@@ -1,0 +1,368 @@
+:root {
+  --main-col: #3a3f5a;
+  --secondary-col: #c3ccde;
+}
+
+body {
+  overflow: hidden;
+}
+
+#applet {
+    font-family: sans-serif;
+    color: var(--main-col);
+    font-size: 1.5em;
+    max-width: 500px;
+    display: block;
+    margin: auto;
+    user-select: none;
+}
+
+.axis line, .axis path, .line, .graph line {
+    fill: none;
+}
+
+.axis line, .axis path, .vert-line {
+  stroke: var(--main-col);
+}
+
+.axis text, .axis.lab {
+  fill: var(--main-col);
+}
+
+.axis.lab {
+	font-family: serif;
+	font-style: italic;
+}
+
+.add {
+  stroke: #52006f;
+}
+
+.mult {
+  stroke: #00979f;
+}
+
+.exp {
+  stroke: #f4c300;
+}
+
+circle {
+  stroke: var(--main-col);
+  stroke-width: 1.5px;
+}
+
+
+
+path.line {
+  stroke-width: 1.5px;
+}
+
+line.dashed-line {
+  stroke-width: 1px;
+  stroke-dasharray: 7;
+  shape-rendering: crispEdges;
+}
+
+
+#box {
+  position: relative;
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.5em;
+	height: max-content;
+}
+
+#plot {
+	position: relative;
+	width: 100%;
+	padding-bottom: 0;
+}
+
+.svg-content {
+	display: inline-block;
+	position: relative;
+	max-width: 500px;
+}
+
+#ctrls {
+  position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 0.2em;
+	height: 2.7em;
+}
+
+.ctrl {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	min-width: 40%;
+}
+
+.toggle {
+	align-self: center;
+}
+
+
+#expInput {
+	display: flex;
+}
+
+.numInput.hidden {
+  max-width: 0;
+  max-height: 0;
+  transition: max-width .2s ease-out, max-height .2s ease-out;
+}
+.numInput {
+	overflow: hidden;
+	cursor: col-resize;
+	max-width: 120px;
+	max-height: 2.7em;
+	transition: max-width .2s ease-out, max-height .2s ease-out;
+	margin-left: 10px;
+	line-height: 2.5em;
+}
+
+.input {
+	background: #6700756b;
+	border-radius: 50%;
+	display: inline-block;
+	text-align: center;
+	width: 2.6em;
+	padding: 0.1em;
+}
+
+#multInput .input {
+	background: #00979f88;
+}
+
+#expInput .input {
+	background: #f4c30088;
+	line-height: 2em;
+	width: 2em;
+	display: block;
+}
+
+/* from w3 schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--main-col);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: solid 1px var(--main-col);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  bottom: 2px;
+  left: 2px;
+  background-color: var(--secondary-col);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: solid 1px var(--main-col);
+  line-height: 1;
+  text-align: center;
+}
+
+.add .slider.round:before {
+  content: "+";
+}
+
+.mult .slider.round:before {
+  content: "\00D7";
+  line-height: 1.2;
+}
+
+.exp .slider.round:before {
+  content: "^";
+  line-height: 1.4;
+}
+
+.add input:checked + .slider {
+  background-color: #52006f;
+}
+
+.mult input:checked + .slider {
+  background-color: #00979f;
+}
+
+.exp input:checked + .slider {
+  background-color: #f4c300;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.svg-drag-select-area-overlay {
+  border: 1px dotted gray;
+  background-color: rgba(255,255,255,.4);
+}
+
+/* input slider */
+#slider {
+	width: 89%;
+	margin-left: 11%;
+}
+
+input {
+    margin-bottom: 2em;
+}
+
+
+input[type=range] {
+  /* vertical slider: mibbe later */
+  /* -webkit-appearance: slider-vertical; */
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 10px;
+  height: 99%;
+  background: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 99%;
+  height: 10px;
+  cursor: pointer;
+  background: var(--secondary-col);
+  border-radius: 5px;
+  border: 1px solid #525772;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+  background: var(--main-col);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -.8em;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--secondary-col);
+}
+input[type=range]::-moz-range-track {
+  width: 99%;
+  height: 10px;
+  cursor: pointer;
+  background: var(--secondary-col);
+  border-radius: 5px;
+  border: 1px solid #525772;
+}
+input[type=range]::-moz-range-thumb {
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+  border-color: var(--main-col);
+  background: var(--main-col);
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 99%;
+  height: 10px;
+  cursor: pointer;
+  background: var(--secondary-col);
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-fill-upper {
+  background: var(--bg-col);
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-thumb {
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+  background: var(--main-col);
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: white;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+@media only screen and (max-width: 540px) {
+  .ctrl {
+    height: 65px;
+	  width: 180px;
+	  flex-wrap: wrap;
+	  height: 65px;
+  }
+
+  #ctrls {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 0.2em;
+	gap: 5px;
+	height: max-content;
+  }
+}
+
+
+#cite {
+  display: none;
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  font-size: 50%;
+  text-align: right;
+  color: #00979f;
+}
+
+#cite.show {
+  display: initial;
+}
+
+#cite a {
+  color: #52006f;
+  outline: none;
+}
