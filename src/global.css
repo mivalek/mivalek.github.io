@@ -9,12 +9,16 @@
     @apply border-white/30;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   h1 {
-    @apply my-6 text-3xl font-bold;
+    @apply my-12 text-3xl font-bold;
   }
 
   h2 {
-    @apply my-4 text-2xl font-[600];
+    @apply my-8 text-2xl font-[600];
   }
 
   h3 {
@@ -22,7 +26,11 @@
   }
 
   section {
-    @apply py-4;
+    @apply mt-8 mb-12;
+
+    .scroll-anchor {
+      @apply absolute -translate-y-20;
+    }
   }
 
   p {
@@ -32,6 +40,13 @@
   main {
     a {
       @apply text-orange-300;
+
+      &[href^="http"]:after {
+        mask: url(/assets/external.svg);
+        mask-repeat: no-repeat;
+        mask-position: right;
+        @apply mx-1 inline-block h-[0.7em] w-[0.7em] bg-orange-300 align-text-top content-[''];
+      }
     }
   }
 }

@@ -12,7 +12,6 @@ export default component$(() => {
         <Link
           title="LinkedIn"
           href="https://www.linkedin.com/in/milan-valasek"
-          target="_blank"
           class="block w-8 fill-white"
         >
           {/* <!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--> */}
@@ -23,7 +22,6 @@ export default component$(() => {
         <Link
           title="StackOverflow"
           href="https://stackoverflow.com/users/2062339/milan-valášek"
-          target="_blank"
           class="block w-8 fill-white"
         >
           {/* <!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--> */}
@@ -35,7 +33,6 @@ export default component$(() => {
           title="GitHub"
           id="gh"
           href="https://github.com/mivalek/"
-          target="_blank"
           class="block w-6 fill-white"
         >
           {/* <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--> */}

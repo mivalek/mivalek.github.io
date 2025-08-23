@@ -34,7 +34,7 @@ export default component$(() => {
   return (
     <main class="bg-white pt-2 text-black">
       <h1
-        class="mx-6 text-center !text-2xl"
+        class="my-4 text-center !text-2xl"
         dangerouslySetInnerHTML={data.value ? data.value.title : "&nbsp;"}
       ></h1>
       <div class="relative h-fit">

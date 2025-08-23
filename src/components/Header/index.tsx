@@ -16,7 +16,7 @@ export default component$(() => {
             <NavLink
               href="/#projects"
               activeClass="bg-white text-gray-950"
-              class="block p-4 hover:bg-white hover:text-gray-950"
+              class="block p-6 hover:bg-white hover:text-gray-950"
             >
               Projects
             </NavLink>
@@ -25,7 +25,7 @@ export default component$(() => {
             <NavLink
               href="/#viz"
               activeClass="bg-white text-gray-950"
-              class="block p-4 hover:bg-white hover:text-gray-950"
+              class="block p-6 hover:bg-white hover:text-gray-950"
             >
               Viz
             </NavLink>
@@ -34,7 +34,7 @@ export default component$(() => {
             <NavLink
               href="/#teaching"
               activeClass="bg-white text-gray-950"
-              class="block p-4 hover:bg-white hover:text-gray-950"
+              class="block p-6 hover:bg-white hover:text-gray-950"
             >
               Teaching
             </NavLink>
