@@ -1,6 +1,6 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { vizIndex } from "./vizIndex";
-// import type { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const loading = useSignal(true);
@@ -22,14 +22,6 @@ export default component$(() => {
     id.value = searchId;
     data.value = vizIndex[searchId];
   });
-
-  //   eslint-disable-next-line qwik/no-use-visible-task
-  //   useVisibleTask$(({ track }) => {
-  //     track(id);
-  //     if (!iFrameRef.value || !id.value) return;
-  //     const rect = iFrameRef.value.getBoundingClientRect();
-  //     iFrameRef.value.style.height = window.innerHeight - rect.y + "px";
-  //   });
 
   return (
     <main class="bg-white pt-2 text-black">
@@ -63,3 +55,24 @@ export default component$(() => {
     </main>
   );
 });
+
+export const head: DocumentHead = {
+  title: "Visualisations",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Interactive applets that help develop intuition about statistical concepts",
+    },
+    // Open graph
+    {
+      property: "og:title",
+      content: "Visualisations",
+    },
+    {
+      property: "og:description",
+      content:
+        "Interactive applets that help develop intuition about statistical concepts",
+    },
+  ],
+};
